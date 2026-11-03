@@ -41,8 +41,8 @@ level. Prefix every key, id, flag and variable with `ahw_`. Tested in game on Li
 6. Placement around the core: the core is empty to ~15–20 % of the radius (small elliptical);
    generation at game start, scaled by galaxy size.
 7. AI: does it path through, repair, lock, close?
-8. **Ring-side gate labels and menus** show only while we have sensor coverage of the ring system
-   (run 6). Next spike: `extends_sensors = yes` on the entry types; else accept it.
+8. ~~Ring-side gate labels~~ — `extends_sensors = yes` shows the exits of usable entry points
+   (run 7). Their right-click menu needs a ship in the system; route-finding does not.
 
 ### The spike (`0.0.7-SPIKE`): what it does, how to run it
 
@@ -284,6 +284,17 @@ Barnard's Star.
   regardless. Candidates: `extends_sensors = yes` on the entry types (as vanilla wormholes: seeing
   through an entry point would cover its exit), a sensor source in each ring system, or accepting
   it (route-finding into the ring works without coverage, runs 4–6).
+
+**Run 7 (2026-11-03, `0.0.7-SPIKE`, a new campaign): entry points give sight of their exits.**
+- At the start (no tech, no ship in the ring): exits in Highway Node 1 (entries 1, 2 repaired)
+  and Node 2 (entry 3 broken) have **no label and no menu**.
+- After `ahw_spike.8` (the tech) and a day: **Node 1's exits have their labels, but no menu;
+  Node 2's have neither**. So `extends_sensors = yes` shows the exit only through a usable entry
+  point (tech + repaired); a broken one gives no sight.
+- A ship in Node 1 and back to Sol: the labels stay, the menu goes again. A ship in Node 2 and
+  back to Node 1: Node 2's label and menu both go. **The right-click menu needs a ship of ours in
+  the system; the label needs sight** (through a usable entry point, or a ship). Route-finding
+  needs neither, so the menu is a convenience only.
 
 Expected noise in `error.log`: a missing icon for `ahw_tech_spike` and missing portraits. Anything
 naming an `ahw_` key otherwise is a finding. Record the findings here and in

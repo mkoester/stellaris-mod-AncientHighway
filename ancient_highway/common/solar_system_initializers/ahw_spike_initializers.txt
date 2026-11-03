@@ -4,13 +4,30 @@ ahw_spike_ring_init = {
 	class = "sc_black_hole"
 	prevent_anomalies = yes
 
-	flags = { ahw_ring suppress_archaeological_sites }
+	flags = { ahw_ring ahw_unclaimable suppress_archaeological_sites }
 
 	planet = {
 		class = "pc_black_hole"
 		orbit_distance = 0
 		orbit_angle = 1
 		size = 30
+		has_ring = no
+	}
+}
+
+# SPIKE (0.0.8): an empire's portal system - one hyperlane, the entry gate, nobody may claim it.
+ahw_spike_portal_init = {
+	name = NAME_ahw_spike_portal
+	class = "sc_black_hole"
+	prevent_anomalies = yes
+
+	flags = { ahw_portal ahw_unclaimable suppress_archaeological_sites }
+
+	planet = {
+		class = "pc_black_hole"
+		orbit_distance = 0
+		orbit_angle = 1
+		size = 15
 		has_ring = no
 	}
 }

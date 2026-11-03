@@ -1,0 +1,9 @@
+# SPIKE (Phase 0, 0.0.8). this = system: may the portal hang off this system? Not the capital
+# (event_target:ahw_cap_tmp), not next to it, not artificial, not owned (game start: only home
+# systems are) - so 2 or 3 jumps out by the random walk in ahw_spike.10.
+ahw_spike_portal_anchor_ok = {
+	NOT = { is_same_value = event_target:ahw_cap_tmp }
+	NOT = { has_hyperlane_to = event_target:ahw_cap_tmp }
+	NOT = { has_star_flag = ahw_unclaimable }
+	NOT = { exists = owner }
+}

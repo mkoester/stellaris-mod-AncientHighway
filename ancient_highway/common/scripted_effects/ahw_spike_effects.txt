@@ -1,6 +1,26 @@
-# SPIKE (Phase 0, 0.0.6). Everything logs to game.log with the prefix "AHW SPIKE".
+# SPIKE (Phase 0, 0.0.8). Everything logs to game.log with the prefix "AHW SPIKE".
 # In effects with parameters, "[" in a log string must be written "\\[" (run 1).
 # A $PARAM$ next to "\\[" comes out mangled (run 2), so parameters go last in each log line.
+
+# One ring node $NAME$, $R$ from the scope (no scope: the galaxy's origin?), direction $ANGLE$.
+ahw_spike_spawn_ring_node = {
+	spawn_system = {
+		min_distance = $R$
+		max_distance = $R$
+		max_jumps = 0
+		min_orientation_angle = $ANGLE$
+		max_orientation_angle = $ANGLE$
+		initializer = ahw_spike_ring_init
+		hyperlane = no
+		is_discovered = yes
+		effect = {
+			set_star_flag = ahw_ring
+			set_star_flag = ahw_unclaimable
+			set_name = $NAME$
+			save_global_event_target_as = $NAME$
+		}
+	}
+}
 
 # this = system
 ahw_spike_log_system = {
@@ -8,63 +28,16 @@ ahw_spike_log_system = {
 		trigger = distance_to_core_percent
 		variable = ahw_core_pct
 	}
-	log = "AHW SPIKE \\[This.GetName]: distance_to_core_percent (a fraction) = \\[This.ahw_core_pct] -- $WHAT$"
-	if = { limit = { has_star_flag = ahw_ring } log = "AHW SPIKE   \\[This.GetName]: ring system" }
-	if = { limit = { has_star_flag = ahw_entry_open_1 } log = "AHW SPIKE   \\[This.GetName]: entry point 1 OPEN" }
-	if = { limit = { has_star_flag = ahw_entry_open_2 } log = "AHW SPIKE   \\[This.GetName]: entry point 2 OPEN" }
-	if = { limit = { has_star_flag = ahw_entry_open_3 } log = "AHW SPIKE   \\[This.GetName]: entry point 3 OPEN" }
-	if = { limit = { has_star_flag = ahw_exit_1 } log = "AHW SPIKE   \\[This.GetName]: holds exit 1" }
-	if = { limit = { has_star_flag = ahw_exit_2 } log = "AHW SPIKE   \\[This.GetName]: holds exit 2" }
-	if = { limit = { has_star_flag = ahw_exit_3 } log = "AHW SPIKE   \\[This.GetName]: holds exit 3" }
+	log = "AHW SPIKE \\[This.GetName]: distance_to_core_percent (a fraction) = \\[This.ahw_core_pct], exits = \\[This.ahw_exits], pair = \\[This.ahw_pair] -- $WHAT$"
+	if = { limit = { has_star_flag = ahw_closed } log = "AHW SPIKE   \\[This.GetName]: CLOSED" }
 	if = {
 		limit = { exists = owner }
 		log = "AHW SPIKE   \\[This.GetName]: owned by \\[This.Owner.GetName]"
 	}
 	every_bypass_in_system = {
 		if = {
-			limit = { is_bypass_type = ahw_spike_entry_1 }
-			log = "AHW SPIKE   bypass ahw_spike_entry_1"
-		}
-		else_if = {
-			limit = { is_bypass_type = ahw_spike_entry_2 }
-			log = "AHW SPIKE   bypass ahw_spike_entry_2"
-		}
-		else_if = {
-			limit = { is_bypass_type = ahw_spike_entry_3 }
-			log = "AHW SPIKE   bypass ahw_spike_entry_3"
-		}
-		else_if = {
-			limit = { is_bypass_type = ahw_spike_shortcut_1 }
-			log = "AHW SPIKE   bypass ahw_spike_shortcut_1"
-		}
-		else = {
-			log = "AHW SPIKE   bypass of another type"
-		}
-		if = {
 			limit = { has_lock = yes }
-			log = "AHW SPIKE     ...LOCKED"
-		}
-	}
-}
-
-# Spawns ring system $NAME$ $DIST$ away from $FROM$, in direction $ANGLE$, no hyperlane.
-# Run 2: the angle is an absolute map direction.
-ahw_spike_spawn_ring_step = {
-	event_target:$FROM$ = {
-		spawn_system = {
-			min_distance = $DIST$
-			max_distance = $DIST$
-			max_jumps = 0
-			min_orientation_angle = $ANGLE$
-			max_orientation_angle = $ANGLE$
-			initializer = ahw_spike_ring_init
-			hyperlane = no
-			is_discovered = yes
-			effect = {
-				set_star_flag = ahw_ring
-				set_name = $NAME$ # loc key: "Highway Node N" (run 5: all six looked alike)
-				save_global_event_target_as = $NAME$
-			}
+			log = "AHW SPIKE   a bypass here is LOCKED"
 		}
 	}
 }
@@ -90,17 +63,16 @@ ahw_spike_report = {
 	else = {
 		log = "AHW SPIKE \\[This.GetName] does NOT have ahw_tech_spike"
 	}
-	event_target:ahw_anchor = { ahw_spike_log_system = { WHAT = A_entry_1 } }
-	event_target:ahw_anchor_b = { ahw_spike_log_system = { WHAT = B_entry_2 } }
-	event_target:ahw_anchor_c = { ahw_spike_log_system = { WHAT = C_entry_3_broken } }
-	event_target:ahw_ring_1 = { ahw_spike_log_system = { WHAT = ring_1_exits_1_2_shortcut } }
-	event_target:ahw_ring_2 = { ahw_spike_log_system = { WHAT = ring_2_exit_3 } }
-	event_target:ahw_ring_4 = { ahw_spike_log_system = { WHAT = ring_4_shortcut } }
-	if = {
-		limit = { exists = event_target:ahw_entry_gate_a }
-		log = "AHW SPIKE megastructure: entry gate 1 in A exists"
+	every_system = {
+		limit = { has_star_flag = ahw_ring }
+		ahw_spike_log_system = { WHAT = ring_node }
 	}
-	else = {
-		log = "AHW SPIKE megastructure: entry gate 1 in A is GONE"
+	every_system = {
+		limit = { has_star_flag = ahw_portal }
+		ahw_spike_log_system = { WHAT = portal }
+	}
+	if = {
+		limit = { exists = event_target:ahw_player_portal }
+		event_target:ahw_player_portal = { ahw_spike_log_system = { WHAT = OUR_PORTAL } }
 	}
 }

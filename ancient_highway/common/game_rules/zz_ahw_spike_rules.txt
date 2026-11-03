@@ -1,5 +1,5 @@
 # SPIKE (Phase 0): vanilla's can_build_starbase_around (common/game_rules/00_rules.txt, 4.5.3)
-# plus the ahw_ring check. Q: does a single-key override of a game rule win, and from
+# plus the ahw_unclaimable check (ring and portals). Q: does a single-key override of a game rule win, and from
 # which file name (zz_ = loads last)?
 
 # Root/this = country
@@ -19,7 +19,7 @@ can_build_starbase_around = {
 		fail_text = AHW_RING_UNCLAIMABLE
 		from = {
 			NOT = {
-				solar_system = { has_star_flag = ahw_ring }
+				solar_system = { has_star_flag = ahw_unclaimable }
 			}
 		}
 	}

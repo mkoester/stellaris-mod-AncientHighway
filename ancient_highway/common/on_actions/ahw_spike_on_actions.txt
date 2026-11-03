@@ -1,8 +1,8 @@
-# SPIKE (Phase 0, 0.0.6): build the test ring at game start, for the human player (as vanilla's
-# game_start.33 populates home systems from on_game_start_country). Q: do the gates get their
-# system-view labels from the start, unlike when spawned during play (run 5)?
-on_game_start_country = {
+# SPIKE (Phase 0, 0.0.8): build the highway at game start, without a scope (as vanilla's
+# game_start.31 creates the wormhole pairs from on_game_start). ahw_spike.10 then fires
+# ahw_spike.1 (the window) for the human player.
+on_game_start = {
 	events = {
-		ahw_spike.1
+		ahw_spike.10
 	}
 }

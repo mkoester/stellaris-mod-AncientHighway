@@ -56,6 +56,14 @@ The connections between the ring and the regular galaxy are special, not hyperla
   with the existing mechanics (the dimensional lock of the astral actions).
 - **The ring-side end can never be disabled or damaged.**
 
+### Portals
+
+Entry points do not open next to an empire's capital (decided 2026-11-03). Each empire gets a
+**portal**: a new artificial system, unclaimable like the ring, joined by **one hyperlane** to a
+system 2–3 jumps from its capital. The empire's gates to the ring are in the portal. A dead end
+with a single lane is easy to defend: whoever comes out of the ring has to pass the anchor system,
+which the empire can claim and fortify.
+
 ### Hyper relays
 
 Possibly everyone may build hyper relays on the ring (vanilla relays need own territory, so this is

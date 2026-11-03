@@ -38,60 +38,58 @@ level. Prefix every key, id, flag and variable with `ahw_`. Tested in game on Li
 3. **Slow crossings** of large ring systems (171–270 days early game) vs. "help a distant ally".
 4. ~~Shortcut carrier~~ — a gate pair on its own scripted connection works (run 6).
 5. ~~Labels after a load~~ — built at game start they show (run 6); unowned ones need sensor coverage (8).
-6. Placement around the core: the core is empty to ~15–20 % of the radius (small elliptical);
-   generation at game start, scaled by galaxy size.
+6. Placement around the core, at game start, scaled by galaxy size: first try in `0.0.8-SPIKE`.
 7. AI: does it path through, repair, lock, close?
 8. ~~Ring-side gate labels~~ — `extends_sensors = yes` shows the exits of usable entry points
    (run 7). Their right-click menu needs a ship in the system; route-finding does not.
 
-### The spike (`0.0.7-SPIKE`): what it does, how to run it
+### The spike (`0.0.8-SPIKE`): what it does, how to run it
 
-`ahw_spike.1` now runs **by itself at game start** (`on_game_start_country`, human player only)
-and applies runs 1–5: names "Highway Node 1"–"6"; **1:1 entry points** (one scripted-connection
-type per pair); every flag set before any gate; the shortcut as a **gate pair** (no natural
-wormhole); seen types and visited ring; outliner icons. Entry points get `windup_time = 10` (as
-the hyper relay) to see whether a cost per jump stops detours through the ring. The ring still
-sits next to our capital; placing it around the core is a separate spike.
+**Generated parts: `tools/gen_spike.py`** writes the bypass types (32 entry pairs and the
+shortcut), their megastructures, outliner icons, texts, and the ring builders and pair switch
+(`ahw_spike_generated_effects.txt`). Change the generator, rerun it, commit both.
 
-| Entry point | Regular side | Exit in | State |
-|---|---|---|---|
-| 1 | A = our capital | Highway Node 1 (orbit 300, angle 0) | repaired; owned by us |
-| 2 | B = a neighbour of A | Highway Node 1 (orbit 300, angle 120) | repaired |
-| 3 | C = another neighbour | Highway Node 2 (orbit 300, angle 0) | broken (no "open" flag) |
-| shortcut | Highway Node 1 (orbit 300, angle 240) | Highway Node 4 (orbit 300, angle 60) | open, no tech |
+At game start `ahw_spike.10` (from `on_game_start`, no scope, as vanilla's `game_start.31`):
+1. logs how empty the core is;
+2. builds **the ring around the galaxy's centre** by `spawn_system` **without a scope** — Q: is
+   that relative to the galaxy's origin? Size by galaxy size (radius in map units / nodes): tiny
+   24/6, small 36/8, medium 48/10, large and huge 54/12, about 12 % of the setup radius. If it
+   spawns nothing, it falls back to a ring around the system nearest the centre (logged);
+3. a shortcut gate pair across the ring (node 1 ↔ the opposite node);
+4. **a portal for every regular empire** (AI too): a random walk from the capital to a system 2–3
+   jumps out (not the capital, not next to it, unowned), a new black-hole system 12–18 units from
+   it with **one hyperlane**, unclaimable (`ahw_unclaimable`); in it the empire's entry gate (pair
+   number from a counter), its exit in the nearest ring node, in that node's next free slot
+   (orbit 300 at 0°, 60°, …, then 220 at 30°, 90°, …). All repaired; every empire learns the types
+   and the ring (visited); only we get the tech (`ahw_spike.8`);
+5. fires `ahw_spike.1` (our window: our portal, its anchor, our exit node) and a report.
 
 | Console (nothing selected) | Does |
 |---|---|
-| `event ahw_spike.2` | report only |
-| `event ahw_spike.3` | `lock_bypass` entry point 1 for us, 360 days |
-| `event ahw_spike.4` / `.5` | close / reopen entry point 1 (its "open" flag) |
-| `event ahw_spike.6` | tear down entry point 1's gate; report now and a day later |
-| `event ahw_spike.8` | grant `ahw_tech_spike` (or `research_technology ahw_tech_spike`) |
+| `event ahw_spike.2` | report: every ring node (distance from the centre, exits), every portal, ours |
+| `event ahw_spike.3` | `lock_bypass` our entry point for us, 360 days |
+| `event ahw_spike.4` / `.5` | close / reopen our entry point (flag `ahw_closed`, read by every entry type) |
+| `event ahw_spike.6` | tear down our entry gate; report now and a day later |
+| `event ahw_spike.8` | grant `ahw_tech_spike` |
 
-All findings go to `game.log`, lines starting `AHW SPIKE`; the event window names A, B and C
-(random neighbours: **take the names from this run's log**, run 5 shows why).
-**Deselect everything before each console `event`** (Esc): the console fires the event at the
-selected object ("Event fired on wrong scope, got fleet, expected country", run 5).
-**Let a day pass before judging any route**: changes reach route-finding on the daily tick.
+All findings go to `game.log`, lines starting `AHW SPIKE`. **Deselect before each console
+`event`** (Esc). **Let a day pass before judging any route.**
 
-**Before each run: `tools/check_script.py $(find ancient_highway -name '*.txt' -o -name '*.gfx')`.**
-It checks nesting and the keys directly inside each event. A plain brace count is not enough:
-`0.0.5-SPIKE`'s first build had a `}` moved from one block to another (balanced overall) that
-closed `immediate` early; the game rejected the rest ("Unexpected token: event_target:…") and spawned
-no gates. The check reports exactly those lines when that bug is put back.
+**Before each run: `tools/check_script.py $(find ancient_highway -name '*.txt' -o -name '*.gfx')`**
+(nesting, and the keys directly inside each event; a brace count misses a `}` moved between
+blocks — `0.0.5-SPIKE`'s first build).
 
-**Test, run 7** (`0.0.7-SPIKE` = run 6's build plus `extends_sensors = yes` on the entry types;
-Linux; only this mod; **a new campaign**, small elliptical galaxy; console on):
-1. Before anything: right after the start, open Highway Node 1 and 2 (no ship of ours there).
-   Labels and right-click menus on exits 1 and 2 (entries repaired) and exit 3 (entry broken)?
-   Screenshot each.
-2. `event ahw_spike.8`, unpause one day, look again. *Answers:* does seeing through an entry point
-   need the tech, and does a broken one (3) give sight?
-3. Fly a ship into Highway Node 1 and out again: do exit 1 and 2 keep label and menu afterwards?
-4. Copy `logs/game.log` and `logs/error.log` before quitting, plus the screenshots.
-
-Run 6's steps (still valid for repeats): 1:1 routes, the windup detour, the shortcut, and run
-5's lock, close/reopen and tear-down, each with a day between action and check.
+**Test, run 8** (Linux; only this mod; **a new campaign**; console on). Try **small elliptical**
+first, then one **spiral** and one **large** galaxy if time allows:
+1. Galaxy map, zoomed out: is the ring **around the centre**? In the log, do all ring nodes have
+   about the same `distance_to_core_percent`? Or did the fallback run?
+2. Our portal (named in the window): one hyperlane only, to a system 2–3 jumps from the capital?
+   Outpost refused there? Screenshot the map around the capital.
+3. `game.log`: a portal for every empire, or "NO portal for …"? How many exits per ring node?
+4. `event ahw_spike.8`, one day: route capital → portal → gate → our exit node; on along the ring
+   to the node nearest another empire, and through its exit into that empire's portal (its tech
+   is ours; their gate is open).
+5. Copy `logs/game.log` and `logs/error.log` before quitting, plus the screenshots.
 
 **Run 1 (2026-11-03, 4.5.3 open beta, elliptical galaxy, `0.0.1-SPIKE`): stopped at the anchor.**
 - `random_system` with `distance_to_core_percent` 25–40 matched **nothing**, although the
@@ -334,6 +332,10 @@ points (any ring system → any repaired entry galaxy-wide), but a candidate for
   bypass type per pair).
 - Ring systems are large, their exit points far apart on a wide outer orbit, so empires passing
   through can mostly avoid one another (`docs/design.md`, "The ring").
+- **Portals** (user, 2026-11-03): an empire's entry points do not sit next to its capital. For each
+  empire a new artificial, unclaimable system — the portal — hangs off a random system 2–3 jumps
+  from the capital by a **single hyperlane**; the gates to the ring are in the portal. A dead end
+  with one lane: easy to defend by design.
 
 ## Open questions
 

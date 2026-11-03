@@ -1,156 +1,137 @@
-# SPIKE (Phase 0, 0.0.6): can the Ancient Highway be built from the engine's parts?
-# ahw_spike.1 runs by itself at game start (common/on_actions/ahw_spike_on_actions.txt).
-# Console, in a throwaway game, with nothing selected (Esc) - see AGENTS.md, "Status":
+# SPIKE (Phase 0, 0.0.8): the ring around the core, and a portal for every regular empire.
+# ahw_spike.10 runs by itself at game start (common/on_actions/ahw_spike_on_actions.txt) and
+# fires the window ahw_spike.1 for the human player.
+# Console, with nothing selected (Esc) - see AGENTS.md, "Status":
 #   event ahw_spike.2   report the state to game.log
-#   event ahw_spike.3   lock entry point 1 (our capital) for us (360 days)
-#   event ahw_spike.4   close entry point 1 (remove its "open" flag)
-#   event ahw_spike.5   reopen it (set the flag again)
-#   event ahw_spike.6   tear down its gate; report now and a day later
+#   event ahw_spike.3   lock our entry point for us (360 days)
+#   event ahw_spike.4   close our entry point (flag ahw_closed on our portal)
+#   event ahw_spike.5   reopen it
+#   event ahw_spike.6   tear down our entry gate; report now and a day later
 #   event ahw_spike.8   grant ahw_tech_spike (or research_technology ahw_tech_spike)
 # Map changes reach route-finding on the next daily tick: let a day pass before ordering routes.
 namespace = ahw_spike
+
+# Builds everything. No scope (from on_game_start).
+event = {
+	id = ahw_spike.10
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = { has_global_flag = ahw_spike_done }
+	}
+
+	immediate = {
+		set_global_flag = ahw_spike_done
+		log = "AHW SPIKE ===== ahw_spike.10: building the highway at game start ====="
+
+		ahw_spike_core_band = { FRACTION = 0.1 }
+		ahw_spike_core_band = { FRACTION = 0.15 }
+		ahw_spike_core_band = { FRACTION = 0.2 }
+
+		# The ring around the galaxy's origin (no scope) ...
+		ahw_spike_build_ring_at_origin = yes
+		if = {
+			limit = { exists = event_target:ahw_ring_1 }
+			log = "AHW SPIKE ring: built without a scope - check that every node has about the same distance_to_core_percent"
+		}
+		# ... or, if that spawned nothing, around the system nearest the centre.
+		else = {
+			log = "AHW SPIKE ring: spawn_system without a scope spawned NOTHING - falling back to the system nearest the centre"
+			if = {
+				limit = { any_system = { distance_to_core_percent < 0.2 } }
+				random_system = { limit = { distance_to_core_percent < 0.2 } save_global_event_target_as = ahw_centre_system }
+			}
+			else_if = {
+				limit = { any_system = { distance_to_core_percent < 0.3 } }
+				random_system = { limit = { distance_to_core_percent < 0.3 } save_global_event_target_as = ahw_centre_system }
+			}
+			else = {
+				random_system = { limit = { distance_to_core_percent < 0.5 } save_global_event_target_as = ahw_centre_system }
+			}
+			ahw_spike_build_ring_around_centre_system = yes
+		}
+
+		# A portal for every regular empire: a new system with one hyperlane, hanging off a system
+		# 2-3 jumps from the capital (a random walk), holding the empire's entry gate; its exit is
+		# in the nearest ring system. All repaired, for the spike.
+		every_country = {
+			limit = { is_country_type = default }
+			clear_global_event_target = ahw_x_tmp
+			clear_global_event_target = ahw_portal_tmp
+			clear_global_event_target = ahw_node_tmp
+			capital_star = { solar_system = { save_global_event_target_as = ahw_cap_tmp } }
+			event_target:ahw_cap_tmp = {
+				random_neighbor_system = {
+					limit = {
+						NOT = { has_star_flag = ahw_unclaimable }
+						any_neighbor_system = { ahw_spike_portal_anchor_ok = yes }
+					}
+					random_neighbor_system = {
+						limit = { ahw_spike_portal_anchor_ok = yes }
+						save_global_event_target_as = ahw_x_tmp
+						random = {
+							chance = 50
+							random_neighbor_system = {
+								limit = { ahw_spike_portal_anchor_ok = yes }
+								save_global_event_target_as = ahw_x_tmp
+							}
+						}
+					}
+				}
+			}
+			if = {
+				limit = { exists = event_target:ahw_x_tmp }
+				event_target:ahw_x_tmp = {
+					spawn_system = {
+						min_distance = 12
+						max_distance = 18
+						max_jumps = 0
+						initializer = ahw_spike_portal_init
+						hyperlane = no
+						effect = {
+							set_star_flag = ahw_portal
+							set_star_flag = ahw_unclaimable
+							save_global_event_target_as = ahw_portal_tmp
+							add_hyperlane = { from = this to = prev }
+						}
+					}
+				}
+				ahw_spike_find_nearest_node = yes
+				ahw_spike_make_next_pair = yes
+				# What the study stage would teach (runs 4-5).
+				ahw_spike_learn_types = yes
+				every_system = {
+					limit = { has_star_flag = ahw_ring }
+					prev = { set_visited = prev }
+				}
+				set_visited = event_target:ahw_portal_tmp
+				if = {
+					limit = { is_ai = no }
+					event_target:ahw_portal_tmp = { save_global_event_target_as = ahw_player_portal }
+					event_target:ahw_node_tmp = { save_global_event_target_as = ahw_player_node }
+					event_target:ahw_x_tmp = { save_global_event_target_as = ahw_player_anchor }
+				}
+				log = "AHW SPIKE portal for [This.GetName]: off [ahw_x_tmp.GetName], exit in [ahw_node_tmp.GetName]"
+			}
+			else = {
+				log = "AHW SPIKE NO portal for [This.GetName]: the random walk found no system 2-3 jumps out"
+			}
+		}
+
+		every_country = {
+			limit = { is_ai = no }
+			ahw_spike_report = { WHEN = at_game_start }
+			country_event = { id = ahw_spike.1 }
+		}
+	}
+}
 
 country_event = {
 	id = ahw_spike.1
 	title = ahw_spike.1.name
 	desc = ahw_spike.1.desc
 	is_triggered_only = yes
-
-	trigger = {
-		is_ai = no
-		NOT = { has_global_flag = ahw_spike_done }
-	}
-
-	immediate = {
-		set_global_flag = ahw_spike_done
-		log = "AHW SPIKE ===== ahw_spike.1: building the ring at game start ====="
-
-		# How empty is the core (fraction of the galaxy radius)?
-		ahw_spike_core_band = { FRACTION = 0.05 }
-		ahw_spike_core_band = { FRACTION = 0.1 }
-		ahw_spike_core_band = { FRACTION = 0.15 }
-		ahw_spike_core_band = { FRACTION = 0.2 }
-		ahw_spike_core_band = { FRACTION = 0.25 }
-
-		# The ring goes next to our capital so ships reach it fast; placing it around the core is
-		# a separate spike. A: our capital system, B: a neighbour, C: another neighbour (random
-		# each game - the event window and the log name them).
-		capital_star = { solar_system = { save_global_event_target_as = ahw_anchor } }
-		event_target:ahw_anchor = {
-			random_neighbor_system = {
-				save_global_event_target_as = ahw_anchor_b
-			}
-			random_neighbor_system = {
-				limit = { NOT = { is_same_value = event_target:ahw_anchor_b } }
-				save_global_event_target_as = ahw_anchor_c
-			}
-		}
-
-		# Six ring systems, each 40 from the previous one, turning 60 degrees each step
-		# (run 2: the angle is an absolute map direction).
-		ahw_spike_spawn_ring_step = { FROM = ahw_anchor NAME = ahw_ring_1 DIST = 30 ANGLE = 0 }
-		ahw_spike_spawn_ring_step = { FROM = ahw_ring_1 NAME = ahw_ring_2 DIST = 40 ANGLE = 60 }
-		ahw_spike_spawn_ring_step = { FROM = ahw_ring_2 NAME = ahw_ring_3 DIST = 40 ANGLE = 120 }
-		ahw_spike_spawn_ring_step = { FROM = ahw_ring_3 NAME = ahw_ring_4 DIST = 40 ANGLE = 180 }
-		ahw_spike_spawn_ring_step = { FROM = ahw_ring_4 NAME = ahw_ring_5 DIST = 40 ANGLE = 240 }
-		ahw_spike_spawn_ring_step = { FROM = ahw_ring_5 NAME = ahw_ring_6 DIST = 40 ANGLE = 300 }
-
-		# Ring hyperlanes, closing the loop. No hyperlane to the regular galaxy.
-		add_hyperlane = { from = event_target:ahw_ring_1 to = event_target:ahw_ring_2 }
-		add_hyperlane = { from = event_target:ahw_ring_2 to = event_target:ahw_ring_3 }
-		add_hyperlane = { from = event_target:ahw_ring_3 to = event_target:ahw_ring_4 }
-		add_hyperlane = { from = event_target:ahw_ring_4 to = event_target:ahw_ring_5 }
-		add_hyperlane = { from = event_target:ahw_ring_5 to = event_target:ahw_ring_6 }
-		add_hyperlane = { from = event_target:ahw_ring_6 to = event_target:ahw_ring_1 }
-
-		# Entry points, 1:1, one bypass type each; every flag before any gate.
-		#   1: A <-> exit 1 in ring 1 (orbit 300, angle 0)    repaired
-		#   2: B <-> exit 2 in ring 1 (orbit 300, angle 120)  repaired
-		#   3: C <-> exit 3 in ring 2 (orbit 300, angle 0)    broken (no "open" flag)
-		event_target:ahw_anchor = { set_star_flag = ahw_entry_open_1 }
-		event_target:ahw_anchor_b = { set_star_flag = ahw_entry_open_2 }
-		event_target:ahw_ring_1 = {
-			set_star_flag = ahw_exit_1
-			set_star_flag = ahw_exit_2
-		}
-		event_target:ahw_ring_2 = { set_star_flag = ahw_exit_3 }
-
-		event_target:ahw_anchor = {
-			spawn_megastructure = {
-				type = ahw_spike_entry_gate_1
-				owner = root # our capital system: shows in our outliner
-				orbit_distance = 350
-				orbit_angle = 45
-				init_effect = { save_global_event_target_as = ahw_entry_gate_a }
-			}
-		}
-		event_target:ahw_anchor_b = {
-			spawn_megastructure = {
-				type = ahw_spike_entry_gate_2
-				orbit_distance = 350
-				orbit_angle = 45
-			}
-		}
-		event_target:ahw_anchor_c = {
-			spawn_megastructure = {
-				type = ahw_spike_entry_gate_3
-				orbit_distance = 350
-				orbit_angle = 45
-			}
-		}
-		event_target:ahw_ring_1 = {
-			spawn_megastructure = {
-				type = ahw_spike_entry_exit_1
-				orbit_distance = 300
-				orbit_angle = 0
-			}
-			spawn_megastructure = {
-				type = ahw_spike_entry_exit_2
-				orbit_distance = 300
-				orbit_angle = 120
-			}
-		}
-		event_target:ahw_ring_2 = {
-			spawn_megastructure = {
-				type = ahw_spike_entry_exit_3
-				orbit_distance = 300
-				orbit_angle = 0
-			}
-		}
-
-		# Shortcut ring_1 <-> ring_4: a gate pair on its own scripted connection (run 5: as a
-		# natural wormhole it set off vanilla's first-wormhole story).
-		event_target:ahw_ring_1 = { set_star_flag = ahw_shortcut_1_nexus }
-		event_target:ahw_ring_4 = { set_star_flag = ahw_shortcut_1_node }
-		event_target:ahw_ring_1 = {
-			spawn_megastructure = {
-				type = ahw_spike_shortcut_1_nexus
-				orbit_distance = 300
-				orbit_angle = 240
-			}
-		}
-		event_target:ahw_ring_4 = {
-			spawn_megastructure = {
-				type = ahw_spike_shortcut_1_node
-				orbit_distance = 300
-				orbit_angle = 60
-			}
-		}
-
-		# Before use (run 4): the country must have seen the types and know the ring systems.
-		# In the mod this is what studying an entry point would teach.
-		add_seen_bypass_type = ahw_spike_entry_1
-		add_seen_bypass_type = ahw_spike_entry_2
-		add_seen_bypass_type = ahw_spike_entry_3
-		add_seen_bypass_type = ahw_spike_shortcut_1
-		every_system = {
-			limit = { has_star_flag = ahw_ring }
-			root = { set_visited = prev }
-		}
-
-		ahw_spike_report = { WHEN = at_game_start }
-	}
-
 	option = { name = ahw_spike.ok }
 }
 
@@ -169,9 +150,8 @@ country_event = {
 	desc = ahw_spike.3.desc
 	is_triggered_only = yes
 	immediate = {
-		event_target:ahw_anchor = {
+		event_target:ahw_player_portal = {
 			random_bypass_in_system = {
-				limit = { is_bypass_type = ahw_spike_entry_1 }
 				lock_bypass = {
 					country = root
 					duration = 360
@@ -189,8 +169,8 @@ country_event = {
 	desc = ahw_spike.4.desc
 	is_triggered_only = yes
 	immediate = {
-		event_target:ahw_anchor = { remove_star_flag = ahw_entry_open_1 }
-		ahw_spike_report = { WHEN = after_closing_A }
+		event_target:ahw_player_portal = { set_star_flag = ahw_closed }
+		ahw_spike_report = { WHEN = after_closing }
 	}
 	option = { name = ahw_spike.ok }
 }
@@ -201,8 +181,8 @@ country_event = {
 	desc = ahw_spike.5.desc
 	is_triggered_only = yes
 	immediate = {
-		event_target:ahw_anchor = { set_star_flag = ahw_entry_open_1 }
-		ahw_spike_report = { WHEN = after_reopening_A }
+		event_target:ahw_player_portal = { remove_star_flag = ahw_closed }
+		ahw_spike_report = { WHEN = after_reopening }
 	}
 	option = { name = ahw_spike.ok }
 }
@@ -213,11 +193,10 @@ country_event = {
 	desc = ahw_spike.6.desc
 	is_triggered_only = yes
 	immediate = {
-		if = {
-			limit = { exists = event_target:ahw_entry_gate_a }
-			remove_megastructure = event_target:ahw_entry_gate_a
+		event_target:ahw_player_portal = {
+			every_system_megastructure = { remove_megastructure = this }
 		}
-		ahw_spike_report = { WHEN = right_after_teardown_A }
+		ahw_spike_report = { WHEN = right_after_teardown }
 		country_event = { id = ahw_spike.7 days = 1 }
 	}
 	option = { name = ahw_spike.ok }
@@ -227,7 +206,7 @@ country_event = {
 	id = ahw_spike.7
 	hide_window = yes
 	is_triggered_only = yes
-	immediate = { ahw_spike_report = { WHEN = one_day_after_teardown_A } }
+	immediate = { ahw_spike_report = { WHEN = one_day_after_teardown } }
 }
 
 # Grants the entry-point tech (fallback for the console's research_technology).

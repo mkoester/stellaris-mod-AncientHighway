@@ -1,4 +1,4 @@
-version="0.0.7-SPIKE"
+version="0.0.8-SPIKE"
 tags={
 	"Gameplay"
 }

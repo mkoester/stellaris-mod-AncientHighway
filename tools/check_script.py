@@ -17,6 +17,6 @@ for p in sys.argv[1:]:
             depth -= 1
             if depth < 0: bad.append('negative depth'); depth = 0
             elif stack: stack.pop()
-        elif tk != '=' and i + 1 < len(toks) and toks[i+1] == '=' and depth == 1 and stack and stack[-1].endswith('_event'):
+        elif tk != '=' and i + 1 < len(toks) and toks[i+1] == '=' and depth == 1 and stack and (stack[-1].endswith('_event') or stack[-1] == 'event'):
             if tk not in EVENT_KEYS: bad.append('unexpected key in event: %s' % tk)
     print(pathlib.Path(p).name, 'end depth', depth, 'BAD' if bad or depth else 'ok', bad[:3])

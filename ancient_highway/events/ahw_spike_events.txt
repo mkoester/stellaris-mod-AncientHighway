@@ -1,0 +1,186 @@
+# SPIKE (Phase 0): can the Ancient Highway be built from the engine's parts?
+# Console, in a throwaway game:
+#   event ahw_spike.1   spawn a six-system ring next to the core, one entry point, one shortcut
+#   event ahw_spike.2   report the state to game.log
+#   event ahw_spike.3   lock the regular-side entry point for the player (360 days)
+#   event ahw_spike.4   tear down the regular-side entry point (remove_megastructure)
+#   research_technology ahw_tech_spike   unlock using entry points
+namespace = ahw_spike
+
+country_event = {
+	id = ahw_spike.1
+	title = ahw_spike.1.name
+	desc = ahw_spike.1.desc
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = { has_global_flag = ahw_spike_done }
+	}
+
+	immediate = {
+		set_global_flag = ahw_spike_done
+		log = "AHW SPIKE ===== ahw_spike.1: building the ring ====="
+
+		# Anchor: a regular system near the edge of the empty core.
+		random_system = {
+			limit = {
+				distance_to_core_percent > 25
+				distance_to_core_percent < 40
+				NOT = { has_star_flag = ahw_ring }
+			}
+			save_global_event_target_as = ahw_anchor
+		}
+		event_target:ahw_anchor = { ahw_spike_log_system = { WHAT = anchor } }
+
+		# Six ring systems, each 40 from the previous one, turning 60 degrees each step:
+		# a closed hexagon if the angle is absolute.
+		ahw_spike_spawn_ring_step = { FROM = ahw_anchor NAME = ahw_ring_1 DIST = 30 ANGLE = 0 }
+		ahw_spike_spawn_ring_step = { FROM = ahw_ring_1 NAME = ahw_ring_2 DIST = 40 ANGLE = 60 }
+		ahw_spike_spawn_ring_step = { FROM = ahw_ring_2 NAME = ahw_ring_3 DIST = 40 ANGLE = 120 }
+		ahw_spike_spawn_ring_step = { FROM = ahw_ring_3 NAME = ahw_ring_4 DIST = 40 ANGLE = 180 }
+		ahw_spike_spawn_ring_step = { FROM = ahw_ring_4 NAME = ahw_ring_5 DIST = 40 ANGLE = 240 }
+		ahw_spike_spawn_ring_step = { FROM = ahw_ring_5 NAME = ahw_ring_6 DIST = 40 ANGLE = 300 }
+
+		# Ring hyperlanes, closing the loop. The ring has no hyperlane to the regular galaxy.
+		add_hyperlane = { from = event_target:ahw_ring_1 to = event_target:ahw_ring_2 }
+		add_hyperlane = { from = event_target:ahw_ring_2 to = event_target:ahw_ring_3 }
+		add_hyperlane = { from = event_target:ahw_ring_3 to = event_target:ahw_ring_4 }
+		add_hyperlane = { from = event_target:ahw_ring_4 to = event_target:ahw_ring_5 }
+		add_hyperlane = { from = event_target:ahw_ring_5 to = event_target:ahw_ring_6 }
+		add_hyperlane = { from = event_target:ahw_ring_6 to = event_target:ahw_ring_1 }
+
+		# Entry point anchor <-> ring_1: a megastructure at each end, its bypasses linked.
+		# The ring end sits far out (orbit 300) - how far can it go, where do arrivals land?
+		event_target:ahw_ring_1 = {
+			spawn_megastructure = {
+				type = ahw_spike_entry_ring
+				orbit_distance = 300
+				orbit_angle = 0
+				init_effect = { save_global_event_target_as = ahw_entry_ring }
+			}
+			random_bypass_in_system = {
+				limit = { is_bypass_type = ahw_spike_entry }
+				save_global_event_target_as = ahw_entry_ring_bypass
+			}
+		}
+		event_target:ahw_anchor = {
+			spawn_megastructure = {
+				type = ahw_spike_entry_gate
+				orbit_distance = 120
+				orbit_angle = 90
+				init_effect = { save_global_event_target_as = ahw_entry_gate }
+			}
+			random_bypass_in_system = {
+				limit = { is_bypass_type = ahw_spike_entry }
+				save_global_event_target_as = ahw_entry_gate_bypass
+			}
+		}
+		if = {
+			limit = {
+				exists = event_target:ahw_entry_ring_bypass
+				exists = event_target:ahw_entry_gate_bypass
+			}
+			event_target:ahw_entry_ring_bypass = { link_wormholes = event_target:ahw_entry_gate_bypass }
+			log = "AHW SPIKE entry point: both bypasses found, linked"
+		}
+		else = {
+			log = "AHW SPIKE entry point: a megastructure bypass was NOT found, nothing linked"
+		}
+
+		# Shortcut ring_1 <-> ring_4 (opposite sides), natural wormholes of our own type, both far
+		# out: orbit 300 in ring_1 (opposite its entry point), orbit 450 in ring_4.
+		event_target:ahw_ring_1 = {
+			spawn_natural_wormhole = {
+				bypass_type = ahw_spike_shortcut
+				random_pos = no
+				orbit_distance = 300
+				orbit_angle = 180
+			}
+			random_bypass_in_system = {
+				limit = { is_bypass_type = ahw_spike_shortcut }
+				save_global_event_target_as = ahw_shortcut_1
+			}
+		}
+		event_target:ahw_ring_4 = {
+			spawn_natural_wormhole = {
+				bypass_type = ahw_spike_shortcut
+				random_pos = no
+				orbit_distance = 450
+				orbit_angle = 0
+			}
+			random_bypass_in_system = {
+				limit = { is_bypass_type = ahw_spike_shortcut }
+				save_global_event_target_as = ahw_shortcut_4
+			}
+		}
+		if = {
+			limit = {
+				exists = event_target:ahw_shortcut_1
+				exists = event_target:ahw_shortcut_4
+			}
+			event_target:ahw_shortcut_1 = { link_wormholes = event_target:ahw_shortcut_4 }
+			log = "AHW SPIKE shortcut: both wormholes found, linked"
+		}
+		else = {
+			log = "AHW SPIKE shortcut: a wormhole was NOT found, nothing linked"
+		}
+
+		ahw_spike_report = { WHEN = after_spawn }
+	}
+
+	option = { name = ahw_spike.ok }
+}
+
+country_event = {
+	id = ahw_spike.2
+	title = ahw_spike.2.name
+	desc = ahw_spike.2.desc
+	is_triggered_only = yes
+	immediate = { ahw_spike_report = { WHEN = on_request } }
+	option = { name = ahw_spike.ok }
+}
+
+country_event = {
+	id = ahw_spike.3
+	title = ahw_spike.3.name
+	desc = ahw_spike.3.desc
+	is_triggered_only = yes
+	immediate = {
+		if = {
+			limit = { exists = event_target:ahw_entry_gate_bypass }
+			event_target:ahw_entry_gate_bypass = {
+				lock_bypass = {
+					country = root
+					duration = 360
+				}
+			}
+			log = "AHW SPIKE lock_bypass on the regular-side entry point for [Root.GetName]"
+		}
+		ahw_spike_report = { WHEN = after_lock }
+	}
+	option = { name = ahw_spike.ok }
+}
+
+country_event = {
+	id = ahw_spike.4
+	title = ahw_spike.4.name
+	desc = ahw_spike.4.desc
+	is_triggered_only = yes
+	immediate = {
+		if = {
+			limit = { exists = event_target:ahw_entry_gate }
+			remove_megastructure = event_target:ahw_entry_gate
+			log = "AHW SPIKE remove_megastructure on the regular-side entry point"
+		}
+		ahw_spike_report = { WHEN = right_after_removal }
+		country_event = { id = ahw_spike.5 days = 1 }
+	}
+	option = { name = ahw_spike.ok }
+}
+
+country_event = {
+	id = ahw_spike.5
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = { ahw_spike_report = { WHEN = one_day_after_removal } }
+}

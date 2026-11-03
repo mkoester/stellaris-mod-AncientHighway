@@ -1,0 +1,12 @@
+# SPIKE (Phase 0): never offered; give it with `research_technology ahw_tech_spike`.
+ahw_tech_spike = {
+	cost = 1
+	area = physics
+	tier = 1
+	category = { particles }
+	is_rare = yes
+	is_reverse_engineerable = no
+	weight = 0
+
+	potential = { always = no }
+}

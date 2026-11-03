@@ -1,0 +1,16 @@
+# SPIKE (Phase 0): a ring system. A black hole stands in for the artificial centre object.
+ahw_spike_ring_init = {
+	name = NAME_ahw_spike_ring
+	class = "sc_black_hole"
+	prevent_anomalies = yes
+
+	flags = { ahw_ring suppress_archaeological_sites }
+
+	planet = {
+		class = "pc_black_hole"
+		orbit_distance = 0
+		orbit_angle = 1
+		size = 30
+		has_ring = no
+	}
+}

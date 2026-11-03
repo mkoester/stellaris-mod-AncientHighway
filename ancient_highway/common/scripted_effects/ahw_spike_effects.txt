@@ -1,0 +1,94 @@
+# SPIKE (Phase 0). Everything logs to game.log with the prefix "AHW SPIKE".
+
+# this = system
+ahw_spike_log_system = {
+	export_trigger_value_to_variable = {
+		trigger = distance_to_core_percent
+		variable = ahw_core_pct
+	}
+	log = "AHW SPIKE $WHAT$: [This.GetName] distance_to_core_percent=[This.ahw_core_pct]"
+	if = {
+		limit = { has_star_flag = ahw_ring }
+		log = "AHW SPIKE   [This.GetName] has star flag ahw_ring"
+	}
+	if = {
+		limit = { exists = owner }
+		log = "AHW SPIKE   [This.GetName] is OWNED by [This.Owner.GetName]"
+	}
+}
+
+# Spawns ring system $NAME$ $DIST$ away from $FROM$, in direction $ANGLE$, no hyperlane.
+# Q: is the orientation angle absolute (map) or relative to something?
+ahw_spike_spawn_ring_step = {
+	event_target:$FROM$ = {
+		spawn_system = {
+			min_distance = $DIST$
+			max_distance = $DIST$
+			max_jumps = 0
+			min_orientation_angle = $ANGLE$
+			max_orientation_angle = $ANGLE$
+			initializer = ahw_spike_ring_init
+			hyperlane = no
+			is_discovered = yes
+			effect = {
+				set_star_flag = ahw_ring
+				save_global_event_target_as = $NAME$
+				ahw_spike_log_system = { WHAT = $NAME$_from_$FROM$_angle_$ANGLE$ }
+			}
+		}
+	}
+}
+
+# this = any; lists the bypasses in system $SYS$ (a global event target)
+ahw_spike_log_bypasses = {
+	event_target:$SYS$ = {
+		if = {
+			limit = { NOT = { any_bypass_in_system = { always = yes } } }
+			log = "AHW SPIKE   $SYS$ [This.GetName]: no bypass"
+		}
+		every_bypass_in_system = {
+			if = {
+				limit = { is_bypass_type = ahw_spike_entry }
+				log = "AHW SPIKE   $SYS$: bypass ahw_spike_entry"
+			}
+			else_if = {
+				limit = { is_bypass_type = ahw_spike_shortcut }
+				log = "AHW SPIKE   $SYS$: bypass ahw_spike_shortcut"
+			}
+			else = {
+				log = "AHW SPIKE   $SYS$: bypass of another type"
+			}
+			if = {
+				limit = { has_lock = yes }
+				log = "AHW SPIKE   $SYS$:   ...LOCKED"
+			}
+		}
+	}
+}
+
+# this = country (the player)
+ahw_spike_report = {
+	log = "AHW SPIKE ===== report $WHEN$ ====="
+	if = {
+		limit = { has_technology = ahw_tech_spike }
+		log = "AHW SPIKE [This.GetName] has ahw_tech_spike"
+	}
+	else = {
+		log = "AHW SPIKE [This.GetName] does NOT have ahw_tech_spike"
+	}
+	event_target:ahw_anchor = { ahw_spike_log_system = { WHAT = anchor } }
+	every_system = {
+		limit = { has_star_flag = ahw_ring }
+		ahw_spike_log_system = { WHAT = ring }
+	}
+	ahw_spike_log_bypasses = { SYS = ahw_anchor }
+	ahw_spike_log_bypasses = { SYS = ahw_ring_1 }
+	ahw_spike_log_bypasses = { SYS = ahw_ring_4 }
+	if = {
+		limit = { exists = event_target:ahw_entry_gate }
+		log = "AHW SPIKE megastructure ahw_entry_gate exists"
+	}
+	else = {
+		log = "AHW SPIKE megastructure ahw_entry_gate is GONE"
+	}
+}

@@ -44,7 +44,7 @@ level. Prefix every key, id, flag and variable with `ahw_`. Tested in game on Li
 8. **Ring-side gate labels and menus** show only while we have sensor coverage of the ring system
    (run 6). Next spike: `extends_sensors = yes` on the entry types; else accept it.
 
-### The spike (`0.0.6-SPIKE`): what it does, how to run it
+### The spike (`0.0.7-SPIKE`): what it does, how to run it
 
 `ahw_spike.1` now runs **by itself at game start** (`on_game_start_country`, human player only)
 and applies runs 1–5: names "Highway Node 1"–"6"; **1:1 entry points** (one scripted-connection
@@ -80,20 +80,18 @@ It checks nesting and the keys directly inside each event. A plain brace count i
 closed `immediate` early; the game rejected the rest ("Unexpected token: event_target:…") and spawned
 no gates. The check reports exactly those lines when that bug is put back.
 
-**Test, run 6** (Linux; a playset with only this mod; **a new campaign**, small elliptical galaxy;
-console on):
-1. At start: the event window names A, B, C. Screenshot the galaxy map around A, and A's system
-   view: **does gate 1 have its label right away** (built at game start, not during play)?
-   Is it in the outliner?
-2. `event ahw_spike.8`, unpause one day. Science ship: order A → Highway Node 1 (through gate 1),
-   then on to B: does it leave through exit 2 → B (1:1: gate 1's menu should offer only Highway
-   Node 1)? Order a ship to C: refused through the ring (entry 3 broken)?
-3. Order A → B directly (neighbours): hyperlane, or still the detour through the ring despite
-   `windup_time = 10`? Screenshot the route.
-4. Fly the ring: Highway Node 1 → shortcut → Highway Node 4. Did vanilla's wormhole story stay
-   quiet? How long does the crossing take?
-5. Optional repeats of run 5 (lock, close/reopen, tear-down) with one day between action and check.
-6. Copy `logs/game.log` and `logs/error.log` before quitting, plus the screenshots.
+**Test, run 7** (`0.0.7-SPIKE` = run 6's build plus `extends_sensors = yes` on the entry types;
+Linux; only this mod; **a new campaign**, small elliptical galaxy; console on):
+1. Before anything: right after the start, open Highway Node 1 and 2 (no ship of ours there).
+   Labels and right-click menus on exits 1 and 2 (entries repaired) and exit 3 (entry broken)?
+   Screenshot each.
+2. `event ahw_spike.8`, unpause one day, look again. *Answers:* does seeing through an entry point
+   need the tech, and does a broken one (3) give sight?
+3. Fly a ship into Highway Node 1 and out again: do exit 1 and 2 keep label and menu afterwards?
+4. Copy `logs/game.log` and `logs/error.log` before quitting, plus the screenshots.
+
+Run 6's steps (still valid for repeats): 1:1 routes, the windup detour, the shortcut, and run
+5's lock, close/reopen and tear-down, each with a day between action and check.
 
 **Run 1 (2026-11-03, 4.5.3 open beta, elliptical galaxy, `0.0.1-SPIKE`): stopped at the anchor.**
 - `random_system` with `distance_to_core_percent` 25–40 matched **nothing**, although the

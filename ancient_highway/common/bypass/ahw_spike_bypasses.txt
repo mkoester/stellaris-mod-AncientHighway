@@ -6,7 +6,9 @@
 # pair's exit (flag ahw_exit_N). A type with one node and one nexus connects exactly those two.
 # Runs 4-5: changes reach route-finding on the next daily tick; the country needs the tech,
 # add_seen_bypass_type and set_visited on the ring.
-# windup_time = 10 (as the hyper relay): Q: does it stop routes Sol -> ring -> neighbour (run 5)?
+# windup_time = 10 (as the hyper relay): ended the detours Sol -> ring -> neighbour (run 6).
+# extends_sensors = yes (as vanilla wormholes): Q: does an entry point show its exit's label and
+# menu without a ship in the ring system (run 6: only under sensor coverage)?
 
 ahw_spike_entry_1 = {
 	name = AHW_SPIKE_ENTRY
@@ -17,7 +19,7 @@ ahw_spike_entry_1 = {
 	windup_time = 10
 	winddown_time = 0
 	ftl_multiplier = 0
-	extends_sensors = no
+	extends_sensors = yes
 	icon_frame = 25
 	remember_instances = no
 	animation_time = 1
@@ -47,7 +49,7 @@ ahw_spike_entry_2 = {
 	windup_time = 10
 	winddown_time = 0
 	ftl_multiplier = 0
-	extends_sensors = no
+	extends_sensors = yes
 	icon_frame = 25
 	remember_instances = no
 	animation_time = 1
@@ -77,7 +79,7 @@ ahw_spike_entry_3 = {
 	windup_time = 10
 	winddown_time = 0
 	ftl_multiplier = 0
-	extends_sensors = no
+	extends_sensors = yes
 	icon_frame = 25
 	remember_instances = no
 	animation_time = 1

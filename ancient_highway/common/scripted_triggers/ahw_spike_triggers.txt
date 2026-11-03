@@ -1,6 +1,6 @@
 # SPIKE (Phase 0, 0.0.8). this = system: may the portal hang off this system? Not the capital
 # (event_target:ahw_cap_tmp), not next to it, not artificial, not owned (game start: only home
-# systems are) - so 2 or 3 jumps out by the random walk in ahw_spike.10.
+# systems are). Used with ahw_spike_within_3_jumps_of_capital: 2 or 3 jumps out.
 ahw_spike_portal_anchor_ok = {
 	NOT = { is_same_value = event_target:ahw_cap_tmp }
 	NOT = { has_hyperlane_to = event_target:ahw_cap_tmp }
@@ -8,9 +8,18 @@ ahw_spike_portal_anchor_ok = {
 	NOT = { exists = owner }
 }
 
-# Preferred (run 10, user): an anchor with at most two lanes (the walk's lane and one more): its
-# portal lane then has a clear far side, and a dead end is the easiest system to defend.
-ahw_spike_portal_anchor_good = {
-	ahw_spike_portal_anchor_ok = yes
-	count_neighbor_system = { count <= 2 }
+# Run 11: the random walk saw one path only and missed 3-jump candidates; ahw_spike.10 now
+# searches every system. this = system: 1 to 3 jumps from the capital (with
+# ahw_spike_portal_anchor_ok, which rules out the capital and its neighbours: 2 to 3 jumps).
+ahw_spike_within_3_jumps_of_capital = {
+	OR = {
+		has_hyperlane_to = event_target:ahw_cap_tmp
+		any_neighbor_system = { has_hyperlane_to = event_target:ahw_cap_tmp }
+		any_neighbor_system = { any_neighbor_system = { has_hyperlane_to = event_target:ahw_cap_tmp } }
+	}
+}
+
+# this = system: already holds a gateway, wormhole or other bypass (user: de-prioritise these).
+ahw_spike_has_bypass = {
+	any_bypass_in_system = { always = yes }
 }

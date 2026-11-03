@@ -43,7 +43,7 @@ level. Prefix every key, id, flag and variable with `ahw_`. Tested in game on Li
 8. ~~Ring-side gate labels~~ — `extends_sensors = yes` shows the exits of usable entry points
    (run 7). Their right-click menu needs a ship in the system; route-finding does not.
 
-### The spike (`0.0.11-SPIKE`): what it does, how to run it
+### The spike (`0.0.12-SPIKE`): what it does, how to run it
 
 **Generated parts: `tools/gen_spike.py`** writes the bypass types (32 entry pairs and the
 shortcut), their megastructures, outliner icons, texts, and the ring builders and pair switch
@@ -57,9 +57,9 @@ At game start `ahw_spike.10` (from `on_game_start`, no scope, as vanilla's `game
    `distance_to_core_percent`; then builds **the ring around it**. Size by galaxy size (radius in
    map units / nodes): tiny 24/6, small 36/8, medium 48/10, large and huge 54/12;
 3. a shortcut gate pair across the ring (node 1 ↔ the opposite node);
-4. **a portal for every regular empire** (AI too): a random walk from the capital to a system 2–3
-   jumps out (not the capital, not next to it, unowned; **preferring one with at most two lanes**,
-   else any); a new black-hole system 15 units from it,
+4. **a portal for every regular empire** (AI too): a system 2–3
+   jumps from the capital (not the capital, not next to it, unowned) — **searched, not walked**: from the best
+   tier (fewest lanes; without a bypass before with one; logged); a new black-hole system 15 units from it,
    measured at 4 compass points around it and moved once to the angle where its lane arrives
    farthest from the anchor's other lanes (worst margin logged: +15 = opposite all, −15 = beside
    one); then **one hyperlane**; unclaimable. In it the empire's entry gate, at that same orbit
@@ -83,12 +83,12 @@ All findings go to `game.log`, lines starting `AHW SPIKE`. **Deselect before eac
 `tools/check_script.py $(find ancient_highway -name '*.txt' -o -name '*.gfx')` and
 `tools/check_refs.py ancient_highway` (every used name defined, every text and icon present).
 
-**Test, run 11** (Linux; only this mod; **a new campaign**, small elliptical; console on):
-1. Log: "portal placed off … worst lane margin …" — all positive now? Any "no anchor with <= 2
-   lanes … took any"?
-2. Our portal's system view: the gate just inside the orange circle? Or did the circle grow with
-   it? Screenshot.
-3. Copy `logs/game.log` and `logs/error.log` before quitting, plus the screenshots.
+**Test, run 12** (Linux; only this mod; **a new campaign**, small elliptical; console on):
+1. Log: "anchor for …: tier N" per empire — mostly tiers 1–2? Margins all positive?
+2. Our anchor: a dead end or two-lane system? The portal's lane on its far side? Screenshot the
+   map around the capital.
+3. Game start time: did the search over all systems slow it down (first/last `AHW SPIKE` times)?
+4. Copy `logs/game.log` and `logs/error.log` before quitting, plus the screenshots.
 
 **Run 1 (2026-11-03, 4.5.3 open beta, elliptical galaxy, `0.0.1-SPIKE`): stopped at the anchor.**
 - `random_system` with `distance_to_core_percent` 25–40 matched **nothing**, although the
@@ -338,6 +338,16 @@ failed and was slow.** Screenshot `2026_11_03_43`.
 - **The gate sits opposite the portal's lane — orbit angles in a system match map angles.**
 - Scale in the portal's system view (`_45`): gate at orbit 80; the hyperlane arrival circle ~150,
   the orange outer circle ~255. User: gate just inside the orange circle → `GATE_ORBIT = 230`.
+
+**Run 11 (2026-11-03, `0.0.11-SPIKE`, small elliptical): gate placement right, anchor choice
+weak.** Screenshots `2026_11_03_46` (map around Sol), `_47` (our portal).
+- **The gate at orbit 230 sits just inside the orange circle**; the circle did not grow (user).
+- Our portal hangs off Saonus (four lanes, margin −11): "no anchor with <= 2 lanes within 3 jumps";
+  yet Bapagia and Edemar (3 jumps, few lanes) were there (user). The random walk sees one path,
+  not all candidates. Other margins: 12.7, 11.9, 9.2, 8.7, 5.5, 1.8.
+- `0.0.12-SPIKE`: **a tiered search over every system 2–3 jumps out** — dead ends first, then at
+  most two lanes, three, more; within a lane count, systems without a bypass (gateway, wormhole —
+  Xir's red icon; user: de-prioritise) before those with one. The tier is logged.
 
 Expected noise in `error.log`: a missing icon for `ahw_tech_spike` and missing portraits. Anything
 naming an `ahw_` key otherwise is a finding. Record the findings here and in

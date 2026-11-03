@@ -113,29 +113,16 @@ ahw_spike_probe_step = {
 	}
 }
 
-# this = the portal (ahw_portal_tmp), anchor ahw_x_tmp. ahw_score = the worst, over the anchor's
-# other neighbours N, of distance(portal, N) - distance(anchor, N): about +r when the portal lies
-# opposite N's lane, -r beside it. 1000 when the anchor has no other lane.
-# Q: does export_trigger_value_to_variable export `distance` (vanilla never does)? All 0 = no.
-ahw_spike_portal_score = {
-	set_variable = { which = ahw_score value = 1000 }
+# Each other neighbour of the anchor (ahw_x_tmp) gets its distance to the portal (ahw_portal_tmp)
+# in $VAR$. Run 9: export_trigger_value_to_variable does export `distance` (real numbers).
+ahw_spike_measure_lanes = {
 	event_target:ahw_x_tmp = {
 		every_neighbor_system = {
 			limit = { NOT = { is_same_value = event_target:ahw_portal_tmp } }
 			export_trigger_value_to_variable = {
 				trigger = distance
 				parameters = { source = event_target:ahw_portal_tmp type = euclidean }
-				variable = ahw_dp
-			}
-			export_trigger_value_to_variable = {
-				trigger = distance
-				parameters = { source = event_target:ahw_x_tmp type = euclidean }
-				variable = ahw_dx
-			}
-			subtract_variable = { which = ahw_dp value = ahw_dx }
-			if = {
-				limit = { check_variable = { which = ahw_dp value < event_target:ahw_portal_tmp.ahw_score } }
-				event_target:ahw_portal_tmp = { set_variable = { which = ahw_score value = prev.ahw_dp } }
+				variable = $VAR$
 			}
 		}
 	}

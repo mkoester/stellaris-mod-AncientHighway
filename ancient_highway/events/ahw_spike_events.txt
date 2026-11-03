@@ -67,8 +67,10 @@ event = {
 				limit = { exists = event_target:ahw_x_tmp }
 				event_target:ahw_x_tmp = {
 					spawn_system = {
-						min_distance = 12
-						max_distance = 18
+						min_distance = 15
+						max_distance = 15
+						min_orientation_angle = 0
+						max_orientation_angle = 0
 						max_jumps = 0
 						initializer = ahw_spike_portal_init
 						hyperlane = no

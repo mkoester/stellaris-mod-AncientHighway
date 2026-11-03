@@ -329,7 +329,54 @@ ahw_spike_make_pair = {
 		set_star_flag = ahw_exit_$N$
 	}
 	event_target:ahw_portal_tmp = {
-		spawn_megastructure = { type = ahw_spike_entry_gate_$N$ orbit_distance = 60 orbit_angle = 45 }
+		if = {
+			limit = { check_variable = { which = ahw_best_a value = 0 } }
+			spawn_megastructure = { type = ahw_spike_entry_gate_$N$ orbit_distance = 80 orbit_angle = 0 }
+		}
+		else_if = {
+			limit = { check_variable = { which = ahw_best_a value = 30 } }
+			spawn_megastructure = { type = ahw_spike_entry_gate_$N$ orbit_distance = 80 orbit_angle = 30 }
+		}
+		else_if = {
+			limit = { check_variable = { which = ahw_best_a value = 60 } }
+			spawn_megastructure = { type = ahw_spike_entry_gate_$N$ orbit_distance = 80 orbit_angle = 60 }
+		}
+		else_if = {
+			limit = { check_variable = { which = ahw_best_a value = 90 } }
+			spawn_megastructure = { type = ahw_spike_entry_gate_$N$ orbit_distance = 80 orbit_angle = 90 }
+		}
+		else_if = {
+			limit = { check_variable = { which = ahw_best_a value = 120 } }
+			spawn_megastructure = { type = ahw_spike_entry_gate_$N$ orbit_distance = 80 orbit_angle = 120 }
+		}
+		else_if = {
+			limit = { check_variable = { which = ahw_best_a value = 150 } }
+			spawn_megastructure = { type = ahw_spike_entry_gate_$N$ orbit_distance = 80 orbit_angle = 150 }
+		}
+		else_if = {
+			limit = { check_variable = { which = ahw_best_a value = 180 } }
+			spawn_megastructure = { type = ahw_spike_entry_gate_$N$ orbit_distance = 80 orbit_angle = 180 }
+		}
+		else_if = {
+			limit = { check_variable = { which = ahw_best_a value = 210 } }
+			spawn_megastructure = { type = ahw_spike_entry_gate_$N$ orbit_distance = 80 orbit_angle = 210 }
+		}
+		else_if = {
+			limit = { check_variable = { which = ahw_best_a value = 240 } }
+			spawn_megastructure = { type = ahw_spike_entry_gate_$N$ orbit_distance = 80 orbit_angle = 240 }
+		}
+		else_if = {
+			limit = { check_variable = { which = ahw_best_a value = 270 } }
+			spawn_megastructure = { type = ahw_spike_entry_gate_$N$ orbit_distance = 80 orbit_angle = 270 }
+		}
+		else_if = {
+			limit = { check_variable = { which = ahw_best_a value = 300 } }
+			spawn_megastructure = { type = ahw_spike_entry_gate_$N$ orbit_distance = 80 orbit_angle = 300 }
+		}
+		else_if = {
+			limit = { check_variable = { which = ahw_best_a value = 330 } }
+			spawn_megastructure = { type = ahw_spike_entry_gate_$N$ orbit_distance = 80 orbit_angle = 330 }
+		}
 	}
 	event_target:ahw_node_tmp = {
 		if = {
@@ -602,222 +649,356 @@ ahw_spike_find_centre = {
 	}
 }
 
-# Moves the portal (ahw_portal_tmp) around its anchor (ahw_x_tmp) until its arrival in the anchor
-# system lies away from the anchor's other lanes (score: see PORTAL_THRESHOLDS in the generator).
+# Places the portal (ahw_portal_tmp, spawned at angle 0, PORTAL_R from its anchor ahw_x_tmp) so its
+# lane arrives in the anchor system farthest from the anchor's other lanes; ahw_best_a = the angle.
+# Q (run 10): does move_system honour min/max_orientation_angle as spawn_system does?
 ahw_spike_place_portal = {
-	event_target:ahw_portal_tmp = { ahw_spike_portal_score = yes }
-	if = {
-		limit = { event_target:ahw_portal_tmp = { check_variable = { which = ahw_score value < 12 } } }
-		event_target:ahw_portal_tmp = {
-			move_system = { target = event_target:ahw_x_tmp min_distance >= 12 max_distance <= 18 max_jumps = 0 hyperlane = no }
-			ahw_spike_portal_score = yes
-		}
-	}
-	if = {
-		limit = { event_target:ahw_portal_tmp = { check_variable = { which = ahw_score value < 12 } } }
-		event_target:ahw_portal_tmp = {
-			move_system = { target = event_target:ahw_x_tmp min_distance >= 12 max_distance <= 18 max_jumps = 0 hyperlane = no }
-			ahw_spike_portal_score = yes
-		}
-	}
-	if = {
-		limit = { event_target:ahw_portal_tmp = { check_variable = { which = ahw_score value < 12 } } }
-		event_target:ahw_portal_tmp = {
-			move_system = { target = event_target:ahw_x_tmp min_distance >= 12 max_distance <= 18 max_jumps = 0 hyperlane = no }
-			ahw_spike_portal_score = yes
-		}
-	}
-	if = {
-		limit = { event_target:ahw_portal_tmp = { check_variable = { which = ahw_score value < 12 } } }
-		event_target:ahw_portal_tmp = {
-			move_system = { target = event_target:ahw_x_tmp min_distance >= 12 max_distance <= 18 max_jumps = 0 hyperlane = no }
-			ahw_spike_portal_score = yes
-		}
-	}
-	if = {
-		limit = { event_target:ahw_portal_tmp = { check_variable = { which = ahw_score value < 12 } } }
-		event_target:ahw_portal_tmp = {
-			move_system = { target = event_target:ahw_x_tmp min_distance >= 12 max_distance <= 18 max_jumps = 0 hyperlane = no }
-			ahw_spike_portal_score = yes
-		}
-	}
-	if = {
-		limit = { event_target:ahw_portal_tmp = { check_variable = { which = ahw_score value < 12 } } }
-		event_target:ahw_portal_tmp = {
-			move_system = { target = event_target:ahw_x_tmp min_distance >= 12 max_distance <= 18 max_jumps = 0 hyperlane = no }
-			ahw_spike_portal_score = yes
-		}
-	}
-	if = {
-		limit = { event_target:ahw_portal_tmp = { check_variable = { which = ahw_score value < 9 } } }
-		event_target:ahw_portal_tmp = {
-			move_system = { target = event_target:ahw_x_tmp min_distance >= 12 max_distance <= 18 max_jumps = 0 hyperlane = no }
-			ahw_spike_portal_score = yes
-		}
-	}
-	if = {
-		limit = { event_target:ahw_portal_tmp = { check_variable = { which = ahw_score value < 9 } } }
-		event_target:ahw_portal_tmp = {
-			move_system = { target = event_target:ahw_x_tmp min_distance >= 12 max_distance <= 18 max_jumps = 0 hyperlane = no }
-			ahw_spike_portal_score = yes
-		}
-	}
-	if = {
-		limit = { event_target:ahw_portal_tmp = { check_variable = { which = ahw_score value < 9 } } }
-		event_target:ahw_portal_tmp = {
-			move_system = { target = event_target:ahw_x_tmp min_distance >= 12 max_distance <= 18 max_jumps = 0 hyperlane = no }
-			ahw_spike_portal_score = yes
-		}
-	}
-	if = {
-		limit = { event_target:ahw_portal_tmp = { check_variable = { which = ahw_score value < 9 } } }
-		event_target:ahw_portal_tmp = {
-			move_system = { target = event_target:ahw_x_tmp min_distance >= 12 max_distance <= 18 max_jumps = 0 hyperlane = no }
-			ahw_spike_portal_score = yes
-		}
-	}
-	if = {
-		limit = { event_target:ahw_portal_tmp = { check_variable = { which = ahw_score value < 9 } } }
-		event_target:ahw_portal_tmp = {
-			move_system = { target = event_target:ahw_x_tmp min_distance >= 12 max_distance <= 18 max_jumps = 0 hyperlane = no }
-			ahw_spike_portal_score = yes
-		}
-	}
-	if = {
-		limit = { event_target:ahw_portal_tmp = { check_variable = { which = ahw_score value < 9 } } }
-		event_target:ahw_portal_tmp = {
-			move_system = { target = event_target:ahw_x_tmp min_distance >= 12 max_distance <= 18 max_jumps = 0 hyperlane = no }
-			ahw_spike_portal_score = yes
-		}
-	}
-	if = {
-		limit = { event_target:ahw_portal_tmp = { check_variable = { which = ahw_score value < 6 } } }
-		event_target:ahw_portal_tmp = {
-			move_system = { target = event_target:ahw_x_tmp min_distance >= 12 max_distance <= 18 max_jumps = 0 hyperlane = no }
-			ahw_spike_portal_score = yes
-		}
-	}
-	if = {
-		limit = { event_target:ahw_portal_tmp = { check_variable = { which = ahw_score value < 6 } } }
-		event_target:ahw_portal_tmp = {
-			move_system = { target = event_target:ahw_x_tmp min_distance >= 12 max_distance <= 18 max_jumps = 0 hyperlane = no }
-			ahw_spike_portal_score = yes
-		}
-	}
-	if = {
-		limit = { event_target:ahw_portal_tmp = { check_variable = { which = ahw_score value < 6 } } }
-		event_target:ahw_portal_tmp = {
-			move_system = { target = event_target:ahw_x_tmp min_distance >= 12 max_distance <= 18 max_jumps = 0 hyperlane = no }
-			ahw_spike_portal_score = yes
-		}
-	}
-	if = {
-		limit = { event_target:ahw_portal_tmp = { check_variable = { which = ahw_score value < 6 } } }
-		event_target:ahw_portal_tmp = {
-			move_system = { target = event_target:ahw_x_tmp min_distance >= 12 max_distance <= 18 max_jumps = 0 hyperlane = no }
-			ahw_spike_portal_score = yes
-		}
-	}
-	if = {
-		limit = { event_target:ahw_portal_tmp = { check_variable = { which = ahw_score value < 6 } } }
-		event_target:ahw_portal_tmp = {
-			move_system = { target = event_target:ahw_x_tmp min_distance >= 12 max_distance <= 18 max_jumps = 0 hyperlane = no }
-			ahw_spike_portal_score = yes
-		}
-	}
-	if = {
-		limit = { event_target:ahw_portal_tmp = { check_variable = { which = ahw_score value < 6 } } }
-		event_target:ahw_portal_tmp = {
-			move_system = { target = event_target:ahw_x_tmp min_distance >= 12 max_distance <= 18 max_jumps = 0 hyperlane = no }
-			ahw_spike_portal_score = yes
-		}
-	}
-	if = {
-		limit = { event_target:ahw_portal_tmp = { check_variable = { which = ahw_score value < 3 } } }
-		event_target:ahw_portal_tmp = {
-			move_system = { target = event_target:ahw_x_tmp min_distance >= 12 max_distance <= 18 max_jumps = 0 hyperlane = no }
-			ahw_spike_portal_score = yes
-		}
-	}
-	if = {
-		limit = { event_target:ahw_portal_tmp = { check_variable = { which = ahw_score value < 3 } } }
-		event_target:ahw_portal_tmp = {
-			move_system = { target = event_target:ahw_x_tmp min_distance >= 12 max_distance <= 18 max_jumps = 0 hyperlane = no }
-			ahw_spike_portal_score = yes
-		}
-	}
-	if = {
-		limit = { event_target:ahw_portal_tmp = { check_variable = { which = ahw_score value < 3 } } }
-		event_target:ahw_portal_tmp = {
-			move_system = { target = event_target:ahw_x_tmp min_distance >= 12 max_distance <= 18 max_jumps = 0 hyperlane = no }
-			ahw_spike_portal_score = yes
-		}
-	}
-	if = {
-		limit = { event_target:ahw_portal_tmp = { check_variable = { which = ahw_score value < 3 } } }
-		event_target:ahw_portal_tmp = {
-			move_system = { target = event_target:ahw_x_tmp min_distance >= 12 max_distance <= 18 max_jumps = 0 hyperlane = no }
-			ahw_spike_portal_score = yes
-		}
-	}
-	if = {
-		limit = { event_target:ahw_portal_tmp = { check_variable = { which = ahw_score value < 3 } } }
-		event_target:ahw_portal_tmp = {
-			move_system = { target = event_target:ahw_x_tmp min_distance >= 12 max_distance <= 18 max_jumps = 0 hyperlane = no }
-			ahw_spike_portal_score = yes
-		}
-	}
-	if = {
-		limit = { event_target:ahw_portal_tmp = { check_variable = { which = ahw_score value < 3 } } }
-		event_target:ahw_portal_tmp = {
-			move_system = { target = event_target:ahw_x_tmp min_distance >= 12 max_distance <= 18 max_jumps = 0 hyperlane = no }
-			ahw_spike_portal_score = yes
-		}
-	}
-	if = {
-		limit = { event_target:ahw_portal_tmp = { check_variable = { which = ahw_score value < 0 } } }
-		event_target:ahw_portal_tmp = {
-			move_system = { target = event_target:ahw_x_tmp min_distance >= 12 max_distance <= 18 max_jumps = 0 hyperlane = no }
-			ahw_spike_portal_score = yes
-		}
-	}
-	if = {
-		limit = { event_target:ahw_portal_tmp = { check_variable = { which = ahw_score value < 0 } } }
-		event_target:ahw_portal_tmp = {
-			move_system = { target = event_target:ahw_x_tmp min_distance >= 12 max_distance <= 18 max_jumps = 0 hyperlane = no }
-			ahw_spike_portal_score = yes
-		}
-	}
-	if = {
-		limit = { event_target:ahw_portal_tmp = { check_variable = { which = ahw_score value < 0 } } }
-		event_target:ahw_portal_tmp = {
-			move_system = { target = event_target:ahw_x_tmp min_distance >= 12 max_distance <= 18 max_jumps = 0 hyperlane = no }
-			ahw_spike_portal_score = yes
-		}
-	}
-	if = {
-		limit = { event_target:ahw_portal_tmp = { check_variable = { which = ahw_score value < 0 } } }
-		event_target:ahw_portal_tmp = {
-			move_system = { target = event_target:ahw_x_tmp min_distance >= 12 max_distance <= 18 max_jumps = 0 hyperlane = no }
-			ahw_spike_portal_score = yes
-		}
-	}
-	if = {
-		limit = { event_target:ahw_portal_tmp = { check_variable = { which = ahw_score value < 0 } } }
-		event_target:ahw_portal_tmp = {
-			move_system = { target = event_target:ahw_x_tmp min_distance >= 12 max_distance <= 18 max_jumps = 0 hyperlane = no }
-			ahw_spike_portal_score = yes
-		}
-	}
-	if = {
-		limit = { event_target:ahw_portal_tmp = { check_variable = { which = ahw_score value < 0 } } }
-		event_target:ahw_portal_tmp = {
-			move_system = { target = event_target:ahw_x_tmp min_distance >= 12 max_distance <= 18 max_jumps = 0 hyperlane = no }
-			ahw_spike_portal_score = yes
+	ahw_spike_measure_lanes = { VAR = ahw_d0 }
+	event_target:ahw_portal_tmp = { move_system = { target = event_target:ahw_x_tmp min_distance >= 15 max_distance <= 15 min_orientation_angle = 90 max_orientation_angle = 90 max_jumps = 0 hyperlane = no } }
+	ahw_spike_measure_lanes = { VAR = ahw_d90 }
+	event_target:ahw_portal_tmp = { move_system = { target = event_target:ahw_x_tmp min_distance >= 15 max_distance <= 15 min_orientation_angle = 180 max_orientation_angle = 180 max_jumps = 0 hyperlane = no } }
+	ahw_spike_measure_lanes = { VAR = ahw_d180 }
+	event_target:ahw_portal_tmp = { move_system = { target = event_target:ahw_x_tmp min_distance >= 15 max_distance <= 15 min_orientation_angle = 270 max_orientation_angle = 270 max_jumps = 0 hyperlane = no } }
+	ahw_spike_measure_lanes = { VAR = ahw_d270 }
+	event_target:ahw_x_tmp = {
+		every_neighbor_system = {
+			limit = { NOT = { is_same_value = event_target:ahw_portal_tmp } }
+			set_variable = { which = ahw_c value = ahw_d180 }
+			subtract_variable = { which = ahw_c value = ahw_d0 }
+			set_variable = { which = ahw_s value = ahw_d270 }
+			subtract_variable = { which = ahw_s value = ahw_d90 }
 		}
 	}
 	event_target:ahw_portal_tmp = {
-		log = "AHW SPIKE portal placed off \\[ahw_x_tmp.GetName]: worst lane margin \\[This.ahw_score] (about +15 = opposite every other lane, 0 = sideways, 1000 = no other lane)"
+		set_variable = { which = ahw_best value = -1000 }
+		set_variable = { which = ahw_best_a value = 0 }
+	}
+	# angle 0: the worst margin over the anchor's other lanes
+	event_target:ahw_portal_tmp = { set_variable = { which = ahw_m value = 1000 } }
+	event_target:ahw_x_tmp = {
+		every_neighbor_system = {
+			limit = { NOT = { is_same_value = event_target:ahw_portal_tmp } }
+			set_variable = { which = ahw_t value = ahw_c }
+			multiply_variable = { which = ahw_t value = -0.5 }
+			set_variable = { which = ahw_u value = ahw_s }
+			multiply_variable = { which = ahw_u value = -0.0 }
+			change_variable = { which = ahw_t value = ahw_u }
+			if = {
+				limit = { check_variable = { which = ahw_t value < event_target:ahw_portal_tmp.ahw_m } }
+				event_target:ahw_portal_tmp = { set_variable = { which = ahw_m value = prev.ahw_t } }
+			}
+		}
+	}
+	event_target:ahw_portal_tmp = {
+		if = {
+			limit = { check_variable = { which = ahw_m value > ahw_best } }
+			set_variable = { which = ahw_best value = ahw_m }
+			set_variable = { which = ahw_best_a value = 0 }
+		}
+	}
+	# angle 30: the worst margin over the anchor's other lanes
+	event_target:ahw_portal_tmp = { set_variable = { which = ahw_m value = 1000 } }
+	event_target:ahw_x_tmp = {
+		every_neighbor_system = {
+			limit = { NOT = { is_same_value = event_target:ahw_portal_tmp } }
+			set_variable = { which = ahw_t value = ahw_c }
+			multiply_variable = { which = ahw_t value = -0.433 }
+			set_variable = { which = ahw_u value = ahw_s }
+			multiply_variable = { which = ahw_u value = -0.25 }
+			change_variable = { which = ahw_t value = ahw_u }
+			if = {
+				limit = { check_variable = { which = ahw_t value < event_target:ahw_portal_tmp.ahw_m } }
+				event_target:ahw_portal_tmp = { set_variable = { which = ahw_m value = prev.ahw_t } }
+			}
+		}
+	}
+	event_target:ahw_portal_tmp = {
+		if = {
+			limit = { check_variable = { which = ahw_m value > ahw_best } }
+			set_variable = { which = ahw_best value = ahw_m }
+			set_variable = { which = ahw_best_a value = 30 }
+		}
+	}
+	# angle 60: the worst margin over the anchor's other lanes
+	event_target:ahw_portal_tmp = { set_variable = { which = ahw_m value = 1000 } }
+	event_target:ahw_x_tmp = {
+		every_neighbor_system = {
+			limit = { NOT = { is_same_value = event_target:ahw_portal_tmp } }
+			set_variable = { which = ahw_t value = ahw_c }
+			multiply_variable = { which = ahw_t value = -0.25 }
+			set_variable = { which = ahw_u value = ahw_s }
+			multiply_variable = { which = ahw_u value = -0.433 }
+			change_variable = { which = ahw_t value = ahw_u }
+			if = {
+				limit = { check_variable = { which = ahw_t value < event_target:ahw_portal_tmp.ahw_m } }
+				event_target:ahw_portal_tmp = { set_variable = { which = ahw_m value = prev.ahw_t } }
+			}
+		}
+	}
+	event_target:ahw_portal_tmp = {
+		if = {
+			limit = { check_variable = { which = ahw_m value > ahw_best } }
+			set_variable = { which = ahw_best value = ahw_m }
+			set_variable = { which = ahw_best_a value = 60 }
+		}
+	}
+	# angle 90: the worst margin over the anchor's other lanes
+	event_target:ahw_portal_tmp = { set_variable = { which = ahw_m value = 1000 } }
+	event_target:ahw_x_tmp = {
+		every_neighbor_system = {
+			limit = { NOT = { is_same_value = event_target:ahw_portal_tmp } }
+			set_variable = { which = ahw_t value = ahw_c }
+			multiply_variable = { which = ahw_t value = -0.0 }
+			set_variable = { which = ahw_u value = ahw_s }
+			multiply_variable = { which = ahw_u value = -0.5 }
+			change_variable = { which = ahw_t value = ahw_u }
+			if = {
+				limit = { check_variable = { which = ahw_t value < event_target:ahw_portal_tmp.ahw_m } }
+				event_target:ahw_portal_tmp = { set_variable = { which = ahw_m value = prev.ahw_t } }
+			}
+		}
+	}
+	event_target:ahw_portal_tmp = {
+		if = {
+			limit = { check_variable = { which = ahw_m value > ahw_best } }
+			set_variable = { which = ahw_best value = ahw_m }
+			set_variable = { which = ahw_best_a value = 90 }
+		}
+	}
+	# angle 120: the worst margin over the anchor's other lanes
+	event_target:ahw_portal_tmp = { set_variable = { which = ahw_m value = 1000 } }
+	event_target:ahw_x_tmp = {
+		every_neighbor_system = {
+			limit = { NOT = { is_same_value = event_target:ahw_portal_tmp } }
+			set_variable = { which = ahw_t value = ahw_c }
+			multiply_variable = { which = ahw_t value = 0.25 }
+			set_variable = { which = ahw_u value = ahw_s }
+			multiply_variable = { which = ahw_u value = -0.433 }
+			change_variable = { which = ahw_t value = ahw_u }
+			if = {
+				limit = { check_variable = { which = ahw_t value < event_target:ahw_portal_tmp.ahw_m } }
+				event_target:ahw_portal_tmp = { set_variable = { which = ahw_m value = prev.ahw_t } }
+			}
+		}
+	}
+	event_target:ahw_portal_tmp = {
+		if = {
+			limit = { check_variable = { which = ahw_m value > ahw_best } }
+			set_variable = { which = ahw_best value = ahw_m }
+			set_variable = { which = ahw_best_a value = 120 }
+		}
+	}
+	# angle 150: the worst margin over the anchor's other lanes
+	event_target:ahw_portal_tmp = { set_variable = { which = ahw_m value = 1000 } }
+	event_target:ahw_x_tmp = {
+		every_neighbor_system = {
+			limit = { NOT = { is_same_value = event_target:ahw_portal_tmp } }
+			set_variable = { which = ahw_t value = ahw_c }
+			multiply_variable = { which = ahw_t value = 0.433 }
+			set_variable = { which = ahw_u value = ahw_s }
+			multiply_variable = { which = ahw_u value = -0.25 }
+			change_variable = { which = ahw_t value = ahw_u }
+			if = {
+				limit = { check_variable = { which = ahw_t value < event_target:ahw_portal_tmp.ahw_m } }
+				event_target:ahw_portal_tmp = { set_variable = { which = ahw_m value = prev.ahw_t } }
+			}
+		}
+	}
+	event_target:ahw_portal_tmp = {
+		if = {
+			limit = { check_variable = { which = ahw_m value > ahw_best } }
+			set_variable = { which = ahw_best value = ahw_m }
+			set_variable = { which = ahw_best_a value = 150 }
+		}
+	}
+	# angle 180: the worst margin over the anchor's other lanes
+	event_target:ahw_portal_tmp = { set_variable = { which = ahw_m value = 1000 } }
+	event_target:ahw_x_tmp = {
+		every_neighbor_system = {
+			limit = { NOT = { is_same_value = event_target:ahw_portal_tmp } }
+			set_variable = { which = ahw_t value = ahw_c }
+			multiply_variable = { which = ahw_t value = 0.5 }
+			set_variable = { which = ahw_u value = ahw_s }
+			multiply_variable = { which = ahw_u value = -0.0 }
+			change_variable = { which = ahw_t value = ahw_u }
+			if = {
+				limit = { check_variable = { which = ahw_t value < event_target:ahw_portal_tmp.ahw_m } }
+				event_target:ahw_portal_tmp = { set_variable = { which = ahw_m value = prev.ahw_t } }
+			}
+		}
+	}
+	event_target:ahw_portal_tmp = {
+		if = {
+			limit = { check_variable = { which = ahw_m value > ahw_best } }
+			set_variable = { which = ahw_best value = ahw_m }
+			set_variable = { which = ahw_best_a value = 180 }
+		}
+	}
+	# angle 210: the worst margin over the anchor's other lanes
+	event_target:ahw_portal_tmp = { set_variable = { which = ahw_m value = 1000 } }
+	event_target:ahw_x_tmp = {
+		every_neighbor_system = {
+			limit = { NOT = { is_same_value = event_target:ahw_portal_tmp } }
+			set_variable = { which = ahw_t value = ahw_c }
+			multiply_variable = { which = ahw_t value = 0.433 }
+			set_variable = { which = ahw_u value = ahw_s }
+			multiply_variable = { which = ahw_u value = 0.25 }
+			change_variable = { which = ahw_t value = ahw_u }
+			if = {
+				limit = { check_variable = { which = ahw_t value < event_target:ahw_portal_tmp.ahw_m } }
+				event_target:ahw_portal_tmp = { set_variable = { which = ahw_m value = prev.ahw_t } }
+			}
+		}
+	}
+	event_target:ahw_portal_tmp = {
+		if = {
+			limit = { check_variable = { which = ahw_m value > ahw_best } }
+			set_variable = { which = ahw_best value = ahw_m }
+			set_variable = { which = ahw_best_a value = 210 }
+		}
+	}
+	# angle 240: the worst margin over the anchor's other lanes
+	event_target:ahw_portal_tmp = { set_variable = { which = ahw_m value = 1000 } }
+	event_target:ahw_x_tmp = {
+		every_neighbor_system = {
+			limit = { NOT = { is_same_value = event_target:ahw_portal_tmp } }
+			set_variable = { which = ahw_t value = ahw_c }
+			multiply_variable = { which = ahw_t value = 0.25 }
+			set_variable = { which = ahw_u value = ahw_s }
+			multiply_variable = { which = ahw_u value = 0.433 }
+			change_variable = { which = ahw_t value = ahw_u }
+			if = {
+				limit = { check_variable = { which = ahw_t value < event_target:ahw_portal_tmp.ahw_m } }
+				event_target:ahw_portal_tmp = { set_variable = { which = ahw_m value = prev.ahw_t } }
+			}
+		}
+	}
+	event_target:ahw_portal_tmp = {
+		if = {
+			limit = { check_variable = { which = ahw_m value > ahw_best } }
+			set_variable = { which = ahw_best value = ahw_m }
+			set_variable = { which = ahw_best_a value = 240 }
+		}
+	}
+	# angle 270: the worst margin over the anchor's other lanes
+	event_target:ahw_portal_tmp = { set_variable = { which = ahw_m value = 1000 } }
+	event_target:ahw_x_tmp = {
+		every_neighbor_system = {
+			limit = { NOT = { is_same_value = event_target:ahw_portal_tmp } }
+			set_variable = { which = ahw_t value = ahw_c }
+			multiply_variable = { which = ahw_t value = 0.0 }
+			set_variable = { which = ahw_u value = ahw_s }
+			multiply_variable = { which = ahw_u value = 0.5 }
+			change_variable = { which = ahw_t value = ahw_u }
+			if = {
+				limit = { check_variable = { which = ahw_t value < event_target:ahw_portal_tmp.ahw_m } }
+				event_target:ahw_portal_tmp = { set_variable = { which = ahw_m value = prev.ahw_t } }
+			}
+		}
+	}
+	event_target:ahw_portal_tmp = {
+		if = {
+			limit = { check_variable = { which = ahw_m value > ahw_best } }
+			set_variable = { which = ahw_best value = ahw_m }
+			set_variable = { which = ahw_best_a value = 270 }
+		}
+	}
+	# angle 300: the worst margin over the anchor's other lanes
+	event_target:ahw_portal_tmp = { set_variable = { which = ahw_m value = 1000 } }
+	event_target:ahw_x_tmp = {
+		every_neighbor_system = {
+			limit = { NOT = { is_same_value = event_target:ahw_portal_tmp } }
+			set_variable = { which = ahw_t value = ahw_c }
+			multiply_variable = { which = ahw_t value = -0.25 }
+			set_variable = { which = ahw_u value = ahw_s }
+			multiply_variable = { which = ahw_u value = 0.433 }
+			change_variable = { which = ahw_t value = ahw_u }
+			if = {
+				limit = { check_variable = { which = ahw_t value < event_target:ahw_portal_tmp.ahw_m } }
+				event_target:ahw_portal_tmp = { set_variable = { which = ahw_m value = prev.ahw_t } }
+			}
+		}
+	}
+	event_target:ahw_portal_tmp = {
+		if = {
+			limit = { check_variable = { which = ahw_m value > ahw_best } }
+			set_variable = { which = ahw_best value = ahw_m }
+			set_variable = { which = ahw_best_a value = 300 }
+		}
+	}
+	# angle 330: the worst margin over the anchor's other lanes
+	event_target:ahw_portal_tmp = { set_variable = { which = ahw_m value = 1000 } }
+	event_target:ahw_x_tmp = {
+		every_neighbor_system = {
+			limit = { NOT = { is_same_value = event_target:ahw_portal_tmp } }
+			set_variable = { which = ahw_t value = ahw_c }
+			multiply_variable = { which = ahw_t value = -0.433 }
+			set_variable = { which = ahw_u value = ahw_s }
+			multiply_variable = { which = ahw_u value = 0.25 }
+			change_variable = { which = ahw_t value = ahw_u }
+			if = {
+				limit = { check_variable = { which = ahw_t value < event_target:ahw_portal_tmp.ahw_m } }
+				event_target:ahw_portal_tmp = { set_variable = { which = ahw_m value = prev.ahw_t } }
+			}
+		}
+	}
+	event_target:ahw_portal_tmp = {
+		if = {
+			limit = { check_variable = { which = ahw_m value > ahw_best } }
+			set_variable = { which = ahw_best value = ahw_m }
+			set_variable = { which = ahw_best_a value = 330 }
+		}
+	}
+	event_target:ahw_portal_tmp = {
+		if = {
+			limit = { check_variable = { which = ahw_best_a value = 0 } }
+			move_system = { target = event_target:ahw_x_tmp min_distance >= 15 max_distance <= 15 min_orientation_angle = 0 max_orientation_angle = 0 max_jumps = 0 hyperlane = no }
+		}
+		else_if = {
+			limit = { check_variable = { which = ahw_best_a value = 30 } }
+			move_system = { target = event_target:ahw_x_tmp min_distance >= 15 max_distance <= 15 min_orientation_angle = 30 max_orientation_angle = 30 max_jumps = 0 hyperlane = no }
+		}
+		else_if = {
+			limit = { check_variable = { which = ahw_best_a value = 60 } }
+			move_system = { target = event_target:ahw_x_tmp min_distance >= 15 max_distance <= 15 min_orientation_angle = 60 max_orientation_angle = 60 max_jumps = 0 hyperlane = no }
+		}
+		else_if = {
+			limit = { check_variable = { which = ahw_best_a value = 90 } }
+			move_system = { target = event_target:ahw_x_tmp min_distance >= 15 max_distance <= 15 min_orientation_angle = 90 max_orientation_angle = 90 max_jumps = 0 hyperlane = no }
+		}
+		else_if = {
+			limit = { check_variable = { which = ahw_best_a value = 120 } }
+			move_system = { target = event_target:ahw_x_tmp min_distance >= 15 max_distance <= 15 min_orientation_angle = 120 max_orientation_angle = 120 max_jumps = 0 hyperlane = no }
+		}
+		else_if = {
+			limit = { check_variable = { which = ahw_best_a value = 150 } }
+			move_system = { target = event_target:ahw_x_tmp min_distance >= 15 max_distance <= 15 min_orientation_angle = 150 max_orientation_angle = 150 max_jumps = 0 hyperlane = no }
+		}
+		else_if = {
+			limit = { check_variable = { which = ahw_best_a value = 180 } }
+			move_system = { target = event_target:ahw_x_tmp min_distance >= 15 max_distance <= 15 min_orientation_angle = 180 max_orientation_angle = 180 max_jumps = 0 hyperlane = no }
+		}
+		else_if = {
+			limit = { check_variable = { which = ahw_best_a value = 210 } }
+			move_system = { target = event_target:ahw_x_tmp min_distance >= 15 max_distance <= 15 min_orientation_angle = 210 max_orientation_angle = 210 max_jumps = 0 hyperlane = no }
+		}
+		else_if = {
+			limit = { check_variable = { which = ahw_best_a value = 240 } }
+			move_system = { target = event_target:ahw_x_tmp min_distance >= 15 max_distance <= 15 min_orientation_angle = 240 max_orientation_angle = 240 max_jumps = 0 hyperlane = no }
+		}
+		else_if = {
+			limit = { check_variable = { which = ahw_best_a value = 270 } }
+			move_system = { target = event_target:ahw_x_tmp min_distance >= 15 max_distance <= 15 min_orientation_angle = 270 max_orientation_angle = 270 max_jumps = 0 hyperlane = no }
+		}
+		else_if = {
+			limit = { check_variable = { which = ahw_best_a value = 300 } }
+			move_system = { target = event_target:ahw_x_tmp min_distance >= 15 max_distance <= 15 min_orientation_angle = 300 max_orientation_angle = 300 max_jumps = 0 hyperlane = no }
+		}
+		else_if = {
+			limit = { check_variable = { which = ahw_best_a value = 330 } }
+			move_system = { target = event_target:ahw_x_tmp min_distance >= 15 max_distance <= 15 min_orientation_angle = 330 max_orientation_angle = 330 max_jumps = 0 hyperlane = no }
+		}
+		log = "AHW SPIKE portal placed off \\[ahw_x_tmp.GetName] at angle \\[This.ahw_best_a]: worst lane margin \\[This.ahw_best] (+15 = opposite every other lane, 0 = sideways, -15 = beside one; 1000 = no other lane)"
 	}
 }
 

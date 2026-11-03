@@ -43,7 +43,7 @@ level. Prefix every key, id, flag and variable with `ahw_`. Tested in game on Li
 8. ~~Ring-side gate labels~~ — `extends_sensors = yes` shows the exits of usable entry points
    (run 7). Their right-click menu needs a ship in the system; route-finding does not.
 
-### The spike (`0.0.9-SPIKE`): what it does, how to run it
+### The spike (`0.0.10-SPIKE`): what it does, how to run it
 
 **Generated parts: `tools/gen_spike.py`** writes the bypass types (32 entry pairs and the
 shortcut), their megastructures, outliner icons, texts, and the ring builders and pair switch
@@ -58,14 +58,13 @@ At game start `ahw_spike.10` (from `on_game_start`, no scope, as vanilla's `game
    map units / nodes): tiny 24/6, small 36/8, medium 48/10, large and huge 54/12;
 3. a shortcut gate pair across the ring (node 1 ↔ the opposite node);
 4. **a portal for every regular empire** (AI too): a random walk from the capital to a system 2–3
-   jumps out (not the capital, not next to it, unowned); a new black-hole system 12–18 units from
-   it, **moved around it until its lane arrives away from the anchor's other lanes** (score: the
-   worst of distance(portal, N) − distance(anchor, N) over the anchor's neighbours N, needs `12`,
-   then 9, 6, 3, 0; up to 6 tries each — uses `export_trigger_value_to_variable` on `distance`,
-   which vanilla never does: all 0 in the log = it does not work); then **one hyperlane**;
-   unclaimable (`ahw_unclaimable`). In it the empire's entry gate (pair number from a counter),
-   its exit in the nearest ring node, in that node's next free slot. All repaired; every empire
-   learns the types and the ring (visited); only we get the tech (`ahw_spike.8`);
+   jumps out (not the capital, not next to it, unowned); a new black-hole system 15 units from it,
+   measured at 4 compass points around it and moved once to the angle where its lane arrives
+   farthest from the anchor's other lanes (worst margin logged: +15 = opposite all, −15 = beside
+   one); then **one hyperlane**; unclaimable. In it the empire's entry gate, at that same orbit
+   angle — meant to face away from the anchor, opposite the portal's lane; its exit in the nearest
+   ring node, in that node's next free slot. All repaired; every empire learns the types and the
+   ring (visited); only we get the tech (`ahw_spike.8`);
 5. fires `ahw_spike.1` (our window: our portal, its anchor, our exit node) and a report.
 
 | Console (nothing selected) | Does |
@@ -83,15 +82,14 @@ All findings go to `game.log`, lines starting `AHW SPIKE`. **Deselect before eac
 `tools/check_script.py $(find ancient_highway -name '*.txt' -o -name '*.gfx')` and
 `tools/check_refs.py ancient_highway` (every used name defined, every text and icon present).
 
-**Test, run 9** (Linux; only this mod; **a new campaign**, small elliptical; console on):
-1. Galaxy map, zoomed out: is the ring **around the centre** now? Log: "centre: best probe at
-   distance_to_core_percent …" (close to 0?), ring nodes all about equal? Two "Highway Heart"
-   systems should sit in the middle, without lanes.
-2. Log: "portal placed off …: worst lane margin …" for every empire — real numbers (not all 0)?
-   Our portal: does its lane arrive in the anchor system away from the anchor's other lanes?
-   Screenshot the anchor's system view.
-3. Exits spread over the ring nodes, not piled on one?
-4. `event ahw_spike.8`, one day: route through the ring into another empire's portal.
+**Test, run 10** (Linux; only this mod; **a new campaign**, small elliptical; console on):
+1. Game start: still a long hang? (`game.log`: first and last `AHW SPIKE` line times.)
+2. Log: "portal placed off … at angle …: worst lane margin …" — mostly positive now? Different
+   angles per empire (if all moves ignored the angle, the measurements are noise)?
+3. Our anchor system (named in the window): does the portal's lane arrive away from its other
+   lanes, the anchor's starbase between? Screenshot the anchor's system view.
+4. Our portal's system view: is the gate **opposite** the lane's arrival? If not, where — mirrored,
+   rotated 90°? (Orbit angles vs. map angles.) Screenshot.
 5. Copy `logs/game.log` and `logs/error.log` before quitting, plus the screenshots.
 
 **Run 1 (2026-11-03, 4.5.3 open beta, elliptical galaxy, `0.0.1-SPIKE`): stopped at the anchor.**
@@ -309,6 +307,24 @@ Barnard's Star.
 - Found in the binary: `move_system`/`spawn_system` take **`direction = corewards`** (vanilla
   uses `rimwards`, `events/origin_events_shadows_shroud.txt`). `check_variable` compares against
   another scope's variable as `value < event_target:x.var` (vanilla).
+
+**Run 9 (2026-11-03, `0.0.9-SPIKE`, small elliptical): the ring is centred; portal placement
+failed and was slow.** Screenshot `2026_11_03_43`.
+- **The centre search works**: the best probe at `distance_to_core_percent` 0; all eight ring
+  nodes at 0.1018–0.1022; centred on the map (the user). The probes stay as "Unknown" systems in
+  the middle (no lanes, unexplored).
+- **`export_trigger_value_to_variable` exports `distance`** (`parameters = { source = … type =
+  euclidean }`): real values in the log.
+- **Exits spread**: nodes 1, 2, 5, 6, 6, 7, 7, 8 (run 8, lopsided: four on one node).
+- **Portal placement failed**: margins −15.6 (ours: lane right beside another), −11 … +5.7. The
+  search moved while below the bar, so it ended on the *last* random try, not the best.
+- **Game start hung ~80 s at "Loading Map Graphics"** — the mod: `AHW SPIKE` lines 21:42:28 →
+  21:43:48; the centre search 4 s (21 moves), the portals ~75 s (up to 30 `move_system` + scores
+  each, ~9 s per empire). `move_system` costs ~0.2 s.
+- `0.0.10-SPIKE`: the portal is measured at 4 compass points (spawned at 0°, moved to 90/180/270),
+  each anchor lane's direction computed from the distances, then **one** move to the best of 12
+  angles — 4 moves instead of ≤ 30. The gate in the portal at that orbit angle (user: opposite
+  the portal's lane).
 
 Expected noise in `error.log`: a missing icon for `ahw_tech_spike` and missing portraits. Anything
 naming an `ahw_` key otherwise is a finding. Record the findings here and in

@@ -1,9 +1,12 @@
 # SPIKE (Phase 0). Field meanings: the header of the vanilla common/bypass/00_bypasses.txt.
 
-# Entry point between the regular galaxy and a ring system. Carried by the ahw_spike_entry_*
-# megastructures, so tearing one down (remove_megastructure) should remove its end.
-# Q: does link_wormholes pair two megastructure bypasses? Is it usable only with ahw_tech_spike?
-ahw_spike_entry = {
+# Entry points of ring system 1 (the real mod: one such type per ring system, generated).
+# Run 2: link_wormholes refuses megastructure bypasses, so entry points use a scripted connection,
+# as the L-gates do: the nexus is the ring system, nodes are regular systems whose entry point is
+# repaired. Nodes reach only the nexus, never each other.
+# Q: does removing ahw_entry_open_1 from a node close it (Shroud tunnels use a dynamic node
+# trigger)? Is it usable only with ahw_tech_spike? Does lock_bypass work on it?
+ahw_spike_entry_1 = {
 	name = AHW_SPIKE_ENTRY
 	is_pathfind = yes
 	uses_action = no
@@ -18,10 +21,19 @@ ahw_spike_entry = {
 	animation_time = 1
 	galactic_map_tooltip_header = AHW_SPIKE_ENTRY
 	galactic_map_tooltip_desc = AHW_SPIKE_ENTRY_DESC
-	connection_type = one_to_one
+	connection_type = scripted_connection
 	ftl_ship_effect = "gateway_ftl_ship_effect_entity"
 	ftl_bypass_effect = "gateway_ftl_bypass_effect_entity"
 	can_bypass_be_locked = yes
+
+	scripted_connection = {
+		node = { # system scope
+			has_star_flag = ahw_entry_open_1
+		}
+		nexus = { # system scope
+			has_star_flag = ahw_nexus_1
+		}
+	}
 
 	prerequisites = {
 		ahw_tech_spike

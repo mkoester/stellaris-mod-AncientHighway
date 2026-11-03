@@ -45,27 +45,35 @@ level. Prefix every key, id, flag and variable with `ahw_`. Tested in game on Li
    generation at game start, scaled by galaxy size.
 7. AI: does it path through, repair, lock, close?
 
-### The spike (`0.0.5-SPIKE`): what it does, how to run it
+### The spike (`0.0.6-SPIKE`): what it does, how to run it
 
-`ancient_highway/` holds **only the spike** (`*spike*` files). Every name used was checked
-against the game's own script documentation (`logs/script_documentation/` in the Stellaris user
-dir, 4.5.3); how the engine *behaves* with them is what the spike finds out. Runs 1–4 below.
-Entry points are still one type per ring system (L-gate style); 1:1 pairs come next.
+`ahw_spike.1` now runs **by itself at game start** (`on_game_start_country`, human player only)
+and applies runs 1–5: names "Highway Node 1"–"6"; **1:1 entry points** (one scripted-connection
+type per pair); every flag set before any gate; the shortcut as a **gate pair** (no natural
+wormhole); seen types and visited ring; outliner icons. Entry points get `windup_time = 10` (as
+the hyper relay) to see whether a cost per jump stops detours through the ring. The ring still
+sits next to our capital; placing it around the core is a separate spike.
 
-| Console | Does |
+| Entry point | Regular side | Exit in | State |
+|---|---|---|---|
+| 1 | A = our capital | Highway Node 1 (orbit 300, angle 0) | repaired; owned by us |
+| 2 | B = a neighbour of A | Highway Node 1 (orbit 300, angle 120) | repaired |
+| 3 | C = another neighbour | Highway Node 2 (orbit 300, angle 0) | broken (no "open" flag) |
+| shortcut | Highway Node 1 (orbit 300, angle 240) | Highway Node 4 (orbit 300, angle 60) | open, no tech |
+
+| Console (nothing selected) | Does |
 |---|---|
-| `event ahw_spike.1` | logs how empty the core is; spawns six ring systems (black holes standing in for the artificial centre) next to **our capital** (A), 40 apart, a closed loop of hyperlanes with **no** hyperlane to the galaxy; entry points of ring 1 (ring end at orbit 300): A and a neighbour B **repaired**, another neighbour C **broken**, every flag set before any gate; a shortcut wormhole pair ring 1 (orbit 300) ↔ ring 4 (orbit 450); teaches us both bypass types and marks the ring visited; reports. Runs once per game |
 | `event ahw_spike.2` | report only |
-| `event ahw_spike.3` | `lock_bypass` A's entry point for us, 360 days |
-| `event ahw_spike.4` / `.5` | close A's entry point (remove its "open" flag) / reopen it |
-| `event ahw_spike.6` | tear down A's entry-point megastructure; report now and a day later |
+| `event ahw_spike.3` | `lock_bypass` entry point 1 for us, 360 days |
+| `event ahw_spike.4` / `.5` | close / reopen entry point 1 (its "open" flag) |
+| `event ahw_spike.6` | tear down entry point 1's gate; report now and a day later |
 | `event ahw_spike.8` | grant `ahw_tech_spike` (or `research_technology ahw_tech_spike`) |
-| `event ahw_spike.9` | add and remove a ring hyperlane: does that refresh the route cache? |
 
-All findings go to `game.log`, lines starting `AHW SPIKE`; the event window names A, B and C.
+All findings go to `game.log`, lines starting `AHW SPIKE`; the event window names A, B and C
+(random neighbours: **take the names from this run's log**, run 5 shows why).
 **Deselect everything before each console `event`** (Esc): the console fires the event at the
-selected object — with the science ship selected, `event ahw_spike.9` failed with "event fired on
-wrong scope, got fleet, expected country" (run 5).
+selected object ("Event fired on wrong scope, got fleet, expected country", run 5).
+**Let a day pass before judging any route**: changes reach route-finding on the daily tick.
 
 **Before each run: `tools/check_script.py $(find ancient_highway -name '*.txt' -o -name '*.gfx')`.**
 It checks nesting and the keys directly inside each event. A plain brace count is not enough:
@@ -73,25 +81,20 @@ It checks nesting and the keys directly inside each event. A plain brace count i
 closed `immediate` early; the game rejected the rest ("Unexpected token: event_target:…") and spawned
 no gates. The check reports exactly those lines when that bug is put back.
 
-**Test** (Linux; a playset with only this mod; restart the game after any change to the mod). Load
-a save from **before** `ahw_spike.1` (2200.01.01), console on.
-1. `event ahw_spike.1`, `event ahw_spike.8`. Galaxy map: right-click ring 1 with the science
-   ship. Expected (run 4): "no route" — the route cache is stale. Screenshot.
-2. `event ahw_spike.9`, right-click ring 1 again. Route now? Screenshot. *Answers:* can the mod
-   refresh the cache during play.
-3. If not: save, reload, right-click ring 1 again (run 4: works then).
-   Also: does Sol's gate have its label in the system view and an entry in the outliner right
-   away (`interface/ahw_spike.gfx` now defines its outliner icon), or only after a reload?
-4. Fly into ring 1. Screenshot its system view: where are the ring end (orbit 300) and the
-   shortcut (300, opposite); where do ships from ring 2 and ring 6 arrive; does the ship cross the
-   centre? Take the shortcut to ring 4 (450 there: did it spawn that far out?).
-5. Construction ship: try to build an outpost in a ring system. Refused, with "The Ancient
-   Highway cannot be claimed"? *Answers:* does the single-key game rule override win.
-6. `event ahw_spike.4`: can ships still go from A into the ring? Then `event ahw_spike.9`, and
-   if needed save/reload: closed then? `event ahw_spike.5`: open again (same procedure)?
-7. `event ahw_spike.3`: does A's entry point show a lock?
-8. `event ahw_spike.6`, wait a day, `event ahw_spike.2`: is A cut off (after a reload too)?
-9. Copy `logs/game.log` and `logs/error.log` before restarting the game, plus the screenshots.
+**Test, run 6** (Linux; a playset with only this mod; **a new campaign**, small elliptical galaxy;
+console on):
+1. At start: the event window names A, B, C. Screenshot the galaxy map around A, and A's system
+   view: **does gate 1 have its label right away** (built at game start, not during play)?
+   Is it in the outliner?
+2. `event ahw_spike.8`, unpause one day. Science ship: order A → Highway Node 1 (through gate 1),
+   then on to B: does it leave through exit 2 → B (1:1: gate 1's menu should offer only Highway
+   Node 1)? Order a ship to C: refused through the ring (entry 3 broken)?
+3. Order A → B directly (neighbours): hyperlane, or still the detour through the ring despite
+   `windup_time = 10`? Screenshot the route.
+4. Fly the ring: Highway Node 1 → shortcut → Highway Node 4. Did vanilla's wormhole story stay
+   quiet? How long does the crossing take?
+5. Optional repeats of run 5 (lock, close/reopen, tear-down) with one day between action and check.
+6. Copy `logs/game.log` and `logs/error.log` before quitting, plus the screenshots.
 
 **Run 1 (2026-11-03, 4.5.3 open beta, elliptical galaxy, `0.0.1-SPIKE`): stopped at the anchor.**
 - `random_system` with `distance_to_core_percent` 25–40 matched **nothing**, although the

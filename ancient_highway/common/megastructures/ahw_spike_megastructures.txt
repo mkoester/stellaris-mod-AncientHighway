@@ -1,7 +1,7 @@
-# SPIKE (Phase 0). Entities are vanilla's, referenced by name. Both ends carry the same
-# scripted-connection bypass, as lgate_base does in the L-Cluster and in every L-gate system.
+# SPIKE (Phase 0, 0.0.6). Entities are vanilla's, referenced by name. Both ends of a pair carry
+# the same scripted-connection bypass, as lgate_base does.
 
-# Regular-galaxy end of an entry point to ring system 1 (removable: ahw_spike.6).
+# Regular-galaxy end of entry point 1 (removable).
 ahw_spike_entry_gate_1 = {
 	entity = "deactivated_gateway_entity"
 	portrait = "GFX_megastructure_construction_background"
@@ -14,8 +14,8 @@ ahw_spike_entry_gate_1 = {
 	potential = { always = no }
 }
 
-# Ring end (in ring system 1): never dismantled.
-ahw_spike_entry_ring_1 = {
+# Ring end of entry point 1: never dismantled.
+ahw_spike_entry_exit_1 = {
 	entity = "reactivated_gateway_entity"
 	portrait = "GFX_megastructure_construction_background"
 	place_entity_on_planet_plane = no
@@ -23,6 +23,88 @@ ahw_spike_entry_ring_1 = {
 	show_in_outliner = yes
 	construction_blocks_and_blocked_by = none
 	bypass_type = ahw_spike_entry_1
+
+	potential = { always = no }
+	dismantle_potential = { always = no }
+}
+
+# Regular-galaxy end of entry point 2 (removable).
+ahw_spike_entry_gate_2 = {
+	entity = "deactivated_gateway_entity"
+	portrait = "GFX_megastructure_construction_background"
+	place_entity_on_planet_plane = no
+	show_galactic_map_icon = no
+	show_in_outliner = yes
+	construction_blocks_and_blocked_by = none
+	bypass_type = ahw_spike_entry_2
+
+	potential = { always = no }
+}
+
+# Ring end of entry point 2: never dismantled.
+ahw_spike_entry_exit_2 = {
+	entity = "reactivated_gateway_entity"
+	portrait = "GFX_megastructure_construction_background"
+	place_entity_on_planet_plane = no
+	show_galactic_map_icon = no
+	show_in_outliner = yes
+	construction_blocks_and_blocked_by = none
+	bypass_type = ahw_spike_entry_2
+
+	potential = { always = no }
+	dismantle_potential = { always = no }
+}
+
+# Regular-galaxy end of entry point 3 (removable).
+ahw_spike_entry_gate_3 = {
+	entity = "deactivated_gateway_entity"
+	portrait = "GFX_megastructure_construction_background"
+	place_entity_on_planet_plane = no
+	show_galactic_map_icon = no
+	show_in_outliner = yes
+	construction_blocks_and_blocked_by = none
+	bypass_type = ahw_spike_entry_3
+
+	potential = { always = no }
+}
+
+# Ring end of entry point 3: never dismantled.
+ahw_spike_entry_exit_3 = {
+	entity = "reactivated_gateway_entity"
+	portrait = "GFX_megastructure_construction_background"
+	place_entity_on_planet_plane = no
+	show_galactic_map_icon = no
+	show_in_outliner = yes
+	construction_blocks_and_blocked_by = none
+	bypass_type = ahw_spike_entry_3
+
+	potential = { always = no }
+	dismantle_potential = { always = no }
+}
+
+# Shortcut 1, node end.
+ahw_spike_shortcut_1_node = {
+	entity = "reactivated_gateway_entity"
+	portrait = "GFX_megastructure_construction_background"
+	place_entity_on_planet_plane = no
+	show_galactic_map_icon = no
+	show_in_outliner = yes
+	construction_blocks_and_blocked_by = none
+	bypass_type = ahw_spike_shortcut_1
+
+	potential = { always = no }
+	dismantle_potential = { always = no }
+}
+
+# Shortcut 1, nexus end.
+ahw_spike_shortcut_1_nexus = {
+	entity = "reactivated_gateway_entity"
+	portrait = "GFX_megastructure_construction_background"
+	place_entity_on_planet_plane = no
+	show_galactic_map_icon = no
+	show_in_outliner = yes
+	construction_blocks_and_blocked_by = none
+	bypass_type = ahw_spike_shortcut_1
 
 	potential = { always = no }
 	dismantle_potential = { always = no }

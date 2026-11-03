@@ -1,14 +1,36 @@
-# SPIKE (Phase 0): outliner icons for the entry-point megastructures, pointing at the game's own
-# gateway textures (referenced by path, nothing copied). Run 5: without them the game logs
-# "Trying to change sprite to unknown sprite" at creation, and the system-view label of a gate
-# appeared only after a save and reload. Q: does the label now show from creation?
+# SPIKE (Phase 0): outliner icons, pointing at the game's own gateway textures (referenced by
+# path, nothing copied). Without them: "Trying to change sprite to unknown sprite" (run 5).
 spriteTypes = {
 	spriteType = {
 		name = "GFX_ahw_spike_entry_gate_1_outliner_icon"
 		textureFile = "gfx/interface/icons/megastructures/gateway_ruined.dds"
 	}
 	spriteType = {
-		name = "GFX_ahw_spike_entry_ring_1_outliner_icon"
+		name = "GFX_ahw_spike_entry_exit_1_outliner_icon"
+		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
+	}
+	spriteType = {
+		name = "GFX_ahw_spike_entry_gate_2_outliner_icon"
+		textureFile = "gfx/interface/icons/megastructures/gateway_ruined.dds"
+	}
+	spriteType = {
+		name = "GFX_ahw_spike_entry_exit_2_outliner_icon"
+		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
+	}
+	spriteType = {
+		name = "GFX_ahw_spike_entry_gate_3_outliner_icon"
+		textureFile = "gfx/interface/icons/megastructures/gateway_ruined.dds"
+	}
+	spriteType = {
+		name = "GFX_ahw_spike_entry_exit_3_outliner_icon"
+		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
+	}
+	spriteType = {
+		name = "GFX_ahw_spike_shortcut_1_node_outliner_icon"
+		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
+	}
+	spriteType = {
+		name = "GFX_ahw_spike_shortcut_1_nexus_outliner_icon"
 		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
 	}
 }

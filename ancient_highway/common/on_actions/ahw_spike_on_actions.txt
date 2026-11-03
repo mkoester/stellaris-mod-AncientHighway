@@ -1,0 +1,8 @@
+# SPIKE (Phase 0, 0.0.6): build the test ring at game start, for the human player (as vanilla's
+# game_start.33 populates home systems from on_game_start_country). Q: do the gates get their
+# system-view labels from the start, unlike when spawned during play (run 5)?
+on_game_start_country = {
+	events = {
+		ahw_spike.1
+	}
+}

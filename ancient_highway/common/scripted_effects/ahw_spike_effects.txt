@@ -1,4 +1,4 @@
-# SPIKE (Phase 0). Everything logs to game.log with the prefix "AHW SPIKE".
+# SPIKE (Phase 0, 0.0.6). Everything logs to game.log with the prefix "AHW SPIKE".
 # In effects with parameters, "[" in a log string must be written "\\[" (run 1).
 # A $PARAM$ next to "\\[" comes out mangled (run 2), so parameters go last in each log line.
 
@@ -9,18 +9,13 @@ ahw_spike_log_system = {
 		variable = ahw_core_pct
 	}
 	log = "AHW SPIKE \\[This.GetName]: distance_to_core_percent (a fraction) = \\[This.ahw_core_pct] -- $WHAT$"
-	if = {
-		limit = { has_star_flag = ahw_ring }
-		log = "AHW SPIKE   \\[This.GetName]: ring system"
-	}
-	if = {
-		limit = { has_star_flag = ahw_nexus_1 }
-		log = "AHW SPIKE   \\[This.GetName]: nexus of ahw_spike_entry_1"
-	}
-	if = {
-		limit = { has_star_flag = ahw_entry_open_1 }
-		log = "AHW SPIKE   \\[This.GetName]: entry point OPEN (node of ahw_spike_entry_1)"
-	}
+	if = { limit = { has_star_flag = ahw_ring } log = "AHW SPIKE   \\[This.GetName]: ring system" }
+	if = { limit = { has_star_flag = ahw_entry_open_1 } log = "AHW SPIKE   \\[This.GetName]: entry point 1 OPEN" }
+	if = { limit = { has_star_flag = ahw_entry_open_2 } log = "AHW SPIKE   \\[This.GetName]: entry point 2 OPEN" }
+	if = { limit = { has_star_flag = ahw_entry_open_3 } log = "AHW SPIKE   \\[This.GetName]: entry point 3 OPEN" }
+	if = { limit = { has_star_flag = ahw_exit_1 } log = "AHW SPIKE   \\[This.GetName]: holds exit 1" }
+	if = { limit = { has_star_flag = ahw_exit_2 } log = "AHW SPIKE   \\[This.GetName]: holds exit 2" }
+	if = { limit = { has_star_flag = ahw_exit_3 } log = "AHW SPIKE   \\[This.GetName]: holds exit 3" }
 	if = {
 		limit = { exists = owner }
 		log = "AHW SPIKE   \\[This.GetName]: owned by \\[This.Owner.GetName]"
@@ -31,8 +26,16 @@ ahw_spike_log_system = {
 			log = "AHW SPIKE   bypass ahw_spike_entry_1"
 		}
 		else_if = {
-			limit = { is_bypass_type = ahw_spike_shortcut }
-			log = "AHW SPIKE   bypass ahw_spike_shortcut"
+			limit = { is_bypass_type = ahw_spike_entry_2 }
+			log = "AHW SPIKE   bypass ahw_spike_entry_2"
+		}
+		else_if = {
+			limit = { is_bypass_type = ahw_spike_entry_3 }
+			log = "AHW SPIKE   bypass ahw_spike_entry_3"
+		}
+		else_if = {
+			limit = { is_bypass_type = ahw_spike_shortcut_1 }
+			log = "AHW SPIKE   bypass ahw_spike_shortcut_1"
 		}
 		else = {
 			log = "AHW SPIKE   bypass of another type"
@@ -41,17 +44,6 @@ ahw_spike_log_system = {
 			limit = { has_lock = yes }
 			log = "AHW SPIKE     ...LOCKED"
 		}
-	}
-	if = {
-		limit = {
-			any_system_megastructure = {
-				OR = {
-					is_megastructure_type = ahw_spike_entry_gate_1
-					is_megastructure_type = ahw_spike_entry_ring_1
-				}
-			}
-		}
-		log = "AHW SPIKE   entry-point megastructure present"
 	}
 }
 
@@ -98,13 +90,17 @@ ahw_spike_report = {
 	else = {
 		log = "AHW SPIKE \\[This.GetName] does NOT have ahw_tech_spike"
 	}
-	event_target:ahw_anchor = { ahw_spike_log_system = { WHAT = anchor_A_entry_open } }
-	event_target:ahw_anchor_b = { ahw_spike_log_system = { WHAT = system_B_entry_open } }
-	event_target:ahw_anchor_c = { ahw_spike_log_system = { WHAT = system_C_entry_broken } }
-	event_target:ahw_ring_1 = { ahw_spike_log_system = { WHAT = ring_1_nexus } }
-	event_target:ahw_ring_4 = { ahw_spike_log_system = { WHAT = ring_4 } }
-	every_system = {
-		limit = { has_star_flag = ahw_ring }
-		ahw_spike_log_system = { WHAT = ring_any }
+	event_target:ahw_anchor = { ahw_spike_log_system = { WHAT = A_entry_1 } }
+	event_target:ahw_anchor_b = { ahw_spike_log_system = { WHAT = B_entry_2 } }
+	event_target:ahw_anchor_c = { ahw_spike_log_system = { WHAT = C_entry_3_broken } }
+	event_target:ahw_ring_1 = { ahw_spike_log_system = { WHAT = ring_1_exits_1_2_shortcut } }
+	event_target:ahw_ring_2 = { ahw_spike_log_system = { WHAT = ring_2_exit_3 } }
+	event_target:ahw_ring_4 = { ahw_spike_log_system = { WHAT = ring_4_shortcut } }
+	if = {
+		limit = { exists = event_target:ahw_entry_gate_a }
+		log = "AHW SPIKE megastructure: entry gate 1 in A exists"
+	}
+	else = {
+		log = "AHW SPIKE megastructure: entry gate 1 in A is GONE"
 	}
 }

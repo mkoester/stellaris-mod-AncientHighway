@@ -1,7 +1,7 @@
 # The original idea, verbatim
 
-Recorded as written on 2026-11-03, not edited since. This branch is never merged; the living
-design is on `main` (`AGENTS.md`, `docs/`).
+Recorded as written on 2026-11-03; later requirements appended below, also verbatim. This branch
+is never merged; the living design is on `main` (`AGENTS.md`, `docs/`).
 
 ## First message
 
@@ -27,3 +27,37 @@ the counterpart of the entry points within an artificial system should not be ab
 
 another requirement: the "exit points" in the artificial systems should be far apart - I would make these artificial systems rather large.
 reason: I don't want to much accidental fighting in these systems - empires should be mostly able to avoid one another
+
+## Later requirements, from the testing session (2026-11-03)
+
+Recorded as written, in the order given.
+
+### On the gates (after spike run 4)
+
+our gates should be 1:1 connections (not like the L-gate)
+
+### On portals (before spike run 8)
+
+let's do the ring around the core
+
+and one more thing: the gates should appear a bit appart from the capitol of any empire.
+do it like this: choose a random system 2-3 jumps from the capitol. place a new artificial system (also not claimable) with only one hyperlane. in that artificial system we put the gates to the ring.
+these shortcuts should be rather easy to defend by design
+
+### On the portal's lane (after spike run 8)
+
+for the real deal: try to place the portal systems in a way that the new hyperlane in the connected system is rather far away from other hyperlanes (in my screenshot: an attacker could bypass my station in the center and just go to Bernard's star without having to fight)
+
+### On the gate in the portal (after spike run 9)
+
+can we place the gates at the opposite of the hyperlane in the artificial `portal` systems?
+
+### On the gate's distance (after spike run 10)
+
+yes, but please place it even further away from the black whole (just a bit inside the orange dotted/lined circle)
+
+### On the anchor system (after spike runs 10 and 11)
+
+yes, prefer anchors with fewer lanes
+
+should have picked another system to connect the portal system (Bapagia, Edemar, Xir (although it already has some gateway, maybe de-prioritize these))

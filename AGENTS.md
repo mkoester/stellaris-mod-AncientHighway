@@ -33,17 +33,16 @@ level. Prefix every key, id, flag and variable with `ahw_`. Tested in game on Li
 - Shortcuts as natural-wormhole pairs of our own type link and are used by route-finding.
 
 **Open / to design** (next spike or Phase 1):
-1. **1:1 entry points** (decided): one bypass type per pair — generate them; test one ring
-   system with two pairs.
-2. **A cost per gate jump**: route-finding treats gate jumps as nearly free, so the ring becomes a
-   shortcut between neighbours (`windup_time`).
+1. ~~1:1 entry points~~ — works (run 6); Phase 1 needs a generator (or `inline_script`).
+2. ~~A cost per gate jump~~ — `windup_time = 10` ended the detour (run 6); tune it.
 3. **Slow crossings** of large ring systems (171–270 days early game) vs. "help a distant ally".
-4. Shortcuts trigger vanilla's natural-wormhole story (`apoc.5`): own carrier needed.
-5. Labels of script-spawned megastructures appear only after a load (vanilla's too): place the
-   highway at galaxy generation, or accept it.
+4. ~~Shortcut carrier~~ — a gate pair on its own scripted connection works (run 6).
+5. ~~Labels after a load~~ — built at game start they show (run 6); unowned ones need sensor coverage (8).
 6. Placement around the core: the core is empty to ~15–20 % of the radius (small elliptical);
    generation at game start, scaled by galaxy size.
 7. AI: does it path through, repair, lock, close?
+8. **Ring-side gate labels and menus** show only while we have sensor coverage of the ring system
+   (run 6). Next spike: `extends_sensors = yes` on the entry types; else accept it.
 
 ### The spike (`0.0.6-SPIKE`): what it does, how to run it
 
@@ -262,6 +261,31 @@ destination.** Screenshots `2026_11_03_10`, `_11`.
 - **Gate jumps are almost free for route-finding**: Sol → Procyon prefers Sol → ring 1 → Alpha
   Centauri (B) → Procyon over the direct hyperlane, so the ring becomes a shortcut between neighbours.
   Needs a cost per jump (`windup_time`: hyper relay 10 days, Shroud tunnel 40).
+
+**Run 6 (2026-11-03, `0.0.6-SPIKE`, a new campaign, small elliptical galaxy): all four
+questions answered.** Screenshots `2026_11_03_37`–`_40`; A = Sol, B = Alpha Centauri, C =
+Barnard's Star.
+- **Built at game start, gate 1 in Sol has its system-view label from the start** (`_38`). (Run 5:
+  built during play, only after a load.)
+- **1:1 works**: one day after the tech, gate 1 offers "Travel to Highway Node 1" only (`_39`);
+  exit 2 leads to B; C (broken) is not reachable through the ring.
+- **`windup_time = 10` ends the detour**: ships between neighbours take the direct hyperlane
+  (the user; run 5 went Sol → ring → neighbour).
+- **The gate-pair shortcut** is usable and set off no wormhole story.
+- Inside Highway Node 1 the path from exit 1 (angle 0) to the shortcut (240) is a straight chord
+  that passes the black hole without crossing the centre (`_40`); Sol → Highway Node 4: 171 days.
+- No system closer to the centre than 0.2 in this galaxy (0.15 in run 3's).
+- **Ring-side gates (unowned) have no label and no right-click menu**; Sol's (owned) has both.
+  Giving them an owner by console (`every_system_megastructure = { set_owner = … }`) added the
+  labels **immediately**, but **no right-click menu**, also not after a day or a reload.
+  Not where the ordering ship is: Sol's gate keeps its menu with the ship in Barnard's Star.
+  **It is current sensor coverage of the gate's system**: on entering
+  Highway Node 4, and Highway Node 2 mid-month, their (unowned) gates got label and menu at once;
+  **once no ship of ours is in a ring system any more, both disappear again** (the user's guess:
+  intel). Sol's gate is inside our sensor range all the time; owning a gate shows its label
+  regardless. Candidates: `extends_sensors = yes` on the entry types (as vanilla wormholes: seeing
+  through an entry point would cover its exit), a sensor source in each ring system, or accepting
+  it (route-finding into the ring works without coverage, runs 4–6).
 
 Expected noise in `error.log`: a missing icon for `ahw_tech_spike` and missing portraits. Anything
 naming an `ahw_` key otherwise is a finding. Record the findings here and in

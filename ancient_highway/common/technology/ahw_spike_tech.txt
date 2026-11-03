@@ -1,4 +1,6 @@
-# SPIKE (Phase 0): never offered; give it with `research_technology ahw_tech_spike`.
+# SPIKE (Phase 0): never offered (weight 0); give it with `research_technology ahw_tech_spike`
+# or `event ahw_spike.8`. Run 3: with `potential = { always = no }` the console refused it
+# ("Could not research prerequisite technology").
 ahw_tech_spike = {
 	cost = 1
 	area = physics
@@ -7,6 +9,4 @@ ahw_tech_spike = {
 	is_rare = yes
 	is_reverse_engineerable = no
 	weight = 0
-
-	potential = { always = no }
 }

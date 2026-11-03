@@ -44,7 +44,8 @@ reach — and that makes distant alliances pointless in many playthroughs.
 
 The connections between the ring and the regular galaxy are special, not hyperlanes.
 
-- A ring system can connect to **several** regular systems.
+- A ring system can connect to **several** regular systems — **each connection is 1:1**: one
+  regular-side entry point, one exit point of its own in the ring system (decided 2026-11-03).
 - **At first every entry point is broken.** It must be studied (event chain, special project or
   situation — open which) before it can be repaired.
 - **Using entry points needs a special technology**, unlocked by the study.

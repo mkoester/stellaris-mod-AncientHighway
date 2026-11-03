@@ -6,7 +6,8 @@
 #   event ahw_spike.4   close the entry point in our capital system (remove its "open" flag)
 #   event ahw_spike.5   reopen it (set the flag again)
 #   event ahw_spike.6   tear down its megastructure; report now and a day later
-#   research_technology ahw_tech_spike   unlock using entry points
+#   event ahw_spike.8   grant ahw_tech_spike (or research_technology ahw_tech_spike)
+#   event ahw_spike.9   add and remove a hyperlane (does that refresh the route cache?)
 namespace = ahw_spike
 
 country_event = {
@@ -63,36 +64,44 @@ country_event = {
 		add_hyperlane = { from = event_target:ahw_ring_6 to = event_target:ahw_ring_1 }
 
 		# Entry points of ring 1: the ring end far out (orbit 300), the regular ends in A, B, C.
+		# Run 4: flags first, then the bypass, as vanilla does (Starlit: biogenesis_effects.txt;
+		# L-gates: initializer flags) - with the flag set after the gate, "No known destination".
+		# Run 3: at orbit 120 the gate in Sol was hidden among the inner planets (orbits add up:
+		# Mars is at 115) and, unowned, missing from the outliner. Now far out; A owned by us (B and C
+		# may be unowned at game start).
+		event_target:ahw_anchor = {
+			set_star_flag = ahw_entry_open_1
+			spawn_megastructure = {
+				type = ahw_spike_entry_gate_1
+				owner = root # our capital system: A shows in our outliner
+				orbit_distance = 350
+				orbit_angle = 45
+				init_effect = { save_global_event_target_as = ahw_entry_gate_a }
+			}
+		}
+		event_target:ahw_anchor_b = {
+			set_star_flag = ahw_entry_open_1
+			spawn_megastructure = {
+				type = ahw_spike_entry_gate_1
+				orbit_distance = 350
+				orbit_angle = 45
+			}
+		}
+		event_target:ahw_anchor_c = {
+			spawn_megastructure = {
+				type = ahw_spike_entry_gate_1
+				orbit_distance = 350
+				orbit_angle = 45
+			}
+		}
+
+		# The ring end last: every endpoint flag exists before it (and they before their gates).
 		event_target:ahw_ring_1 = {
 			set_star_flag = ahw_nexus_1
 			spawn_megastructure = {
 				type = ahw_spike_entry_ring_1
 				orbit_distance = 300
 				orbit_angle = 0
-			}
-		}
-		event_target:ahw_anchor = {
-			spawn_megastructure = {
-				type = ahw_spike_entry_gate_1
-				orbit_distance = 120
-				orbit_angle = 90
-				init_effect = { save_global_event_target_as = ahw_entry_gate_a }
-			}
-			set_star_flag = ahw_entry_open_1
-		}
-		event_target:ahw_anchor_b = {
-			spawn_megastructure = {
-				type = ahw_spike_entry_gate_1
-				orbit_distance = 120
-				orbit_angle = 90
-			}
-			set_star_flag = ahw_entry_open_1
-		}
-		event_target:ahw_anchor_c = {
-			spawn_megastructure = {
-				type = ahw_spike_entry_gate_1
-				orbit_distance = 120
-				orbit_angle = 90
 			}
 		}
 
@@ -123,6 +132,19 @@ country_event = {
 			}
 		}
 		event_target:ahw_shortcut_1 = { link_wormholes = event_target:ahw_shortcut_4 }
+
+		# Run 4: entering worked, but "No known destination" until the country has seen the type
+		# (vanilla does the same for the Shroud tunnels, events/overlord_enclaves_events.txt).
+		# In the mod this is what studying an entry point would teach.
+		add_seen_bypass_type = ahw_spike_entry_1
+		add_seen_bypass_type = ahw_spike_shortcut
+		# Run 4: still "No known destination" after the type was seen: the destination (the nexus,
+		# ring 1) must be a system we know. Vanilla does set_visited on the Starlit nexus
+		# (events/biogenesis_origin_events.txt), a scripted connection too.
+		every_system = {
+			limit = { has_star_flag = ahw_ring }
+			root = { set_visited = prev }
+		}
 
 		ahw_spike_report = { WHEN = after_spawn }
 	}
@@ -204,4 +226,30 @@ country_event = {
 	hide_window = yes
 	is_triggered_only = yes
 	immediate = { ahw_spike_report = { WHEN = one_day_after_teardown_A } }
+}
+
+# Grants the entry-point tech (fallback for the console's research_technology).
+country_event = {
+	id = ahw_spike.8
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		give_technology = { tech = ahw_tech_spike message = no }
+		ahw_spike_report = { WHEN = after_granting_the_tech }
+	}
+}
+
+# Run 4: the route cache did not know the entry points until a save and reload. Does a change to
+# the hyperlane graph rebuild it? Adds and removes a hyperlane ring_1 <-> ring_4.
+country_event = {
+	id = ahw_spike.9
+	title = ahw_spike.9.name
+	desc = ahw_spike.9.desc
+	is_triggered_only = yes
+	immediate = {
+		add_hyperlane = { from = event_target:ahw_ring_1 to = event_target:ahw_ring_4 }
+		remove_hyperlane = { from = event_target:ahw_ring_1 to = event_target:ahw_ring_4 }
+		log = "AHW SPIKE ahw_spike.9: added and removed a hyperlane ring_1 <-> ring_4"
+	}
+	option = { name = ahw_spike.ok }
 }

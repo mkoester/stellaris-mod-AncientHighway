@@ -19,45 +19,79 @@ level. Prefix every key, id, flag and variable with `ahw_`. Tested in game on Li
 
 ---
 
-## Status (2026-11-03): Phase 0 spike, third version (`0.0.3-SPIKE`) not yet run
+## Status (2026-11-03): Phase 0 spike done (runs 1–5) — the highway is buildable
+
+**Answered** (details in the runs below):
+- A ring of systems can be spawned by script (absolute angles), joined by hyperlanes, kept
+  unclaimable by a one-key game-rule override (outpost order disappears; confirmed with a control).
+- Entry points work as megastructures carrying a `scripted_connection` bypass: gated by a tech,
+  opened and closed by the node's star flag, torn down with `remove_megastructure`, locked with
+  `lock_bypass` (lock shown; others kept out: untested). Every change takes effect on the **next
+  daily tick** — tests taken paused on day one show "no route".
+- Before use the country must have seen the bypass type (`add_seen_bypass_type`) and know the
+  ring systems (`set_visited`) — what the "study" stage will give.
+- Shortcuts as natural-wormhole pairs of our own type link and are used by route-finding.
+
+**Open / to design** (next spike or Phase 1):
+1. **1:1 entry points** (decided): one bypass type per pair — generate them; test one ring
+   system with two pairs.
+2. **A cost per gate jump**: route-finding treats gate jumps as nearly free, so the ring becomes a
+   shortcut between neighbours (`windup_time`).
+3. **Slow crossings** of large ring systems (171–270 days early game) vs. "help a distant ally".
+4. Shortcuts trigger vanilla's natural-wormhole story (`apoc.5`): own carrier needed.
+5. Labels of script-spawned megastructures appear only after a load (vanilla's too): place the
+   highway at galaxy generation, or accept it.
+6. Placement around the core: the core is empty to ~15–20 % of the radius (small elliptical);
+   generation at game start, scaled by galaxy size.
+7. AI: does it path through, repair, lock, close?
+
+### The spike (`0.0.5-SPIKE`): what it does, how to run it
 
 `ancient_highway/` holds **only the spike** (`*spike*` files). Every name used was checked
 against the game's own script documentation (`logs/script_documentation/` in the Stellaris user
-dir, 4.5.3); how the engine *behaves* with them is what the spike finds out. Runs 1 and 2 below.
+dir, 4.5.3); how the engine *behaves* with them is what the spike finds out. Runs 1–4 below.
+Entry points are still one type per ring system (L-gate style); 1:1 pairs come next.
 
 | Console | Does |
 |---|---|
-| `event ahw_spike.1` | logs how empty the core is; spawns six ring systems (black holes standing in for the artificial centre) next to **our capital** (A), 40 apart, a closed loop of hyperlanes with **no** hyperlane to the galaxy; entry points of ring 1 (the nexus, ring end at orbit 300): A and a neighbour B **repaired**, another neighbour C **broken**; a shortcut wormhole pair ring 1 (orbit 300) ↔ ring 4 (orbit 450); reports. Runs once per game |
+| `event ahw_spike.1` | logs how empty the core is; spawns six ring systems (black holes standing in for the artificial centre) next to **our capital** (A), 40 apart, a closed loop of hyperlanes with **no** hyperlane to the galaxy; entry points of ring 1 (ring end at orbit 300): A and a neighbour B **repaired**, another neighbour C **broken**, every flag set before any gate; a shortcut wormhole pair ring 1 (orbit 300) ↔ ring 4 (orbit 450); teaches us both bypass types and marks the ring visited; reports. Runs once per game |
 | `event ahw_spike.2` | report only |
 | `event ahw_spike.3` | `lock_bypass` A's entry point for us, 360 days |
-| `event ahw_spike.4` | close A's entry point (remove its "open" flag) |
-| `event ahw_spike.5` | reopen it |
+| `event ahw_spike.4` / `.5` | close A's entry point (remove its "open" flag) / reopen it |
 | `event ahw_spike.6` | tear down A's entry-point megastructure; report now and a day later |
-| `research_technology ahw_tech_spike` | the tech the entry points require |
+| `event ahw_spike.8` | grant `ahw_tech_spike` (or `research_technology ahw_tech_spike`) |
+| `event ahw_spike.9` | add and remove a ring hyperlane: does that refresh the route cache? |
 
 All findings go to `game.log`, lines starting `AHW SPIKE`; the event window names A, B and C.
+**Deselect everything before each console `event`** (Esc): the console fires the event at the
+selected object — with the science ship selected, `event ahw_spike.9` failed with "event fired on
+wrong scope, got fleet, expected country" (run 5).
 
-**Test** (Linux, launcher closed: `../scripts/link-mod.sh stellaris-mod-AncientHighway/ancient_highway`,
-then a playset with only this mod). A new game, small **elliptical** galaxy; console on.
-1. `event ahw_spike.1`. Screenshot the galaxy map around the capital.
-2. Without the tech: order the science ship from A to ring 1 (the black hole whose system holds
-   the ring end). Refused? Then `research_technology ahw_tech_spike` and again. Hover over the
-   entry point: where does it lead? *Answers:* does the scripted connection work, and is it gated.
-3. From ring 1, can the ship go to B (repaired) and to C (broken)? Can it jump from A to B
-   directly through the entry points (it should not: nodes reach only the nexus)?
-4. In ring 1: screenshot the system view. Where are the ring end (orbit 300) and the shortcut
-   (orbit 300, opposite); where do ships arriving from ring 2 and ring 6 appear? Fly from the ring
-   end to the shortcut: through the centre or around? Take the shortcut to ring 4 (orbit 450
-   there: did it spawn that far out?).
+**Before each run: `tools/check_script.py $(find ancient_highway -name '*.txt' -o -name '*.gfx')`.**
+It checks nesting and the keys directly inside each event. A plain brace count is not enough:
+`0.0.5-SPIKE`'s first build had a `}` moved from one block to another (balanced overall) that
+closed `immediate` early; the game rejected the rest ("Unexpected token: event_target:…") and spawned
+no gates. The check reports exactly those lines when that bug is put back.
+
+**Test** (Linux; a playset with only this mod; restart the game after any change to the mod). Load
+a save from **before** `ahw_spike.1` (2200.01.01), console on.
+1. `event ahw_spike.1`, `event ahw_spike.8`. Galaxy map: right-click ring 1 with the science
+   ship. Expected (run 4): "no route" — the route cache is stale. Screenshot.
+2. `event ahw_spike.9`, right-click ring 1 again. Route now? Screenshot. *Answers:* can the mod
+   refresh the cache during play.
+3. If not: save, reload, right-click ring 1 again (run 4: works then).
+   Also: does Sol's gate have its label in the system view and an entry in the outliner right
+   away (`interface/ahw_spike.gfx` now defines its outliner icon), or only after a reload?
+4. Fly into ring 1. Screenshot its system view: where are the ring end (orbit 300) and the
+   shortcut (300, opposite); where do ships from ring 2 and ring 6 arrive; does the ship cross the
+   centre? Take the shortcut to ring 4 (450 there: did it spawn that far out?).
 5. Construction ship: try to build an outpost in a ring system. Refused, with "The Ancient
    Highway cannot be claimed"? *Answers:* does the single-key game rule override win.
-6. `event ahw_spike.4`: can ships still go from A into the ring? From ring 1 to A?
-   `event ahw_spike.5`: open again? *Answers:* is the node trigger re-checked during play.
-7. `event ahw_spike.3`: does the entry point show a lock, and does pathing for another empire's
-   ship change (check the tooltip)? *Answers:* does `lock_bypass` work on our bypass type.
-8. `event ahw_spike.6`, wait a day, `event ahw_spike.2`: is A cut off from the ring?
-9. Save, reload, `event ahw_spike.2`: does it all survive a reload?
-10. Copy `logs/game.log` and `logs/error.log` before restarting the game, plus the screenshots.
+6. `event ahw_spike.4`: can ships still go from A into the ring? Then `event ahw_spike.9`, and
+   if needed save/reload: closed then? `event ahw_spike.5`: open again (same procedure)?
+7. `event ahw_spike.3`: does A's entry point show a lock?
+8. `event ahw_spike.6`, wait a day, `event ahw_spike.2`: is A cut off (after a reload too)?
+9. Copy `logs/game.log` and `logs/error.log` before restarting the game, plus the screenshots.
 
 **Run 1 (2026-11-03, 4.5.3 open beta, elliptical galaxy, `0.0.1-SPIKE`): stopped at the anchor.**
 - `random_system` with `distance_to_core_percent` 25–40 matched **nothing**, although the
@@ -95,6 +129,137 @@ linked.** Screenshots `2026_11_03_5`–`7` in the game's screenshot folder.
 - `$PARAM$` inside a `log` string next to `\\[` comes out mangled (`AHW SPIKEanchor$:`) —
   cosmetic.
 
+**Run 3 (2026-11-03, same setup, `0.0.3-SPIKE`): entry points exist, not visible.**
+- **The core is empty out to 15–20 % of the radius** (small elliptical galaxy): no system closer
+  to the centre than 0.15, some closer than 0.2. A ring at about 0.1 fits without touching anything.
+- The log shows the entry-point megastructure and an `ahw_spike_entry_1` bypass in Sol, Barnard's
+  Star (both open) and Alpha Centauri (broken), the nexus flag and bypass in ring 1. The scripted
+  connection is accepted; whether ships can use it was not yet tried.
+- The gate in Sol was not visible (screenshot `2026_11_03_8`): orbit 120 is about Mars's orbit
+  (planet orbits in an initializer add up), so it sat among the inner planets, and unowned it is
+  not in the outliner. `0.0.4-SPIKE`: orbit 350, A's gate owned by us.
+- `research_technology` refuses a tech whose `potential` fails ("Could not research prerequisite
+  technology"): `0.0.4-SPIKE` drops it (weight 0 keeps the tech out of the draw) and adds
+  `event ahw_spike.8`. In the run-3 game: `effect every_country = { limit = { is_ai = no }
+  give_technology = { tech = ahw_tech_spike message = no } }` (untested form).
+- Bypass localisation keys derive from the bypass **key** (`BYPASS_AHW_SPIKE_ENTRY_1`), not from
+  its `name`.
+
+**Run 4 (2026-11-03, same setup, `0.0.4-SPIKE`): entry point visible and connected, no known
+destination.** Screenshots `2026_11_03_10`, `_11`.
+- The gate shows in Sol at orbit 350, in our outliner, with a working **Dismantle** button; its
+  tooltip: "fully connected to the Highway Entry Point Network".
+- Ordering the science ship through it: "Enter the Highway Entry Point" passes, **"No known
+  destination"** (`USE_BYPASS_UNKNOWN_DESTINATION`) fails. The country must have seen the type:
+  vanilla calls `add_seen_bypass_type = shroud_tunnel` for its scripted-connection tunnels. The
+  spike now does that for both types in `ahw_spike.1`; in the mod, studying an entry point would
+  teach it. In the run-4 game: `effect every_country = { limit = { is_ai = no }
+  add_seen_bypass_type = ahw_spike_entry_1 }`.
+- With the type seen (console: "archives Highway Entry Point information") and the tech
+  researched (`research_technology` works without the `potential`), still **"No known
+  destination"** (`_12`). The only destination of a node is the nexus, ring 1, unexplored to us.
+  Vanilla makes the Starlit nexus known with `set_visited` (`events/biogenesis_origin_events.txt`);
+  `ahw_spike.1` now does that for every ring system. In the run-4 game: `effect every_system =
+  { limit = { has_star_flag = ahw_ring } every_country = { limit = { is_ai = no } set_visited =
+  prev } }`. Design: knowing the ring (visited) is a second thing the study must give.
+- With the ring visited too (console: "Discovers the Highway Node system" ×6), **still "No known
+  destination"** (`_13`). Difference to vanilla: vanilla sets the scripted connection's flags
+  **before** spawning the bypass (Starlit: `set_star_flag = starlit_nexus_system`, then
+  `spawn_natural_wormhole`, `common/scripted_effects/biogenesis_effects.txt`; L-gates: initializer
+  flags, then the megastructure). The spike spawned the gates in A and B first and flagged them
+  after, and the ring end before both. Hypothesis: a bypass's destinations are computed when it is
+  created. The spike now sets every flag first and spawns the ring end last. If that is it,
+  "repair" must spawn the gate (or re-create it), and closing by removing the flag will not work:
+  step 6 tests that. In the run-4 game: spawn a second gate in A/B and a second ring end, after the
+  flags (`effect every_system = { limit = { has_star_flag = ahw_entry_open_1 } spawn_megastructure
+  = { type = ahw_spike_entry_gate_1 orbit_distance = 300 orbit_angle = 200 } }`, then the same for
+  `ahw_nexus_1` with `ahw_spike_entry_ring_1`).
+- The second gates did not help either ("No known destination", `_14`), and ordering the ship
+  to ring 1 on the galaxy map gave "There is no route" for all six ring systems (`_15`): ring 1
+  showed **`Galactic Map Cache Distance: -1`** in the debug tooltip, while Sol's gate said "fully
+  connected". **After a save and reload it works** (the user, 2026-11-03; the hyperlane
+  add/remove was not run) (`_16`, `_17`): cache distance 1, the route goes Sol → ring 1 straight
+  through the gate, the ring's hyperlanes are drawn, and the gate offers "Pick a destination
+  system" with both ring ends of the type. So the route cache was stale; vanilla gateways get
+  their rebuild through `activate_gateway`. Phase 1 must find what rebuilds it during play (an
+  entry point repaired mid-game must work without a reload).
+- **Decided (user, 2026-11-03): entry points are 1:1** — one regular-side gate, one exit point in
+  the ring system. A scripted-connection type offers every end of its type (the destination picker
+  above), so the mod needs **one bypass type per entry-point pair** (node = that regular system's
+  flag, nexus = that exit's ring system), generated.
+- **The shortcut is used by route-finding** (`_18`): ordered from Sol to a ring system three
+  hyperlane jumps round the ring, the ship goes Sol → ring 1 (entry point) → ring 4 (shortcut, the
+  long diagonal) → one ring hyperlane. **Estimated 234 days** for an early science ship: the exits
+  sit far out (orbit 300 opposite each other in ring 1, 450 in ring 4), so each ring system is a
+  long sub-light crossing. Large systems keep empires apart but make the highway slow — design
+  tension with "help a distant ally" (smaller orbits, a speed bonus inside ring systems, exits
+  placed so usual routes do not cross a whole system). The black-hole stand-in also brings its
+  environmental hazards (disengagement chance −50 %, emergency FTL cooldown +50 %).
+
+**Run 5 (2026-11-03, `0.0.5-SPIKE`, a save from 2200.01.01): labels and the stale cache.**
+- First build failed to parse (a moved `}`; see `tools/check_script.py`); fixed, then rerun.
+- With `interface/ahw_spike.gfx` the "unknown sprite" error is gone and the gate is in the
+  outliner from creation, but **its label in the system view is missing until a save and reload**,
+  also after leaving and re-entering the system view. **Control: a vanilla `gateway_ruined` spawned
+  the same way (console) has no label either** (`_20`). So script-spawned megastructures get their
+  system-view label only on load — an engine limitation, not our definition. The mod should place
+  its gates when the galaxy is generated (or accept a missing label until the next load).
+- Before the tech, the ship's order showed only the missing tech (`_19`); after `ahw_spike.8`,
+  **"No known destination" again** (`_21`) — the earlier tooltip just listed the first failing
+  check. Flags-first order did not fix the destination; it is the stale route cache, as in run 4.
+- **`ahw_spike.9` (add and remove a ring hyperlane) does not refresh it** (`_22`–`_24`): the log
+  line is there, the gate still says "No known destination", ring 1 still "There is no route" with
+  cache distance −1, its name shows as "Unknown" and the ring's hyperlanes are not drawn, although
+  `set_visited` ran in `ahw_spike.1`. After the run-4 reload the same ring showed as "Unsurveyed
+  System, Intel Level: Low" with its hyperlanes drawn — so the stale part may be **our country's
+  knowledge of the ring**, not the topology. Candidates to try for a mid-game refresh: what the
+  game does when a ship first sees a system (sensor range over a ring system), `activate_gateway`,
+  `upgrade_megastructure_to` on the gate, and spawning the whole highway during galaxy generation
+  (before the first load).
+- **A save and reload fixed both again** (route into the ring and the gate's label; the user,
+  2026-11-03) — reproducible: whatever the game rebuilds on load is what the mod must trigger
+  mid-game, or avoid needing.
+- **Step 4, after the reload** (`_25`–`_27`): the gate offers "Travel to Highway Node"; the
+  science ship reached ring 1 on 2200.02.25 (~55 days from Sol). Ring 1's system view: the ring end
+  at the right edge (orbit 300, angle 0, where the ship arrived), the shortcut at the far left
+  edge (300, angle 180), the hyperlane arrivals from the neighbours clearly further in (top and
+  left). Exits are far apart as intended; hyperlane arrivals sit nearer the centre. Onward to
+  another ring system: 171 days.
+- **Vanilla's first-wormhole event fired** on arrival (`apoc.5`, "Natural Wormhole … If it could
+  somehow be stabilized…"): our shortcut is spawned as a natural wormhole, so the game treats it
+  as one. The mod's shortcuts need their own carrier (as the entry points) or must live with it.
+- All six ring systems are named "Highway Node" — indistinguishable. `0.0.5-SPIKE` now names
+  them "Highway Node 1"–"6" (`set_name` with a loc key).
+- **Step 5: the ring is unclaimable — confirmed with a control.** On a surveyed ring system the
+  construction ship's menu has no "Build Starbase (Outpost)" at all (`_28`); with `ahw_ring` removed
+  from every ring system by console it appears (75 influence, 90 alloys; `_29`); with the flag back
+  it is gone again. So the single-key override of `can_build_starbase_around` in
+  `zz_ahw_spike_rules.txt` wins, and the flag alone decides. A failing rule **hides** the order,
+  so the fail text `AHW_RING_UNCLAIMABLE` is never shown.
+- **Step 6 (closing by flag)** (`_31`–`_33`): right after `ahw_spike.4` the ship still routes
+  through Sol's gate; **after a save and reload it no longer does** (the user). So the node trigger
+  is applied, at the cache's rebuild: closing by flag works, with the same reload problem. (A first
+  reading — "the route uses the broken gate" — was wrong: B and C are random neighbours, different
+  per run; the run-5 log says B = Alpha Centauri (open), C = Barnard's Star (broken). Check the
+  log's names each run.)
+- **Time refreshes the route cache too** (the user's idea): after reopening Sol (`ahw_spike.5`),
+  letting the game run past the 1st of the next month brought the route Sol → ring 1 back
+  without a reload. **One day is enough** (closing Sol with `ahw_spike.4`, then one day: the route
+  no longer used Sol's gate). So the route cache is rebuilt on the daily tick. Every "no route" /
+  "No known destination" in runs 4 and 5 was taken **paused on 2200.01.01, before any day had
+  passed** — the reloads only stood in for the first tick. Opening and closing by flag work with a
+  delay of at most a day; no reload needed. (Labels: still only after a load.)
+- **Step 7, the lock**: after `ahw_spike.3` Sol's gate shows the lock symbol and our ships still
+  pass — as expected, `lock_bypass` gives the named country *exclusive* access. Whether other
+  empires are kept out is untested (needs another empire's ship at the gate).
+- **Step 8, tearing down** (`_36`): `remove_megastructure` on Sol's gate removes its bypass (the
+  report a day later lists none of type `ahw_spike_entry_1` in Sol) and, after the daily tick, the
+  route Sol → ring 1 is gone. The gate's model stays drawn in Sol's system view until the view is
+  rebuilt (zoom out to the galaxy and back in).
+- **Gate jumps are almost free for route-finding**: Sol → Procyon prefers Sol → ring 1 → Alpha
+  Centauri (B) → Procyon over the direct hyperlane, so the ring becomes a shortcut between neighbours.
+  Needs a cost per jump (`windup_time`: hyper relay 10 days, Shroud tunnel 40).
+
 Expected noise in `error.log`: a missing icon for `ahw_tech_spike` and missing portraits. Anything
 naming an `ahw_` key otherwise is a finding. Record the findings here and in
 `../stellaris-modding-insights` (proposed, not silently); delete the spike files once Phase 1 starts.
@@ -108,10 +273,10 @@ Paths are relative to the game install. "Spike" marks what only an in-game test 
 | Spawn the ring at game start | `spawn_system = { min_distance max_distance (0–100, relative to the scope) min_orientation_angle max_orientation_angle initializer hyperlane = no }`, then `add_hyperlane` | **Works (run 2)**: the angle is an absolute map direction; six steps closed a hexagon. Needs room: one step dropped the 10-unit spacing |
 | Place it around the core | `core_radius_perc` 0.2–0.3 per shape (`map/galaxy/galaxy_shapes.txt`); trigger `distance_to_core_percent` — **a fraction 0–1** (run 2) | Open: how empty the core really is; run 3 logs it |
 | Shortcuts scaled by galaxy size | trigger `galaxy_size`; `spawn_natural_wormhole = { bypass_type = … }` + `link_wormholes` (`common/scripted_effects/fallen_empire_scripted_effects.txt`, `give_…` wormhole pair) | Feasible, with our own bypass type if needed |
-| Ring systems stay neutral | game rules `can_build_starbase_around` and `can_add_claim` (`common/game_rules/00_rules.txt`), gated on a star flag `ahw_ring` | Feasible, but **overrides vanilla game rules** — one key each; a compat risk with mods touching the same rule |
+| Ring systems stay neutral | game rule `can_build_starbase_around` (`common/game_rules/00_rules.txt`), gated on a star flag `ahw_ring`; `can_add_claim` is moot (nobody owns the ring) | **Works (run 5)**: a one-key override in `zz_` loads last and wins; the outpost order disappears. Compat risk with mods overriding the same rule |
 | Entry points: broken → studied → repaired | ruined → restored megastructure pattern (`gateway_ness_ruined`/`_restored` in `common/megastructures/05_gateways.txt`, `hyper_relay_ruined` in `14_hyper_relay.txt`); study via special project or situation | Feasible |
 | Using them needs a tech | own `bypass_type` with `prerequisites = { ahw_tech_… }` and `country_can_use` (`common/bypass/00_bypasses.txt`, its header documents every field) | Feasible |
-| Exit only where repaired | **`scripted_connection` bypass** (L-gates, Shroud tunnels): one type per ring system, nexus = that ring system, node = a regular system flagged repaired; `link_wormholes` refuses megastructure bypasses (run 2) | Run 3: does removing the flag close it during play |
+| Exit only where repaired | **`scripted_connection` bypass** (L-gates, Shroud tunnels): one type per ring system, nexus = that ring system, node = a regular system flagged repaired; `link_wormholes` refuses megastructure bypasses (run 2) | **Works (run 5)**: open/close by the node flag, effective after the next daily tick. Not yet 1:1 (one type offers every end) |
 | Disable at a cost, or lock | megastructure `dismantle_cost`; `can_bypass_be_locked = yes` + effect `lock_bypass = { country duration }`, rule `can_lock_bypass` (system owner, overlord, nomad waystation) — this is what the astral action uses | Feasible |
 | The ring side can't be disabled | `dismantle_potential = { always = no }`, and nobody owns the system | Feasible |
 | Hyper relays in neutral space | vanilla `hyper_relay`'s `possible` needs own borders (or a subject's / a nomad waystation); `connection_type = hyper_relay` links relays in adjacent systems | Feasible with an own megastructure (`ahw_highway_relay`, `bypass_type = relay_bypass`) instead of overriding the vanilla one; alternatively ruined relays pre-placed on the ring |
@@ -129,6 +294,8 @@ points (any ring system → any repaired entry galaxy-wide), but a candidate for
 - Round galaxies (elliptical, ring) first; spirals and others later or never.
 - The ring is never claimable. Ring-side ends of entry points can't be damaged or disabled.
 - Entry points start broken; the regular-side end can be disabled (cost) or locked by its owner.
+- Entry points are 1:1: each regular-side gate has its own exit point in the ring system (one
+  bypass type per pair).
 - Ring systems are large, their exit points far apart on a wide outer orbit, so empires passing
   through can mostly avoid one another (`docs/design.md`, "The ring").
 

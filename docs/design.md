@@ -62,7 +62,13 @@ Entry points do not open next to an empire's capital (decided 2026-11-03). Each 
 **portal**: a new artificial system, unclaimable like the ring, joined by **one hyperlane** to a
 system 2–3 jumps from its capital. The empire's gates to the ring are in the portal. A dead end
 with a single lane is easy to defend: whoever comes out of the ring has to pass the anchor system,
-which the empire can claim and fortify.
+which the empire can claim and fortify. Placement details (decided 2026-11-03):
+
+- the anchor is a system 2–3 jumps out with as few lanes as possible — a dead end best — and
+  preferably without a gateway or wormhole of its own;
+- the portal's lane arrives in the anchor on the far side from the anchor's other lanes, so
+  whoever comes out of the portal has to cross the anchor system past its starbase;
+- the gate inside the portal sits opposite the portal's lane, near the system's edge.
 
 ### Hyper relays
 

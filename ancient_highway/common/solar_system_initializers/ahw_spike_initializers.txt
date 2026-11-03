@@ -31,3 +31,21 @@ ahw_spike_portal_init = {
 		has_ring = no
 	}
 }
+
+# SPIKE (0.0.8): the two probe systems that find the centre; they stay in the empty core, without
+# lanes (no effect deletes a system). Lore candidate: the highway's heart.
+ahw_spike_core_init = {
+	name = NAME_ahw_spike_core
+	class = "sc_black_hole"
+	prevent_anomalies = yes
+
+	flags = { ahw_core ahw_unclaimable suppress_archaeological_sites }
+
+	planet = {
+		class = "pc_black_hole"
+		orbit_distance = 0
+		orbit_angle = 1
+		size = 20
+		has_ring = no
+	}
+}

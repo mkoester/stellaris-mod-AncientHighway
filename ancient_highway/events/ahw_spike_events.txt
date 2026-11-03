@@ -29,28 +29,11 @@ event = {
 		ahw_spike_core_band = { FRACTION = 0.15 }
 		ahw_spike_core_band = { FRACTION = 0.2 }
 
-		# The ring around the galaxy's origin (no scope) ...
-		ahw_spike_build_ring_at_origin = yes
-		if = {
-			limit = { exists = event_target:ahw_ring_1 }
-			log = "AHW SPIKE ring: built without a scope - check that every node has about the same distance_to_core_percent"
-		}
-		# ... or, if that spawned nothing, around the system nearest the centre.
-		else = {
-			log = "AHW SPIKE ring: spawn_system without a scope spawned NOTHING - falling back to the system nearest the centre"
-			if = {
-				limit = { any_system = { distance_to_core_percent < 0.2 } }
-				random_system = { limit = { distance_to_core_percent < 0.2 } save_global_event_target_as = ahw_centre_system }
-			}
-			else_if = {
-				limit = { any_system = { distance_to_core_percent < 0.3 } }
-				random_system = { limit = { distance_to_core_percent < 0.3 } save_global_event_target_as = ahw_centre_system }
-			}
-			else = {
-				random_system = { limit = { distance_to_core_percent < 0.5 } save_global_event_target_as = ahw_centre_system }
-			}
-			ahw_spike_build_ring_around_centre_system = yes
-		}
+		# Run 8: spawn_system without a scope spawns nothing. Find the centre instead: two probe
+		# systems leapfrog corewards from the innermost system (generated: ahw_spike_find_centre),
+		# then the ring goes around the better probe.
+		ahw_spike_find_centre = yes
+		ahw_spike_build_ring_around_centre_system = yes
 
 		# A portal for every regular empire: a new system with one hyperlane, hanging off a system
 		# 2-3 jumps from the capital (a random walk), holding the empire's entry gate; its exit is
@@ -93,10 +76,13 @@ event = {
 							set_star_flag = ahw_portal
 							set_star_flag = ahw_unclaimable
 							save_global_event_target_as = ahw_portal_tmp
-							add_hyperlane = { from = this to = prev }
 						}
 					}
 				}
+				# Run 8 (user): the portal's lane must arrive in the anchor system away from its
+				# other lanes, so an attacker from the portal has to pass the anchor's starbase.
+				ahw_spike_place_portal = yes
+				add_hyperlane = { from = event_target:ahw_portal_tmp to = event_target:ahw_x_tmp }
 				ahw_spike_find_nearest_node = yes
 				ahw_spike_make_next_pair = yes
 				# What the study stage would teach (runs 4-5).

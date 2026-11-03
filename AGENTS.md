@@ -43,7 +43,7 @@ level. Prefix every key, id, flag and variable with `ahw_`. Tested in game on Li
 8. ~~Ring-side gate labels~~ — `extends_sensors = yes` shows the exits of usable entry points
    (run 7). Their right-click menu needs a ship in the system; route-finding does not.
 
-### The spike (`0.0.8-SPIKE`): what it does, how to run it
+### The spike (`0.0.9-SPIKE`): what it does, how to run it
 
 **Generated parts: `tools/gen_spike.py`** writes the bypass types (32 entry pairs and the
 shortcut), their megastructures, outliner icons, texts, and the ring builders and pair switch
@@ -51,17 +51,21 @@ shortcut), their megastructures, outliner icons, texts, and the ring builders an
 
 At game start `ahw_spike.10` (from `on_game_start`, no scope, as vanilla's `game_start.31`):
 1. logs how empty the core is;
-2. builds **the ring around the galaxy's centre** by `spawn_system` **without a scope** — Q: is
-   that relative to the galaxy's origin? Size by galaxy size (radius in map units / nodes): tiny
-   24/6, small 36/8, medium 48/10, large and huge 54/12, about 12 % of the setup radius. If it
-   spawns nothing, it falls back to a ring around the system nearest the centre (logged);
+2. **finds the centre** (run 8: no scope spawns nothing): two probe systems ("Highway Heart",
+   no lanes, they stay in the empty core) leapfrog with `move_system` `direction = corewards`
+   from the innermost system, steps 40 → 5 units, keeping the one with the lower
+   `distance_to_core_percent`; then builds **the ring around it**. Size by galaxy size (radius in
+   map units / nodes): tiny 24/6, small 36/8, medium 48/10, large and huge 54/12;
 3. a shortcut gate pair across the ring (node 1 ↔ the opposite node);
 4. **a portal for every regular empire** (AI too): a random walk from the capital to a system 2–3
-   jumps out (not the capital, not next to it, unowned), a new black-hole system 12–18 units from
-   it with **one hyperlane**, unclaimable (`ahw_unclaimable`); in it the empire's entry gate (pair
-   number from a counter), its exit in the nearest ring node, in that node's next free slot
-   (orbit 300 at 0°, 60°, …, then 220 at 30°, 90°, …). All repaired; every empire learns the types
-   and the ring (visited); only we get the tech (`ahw_spike.8`);
+   jumps out (not the capital, not next to it, unowned); a new black-hole system 12–18 units from
+   it, **moved around it until its lane arrives away from the anchor's other lanes** (score: the
+   worst of distance(portal, N) − distance(anchor, N) over the anchor's neighbours N, needs `12`,
+   then 9, 6, 3, 0; up to 6 tries each — uses `export_trigger_value_to_variable` on `distance`,
+   which vanilla never does: all 0 in the log = it does not work); then **one hyperlane**;
+   unclaimable (`ahw_unclaimable`). In it the empire's entry gate (pair number from a counter),
+   its exit in the nearest ring node, in that node's next free slot. All repaired; every empire
+   learns the types and the ring (visited); only we get the tech (`ahw_spike.8`);
 5. fires `ahw_spike.1` (our window: our portal, its anchor, our exit node) and a report.
 
 | Console (nothing selected) | Does |
@@ -75,20 +79,19 @@ At game start `ahw_spike.10` (from `on_game_start`, no scope, as vanilla's `game
 All findings go to `game.log`, lines starting `AHW SPIKE`. **Deselect before each console
 `event`** (Esc). **Let a day pass before judging any route.**
 
-**Before each run: `tools/check_script.py $(find ancient_highway -name '*.txt' -o -name '*.gfx')`**
-(nesting, and the keys directly inside each event; a brace count misses a `}` moved between
-blocks — `0.0.5-SPIKE`'s first build).
+**Checks before each run** (a brace count misses a `}` moved between blocks, `0.0.5-SPIKE`): `tools/gen_spike.py` (if the generator changed), then
+`tools/check_script.py $(find ancient_highway -name '*.txt' -o -name '*.gfx')` and
+`tools/check_refs.py ancient_highway` (every used name defined, every text and icon present).
 
-**Test, run 8** (Linux; only this mod; **a new campaign**; console on). Try **small elliptical**
-first, then one **spiral** and one **large** galaxy if time allows:
-1. Galaxy map, zoomed out: is the ring **around the centre**? In the log, do all ring nodes have
-   about the same `distance_to_core_percent`? Or did the fallback run?
-2. Our portal (named in the window): one hyperlane only, to a system 2–3 jumps from the capital?
-   Outpost refused there? Screenshot the map around the capital.
-3. `game.log`: a portal for every empire, or "NO portal for …"? How many exits per ring node?
-4. `event ahw_spike.8`, one day: route capital → portal → gate → our exit node; on along the ring
-   to the node nearest another empire, and through its exit into that empire's portal (its tech
-   is ours; their gate is open).
+**Test, run 9** (Linux; only this mod; **a new campaign**, small elliptical; console on):
+1. Galaxy map, zoomed out: is the ring **around the centre** now? Log: "centre: best probe at
+   distance_to_core_percent …" (close to 0?), ring nodes all about equal? Two "Highway Heart"
+   systems should sit in the middle, without lanes.
+2. Log: "portal placed off …: worst lane margin …" for every empire — real numbers (not all 0)?
+   Our portal: does its lane arrive in the anchor system away from the anchor's other lanes?
+   Screenshot the anchor's system view.
+3. Exits spread over the ring nodes, not piled on one?
+4. `event ahw_spike.8`, one day: route through the ring into another empire's portal.
 5. Copy `logs/game.log` and `logs/error.log` before quitting, plus the screenshots.
 
 **Run 1 (2026-11-03, 4.5.3 open beta, elliptical galaxy, `0.0.1-SPIKE`): stopped at the anchor.**
@@ -294,6 +297,19 @@ Barnard's Star.
   the system; the label needs sight** (through a usable entry point, or a ship). Route-finding
   needs neither, so the menu is a convenience only.
 
+**Run 8 (2026-11-03, `0.0.8-SPIKE`, small elliptical): portals work, the ring is off-centre.**
+- **`spawn_system` without a scope spawns nothing** (no node; `add_hyperlane` errors). The fallback
+  ring around a system < 0.3 from the centre is lopsided: its nodes at 0.16–0.35.
+- Seven empires, **seven portals**, pairs 1–7; ours 3 jumps from the capital, one lane. Exits
+  pile up on the near side of the lopsided ring (node 7: four, node 1: two, node 2: one).
+- No system closer to the centre than 0.2.
+- **Portal lane placement (user)**: our portal's lane arrives in the anchor system next to the
+  lane to Barnard's Star, so an attacker from the portal can pass the anchor's starbase at the
+  centre. Decided: the portal's lane must arrive away from the anchor's other lanes.
+- Found in the binary: `move_system`/`spawn_system` take **`direction = corewards`** (vanilla
+  uses `rimwards`, `events/origin_events_shadows_shroud.txt`). `check_variable` compares against
+  another scope's variable as `value < event_target:x.var` (vanilla).
+
 Expected noise in `error.log`: a missing icon for `ahw_tech_spike` and missing portraits. Anything
 naming an `ahw_` key otherwise is a finding. Record the findings here and in
 `../stellaris-modding-insights` (proposed, not silently); delete the spike files once Phase 1 starts.
@@ -336,6 +352,8 @@ points (any ring system → any repaired entry galaxy-wide), but a candidate for
   empire a new artificial, unclaimable system — the portal — hangs off a random system 2–3 jumps
   from the capital by a **single hyperlane**; the gates to the ring are in the portal. A dead end
   with one lane: easy to defend by design.
+  Its lane arrives in the anchor system **away from the anchor's other lanes** (run 8), so whoever
+  comes out of the portal has to cross the anchor system past its starbase.
 
 ## Open questions
 

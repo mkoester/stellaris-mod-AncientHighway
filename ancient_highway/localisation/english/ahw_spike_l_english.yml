@@ -14,6 +14,7 @@
  ahw_spike.6.desc:0 "remove_megastructure was applied to our entry gate in [ahw_player_portal.GetName]. Reports in game.log, now and one day later."
  NAME_ahw_spike_ring:0 "Highway Node"
  NAME_ahw_spike_portal:0 "Highway Portal"
+ NAME_ahw_spike_core:0 "Highway Heart"
  AHW_SPIKE_ENTRY:0 "Highway Entry Point"
  AHW_SPIKE_ENTRY_DESC:0 "SPIKE: an entry point of the Ancient Highway. Needs ahw_tech_spike."
  AHW_SPIKE_SHORTCUT:0 "Highway Shortcut"

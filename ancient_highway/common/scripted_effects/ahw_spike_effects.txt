@@ -71,8 +71,72 @@ ahw_spike_report = {
 		limit = { has_star_flag = ahw_portal }
 		ahw_spike_log_system = { WHAT = portal }
 	}
+	every_system = {
+		limit = { has_star_flag = ahw_core }
+		ahw_spike_log_system = { WHAT = centre_probe }
+	}
 	if = {
 		limit = { exists = event_target:ahw_player_portal }
 		event_target:ahw_player_portal = { ahw_spike_log_system = { WHAT = OUR_PORTAL } }
+	}
+}
+
+# this = system: its distance_to_core_percent into ahw_d.
+ahw_spike_measure = {
+	export_trigger_value_to_variable = {
+		trigger = distance_to_core_percent
+		variable = ahw_d
+	}
+}
+
+# One leapfrog step towards the centre: probe T moves $S$ corewards of probe A; if T is now closer
+# to the centre, the two swap roles (ahw_probe_a is always the best so far).
+ahw_spike_probe_step = {
+	event_target:ahw_probe_t = {
+		move_system = {
+			target = event_target:ahw_probe_a
+			min_distance >= $S$
+			max_distance <= $S$
+			max_jumps = 0
+			direction = corewards
+			hyperlane = no
+		}
+		ahw_spike_measure = yes
+	}
+	if = {
+		limit = {
+			event_target:ahw_probe_t = { check_variable = { which = ahw_d value < event_target:ahw_probe_a.ahw_d } }
+		}
+		event_target:ahw_probe_t = { save_global_event_target_as = ahw_probe_swap }
+		event_target:ahw_probe_a = { save_global_event_target_as = ahw_probe_t }
+		event_target:ahw_probe_swap = { save_global_event_target_as = ahw_probe_a }
+	}
+}
+
+# this = the portal (ahw_portal_tmp), anchor ahw_x_tmp. ahw_score = the worst, over the anchor's
+# other neighbours N, of distance(portal, N) - distance(anchor, N): about +r when the portal lies
+# opposite N's lane, -r beside it. 1000 when the anchor has no other lane.
+# Q: does export_trigger_value_to_variable export `distance` (vanilla never does)? All 0 = no.
+ahw_spike_portal_score = {
+	set_variable = { which = ahw_score value = 1000 }
+	event_target:ahw_x_tmp = {
+		every_neighbor_system = {
+			limit = { NOT = { is_same_value = event_target:ahw_portal_tmp } }
+			export_trigger_value_to_variable = {
+				trigger = distance
+				parameters = { source = event_target:ahw_portal_tmp type = euclidean }
+				variable = ahw_dp
+			}
+			export_trigger_value_to_variable = {
+				trigger = distance
+				parameters = { source = event_target:ahw_x_tmp type = euclidean }
+				variable = ahw_dx
+			}
+			subtract_variable = { which = ahw_dp value = ahw_dx }
+			if = {
+				limit = { check_variable = { which = ahw_dp value < event_target:ahw_portal_tmp.ahw_score } }
+				event_target:ahw_portal_tmp = { set_variable = { which = ahw_score value = prev.ahw_dp } }
+			}
+		}
 	}
 }

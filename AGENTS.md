@@ -43,7 +43,7 @@ level. Prefix every key, id, flag and variable with `ahw_`. Tested in game on Li
 8. ~~Ring-side gate labels~~ — `extends_sensors = yes` shows the exits of usable entry points
    (run 7). Their right-click menu needs a ship in the system; route-finding does not.
 
-### The spike (`0.0.10-SPIKE`): what it does, how to run it
+### The spike (`0.0.11-SPIKE`): what it does, how to run it
 
 **Generated parts: `tools/gen_spike.py`** writes the bypass types (32 entry pairs and the
 shortcut), their megastructures, outliner icons, texts, and the ring builders and pair switch
@@ -58,11 +58,12 @@ At game start `ahw_spike.10` (from `on_game_start`, no scope, as vanilla's `game
    map units / nodes): tiny 24/6, small 36/8, medium 48/10, large and huge 54/12;
 3. a shortcut gate pair across the ring (node 1 ↔ the opposite node);
 4. **a portal for every regular empire** (AI too): a random walk from the capital to a system 2–3
-   jumps out (not the capital, not next to it, unowned); a new black-hole system 15 units from it,
+   jumps out (not the capital, not next to it, unowned; **preferring one with at most two lanes**,
+   else any); a new black-hole system 15 units from it,
    measured at 4 compass points around it and moved once to the angle where its lane arrives
    farthest from the anchor's other lanes (worst margin logged: +15 = opposite all, −15 = beside
    one); then **one hyperlane**; unclaimable. In it the empire's entry gate, at that same orbit
-   angle — meant to face away from the anchor, opposite the portal's lane; its exit in the nearest
+   angle (facing away from the anchor, opposite the portal's lane — run 10), orbit 230; its exit in the nearest
    ring node, in that node's next free slot. All repaired; every empire learns the types and the
    ring (visited); only we get the tech (`ahw_spike.8`);
 5. fires `ahw_spike.1` (our window: our portal, its anchor, our exit node) and a report.
@@ -82,15 +83,12 @@ All findings go to `game.log`, lines starting `AHW SPIKE`. **Deselect before eac
 `tools/check_script.py $(find ancient_highway -name '*.txt' -o -name '*.gfx')` and
 `tools/check_refs.py ancient_highway` (every used name defined, every text and icon present).
 
-**Test, run 10** (Linux; only this mod; **a new campaign**, small elliptical; console on):
-1. Game start: still a long hang? (`game.log`: first and last `AHW SPIKE` line times.)
-2. Log: "portal placed off … at angle …: worst lane margin …" — mostly positive now? Different
-   angles per empire (if all moves ignored the angle, the measurements are noise)?
-3. Our anchor system (named in the window): does the portal's lane arrive away from its other
-   lanes, the anchor's starbase between? Screenshot the anchor's system view.
-4. Our portal's system view: is the gate **opposite** the lane's arrival? If not, where — mirrored,
-   rotated 90°? (Orbit angles vs. map angles.) Screenshot.
-5. Copy `logs/game.log` and `logs/error.log` before quitting, plus the screenshots.
+**Test, run 11** (Linux; only this mod; **a new campaign**, small elliptical; console on):
+1. Log: "portal placed off … worst lane margin …" — all positive now? Any "no anchor with <= 2
+   lanes … took any"?
+2. Our portal's system view: the gate just inside the orange circle? Or did the circle grow with
+   it? Screenshot.
+3. Copy `logs/game.log` and `logs/error.log` before quitting, plus the screenshots.
 
 **Run 1 (2026-11-03, 4.5.3 open beta, elliptical galaxy, `0.0.1-SPIKE`): stopped at the anchor.**
 - `random_system` with `distance_to_core_percent` 25–40 matched **nothing**, although the
@@ -316,6 +314,8 @@ failed and was slow.** Screenshot `2026_11_03_43`.
 - **`export_trigger_value_to_variable` exports `distance`** (`parameters = { source = … type =
   euclidean }`): real values in the log.
 - **Exits spread**: nodes 1, 2, 5, 6, 6, 7, 7, 8 (run 8, lopsided: four on one node).
+- **Routes through the ring work end to end**: after the tech and a day, ships route from our
+  portal through the ring into other empires' portals (the user).
 - **Portal placement failed**: margins −15.6 (ours: lane right beside another), −11 … +5.7. The
   search moved while below the bar, so it ended on the *last* random try, not the best.
 - **Game start hung ~80 s at "Loading Map Graphics"** — the mod: `AHW SPIKE` lines 21:42:28 →
@@ -325,6 +325,19 @@ failed and was slow.** Screenshot `2026_11_03_43`.
   each anchor lane's direction computed from the distances, then **one** move to the best of 12
   angles — 4 moves instead of ≤ 30. The gate in the portal at that orbit angle (user: opposite
   the portal's lane).
+
+**Run 10 (2026-11-03, `0.0.10-SPIKE`, small elliptical): portal placement works.** Screenshots
+`2026_11_03_44` (our anchor Vohaul), `_45` (our portal).
+- **Game start: 16 s of the mod's work** (centre 4 s, seven portals 12 s; run 9: 80 s) — faster,
+  "not really fast" on the older machine.
+- **`move_system` honours `min/max_orientation_angle`**: the portals took the computed angles
+  (180, 300, 90, 210, 60, 240, 60), margins 14.6, 10.0, 7.7, 1.4, −1.4, −5.9, −10.8. Negative ones
+  are anchors with lanes all around (no far side) → `0.0.11-SPIKE` prefers anchors with at most
+  two lanes (user), falling back to any.
+- Our portal's lane arrives in Vohaul away from its three other lanes (user: looks good).
+- **The gate sits opposite the portal's lane — orbit angles in a system match map angles.**
+- Scale in the portal's system view (`_45`): gate at orbit 80; the hyperlane arrival circle ~150,
+  the orange outer circle ~255. User: gate just inside the orange circle → `GATE_ORBIT = 230`.
 
 Expected noise in `error.log`: a missing icon for `ahw_tech_spike` and missing portraits. Anything
 naming an `ahw_` key otherwise is a finding. Record the findings here and in

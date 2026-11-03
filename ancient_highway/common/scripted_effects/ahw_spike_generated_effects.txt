@@ -331,51 +331,51 @@ ahw_spike_make_pair = {
 	event_target:ahw_portal_tmp = {
 		if = {
 			limit = { check_variable = { which = ahw_best_a value = 0 } }
-			spawn_megastructure = { type = ahw_spike_entry_gate_$N$ orbit_distance = 80 orbit_angle = 0 }
+			spawn_megastructure = { type = ahw_spike_entry_gate_$N$ orbit_distance = 230 orbit_angle = 0 }
 		}
 		else_if = {
 			limit = { check_variable = { which = ahw_best_a value = 30 } }
-			spawn_megastructure = { type = ahw_spike_entry_gate_$N$ orbit_distance = 80 orbit_angle = 30 }
+			spawn_megastructure = { type = ahw_spike_entry_gate_$N$ orbit_distance = 230 orbit_angle = 30 }
 		}
 		else_if = {
 			limit = { check_variable = { which = ahw_best_a value = 60 } }
-			spawn_megastructure = { type = ahw_spike_entry_gate_$N$ orbit_distance = 80 orbit_angle = 60 }
+			spawn_megastructure = { type = ahw_spike_entry_gate_$N$ orbit_distance = 230 orbit_angle = 60 }
 		}
 		else_if = {
 			limit = { check_variable = { which = ahw_best_a value = 90 } }
-			spawn_megastructure = { type = ahw_spike_entry_gate_$N$ orbit_distance = 80 orbit_angle = 90 }
+			spawn_megastructure = { type = ahw_spike_entry_gate_$N$ orbit_distance = 230 orbit_angle = 90 }
 		}
 		else_if = {
 			limit = { check_variable = { which = ahw_best_a value = 120 } }
-			spawn_megastructure = { type = ahw_spike_entry_gate_$N$ orbit_distance = 80 orbit_angle = 120 }
+			spawn_megastructure = { type = ahw_spike_entry_gate_$N$ orbit_distance = 230 orbit_angle = 120 }
 		}
 		else_if = {
 			limit = { check_variable = { which = ahw_best_a value = 150 } }
-			spawn_megastructure = { type = ahw_spike_entry_gate_$N$ orbit_distance = 80 orbit_angle = 150 }
+			spawn_megastructure = { type = ahw_spike_entry_gate_$N$ orbit_distance = 230 orbit_angle = 150 }
 		}
 		else_if = {
 			limit = { check_variable = { which = ahw_best_a value = 180 } }
-			spawn_megastructure = { type = ahw_spike_entry_gate_$N$ orbit_distance = 80 orbit_angle = 180 }
+			spawn_megastructure = { type = ahw_spike_entry_gate_$N$ orbit_distance = 230 orbit_angle = 180 }
 		}
 		else_if = {
 			limit = { check_variable = { which = ahw_best_a value = 210 } }
-			spawn_megastructure = { type = ahw_spike_entry_gate_$N$ orbit_distance = 80 orbit_angle = 210 }
+			spawn_megastructure = { type = ahw_spike_entry_gate_$N$ orbit_distance = 230 orbit_angle = 210 }
 		}
 		else_if = {
 			limit = { check_variable = { which = ahw_best_a value = 240 } }
-			spawn_megastructure = { type = ahw_spike_entry_gate_$N$ orbit_distance = 80 orbit_angle = 240 }
+			spawn_megastructure = { type = ahw_spike_entry_gate_$N$ orbit_distance = 230 orbit_angle = 240 }
 		}
 		else_if = {
 			limit = { check_variable = { which = ahw_best_a value = 270 } }
-			spawn_megastructure = { type = ahw_spike_entry_gate_$N$ orbit_distance = 80 orbit_angle = 270 }
+			spawn_megastructure = { type = ahw_spike_entry_gate_$N$ orbit_distance = 230 orbit_angle = 270 }
 		}
 		else_if = {
 			limit = { check_variable = { which = ahw_best_a value = 300 } }
-			spawn_megastructure = { type = ahw_spike_entry_gate_$N$ orbit_distance = 80 orbit_angle = 300 }
+			spawn_megastructure = { type = ahw_spike_entry_gate_$N$ orbit_distance = 230 orbit_angle = 300 }
 		}
 		else_if = {
 			limit = { check_variable = { which = ahw_best_a value = 330 } }
-			spawn_megastructure = { type = ahw_spike_entry_gate_$N$ orbit_distance = 80 orbit_angle = 330 }
+			spawn_megastructure = { type = ahw_spike_entry_gate_$N$ orbit_distance = 230 orbit_angle = 330 }
 		}
 	}
 	event_target:ahw_node_tmp = {

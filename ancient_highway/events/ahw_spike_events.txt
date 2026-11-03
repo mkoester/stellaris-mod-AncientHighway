@@ -44,24 +44,48 @@ event = {
 			clear_global_event_target = ahw_portal_tmp
 			clear_global_event_target = ahw_node_tmp
 			capital_star = { solar_system = { save_global_event_target_as = ahw_cap_tmp } }
+			# Run 10 (user): prefer anchors with at most two lanes; else any suitable one.
 			event_target:ahw_cap_tmp = {
 				random_neighbor_system = {
 					limit = {
 						NOT = { has_star_flag = ahw_unclaimable }
-						any_neighbor_system = { ahw_spike_portal_anchor_ok = yes }
+						any_neighbor_system = { ahw_spike_portal_anchor_good = yes }
 					}
 					random_neighbor_system = {
-						limit = { ahw_spike_portal_anchor_ok = yes }
+						limit = { ahw_spike_portal_anchor_good = yes }
 						save_global_event_target_as = ahw_x_tmp
 						random = {
 							chance = 50
 							random_neighbor_system = {
-								limit = { ahw_spike_portal_anchor_ok = yes }
+								limit = { ahw_spike_portal_anchor_good = yes }
 								save_global_event_target_as = ahw_x_tmp
 							}
 						}
 					}
 				}
+			}
+			if = {
+				limit = { NOT = { exists = event_target:ahw_x_tmp } }
+				event_target:ahw_cap_tmp = {
+					random_neighbor_system = {
+						limit = {
+							NOT = { has_star_flag = ahw_unclaimable }
+							any_neighbor_system = { ahw_spike_portal_anchor_ok = yes }
+						}
+						random_neighbor_system = {
+							limit = { ahw_spike_portal_anchor_ok = yes }
+							save_global_event_target_as = ahw_x_tmp
+							random = {
+								chance = 50
+								random_neighbor_system = {
+									limit = { ahw_spike_portal_anchor_ok = yes }
+									save_global_event_target_as = ahw_x_tmp
+								}
+							}
+						}
+					}
+				}
+				log = "AHW SPIKE no anchor with <= 2 lanes within 3 jumps of [This.GetName]; took any"
 			}
 			if = {
 				limit = { exists = event_target:ahw_x_tmp }

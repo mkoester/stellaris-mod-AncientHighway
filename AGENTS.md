@@ -34,6 +34,7 @@ Paths are relative to the game install. "Spike" marks what only an in-game test 
 | Disable at a cost, or lock | megastructure `dismantle_cost`; `can_bypass_be_locked = yes` + effect `lock_bypass = { country duration }`, rule `can_lock_bypass` (system owner, overlord, nomad waystation) — this is what the astral action uses | Feasible |
 | The ring side can't be disabled | `dismantle_potential = { always = no }`, and nobody owns the system | Feasible |
 | Hyper relays in neutral space | vanilla `hyper_relay`'s `possible` needs own borders (or a subject's / a nomad waystation); `connection_type = hyper_relay` links relays in adjacent systems | Feasible with an own megastructure (`ahw_highway_relay`, `bypass_type = relay_bypass`) instead of overriding the vanilla one; alternatively ruined relays pre-placed on the ring |
+| Large ring systems, exit points far apart (little accidental fighting) | system initializers and `spawn_megastructure` / `spawn_natural_wormhole` take `orbit_distance` and `orbit_angle`; vanilla's farthest is the L-Gate at `orbit_distance = 360` (`common/solar_system_initializers/distant_stars_initializers.txt`); combat starts within `COMBAT_DETECT_RANGE_MULT` (1.05) × weapon range (`common/defines/00_defines.txt`) | Likely feasible. **Spike:** the largest usable orbit; where hyperlane arrival points land in a large system; whether flights between exit points cross the centre |
 | Ring "above/below" the galaxy | static galaxies take a `z` coordinate; `spawn_system` and `move_system` take none | **Likely not feasible** at runtime. Look distinct instead: own star class, a nebula, the artificial centre object |
 | AI uses the highway | unknown whether AI pathfinding takes custom bypasses into account | Open — test once something runs |
 
@@ -47,6 +48,8 @@ points (any ring system → any repaired entry galaxy-wide), but a candidate for
 - Round galaxies (elliptical, ring) first; spirals and others later or never.
 - The ring is never claimable. Ring-side ends of entry points can't be damaged or disabled.
 - Entry points start broken; the regular-side end can be disabled (cost) or locked by its owner.
+- Ring systems are large, their exit points far apart on a wide outer orbit, so empires passing
+  through can mostly avoid one another (`docs/design.md`, "The ring").
 
 ## Open questions
 
@@ -59,7 +62,9 @@ gets pre-placed relays; how the shortcut count scales; lore (`docs/lore.md`).
 - **Phase 0 — spike** (Linux, a throwaway galaxy; console `event ahw_spike.1`): spawn a six-system
   ring chained around the core, flag it `ahw_ring`, add the hyperlanes; try to build an outpost
   there (refused?); spawn one entry-point pair with an own bypass type gated on a tech; travel it
-  with and without the tech; lock it (`lock_bypass`) and dismantle the regular-side end. Log
+  with and without the tech; lock it (`lock_bypass`) and dismantle the regular-side end; place
+  exit points at growing orbits (360 and beyond) and watch where arrivals land and how fleets fly
+  between them. Log
   positions (`distance_to_core_percent`) and outcomes to `game.log` with an `AHW SPIKE` prefix;
   screenshots of the galaxy map. Copy `game.log` and `error.log` before restarting the game.
   Findings go to `../stellaris-modding-insights` (proposed, not silently).

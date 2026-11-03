@@ -18,6 +18,18 @@ reach — and that makes distant alliances pointless in many playthroughs.
 - Ring systems are joined to each other by ordinary hyperlanes.
 - They can never be claimed or settled: no outposts, no claims — always neutral ground.
 - No ordinary star in the centre, but something artificial (see `lore.md`).
+- **Ring systems are large, and their exit points far apart** (decided 2026-11-03). Why: little
+  accidental fighting — empires passing through should mostly be able to avoid one another.
+  Fleets in the same system only fight within weapon range (`COMBAT_DETECT_RANGE_MULT` = 1.05 ×
+  the fleet's longest range) or a hostile's aggro range, so distance is the protection:
+  - exit points (ring side of entry points, hyperlane arrivals, shortcut ends) sit on a wide outer
+    orbit, spread evenly around the system;
+  - the artificial centre object stays in the middle, so routes between exit points should run
+    along the edge, not through a shared centre — open whether in-system movement allows that
+    (ships fly straight lines);
+  - nothing worth stopping for on the way (no planets to survey or mine, no shared station), so
+    nobody loiters;
+  - evasive/passive fleet stances remain the player's own tool to avoid combat.
 - Visually distinct from the rest of the galaxy (own star class, possibly a nebula). The first
   idea — the ring sitting a bit above or below the galactic plane — is likely impossible: systems
   spawned during a game get no height coordinate.
@@ -72,3 +84,6 @@ an own megastructure type). Alternative: ruined relays come with the ring and ca
 8. AI: can it plan routes through custom bypasses; should it repair, lock, disable?
 9. Fallen and awakened empires, crises: special rules?
 10. Cost and timing of disabling (and re-repairing).
+11. How large can a ring system be, and how far apart can its exit points sit? Where do hyperlane
+    arrival points land in a large system? Does a straight flight between two exit points cross
+    the centre (and thus everyone else's path)?

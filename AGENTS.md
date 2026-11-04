@@ -7,7 +7,10 @@ block for good (not a shortcut), so help for a distant ally becomes possible. Fu
 `docs/design.md`; lore (open): `docs/lore.md`.
 
 The user's original idea and requirements are kept verbatim in `IDEA.md` on the branch `idea`
-(orphan, pushed, **never merged**; later requirements are appended there, also verbatim). This
+(orphan, pushed, **never merged**; later requirements are appended there, also verbatim). Append
+in a worktree, never by switching the main checkout: `git worktree add
+../worktrees/stellaris-mod-AncientHighway@idea idea`, edit, hand over the commit with `git worktree
+remove` after it. This
 file and `docs/` are the living design.
 
 Private for now. Workshop search 2026-11-03 found nothing alike: the nearest is *Wild Space*
@@ -122,6 +125,11 @@ At game start `ahw_spike.10` (from `on_game_start`, no scope, as vanilla's `game
 
 All findings go to `game.log`, lines starting `AHW SPIKE`. **Deselect before each console
 `event`** (Esc). **Let a day pass before judging any route.**
+
+**Test steps for the user are written in plain words** — what to set up, what to type, what to
+click, what to screenshot — not as numbered checks naming internals (user, run 17: "I don't really
+understand the steps"). Mod files load at game start: a change made during a run reaches only the
+next game, so give a console line for the running one when needed.
 
 **Checks before each run** (a brace count misses a `}` moved between blocks, `0.0.5-SPIKE`): `tools/gen_spike.py` (if the generator changed), then
 `tools/check_script.py $(find ancient_highway -name '*.txt' -o -name '*.gfx')` and

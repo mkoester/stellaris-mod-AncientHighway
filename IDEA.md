@@ -61,3 +61,9 @@ yes, but please place it even further away from the black whole (just a bit insi
 yes, prefer anchors with fewer lanes
 
 should have picked another system to connect the portal system (Bapagia, Edemar, Xir (although it already has some gateway, maybe de-prioritize these))
+
+### The ring around the galaxy (after spike run 12)
+
+I want the ring go around the galaxy. and I want many more empty systems inbetween
+reason: I don't want to create shortcuts - I want to create a second way to get everywhere which cannot be permanently blocked by closed borders
+so I would say it should take roughly the same time (or a bit more) to go around the outer highway as goind around the galaxy once (in the middle between the core and outer rim)

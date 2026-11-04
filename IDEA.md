@@ -71,3 +71,7 @@ so I would say it should take roughly the same time (or a bit more) to go around
 ### On fights and the ring's shape (after the redesign)
 
 accept the fights, follow the outline
+
+### On the ring's speed (after spike run 15)
+
+Slower ring systems: make them bigger (that way the same highway can be crossed later in the game when ship speed increases)

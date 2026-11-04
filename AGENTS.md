@@ -530,6 +530,10 @@ lock order work.** No screenshots; the user: "everything worked as expected".
 - **Identical log lines are dropped — confirmed**: the report printed one "Highway Portal:
   BROKEN" for six broken AI portals (run 12's inference). The log line for the study named the
   ship instead of the system (`[This.System.GetName]` in ship scope) → fixed after the run.
+- **A second `lock_bypass` replaces the first** (there is no unlock effect): both test locks
+  (360 days, for another empire) re-locked for us for 1 day by console `effect`, two days later
+  our ship passed the gate again (user). So a lock can be lifted early, and `ahw_spike.9` does
+  that from the next game on.
 - AI empires had not studied their portals by 20:06 (their anchors unowned; ~a year in).
 - error.log: nothing new.
 

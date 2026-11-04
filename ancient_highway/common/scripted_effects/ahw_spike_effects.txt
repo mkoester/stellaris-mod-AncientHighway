@@ -29,7 +29,8 @@ ahw_spike_log_system = {
 		variable = ahw_core_pct
 	}
 	log = "AHW SPIKE \\[This.GetName]: distance_to_core_percent (a fraction) = \\[This.ahw_core_pct], exits = \\[This.ahw_exits], pair = \\[This.ahw_pair] -- $WHAT$"
-	if = { limit = { has_star_flag = ahw_closed } log = "AHW SPIKE   \\[This.GetName]: CLOSED" }
+	if = { limit = { has_star_flag = ahw_broken } log = "AHW SPIKE   \\[This.GetName]: BROKEN" }
+	if = { limit = { has_star_flag = ahw_studied } log = "AHW SPIKE   \\[This.GetName]: studied" }
 	if = {
 		limit = { exists = owner }
 		log = "AHW SPIKE   \\[This.GetName]: owned by \\[This.Owner.GetName]"

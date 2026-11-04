@@ -255,21 +255,21 @@ def bypass_block(key, name, node, nexus, *, tech, windup, lockable, sensors, fra
 def gen_bypasses():
     out = [GENERATED, '''# SPIKE (Phase 0, 0.0.8). Field meanings: the header of vanilla's common/bypass/00_bypasses.txt.
 # Entry points are 1:1: one scripted-connection type per pair (run 6). node = the empire's portal
-# system (flag ahw_entry_N, and not ahw_closed: closing, breaking), nexus = the ring system with
+# system (flag ahw_entry_N, and not ahw_broken: until repaired, 0.0.18), nexus = the ring system with
 # that pair's exit (flag ahw_exit_N). windup_time = 10 stops detours through the ring (run 6);
 # extends_sensors = yes shows the exit through a usable entry point (run 7).
 ''']
     for n in range(1, PAIRS + 1):
         out.append(bypass_block(
             f'ahw_spike_entry_{n}', 'AHW_SPIKE_ENTRY',
-            f'has_star_flag = ahw_entry_{n} NOT = {{ has_star_flag = ahw_closed }}',
+            f'has_star_flag = ahw_entry_{n} NOT = {{ has_star_flag = ahw_broken }}',
             f'has_star_flag = ahw_exit_{n}',
             tech=True, windup=10, lockable='yes', sensors='yes', frame=25, effect='gateway'))
     return ''.join(out)
 
 
 def mega_block(key, entity, btype, ring_side, comment):
-    extra = '\n\tdismantle_potential = { always = no }' if ring_side else ''
+    extra = '\n\tdismantle_potential = { always = no }'  # user, 2026-11-04: repaired once, never dismantled
     return f'''
 # {comment}
 {key} = {{
@@ -291,7 +291,7 @@ def megastructures():
     m = {}
     for n in range(1, PAIRS + 1):
         m[f'ahw_spike_entry_gate_{n}'] = ('deactivated_gateway_entity', f'ahw_spike_entry_{n}', False,
-                                          f'Portal end of entry point {n} (removable).',
+                                          f'Portal end of entry point {n}.',
                                           'Highway Entry Point', 'the portal end of an entry point.', 'gateway_ruined')
         m[f'ahw_spike_entry_exit_{n}'] = ('reactivated_gateway_entity', f'ahw_spike_entry_{n}', True,
                                           f'Ring end of entry point {n}: never dismantled.',
@@ -631,6 +631,17 @@ ahw_spike_find_centre = {
 
     out.append(portal_placement())
 
+    lock = '\n'.join(f'''	{'if' if n == 1 else 'else_if'} = {{
+		limit = {{ check_variable = {{ which = ahw_pair value = {n} }} }}
+		every_system = {{
+			limit = {{ has_star_flag = ahw_exit_{n} }}
+			every_bypass_in_system = {{
+				limit = {{ is_bypass_type = ahw_spike_entry_{n} }}
+				lock_bypass = {{ country = $COUNTRY$ duration = 360 }}
+			}}
+		}}
+	}}''' for n in range(1, PAIRS + 1))
+    out.append(f'\n# this = a portal: locks the ring end of its pair for $COUNTRY$, 360 days (0.0.18 test:\n# does a lock on the portal\'s gate alone keep arrivals from the ring out?).\nahw_spike_lock_ring_end = {{\n{lock}\n}}\n')
     learn = '\n'.join(f'\tadd_seen_bypass_type = ahw_spike_entry_{n}' for n in range(1, PAIRS + 1))
     out.append(f'\n# this = country: knows every highway bypass type (run 4).\nahw_spike_learn_types = {{\n{learn}\n}}\n')
     return ''.join(out)

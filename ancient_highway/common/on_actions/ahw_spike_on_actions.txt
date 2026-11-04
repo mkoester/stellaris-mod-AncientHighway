@@ -6,3 +6,10 @@ on_game_start = {
 		ahw_spike.10
 	}
 }
+
+# 0.0.18: each month, offer the study and the repair of the portals a country's anchors hold.
+on_monthly_pulse_country = {
+	events = {
+		ahw_spike.20
+	}
+}

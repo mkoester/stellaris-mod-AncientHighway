@@ -1,0 +1,36 @@
+# SPIKE (Phase 0, 0.0.18). Entry points start broken (star flag ahw_broken on the portal). The
+# anchor's owner (user, 2026-11-04) studies the gate with a science ship, researches
+# ahw_tech_spike, pays for the repair (event ahw_spike.21) and repairs it with a construction
+# ship - once, for good. Offered by the monthly check ahw_spike.20.
+
+special_project = {
+	key = AHW_SPIKE_STUDY_PROJECT
+	cost = 0
+	days_to_research = 30
+	tech_department = physics_technology
+	picture = GFX_evt_engineering_research
+	icon = "gfx/interface/icons/situation_log/situation_log_quest.dds"
+
+	event_scope = ship_event
+	requirements = { shipclass_science_ship = 1 }
+
+	on_success = {
+		ship_event = { id = ahw_spike.22 }
+	}
+}
+
+special_project = {
+	key = AHW_SPIKE_REPAIR_PROJECT
+	cost = 0
+	days_to_research = 90
+	tech_department = engineering_technology
+	picture = GFX_evt_engineering_research
+	icon = "gfx/interface/icons/situation_log/situation_log_engineering.dds"
+
+	event_scope = ship_event
+	requirements = { shipclass_constructor = 1 }
+
+	on_success = {
+		ship_event = { id = ahw_spike.23 }
+	}
+}

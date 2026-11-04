@@ -1,5 +1,6 @@
-# SPIKE (Phase 0): vanilla's can_build_starbase_around (common/game_rules/00_rules.txt, 4.5.3)
-# plus the ahw_unclaimable check (ring and portals). Q: does a single-key override of a game rule win, and from
+# SPIKE (Phase 0): vanilla's can_build_starbase_around and can_lock_bypass
+# (common/game_rules/00_rules.txt, 4.5.3), each with one AHW addition: the ahw_unclaimable check
+# (ring and portals), and the portal's anchor owner may place a Dimensional Lock (0.0.18). Q: does a single-key override of a game rule win, and from
 # which file name (zz_ = loads last)?
 
 # Root/this = country
@@ -20,6 +21,64 @@ can_build_starbase_around = {
 		from = {
 			NOT = {
 				solar_system = { has_star_flag = ahw_unclaimable }
+			}
+		}
+	}
+}
+
+# Q (0.0.18): is the Dimensional Lock order offered on our portal's gate once we own the anchor?
+can_lock_bypass = {
+	exists = this
+	exists = from
+	OR = {
+		# The owner of the science ship owns the system.
+		is_same_value = from.owner
+		# Or is the overlord of an empire that owns the system.
+		AND = {
+			is_overlord = yes
+			any_subject = {
+				is_same_value = from.owner
+			}
+		}
+		# Or is a nomadic empire with a waystation in the system.
+		AND = {
+			is_nomadic = yes
+			any_owned_nonprimary_starbase = {
+				is_waystation_starbase = yes
+				solar_system = {
+					is_same_value = from
+				}
+			}
+		}
+		# AHW: or owns the anchor of this Highway portal - the one system the portal's single lane
+		# leads to (user, 2026-11-04: the anchor's owner studies, repairs and locks the portal).
+		AND = {
+			from = { has_star_flag = ahw_portal }
+			OR = {
+				# two forms of the same condition: one relies on root = this country, the other
+				# on from staying the rule's system inside a nested scope
+				from = {
+					any_neighbor_system = {
+						exists = owner
+						owner = { is_same_value = root }
+					}
+				}
+				any_system_within_border = {
+					has_hyperlane_to = from
+				}
+			}
+		}
+		# Or is the overlord of an empire of a nomadic empire with a waystation in the system.
+		AND = {
+			is_overlord = yes
+			any_subject = {
+				is_nomadic = yes
+				any_owned_nonprimary_starbase = {
+					is_waystation_starbase = yes
+					solar_system = {
+						is_same_value = from
+					}
+				}
 			}
 		}
 	}

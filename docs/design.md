@@ -1,6 +1,6 @@
 # Design
 
-Status 2026-11-04: in a feasibility spike (runs 1–12); the ring moves to the galaxy's outside. The building blocks behind each mechanic, and how
+Status 2026-11-04: in a feasibility spike (runs 1–17). The building blocks behind each mechanic, and how
 sure we are of them, are in `../AGENTS.md`, "Feasibility".
 
 ## The problem
@@ -52,14 +52,19 @@ The connections between the ring and the regular galaxy are special, not hyperla
 
 - A ring system can connect to **several** regular systems — **each connection is 1:1**: one
   regular-side entry point, one exit point of its own in the ring system (decided 2026-11-03).
-- **At first every entry point is broken.** It must be studied (event chain, special project or
-  situation — open which) before it can be repaired.
+- **At first every entry point is broken.** **The anchor's owner** — whoever owns the system the
+  portal hangs off — studies it with a science ship (a special project), which reveals the ring
+  and the network and makes the technology researchable; then pays alloys and repairs it with a
+  construction ship (a special project) — **once, for good** (decided 2026-11-04).
 - **Using entry points needs a special technology**, unlocked by the study.
 - **One can only exit at an entry point that is already repaired.** An unrepaired entry point
   leads nowhere. This keeps empires from expanding early through the ring and overrunning
   arbitrary empires, or being overrun too early.
-- **The regular-side end can be disabled again** by its system's owner, at a cost, **or locked**
-  with the existing mechanics (the dimensional lock of the astral actions).
+- **A repaired entry point is never dismantled** (decided 2026-11-04). To keep others out, **the
+  anchor's owner places vanilla's Dimensional Lock** on it — the astral action and the science
+  ship order unchanged; the mod only lets the anchor's owner place it in the portal (the game rule
+  `can_lock_bypass`). Without the Astral Planes DLC there is no lock, as for any vanilla bypass.
+  No decisions or edicts (the user's preference).
 - **The ring-side end can never be disabled or damaged.**
 
 ### Portals
@@ -92,9 +97,9 @@ an own megastructure type). Alternative: ruined relays come with the ring and ca
 
 ## Open questions
 
-1. Who can repair an entry point — any empire, or only the owner of the regular system? What if the
-   regular system is unowned?
-2. Study: special project, event chain or situation? Per entry point, or once per empire?
+1. ~~Who can repair~~ — the anchor's owner (2026-11-04). Until someone owns the anchor, the
+   portal stays broken.
+2. ~~Study~~ — a special project per entry point; the first one teaches the whole network.
 3. How many entry points per ring system, and how are their regular-side systems chosen (nearest
    systems at game start, one per sector of the galaxy)?
 4. Ring size: systems per ring by galaxy size, and the time per system, both from the yardstick
@@ -105,6 +110,6 @@ an own megastructure type). Alternative: ruined relays come with the ring and ca
    systems beyond the outer rim.
 8. AI: can it plan routes through custom bypasses; should it repair, lock, disable?
 9. Fallen and awakened empires, crises: special rules?
-10. Cost and timing of disabling (and re-repairing).
+10. ~~Disabling~~ — none; only the Dimensional Lock (2026-11-04). Open: the repair's cost and time.
 11. Can systems be spawned beyond the galaxy's outer edge at all (map bounds, camera, the galaxy
     map's background)? Spike first.

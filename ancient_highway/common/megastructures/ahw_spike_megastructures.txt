@@ -2,7 +2,7 @@
 # SPIKE (Phase 0, 0.0.8). Entities are vanilla's, referenced by name. Both ends of a pair
 # carry the same scripted-connection bypass, as lgate_base does.
 
-# Portal end of entry point 1 (removable).
+# Portal end of entry point 1.
 ahw_spike_entry_gate_1 = {
 	entity = "deactivated_gateway_entity"
 	portrait = "GFX_megastructure_construction_background"
@@ -13,6 +13,7 @@ ahw_spike_entry_gate_1 = {
 	bypass_type = ahw_spike_entry_1
 
 	potential = { always = no }
+	dismantle_potential = { always = no }
 }
 
 # Ring end of entry point 1: never dismantled.
@@ -29,7 +30,7 @@ ahw_spike_entry_exit_1 = {
 	dismantle_potential = { always = no }
 }
 
-# Portal end of entry point 2 (removable).
+# Portal end of entry point 2.
 ahw_spike_entry_gate_2 = {
 	entity = "deactivated_gateway_entity"
 	portrait = "GFX_megastructure_construction_background"
@@ -40,6 +41,7 @@ ahw_spike_entry_gate_2 = {
 	bypass_type = ahw_spike_entry_2
 
 	potential = { always = no }
+	dismantle_potential = { always = no }
 }
 
 # Ring end of entry point 2: never dismantled.
@@ -56,7 +58,7 @@ ahw_spike_entry_exit_2 = {
 	dismantle_potential = { always = no }
 }
 
-# Portal end of entry point 3 (removable).
+# Portal end of entry point 3.
 ahw_spike_entry_gate_3 = {
 	entity = "deactivated_gateway_entity"
 	portrait = "GFX_megastructure_construction_background"
@@ -67,6 +69,7 @@ ahw_spike_entry_gate_3 = {
 	bypass_type = ahw_spike_entry_3
 
 	potential = { always = no }
+	dismantle_potential = { always = no }
 }
 
 # Ring end of entry point 3: never dismantled.
@@ -83,7 +86,7 @@ ahw_spike_entry_exit_3 = {
 	dismantle_potential = { always = no }
 }
 
-# Portal end of entry point 4 (removable).
+# Portal end of entry point 4.
 ahw_spike_entry_gate_4 = {
 	entity = "deactivated_gateway_entity"
 	portrait = "GFX_megastructure_construction_background"
@@ -94,6 +97,7 @@ ahw_spike_entry_gate_4 = {
 	bypass_type = ahw_spike_entry_4
 
 	potential = { always = no }
+	dismantle_potential = { always = no }
 }
 
 # Ring end of entry point 4: never dismantled.
@@ -110,7 +114,7 @@ ahw_spike_entry_exit_4 = {
 	dismantle_potential = { always = no }
 }
 
-# Portal end of entry point 5 (removable).
+# Portal end of entry point 5.
 ahw_spike_entry_gate_5 = {
 	entity = "deactivated_gateway_entity"
 	portrait = "GFX_megastructure_construction_background"
@@ -121,6 +125,7 @@ ahw_spike_entry_gate_5 = {
 	bypass_type = ahw_spike_entry_5
 
 	potential = { always = no }
+	dismantle_potential = { always = no }
 }
 
 # Ring end of entry point 5: never dismantled.
@@ -137,7 +142,7 @@ ahw_spike_entry_exit_5 = {
 	dismantle_potential = { always = no }
 }
 
-# Portal end of entry point 6 (removable).
+# Portal end of entry point 6.
 ahw_spike_entry_gate_6 = {
 	entity = "deactivated_gateway_entity"
 	portrait = "GFX_megastructure_construction_background"
@@ -148,6 +153,7 @@ ahw_spike_entry_gate_6 = {
 	bypass_type = ahw_spike_entry_6
 
 	potential = { always = no }
+	dismantle_potential = { always = no }
 }
 
 # Ring end of entry point 6: never dismantled.
@@ -164,7 +170,7 @@ ahw_spike_entry_exit_6 = {
 	dismantle_potential = { always = no }
 }
 
-# Portal end of entry point 7 (removable).
+# Portal end of entry point 7.
 ahw_spike_entry_gate_7 = {
 	entity = "deactivated_gateway_entity"
 	portrait = "GFX_megastructure_construction_background"
@@ -175,6 +181,7 @@ ahw_spike_entry_gate_7 = {
 	bypass_type = ahw_spike_entry_7
 
 	potential = { always = no }
+	dismantle_potential = { always = no }
 }
 
 # Ring end of entry point 7: never dismantled.
@@ -191,7 +198,7 @@ ahw_spike_entry_exit_7 = {
 	dismantle_potential = { always = no }
 }
 
-# Portal end of entry point 8 (removable).
+# Portal end of entry point 8.
 ahw_spike_entry_gate_8 = {
 	entity = "deactivated_gateway_entity"
 	portrait = "GFX_megastructure_construction_background"
@@ -202,6 +209,7 @@ ahw_spike_entry_gate_8 = {
 	bypass_type = ahw_spike_entry_8
 
 	potential = { always = no }
+	dismantle_potential = { always = no }
 }
 
 # Ring end of entry point 8: never dismantled.
@@ -218,7 +226,7 @@ ahw_spike_entry_exit_8 = {
 	dismantle_potential = { always = no }
 }
 
-# Portal end of entry point 9 (removable).
+# Portal end of entry point 9.
 ahw_spike_entry_gate_9 = {
 	entity = "deactivated_gateway_entity"
 	portrait = "GFX_megastructure_construction_background"
@@ -229,6 +237,7 @@ ahw_spike_entry_gate_9 = {
 	bypass_type = ahw_spike_entry_9
 
 	potential = { always = no }
+	dismantle_potential = { always = no }
 }
 
 # Ring end of entry point 9: never dismantled.
@@ -245,7 +254,7 @@ ahw_spike_entry_exit_9 = {
 	dismantle_potential = { always = no }
 }
 
-# Portal end of entry point 10 (removable).
+# Portal end of entry point 10.
 ahw_spike_entry_gate_10 = {
 	entity = "deactivated_gateway_entity"
 	portrait = "GFX_megastructure_construction_background"
@@ -256,6 +265,7 @@ ahw_spike_entry_gate_10 = {
 	bypass_type = ahw_spike_entry_10
 
 	potential = { always = no }
+	dismantle_potential = { always = no }
 }
 
 # Ring end of entry point 10: never dismantled.
@@ -272,7 +282,7 @@ ahw_spike_entry_exit_10 = {
 	dismantle_potential = { always = no }
 }
 
-# Portal end of entry point 11 (removable).
+# Portal end of entry point 11.
 ahw_spike_entry_gate_11 = {
 	entity = "deactivated_gateway_entity"
 	portrait = "GFX_megastructure_construction_background"
@@ -283,6 +293,7 @@ ahw_spike_entry_gate_11 = {
 	bypass_type = ahw_spike_entry_11
 
 	potential = { always = no }
+	dismantle_potential = { always = no }
 }
 
 # Ring end of entry point 11: never dismantled.
@@ -299,7 +310,7 @@ ahw_spike_entry_exit_11 = {
 	dismantle_potential = { always = no }
 }
 
-# Portal end of entry point 12 (removable).
+# Portal end of entry point 12.
 ahw_spike_entry_gate_12 = {
 	entity = "deactivated_gateway_entity"
 	portrait = "GFX_megastructure_construction_background"
@@ -310,6 +321,7 @@ ahw_spike_entry_gate_12 = {
 	bypass_type = ahw_spike_entry_12
 
 	potential = { always = no }
+	dismantle_potential = { always = no }
 }
 
 # Ring end of entry point 12: never dismantled.
@@ -326,7 +338,7 @@ ahw_spike_entry_exit_12 = {
 	dismantle_potential = { always = no }
 }
 
-# Portal end of entry point 13 (removable).
+# Portal end of entry point 13.
 ahw_spike_entry_gate_13 = {
 	entity = "deactivated_gateway_entity"
 	portrait = "GFX_megastructure_construction_background"
@@ -337,6 +349,7 @@ ahw_spike_entry_gate_13 = {
 	bypass_type = ahw_spike_entry_13
 
 	potential = { always = no }
+	dismantle_potential = { always = no }
 }
 
 # Ring end of entry point 13: never dismantled.
@@ -353,7 +366,7 @@ ahw_spike_entry_exit_13 = {
 	dismantle_potential = { always = no }
 }
 
-# Portal end of entry point 14 (removable).
+# Portal end of entry point 14.
 ahw_spike_entry_gate_14 = {
 	entity = "deactivated_gateway_entity"
 	portrait = "GFX_megastructure_construction_background"
@@ -364,6 +377,7 @@ ahw_spike_entry_gate_14 = {
 	bypass_type = ahw_spike_entry_14
 
 	potential = { always = no }
+	dismantle_potential = { always = no }
 }
 
 # Ring end of entry point 14: never dismantled.
@@ -380,7 +394,7 @@ ahw_spike_entry_exit_14 = {
 	dismantle_potential = { always = no }
 }
 
-# Portal end of entry point 15 (removable).
+# Portal end of entry point 15.
 ahw_spike_entry_gate_15 = {
 	entity = "deactivated_gateway_entity"
 	portrait = "GFX_megastructure_construction_background"
@@ -391,6 +405,7 @@ ahw_spike_entry_gate_15 = {
 	bypass_type = ahw_spike_entry_15
 
 	potential = { always = no }
+	dismantle_potential = { always = no }
 }
 
 # Ring end of entry point 15: never dismantled.
@@ -407,7 +422,7 @@ ahw_spike_entry_exit_15 = {
 	dismantle_potential = { always = no }
 }
 
-# Portal end of entry point 16 (removable).
+# Portal end of entry point 16.
 ahw_spike_entry_gate_16 = {
 	entity = "deactivated_gateway_entity"
 	portrait = "GFX_megastructure_construction_background"
@@ -418,6 +433,7 @@ ahw_spike_entry_gate_16 = {
 	bypass_type = ahw_spike_entry_16
 
 	potential = { always = no }
+	dismantle_potential = { always = no }
 }
 
 # Ring end of entry point 16: never dismantled.
@@ -434,7 +450,7 @@ ahw_spike_entry_exit_16 = {
 	dismantle_potential = { always = no }
 }
 
-# Portal end of entry point 17 (removable).
+# Portal end of entry point 17.
 ahw_spike_entry_gate_17 = {
 	entity = "deactivated_gateway_entity"
 	portrait = "GFX_megastructure_construction_background"
@@ -445,6 +461,7 @@ ahw_spike_entry_gate_17 = {
 	bypass_type = ahw_spike_entry_17
 
 	potential = { always = no }
+	dismantle_potential = { always = no }
 }
 
 # Ring end of entry point 17: never dismantled.
@@ -461,7 +478,7 @@ ahw_spike_entry_exit_17 = {
 	dismantle_potential = { always = no }
 }
 
-# Portal end of entry point 18 (removable).
+# Portal end of entry point 18.
 ahw_spike_entry_gate_18 = {
 	entity = "deactivated_gateway_entity"
 	portrait = "GFX_megastructure_construction_background"
@@ -472,6 +489,7 @@ ahw_spike_entry_gate_18 = {
 	bypass_type = ahw_spike_entry_18
 
 	potential = { always = no }
+	dismantle_potential = { always = no }
 }
 
 # Ring end of entry point 18: never dismantled.
@@ -488,7 +506,7 @@ ahw_spike_entry_exit_18 = {
 	dismantle_potential = { always = no }
 }
 
-# Portal end of entry point 19 (removable).
+# Portal end of entry point 19.
 ahw_spike_entry_gate_19 = {
 	entity = "deactivated_gateway_entity"
 	portrait = "GFX_megastructure_construction_background"
@@ -499,6 +517,7 @@ ahw_spike_entry_gate_19 = {
 	bypass_type = ahw_spike_entry_19
 
 	potential = { always = no }
+	dismantle_potential = { always = no }
 }
 
 # Ring end of entry point 19: never dismantled.
@@ -515,7 +534,7 @@ ahw_spike_entry_exit_19 = {
 	dismantle_potential = { always = no }
 }
 
-# Portal end of entry point 20 (removable).
+# Portal end of entry point 20.
 ahw_spike_entry_gate_20 = {
 	entity = "deactivated_gateway_entity"
 	portrait = "GFX_megastructure_construction_background"
@@ -526,6 +545,7 @@ ahw_spike_entry_gate_20 = {
 	bypass_type = ahw_spike_entry_20
 
 	potential = { always = no }
+	dismantle_potential = { always = no }
 }
 
 # Ring end of entry point 20: never dismantled.
@@ -542,7 +562,7 @@ ahw_spike_entry_exit_20 = {
 	dismantle_potential = { always = no }
 }
 
-# Portal end of entry point 21 (removable).
+# Portal end of entry point 21.
 ahw_spike_entry_gate_21 = {
 	entity = "deactivated_gateway_entity"
 	portrait = "GFX_megastructure_construction_background"
@@ -553,6 +573,7 @@ ahw_spike_entry_gate_21 = {
 	bypass_type = ahw_spike_entry_21
 
 	potential = { always = no }
+	dismantle_potential = { always = no }
 }
 
 # Ring end of entry point 21: never dismantled.
@@ -569,7 +590,7 @@ ahw_spike_entry_exit_21 = {
 	dismantle_potential = { always = no }
 }
 
-# Portal end of entry point 22 (removable).
+# Portal end of entry point 22.
 ahw_spike_entry_gate_22 = {
 	entity = "deactivated_gateway_entity"
 	portrait = "GFX_megastructure_construction_background"
@@ -580,6 +601,7 @@ ahw_spike_entry_gate_22 = {
 	bypass_type = ahw_spike_entry_22
 
 	potential = { always = no }
+	dismantle_potential = { always = no }
 }
 
 # Ring end of entry point 22: never dismantled.
@@ -596,7 +618,7 @@ ahw_spike_entry_exit_22 = {
 	dismantle_potential = { always = no }
 }
 
-# Portal end of entry point 23 (removable).
+# Portal end of entry point 23.
 ahw_spike_entry_gate_23 = {
 	entity = "deactivated_gateway_entity"
 	portrait = "GFX_megastructure_construction_background"
@@ -607,6 +629,7 @@ ahw_spike_entry_gate_23 = {
 	bypass_type = ahw_spike_entry_23
 
 	potential = { always = no }
+	dismantle_potential = { always = no }
 }
 
 # Ring end of entry point 23: never dismantled.
@@ -623,7 +646,7 @@ ahw_spike_entry_exit_23 = {
 	dismantle_potential = { always = no }
 }
 
-# Portal end of entry point 24 (removable).
+# Portal end of entry point 24.
 ahw_spike_entry_gate_24 = {
 	entity = "deactivated_gateway_entity"
 	portrait = "GFX_megastructure_construction_background"
@@ -634,6 +657,7 @@ ahw_spike_entry_gate_24 = {
 	bypass_type = ahw_spike_entry_24
 
 	potential = { always = no }
+	dismantle_potential = { always = no }
 }
 
 # Ring end of entry point 24: never dismantled.
@@ -650,7 +674,7 @@ ahw_spike_entry_exit_24 = {
 	dismantle_potential = { always = no }
 }
 
-# Portal end of entry point 25 (removable).
+# Portal end of entry point 25.
 ahw_spike_entry_gate_25 = {
 	entity = "deactivated_gateway_entity"
 	portrait = "GFX_megastructure_construction_background"
@@ -661,6 +685,7 @@ ahw_spike_entry_gate_25 = {
 	bypass_type = ahw_spike_entry_25
 
 	potential = { always = no }
+	dismantle_potential = { always = no }
 }
 
 # Ring end of entry point 25: never dismantled.
@@ -677,7 +702,7 @@ ahw_spike_entry_exit_25 = {
 	dismantle_potential = { always = no }
 }
 
-# Portal end of entry point 26 (removable).
+# Portal end of entry point 26.
 ahw_spike_entry_gate_26 = {
 	entity = "deactivated_gateway_entity"
 	portrait = "GFX_megastructure_construction_background"
@@ -688,6 +713,7 @@ ahw_spike_entry_gate_26 = {
 	bypass_type = ahw_spike_entry_26
 
 	potential = { always = no }
+	dismantle_potential = { always = no }
 }
 
 # Ring end of entry point 26: never dismantled.
@@ -704,7 +730,7 @@ ahw_spike_entry_exit_26 = {
 	dismantle_potential = { always = no }
 }
 
-# Portal end of entry point 27 (removable).
+# Portal end of entry point 27.
 ahw_spike_entry_gate_27 = {
 	entity = "deactivated_gateway_entity"
 	portrait = "GFX_megastructure_construction_background"
@@ -715,6 +741,7 @@ ahw_spike_entry_gate_27 = {
 	bypass_type = ahw_spike_entry_27
 
 	potential = { always = no }
+	dismantle_potential = { always = no }
 }
 
 # Ring end of entry point 27: never dismantled.
@@ -731,7 +758,7 @@ ahw_spike_entry_exit_27 = {
 	dismantle_potential = { always = no }
 }
 
-# Portal end of entry point 28 (removable).
+# Portal end of entry point 28.
 ahw_spike_entry_gate_28 = {
 	entity = "deactivated_gateway_entity"
 	portrait = "GFX_megastructure_construction_background"
@@ -742,6 +769,7 @@ ahw_spike_entry_gate_28 = {
 	bypass_type = ahw_spike_entry_28
 
 	potential = { always = no }
+	dismantle_potential = { always = no }
 }
 
 # Ring end of entry point 28: never dismantled.
@@ -758,7 +786,7 @@ ahw_spike_entry_exit_28 = {
 	dismantle_potential = { always = no }
 }
 
-# Portal end of entry point 29 (removable).
+# Portal end of entry point 29.
 ahw_spike_entry_gate_29 = {
 	entity = "deactivated_gateway_entity"
 	portrait = "GFX_megastructure_construction_background"
@@ -769,6 +797,7 @@ ahw_spike_entry_gate_29 = {
 	bypass_type = ahw_spike_entry_29
 
 	potential = { always = no }
+	dismantle_potential = { always = no }
 }
 
 # Ring end of entry point 29: never dismantled.
@@ -785,7 +814,7 @@ ahw_spike_entry_exit_29 = {
 	dismantle_potential = { always = no }
 }
 
-# Portal end of entry point 30 (removable).
+# Portal end of entry point 30.
 ahw_spike_entry_gate_30 = {
 	entity = "deactivated_gateway_entity"
 	portrait = "GFX_megastructure_construction_background"
@@ -796,6 +825,7 @@ ahw_spike_entry_gate_30 = {
 	bypass_type = ahw_spike_entry_30
 
 	potential = { always = no }
+	dismantle_potential = { always = no }
 }
 
 # Ring end of entry point 30: never dismantled.
@@ -812,7 +842,7 @@ ahw_spike_entry_exit_30 = {
 	dismantle_potential = { always = no }
 }
 
-# Portal end of entry point 31 (removable).
+# Portal end of entry point 31.
 ahw_spike_entry_gate_31 = {
 	entity = "deactivated_gateway_entity"
 	portrait = "GFX_megastructure_construction_background"
@@ -823,6 +853,7 @@ ahw_spike_entry_gate_31 = {
 	bypass_type = ahw_spike_entry_31
 
 	potential = { always = no }
+	dismantle_potential = { always = no }
 }
 
 # Ring end of entry point 31: never dismantled.
@@ -839,7 +870,7 @@ ahw_spike_entry_exit_31 = {
 	dismantle_potential = { always = no }
 }
 
-# Portal end of entry point 32 (removable).
+# Portal end of entry point 32.
 ahw_spike_entry_gate_32 = {
 	entity = "deactivated_gateway_entity"
 	portrait = "GFX_megastructure_construction_background"
@@ -850,6 +881,7 @@ ahw_spike_entry_gate_32 = {
 	bypass_type = ahw_spike_entry_32
 
 	potential = { always = no }
+	dismantle_potential = { always = no }
 }
 
 # Ring end of entry point 32: never dismantled.

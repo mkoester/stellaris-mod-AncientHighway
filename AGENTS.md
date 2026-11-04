@@ -20,9 +20,10 @@ level. Prefix every key, id, flag and variable with `ahw_`. Tested in game on Li
 
 ---
 
-## Status (2026-11-04): spike runs 1–15 done (4.5.3 live); spike runs 1–17 done (4.5.3 live)
+## Status (2026-11-04): spike runs 1–17 done (4.5.3 live); `0.0.18-SPIKE` (run 18: study, repair, lock) not yet run
 
-**Next session: pick from the open list** (the ring's exact speed is parked — user, 2026-11-04: "not too important to me now") (steps below), then the rest of the open list. Everything is still the
+**Next session: start with run 18** (steps below), then the rest of the open list (the ring's exact
+speed is parked — user, 2026-11-04: "not too important to me now"). Everything is still the
 spike (`*spike*` files); nothing is shippable yet.
 
 **Redesign (user, 2026-11-04): the ring goes round the outside of the galaxy**, with many more
@@ -54,19 +55,22 @@ placement and the shortcut do not.
    the asteroid at orbit 270, ~1.5× slower than without. The like-for-like yardstick — a quarter
    lap by hyperlanes at mid radius vs. the same via the ring — is still unmeasured; tune the
    asteroid's orbit (or the node count) from it.
-2. **Locking a portal**: vanilla's `can_lock_bypass` wants the system's owner — portals are
-   unclaimable, so nobody can lock them by the astral action. Needs a rule or an owner decision.
-3. **Start states**: all entry points start repaired in the spike; the design wants them broken
-   until studied (study stage: special project / situation / events — open).
+2. **Locking a portal** (built, `0.0.18-SPIKE`): `can_lock_bypass` overridden — the anchor's
+   owner may lock (two forms of the condition: unknown whether `root` is the country in a game
+   rule). Unknown: does a lock on the portal's gate keep arrivals from the ring out, or must the
+   ring end be locked too (`ahw_spike_lock_ring_end`, then from `on_bypass_locked`)?
+3. **Start states** (built, `0.0.18-SPIKE`): broken (`ahw_broken`); the anchor's owner studies
+   (science ship project), researches the tech, pays 500 alloys (event), repairs (construction
+   ship project); offered by a monthly check.
 4. **AI**: does it path through, study, repair, lock, close?
 5. Galaxy shapes beyond small elliptical, and large/huge sizes (32 pairs, performance).
 6. Labels/menus: built at game start they show; ring-side gates need sight (a usable entry point)
    for the label and a ship in the system for the right-click menu (runs 6–7).
 7. Lore (`docs/lore.md`).
 
-### The spike (`0.0.17-SPIKE`): what it does, how to run it
+### The spike (`0.0.18-SPIKE`): what it does, how to run it
 
-**Generated parts: `tools/gen_spike.py`** writes the bypass types (32 entry pairs and the
+**Generated parts: `tools/gen_spike.py`** writes the bypass types (32 entry pairs; the
 shortcut is gone), their megastructures, outliner icons, texts, and the outline measurement, the
 outer-ring builders, portal placement and the pair switch (`ahw_spike_generated_effects.txt`). Change the generator, rerun it, commit both.
 
@@ -96,16 +100,20 @@ At game start `ahw_spike.10` (from `on_game_start`, no scope, as vanilla's `game
    −100 when no angle manages that; the squared clearance is logged). Everything with coordinates
    carries the star flag `ahw_xy` (regular systems from the outline, ring nodes, portals); then **one hyperlane**; unclaimable. In it the empire's entry gate, at that same orbit
    angle (facing away from the anchor, opposite the portal's lane — run 10), orbit 230; its exit in the nearest
-   ring node, in that node's next free slot. All repaired; every empire learns the types and the
-   ring (visited); only we get the tech (`ahw_spike.8`);
+   ring node, in that node's next free slot. **All broken** (0.0.18): the anchor's owner gets the
+   study offered by the monthly check `ahw_spike.20`; the study (`ahw_spike.22`) teaches the types
+   and the ring; then the tech, the paid repair offer (`ahw_spike.21`) and the repair
+   (`ahw_spike.23`);
 5. fires `ahw_spike.1` (our window: our portal, its anchor, our exit node) and a report.
 
 | Console (nothing selected) | Does |
 |---|---|
-| `event ahw_spike.2` | report: every ring node (distance from the centre, exits), every portal, ours |
-| `event ahw_spike.3` | `lock_bypass` our entry point for us, 360 days |
-| `event ahw_spike.4` / `.5` | close / reopen our entry point (flag `ahw_closed`, read by every entry type) |
-| `event ahw_spike.6` | tear down our entry gate; report now and a day later |
+| `event ahw_spike.2` | report: every ring node, every portal (broken, studied), ours |
+| `event ahw_spike.3` | allow us the Dimensional Lock order (what the astral action gives) |
+| `event ahw_spike.4` | lock our portal's gate for another empire (direction test) |
+| `event ahw_spike.5` | lock the ring end of our pair for another empire |
+| `event ahw_spike.6` | an outpost on our anchor, so we own it |
+| `event ahw_spike.7` | run the monthly study/repair check for us now |
 | `event ahw_spike.8` | grant `ahw_tech_spike` |
 
 All findings go to `game.log`, lines starting `AHW SPIKE`. **Deselect before each console
@@ -115,8 +123,26 @@ All findings go to `game.log`, lines starting `AHW SPIKE`. **Deselect before eac
 `tools/check_script.py $(find ancient_highway -name '*.txt' -o -name '*.gfx')` and
 `tools/check_refs.py ancient_highway` (every used name defined, every text and icon present).
 
-**Test, next run**: write the steps for the user in plain words — what to set up, what to do,
-what to screenshot, what to copy (run 17: the user asked for a rephrasing of numbered checks).
+**Test, run 18** (in plain words for the user; Linux, only this mod, a new campaign, small
+elliptical, AI empires on, console on):
+
+*Part 1 — study and repair.* Open the console, type `event ahw_spike.6` (we get an outpost on the
+system our portal hangs off), then `event ahw_spike.7`. A special project "Study the Highway Entry
+Point" should appear in the situation log. Send the science ship; when it is done, the tech
+"Highway Entry Points" should be among the research options (research it, or `event ahw_spike.8`).
+Then `event ahw_spike.7` again: an event offers the repair for 500 alloys (`resource alloys 1000`
+if short). Accept, send the construction ship. When it is done, let a day pass and order the
+science ship to our exit node (named in the first window): it should go through the gate.
+Before the repair, the same order should fail. Screenshot the situation log, the offer, and the
+route.
+
+*Part 2 — the lock.* `event ahw_spike.3`, then select the science ship and right-click the gate in
+our portal: is "Lock Highway Entry Point" offered? Screenshot the menu. Then, separately:
+`event ahw_spike.4` locks our gate for another empire — can our ship still go from the portal into
+the ring, and back from the ring into the portal? Then `event ahw_spike.5` (the ring end too) and
+the same two questions. Screenshot each answer (the route or the refusal).
+
+Copy `logs/game.log` and `logs/error.log` before restarting the game.
 
 **Run 1 (2026-11-03, 4.5.3 open beta, elliptical galaxy, `0.0.1-SPIKE`): stopped at the anchor.**
 - `random_system` with `distance_to_core_percent` 25–40 matched **nothing**, although the
@@ -517,7 +543,10 @@ points (any ring system → any repaired entry galaxy-wide), but a candidate for
 - Name *Ancient Highway*, prefix `ahw_`, repo `stellaris-mod-AncientHighway` (private).
 - Round galaxies (elliptical, ring) first; spirals and others later or never.
 - The ring is never claimable. Ring-side ends of entry points can't be damaged or disabled.
-- Entry points start broken; the regular-side end can be disabled (cost) or locked by its owner.
+- Entry points start broken; **the anchor's owner** studies (science ship project) and repairs them
+  **once, for good** (paid, construction ship project); never dismantled; the anchor's owner may
+  place vanilla's **Dimensional Lock** (Astral Planes; without it no lock). No decisions or edicts
+  (user, 2026-11-04).
 - Entry points are 1:1: each regular-side gate has its own exit point in the ring system (one
   bypass type per pair).
 - ~~Ring systems are large, their exit points far apart~~ — superseded 2026-11-04: crossings

@@ -1,6 +1,7 @@
-# SPIKE (Phase 0): never offered (weight 0); give it with `research_technology ahw_tech_spike`
-# or `event ahw_spike.8`. Run 3: with `potential = { always = no }` the console refused it
-# ("Could not research prerequisite technology").
+# SPIKE (Phase 0, 0.0.18): researchable once the country has studied an entry point (special
+# project AHW_SPIKE_STUDY_PROJECT -> country flag ahw_highway_studied); weighted so it is drawn
+# at once. `event ahw_spike.8` grants it anyway (give_technology). Run 3: research_technology
+# refuses a tech whose potential fails.
 ahw_tech_spike = {
 	cost = 1
 	area = physics
@@ -8,5 +9,8 @@ ahw_tech_spike = {
 	category = { particles }
 	is_rare = yes
 	is_reverse_engineerable = no
-	weight = 0
+	potential = {
+		has_country_flag = ahw_highway_studied
+	}
+	weight = 10000
 }

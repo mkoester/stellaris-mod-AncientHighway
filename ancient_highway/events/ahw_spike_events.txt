@@ -1,13 +1,14 @@
-# SPIKE (Phase 0, 0.0.14): the outer ring round the galaxy, and a portal for every regular empire.
+# SPIKE (Phase 0, 0.0.18): the outer ring round the galaxy, and a portal for every regular empire.
 # ahw_spike.10 runs by itself at game start (common/on_actions/ahw_spike_on_actions.txt) and
 # fires the window ahw_spike.1 for the human player.
 # Console, with nothing selected (Esc) - see AGENTS.md, "Status":
 #   event ahw_spike.2   report the state to game.log
-#   event ahw_spike.3   lock our entry point for us (360 days)
-#   event ahw_spike.4   close our entry point (flag ahw_closed on our portal)
-#   event ahw_spike.5   reopen it
-#   event ahw_spike.6   tear down our entry gate; report now and a day later
-#   event ahw_spike.8   grant ahw_tech_spike (or research_technology ahw_tech_spike)
+#   event ahw_spike.3   allow us the Dimensional Lock order (as the astral action does)
+#   event ahw_spike.4   lock our portal's gate for another country (direction test)
+#   event ahw_spike.5   lock the ring end of our pair for another country
+#   event ahw_spike.6   an outpost on our anchor (so we own it)
+#   event ahw_spike.7   run the monthly study/repair check for us now
+#   event ahw_spike.8   grant ahw_tech_spike
 # Map changes reach route-finding on the next daily tick: let a day pass before ordering routes.
 namespace = ahw_spike
 
@@ -116,12 +117,9 @@ event = {
 				add_hyperlane = { from = event_target:ahw_portal_tmp to = event_target:ahw_x_tmp }
 				ahw_spike_find_nearest_node = yes
 				ahw_spike_make_next_pair = yes
-				# What the study stage would teach (runs 4-5).
-				ahw_spike_learn_types = yes
-				every_system = {
-					limit = { has_star_flag = ahw_ring }
-					prev = { set_visited = prev }
-				}
+				# 0.0.18: broken until studied and repaired by the anchor's owner (ahw_spike.20-.23);
+				# the study teaches the types and the ring (runs 4-5).
+				event_target:ahw_portal_tmp = { set_star_flag = ahw_broken }
 				set_visited = event_target:ahw_portal_tmp
 				if = {
 					limit = { is_ai = no }
@@ -161,69 +159,86 @@ country_event = {
 	option = { name = ahw_spike.ok }
 }
 
+# Lets our science ships place a Dimensional Lock (what the astral action gives; Astral Planes).
 country_event = {
 	id = ahw_spike.3
 	title = ahw_spike.3.name
 	desc = ahw_spike.3.desc
 	is_triggered_only = yes
 	immediate = {
-		event_target:ahw_player_portal = {
-			random_bypass_in_system = {
-				lock_bypass = {
-					country = root
-					duration = 360
-				}
-			}
-		}
-		ahw_spike_report = { WHEN = after_lock }
+		set_country_flag = dimensional_lock_available
+		log = "AHW SPIKE [This.GetName] may place a Dimensional Lock (flag dimensional_lock_available)"
 	}
 	option = { name = ahw_spike.ok }
 }
 
+# Direction test: lock our portal's gate for ANOTHER country (360 days), so our own ships are the
+# outsiders. Can they still leave the portal through the gate, and come back from the ring?
 country_event = {
 	id = ahw_spike.4
 	title = ahw_spike.4.name
 	desc = ahw_spike.4.desc
 	is_triggered_only = yes
 	immediate = {
-		event_target:ahw_player_portal = { set_star_flag = ahw_closed }
-		ahw_spike_report = { WHEN = after_closing }
+		random_country = {
+			limit = { is_country_type = default NOT = { is_same_value = root } }
+			save_event_target_as = ahw_other
+		}
+		event_target:ahw_player_portal = {
+			every_bypass_in_system = {
+				lock_bypass = { country = event_target:ahw_other duration = 360 }
+			}
+		}
+		log = "AHW SPIKE our portal's gate locked for [ahw_other.GetName]"
+		ahw_spike_report = { WHEN = after_foreign_lock }
 	}
 	option = { name = ahw_spike.ok }
 }
 
+# The same lock on the ring end of our pair (in our exit node), for the same country.
 country_event = {
 	id = ahw_spike.5
 	title = ahw_spike.5.name
 	desc = ahw_spike.5.desc
 	is_triggered_only = yes
 	immediate = {
-		event_target:ahw_player_portal = { remove_star_flag = ahw_closed }
-		ahw_spike_report = { WHEN = after_reopening }
+		random_country = {
+			limit = { is_country_type = default NOT = { is_same_value = root } }
+			save_event_target_as = ahw_other
+		}
+		event_target:ahw_player_portal = {
+			ahw_spike_lock_ring_end = { COUNTRY = event_target:ahw_other }
+		}
+		log = "AHW SPIKE the ring end of our pair locked for [ahw_other.GetName]"
+		ahw_spike_report = { WHEN = after_ring_end_lock }
 	}
 	option = { name = ahw_spike.ok }
 }
 
+# An outpost on our anchor, so we own it (the anchor's owner studies, repairs and locks).
 country_event = {
 	id = ahw_spike.6
 	title = ahw_spike.6.name
 	desc = ahw_spike.6.desc
 	is_triggered_only = yes
 	immediate = {
-		event_target:ahw_player_portal = {
-			every_system_megastructure = { remove_megastructure = this }
+		event_target:ahw_player_anchor = {
+			if = {
+				limit = { NOT = { exists = owner } }
+				create_starbase = { size = starbase_outpost owner = root }
+			}
+			log = "AHW SPIKE anchor [This.GetName]: outpost created for [Root.GetName]"
 		}
-		ahw_spike_report = { WHEN = right_after_teardown }
-		country_event = { id = ahw_spike.7 days = 1 }
 	}
 	option = { name = ahw_spike.ok }
 }
 
+# The monthly check for us, now (instead of waiting for the 1st).
 country_event = {
 	id = ahw_spike.7
 	hide_window = yes
 	is_triggered_only = yes
-	immediate = { ahw_spike_report = { WHEN = one_day_after_teardown } }
+	immediate = { country_event = { id = ahw_spike.20 } }
 }
 
 # Grants the entry-point tech (fallback for the console's research_technology).
@@ -234,5 +249,99 @@ country_event = {
 	immediate = {
 		give_technology = { tech = ahw_tech_spike message = no }
 		ahw_spike_report = { WHEN = after_granting_the_tech }
+	}
+}
+
+# Monthly (on_monthly_pulse_country): for each portal whose anchor this country owns, offer the
+# study (science ship special project), then - studied and with the tech - the repair (ahw_spike.21).
+country_event = {
+	id = ahw_spike.20
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = { is_country_type = default }
+	immediate = {
+		every_system = {
+			limit = {
+				has_star_flag = ahw_portal
+				any_neighbor_system = { exists = owner owner = { is_same_value = root } }
+			}
+			if = {
+				limit = {
+					NOT = { has_star_flag = ahw_studied }
+					NOT = { has_star_flag = ahw_study_offered }
+				}
+				set_star_flag = ahw_study_offered
+				enable_special_project = { name = AHW_SPIKE_STUDY_PROJECT location = this owner = root }
+				log = "AHW SPIKE study of the entry point in [This.GetName] offered to [Root.GetName]"
+			}
+			else_if = {
+				limit = {
+					has_star_flag = ahw_studied
+					has_star_flag = ahw_broken
+					NOT = { has_star_flag = ahw_repair_offered }
+					root = { has_technology = ahw_tech_spike }
+				}
+				set_star_flag = ahw_repair_offered
+				save_event_target_as = ahw_repair_portal
+				root = { country_event = { id = ahw_spike.21 } }
+				log = "AHW SPIKE repair of the entry point in [This.GetName] offered to [Root.GetName]"
+			}
+		}
+	}
+}
+
+# The repair offer: pay alloys, then a construction ship repairs the gate. "Not now" offers it
+# again in a year. Special projects cannot charge resources themselves.
+country_event = {
+	id = ahw_spike.21
+	title = ahw_spike.21.name
+	desc = ahw_spike.21.desc
+	is_triggered_only = yes
+	option = {
+		name = ahw_spike.21.a
+		allow = { has_resource = { type = alloys amount >= 500 } }
+		add_resource = { alloys = -500 }
+		event_target:ahw_repair_portal = {
+			enable_special_project = { name = AHW_SPIKE_REPAIR_PROJECT location = this owner = root }
+		}
+		ai_chance = { factor = 10 }
+	}
+	option = {
+		name = ahw_spike.21.b
+		event_target:ahw_repair_portal = {
+			remove_star_flag = ahw_repair_offered
+			set_timed_star_flag = { flag = ahw_repair_offered days = 360 }
+		}
+		ai_chance = { factor = 1 }
+	}
+}
+
+# Study done (this = the science ship, in the portal): the country knows the network and the ring.
+ship_event = {
+	id = ahw_spike.22
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		solar_system = { set_star_flag = ahw_studied }
+		owner = {
+			set_country_flag = ahw_highway_studied
+			ahw_spike_learn_types = yes
+			every_system = {
+				limit = { has_star_flag = ahw_ring }
+				prev = { set_visited = prev }
+			}
+		}
+		log = "AHW SPIKE entry point in [This.System.GetName] studied by [This.Owner.GetName]"
+	}
+}
+
+# Repair done (this = the construction ship, in the portal): the gate works, for good.
+ship_event = {
+	id = ahw_spike.23
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		solar_system = { remove_star_flag = ahw_broken }
+		log = "AHW SPIKE entry point in [This.System.GetName] repaired by [This.Owner.GetName]"
 	}
 }

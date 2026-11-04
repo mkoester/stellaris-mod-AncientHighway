@@ -67,3 +67,7 @@ should have picked another system to connect the portal system (Bapagia, Edemar,
 I want the ring go around the galaxy. and I want many more empty systems inbetween
 reason: I don't want to create shortcuts - I want to create a second way to get everywhere which cannot be permanently blocked by closed borders
 so I would say it should take roughly the same time (or a bit more) to go around the outer highway as goind around the galaxy once (in the middle between the core and outer rim)
+
+### On fights and the ring's shape (after the redesign)
+
+accept the fights, follow the outline

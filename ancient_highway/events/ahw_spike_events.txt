@@ -3,13 +3,10 @@
 # fires the window ahw_spike.1 for the human player.
 # Console, with nothing selected (Esc) - see AGENTS.md, "Status":
 #   event ahw_spike.2   report the state to game.log
-#   event ahw_spike.3   allow us the Dimensional Lock order (as the astral action does)
-#   event ahw_spike.4   lock our portal's gate for another country (direction test)
-#   event ahw_spike.5   lock the ring end of our pair for another country
 #   event ahw_spike.6   an outpost on our anchor (so we own it)
 #   event ahw_spike.7   run the monthly study/repair check for us now
 #   event ahw_spike.8   grant ahw_tech_spike
-#   event ahw_spike.9   release the test locks on our pair (re-lock for us, 1 day)
+#   event ahw_spike.9   release any locks on our pair (re-lock for us, 1 day)
 # Map changes reach route-finding on the next daily tick: let a day pass before ordering routes.
 namespace = ahw_spike
 
@@ -160,62 +157,6 @@ country_event = {
 	option = { name = ahw_spike.ok }
 }
 
-# Lets our science ships place a Dimensional Lock (what the astral action gives; Astral Planes).
-country_event = {
-	id = ahw_spike.3
-	title = ahw_spike.3.name
-	desc = ahw_spike.3.desc
-	is_triggered_only = yes
-	immediate = {
-		set_country_flag = dimensional_lock_available
-		log = "AHW SPIKE [This.GetName] may place a Dimensional Lock (flag dimensional_lock_available)"
-	}
-	option = { name = ahw_spike.ok }
-}
-
-# Direction test: lock our portal's gate for ANOTHER country (360 days), so our own ships are the
-# outsiders. Can they still leave the portal through the gate, and come back from the ring?
-country_event = {
-	id = ahw_spike.4
-	title = ahw_spike.4.name
-	desc = ahw_spike.4.desc
-	is_triggered_only = yes
-	immediate = {
-		random_country = {
-			limit = { is_country_type = default NOT = { is_same_value = root } }
-			save_event_target_as = ahw_other
-		}
-		event_target:ahw_player_portal = {
-			every_bypass_in_system = {
-				lock_bypass = { country = event_target:ahw_other duration = 360 }
-			}
-		}
-		log = "AHW SPIKE our portal's gate locked for [ahw_other.GetName]"
-		ahw_spike_report = { WHEN = after_foreign_lock }
-	}
-	option = { name = ahw_spike.ok }
-}
-
-# The same lock on the ring end of our pair (in our exit node), for the same country.
-country_event = {
-	id = ahw_spike.5
-	title = ahw_spike.5.name
-	desc = ahw_spike.5.desc
-	is_triggered_only = yes
-	immediate = {
-		random_country = {
-			limit = { is_country_type = default NOT = { is_same_value = root } }
-			save_event_target_as = ahw_other
-		}
-		event_target:ahw_player_portal = {
-			ahw_spike_lock_ring_end = { COUNTRY = event_target:ahw_other DAYS = 360 }
-		}
-		log = "AHW SPIKE the ring end of our pair locked for [ahw_other.GetName]"
-		ahw_spike_report = { WHEN = after_ring_end_lock }
-	}
-	option = { name = ahw_spike.ok }
-}
-
 # An outpost on our anchor, so we own it (the anchor's owner studies, repairs and locks).
 country_event = {
 	id = ahw_spike.6
@@ -280,6 +221,18 @@ country_event = {
 			limit = {
 				has_star_flag = ahw_portal
 				any_neighbor_system = { exists = owner owner = { is_same_value = root } }
+			}
+			# 0.0.20: the gate belongs to the anchor's owner (its Open/Sealed switch shows for the
+			# owner only); a sealed gate stays locked for the current owner (renewed, so it also
+			# follows a change of hands).
+			every_system_megastructure = {
+				limit = { NOT = { owner = { is_same_value = root } } }
+				set_owner = root
+				log = "AHW SPIKE [Root.GetName] now owns the gate in [Prev.GetName]"
+			}
+			if = {
+				limit = { has_star_flag = ahw_sealed }
+				ahw_spike_lock_pair = { COUNTRY = root DAYS = 36000 }
 			}
 			if = {
 				limit = {
@@ -360,7 +313,12 @@ ship_event = {
 	hide_window = yes
 	is_triggered_only = yes
 	immediate = {
-		solar_system = { remove_star_flag = ahw_broken }
+		owner = { save_event_target_as = ahw_repairer }
+		solar_system = {
+			remove_star_flag = ahw_broken
+			# 0.0.20: the gate belongs to the repairer (the anchor's owner): its Open/Sealed switch
+			every_system_megastructure = { set_owner = event_target:ahw_repairer }
+		}
 		solar_system = { log = "AHW SPIKE entry point in [This.GetName] repaired by [Root.Owner.GetName]" }
 	}
 }

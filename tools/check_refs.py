@@ -18,7 +18,7 @@ def defs(sub):
 
 
 known = set().union(*(defs(d) for d in ('scripted_effects', 'scripted_triggers', 'megastructures', 'bypass',
-                                        'technology', 'solar_system_initializers')))
+                                        'technology', 'solar_system_initializers', 'megastructure_overclock_types')))
 megas, byps = defs('megastructures'), defs('bypass')
 problems = []
 problems += [f'undefined: {c}' for c in sorted(set(re.findall(r'\b(ahw_spike_\w+) = (?:yes|\{)', alltxt)) - known)]

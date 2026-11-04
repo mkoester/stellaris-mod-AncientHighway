@@ -14,6 +14,12 @@ ahw_spike_entry_gate_1 = {
 
 	potential = { always = no }
 	dismantle_potential = { always = no }
+	overclock_loc_key = AHW_SEAL
+	overclock_cooldown = 30
+	overclock_types = {
+		ahw_spike_gate_open
+		ahw_spike_gate_sealed
+	}
 }
 
 # Ring end of entry point 1: never dismantled.
@@ -42,6 +48,12 @@ ahw_spike_entry_gate_2 = {
 
 	potential = { always = no }
 	dismantle_potential = { always = no }
+	overclock_loc_key = AHW_SEAL
+	overclock_cooldown = 30
+	overclock_types = {
+		ahw_spike_gate_open
+		ahw_spike_gate_sealed
+	}
 }
 
 # Ring end of entry point 2: never dismantled.
@@ -70,6 +82,12 @@ ahw_spike_entry_gate_3 = {
 
 	potential = { always = no }
 	dismantle_potential = { always = no }
+	overclock_loc_key = AHW_SEAL
+	overclock_cooldown = 30
+	overclock_types = {
+		ahw_spike_gate_open
+		ahw_spike_gate_sealed
+	}
 }
 
 # Ring end of entry point 3: never dismantled.
@@ -98,6 +116,12 @@ ahw_spike_entry_gate_4 = {
 
 	potential = { always = no }
 	dismantle_potential = { always = no }
+	overclock_loc_key = AHW_SEAL
+	overclock_cooldown = 30
+	overclock_types = {
+		ahw_spike_gate_open
+		ahw_spike_gate_sealed
+	}
 }
 
 # Ring end of entry point 4: never dismantled.
@@ -126,6 +150,12 @@ ahw_spike_entry_gate_5 = {
 
 	potential = { always = no }
 	dismantle_potential = { always = no }
+	overclock_loc_key = AHW_SEAL
+	overclock_cooldown = 30
+	overclock_types = {
+		ahw_spike_gate_open
+		ahw_spike_gate_sealed
+	}
 }
 
 # Ring end of entry point 5: never dismantled.
@@ -154,6 +184,12 @@ ahw_spike_entry_gate_6 = {
 
 	potential = { always = no }
 	dismantle_potential = { always = no }
+	overclock_loc_key = AHW_SEAL
+	overclock_cooldown = 30
+	overclock_types = {
+		ahw_spike_gate_open
+		ahw_spike_gate_sealed
+	}
 }
 
 # Ring end of entry point 6: never dismantled.
@@ -182,6 +218,12 @@ ahw_spike_entry_gate_7 = {
 
 	potential = { always = no }
 	dismantle_potential = { always = no }
+	overclock_loc_key = AHW_SEAL
+	overclock_cooldown = 30
+	overclock_types = {
+		ahw_spike_gate_open
+		ahw_spike_gate_sealed
+	}
 }
 
 # Ring end of entry point 7: never dismantled.
@@ -210,6 +252,12 @@ ahw_spike_entry_gate_8 = {
 
 	potential = { always = no }
 	dismantle_potential = { always = no }
+	overclock_loc_key = AHW_SEAL
+	overclock_cooldown = 30
+	overclock_types = {
+		ahw_spike_gate_open
+		ahw_spike_gate_sealed
+	}
 }
 
 # Ring end of entry point 8: never dismantled.
@@ -238,6 +286,12 @@ ahw_spike_entry_gate_9 = {
 
 	potential = { always = no }
 	dismantle_potential = { always = no }
+	overclock_loc_key = AHW_SEAL
+	overclock_cooldown = 30
+	overclock_types = {
+		ahw_spike_gate_open
+		ahw_spike_gate_sealed
+	}
 }
 
 # Ring end of entry point 9: never dismantled.
@@ -266,6 +320,12 @@ ahw_spike_entry_gate_10 = {
 
 	potential = { always = no }
 	dismantle_potential = { always = no }
+	overclock_loc_key = AHW_SEAL
+	overclock_cooldown = 30
+	overclock_types = {
+		ahw_spike_gate_open
+		ahw_spike_gate_sealed
+	}
 }
 
 # Ring end of entry point 10: never dismantled.
@@ -294,6 +354,12 @@ ahw_spike_entry_gate_11 = {
 
 	potential = { always = no }
 	dismantle_potential = { always = no }
+	overclock_loc_key = AHW_SEAL
+	overclock_cooldown = 30
+	overclock_types = {
+		ahw_spike_gate_open
+		ahw_spike_gate_sealed
+	}
 }
 
 # Ring end of entry point 11: never dismantled.
@@ -322,6 +388,12 @@ ahw_spike_entry_gate_12 = {
 
 	potential = { always = no }
 	dismantle_potential = { always = no }
+	overclock_loc_key = AHW_SEAL
+	overclock_cooldown = 30
+	overclock_types = {
+		ahw_spike_gate_open
+		ahw_spike_gate_sealed
+	}
 }
 
 # Ring end of entry point 12: never dismantled.
@@ -350,6 +422,12 @@ ahw_spike_entry_gate_13 = {
 
 	potential = { always = no }
 	dismantle_potential = { always = no }
+	overclock_loc_key = AHW_SEAL
+	overclock_cooldown = 30
+	overclock_types = {
+		ahw_spike_gate_open
+		ahw_spike_gate_sealed
+	}
 }
 
 # Ring end of entry point 13: never dismantled.
@@ -378,6 +456,12 @@ ahw_spike_entry_gate_14 = {
 
 	potential = { always = no }
 	dismantle_potential = { always = no }
+	overclock_loc_key = AHW_SEAL
+	overclock_cooldown = 30
+	overclock_types = {
+		ahw_spike_gate_open
+		ahw_spike_gate_sealed
+	}
 }
 
 # Ring end of entry point 14: never dismantled.
@@ -406,6 +490,12 @@ ahw_spike_entry_gate_15 = {
 
 	potential = { always = no }
 	dismantle_potential = { always = no }
+	overclock_loc_key = AHW_SEAL
+	overclock_cooldown = 30
+	overclock_types = {
+		ahw_spike_gate_open
+		ahw_spike_gate_sealed
+	}
 }
 
 # Ring end of entry point 15: never dismantled.
@@ -434,6 +524,12 @@ ahw_spike_entry_gate_16 = {
 
 	potential = { always = no }
 	dismantle_potential = { always = no }
+	overclock_loc_key = AHW_SEAL
+	overclock_cooldown = 30
+	overclock_types = {
+		ahw_spike_gate_open
+		ahw_spike_gate_sealed
+	}
 }
 
 # Ring end of entry point 16: never dismantled.
@@ -462,6 +558,12 @@ ahw_spike_entry_gate_17 = {
 
 	potential = { always = no }
 	dismantle_potential = { always = no }
+	overclock_loc_key = AHW_SEAL
+	overclock_cooldown = 30
+	overclock_types = {
+		ahw_spike_gate_open
+		ahw_spike_gate_sealed
+	}
 }
 
 # Ring end of entry point 17: never dismantled.
@@ -490,6 +592,12 @@ ahw_spike_entry_gate_18 = {
 
 	potential = { always = no }
 	dismantle_potential = { always = no }
+	overclock_loc_key = AHW_SEAL
+	overclock_cooldown = 30
+	overclock_types = {
+		ahw_spike_gate_open
+		ahw_spike_gate_sealed
+	}
 }
 
 # Ring end of entry point 18: never dismantled.
@@ -518,6 +626,12 @@ ahw_spike_entry_gate_19 = {
 
 	potential = { always = no }
 	dismantle_potential = { always = no }
+	overclock_loc_key = AHW_SEAL
+	overclock_cooldown = 30
+	overclock_types = {
+		ahw_spike_gate_open
+		ahw_spike_gate_sealed
+	}
 }
 
 # Ring end of entry point 19: never dismantled.
@@ -546,6 +660,12 @@ ahw_spike_entry_gate_20 = {
 
 	potential = { always = no }
 	dismantle_potential = { always = no }
+	overclock_loc_key = AHW_SEAL
+	overclock_cooldown = 30
+	overclock_types = {
+		ahw_spike_gate_open
+		ahw_spike_gate_sealed
+	}
 }
 
 # Ring end of entry point 20: never dismantled.
@@ -574,6 +694,12 @@ ahw_spike_entry_gate_21 = {
 
 	potential = { always = no }
 	dismantle_potential = { always = no }
+	overclock_loc_key = AHW_SEAL
+	overclock_cooldown = 30
+	overclock_types = {
+		ahw_spike_gate_open
+		ahw_spike_gate_sealed
+	}
 }
 
 # Ring end of entry point 21: never dismantled.
@@ -602,6 +728,12 @@ ahw_spike_entry_gate_22 = {
 
 	potential = { always = no }
 	dismantle_potential = { always = no }
+	overclock_loc_key = AHW_SEAL
+	overclock_cooldown = 30
+	overclock_types = {
+		ahw_spike_gate_open
+		ahw_spike_gate_sealed
+	}
 }
 
 # Ring end of entry point 22: never dismantled.
@@ -630,6 +762,12 @@ ahw_spike_entry_gate_23 = {
 
 	potential = { always = no }
 	dismantle_potential = { always = no }
+	overclock_loc_key = AHW_SEAL
+	overclock_cooldown = 30
+	overclock_types = {
+		ahw_spike_gate_open
+		ahw_spike_gate_sealed
+	}
 }
 
 # Ring end of entry point 23: never dismantled.
@@ -658,6 +796,12 @@ ahw_spike_entry_gate_24 = {
 
 	potential = { always = no }
 	dismantle_potential = { always = no }
+	overclock_loc_key = AHW_SEAL
+	overclock_cooldown = 30
+	overclock_types = {
+		ahw_spike_gate_open
+		ahw_spike_gate_sealed
+	}
 }
 
 # Ring end of entry point 24: never dismantled.
@@ -686,6 +830,12 @@ ahw_spike_entry_gate_25 = {
 
 	potential = { always = no }
 	dismantle_potential = { always = no }
+	overclock_loc_key = AHW_SEAL
+	overclock_cooldown = 30
+	overclock_types = {
+		ahw_spike_gate_open
+		ahw_spike_gate_sealed
+	}
 }
 
 # Ring end of entry point 25: never dismantled.
@@ -714,6 +864,12 @@ ahw_spike_entry_gate_26 = {
 
 	potential = { always = no }
 	dismantle_potential = { always = no }
+	overclock_loc_key = AHW_SEAL
+	overclock_cooldown = 30
+	overclock_types = {
+		ahw_spike_gate_open
+		ahw_spike_gate_sealed
+	}
 }
 
 # Ring end of entry point 26: never dismantled.
@@ -742,6 +898,12 @@ ahw_spike_entry_gate_27 = {
 
 	potential = { always = no }
 	dismantle_potential = { always = no }
+	overclock_loc_key = AHW_SEAL
+	overclock_cooldown = 30
+	overclock_types = {
+		ahw_spike_gate_open
+		ahw_spike_gate_sealed
+	}
 }
 
 # Ring end of entry point 27: never dismantled.
@@ -770,6 +932,12 @@ ahw_spike_entry_gate_28 = {
 
 	potential = { always = no }
 	dismantle_potential = { always = no }
+	overclock_loc_key = AHW_SEAL
+	overclock_cooldown = 30
+	overclock_types = {
+		ahw_spike_gate_open
+		ahw_spike_gate_sealed
+	}
 }
 
 # Ring end of entry point 28: never dismantled.
@@ -798,6 +966,12 @@ ahw_spike_entry_gate_29 = {
 
 	potential = { always = no }
 	dismantle_potential = { always = no }
+	overclock_loc_key = AHW_SEAL
+	overclock_cooldown = 30
+	overclock_types = {
+		ahw_spike_gate_open
+		ahw_spike_gate_sealed
+	}
 }
 
 # Ring end of entry point 29: never dismantled.
@@ -826,6 +1000,12 @@ ahw_spike_entry_gate_30 = {
 
 	potential = { always = no }
 	dismantle_potential = { always = no }
+	overclock_loc_key = AHW_SEAL
+	overclock_cooldown = 30
+	overclock_types = {
+		ahw_spike_gate_open
+		ahw_spike_gate_sealed
+	}
 }
 
 # Ring end of entry point 30: never dismantled.
@@ -854,6 +1034,12 @@ ahw_spike_entry_gate_31 = {
 
 	potential = { always = no }
 	dismantle_potential = { always = no }
+	overclock_loc_key = AHW_SEAL
+	overclock_cooldown = 30
+	overclock_types = {
+		ahw_spike_gate_open
+		ahw_spike_gate_sealed
+	}
 }
 
 # Ring end of entry point 31: never dismantled.
@@ -882,6 +1068,12 @@ ahw_spike_entry_gate_32 = {
 
 	potential = { always = no }
 	dismantle_potential = { always = no }
+	overclock_loc_key = AHW_SEAL
+	overclock_cooldown = 30
+	overclock_types = {
+		ahw_spike_gate_open
+		ahw_spike_gate_sealed
+	}
 }
 
 # Ring end of entry point 32: never dismantled.

@@ -60,10 +60,13 @@ The connections between the ring and the regular galaxy are special, not hyperla
 - **One can only exit at an entry point that is already repaired.** An unrepaired entry point
   leads nowhere. This keeps empires from expanding early through the ring and overrunning
   arbitrary empires, or being overrun too early.
-- **A repaired entry point is never dismantled** (decided 2026-11-04). To keep others out, **the
-  anchor's owner places vanilla's Dimensional Lock** on it — the astral action and the science
-  ship order unchanged; the mod only lets the anchor's owner place it in the portal (the game rule
-  `can_lock_bypass`). Without the Astral Planes DLC there is no lock, as for any vanilla bypass.
+- **A repaired entry point is never dismantled** (decided 2026-11-04). To keep others out, **its
+  owner — the anchor's owner — seals it**: a switch on the gate itself, **Open / Sealed** (the
+  megastructure's mode tab, vanilla's "overclocking"), with a small cost and a cooldown. **A sealed
+  gate blocks both ways**: no one but the owner leaves the portal through it or comes in from the
+  ring. Independent of the astral action and any DLC; the vanilla Dimensional Lock cannot be
+  placed on portals at all (nobody owns them). Underneath it reuses the lock effect
+  (`lock_bypass`) on both ends of the pair (decided 2026-11-04; replaces the Dimensional Lock).
   No decisions or edicts (the user's preference).
 - **The ring-side end can never be disabled or damaged.**
 

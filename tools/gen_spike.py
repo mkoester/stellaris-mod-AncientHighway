@@ -270,6 +270,9 @@ def gen_bypasses():
 
 def mega_block(key, entity, btype, ring_side, comment):
     extra = '\n\tdismantle_potential = { always = no }'  # user, 2026-11-04: repaired once, never dismantled
+    if not ring_side:  # 0.0.20: the portal's gate can be sealed - a mode switch on the gate
+        extra += ('\n\toverclock_loc_key = AHW_SEAL\n\toverclock_cooldown = 30'
+                  '\n\toverclock_types = {\n\t\tahw_spike_gate_open\n\t\tahw_spike_gate_sealed\n\t}')
     return f'''
 # {comment}
 {key} = {{

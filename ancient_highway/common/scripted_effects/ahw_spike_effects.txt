@@ -113,3 +113,44 @@ ahw_spike_probe_step = {
 		event_target:ahw_probe_swap = { save_global_event_target_as = ahw_probe_a }
 	}
 }
+
+# this = a portal: locks both ends of its pair (the gate here, the exit in the ring) for $COUNTRY$,
+# $DAYS$ days. A lock only stops ships entering that end (run 18), so both ends are needed.
+ahw_spike_lock_pair = {
+	every_bypass_in_system = {
+		lock_bypass = { country = $COUNTRY$ duration = $DAYS$ }
+	}
+	ahw_spike_lock_ring_end = { COUNTRY = $COUNTRY$ DAYS = $DAYS$ }
+}
+
+# this = the gate megastructure (overclock mode Sealed): both ends locked for its owner, for good
+# (36000 days; renewed by the monthly check while sealed).
+ahw_spike_seal_gate = {
+	if = {
+		limit = { exists = owner }
+		owner = { save_event_target_as = ahw_sealer }
+		solar_system = {
+			set_star_flag = ahw_sealed
+			ahw_spike_lock_pair = { COUNTRY = event_target:ahw_sealer DAYS = 36000 }
+			log = "AHW SPIKE gate in \\[This.GetName] SEALED for \\[ahw_sealer.GetName]"
+		}
+	}
+}
+
+# this = the gate megastructure (overclock mode Open): if it was sealed, both ends re-locked for the
+# owner for 1 day - they open tomorrow (no unlock effect exists). Also runs when the mode is first
+# set at creation, hence the flag check.
+ahw_spike_unseal_gate = {
+	if = {
+		limit = {
+			exists = owner
+			solar_system = { has_star_flag = ahw_sealed }
+		}
+		owner = { save_event_target_as = ahw_sealer }
+		solar_system = {
+			remove_star_flag = ahw_sealed
+			ahw_spike_lock_pair = { COUNTRY = event_target:ahw_sealer DAYS = 1 }
+			log = "AHW SPIKE gate in \\[This.GetName] opened by \\[ahw_sealer.GetName] (both ends free tomorrow)"
+		}
+	}
+}

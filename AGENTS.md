@@ -20,9 +20,9 @@ level. Prefix every key, id, flag and variable with `ahw_`. Tested in game on Li
 
 ---
 
-## Status (2026-11-04): spike runs 1–18 done (4.5.3 live)
+## Status (2026-11-04): spike runs 1–18 done (4.5.3 live); `0.0.20-SPIKE` (run 20: the Open/Sealed switch) not yet run
 
-**Next session: the lock's direction test** (open item 2), then the rest of the open list (the ring's exact
+**Next session: run 20** (steps below), then the rest of the open list (the ring's exact
 speed is parked — user, 2026-11-04: "not too important to me now"). Everything is still the
 spike (`*spike*` files); nothing is shippable yet.
 
@@ -55,13 +55,16 @@ placement and the shortcut do not.
    the asteroid at orbit 270, ~1.5× slower than without. The like-for-like yardstick — a quarter
    lap by hyperlanes at mid radius vs. the same via the ring — is still unmeasured; tune the
    asteroid's orbit (or the node count) from it.
-2. **The lock's direction** (run 18 left it untested): does a lock on the portal's gate keep
-   ships coming *from the ring* out, or must the ring end be locked too? Test: `event
-   ahw_spike.4` (our gate locked for another empire), then order our ship from inside the ring
-   (our exit node) into our portal; then `event ahw_spike.5` (the ring end too) and again. If
-   only the second blocks it, lock the ring end from `on_bypass_locked`
-   (`ahw_spike_lock_ring_end`). Also open: which of the rule's two forms (root, or the nested
-   `from`) did the work.
+2. **Sealing** (built, `0.0.20-SPIKE`; user, 2026-11-04: only the owner, both ways, independent
+   of the astral action, an action on the gate): the gate megastructure has two overclock modes,
+   `ahw_spike_gate_open` / `ahw_spike_gate_sealed` (tab renamed "Seal", 30-day cooldown, sealing
+   costs 25 influence). Sealed locks both ends of the pair for the gate's owner (`lock_bypass`,
+   36000 days); Open re-locks them for 1 day. The gate belongs to the anchor's owner (set on
+   repair and by the monthly check, which also renews a seal for the current owner). The vanilla
+   lock order no longer applies: the `can_lock_bypass` override is gone (0.0.19's mirroring of
+   vanilla locks was never committed). Unknown: does the mode tab show for an owned megastructure
+   in a system nobody owns? Run 18 found the facts behind it: a lock stops only ships *entering*
+   that end (a gate lock let our ship back in from the ring), and a new lock replaces the old one.
 3. **Portal names**: every portal is "Highway Portal" — indistinguishable in the outliner and the
    log (run 18: identical log lines are dropped, so the report lost most portals). Name them by
    their empire or pair.
@@ -112,9 +115,6 @@ At game start `ahw_spike.10` (from `on_game_start`, no scope, as vanilla's `game
 | Console (nothing selected) | Does |
 |---|---|
 | `event ahw_spike.2` | report: every ring node, every portal (broken, studied), ours |
-| `event ahw_spike.3` | allow us the Dimensional Lock order (what the astral action gives) |
-| `event ahw_spike.4` | lock our portal's gate for another empire (direction test) |
-| `event ahw_spike.5` | lock the ring end of our pair for another empire |
 | `event ahw_spike.6` | an outpost on our anchor, so we own it |
 | `event ahw_spike.7` | run the monthly study/repair check for us now |
 | `event ahw_spike.8` | grant `ahw_tech_spike` |
@@ -127,24 +127,21 @@ All findings go to `game.log`, lines starting `AHW SPIKE`. **Deselect before eac
 `tools/check_script.py $(find ancient_highway -name '*.txt' -o -name '*.gfx')` and
 `tools/check_refs.py ancient_highway` (every used name defined, every text and icon present).
 
-**Test, run 18** (in plain words for the user; Linux, only this mod, a new campaign, small
+**Test, run 20** (in plain words for the user; Linux, only this mod, a new campaign, small
 elliptical, AI empires on, console on):
 
-*Part 1 — study and repair.* Open the console, type `event ahw_spike.6` (we get an outpost on the
-system our portal hangs off), then `event ahw_spike.7`. A special project "Study the Highway Entry
-Point" should appear in the situation log. Send the science ship; when it is done, the tech
-"Highway Entry Points" should be among the research options (research it, or `event ahw_spike.8`).
-Then `event ahw_spike.7` again: an event offers the repair for 500 alloys (`resource alloys 1000`
-if short). Accept, send the construction ship. When it is done, let a day pass and order the
-science ship to our exit node (named in the first window): it should go through the gate.
-Before the repair, the same order should fail. Screenshot the situation log, the offer, and the
-route.
-
-*Part 2 — the lock.* `event ahw_spike.3`, then select the science ship and right-click the gate in
-our portal: is "Lock Highway Entry Point" offered? Screenshot the menu. Then, separately:
-`event ahw_spike.4` locks our gate for another empire — can our ship still go from the portal into
-the ring, and back from the ring into the portal? Then `event ahw_spike.5` (the ring end too) and
-the same two questions. Screenshot each answer (the route or the refusal).
+1. Get the gate repaired as in run 18: `event ahw_spike.6` (an outpost on the system your portal
+   hangs off), `event ahw_spike.7`, send the science ship, `event ahw_spike.8` (the tech),
+   `event ahw_spike.7` again, accept the offer (`resource alloys 1000` if short), send the
+   construction ship.
+2. When it is done, click the gate in your portal: does its window have a tab **"Seal"** with
+   two modes, Open and Sealed? Screenshot it.
+3. Choose **Sealed**. A day later: can your science ship still go through, both ways? (It
+   should.) The log will say "SEALED".
+4. Another empire's ship would be the real test, and none is at the gate. So instead: the report
+   (`event ahw_spike.2`) should list our portal and its exit node as LOCKED.
+5. Wait out the cooldown (30 days), choose **Open**, let two days pass: the report should show no
+   lock.
 
 Copy `logs/game.log` and `logs/error.log` before restarting the game.
 
@@ -571,9 +568,9 @@ points (any ring system → any repaired entry galaxy-wide), but a candidate for
 - Round galaxies (elliptical, ring) first; spirals and others later or never.
 - The ring is never claimable. Ring-side ends of entry points can't be damaged or disabled.
 - Entry points start broken; **the anchor's owner** studies (science ship project) and repairs them
-  **once, for good** (paid, construction ship project); never dismantled; the anchor's owner may
-  place vanilla's **Dimensional Lock** (Astral Planes; without it no lock). No decisions or edicts
-  (user, 2026-11-04).
+  **once, for good** (paid, construction ship project); never dismantled. The owner **seals** a
+  gate with a switch on the gate (Open / Sealed); a sealed gate blocks both ways; independent of
+  the astral action and DLCs. No decisions or edicts (user, 2026-11-04).
 - Entry points are 1:1: each regular-side gate has its own exit point in the ring system (one
   bypass type per pair).
 - ~~Ring systems are large, their exit points far apart~~ — superseded 2026-11-04: crossings

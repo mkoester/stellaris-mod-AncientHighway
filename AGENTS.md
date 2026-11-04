@@ -1,9 +1,9 @@
 # Ancient Highway
 
 A Stellaris gameplay mod (game **4.5.x**, working title): a ring of artificial, unclaimable systems
-around the galactic core, joined by hyperlanes and a few wormhole shortcuts, reachable from the
-regular galaxy through entry points that must be studied, repaired and researched before use. The
-point: empires stop being landlocked — help for a distant ally becomes possible. Full mechanics:
+**around the outside of the galaxy**, joined by hyperlanes, reachable from the regular galaxy through entry points that must be studied, repaired and researched before use. The
+point: empires stop being landlocked — a second way to get everywhere that closed borders cannot
+block for good (not a shortcut), so help for a distant ally becomes possible. Full mechanics:
 `docs/design.md`; lore (open): `docs/lore.md`.
 
 The user's original idea and requirements are kept verbatim in `IDEA.md` on the branch `idea`
@@ -25,8 +25,14 @@ level. Prefix every key, id, flag and variable with `ahw_`. Tested in game on Li
 **Next session: start with run 13** (steps below), then the open list. Everything is still the
 spike (`*spike*` files); nothing is shippable yet.
 
+**Redesign (user, 2026-11-04): the ring goes round the outside of the galaxy**, with many more
+systems, no shortcuts, and once round it takes about as long as once round the galaxy at mid
+radius — or a bit longer (`docs/design.md`, "The ring"). Runs 1–12 built it around the core; what
+they found about entry points, portals, the rule and the route cache still holds, the ring's
+placement and the shortcut do not.
+
 **Answered** (details in the runs below):
-- **The ring**: built at game start around the **galaxy's centre**, found by two probe systems
+- **The ring (around the core, superseded)**: built at game start around the **galaxy's centre**, found by two probe systems
   leapfrogging with `move_system direction = corewards` (run 9: nodes at 0.1018–0.1022); sized by
   galaxy size; unclaimable by a one-key game-rule override (confirmed with a control, run 5).
 - **Entry points**: megastructures carrying a `scripted_connection` bypass, **1:1** (one type per
@@ -40,12 +46,18 @@ spike (`*spike*` files); nothing is shippable yet.
   2–3 jumps from the capital; its lane placed away from the anchor's other lanes (4 compass
   measurements, one move); the gate opposite that lane, at orbit 230. Routes run end to end
   through the ring into other empires' portals (run 9).
-- **Shortcuts**: a gate pair on its own scripted connection (no wormhole story).
+- **Shortcuts** (dropped 2026-11-04): a gate pair on its own scripted connection works (no
+  wormhole story).
 
 **Open / to design**:
 1. **Run 13**: one portal per anchor (run 12: two empires shared a dead end), and every
    empire's tier in the log (run 12 lost lines with identical text).
-2. **Slow crossings** of large ring systems (171–270 days early game) vs. "help a distant ally".
+2. **The outer ring** (spike after run 13): can systems be spawned beyond the outer rim (map
+   bounds, camera)? Find the edge — the farthest system from the centre, or per direction (the
+   portal's law-of-cosines angles) for non-round galaxies; drop the shortcut; nodes by galaxy
+   size. Then **the yardstick**: a science ship's ETA half round the galaxy at mid radius vs. half
+   round the ring; tune the node count and the time per ring system (its size, where lanes
+   arrive) until the ring is equal or a bit slower. Game-start cost: ~0.2 s per `spawn_system`.
 3. **Locking a portal**: vanilla's `can_lock_bypass` wants the system's owner — portals are
    unclaimable, so nobody can lock them by the astral action. Needs a rule or an owner decision.
 4. **Start states**: all entry points start repaired in the spike; the design wants them broken
@@ -424,8 +436,12 @@ points (any ring system → any repaired entry galaxy-wide), but a candidate for
 - Entry points start broken; the regular-side end can be disabled (cost) or locked by its owner.
 - Entry points are 1:1: each regular-side gate has its own exit point in the ring system (one
   bypass type per pair).
-- Ring systems are large, their exit points far apart on a wide outer orbit, so empires passing
-  through can mostly avoid one another (`docs/design.md`, "The ring").
+- ~~Ring systems are large, their exit points far apart~~ — superseded 2026-11-04: crossings
+  must be quick to meet the yardstick below; what keeps passers-by apart is open.
+- **The ring goes round the outside of the galaxy** (user, 2026-11-04), with many more systems,
+  and **no shortcuts**: it is a second way to everywhere that borders cannot block for good, not a
+  shortcut. Yardstick: once round the ring ≈ once round the galaxy at mid radius (between core
+  and outer rim), or a bit longer.
 - **Portals** (user, 2026-11-03): an empire's entry points do not sit next to its capital. For each
   empire a new artificial, unclaimable system — the portal — hangs off a random system 2–3 jumps
   from the capital by a **single hyperlane**; the gates to the ring are in the portal. A dead end

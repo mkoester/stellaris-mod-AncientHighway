@@ -1,6 +1,6 @@
 # Design
 
-Status 2026-11-03: idea, not yet tested in game. The building blocks behind each mechanic, and how
+Status 2026-11-04: in a feasibility spike (runs 1–12); the ring moves to the galaxy's outside. The building blocks behind each mechanic, and how
 sure we are of them, are in `../AGENTS.md`, "Feasibility".
 
 ## The problem
@@ -14,31 +14,33 @@ reach — and that makes distant alliances pointless in many playthroughs.
 
 ### The ring
 
-- A ring of artificial systems around the galactic core, just inside the edge of the empty core.
-- Ring systems are joined to each other by ordinary hyperlanes.
+**Decided 2026-11-04 (user; replaces the ring around the core, runs 1–12):** the ring runs
+**around the outside of the galaxy**, beyond the outer rim, with **many more** systems.
+
+Why: the highway is **not a shortcut** but a **second way to get everywhere that closed borders
+cannot block for good**. Hence the yardstick: **going once round the ring takes about as long as
+going once round the galaxy at mid radius** (halfway between the core and the outer rim) by
+ordinary hyperlanes — or a bit longer, never shorter.
+
+- Ring systems are joined to each other by ordinary hyperlanes, one after the other; no lanes
+  into the regular galaxy (that is what entry points are for).
 - They can never be claimed or settled: no outposts, no claims — always neutral ground.
 - No ordinary star in the centre, but something artificial (see `lore.md`).
-- **Ring systems are large, and their exit points far apart** (decided 2026-11-03). Why: little
-  accidental fighting — empires passing through should mostly be able to avoid one another.
-  Fleets in the same system only fight within weapon range (`COMBAT_DETECT_RANGE_MULT` = 1.05 ×
-  the fleet's longest range) or a hostile's aggro range, so distance is the protection:
-  - exit points (ring side of entry points, hyperlane arrivals, shortcut ends) sit on a wide outer
-    orbit, spread evenly around the system;
-  - the artificial centre object stays in the middle, so routes between exit points should run
-    along the edge, not through a shared centre — open whether in-system movement allows that
-    (ships fly straight lines);
-  - nothing worth stopping for on the way (no planets to survey or mine, no shared station), so
-    nobody loiters;
-  - evasive/passive fleet stances remain the player's own tool to avoid combat.
+- **The time per ring system is the tuning knob.** A crossing is the sub-light flight from the
+  arrival to the departure point plus the jump; with many systems the crossings must be short. The
+  ring's length and node count follow from the galaxy's outer edge, the per-system time from the
+  yardstick above — measured in game, not guessed.
+- **Superseded:** "ring systems are large, their exit points far apart" (2026-11-03, so empires
+  passing through could avoid one another). With the yardstick a run-4 crossing (171 days for an
+  early science ship) is far too slow. Open what replaces it (see "Open questions").
 - Visually distinct from the rest of the galaxy (own star class, possibly a nebula). The first
   idea — the ring sitting a bit above or below the galactic plane — is likely impossible: systems
   spawned during a game get no height coordinate.
 
 ### Shortcuts
 
-- A few wormhole pairs across the ring, each bridging several ring systems at once.
-- How many, and how long a gap they bridge, depends on the galaxy size.
-- Open: are the shortcuts usable from the start (once inside), or do they need the same tech?
+**Dropped (2026-11-04)**: a pair across the ring would be exactly the shortcut the highway must not
+be. The spike's gate-pair shortcut goes with the move.
 
 ### Entry points
 
@@ -91,14 +93,16 @@ an own megastructure type). Alternative: ruined relays come with the ring and ca
 2. Study: special project, event chain or situation? Per entry point, or once per empire?
 3. How many entry points per ring system, and how are their regular-side systems chosen (nearest
    systems at game start, one per sector of the galaxy)?
-4. Ring size: systems per ring by galaxy size; spacing.
-5. Shortcuts: count and span by galaxy size; usable by whom?
+4. Ring size: systems per ring by galaxy size, and the time per system, both from the yardstick
+   ("The ring"). Does it follow the galaxy's outline (elliptical galaxies are not round) or is it a
+   circle?
+5. With small, quick ring systems, what keeps passing empires from fighting all the time — or is
+   that now accepted as the "neutral battlefield"?
 6. Relays: built by anyone, or pre-placed ruins?
-7. Galaxy shapes beyond elliptical/ring: spirals have arms reaching close to the core — does the
-   ring still fit?
+7. Galaxy shapes: round ones first; outside the galaxy a ring fits any shape, if the map allows
+   systems beyond the outer rim.
 8. AI: can it plan routes through custom bypasses; should it repair, lock, disable?
 9. Fallen and awakened empires, crises: special rules?
 10. Cost and timing of disabling (and re-repairing).
-11. How large can a ring system be, and how far apart can its exit points sit? Where do hyperlane
-    arrival points land in a large system? Does a straight flight between two exit points cross
-    the centre (and thus everyone else's path)?
+11. Can systems be spawned beyond the galaxy's outer edge at all (map bounds, camera, the galaxy
+    map's background)? Spike first.

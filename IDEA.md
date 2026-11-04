@@ -75,3 +75,13 @@ accept the fights, follow the outline
 ### On the ring's speed (after spike run 15)
 
 Slower ring systems: make them bigger (that way the same highway can be crossed later in the game when ship speed increases)
+
+### On locking and repairing (after spike run 17)
+
+let's tackle 2 and 3
+
+2: repair once. I don't think they should be dismantled to disable passage. I would like to re-use the portal lock astral action somehow. how could we trigger this? (other mods use decisions on their capital, but that should be our last resort)
+
+edicts are being used by mods, too - but I am not a fan of that way
+
+(Answers to the questions that followed: who may study, repair and lock a portal — the anchor's owner; repair — a special project; without the Astral Planes DLC — no locking.)

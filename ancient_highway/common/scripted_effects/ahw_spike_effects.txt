@@ -112,31 +112,3 @@ ahw_spike_probe_step = {
 		event_target:ahw_probe_swap = { save_global_event_target_as = ahw_probe_a }
 	}
 }
-
-# Run 13: every system near the anchor (flag ahw_near_tmp, set by ahw_spike_place_portal) gets its
-# distance to the portal (ahw_portal_tmp) in $VAR$.
-ahw_spike_measure_near = {
-	every_system = {
-		limit = { has_star_flag = ahw_near_tmp }
-		export_trigger_value_to_variable = {
-			trigger = distance
-			parameters = { source = event_target:ahw_portal_tmp type = euclidean }
-			variable = $VAR$
-		}
-	}
-}
-
-# Each other neighbour of the anchor (ahw_x_tmp) gets its distance to the portal (ahw_portal_tmp)
-# in $VAR$. Run 9: export_trigger_value_to_variable does export `distance` (real numbers).
-ahw_spike_measure_lanes = {
-	event_target:ahw_x_tmp = {
-		every_neighbor_system = {
-			limit = { NOT = { is_same_value = event_target:ahw_portal_tmp } }
-			export_trigger_value_to_variable = {
-				trigger = distance
-				parameters = { source = event_target:ahw_portal_tmp type = euclidean }
-				variable = $VAR$
-			}
-		}
-	}
-}

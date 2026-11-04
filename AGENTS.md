@@ -20,9 +20,9 @@ level. Prefix every key, id, flag and variable with `ahw_`. Tested in game on Li
 
 ---
 
-## Status (2026-11-04): spike runs 1–15 done (4.5.3 live); spike runs 1–16 done (4.5.3 live)
+## Status (2026-11-04): spike runs 1–15 done (4.5.3 live); spike runs 1–16 done (4.5.3 live); `0.0.17-SPIKE` (run 17, portals without moves) not yet run
 
-**Next session: pick from the open list** (the ring's exact speed is parked — user, 2026-11-04: "not too important to me now") (steps below), then the rest of the open list. Everything is still the
+**Next session: start with run 17** (steps below), then the open list (the ring's exact speed is parked — user, 2026-11-04: "not too important to me now") (steps below), then the rest of the open list. Everything is still the
 spike (`*spike*` files); nothing is shippable yet.
 
 **Redesign (user, 2026-11-04): the ring goes round the outside of the galaxy**, with many more
@@ -50,10 +50,8 @@ placement and the shortcut do not.
   wormhole story).
 
 **Open / to design**:
-1. **Portals without measuring moves** (run 16: 3.4 s per portal, ~0.6 s per `move_system`,
-   four moves only to measure): every regular system already has x, y from the outline, so
-   compute the best angle from coordinates and place the portal once (give it x, y too, for the
-   next portal's clearance). Huge galaxies, 30 empires: ~90 s → ~20 s.
+1. **Run 17**: portals placed from coordinates (built, `0.0.17-SPIKE`) — as good as before, and
+   how much faster?
 2. **The outer ring** (built, runs 14–16; the speed fine-tuning is parked): can systems be spawned beyond the outer rim (map
    bounds, camera)? Find the edge **per direction** (decided: follow the outline) — the farthest
    system in each node's sector, its angle from the portal's law-of-cosines measurement; drop the shortcut; nodes by galaxy
@@ -72,7 +70,7 @@ placement and the shortcut do not.
    for the label and a ship in the system for the right-click menu (runs 6–7).
 9. Lore (`docs/lore.md`).
 
-### The spike (`0.0.16-SPIKE`): what it does, how to run it
+### The spike (`0.0.17-SPIKE`): what it does, how to run it
 
 **Generated parts: `tools/gen_spike.py`** writes the bypass types (32 entry pairs and the
 shortcut is gone), their megastructures, outliner icons, texts, and the outline measurement, the
@@ -97,10 +95,12 @@ At game start `ahw_spike.10` (from `on_game_start`, no scope, as vanilla's `game
 4. **a portal for every regular empire** (AI too): a system 2–3
    jumps from the capital (not the capital, not next to it, unowned, no portal yet) — **searched, not walked**: from the best
    tier (fewest lanes; without a bypass before with one; logged); a new black-hole system 15 units from it,
-   measured at 4 compass points around it and moved once to the angle where its lane arrives
+   **spawned once** (0.0.17; runs 10–16 measured it at 4 compass points by moving it) at the angle,
+   computed from the outline's coordinates, where its lane arrives
    farthest from the anchor's other lanes (worst margin logged: +15 = opposite all, −15 = beside
-   one) **and no other system — portals included — is closer than 12** (run 13; −100 when no
-   angle manages that; the squared clearance is logged); then **one hyperlane**; unclaimable. In it the empire's entry gate, at that same orbit
+   one) **and no other system — portals and ring nodes included — is closer than 12** (run 13;
+   −100 when no angle manages that; the squared clearance is logged). Everything with coordinates
+   carries the star flag `ahw_xy` (regular systems from the outline, ring nodes, portals); then **one hyperlane**; unclaimable. In it the empire's entry gate, at that same orbit
    angle (facing away from the anchor, opposite the portal's lane — run 10), orbit 230; its exit in the nearest
    ring node, in that node's next free slot. All repaired; every empire learns the types and the
    ring (visited); only we get the tech (`ahw_spike.8`);
@@ -121,18 +121,15 @@ All findings go to `game.log`, lines starting `AHW SPIKE`. **Deselect before eac
 `tools/check_script.py $(find ancient_highway -name '*.txt' -o -name '*.gfx')` and
 `tools/check_refs.py ancient_highway` (every used name defined, every text and icon present).
 
-**Test, run 16** (Linux; only this mod; **a new campaign**, small elliptical, **with AI
+**Test, run 17** (Linux; only this mod; **a new campaign**, small elliptical, **with AI
 empires**; console on):
-1. Game start time (`AHW SPIKE` timestamps; run 14: 39 s with seven empires).
-2. A ring node's system view (screenshot): the asteroid at the edge, hyperlanes arriving
-   farther out than in run 15 (300 instead of 150)?
-3. **Per-node time** (after `event ahw_spike.8` and a day; science ship at Sol): ETA to our exit
-   node (in `ahw_spike.1`'s window), and to the node 10 further along the ring — the difference
-   / 10 is one node (run 15: ~70 days, crudely).
-4. **The yardstick, like for like**: (a) by hyperlanes to a regular system at mid radius about a
-   quarter turn round the galaxy from Sol — ETA, and the number of jumps on the drawn route;
-   (b) via the ring to the node nearest that system — ETA. (b) should be about (a) or a bit more.
-5. Copy `logs/game.log` and `logs/error.log` before quitting, plus the screenshots.
+1. Game start time: the `AHW SPIKE` timestamps from the outer ring to the last "portal for" line
+   (run 16: 27 s for eight portals, 3.4 s each; expected well under 1 s each).
+2. One "portal placed off …" line per empire, margins and squared clearances as in runs 14–16
+   (clearances ≥ 144 unless −100)?
+3. Screenshot the map around our anchor (full sensor): the portal's lane on the anchor's far
+   side, nothing sitting on it — as in run 13 (`_2`)?
+4. Copy `logs/game.log` and `logs/error.log` before quitting, plus the screenshots.
 
 **Run 1 (2026-11-03, 4.5.3 open beta, elliptical galaxy, `0.0.1-SPIKE`): stopped at the anchor.**
 - `random_system` with `distance_to_core_percent` 25–40 matched **nothing**, although the

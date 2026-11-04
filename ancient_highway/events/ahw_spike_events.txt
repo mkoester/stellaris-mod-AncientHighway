@@ -109,24 +109,9 @@ event = {
 			}
 			if = {
 				limit = { exists = event_target:ahw_x_tmp }
-				event_target:ahw_x_tmp = {
-					spawn_system = {
-						min_distance = 15
-						max_distance = 15
-						min_orientation_angle = 0
-						max_orientation_angle = 0
-						max_jumps = 0
-						initializer = ahw_spike_portal_init
-						hyperlane = no
-						effect = {
-							set_star_flag = ahw_portal
-							set_star_flag = ahw_unclaimable
-							save_global_event_target_as = ahw_portal_tmp
-						}
-					}
-				}
 				# Run 8 (user): the portal's lane must arrive in the anchor system away from its
 				# other lanes, so an attacker from the portal has to pass the anchor's starbase.
+				# 0.0.17: spawned there at once, the angle computed from coordinates (generated).
 				ahw_spike_place_portal = yes
 				add_hyperlane = { from = event_target:ahw_portal_tmp to = event_target:ahw_x_tmp }
 				ahw_spike_find_nearest_node = yes

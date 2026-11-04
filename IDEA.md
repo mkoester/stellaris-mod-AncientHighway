@@ -85,3 +85,15 @@ let's tackle 2 and 3
 edicts are being used by mods, too - but I am not a fan of that way
 
 (Answers to the questions that followed: who may study, repair and lock a portal — the anchor's owner; repair — a special project; without the Astral Planes DLC — no locking.)
+
+### On the lock's direction (spike run 18)
+
+so the lock is only one way?
+
+can we make it that locking locks both directions (I want them tightly coupled)
+
+- only the owner should be able to lock
+- it should not matter from which side
+- can it be independent of the astral action? we define our own action on the gate and just re-use the effects of astral locks?
+
+(Answers to the questions that followed: "it should not matter from which side" means a locked gate blocks both ways; our own action is a switch on the gate megastructure.)

@@ -20,9 +20,9 @@ level. Prefix every key, id, flag and variable with `ahw_`. Tested in game on Li
 
 ---
 
-## Status (2026-11-04): spike runs 1–17 done (4.5.3 live); `0.0.18-SPIKE` (run 18: study, repair, lock) not yet run
+## Status (2026-11-04): spike runs 1–18 done (4.5.3 live)
 
-**Next session: start with run 18** (steps below), then the rest of the open list (the ring's exact
+**Next session: the lock's direction test** (open item 2), then the rest of the open list (the ring's exact
 speed is parked — user, 2026-11-04: "not too important to me now"). Everything is still the
 spike (`*spike*` files); nothing is shippable yet.
 
@@ -55,13 +55,16 @@ placement and the shortcut do not.
    the asteroid at orbit 270, ~1.5× slower than without. The like-for-like yardstick — a quarter
    lap by hyperlanes at mid radius vs. the same via the ring — is still unmeasured; tune the
    asteroid's orbit (or the node count) from it.
-2. **Locking a portal** (built, `0.0.18-SPIKE`): `can_lock_bypass` overridden — the anchor's
-   owner may lock (two forms of the condition: unknown whether `root` is the country in a game
-   rule). Unknown: does a lock on the portal's gate keep arrivals from the ring out, or must the
-   ring end be locked too (`ahw_spike_lock_ring_end`, then from `on_bypass_locked`)?
-3. **Start states** (built, `0.0.18-SPIKE`): broken (`ahw_broken`); the anchor's owner studies
-   (science ship project), researches the tech, pays 500 alloys (event), repairs (construction
-   ship project); offered by a monthly check.
+2. **The lock's direction** (run 18 left it untested): does a lock on the portal's gate keep
+   ships coming *from the ring* out, or must the ring end be locked too? Test: `event
+   ahw_spike.4` (our gate locked for another empire), then order our ship from inside the ring
+   (our exit node) into our portal; then `event ahw_spike.5` (the ring end too) and again. If
+   only the second blocks it, lock the ring end from `on_bypass_locked`
+   (`ahw_spike_lock_ring_end`). Also open: which of the rule's two forms (root, or the nested
+   `from`) did the work.
+3. **Portal names**: every portal is "Highway Portal" — indistinguishable in the outliner and the
+   log (run 18: identical log lines are dropped, so the report lost most portals). Name them by
+   their empire or pair.
 4. **AI**: does it path through, study, repair, lock, close?
 5. Galaxy shapes beyond small elliptical, and large/huge sizes (32 pairs, performance).
 6. Labels/menus: built at game start they show; ring-side gates need sight (a usable entry point)
@@ -510,6 +513,25 @@ the game restarted its numbering).
   clear, but close.
 - error.log: nothing new (the centre probes' 20 `move_system` failures as always).
 
+**Run 18 (2026-11-04, `0.0.18-SPIKE`, small elliptical, AI empires): study, repair and the
+lock order work.** No screenshots; the user: "everything worked as expected".
+- **Study**: `ahw_spike.6` (outpost on our anchor Sirius), `ahw_spike.7` → the project offered
+  (19:57:49), done by the science ship (19:59:22). **The tech did not show** among the research
+  options: options are drawn only when a project in that area starts or ends, and the shown ones
+  stay → `add_research_option` in the study event (vanilla does this for
+  `tech_gateway_activation` after a gateway study), after the run; granted by `ahw_spike.8` here.
+- **Repair**: the offer came with the next check (20:02:51), the construction ship finished
+  (20:05:20); routes through the repaired gate worked (user).
+- **The Dimensional Lock order is offered on our gate** once we own the anchor
+  (`ahw_spike.3`; user): the `can_lock_bypass` override works.
+- `ahw_spike.4` / `.5` locked our gate and the ring end for another empire (report: LOCKED); the
+  direction test was not done (no ship went from the ring into the portal).
+- **Identical log lines are dropped — confirmed**: the report printed one "Highway Portal:
+  BROKEN" for six broken AI portals (run 12's inference). The log line for the study named the
+  ship instead of the system (`[This.System.GetName]` in ship scope) → fixed after the run.
+- AI empires had not studied their portals by 20:06 (their anchors unowned; ~a year in).
+- error.log: nothing new.
+
 Expected noise in `error.log`: a missing icon for `ahw_tech_spike` and missing portraits. Anything
 naming an `ahw_` key otherwise is a finding. Record the findings here and in
 `../stellaris-modding-insights` (proposed, not silently); delete the spike files once Phase 1 starts.
@@ -572,7 +594,7 @@ ring gets relays, how the shortcut count scales, lore (`docs/lore.md`).
 
 ## Plan
 
-- **Phase 0 — spike**: runs 1–17 done (see "Status").
+- **Phase 0 — spike**: runs 1–18 done (see "Status").
 - **Phase 1** — the real mod from the spike's findings (drop the `*spike*` files, keep the
   generator): game-start generation for all sizes and shapes, entry-point lifecycle (study →
   research → repair → use), locking portals, localisation.

@@ -1,6 +1,6 @@
 # SPIKE (Phase 0, 0.0.18): researchable once the country has studied an entry point (special
-# project AHW_SPIKE_STUDY_PROJECT -> country flag ahw_highway_studied); weighted so it is drawn
-# at once. `event ahw_spike.8` grants it anyway (give_technology). Run 3: research_technology
+# project AHW_SPIKE_STUDY_PROJECT -> country flag ahw_highway_studied, and add_research_option
+# puts it among the options at once, as vanilla's gateway study does). `event ahw_spike.8` grants it anyway (give_technology). Run 3: research_technology
 # refuses a tech whose potential fails.
 ahw_tech_spike = {
 	cost = 1

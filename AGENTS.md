@@ -53,8 +53,8 @@ placement and the shortcut do not.
 1. **Run 13**: one portal per anchor (run 12: two empires shared a dead end), and every
    empire's tier in the log (run 12 lost lines with identical text).
 2. **The outer ring** (spike after run 13): can systems be spawned beyond the outer rim (map
-   bounds, camera)? Find the edge — the farthest system from the centre, or per direction (the
-   portal's law-of-cosines angles) for non-round galaxies; drop the shortcut; nodes by galaxy
+   bounds, camera)? Find the edge **per direction** (decided: follow the outline) — the farthest
+   system in each node's sector, its angle from the portal's law-of-cosines measurement; drop the shortcut; nodes by galaxy
    size. Then **the yardstick**: a science ship's ETA half round the galaxy at mid radius vs. half
    round the ring; tune the node count and the time per ring system (its size, where lanes
    arrive) until the ring is equal or a bit slower. Game-start cost: ~0.2 s per `spawn_system`.
@@ -437,11 +437,13 @@ points (any ring system → any repaired entry galaxy-wide), but a candidate for
 - Entry points are 1:1: each regular-side gate has its own exit point in the ring system (one
   bypass type per pair).
 - ~~Ring systems are large, their exit points far apart~~ — superseded 2026-11-04: crossings
-  must be quick to meet the yardstick below; what keeps passers-by apart is open.
+  must be quick to meet the yardstick below; **fights between passers-by are accepted** (user,
+  2026-11-04: the neutral battlefield).
 - **The ring goes round the outside of the galaxy** (user, 2026-11-04), with many more systems,
   and **no shortcuts**: it is a second way to everywhere that borders cannot block for good, not a
   shortcut. Yardstick: once round the ring ≈ once round the galaxy at mid radius (between core
-  and outer rim), or a bit longer.
+  and outer rim), or a bit longer. **It follows the galaxy's outline** at a fixed distance
+  beyond the outer rim, not a circle (user, 2026-11-04).
 - **Portals** (user, 2026-11-03): an empire's entry points do not sit next to its capital. For each
   empire a new artificial, unclaimable system — the portal — hangs off a random system 2–3 jumps
   from the capital by a **single hyperlane**; the gates to the ring are in the portal. A dead end

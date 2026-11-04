@@ -22,6 +22,9 @@ cannot block for good**. Hence the yardstick: **going once round the ring takes 
 going once round the galaxy at mid radius** (halfway between the core and the outer rim) by
 ordinary hyperlanes — or a bit longer, never shorter.
 
+- **It follows the galaxy's outline** at a fixed distance beyond the outer rim, not a circle
+  (decided 2026-11-04): an elliptical galaxy is not round, and a circle would leave long empty
+  stretches on its short sides.
 - Ring systems are joined to each other by ordinary hyperlanes, one after the other; no lanes
   into the regular galaxy (that is what entry points are for).
 - They can never be claimed or settled: no outposts, no claims — always neutral ground.
@@ -32,7 +35,8 @@ ordinary hyperlanes — or a bit longer, never shorter.
   yardstick above — measured in game, not guessed.
 - **Superseded:** "ring systems are large, their exit points far apart" (2026-11-03, so empires
   passing through could avoid one another). With the yardstick a run-4 crossing (171 days for an
-  early science ship) is far too slow. Open what replaces it (see "Open questions").
+  early science ship) is far too slow. **Fights are accepted** (decided 2026-11-04): with quick
+  crossings, passing empires meet; the ring is the neutral battlefield ("Consequences for play").
 - Visually distinct from the rest of the galaxy (own star class, possibly a nebula). The first
   idea — the ring sitting a bit above or below the galactic plane — is likely impossible: systems
   spawned during a game get no height coordinate.
@@ -94,10 +98,8 @@ an own megastructure type). Alternative: ruined relays come with the ring and ca
 3. How many entry points per ring system, and how are their regular-side systems chosen (nearest
    systems at game start, one per sector of the galaxy)?
 4. Ring size: systems per ring by galaxy size, and the time per system, both from the yardstick
-   ("The ring"). Does it follow the galaxy's outline (elliptical galaxies are not round) or is it a
-   circle?
-5. With small, quick ring systems, what keeps passing empires from fighting all the time — or is
-   that now accepted as the "neutral battlefield"?
+   ("The ring"). How far beyond the outer rim?
+5. ~~What keeps passing empires apart~~ — nothing: fights accepted (2026-11-04).
 6. Relays: built by anyone, or pre-placed ruins?
 7. Galaxy shapes: round ones first; outside the galaxy a ring fits any shape, if the map allows
    systems beyond the outer rim.

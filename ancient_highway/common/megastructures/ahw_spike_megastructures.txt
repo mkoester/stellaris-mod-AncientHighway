@@ -865,31 +865,3 @@ ahw_spike_entry_exit_32 = {
 	potential = { always = no }
 	dismantle_potential = { always = no }
 }
-
-# Shortcut 1, node end.
-ahw_spike_shortcut_1_node = {
-	entity = "reactivated_gateway_entity"
-	portrait = "GFX_megastructure_construction_background"
-	place_entity_on_planet_plane = no
-	show_galactic_map_icon = no
-	show_in_outliner = yes
-	construction_blocks_and_blocked_by = none
-	bypass_type = ahw_spike_shortcut_1
-
-	potential = { always = no }
-	dismantle_potential = { always = no }
-}
-
-# Shortcut 1, nexus end.
-ahw_spike_shortcut_1_nexus = {
-	entity = "reactivated_gateway_entity"
-	portrait = "GFX_megastructure_construction_background"
-	place_entity_on_planet_plane = no
-	show_galactic_map_icon = no
-	show_in_outliner = yes
-	construction_blocks_and_blocked_by = none
-	bypass_type = ahw_spike_shortcut_1
-
-	potential = { always = no }
-	dismantle_potential = { always = no }
-}

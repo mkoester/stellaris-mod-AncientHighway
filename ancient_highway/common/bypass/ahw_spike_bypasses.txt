@@ -964,31 +964,3 @@ ahw_spike_entry_32 = {
 		ahw_tech_spike
 	}
 }
-
-# Shortcut across the ring (run 6: a gate pair, no wormhole story).
-
-ahw_spike_shortcut_1 = {
-	name = AHW_SPIKE_SHORTCUT
-	is_pathfind = yes
-	uses_action = no
-	requires_exploration = no
-	always_active = yes
-	windup_time = 0
-	winddown_time = 0
-	ftl_multiplier = 0
-	extends_sensors = yes
-	icon_frame = 12
-	remember_instances = no
-	animation_time = 1
-	galactic_map_tooltip_header = AHW_SPIKE_SHORTCUT
-	galactic_map_tooltip_desc = AHW_SPIKE_SHORTCUT_DESC
-	connection_type = scripted_connection
-	ftl_ship_effect = "wormhole_ftl_ship_effect_entity"
-	ftl_bypass_effect = "wormhole_ftl_bypass_effect_entity"
-	can_bypass_be_locked = no
-
-	scripted_connection = {
-		node = { has_star_flag = ahw_shortcut_1_node }
-		nexus = { has_star_flag = ahw_shortcut_1_nexus }
-	}
-}

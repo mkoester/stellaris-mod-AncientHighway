@@ -1,7 +1,7 @@
 ﻿l_english:
  ahw_spike.ok:0 "OK"
  ahw_spike.1.name:0 "SPIKE: Ancient Highway"
- ahw_spike.1.desc:0 "A ring of Highway Nodes was built around the galactic core, and every regular empire got a portal: a system with a single hyperlane and an entry gate into the ring. Ours, [ahw_player_portal.GetName], hangs off [ahw_player_anchor.GetName]; its exit is in [ahw_player_node.GetName]. Let a day pass before ordering routes. Details: game.log, lines starting AHW SPIKE."
+ ahw_spike.1.desc:0 "A ring of Highway Nodes was built round the outside of the galaxy, and every regular empire got a portal: a system with a single hyperlane and an entry gate into the ring. Ours, [ahw_player_portal.GetName], hangs off [ahw_player_anchor.GetName]; its exit is in [ahw_player_node.GetName]. Let a day pass before ordering routes. Details: game.log, lines starting AHW SPIKE."
  ahw_spike.2.name:0 "SPIKE: Report"
  ahw_spike.2.desc:0 "The state of the highway went to game.log (AHW SPIKE)."
  ahw_spike.3.name:0 "SPIKE: Entry Point Locked"
@@ -17,8 +17,6 @@
  NAME_ahw_spike_core:0 "Highway Heart"
  AHW_SPIKE_ENTRY:0 "Highway Entry Point"
  AHW_SPIKE_ENTRY_DESC:0 "SPIKE: an entry point of the Ancient Highway. Needs ahw_tech_spike."
- AHW_SPIKE_SHORTCUT:0 "Highway Shortcut"
- AHW_SPIKE_SHORTCUT_DESC:0 "SPIKE: a shortcut across the Ancient Highway."
  AHW_RING_UNCLAIMABLE:0 "The Ancient Highway cannot be claimed."
  ahw_tech_spike:0 "SPIKE: Highway Entry Points"
  ahw_tech_spike_desc:0 "Lets our ships use the entry points of the Ancient Highway."

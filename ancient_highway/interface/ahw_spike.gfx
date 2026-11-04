@@ -258,12 +258,4 @@ spriteTypes = {
 		name = "GFX_ahw_spike_entry_exit_32_outliner_icon"
 		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
 	}
-	spriteType = {
-		name = "GFX_ahw_spike_shortcut_1_node_outliner_icon"
-		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
-	}
-	spriteType = {
-		name = "GFX_ahw_spike_shortcut_1_nexus_outliner_icon"
-		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
-	}
 }

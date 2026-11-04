@@ -1,4 +1,4 @@
-# SPIKE (Phase 0, 0.0.8): the ring around the core, and a portal for every regular empire.
+# SPIKE (Phase 0, 0.0.14): the outer ring round the galaxy, and a portal for every regular empire.
 # ahw_spike.10 runs by itself at game start (common/on_actions/ahw_spike_on_actions.txt) and
 # fires the window ahw_spike.1 for the human player.
 # Console, with nothing selected (Esc) - see AGENTS.md, "Status":
@@ -30,10 +30,15 @@ event = {
 		ahw_spike_core_band = { FRACTION = 0.2 }
 
 		# Run 8: spawn_system without a scope spawns nothing. Find the centre instead: two probe
-		# systems leapfrog corewards from the innermost system (generated: ahw_spike_find_centre),
-		# then the ring goes around the better probe.
+		# systems leapfrog corewards from the innermost system (generated: ahw_spike_find_centre).
+		# 0.0.14 (user, 2026-11-04): the ring goes round the outside of the galaxy, following its
+		# outline - measured from the centre, then built (generated).
 		ahw_spike_find_centre = yes
-		ahw_spike_build_ring_around_centre_system = yes
+		log = "AHW SPIKE timing: centre found"
+		ahw_spike_measure_outline = yes
+		log = "AHW SPIKE timing: outline measured"
+		ahw_spike_build_outer_ring = yes
+		log = "AHW SPIKE timing: outer ring built"
 
 		# A portal for every regular empire: a new system with one hyperlane, hanging off a system
 		# 2-3 jumps from the capital (a random walk), holding the empire's entry gate; its exit is

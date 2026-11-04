@@ -637,11 +637,11 @@ ahw_spike_find_centre = {
 			limit = {{ has_star_flag = ahw_exit_{n} }}
 			every_bypass_in_system = {{
 				limit = {{ is_bypass_type = ahw_spike_entry_{n} }}
-				lock_bypass = {{ country = $COUNTRY$ duration = 360 }}
+				lock_bypass = {{ country = $COUNTRY$ duration = $DAYS$ }}
 			}}
 		}}
 	}}''' for n in range(1, PAIRS + 1))
-    out.append(f'\n# this = a portal: locks the ring end of its pair for $COUNTRY$, 360 days (0.0.18 test:\n# does a lock on the portal\'s gate alone keep arrivals from the ring out?).\nahw_spike_lock_ring_end = {{\n{lock}\n}}\n')
+    out.append(f'\n# this = a portal: locks the ring end of its pair for $COUNTRY$, $DAYS$ days (0.0.18 test:\n# does a lock on the portal\'s gate alone keep arrivals from the ring out?).\nahw_spike_lock_ring_end = {{\n{lock}\n}}\n')
     learn = '\n'.join(f'\tadd_seen_bypass_type = ahw_spike_entry_{n}' for n in range(1, PAIRS + 1))
     out.append(f'\n# this = country: knows every highway bypass type (run 4).\nahw_spike_learn_types = {{\n{learn}\n}}\n')
     return ''.join(out)

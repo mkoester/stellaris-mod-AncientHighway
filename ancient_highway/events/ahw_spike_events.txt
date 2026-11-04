@@ -9,6 +9,7 @@
 #   event ahw_spike.6   an outpost on our anchor (so we own it)
 #   event ahw_spike.7   run the monthly study/repair check for us now
 #   event ahw_spike.8   grant ahw_tech_spike
+#   event ahw_spike.9   release the test locks on our pair (re-lock for us, 1 day)
 # Map changes reach route-finding on the next daily tick: let a day pass before ordering routes.
 namespace = ahw_spike
 
@@ -207,7 +208,7 @@ country_event = {
 			save_event_target_as = ahw_other
 		}
 		event_target:ahw_player_portal = {
-			ahw_spike_lock_ring_end = { COUNTRY = event_target:ahw_other }
+			ahw_spike_lock_ring_end = { COUNTRY = event_target:ahw_other DAYS = 360 }
 		}
 		log = "AHW SPIKE the ring end of our pair locked for [ahw_other.GetName]"
 		ahw_spike_report = { WHEN = after_ring_end_lock }
@@ -239,6 +240,21 @@ country_event = {
 	hide_window = yes
 	is_triggered_only = yes
 	immediate = { country_event = { id = ahw_spike.20 } }
+}
+
+# Releases the test locks on our pair (run 18: there is no unlock effect): both ends re-locked for
+# us for 1 day, so they expire tomorrow. Q: does a second lock_bypass replace the first?
+country_event = {
+	id = ahw_spike.9
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		event_target:ahw_player_portal = {
+			every_bypass_in_system = { lock_bypass = { country = root duration = 1 } }
+			ahw_spike_lock_ring_end = { COUNTRY = root DAYS = 1 }
+		}
+		log = "AHW SPIKE our pair re-locked for [Root.GetName] (both ends, 1 day)"
+	}
 }
 
 # Grants the entry-point tech (fallback for the console's research_technology).

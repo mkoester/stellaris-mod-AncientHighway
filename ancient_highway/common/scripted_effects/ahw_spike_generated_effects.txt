@@ -18880,7 +18880,7 @@ ahw_spike_place_portal = {
 	}
 }
 
-# this = a portal: locks the ring end of its pair for $COUNTRY$, 360 days (0.0.18 test:
+# this = a portal: locks the ring end of its pair for $COUNTRY$, $DAYS$ days (0.0.18 test:
 # does a lock on the portal's gate alone keep arrivals from the ring out?).
 ahw_spike_lock_ring_end = {
 	if = {
@@ -18889,7 +18889,7 @@ ahw_spike_lock_ring_end = {
 			limit = { has_star_flag = ahw_exit_1 }
 			every_bypass_in_system = {
 				limit = { is_bypass_type = ahw_spike_entry_1 }
-				lock_bypass = { country = $COUNTRY$ duration = 360 }
+				lock_bypass = { country = $COUNTRY$ duration = $DAYS$ }
 			}
 		}
 	}
@@ -18899,7 +18899,7 @@ ahw_spike_lock_ring_end = {
 			limit = { has_star_flag = ahw_exit_2 }
 			every_bypass_in_system = {
 				limit = { is_bypass_type = ahw_spike_entry_2 }
-				lock_bypass = { country = $COUNTRY$ duration = 360 }
+				lock_bypass = { country = $COUNTRY$ duration = $DAYS$ }
 			}
 		}
 	}
@@ -18909,7 +18909,7 @@ ahw_spike_lock_ring_end = {
 			limit = { has_star_flag = ahw_exit_3 }
 			every_bypass_in_system = {
 				limit = { is_bypass_type = ahw_spike_entry_3 }
-				lock_bypass = { country = $COUNTRY$ duration = 360 }
+				lock_bypass = { country = $COUNTRY$ duration = $DAYS$ }
 			}
 		}
 	}
@@ -18919,7 +18919,7 @@ ahw_spike_lock_ring_end = {
 			limit = { has_star_flag = ahw_exit_4 }
 			every_bypass_in_system = {
 				limit = { is_bypass_type = ahw_spike_entry_4 }
-				lock_bypass = { country = $COUNTRY$ duration = 360 }
+				lock_bypass = { country = $COUNTRY$ duration = $DAYS$ }
 			}
 		}
 	}
@@ -18929,7 +18929,7 @@ ahw_spike_lock_ring_end = {
 			limit = { has_star_flag = ahw_exit_5 }
 			every_bypass_in_system = {
 				limit = { is_bypass_type = ahw_spike_entry_5 }
-				lock_bypass = { country = $COUNTRY$ duration = 360 }
+				lock_bypass = { country = $COUNTRY$ duration = $DAYS$ }
 			}
 		}
 	}
@@ -18939,7 +18939,7 @@ ahw_spike_lock_ring_end = {
 			limit = { has_star_flag = ahw_exit_6 }
 			every_bypass_in_system = {
 				limit = { is_bypass_type = ahw_spike_entry_6 }
-				lock_bypass = { country = $COUNTRY$ duration = 360 }
+				lock_bypass = { country = $COUNTRY$ duration = $DAYS$ }
 			}
 		}
 	}
@@ -18949,7 +18949,7 @@ ahw_spike_lock_ring_end = {
 			limit = { has_star_flag = ahw_exit_7 }
 			every_bypass_in_system = {
 				limit = { is_bypass_type = ahw_spike_entry_7 }
-				lock_bypass = { country = $COUNTRY$ duration = 360 }
+				lock_bypass = { country = $COUNTRY$ duration = $DAYS$ }
 			}
 		}
 	}
@@ -18959,7 +18959,7 @@ ahw_spike_lock_ring_end = {
 			limit = { has_star_flag = ahw_exit_8 }
 			every_bypass_in_system = {
 				limit = { is_bypass_type = ahw_spike_entry_8 }
-				lock_bypass = { country = $COUNTRY$ duration = 360 }
+				lock_bypass = { country = $COUNTRY$ duration = $DAYS$ }
 			}
 		}
 	}
@@ -18969,7 +18969,7 @@ ahw_spike_lock_ring_end = {
 			limit = { has_star_flag = ahw_exit_9 }
 			every_bypass_in_system = {
 				limit = { is_bypass_type = ahw_spike_entry_9 }
-				lock_bypass = { country = $COUNTRY$ duration = 360 }
+				lock_bypass = { country = $COUNTRY$ duration = $DAYS$ }
 			}
 		}
 	}
@@ -18979,7 +18979,7 @@ ahw_spike_lock_ring_end = {
 			limit = { has_star_flag = ahw_exit_10 }
 			every_bypass_in_system = {
 				limit = { is_bypass_type = ahw_spike_entry_10 }
-				lock_bypass = { country = $COUNTRY$ duration = 360 }
+				lock_bypass = { country = $COUNTRY$ duration = $DAYS$ }
 			}
 		}
 	}
@@ -18989,7 +18989,7 @@ ahw_spike_lock_ring_end = {
 			limit = { has_star_flag = ahw_exit_11 }
 			every_bypass_in_system = {
 				limit = { is_bypass_type = ahw_spike_entry_11 }
-				lock_bypass = { country = $COUNTRY$ duration = 360 }
+				lock_bypass = { country = $COUNTRY$ duration = $DAYS$ }
 			}
 		}
 	}
@@ -18999,7 +18999,7 @@ ahw_spike_lock_ring_end = {
 			limit = { has_star_flag = ahw_exit_12 }
 			every_bypass_in_system = {
 				limit = { is_bypass_type = ahw_spike_entry_12 }
-				lock_bypass = { country = $COUNTRY$ duration = 360 }
+				lock_bypass = { country = $COUNTRY$ duration = $DAYS$ }
 			}
 		}
 	}
@@ -19009,7 +19009,7 @@ ahw_spike_lock_ring_end = {
 			limit = { has_star_flag = ahw_exit_13 }
 			every_bypass_in_system = {
 				limit = { is_bypass_type = ahw_spike_entry_13 }
-				lock_bypass = { country = $COUNTRY$ duration = 360 }
+				lock_bypass = { country = $COUNTRY$ duration = $DAYS$ }
 			}
 		}
 	}
@@ -19019,7 +19019,7 @@ ahw_spike_lock_ring_end = {
 			limit = { has_star_flag = ahw_exit_14 }
 			every_bypass_in_system = {
 				limit = { is_bypass_type = ahw_spike_entry_14 }
-				lock_bypass = { country = $COUNTRY$ duration = 360 }
+				lock_bypass = { country = $COUNTRY$ duration = $DAYS$ }
 			}
 		}
 	}
@@ -19029,7 +19029,7 @@ ahw_spike_lock_ring_end = {
 			limit = { has_star_flag = ahw_exit_15 }
 			every_bypass_in_system = {
 				limit = { is_bypass_type = ahw_spike_entry_15 }
-				lock_bypass = { country = $COUNTRY$ duration = 360 }
+				lock_bypass = { country = $COUNTRY$ duration = $DAYS$ }
 			}
 		}
 	}
@@ -19039,7 +19039,7 @@ ahw_spike_lock_ring_end = {
 			limit = { has_star_flag = ahw_exit_16 }
 			every_bypass_in_system = {
 				limit = { is_bypass_type = ahw_spike_entry_16 }
-				lock_bypass = { country = $COUNTRY$ duration = 360 }
+				lock_bypass = { country = $COUNTRY$ duration = $DAYS$ }
 			}
 		}
 	}
@@ -19049,7 +19049,7 @@ ahw_spike_lock_ring_end = {
 			limit = { has_star_flag = ahw_exit_17 }
 			every_bypass_in_system = {
 				limit = { is_bypass_type = ahw_spike_entry_17 }
-				lock_bypass = { country = $COUNTRY$ duration = 360 }
+				lock_bypass = { country = $COUNTRY$ duration = $DAYS$ }
 			}
 		}
 	}
@@ -19059,7 +19059,7 @@ ahw_spike_lock_ring_end = {
 			limit = { has_star_flag = ahw_exit_18 }
 			every_bypass_in_system = {
 				limit = { is_bypass_type = ahw_spike_entry_18 }
-				lock_bypass = { country = $COUNTRY$ duration = 360 }
+				lock_bypass = { country = $COUNTRY$ duration = $DAYS$ }
 			}
 		}
 	}
@@ -19069,7 +19069,7 @@ ahw_spike_lock_ring_end = {
 			limit = { has_star_flag = ahw_exit_19 }
 			every_bypass_in_system = {
 				limit = { is_bypass_type = ahw_spike_entry_19 }
-				lock_bypass = { country = $COUNTRY$ duration = 360 }
+				lock_bypass = { country = $COUNTRY$ duration = $DAYS$ }
 			}
 		}
 	}
@@ -19079,7 +19079,7 @@ ahw_spike_lock_ring_end = {
 			limit = { has_star_flag = ahw_exit_20 }
 			every_bypass_in_system = {
 				limit = { is_bypass_type = ahw_spike_entry_20 }
-				lock_bypass = { country = $COUNTRY$ duration = 360 }
+				lock_bypass = { country = $COUNTRY$ duration = $DAYS$ }
 			}
 		}
 	}
@@ -19089,7 +19089,7 @@ ahw_spike_lock_ring_end = {
 			limit = { has_star_flag = ahw_exit_21 }
 			every_bypass_in_system = {
 				limit = { is_bypass_type = ahw_spike_entry_21 }
-				lock_bypass = { country = $COUNTRY$ duration = 360 }
+				lock_bypass = { country = $COUNTRY$ duration = $DAYS$ }
 			}
 		}
 	}
@@ -19099,7 +19099,7 @@ ahw_spike_lock_ring_end = {
 			limit = { has_star_flag = ahw_exit_22 }
 			every_bypass_in_system = {
 				limit = { is_bypass_type = ahw_spike_entry_22 }
-				lock_bypass = { country = $COUNTRY$ duration = 360 }
+				lock_bypass = { country = $COUNTRY$ duration = $DAYS$ }
 			}
 		}
 	}
@@ -19109,7 +19109,7 @@ ahw_spike_lock_ring_end = {
 			limit = { has_star_flag = ahw_exit_23 }
 			every_bypass_in_system = {
 				limit = { is_bypass_type = ahw_spike_entry_23 }
-				lock_bypass = { country = $COUNTRY$ duration = 360 }
+				lock_bypass = { country = $COUNTRY$ duration = $DAYS$ }
 			}
 		}
 	}
@@ -19119,7 +19119,7 @@ ahw_spike_lock_ring_end = {
 			limit = { has_star_flag = ahw_exit_24 }
 			every_bypass_in_system = {
 				limit = { is_bypass_type = ahw_spike_entry_24 }
-				lock_bypass = { country = $COUNTRY$ duration = 360 }
+				lock_bypass = { country = $COUNTRY$ duration = $DAYS$ }
 			}
 		}
 	}
@@ -19129,7 +19129,7 @@ ahw_spike_lock_ring_end = {
 			limit = { has_star_flag = ahw_exit_25 }
 			every_bypass_in_system = {
 				limit = { is_bypass_type = ahw_spike_entry_25 }
-				lock_bypass = { country = $COUNTRY$ duration = 360 }
+				lock_bypass = { country = $COUNTRY$ duration = $DAYS$ }
 			}
 		}
 	}
@@ -19139,7 +19139,7 @@ ahw_spike_lock_ring_end = {
 			limit = { has_star_flag = ahw_exit_26 }
 			every_bypass_in_system = {
 				limit = { is_bypass_type = ahw_spike_entry_26 }
-				lock_bypass = { country = $COUNTRY$ duration = 360 }
+				lock_bypass = { country = $COUNTRY$ duration = $DAYS$ }
 			}
 		}
 	}
@@ -19149,7 +19149,7 @@ ahw_spike_lock_ring_end = {
 			limit = { has_star_flag = ahw_exit_27 }
 			every_bypass_in_system = {
 				limit = { is_bypass_type = ahw_spike_entry_27 }
-				lock_bypass = { country = $COUNTRY$ duration = 360 }
+				lock_bypass = { country = $COUNTRY$ duration = $DAYS$ }
 			}
 		}
 	}
@@ -19159,7 +19159,7 @@ ahw_spike_lock_ring_end = {
 			limit = { has_star_flag = ahw_exit_28 }
 			every_bypass_in_system = {
 				limit = { is_bypass_type = ahw_spike_entry_28 }
-				lock_bypass = { country = $COUNTRY$ duration = 360 }
+				lock_bypass = { country = $COUNTRY$ duration = $DAYS$ }
 			}
 		}
 	}
@@ -19169,7 +19169,7 @@ ahw_spike_lock_ring_end = {
 			limit = { has_star_flag = ahw_exit_29 }
 			every_bypass_in_system = {
 				limit = { is_bypass_type = ahw_spike_entry_29 }
-				lock_bypass = { country = $COUNTRY$ duration = 360 }
+				lock_bypass = { country = $COUNTRY$ duration = $DAYS$ }
 			}
 		}
 	}
@@ -19179,7 +19179,7 @@ ahw_spike_lock_ring_end = {
 			limit = { has_star_flag = ahw_exit_30 }
 			every_bypass_in_system = {
 				limit = { is_bypass_type = ahw_spike_entry_30 }
-				lock_bypass = { country = $COUNTRY$ duration = 360 }
+				lock_bypass = { country = $COUNTRY$ duration = $DAYS$ }
 			}
 		}
 	}
@@ -19189,7 +19189,7 @@ ahw_spike_lock_ring_end = {
 			limit = { has_star_flag = ahw_exit_31 }
 			every_bypass_in_system = {
 				limit = { is_bypass_type = ahw_spike_entry_31 }
-				lock_bypass = { country = $COUNTRY$ duration = 360 }
+				lock_bypass = { country = $COUNTRY$ duration = $DAYS$ }
 			}
 		}
 	}
@@ -19199,7 +19199,7 @@ ahw_spike_lock_ring_end = {
 			limit = { has_star_flag = ahw_exit_32 }
 			every_bypass_in_system = {
 				limit = { is_bypass_type = ahw_spike_entry_32 }
-				lock_bypass = { country = $COUNTRY$ duration = 360 }
+				lock_bypass = { country = $COUNTRY$ duration = $DAYS$ }
 			}
 		}
 	}

@@ -118,6 +118,7 @@ At game start `ahw_spike.10` (from `on_game_start`, no scope, as vanilla's `game
 | `event ahw_spike.6` | an outpost on our anchor, so we own it |
 | `event ahw_spike.7` | run the monthly study/repair check for us now |
 | `event ahw_spike.8` | grant `ahw_tech_spike` |
+| `event ahw_spike.9` | release the test locks on our pair (re-locked for us for 1 day; there is no unlock effect) |
 
 All findings go to `game.log`, lines starting `AHW SPIKE`. **Deselect before each console
 `event`** (Esc). **Let a day pass before judging any route.**

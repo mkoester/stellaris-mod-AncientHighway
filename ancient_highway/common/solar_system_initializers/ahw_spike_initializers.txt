@@ -13,6 +13,20 @@ ahw_spike_ring_init = {
 		size = 30
 		has_ring = no
 	}
+
+	# 0.0.16 (user, run 15: the ring is too fast - make its systems bigger, so the crossing also
+	# speeds up with better ships). Hyperlanes arrive at max(SYSTEM_MIN_INNER_RADIUS = 150, the
+	# outermost planet's orbit + SYSTEM_INNER_RADIUS_OFFSET = 30) (common/defines/00_defines.txt):
+	# a body at orbit 270 puts the arrivals at 300, double the black hole's 150. Orbits in an
+	# initializer add up (run 3); the black hole is at 0. Q: does an asteroid count, and how much
+	# slower is a node then (run 15: ~70 days each)?
+	planet = {
+		class = "pc_asteroid"
+		orbit_distance = 270
+		orbit_angle = 90
+		size = 1
+		has_ring = no
+	}
 }
 
 # SPIKE (0.0.8): an empire's portal system - one hyperlane, the entry gate, nobody may claim it.

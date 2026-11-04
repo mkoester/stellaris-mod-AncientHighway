@@ -20,9 +20,9 @@ level. Prefix every key, id, flag and variable with `ahw_`. Tested in game on Li
 
 ---
 
-## Status (2026-11-04): spike runs 1–14 done (4.5.3 live); `0.0.15-SPIKE` (run 15) not yet run
+## Status (2026-11-04): spike runs 1–15 done (4.5.3 live); `0.0.16-SPIKE` (run 16, bigger ring systems) not yet run
 
-**Next session: start with run 15** (steps below), then the rest of the open list. Everything is still the
+**Next session: start with run 16** (steps below) (steps below), then the rest of the open list. Everything is still the
 spike (`*spike*` files); nothing is shippable yet.
 
 **Redesign (user, 2026-11-04): the ring goes round the outside of the galaxy**, with many more
@@ -68,7 +68,7 @@ placement and the shortcut do not.
    for the label and a ship in the system for the right-click menu (runs 6–7).
 8. Lore (`docs/lore.md`).
 
-### The spike (`0.0.15-SPIKE`): what it does, how to run it
+### The spike (`0.0.16-SPIKE`): what it does, how to run it
 
 **Generated parts: `tools/gen_spike.py`** writes the bypass types (32 entry pairs and the
 shortcut is gone), their megastructures, outliner icons, texts, and the outline measurement, the
@@ -85,7 +85,9 @@ At game start `ahw_spike.10` (from `on_game_start`, no scope, as vanilla's `game
    (none: 0); the node goes 25 beyond it, **smoothed** (0.0.15: at most 6 below a neighbour, so
    an outlier makes a gentle hill, not a step); `spawn_system` at the centre, the radius rounded
    down to 5 (literal distances only). **The two probes become the last two nodes** (0.0.15:
-   `move_system`, the centre probe relative to itself — logged), nodes joined in order. Nodes by size
+   `move_system`, the centre probe relative to itself — logged), nodes joined in order. **Ring
+   systems are big** (0.0.16): an asteroid at orbit 270 pushes the hyperlane arrivals from 150
+   to 300 (`SYSTEM_MIN_INNER_RADIUS`, `SYSTEM_INNER_RADIUS_OFFSET`). Nodes by size
    (≈ jumps of one lap at mid radius, `tools/gen_spike.py` `lap_nodes`): tiny 40, small 56,
    medium 68, large 80, huge 88. No shortcut;
 4. **a portal for every regular empire** (AI too): a system 2–3
@@ -115,18 +117,17 @@ All findings go to `game.log`, lines starting `AHW SPIKE`. **Deselect before eac
 `tools/check_script.py $(find ancient_highway -name '*.txt' -o -name '*.gfx')` and
 `tools/check_refs.py ancient_highway` (every used name defined, every text and icon present).
 
-**Test, run 15** (Linux; only this mod; **a new campaign**, small elliptical; console on):
-1. Game start time (`AHW SPIKE timing:` lines and the last portal line; run 14: 39 s, the
-   portals 3.5 s each).
-2. Galaxy map, zoomed out (screenshot): the ring smooth round the bulges? **No "Highway Heart"
-   left in the core**; log "node 56 (the centre probe, moved): … from node 55, … from node 1" —
-   both ~35?
-3. Portals: the log's squared clearances ≥ 144 (one −100 in run 14 is possible in dense areas)?
-4. **The yardstick** (after `event ahw_spike.8` and a day): order the science ship (a) from our
-   capital to the system opposite it across the galaxy at about the same distance from the
-   centre, by hyperlanes only — the ETA, and (b) to the ring node nearest that target (it routes
-   through our portal and round the ring) — the ETA. Screenshot both; (b) should be ≈ (a) or a
-   bit more. If (a) picks the ring by itself, note that.
+**Test, run 16** (Linux; only this mod; **a new campaign**, small elliptical, **with AI
+empires**; console on):
+1. Game start time (`AHW SPIKE` timestamps; run 14: 39 s with seven empires).
+2. A ring node's system view (screenshot): the asteroid at the edge, hyperlanes arriving
+   farther out than in run 15 (300 instead of 150)?
+3. **Per-node time** (after `event ahw_spike.8` and a day; science ship at Sol): ETA to our exit
+   node (in `ahw_spike.1`'s window), and to the node 10 further along the ring — the difference
+   / 10 is one node (run 15: ~70 days, crudely).
+4. **The yardstick, like for like**: (a) by hyperlanes to a regular system at mid radius about a
+   quarter turn round the galaxy from Sol — ETA, and the number of jumps on the drawn route;
+   (b) via the ring to the node nearest that system — ETA. (b) should be about (a) or a bit more.
 5. Copy `logs/game.log` and `logs/error.log` before quitting, plus the screenshots.
 
 **Run 1 (2026-11-03, 4.5.3 open beta, elliptical galaxy, `0.0.1-SPIKE`): stopped at the anchor.**
@@ -448,6 +449,24 @@ works.** Screenshot `2026_11_04_5`.
   `0.0.15-SPIKE`: one pass for all 12 angles (7 passes per portal instead of 19).
 - The yardstick (step 4) not yet measured.
 
+**Run 15 (2026-11-04, `0.0.15-SPIKE`, small elliptical, no AI empires): ring smooth, probes
+in it, the ring too fast.** Screenshots `2026_11_04_6` (the ring), `_7` (ETA via the ring), `_8`
+(ETA by hyperlanes).
+- **Smoothing works** (`_6`): no steps; the bulge of this galaxy (farthest system 399) is a
+  gentle hill over nodes 41–55. **No "Highway Heart" left**: node 56 (the centre probe, moved
+  relative to itself) sits 44 / 43 from its ring neighbours — `move_system` with the moved system
+  as its own target works.
+- **Game start 14 s** with one empire (centre 4 s, ring 10 s, our portal 4 s — no AI empires,
+  so the per-portal time is not comparable with run 14; the anchor search and the nearest-node
+  search are unmeasured).
+- **The yardstick** (science ship from Sol, after the tech and a day): (b) **via the ring** to
+  Highway Node 8 (top right): **1859 days** — Sol → portal (off Appon) → exit in node 39 → 25
+  nodes round the bottom: ~70 days per node. (a) **by hyperlanes** to Pithria, the regular system
+  next to node 8: **2507 days**, and the route cuts across the galaxy near the core (a chord), so
+  a half lap round the galaxy at mid radius would take longer still. **The ring is faster than
+  the yardstick — roughly 1.5–2× too fast** (a crude estimate: one route, chord vs. half lap).
+- error.log: nothing new.
+
 Expected noise in `error.log`: a missing icon for `ahw_tech_spike` and missing portraits. Anything
 naming an `ahw_` key otherwise is a finding. Record the findings here and in
 `../stellaris-modding-insights` (proposed, not silently); delete the spike files once Phase 1 starts.
@@ -507,7 +526,7 @@ ring gets relays, how the shortcut count scales, lore (`docs/lore.md`).
 
 ## Plan
 
-- **Phase 0 — spike**: runs 1–14 done; run 15 pending (see "Status").
+- **Phase 0 — spike**: runs 1–15 done; tuning the ring's speed next (see "Status").
 - **Phase 1** — the real mod from the spike's findings (drop the `*spike*` files, keep the
   generator): game-start generation for all sizes and shapes, entry-point lifecycle (study →
   research → repair → use), locking portals, localisation.

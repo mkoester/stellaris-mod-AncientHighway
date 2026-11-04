@@ -20,9 +20,9 @@ level. Prefix every key, id, flag and variable with `ahw_`. Tested in game on Li
 
 ---
 
-## Status (2026-11-04): spike runs 1–15 done (4.5.3 live); spike runs 1–16 done (4.5.3 live); `0.0.17-SPIKE` (run 17, portals without moves) not yet run
+## Status (2026-11-04): spike runs 1–15 done (4.5.3 live); spike runs 1–17 done (4.5.3 live)
 
-**Next session: start with run 17** (steps below), then the open list (the ring's exact speed is parked — user, 2026-11-04: "not too important to me now") (steps below), then the rest of the open list. Everything is still the
+**Next session: pick from the open list** (the ring's exact speed is parked — user, 2026-11-04: "not too important to me now") (steps below), then the rest of the open list. Everything is still the
 spike (`*spike*` files); nothing is shippable yet.
 
 **Redesign (user, 2026-11-04): the ring goes round the outside of the galaxy**, with many more
@@ -50,25 +50,19 @@ placement and the shortcut do not.
   wormhole story).
 
 **Open / to design**:
-1. **Run 17**: portals placed from coordinates (built, `0.0.17-SPIKE`) — as good as before, and
-   how much faster?
-2. **The outer ring** (built, runs 14–16; the speed fine-tuning is parked): can systems be spawned beyond the outer rim (map
-   bounds, camera)? Find the edge **per direction** (decided: follow the outline) — the farthest
-   system in each node's sector, its angle from the portal's law-of-cosines measurement; drop the shortcut; nodes by galaxy
-   size. Then **the yardstick**: a science ship's ETA half round the galaxy at mid radius vs. half
-   round the ring; tune the node count and the time per ring system (its size, where lanes
-   arrive) until the ring is equal or a bit slower. Game-start cost: ~0.2 s per `spawn_system`.
-3. **Locking a portal**: vanilla's `can_lock_bypass` wants the system's owner — portals are
+1. **The ring's speed** (parked by the user, 2026-11-04): runs 15–16 gave 104 days per node with
+   the asteroid at orbit 270, ~1.5× slower than without. The like-for-like yardstick — a quarter
+   lap by hyperlanes at mid radius vs. the same via the ring — is still unmeasured; tune the
+   asteroid's orbit (or the node count) from it.
+2. **Locking a portal**: vanilla's `can_lock_bypass` wants the system's owner — portals are
    unclaimable, so nobody can lock them by the astral action. Needs a rule or an owner decision.
-4. **Start states**: all entry points start repaired in the spike; the design wants them broken
+3. **Start states**: all entry points start repaired in the spike; the design wants them broken
    until studied (study stage: special project / situation / events — open).
-5. **AI**: does it path through, study, repair, lock, close?
-6. The two centre probes stay in the core as unexplored systems without lanes (no effect deletes a
-   system): hide them, or make them the lore's "heart".
-7. Galaxy shapes beyond small elliptical, and large/huge sizes (32 pairs, performance).
-8. Labels/menus: built at game start they show; ring-side gates need sight (a usable entry point)
+4. **AI**: does it path through, study, repair, lock, close?
+5. Galaxy shapes beyond small elliptical, and large/huge sizes (32 pairs, performance).
+6. Labels/menus: built at game start they show; ring-side gates need sight (a usable entry point)
    for the label and a ship in the system for the right-click menu (runs 6–7).
-9. Lore (`docs/lore.md`).
+7. Lore (`docs/lore.md`).
 
 ### The spike (`0.0.17-SPIKE`): what it does, how to run it
 
@@ -121,15 +115,8 @@ All findings go to `game.log`, lines starting `AHW SPIKE`. **Deselect before eac
 `tools/check_script.py $(find ancient_highway -name '*.txt' -o -name '*.gfx')` and
 `tools/check_refs.py ancient_highway` (every used name defined, every text and icon present).
 
-**Test, run 17** (Linux; only this mod; **a new campaign**, small elliptical, **with AI
-empires**; console on):
-1. Game start time: the `AHW SPIKE` timestamps from the outer ring to the last "portal for" line
-   (run 16: 27 s for eight portals, 3.4 s each; expected well under 1 s each).
-2. One "portal placed off …" line per empire, margins and squared clearances as in runs 14–16
-   (clearances ≥ 144 unless −100)?
-3. Screenshot the map around our anchor (full sensor): the portal's lane on the anchor's far
-   side, nothing sitting on it — as in run 13 (`_2`)?
-4. Copy `logs/game.log` and `logs/error.log` before quitting, plus the screenshots.
+**Test, next run**: write the steps for the user in plain words — what to set up, what to do,
+what to screenshot, what to copy (run 17: the user asked for a rephrasing of numbered checks).
 
 **Run 1 (2026-11-03, 4.5.3 open beta, elliptical galaxy, `0.0.1-SPIKE`): stopped at the anchor.**
 - `random_system` with `distance_to_core_percent` 25–40 matched **nothing**, although the
@@ -483,6 +470,20 @@ are ~1.5× slower.** Screenshots `2026_11_04_9`–`_13`.
   −4.7.
 - error.log: nothing new.
 
+**Run 17 (2026-11-04, `0.0.17-SPIKE`, small elliptical, eleven empires): portals from
+coordinates — five times faster, as good.** Screenshot `2026_11_04_1` (the second of that name:
+the game restarted its numbering).
+- **Game start 22 s** for the mod (19:35:31 → :53): centre 4 s, ring 10 s, **eleven portals 8 s —
+  0.7 s each** (run 16: 3.4 s). The scoring from coordinates (and `prev` = the outer scope inside
+  `every_neighbor_system`/`every_system`) works: margins as before.
+- Margins 15.1, 15.0, 15.0, 14.8, 14.6, 14.3, 13.8, 12.0, 5.8, 1.8 (ours), −10.7; squared
+  clearances all ≥ 144 (lowest 193). Six dead-end anchors (tier 1), four tier 2, ours tier 4.
+- Ours (`_1`): off Ladellikon (three lanes: Jishui to the north, Alpha Centauri to the
+  south-east), the portal's lane leaves due west — the far side; margin only 1.8 because the lane
+  to Jishui is perpendicular. Uraku's portal (off Condarra) sits ~15 units north of ours —
+  clear, but close.
+- error.log: nothing new (the centre probes' 20 `move_system` failures as always).
+
 Expected noise in `error.log`: a missing icon for `ahw_tech_spike` and missing portraits. Anything
 naming an `ahw_` key otherwise is a finding. Record the findings here and in
 `../stellaris-modding-insights` (proposed, not silently); delete the spike files once Phase 1 starts.
@@ -542,7 +543,7 @@ ring gets relays, how the shortcut count scales, lore (`docs/lore.md`).
 
 ## Plan
 
-- **Phase 0 — spike**: runs 1–16 done (see "Status").
+- **Phase 0 — spike**: runs 1–17 done (see "Status").
 - **Phase 1** — the real mod from the spike's findings (drop the `*spike*` files, keep the
   generator): game-start generation for all sizes and shapes, entry-point lifecycle (study →
   research → repair → use), locking portals, localisation.

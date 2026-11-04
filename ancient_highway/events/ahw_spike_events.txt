@@ -52,7 +52,7 @@ event = {
 					limit = { ahw_spike_portal_anchor_ok = yes count_neighbor_system = { count <= 1 } NOT = { ahw_spike_has_bypass = yes } ahw_spike_within_3_jumps_of_capital = yes }
 					save_global_event_target_as = ahw_x_tmp
 				}
-				log = "AHW SPIKE anchor for [This.GetName]: tier 1 (a dead end)"
+				log = "AHW SPIKE anchor for [This.GetName] (capital [ahw_cap_tmp.GetName]): tier 1 (a dead end)"
 			}
 			else_if = {
 				limit = { any_system = { ahw_spike_portal_anchor_ok = yes count_neighbor_system = { count <= 2 } NOT = { ahw_spike_has_bypass = yes } ahw_spike_within_3_jumps_of_capital = yes } }
@@ -60,7 +60,7 @@ event = {
 					limit = { ahw_spike_portal_anchor_ok = yes count_neighbor_system = { count <= 2 } NOT = { ahw_spike_has_bypass = yes } ahw_spike_within_3_jumps_of_capital = yes }
 					save_global_event_target_as = ahw_x_tmp
 				}
-				log = "AHW SPIKE anchor for [This.GetName]: tier 2 (at most two lanes)"
+				log = "AHW SPIKE anchor for [This.GetName] (capital [ahw_cap_tmp.GetName]): tier 2 (at most two lanes)"
 			}
 			else_if = {
 				limit = { any_system = { ahw_spike_portal_anchor_ok = yes count_neighbor_system = { count <= 2 } ahw_spike_within_3_jumps_of_capital = yes } }
@@ -68,7 +68,7 @@ event = {
 					limit = { ahw_spike_portal_anchor_ok = yes count_neighbor_system = { count <= 2 } ahw_spike_within_3_jumps_of_capital = yes }
 					save_global_event_target_as = ahw_x_tmp
 				}
-				log = "AHW SPIKE anchor for [This.GetName]: tier 3 (at most two lanes, but a bypass)"
+				log = "AHW SPIKE anchor for [This.GetName] (capital [ahw_cap_tmp.GetName]): tier 3 (at most two lanes, but a bypass)"
 			}
 			else_if = {
 				limit = { any_system = { ahw_spike_portal_anchor_ok = yes count_neighbor_system = { count <= 3 } NOT = { ahw_spike_has_bypass = yes } ahw_spike_within_3_jumps_of_capital = yes } }
@@ -76,7 +76,7 @@ event = {
 					limit = { ahw_spike_portal_anchor_ok = yes count_neighbor_system = { count <= 3 } NOT = { ahw_spike_has_bypass = yes } ahw_spike_within_3_jumps_of_capital = yes }
 					save_global_event_target_as = ahw_x_tmp
 				}
-				log = "AHW SPIKE anchor for [This.GetName]: tier 4 (at most three lanes)"
+				log = "AHW SPIKE anchor for [This.GetName] (capital [ahw_cap_tmp.GetName]): tier 4 (at most three lanes)"
 			}
 			else_if = {
 				limit = { any_system = { ahw_spike_portal_anchor_ok = yes count_neighbor_system = { count <= 3 } ahw_spike_within_3_jumps_of_capital = yes } }
@@ -84,7 +84,7 @@ event = {
 					limit = { ahw_spike_portal_anchor_ok = yes count_neighbor_system = { count <= 3 } ahw_spike_within_3_jumps_of_capital = yes }
 					save_global_event_target_as = ahw_x_tmp
 				}
-				log = "AHW SPIKE anchor for [This.GetName]: tier 5 (at most three lanes, but a bypass)"
+				log = "AHW SPIKE anchor for [This.GetName] (capital [ahw_cap_tmp.GetName]): tier 5 (at most three lanes, but a bypass)"
 			}
 			else_if = {
 				limit = { any_system = { ahw_spike_portal_anchor_ok = yes NOT = { ahw_spike_has_bypass = yes } ahw_spike_within_3_jumps_of_capital = yes } }
@@ -92,7 +92,7 @@ event = {
 					limit = { ahw_spike_portal_anchor_ok = yes NOT = { ahw_spike_has_bypass = yes } ahw_spike_within_3_jumps_of_capital = yes }
 					save_global_event_target_as = ahw_x_tmp
 				}
-				log = "AHW SPIKE anchor for [This.GetName]: tier 6 (more lanes)"
+				log = "AHW SPIKE anchor for [This.GetName] (capital [ahw_cap_tmp.GetName]): tier 6 (more lanes)"
 			}
 			else_if = {
 				limit = { any_system = { ahw_spike_portal_anchor_ok = yes ahw_spike_within_3_jumps_of_capital = yes } }
@@ -100,7 +100,7 @@ event = {
 					limit = { ahw_spike_portal_anchor_ok = yes ahw_spike_within_3_jumps_of_capital = yes }
 					save_global_event_target_as = ahw_x_tmp
 				}
-				log = "AHW SPIKE anchor for [This.GetName]: tier 7 (more lanes and a bypass)"
+				log = "AHW SPIKE anchor for [This.GetName] (capital [ahw_cap_tmp.GetName]): tier 7 (more lanes and a bypass)"
 			}
 			if = {
 				limit = { exists = event_target:ahw_x_tmp }
@@ -139,7 +139,7 @@ event = {
 					event_target:ahw_node_tmp = { save_global_event_target_as = ahw_player_node }
 					event_target:ahw_x_tmp = { save_global_event_target_as = ahw_player_anchor }
 				}
-				log = "AHW SPIKE portal for [This.GetName]: off [ahw_x_tmp.GetName], exit in [ahw_node_tmp.GetName]"
+				log = "AHW SPIKE portal for [This.GetName] (capital [ahw_cap_tmp.GetName]): off [ahw_x_tmp.GetName], exit in [ahw_node_tmp.GetName]"
 			}
 			else = {
 				log = "AHW SPIKE NO portal for [This.GetName]: the random walk found no system 2-3 jumps out"

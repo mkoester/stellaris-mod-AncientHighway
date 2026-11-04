@@ -6,6 +6,9 @@ ahw_spike_portal_anchor_ok = {
 	NOT = { has_hyperlane_to = event_target:ahw_cap_tmp }
 	NOT = { has_star_flag = ahw_unclaimable }
 	NOT = { exists = owner }
+	# Run 12: two empires shared the dead end Tiblic; the second portal's lane arrived beside the
+	# first's (margin -0.55). One portal per anchor.
+	NOT = { any_neighbor_system = { has_star_flag = ahw_portal } }
 }
 
 # Run 11: the random walk saw one path only and missed 3-jump candidates; ahw_spike.10 now

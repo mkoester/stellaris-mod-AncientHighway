@@ -20,9 +20,9 @@ level. Prefix every key, id, flag and variable with `ahw_`. Tested in game on Li
 
 ---
 
-## Status (2026-11-03): spike runs 1–11 done, `0.0.12-SPIKE` (run 12) not yet run
+## Status (2026-11-04): spike runs 1–12 done (4.5.3 live), `0.0.13-SPIKE` (run 13) not yet run
 
-**Next session: start with run 12** (steps below), then the open list. Everything is still the
+**Next session: start with run 13** (steps below), then the open list. Everything is still the
 spike (`*spike*` files); nothing is shippable yet.
 
 **Answered** (details in the runs below):
@@ -43,8 +43,8 @@ spike (`*spike*` files); nothing is shippable yet.
 - **Shortcuts**: a gate pair on its own scripted connection (no wormhole story).
 
 **Open / to design**:
-1. **Run 12**: does the tiered anchor search pick dead ends / two-lane systems, and at what cost
-   in game-start time (run 10: 16 s of the mod on the user's older machine, small galaxy)?
+1. **Run 13**: one portal per anchor (run 12: two empires shared a dead end), and every
+   empire's tier in the log (run 12 lost lines with identical text).
 2. **Slow crossings** of large ring systems (171–270 days early game) vs. "help a distant ally".
 3. **Locking a portal**: vanilla's `can_lock_bypass` wants the system's owner — portals are
    unclaimable, so nobody can lock them by the astral action. Needs a rule or an owner decision.
@@ -58,7 +58,7 @@ spike (`*spike*` files); nothing is shippable yet.
    for the label and a ship in the system for the right-click menu (runs 6–7).
 9. Lore (`docs/lore.md`).
 
-### The spike (`0.0.12-SPIKE`): what it does, how to run it
+### The spike (`0.0.13-SPIKE`): what it does, how to run it
 
 **Generated parts: `tools/gen_spike.py`** writes the bypass types (32 entry pairs and the
 shortcut), their megastructures, outliner icons, texts, and the ring builders and pair switch
@@ -73,7 +73,7 @@ At game start `ahw_spike.10` (from `on_game_start`, no scope, as vanilla's `game
    map units / nodes): tiny 24/6, small 36/8, medium 48/10, large and huge 54/12;
 3. a shortcut gate pair across the ring (node 1 ↔ the opposite node);
 4. **a portal for every regular empire** (AI too): a system 2–3
-   jumps from the capital (not the capital, not next to it, unowned) — **searched, not walked**: from the best
+   jumps from the capital (not the capital, not next to it, unowned, no portal yet) — **searched, not walked**: from the best
    tier (fewest lanes; without a bypass before with one; logged); a new black-hole system 15 units from it,
    measured at 4 compass points around it and moved once to the angle where its lane arrives
    farthest from the anchor's other lanes (worst margin logged: +15 = opposite all, −15 = beside
@@ -98,12 +98,13 @@ All findings go to `game.log`, lines starting `AHW SPIKE`. **Deselect before eac
 `tools/check_script.py $(find ancient_highway -name '*.txt' -o -name '*.gfx')` and
 `tools/check_refs.py ancient_highway` (every used name defined, every text and icon present).
 
-**Test, run 12** (Linux; only this mod; **a new campaign**, small elliptical; console on):
-1. Log: "anchor for …: tier N" per empire — mostly tiers 1–2? Margins all positive?
-2. Our anchor: a dead end or two-lane system? The portal's lane on its far side? Screenshot the
-   map around the capital.
-3. Game start time: did the search over all systems slow it down (first/last `AHW SPIKE` times)?
-4. Copy `logs/game.log` and `logs/error.log` before quitting, plus the screenshots.
+**Test, run 13** (Linux; only this mod; **a new campaign**, small elliptical; console on):
+1. Log: one "anchor for … (capital …): tier N" **and** one "portal for …" line per empire? No two
+   portals off the same anchor? Tiers and margins?
+2. Our anchor: our portal's lane is not drawn before exploration (run 12), so send the science
+   ship to the anchor, let it arrive, then screenshot the map around it: a dead end or two-lane
+   system, the portal's lane on its far side?
+3. Copy `logs/game.log` and `logs/error.log` before quitting, plus the screenshots.
 
 **Run 1 (2026-11-03, 4.5.3 open beta, elliptical galaxy, `0.0.1-SPIKE`): stopped at the anchor.**
 - `random_system` with `distance_to_core_percent` 25–40 matched **nothing**, although the
@@ -364,6 +365,29 @@ weak.** Screenshots `2026_11_03_46` (map around Sol), `_47` (our portal).
   most two lanes, three, more; within a lane count, systems without a bypass (gateway, wormhole —
   Xir's red icon; user: de-prioritise) before those with one. The tier is logged.
 
+**Run 12 (2026-11-04, 4.5.3 live, `0.0.12-SPIKE`, small elliptical, ten empires): the tiered
+search works; two empires shared an anchor; log lines went missing.** Screenshot `2026_11_04_1`.
+- 4.5.3 went live with `can_build_starbase_around` unchanged: the override still matches vanilla.
+- **Tiers logged**: ours tier 4 (Ushakaron, three lanes, margin 5.8); others 2, 4, 3, 1 — but
+  only **6 tier lines for 10 portals**, and only 9 "portal for" lines. The missing ones would
+  have repeated an earlier line's exact text (unmet empires are all "Unidentified Empire"; pair 8
+  = pair 7's anchor and node). Inference, not confirmed: **the game drops a `log` line whose text
+  it has logged before**. `0.0.13-SPIKE` adds the capital's name, which makes each line unique.
+- Margins: 13.5, 12.6, 9.6, 8.3, 7.2, 5.8, 4.2, 0.8, −0.6, −3.0 (run 11 included −11).
+- **Two portals off the dead end Tiblic** (pairs 7 and 8): it lies 2–3 jumps from two capitals,
+  and the second portal's lane arrives beside the first (−0.55). `0.0.13-SPIKE`: an anchor that
+  already holds a portal is excluded (`ahw_spike_portal_anchor_ok`).
+- **Game start: 21 s of the mod** (15:27:12 → :33; centre 4 s, ten portals 17 s ≈ 1.7 s each;
+  run 10: 1.7 s each too). The search over every system costs nothing noticeable.
+- Ring centred again (nodes 0.1059/0.1064, an octagon clear of every system, `_1`). Exits: nodes
+  1, 2, 3 three each, node 7 one — four nodes have none.
+- Our portal shows (black hole, "Unsurveyed") but **its lane does not**: hyperlanes of unexplored
+  systems are not drawn, and Ushakaron is unexplored, so the screenshot cannot show the anchor.
+- error.log, new but harmless: the centre probes' `move_system` "failed to find a position …
+  sending it to the galactic core instead" (×20; that is how the probe reaches 0); portals
+  spawned without the 10-unit spacing (×8); `Unknown property ahw_exits/ahw_pair` in the report
+  where the variable is unset (cosmetic).
+
 Expected noise in `error.log`: a missing icon for `ahw_tech_spike` and missing portraits. Anything
 naming an `ahw_` key otherwise is a finding. Record the findings here and in
 `../stellaris-modding-insights` (proposed, not silently); delete the spike files once Phase 1 starts.
@@ -417,7 +441,7 @@ ring gets relays, how the shortcut count scales, lore (`docs/lore.md`).
 
 ## Plan
 
-- **Phase 0 — spike**: runs 1–11 done; run 12 pending (see "Status").
+- **Phase 0 — spike**: runs 1–12 done; run 13 pending (see "Status").
 - **Phase 1** — the real mod from the spike's findings (drop the `*spike*` files, keep the
   generator): game-start generation for all sizes and shapes, entry-point lifecycle (study →
   research → repair → use), locking portals, localisation.

@@ -43,6 +43,13 @@ MAX_NODES = max(NODES.values())
 COMPASS_R = 40
 OUTLINE_HALF = 15
 RING_MARGIN = 25
+# Smoothing (user, run 14: a lone outlying system pushed ~5 nodes out by 40-60 as a step): a node
+# may sit at most RING_SLOPE lower than its neighbour, so a bulge becomes a gentle hill (two sweeps
+# round the ring each way). A sector without systems starts at 0 and is lifted by its neighbours.
+RING_SLOPE = 6
+# The two centre probes are not left in the core (no effect deletes a system, run 9): after the
+# other nodes are spawned they move into the last two node positions - the compass probe first,
+# then the centre probe itself (move_system relative to its own position).
 RAD_MIN, RAD_MAX, RAD_STEP = 40, 560, 5
 # exit slots in a ring system: (orbit_distance, orbit_angle), far apart first
 EXIT_SLOTS = [(300, a) for a in range(0, 360, 60)] + [(220, a) for a in range(30, 360, 60)]
@@ -92,6 +99,21 @@ def gate_by_angle():
     return angle_switch(lambda a: f'spawn_megastructure = {{ type = ahw_spike_entry_gate_$N$ orbit_distance = {GATE_ORBIT} orbit_angle = {a} }}')
 
 
+def clearances():
+    """this = a near system with ahw_eq, ahw_ec, ahw_es: lowers the portal's ahw_cl_<a> to its squared
+    distance from the portal at each candidate angle a (one pass over the systems, not one per angle)."""
+    return '\n'.join(f'''		set_variable = {{ which = ahw_t value = ahw_ec }}
+		multiply_variable = {{ which = ahw_t value = {round(math.cos(math.radians(a)), 4)} }}
+		set_variable = {{ which = ahw_u value = ahw_es }}
+		multiply_variable = {{ which = ahw_u value = {round(math.sin(math.radians(a)), 4)} }}
+		change_variable = {{ which = ahw_t value = ahw_u }}
+		change_variable = {{ which = ahw_t value = ahw_eq }}
+		if = {{
+			limit = {{ check_variable = {{ which = ahw_t value < event_target:ahw_portal_tmp.ahw_cl_{a} }} }}
+			event_target:ahw_portal_tmp = {{ set_variable = {{ which = ahw_cl_{a} value = prev.ahw_t }} }}
+		}}''' for a in PORTAL_ANGLES)
+
+
 def portal_placement():
     lines = [f'''	every_system = {{
 		limit = {{
@@ -105,6 +127,8 @@ def portal_placement():
         lines.append(f'\tevent_target:ahw_portal_tmp = {{ {move_portal_to(a)} }}')
         lines.append(f'\tahw_spike_measure_lanes = {{ VAR = ahw_d{a} }}')
         lines.append(f'\tahw_spike_measure_near = {{ VAR = ahw_e{a} }}')
+    lines.append('\tevent_target:ahw_portal_tmp = {\n' + '\n'.join(
+        f'\t\tset_variable = {{ which = ahw_cl_{a} value = 1000000 }}' for a in PORTAL_ANGLES) + '\n\t}')
     lines.append('''	every_system = {
 		limit = { has_star_flag = ahw_near_tmp }
 		multiply_variable = { which = ahw_e0 value = ahw_e0 }
@@ -120,6 +144,7 @@ def portal_placement():
 		set_variable = { which = ahw_es value = ahw_e90 }
 		subtract_variable = { which = ahw_es value = ahw_e270 }
 		divide_variable = { which = ahw_es value = 2 }
+''' + clearances() + '''
 	}''')
     lines.append('''	event_target:ahw_x_tmp = {
 		every_neighbor_system = {
@@ -153,22 +178,8 @@ def portal_placement():
 			}}
 		}}
 	}}
-	# angle {a}: the squared distance to the nearest other system
-	event_target:ahw_portal_tmp = {{ set_variable = {{ which = ahw_cl value = 1000000 }} }}
-	every_system = {{
-		limit = {{ has_star_flag = ahw_near_tmp }}
-		set_variable = {{ which = ahw_t value = ahw_ec }}
-		multiply_variable = {{ which = ahw_t value = {round(-2 * ca, 4)} }}
-		set_variable = {{ which = ahw_u value = ahw_es }}
-		multiply_variable = {{ which = ahw_u value = {round(-2 * sa, 4)} }}
-		change_variable = {{ which = ahw_t value = ahw_u }}
-		change_variable = {{ which = ahw_t value = ahw_eq }}
-		if = {{
-			limit = {{ check_variable = {{ which = ahw_t value < event_target:ahw_portal_tmp.ahw_cl }} }}
-			event_target:ahw_portal_tmp = {{ set_variable = {{ which = ahw_cl value = prev.ahw_t }} }}
-		}}
-	}}
 	event_target:ahw_portal_tmp = {{
+		set_variable = {{ which = ahw_cl value = ahw_cl_{a} }}
 		if = {{
 			limit = {{ check_variable = {{ which = ahw_cl value < {CLEAR_MIN ** 2} }} }}
 			subtract_variable = {{ which = ahw_m value = {CLEAR_PENALTY} }}
@@ -374,17 +385,23 @@ def outer_ring(n):
 			}}
 			event_target:ahw_centre_system = {{ set_variable = {{ which = ahw_edge_{k} value = prev.ahw_r }} }}
 		}}''' for k, a in nodes)
-    spawns = '\n'.join(f'''		if = {{
-			limit = {{ check_variable = {{ which = ahw_edge_{k} value = 0 }} }}
-			set_variable = {{ which = ahw_edge_{k} value = ahw_rmax }}
-		}}
-		set_variable = {{ which = ahw_rad_{k} value = ahw_edge_{k} }}
-		change_variable = {{ which = ahw_rad_{k} value = {RING_MARGIN} }}
-		ahw_spike_spawn_outer_node = {{ K = {k} ANGLE = {a} }}''' for k, a in nodes)
+    rads = '\n'.join(f'''		set_variable = {{ which = ahw_rad_{k} value = ahw_edge_{k} }}
+		change_variable = {{ which = ahw_rad_{k} value = {RING_MARGIN} }}''' for k, _ in nodes)
+    lift = lambda k, j: f'''		set_variable = {{ which = ahw_t value = ahw_rad_{j} }}
+		subtract_variable = {{ which = ahw_t value = {RING_SLOPE} }}
+		if = {{
+			limit = {{ check_variable = {{ which = ahw_rad_{k} value < ahw_t }} }}
+			set_variable = {{ which = ahw_rad_{k} value = ahw_t }}
+		}}'''
+    order = list(range(1, n + 1))
+    smooth = '\n'.join([lift(k, (k - 2) % n + 1) for _ in range(2) for k in order]
+                       + [lift(k, k % n + 1) for _ in range(2) for k in reversed(order)])
+    spawns = '\n'.join(f'\t\tahw_spike_spawn_outer_node = {{ K = {k} ANGLE = {a} }}' for k, a in nodes[:-2])
+    (kt, at), (ka, aa) = nodes[-2], nodes[-1]
     lanes = '\n'.join(f'\tadd_hyperlane = {{ from = event_target:ahw_ring_{k} to = event_target:ahw_ring_{k % n + 1} }}'
                       for k, _ in nodes)
     logs = '\n'.join(f'''		export_trigger_value_to_variable = {{ trigger = distance parameters = {{ source = event_target:ahw_ring_{k} type = euclidean }} variable = ahw_got_{k} }}
-		log = "AHW SPIKE node {k} at angle {a}: edge \\\\[This.ahw_edge_{k}], wanted \\\\[This.ahw_rad_{k}], placed \\\\[This.ahw_got_{k}] from the centre"''' for k, a in nodes)
+		log = "AHW SPIKE node {k} at angle {a}: edge \\\\[This.ahw_edge_{k}], wanted \\\\[This.ahw_rad_{k}], placed \\\\[This.ahw_got_{k}] from the centre"''' for k, a in nodes[:-1])
     return f'''
 # The outer ring of {n} nodes. A node's edge: the farthest regular system within {OUTLINE_HALF} degrees of
 # its direction (none: the farthest overall); the node goes {RING_MARGIN} beyond it. No scope.
@@ -399,31 +416,62 @@ ahw_spike_build_outer_ring_{n} = {{
 {sectors}
 	}}
 	event_target:ahw_centre_system = {{
+{rads}
+		# smoothing: at most {RING_SLOPE} below a neighbour
+{smooth}
 {spawns}
+		ahw_spike_move_probe_to_node = {{ PROBE = ahw_probe_t K = {kt} ANGLE = {at} }}
+{logs}
+		ahw_spike_move_probe_to_node = {{ PROBE = ahw_probe_a K = {ka} ANGLE = {aa} }}
 	}}
 {lanes}
 	set_global_flag = ahw_ring_size_{n}
-	event_target:ahw_centre_system = {{
-{logs}
+	event_target:ahw_ring_{ka} = {{
+		export_trigger_value_to_variable = {{ trigger = distance parameters = {{ source = event_target:ahw_ring_{kt} type = euclidean }} variable = ahw_dprev }}
+		export_trigger_value_to_variable = {{ trigger = distance parameters = {{ source = event_target:ahw_ring_1 type = euclidean }} variable = ahw_dnext }}
+		log = "AHW SPIKE node {ka} (the centre probe, moved): \\\\[This.ahw_dprev] from node {kt}, \\\\[This.ahw_dnext] from node 1 (a ring neighbour is ~35 away; ~300 = it did not move)"
 	}}
 }}
 '''
 
 
-def spawn_outer_node():
+def radius_chain(body):
+    """if/else_if over ahw_rad_$K$, rounded down to RAD_STEP; body(r) -> effect text."""
     bins = list(range(RAD_MAX, RAD_MIN - 1, -RAD_STEP))
     chain = [f'''	{'if' if i == 0 else 'else_if'} = {{
 		limit = {{ check_variable = {{ which = ahw_rad_$K$ value >= {r} }} }}
-		ahw_spike_spawn_ring_node = {{ NAME = ahw_ring_$K$ R = {r} ANGLE = $ANGLE$ }}
+		{body(r)}
 	}}''' for i, r in enumerate(bins)]
     chain.append(f'''	else = {{
-		ahw_spike_spawn_ring_node = {{ NAME = ahw_ring_$K$ R = {RAD_MIN} ANGLE = $ANGLE$ }}
+		{body(RAD_MIN)}
 	}}''')
+    return '\n'.join(chain)
+
+
+def spawn_outer_node():
+    move = lambda r: (f'event_target:$PROBE$ = {{ move_system = {{ target = event_target:ahw_centre_system '
+                      f'min_distance >= {r} max_distance <= {r} min_orientation_angle = $ANGLE$ '
+                      f'max_orientation_angle = $ANGLE$ max_jumps = 0 hyperlane = no }} }}')
     return f'''
 # this = the centre system: outer node $K$ at the radius ahw_rad_$K$, rounded down to {RAD_STEP}
 # (spawn_system takes literal distances only), direction $ANGLE$.
 ahw_spike_spawn_outer_node = {{
-''' + '\n'.join(chain) + '\n}\n'
+''' + radius_chain(lambda r: f'ahw_spike_spawn_ring_node = {{ NAME = ahw_ring_$K$ R = {r} ANGLE = $ANGLE$ }}') + f'''
+}}
+
+# this = the centre system: the centre probe $PROBE$ becomes outer node $K$ (as above). For the
+# centre probe itself, move_system's target is the system being moved: the offset is from where
+# it stands, the centre (checked in the log).
+ahw_spike_move_probe_to_node = {{
+''' + radius_chain(move) + '''
+	event_target:$PROBE$ = {
+		remove_star_flag = ahw_core
+		set_star_flag = ahw_ring
+		set_name = ahw_ring_$K$
+		save_global_event_target_as = ahw_ring_$K$
+	}
+}
+'''
 
 
 def size_switch():

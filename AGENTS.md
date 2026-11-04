@@ -20,9 +20,9 @@ level. Prefix every key, id, flag and variable with `ahw_`. Tested in game on Li
 
 ---
 
-## Status (2026-11-04): spike runs 1–13 done (4.5.3 live); `0.0.14-SPIKE` (run 14, the outer ring) not yet run
+## Status (2026-11-04): spike runs 1–14 done (4.5.3 live); `0.0.15-SPIKE` (run 15) not yet run
 
-**Next session: start with run 14** (steps below), then the rest of the open list. Everything is still the
+**Next session: start with run 15** (steps below), then the rest of the open list. Everything is still the
 spike (`*spike*` files); nothing is shippable yet.
 
 **Redesign (user, 2026-11-04): the ring goes round the outside of the galaxy**, with many more
@@ -68,7 +68,7 @@ placement and the shortcut do not.
    for the label and a ship in the system for the right-click menu (runs 6–7).
 8. Lore (`docs/lore.md`).
 
-### The spike (`0.0.14-SPIKE`): what it does, how to run it
+### The spike (`0.0.15-SPIKE`): what it does, how to run it
 
 **Generated parts: `tools/gen_spike.py`** writes the bypass types (32 entry pairs and the
 shortcut is gone), their megastructures, outliner icons, texts, and the outline measurement, the
@@ -76,15 +76,16 @@ outer-ring builders, portal placement and the pair switch (`ahw_spike_generated_
 
 At game start `ahw_spike.10` (from `on_game_start`, no scope, as vanilla's `game_start.31`):
 1. logs how empty the core is;
-2. **finds the centre** (run 8: no scope spawns nothing): two probe systems ("Highway Heart",
-   no lanes, they stay in the empty core) leapfrog with `move_system` `direction = corewards`
+2. **finds the centre** (run 8: no scope spawns nothing): two probe systems ("Highway Heart") leapfrog with `move_system` `direction = corewards`
    from the innermost system, steps 40 → 5 units, keeping the one with the lower
    `distance_to_core_percent`;
 3. **measures the outline** (0.0.14): the second probe moves 40 east, then 40 north of the
    centre; every regular system's distances to centre and probe give its x, y (law of cosines).
    **Builds the outer ring**: node k's edge is the farthest system within ±15° of its direction
-   (none: the farthest overall); the node goes 25 beyond it (`spawn_system` at the centre, the
-   radius rounded down to 5 — literal distances only), nodes joined in order. Nodes by size
+   (none: 0); the node goes 25 beyond it, **smoothed** (0.0.15: at most 6 below a neighbour, so
+   an outlier makes a gentle hill, not a step); `spawn_system` at the centre, the radius rounded
+   down to 5 (literal distances only). **The two probes become the last two nodes** (0.0.15:
+   `move_system`, the centre probe relative to itself — logged), nodes joined in order. Nodes by size
    (≈ jumps of one lap at mid radius, `tools/gen_spike.py` `lap_nodes`): tiny 40, small 56,
    medium 68, large 80, huge 88. No shortcut;
 4. **a portal for every regular empire** (AI too): a system 2–3
@@ -114,14 +115,13 @@ All findings go to `game.log`, lines starting `AHW SPIKE`. **Deselect before eac
 `tools/check_script.py $(find ancient_highway -name '*.txt' -o -name '*.gfx')` and
 `tools/check_refs.py ancient_highway` (every used name defined, every text and icon present).
 
-**Test, run 14** (Linux; only this mod; **a new campaign**, small elliptical; console on):
-1. Game start: does it finish, and how long (the `AHW SPIKE timing:` lines)?
-2. Galaxy map, zoomed out (screenshot): **are the 56 nodes outside the outer rim, all round, at
-   a steady distance from the edge?** Can the camera reach them? Log: "compass probe … (want
-   40)" both 40? "node k …: edge, wanted, placed" — placed ≈ wanted, or did nodes fail to spawn
-   or land elsewhere (`error.log`: "sending it to the galactic core")?
-3. Portals (`tweakergui`/`debugtooltip` + `observe` or full sensor): no portal on or right next to
-   another system or portal; the log's squared clearances ≥ 144?
+**Test, run 15** (Linux; only this mod; **a new campaign**, small elliptical; console on):
+1. Game start time (`AHW SPIKE timing:` lines and the last portal line; run 14: 39 s, the
+   portals 3.5 s each).
+2. Galaxy map, zoomed out (screenshot): the ring smooth round the bulges? **No "Highway Heart"
+   left in the core**; log "node 56 (the centre probe, moved): … from node 55, … from node 1" —
+   both ~35?
+3. Portals: the log's squared clearances ≥ 144 (one −100 in run 14 is possible in dense areas)?
 4. **The yardstick** (after `event ahw_spike.8` and a day): order the science ship (a) from our
    capital to the system opposite it across the galaxy at about the same distance from the
    centre, by hyperlanes only — the ETA, and (b) to the ring node nearest that target (it routes
@@ -431,6 +431,23 @@ portal positions not.** Screenshots `2026_11_04_2` (full sensor, our anchor Cary
   squared distance at each candidate angle follows from them (checked numerically against random
   geometry: error ≤ 0.02).
 
+**Run 14 (2026-11-04, `0.0.14-SPIKE`, small elliptical, seven empires): the outer ring
+works.** Screenshot `2026_11_04_5`.
+- **Systems can be spawned beyond the outer rim** and the camera reaches them: all 56 nodes
+  round the outside, placed within 4 of the wanted radius (the 5-unit rounding), the compass
+  probes at 40.18. The farthest system 363 from the centre (setup radius 300).
+- **Two bulges** (user: looks good, smooth it): a lone outlying system pushed ~5 nodes 40–60
+  out as a step (edges 363, 338 vs ~300) → `0.0.15-SPIKE` smooths (run 14's radii through the
+  ramp: largest step 48 → 6).
+- **The two "Highway Heart"s** in the core are the centre probes (user asked) → `0.0.15-SPIKE`
+  moves them into the ring.
+- Portals: clearances 703, 380, 246, 201, 165 (≥ 144) — and Annawan −100 (5.4 from another
+  system; no angle clear in a dense spot). Margins 15.1, 14.4, 13.5, 8.2, 3.7, −7.7.
+- **Game start 39 s** (16:00:38 → 16:01:17): centre 4 s, outline < 1 s, ring 10 s, seven portals
+  25 s — 3.5 s each (run 13: 1.7): the clearance looped over every system once per angle →
+  `0.0.15-SPIKE`: one pass for all 12 angles (7 passes per portal instead of 19).
+- The yardstick (step 4) not yet measured.
+
 Expected noise in `error.log`: a missing icon for `ahw_tech_spike` and missing portraits. Anything
 naming an `ahw_` key otherwise is a finding. Record the findings here and in
 `../stellaris-modding-insights` (proposed, not silently); delete the spike files once Phase 1 starts.
@@ -490,7 +507,7 @@ ring gets relays, how the shortcut count scales, lore (`docs/lore.md`).
 
 ## Plan
 
-- **Phase 0 — spike**: runs 1–13 done; the outer ring next (see "Status").
+- **Phase 0 — spike**: runs 1–14 done; run 15 pending (see "Status").
 - **Phase 1** — the real mod from the spike's findings (drop the `*spike*` files, keep the
   generator): game-start generation for all sizes and shapes, entry-point lifecycle (study →
   research → repair → use), locking portals, localisation.

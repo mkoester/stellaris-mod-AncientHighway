@@ -20,9 +20,9 @@ level. Prefix every key, id, flag and variable with `ahw_`. Tested in game on Li
 
 ---
 
-## Status (2026-11-04): spike runs 1–12 done (4.5.3 live), `0.0.13-SPIKE` (run 13) not yet run
+## Status (2026-11-04): spike runs 1–13 done (4.5.3 live); next: the outer ring
 
-**Next session: start with run 13** (steps below), then the open list. Everything is still the
+**Next session: build the outer-ring spike** (open item 1), then the rest of the open list. Everything is still the
 spike (`*spike*` files); nothing is shippable yet.
 
 **Redesign (user, 2026-11-04): the ring goes round the outside of the galaxy**, with many more
@@ -50,25 +50,23 @@ placement and the shortcut do not.
   wormhole story).
 
 **Open / to design**:
-1. **Run 13**: one portal per anchor (run 12: two empires shared a dead end), and every
-   empire's tier in the log (run 12 lost lines with identical text).
-2. **The outer ring** (spike after run 13): can systems be spawned beyond the outer rim (map
+1. **The outer ring**: can systems be spawned beyond the outer rim (map
    bounds, camera)? Find the edge **per direction** (decided: follow the outline) — the farthest
    system in each node's sector, its angle from the portal's law-of-cosines measurement; drop the shortcut; nodes by galaxy
    size. Then **the yardstick**: a science ship's ETA half round the galaxy at mid radius vs. half
    round the ring; tune the node count and the time per ring system (its size, where lanes
    arrive) until the ring is equal or a bit slower. Game-start cost: ~0.2 s per `spawn_system`.
-3. **Locking a portal**: vanilla's `can_lock_bypass` wants the system's owner — portals are
+2. **Locking a portal**: vanilla's `can_lock_bypass` wants the system's owner — portals are
    unclaimable, so nobody can lock them by the astral action. Needs a rule or an owner decision.
-4. **Start states**: all entry points start repaired in the spike; the design wants them broken
+3. **Start states**: all entry points start repaired in the spike; the design wants them broken
    until studied (study stage: special project / situation / events — open).
-5. **AI**: does it path through, study, repair, lock, close?
-6. The two centre probes stay in the core as unexplored systems without lanes (no effect deletes a
+4. **AI**: does it path through, study, repair, lock, close?
+5. The two centre probes stay in the core as unexplored systems without lanes (no effect deletes a
    system): hide them, or make them the lore's "heart".
-7. Galaxy shapes beyond small elliptical, and large/huge sizes (32 pairs, performance).
-8. Labels/menus: built at game start they show; ring-side gates need sight (a usable entry point)
+6. Galaxy shapes beyond small elliptical, and large/huge sizes (32 pairs, performance).
+7. Labels/menus: built at game start they show; ring-side gates need sight (a usable entry point)
    for the label and a ship in the system for the right-click menu (runs 6–7).
-9. Lore (`docs/lore.md`).
+8. Lore (`docs/lore.md`).
 
 ### The spike (`0.0.13-SPIKE`): what it does, how to run it
 
@@ -400,6 +398,18 @@ search works; two empires shared an anchor; log lines went missing.** Screenshot
   spawned without the 10-unit spacing (×8); `Unknown property ahw_exits/ahw_pair` in the report
   where the variable is unset (cosmetic).
 
+**Run 13 (2026-11-04, `0.0.13-SPIKE`, small elliptical, seven empires): portal placement
+done.** Screenshot `2026_11_04_2` (full sensor, our anchor Carynno).
+- **Every line logged**: seven "anchor for … (capital …)" and seven "portal for" lines. Fits run
+  12's inference (identical `log` text is dropped) without proving it.
+- **Seven different anchors, all tier 1–2** (dead ends: ours, Synthus's, Balkgaz'Yta's; the rest
+  two lanes). **All margins positive**: 14.8, 14.7, 14.0, 4.6, 3.1, 3.0, 1.4.
+- Ours: Carynno, a dead end 3 jumps from Sol; the portal's lane arrives opposite its only lane
+  (margin 14.0, `_2`).
+- Game start: 17 s of the mod (centre 6 s, seven portals 11 s).
+- error.log: nothing new; "Trying to remove undefined event target" ×3 is the first empire's
+  clearing of not-yet-set targets.
+
 Expected noise in `error.log`: a missing icon for `ahw_tech_spike` and missing portraits. Anything
 naming an `ahw_` key otherwise is a finding. Record the findings here and in
 `../stellaris-modding-insights` (proposed, not silently); delete the spike files once Phase 1 starts.
@@ -459,7 +469,7 @@ ring gets relays, how the shortcut count scales, lore (`docs/lore.md`).
 
 ## Plan
 
-- **Phase 0 — spike**: runs 1–12 done; run 13 pending (see "Status").
+- **Phase 0 — spike**: runs 1–13 done; the outer ring next (see "Status").
 - **Phase 1** — the real mod from the spike's findings (drop the `*spike*` files, keep the
   generator): game-start generation for all sizes and shapes, entry-point lifecycle (study →
   research → repair → use), locking portals, localisation.

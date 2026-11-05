@@ -95,7 +95,7 @@ placement and the shortcut do not.
    (they add up to 65 %; each once per empire); centres at 20 %
    size, our own star classes, the ring a mix of black hole / pulsar / toxoid (no neutron);
    debris (~3 asteroids, a third with deposits) in ring nodes and portals; cosmic storms
-   welcome on both; nomads study and repair any gate (with both techs), never seal it, get no portal, and pass
+   welcome on both; nomads study and repair any gate (with both techs; also hired by a contract), never seal it, get no portal, and pass
    seals unless banned (at war, or vanilla's `expelled_from_<owner>` flag; the clause is in
    `ahw_spike_friend_of_sealer` since 0.0.24, untested); late-game **express wormholes**
    (stations ~a reach apart, two wormholes each, dormant → unstable → stable, anyone stabilises). Spike order

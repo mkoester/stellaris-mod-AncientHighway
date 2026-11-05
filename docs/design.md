@@ -150,6 +150,35 @@ The connections between the ring and the regular galaxy are special, not hyperla
   broken gate, never seal one, and get no portal of their own. Like everyone else they need
   **both techs** to repair (2026-11-05). When a nomad has repaired a gate, the anchor's owner
   later gets the head start above (50 % of each tech), so they can seal sooner.
+- **Repair contract (user, 2026-11-05)**: a settled empire can hire a nomad to repair its gate,
+  as a contract (vanilla's contracts are `common/missions/missions/`; the model is
+  `contract_clear_blockers` in `02_contracts.txt`). Proposed shape:
+  - **Issuer**: may issue contracts (`can_issue_contracts_trigger`), owns the anchor
+    (`contract_system_is_own`; issued in the anchor, since nobody owns the portal), its gate
+    broken, **and has done the study itself** (one has to know what it is before one can commission
+    it; decided 2026-11-05). The issuer pays the contract's `cost`, most likely in trade (vanilla's
+    run 500–5000), **about what the repair costs** (300 alloys + 50 influence; decided 2026-11-05),
+    instead of the repair's alloys and influence.
+  - **Operator** (the nomad): both techs (`contract_requires_operator_technology`), not at war
+    with the issuer, the portal reachable (`contract_target_system_reachable`).
+  - **On accept**: our repair special project, for the nomad, at the gate. **On success**: the
+    gate is repaired, with vanilla's reward for the nomad (`contract_scaling_reward_effect`) plus
+    trust and opinion; the issuer gets the head start (50 % of each tech) on top of the study's
+    15 %, which makes 65 %, the same as a nomad repairing the gate unasked. **Aborted** when the
+    gate gets repaired some other way, or the issuer loses the anchor.
+  - The AI's weight follows vanilla's (`ai_weight`).
+- **For a friend's gate too (user, 2026-11-05)**: the contract may also be issued on a broken gate
+  whose anchor **a friend** owns, not only one's own; a nomad still does the work. "Friend" here is
+  stricter than at a seal, since a commercial pact or a research agreement alone is not enough.
+  Proposed: federation, overlord/subject either way, fellow subjects, defensive pact, guarantee
+  either way, the same side of a war (open: non-aggression pact, migration treaty, open borders
+  both ways). Feasible: vanilla contracts already target systems the issuer doesn't own
+  (`contract_system_is_owned_by_other_empire`, the raid contracts).
+  - The issuer pays the fee and has done a study (of any gate). The **anchor's owner** gets the
+    head start, as with any gate a nomad repairs; the issuer gets nothing beyond the friend's
+    open gate.
+  - Open: should the anchor's owner have to agree? The repair opens their space to the ring, and
+    they can seal it only once they have the physics tech.
   No decisions or edicts (the user's preference).
 - **The ring-side end can never be disabled or damaged.**
 

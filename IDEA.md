@@ -110,3 +110,11 @@ get creative
 well, I meant the existing fallen empires from the game
 
 (Answer to the proposal that followed — built for the Fallen Empires, kept by the Ancient Caretakers, sealed by the Militant Isolationists, eight reaches with octal gate addresses: accepted.)
+
+### Who may pass a sealed gate (after spike run 22)
+
+It would be ok when numbers go higher than (decimal) 8, ...7,10,11,...
+
+`The type then lets only the sealer through`: the whole idea is that empires can still reach their allies - every type of friend must still be allowd through (esp. empires fighting on the same side of a war)
+
+one more definition of friends: two empires not at war with each other and having open borders for the other (both directions)

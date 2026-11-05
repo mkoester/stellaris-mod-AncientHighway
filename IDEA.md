@@ -153,3 +153,8 @@ nomads should count as "friends" regarding the lock, unless an empire explicitly
 - the study should grant 10%-20% of the tech cost. the owner of an anchor system with an already repaired gate should be granted 50% of the tech cost
 - how about two techs? one physics, one engineering? one needs to understand the gates from both perspectives to be able to repair it
 - what is the cost of the wormhole tech?
+
+let's change the base cost for both to 2500.
+
+`The two add up`: not sure about that
+when would it happen? when an empire does the study itself, then someone else repairs it? we must prevent that this could be abused

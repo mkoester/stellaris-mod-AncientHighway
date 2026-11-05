@@ -107,20 +107,25 @@ The connections between the ring and the regular galaxy are special, not hyperla
      them.** Both are rare and have no tier prerequisites, so they can be researched as soon as the
      study is done. They are researched in parallel, in two departments.
      - **Physics: the gates' theory.** Needed to **use** a gate and to **seal** one.
-       `@tier2cost3` (3000).
+       `@tier2cost2` (**2500**, user 2026-11-05).
      - **Engineering: the gates' construction.** Needed, **with the physics one**, to **repair**.
-       `@tier2cost3` (3000).
+       `@tier2cost2` (**2500**).
      For comparison, vanilla's `tech_wormhole_stabilization` costs `@tier3cost1` = **4000** base
      (tier 3, rare, after `tech_hyper_drive_2`). The game then scales every tech cost by the
      galaxy's research-cost setting and by +0.2 % per point of empire size over the base
-     (`EMPIRE_SIZE_TECH_COST_PENALTY`); ours scale the same way. With 3000 in each of two
-     departments, both are done at about the time a 4000 tech in one department would be:
-     shortly before wormhole travel. At year 5 they are a real rush (opportunity cost); a few
+     (`EMPIRE_SIZE_TECH_COST_PENALTY`); ours scale the same way. With 2500 in each of two
+     departments, run in parallel, both are done a bit before a 4000 tech in one department
+     would be: shortly before wormhole travel. At year 5 they are a real rush (opportunity cost); a few
      decades in, they are routine. Possible cost modifiers: ×0.75 once known empires have them.
   3. **Repair** (construction ship, ~90 days): about 300 alloys + 50 influence. Both techs.
-  **Head start**: an empire that gains an anchor whose gate is already repaired (by a nomad, or by
-  a former owner) is granted **50 % of each tech**, once, along with the study. The two grants
-  stack: a study plus a repaired gate gives 65 %.
+  **Head start**: an empire that owns an anchor whose gate is already repaired (by a nomad, or by
+  a former owner) gets the study for free and **50 % of each tech**.
+  **The grants never add up to more than 50 %** (user, 2026-11-05: prevent abuse). They could
+  otherwise meet when an empire studies its own gate and a nomad then repairs it, or when it
+  gives up a studied anchor, lets someone else repair the gate, and takes the anchor back. Rule:
+  each grant at most once per empire, and the head start only **tops up to 50 %**: 50 % minus
+  what the study already granted (35 % after a study). No order of events yields more than 50 %,
+  and giving up an anchor gains nothing. A tech already researched gets nothing.
   The network adds a throttle of its own: one can exit only at gates others have repaired.
 - **At first every entry point is broken.** **The anchor's owner** — whoever owns the system the
   portal hangs off — studies it with a science ship (a special project), which reveals the ring

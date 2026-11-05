@@ -8,9 +8,9 @@ block for good (not a shortcut), so help for a distant ally becomes possible. Fu
 
 The user's original idea and requirements are kept verbatim in `IDEA.md` on the branch `idea`
 (orphan, pushed, **never merged**; later requirements are appended there, also verbatim). Append
-in a worktree, never by switching the main checkout: `git worktree add
-../worktrees/stellaris-mod-AncientHighway@idea idea`, edit, hand over the commit with `git worktree
-remove` after it. This
+in its **permanent** worktree `../worktrees/stellaris-mod-AncientHighway@idea` (user, 2026-11-05:
+keep it; recreate with `git worktree add ../worktrees/stellaris-mod-AncientHighway@idea idea`),
+never by switching the main checkout; hand over the commit, never a `worktree remove`. This
 file and `docs/` are the living design.
 
 Private for now. Workshop search 2026-11-03 found nothing alike: the nearest is *Wild Space*
@@ -90,8 +90,9 @@ placement and the shortcut do not.
 6. Labels/menus: built at game start they show; ring-side gates need sight (a usable entry point)
    for the label and a ship in the system for the right-click menu (runs 6–7).
 7. **Design round 2026-11-05** (decided; `docs/design.md`; not built yet): access in three
-   stages; two techs (physics: use and seal; engineering, with physics: repair; 3000 each, no
-   tier prerequisites); the study grants 15 % of each, an anchor with a repaired gate 50 %; centres at 20 %
+   stages; two techs (physics: use and seal; engineering, with physics: repair; 2500 each, no
+   tier prerequisites); the study grants 15 % of each, an anchor with a repaired gate tops the
+   grants up to 50 % (never more, once per empire); centres at 20 %
    size, our own star classes, the ring a mix of black hole / pulsar / toxoid (no neutron);
    debris (~3 asteroids, a third with deposits) in ring nodes and portals; cosmic storms
    welcome on both; nomads study and repair any gate (with both techs), never seal it, get no portal, and pass

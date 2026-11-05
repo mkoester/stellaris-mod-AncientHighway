@@ -171,14 +171,16 @@ The connections between the ring and the regular galaxy are special, not hyperla
   whose anchor **a friend** owns, not only one's own; a nomad still does the work. "Friend" here is
   stricter than at a seal, since a commercial pact or a research agreement alone is not enough.
   Proposed: federation, overlord/subject either way, fellow subjects, defensive pact, guarantee
-  either way, the same side of a war (open: non-aggression pact, migration treaty, open borders
-  both ways). Feasible: vanilla contracts already target systems the issuer doesn't own
+  either way, the same side of a war; **not** a non-aggression pact, a migration treaty or open
+  borders (decided 2026-11-05). Feasible: vanilla contracts already target systems the issuer doesn't own
   (`contract_system_is_owned_by_other_empire`, the raid contracts).
   - The issuer pays the fee and has done a study (of any gate). The **anchor's owner** gets the
     head start, as with any gate a nomad repairs; the issuer gets nothing beyond the friend's
     open gate.
-  - Open: should the anchor's owner have to agree? The repair opens their space to the ring, and
-    they can seal it only once they have the physics tech.
+  - **The anchor's owner is not asked** (decided 2026-11-05). Asking could be done with vanilla
+    means (`on_issue` sends the owner an event with accept/decline, and a decline aborts the
+    contract through `issued_abort_trigger`), but friends are trusted, and a gate repaired this
+    way can still be sealed once the owner has the physics tech.
   No decisions or edicts (the user's preference).
 - **The ring-side end can never be disabled or damaged.**
 

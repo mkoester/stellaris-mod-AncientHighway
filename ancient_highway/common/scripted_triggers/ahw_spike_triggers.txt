@@ -62,6 +62,14 @@ ahw_spike_friend_of_sealer = {
 			NOT = { has_closed_borders = event_target:ahw_sealer_$N$ }
 			event_target:ahw_sealer_$N$ = { NOT = { has_closed_borders = prev } }
 		}
+		# nomads, unless the sealer banned them (user, 2026-11-05): at war with it, or expelled -
+		# vanilla's timed flag after an Expel Nomads war (10 years, nomads_effects.txt; game rule
+		# is_expelled_from)
+		AND = {
+			is_nomadic = yes
+			NOT = { is_at_war_with = event_target:ahw_sealer_$N$ }
+			NOT = { has_country_flag = expelled_from_@event_target:ahw_sealer_$N$ }
+		}
 		# the same side of any war
 		any_war = {
 			OR = {

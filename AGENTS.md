@@ -89,7 +89,16 @@ placement and the shortcut do not.
 5. Galaxy shapes beyond small elliptical, and large/huge sizes (32 pairs, performance).
 6. Labels/menus: built at game start they show; ring-side gates need sight (a usable entry point)
    for the label and a ship in the system for the right-click menu (runs 6–7).
-7. Lore (`docs/lore.md`): builders and seal decided 2026-11-05 (the Fallen Empires, the
+7. **Design round 2026-11-05** (decided; `docs/design.md`; not built yet): access in three
+   stages with the tech as the throttle (no tier prerequisites, cost ≈ 5000); centres at 20 %
+   size, our own star classes, the ring a mix of black hole / pulsar / toxoid (no neutron);
+   debris (~3 asteroids, a third with deposits) in ring nodes and portals; cosmic storms
+   welcome on both; nomads study and repair any gate, never seal it, get no portal, and pass
+   seals unless banned (at war, or vanilla's `expelled_from_<owner>` flag; the clause is in
+   `ahw_spike_friend_of_sealer` since 0.0.24, untested); late-game **express wormholes**
+   (stations ~a reach apart, two wormholes each, dormant → unstable → stable). Spike order
+   after run 23: centres and star classes → debris → tech cost → nomads → express (its own run).
+8. Lore (`docs/lore.md`): builders and seal decided 2026-11-05 (the Fallen Empires, the
    Ancient Caretakers, the Militant Isolationists); the Caretaker node, guardians and the
    phase-2 reactions are open.
 
@@ -655,7 +664,7 @@ points (any ring system → any repaired entry galaxy-wide), but a candidate for
   must be quick to meet the yardstick below; **fights between passers-by are accepted** (user,
   2026-11-04: the neutral battlefield).
 - **The ring goes round the outside of the galaxy** (user, 2026-11-04), with many more systems,
-  and **no shortcuts**: it is a second way to everywhere that borders cannot block for good, not a
+  and **no shortcuts** (except the late-game express wormholes, 2026-11-05): it is a second way to everywhere that borders cannot block for good, not a
   shortcut. Yardstick: once round the ring ≈ once round the galaxy at mid radius (between core
   and outer rim), or a bit longer. **It follows the galaxy's outline** at a fixed distance
   beyond the outer rim, not a circle (user, 2026-11-04).

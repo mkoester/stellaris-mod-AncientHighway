@@ -120,12 +120,13 @@ The connections between the ring and the regular galaxy are special, not hyperla
   3. **Repair** (construction ship, ~90 days): about 300 alloys + 50 influence. Both techs.
   **Head start**: an empire that owns an anchor whose gate is already repaired (by a nomad, or by
   a former owner) gets the study for free and **50 % of each tech**.
-  **The grants never add up to more than 50 %** (user, 2026-11-05: prevent abuse). They could
-  otherwise meet when an empire studies its own gate and a nomad then repairs it, or when it
-  gives up a studied anchor, lets someone else repair the gate, and takes the anchor back. Rule:
-  each grant at most once per empire, and the head start only **tops up to 50 %**: 50 % minus
-  what the study already granted (35 % after a study). No order of events yields more than 50 %,
-  and giving up an anchor gains nothing. A tech already researched gets nothing.
+  **The grants add up: 15 % + 50 % = 65 %** (user, 2026-11-05: having studied the broken gate,
+  then seeing how somebody else repaired it, is worth more than never having seen it broken).
+  They meet when an empire studies its own gate and a nomad then repairs it, or when it gives up
+  a studied anchor and later owns it again (or another anchor) with a repaired gate. **Each grant
+  at most once per empire**, so 65 % is the ceiling: no farming by giving anchors up and taking
+  them back, and that detour gains nothing over the honest case. A tech already researched gets
+  nothing.
   The network adds a throttle of its own: one can exit only at gates others have repaired.
 - **At first every entry point is broken.** **The anchor's owner** — whoever owns the system the
   portal hangs off — studies it with a science ship (a special project), which reveals the ring

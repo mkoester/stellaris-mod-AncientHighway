@@ -91,8 +91,8 @@ placement and the shortcut do not.
    for the label and a ship in the system for the right-click menu (runs 6–7).
 7. **Design round 2026-11-05** (decided; `docs/design.md`; not built yet): access in three
    stages; two techs (physics: use and seal; engineering, with physics: repair; 2500 each, no
-   tier prerequisites); the study grants 15 % of each, an anchor with a repaired gate tops the
-   grants up to 50 % (never more, once per empire); centres at 20 %
+   tier prerequisites); the study grants 15 % of each, an anchor with a repaired gate 50 %
+   (they add up to 65 %; each once per empire); centres at 20 %
    size, our own star classes, the ring a mix of black hole / pulsar / toxoid (no neutron);
    debris (~3 asteroids, a third with deposits) in ring nodes and portals; cosmic storms
    welcome on both; nomads study and repair any gate (with both techs), never seal it, get no portal, and pass

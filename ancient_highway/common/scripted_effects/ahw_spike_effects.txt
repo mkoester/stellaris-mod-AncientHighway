@@ -16,7 +16,10 @@ ahw_spike_spawn_ring_node = {
 		effect = {
 			set_star_flag = ahw_ring
 			set_star_flag = ahw_unclaimable
-			ahw_spike_rename_system = { KEY = $LABEL$ }
+			# inlined, not ahw_spike_rename_system (run 22: one more level of scripted effects passed
+			# the engine's limit of 5, "Max effects post init recursive depth")
+			set_name = $LABEL$
+			every_system_planet = { limit = { is_star = yes } set_name = $LABEL$ }
 			save_global_event_target_as = $NAME$
 		}
 	}

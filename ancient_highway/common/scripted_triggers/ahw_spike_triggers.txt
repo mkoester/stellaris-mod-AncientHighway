@@ -26,3 +26,54 @@ ahw_spike_within_3_jumps_of_capital = {
 ahw_spike_has_bypass = {
 	any_bypass_in_system = { always = yes }
 }
+
+# 0.0.24 (user, 2026-11-05: "the whole idea is that empires can still reach their allies - every
+# type of friend must still be allowed through (esp. empires fighting on the same side of a war)").
+# this = country: the sealer of pair $N$ (event_target:ahw_sealer_$N$) or a friend of it. A pair
+# sealed against everyone (ahw_spike.25) has no sealer, so nobody passes.
+ahw_spike_friend_of_sealer = {
+	exists = event_target:ahw_sealer_$N$
+	OR = {
+		is_same_value = event_target:ahw_sealer_$N$
+		# one federation
+		is_in_federation_with = event_target:ahw_sealer_$N$
+		# overlord and subject, either way, and two subjects of one overlord
+		is_overlord_to = event_target:ahw_sealer_$N$
+		event_target:ahw_sealer_$N$ = { is_overlord_to = prev }
+		AND = {
+			is_subject = yes
+			event_target:ahw_sealer_$N$ = { is_subject = yes }
+			overlord = { is_overlord_to = event_target:ahw_sealer_$N$ }
+		}
+		# pacts and guarantees, either way
+		has_defensive_pact = event_target:ahw_sealer_$N$
+		has_non_aggression_pact = event_target:ahw_sealer_$N$
+		has_commercial_pact = event_target:ahw_sealer_$N$
+		has_research_agreement = event_target:ahw_sealer_$N$
+		has_migration_access = event_target:ahw_sealer_$N$
+		event_target:ahw_sealer_$N$ = { has_migration_access = prev }
+		is_guaranteeing = event_target:ahw_sealer_$N$
+		event_target:ahw_sealer_$N$ = { is_guaranteeing = prev }
+		# at peace with each other, borders open both ways (user, 2026-11-05). Communications first:
+		# unmet empires are no friends, whatever their border setting reads.
+		AND = {
+			has_communications = event_target:ahw_sealer_$N$
+			NOT = { is_at_war_with = event_target:ahw_sealer_$N$ }
+			NOT = { has_closed_borders = event_target:ahw_sealer_$N$ }
+			event_target:ahw_sealer_$N$ = { NOT = { has_closed_borders = prev } }
+		}
+		# the same side of any war
+		any_war = {
+			OR = {
+				AND = {
+					is_war_participant = { who = prev side = attackers }
+					is_war_participant = { who = event_target:ahw_sealer_$N$ side = attackers }
+				}
+				AND = {
+					is_war_participant = { who = prev side = defenders }
+					is_war_participant = { who = event_target:ahw_sealer_$N$ side = defenders }
+				}
+			}
+		}
+	}
+}

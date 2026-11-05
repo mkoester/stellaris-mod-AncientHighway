@@ -1,4 +1,4 @@
-# SPIKE (Phase 0, 0.0.23): the outer ring round the galaxy, and a portal for every regular empire.
+# SPIKE (Phase 0, 0.0.24): the outer ring round the galaxy, and a portal for every regular empire.
 # ahw_spike.10 runs by itself at game start (common/on_actions/ahw_spike_on_actions.txt) and
 # fires the window ahw_spike.1 for the human player.
 # Console, with nothing selected (Esc) - see AGENTS.md, "Status":
@@ -7,6 +7,8 @@
 #   event ahw_spike.7   run the monthly study/repair check for us now
 #   event ahw_spike.8   grant ahw_tech_spike
 #   event ahw_spike.25  seal our pair against everyone, us included (again: open it)
+#   event ahw_spike.26  seal our pair for another empire (a stranger to us)
+#   event ahw_spike.27  make that empire our subject (now a friend of the sealer)
 # Map changes reach route-finding on the next daily tick: let a day pass before ordering routes.
 namespace = ahw_spike
 
@@ -343,6 +345,38 @@ country_event = {
 				ahw_spike_seal_pair_for_nobody = yes
 				log = "AHW SPIKE test: our pair in [This.GetName] sealed against everyone, us included"
 			}
+		}
+	}
+}
+
+# 0.0.24 console test of friends: seals our pair for another regular empire, as if it were the
+# sealer - we are strangers to it, so our ship must be refused.
+country_event = {
+	id = ahw_spike.26
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		random_country = {
+			limit = { is_country_type = default NOT = { is_same_value = root } }
+			save_global_event_target_as = ahw_test_sealer
+		}
+		event_target:ahw_player_portal = {
+			set_star_flag = ahw_sealed
+			ahw_spike_seal_pair_for = { COUNTRY = event_target:ahw_test_sealer }
+			log = "AHW SPIKE test: our pair in [This.GetName] sealed for [ahw_test_sealer.GetName]"
+		}
+	}
+}
+
+# ... then makes that empire our subject: now we are its friend (overlord), so our ship passes.
+country_event = {
+	id = ahw_spike.27
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		event_target:ahw_test_sealer = {
+			set_subject_of = { who = root preset = preset_vassal }
+			log = "AHW SPIKE test: [This.GetName] is now a subject of [Root.GetName]"
 		}
 	}
 }

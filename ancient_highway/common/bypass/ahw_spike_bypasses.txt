@@ -30,7 +30,7 @@ ahw_spike_entry_1 = {
 			fail_text = AHW_SPIKE_GATE_SEALED
 			OR = {
 				NOT = { has_global_flag = ahw_sealed_1 }
-				has_country_flag = ahw_sealer_1
+				ahw_spike_friend_of_sealer = { N = 1 }
 			}
 		}
 	}
@@ -70,7 +70,7 @@ ahw_spike_entry_2 = {
 			fail_text = AHW_SPIKE_GATE_SEALED
 			OR = {
 				NOT = { has_global_flag = ahw_sealed_2 }
-				has_country_flag = ahw_sealer_2
+				ahw_spike_friend_of_sealer = { N = 2 }
 			}
 		}
 	}
@@ -110,7 +110,7 @@ ahw_spike_entry_3 = {
 			fail_text = AHW_SPIKE_GATE_SEALED
 			OR = {
 				NOT = { has_global_flag = ahw_sealed_3 }
-				has_country_flag = ahw_sealer_3
+				ahw_spike_friend_of_sealer = { N = 3 }
 			}
 		}
 	}
@@ -150,7 +150,7 @@ ahw_spike_entry_4 = {
 			fail_text = AHW_SPIKE_GATE_SEALED
 			OR = {
 				NOT = { has_global_flag = ahw_sealed_4 }
-				has_country_flag = ahw_sealer_4
+				ahw_spike_friend_of_sealer = { N = 4 }
 			}
 		}
 	}
@@ -190,7 +190,7 @@ ahw_spike_entry_5 = {
 			fail_text = AHW_SPIKE_GATE_SEALED
 			OR = {
 				NOT = { has_global_flag = ahw_sealed_5 }
-				has_country_flag = ahw_sealer_5
+				ahw_spike_friend_of_sealer = { N = 5 }
 			}
 		}
 	}
@@ -230,7 +230,7 @@ ahw_spike_entry_6 = {
 			fail_text = AHW_SPIKE_GATE_SEALED
 			OR = {
 				NOT = { has_global_flag = ahw_sealed_6 }
-				has_country_flag = ahw_sealer_6
+				ahw_spike_friend_of_sealer = { N = 6 }
 			}
 		}
 	}
@@ -270,7 +270,7 @@ ahw_spike_entry_7 = {
 			fail_text = AHW_SPIKE_GATE_SEALED
 			OR = {
 				NOT = { has_global_flag = ahw_sealed_7 }
-				has_country_flag = ahw_sealer_7
+				ahw_spike_friend_of_sealer = { N = 7 }
 			}
 		}
 	}
@@ -310,7 +310,7 @@ ahw_spike_entry_8 = {
 			fail_text = AHW_SPIKE_GATE_SEALED
 			OR = {
 				NOT = { has_global_flag = ahw_sealed_8 }
-				has_country_flag = ahw_sealer_8
+				ahw_spike_friend_of_sealer = { N = 8 }
 			}
 		}
 	}
@@ -350,7 +350,7 @@ ahw_spike_entry_9 = {
 			fail_text = AHW_SPIKE_GATE_SEALED
 			OR = {
 				NOT = { has_global_flag = ahw_sealed_9 }
-				has_country_flag = ahw_sealer_9
+				ahw_spike_friend_of_sealer = { N = 9 }
 			}
 		}
 	}
@@ -390,7 +390,7 @@ ahw_spike_entry_10 = {
 			fail_text = AHW_SPIKE_GATE_SEALED
 			OR = {
 				NOT = { has_global_flag = ahw_sealed_10 }
-				has_country_flag = ahw_sealer_10
+				ahw_spike_friend_of_sealer = { N = 10 }
 			}
 		}
 	}
@@ -430,7 +430,7 @@ ahw_spike_entry_11 = {
 			fail_text = AHW_SPIKE_GATE_SEALED
 			OR = {
 				NOT = { has_global_flag = ahw_sealed_11 }
-				has_country_flag = ahw_sealer_11
+				ahw_spike_friend_of_sealer = { N = 11 }
 			}
 		}
 	}
@@ -470,7 +470,7 @@ ahw_spike_entry_12 = {
 			fail_text = AHW_SPIKE_GATE_SEALED
 			OR = {
 				NOT = { has_global_flag = ahw_sealed_12 }
-				has_country_flag = ahw_sealer_12
+				ahw_spike_friend_of_sealer = { N = 12 }
 			}
 		}
 	}
@@ -510,7 +510,7 @@ ahw_spike_entry_13 = {
 			fail_text = AHW_SPIKE_GATE_SEALED
 			OR = {
 				NOT = { has_global_flag = ahw_sealed_13 }
-				has_country_flag = ahw_sealer_13
+				ahw_spike_friend_of_sealer = { N = 13 }
 			}
 		}
 	}
@@ -550,7 +550,7 @@ ahw_spike_entry_14 = {
 			fail_text = AHW_SPIKE_GATE_SEALED
 			OR = {
 				NOT = { has_global_flag = ahw_sealed_14 }
-				has_country_flag = ahw_sealer_14
+				ahw_spike_friend_of_sealer = { N = 14 }
 			}
 		}
 	}
@@ -590,7 +590,7 @@ ahw_spike_entry_15 = {
 			fail_text = AHW_SPIKE_GATE_SEALED
 			OR = {
 				NOT = { has_global_flag = ahw_sealed_15 }
-				has_country_flag = ahw_sealer_15
+				ahw_spike_friend_of_sealer = { N = 15 }
 			}
 		}
 	}
@@ -630,7 +630,7 @@ ahw_spike_entry_16 = {
 			fail_text = AHW_SPIKE_GATE_SEALED
 			OR = {
 				NOT = { has_global_flag = ahw_sealed_16 }
-				has_country_flag = ahw_sealer_16
+				ahw_spike_friend_of_sealer = { N = 16 }
 			}
 		}
 	}
@@ -670,7 +670,7 @@ ahw_spike_entry_17 = {
 			fail_text = AHW_SPIKE_GATE_SEALED
 			OR = {
 				NOT = { has_global_flag = ahw_sealed_17 }
-				has_country_flag = ahw_sealer_17
+				ahw_spike_friend_of_sealer = { N = 17 }
 			}
 		}
 	}
@@ -710,7 +710,7 @@ ahw_spike_entry_18 = {
 			fail_text = AHW_SPIKE_GATE_SEALED
 			OR = {
 				NOT = { has_global_flag = ahw_sealed_18 }
-				has_country_flag = ahw_sealer_18
+				ahw_spike_friend_of_sealer = { N = 18 }
 			}
 		}
 	}
@@ -750,7 +750,7 @@ ahw_spike_entry_19 = {
 			fail_text = AHW_SPIKE_GATE_SEALED
 			OR = {
 				NOT = { has_global_flag = ahw_sealed_19 }
-				has_country_flag = ahw_sealer_19
+				ahw_spike_friend_of_sealer = { N = 19 }
 			}
 		}
 	}
@@ -790,7 +790,7 @@ ahw_spike_entry_20 = {
 			fail_text = AHW_SPIKE_GATE_SEALED
 			OR = {
 				NOT = { has_global_flag = ahw_sealed_20 }
-				has_country_flag = ahw_sealer_20
+				ahw_spike_friend_of_sealer = { N = 20 }
 			}
 		}
 	}
@@ -830,7 +830,7 @@ ahw_spike_entry_21 = {
 			fail_text = AHW_SPIKE_GATE_SEALED
 			OR = {
 				NOT = { has_global_flag = ahw_sealed_21 }
-				has_country_flag = ahw_sealer_21
+				ahw_spike_friend_of_sealer = { N = 21 }
 			}
 		}
 	}
@@ -870,7 +870,7 @@ ahw_spike_entry_22 = {
 			fail_text = AHW_SPIKE_GATE_SEALED
 			OR = {
 				NOT = { has_global_flag = ahw_sealed_22 }
-				has_country_flag = ahw_sealer_22
+				ahw_spike_friend_of_sealer = { N = 22 }
 			}
 		}
 	}
@@ -910,7 +910,7 @@ ahw_spike_entry_23 = {
 			fail_text = AHW_SPIKE_GATE_SEALED
 			OR = {
 				NOT = { has_global_flag = ahw_sealed_23 }
-				has_country_flag = ahw_sealer_23
+				ahw_spike_friend_of_sealer = { N = 23 }
 			}
 		}
 	}
@@ -950,7 +950,7 @@ ahw_spike_entry_24 = {
 			fail_text = AHW_SPIKE_GATE_SEALED
 			OR = {
 				NOT = { has_global_flag = ahw_sealed_24 }
-				has_country_flag = ahw_sealer_24
+				ahw_spike_friend_of_sealer = { N = 24 }
 			}
 		}
 	}
@@ -990,7 +990,7 @@ ahw_spike_entry_25 = {
 			fail_text = AHW_SPIKE_GATE_SEALED
 			OR = {
 				NOT = { has_global_flag = ahw_sealed_25 }
-				has_country_flag = ahw_sealer_25
+				ahw_spike_friend_of_sealer = { N = 25 }
 			}
 		}
 	}
@@ -1030,7 +1030,7 @@ ahw_spike_entry_26 = {
 			fail_text = AHW_SPIKE_GATE_SEALED
 			OR = {
 				NOT = { has_global_flag = ahw_sealed_26 }
-				has_country_flag = ahw_sealer_26
+				ahw_spike_friend_of_sealer = { N = 26 }
 			}
 		}
 	}
@@ -1070,7 +1070,7 @@ ahw_spike_entry_27 = {
 			fail_text = AHW_SPIKE_GATE_SEALED
 			OR = {
 				NOT = { has_global_flag = ahw_sealed_27 }
-				has_country_flag = ahw_sealer_27
+				ahw_spike_friend_of_sealer = { N = 27 }
 			}
 		}
 	}
@@ -1110,7 +1110,7 @@ ahw_spike_entry_28 = {
 			fail_text = AHW_SPIKE_GATE_SEALED
 			OR = {
 				NOT = { has_global_flag = ahw_sealed_28 }
-				has_country_flag = ahw_sealer_28
+				ahw_spike_friend_of_sealer = { N = 28 }
 			}
 		}
 	}
@@ -1150,7 +1150,7 @@ ahw_spike_entry_29 = {
 			fail_text = AHW_SPIKE_GATE_SEALED
 			OR = {
 				NOT = { has_global_flag = ahw_sealed_29 }
-				has_country_flag = ahw_sealer_29
+				ahw_spike_friend_of_sealer = { N = 29 }
 			}
 		}
 	}
@@ -1190,7 +1190,7 @@ ahw_spike_entry_30 = {
 			fail_text = AHW_SPIKE_GATE_SEALED
 			OR = {
 				NOT = { has_global_flag = ahw_sealed_30 }
-				has_country_flag = ahw_sealer_30
+				ahw_spike_friend_of_sealer = { N = 30 }
 			}
 		}
 	}
@@ -1230,7 +1230,7 @@ ahw_spike_entry_31 = {
 			fail_text = AHW_SPIKE_GATE_SEALED
 			OR = {
 				NOT = { has_global_flag = ahw_sealed_31 }
-				has_country_flag = ahw_sealer_31
+				ahw_spike_friend_of_sealer = { N = 31 }
 			}
 		}
 	}
@@ -1270,7 +1270,7 @@ ahw_spike_entry_32 = {
 			fail_text = AHW_SPIKE_GATE_SEALED
 			OR = {
 				NOT = { has_global_flag = ahw_sealed_32 }
-				has_country_flag = ahw_sealer_32
+				ahw_spike_friend_of_sealer = { N = 32 }
 			}
 		}
 	}

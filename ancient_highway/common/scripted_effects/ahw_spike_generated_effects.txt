@@ -19389,135 +19389,136 @@ ahw_spike_name_portal_in_reach = {
 	}
 }
 
-# this = a portal: its pair is sealed; only $COUNTRY$ may pass (country_can_use of the pair's type).
+# this = a portal: its pair is sealed by $COUNTRY$ - only it and its friends may pass
+# (country_can_use of the pair's type, ahw_spike_friend_of_sealer).
 ahw_spike_seal_pair_for = {
 	if = {
 		limit = { check_variable = { which = ahw_pair value = 1 } }
-		set_global_flag = ahw_sealed_1 every_country = { remove_country_flag = ahw_sealer_1 } $COUNTRY$ = { set_country_flag = ahw_sealer_1 }
+		set_global_flag = ahw_sealed_1 $COUNTRY$ = { save_global_event_target_as = ahw_sealer_1 }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 2 } }
-		set_global_flag = ahw_sealed_2 every_country = { remove_country_flag = ahw_sealer_2 } $COUNTRY$ = { set_country_flag = ahw_sealer_2 }
+		set_global_flag = ahw_sealed_2 $COUNTRY$ = { save_global_event_target_as = ahw_sealer_2 }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 3 } }
-		set_global_flag = ahw_sealed_3 every_country = { remove_country_flag = ahw_sealer_3 } $COUNTRY$ = { set_country_flag = ahw_sealer_3 }
+		set_global_flag = ahw_sealed_3 $COUNTRY$ = { save_global_event_target_as = ahw_sealer_3 }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 4 } }
-		set_global_flag = ahw_sealed_4 every_country = { remove_country_flag = ahw_sealer_4 } $COUNTRY$ = { set_country_flag = ahw_sealer_4 }
+		set_global_flag = ahw_sealed_4 $COUNTRY$ = { save_global_event_target_as = ahw_sealer_4 }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 5 } }
-		set_global_flag = ahw_sealed_5 every_country = { remove_country_flag = ahw_sealer_5 } $COUNTRY$ = { set_country_flag = ahw_sealer_5 }
+		set_global_flag = ahw_sealed_5 $COUNTRY$ = { save_global_event_target_as = ahw_sealer_5 }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 6 } }
-		set_global_flag = ahw_sealed_6 every_country = { remove_country_flag = ahw_sealer_6 } $COUNTRY$ = { set_country_flag = ahw_sealer_6 }
+		set_global_flag = ahw_sealed_6 $COUNTRY$ = { save_global_event_target_as = ahw_sealer_6 }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 7 } }
-		set_global_flag = ahw_sealed_7 every_country = { remove_country_flag = ahw_sealer_7 } $COUNTRY$ = { set_country_flag = ahw_sealer_7 }
+		set_global_flag = ahw_sealed_7 $COUNTRY$ = { save_global_event_target_as = ahw_sealer_7 }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 8 } }
-		set_global_flag = ahw_sealed_8 every_country = { remove_country_flag = ahw_sealer_8 } $COUNTRY$ = { set_country_flag = ahw_sealer_8 }
+		set_global_flag = ahw_sealed_8 $COUNTRY$ = { save_global_event_target_as = ahw_sealer_8 }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 9 } }
-		set_global_flag = ahw_sealed_9 every_country = { remove_country_flag = ahw_sealer_9 } $COUNTRY$ = { set_country_flag = ahw_sealer_9 }
+		set_global_flag = ahw_sealed_9 $COUNTRY$ = { save_global_event_target_as = ahw_sealer_9 }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 10 } }
-		set_global_flag = ahw_sealed_10 every_country = { remove_country_flag = ahw_sealer_10 } $COUNTRY$ = { set_country_flag = ahw_sealer_10 }
+		set_global_flag = ahw_sealed_10 $COUNTRY$ = { save_global_event_target_as = ahw_sealer_10 }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 11 } }
-		set_global_flag = ahw_sealed_11 every_country = { remove_country_flag = ahw_sealer_11 } $COUNTRY$ = { set_country_flag = ahw_sealer_11 }
+		set_global_flag = ahw_sealed_11 $COUNTRY$ = { save_global_event_target_as = ahw_sealer_11 }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 12 } }
-		set_global_flag = ahw_sealed_12 every_country = { remove_country_flag = ahw_sealer_12 } $COUNTRY$ = { set_country_flag = ahw_sealer_12 }
+		set_global_flag = ahw_sealed_12 $COUNTRY$ = { save_global_event_target_as = ahw_sealer_12 }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 13 } }
-		set_global_flag = ahw_sealed_13 every_country = { remove_country_flag = ahw_sealer_13 } $COUNTRY$ = { set_country_flag = ahw_sealer_13 }
+		set_global_flag = ahw_sealed_13 $COUNTRY$ = { save_global_event_target_as = ahw_sealer_13 }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 14 } }
-		set_global_flag = ahw_sealed_14 every_country = { remove_country_flag = ahw_sealer_14 } $COUNTRY$ = { set_country_flag = ahw_sealer_14 }
+		set_global_flag = ahw_sealed_14 $COUNTRY$ = { save_global_event_target_as = ahw_sealer_14 }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 15 } }
-		set_global_flag = ahw_sealed_15 every_country = { remove_country_flag = ahw_sealer_15 } $COUNTRY$ = { set_country_flag = ahw_sealer_15 }
+		set_global_flag = ahw_sealed_15 $COUNTRY$ = { save_global_event_target_as = ahw_sealer_15 }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 16 } }
-		set_global_flag = ahw_sealed_16 every_country = { remove_country_flag = ahw_sealer_16 } $COUNTRY$ = { set_country_flag = ahw_sealer_16 }
+		set_global_flag = ahw_sealed_16 $COUNTRY$ = { save_global_event_target_as = ahw_sealer_16 }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 17 } }
-		set_global_flag = ahw_sealed_17 every_country = { remove_country_flag = ahw_sealer_17 } $COUNTRY$ = { set_country_flag = ahw_sealer_17 }
+		set_global_flag = ahw_sealed_17 $COUNTRY$ = { save_global_event_target_as = ahw_sealer_17 }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 18 } }
-		set_global_flag = ahw_sealed_18 every_country = { remove_country_flag = ahw_sealer_18 } $COUNTRY$ = { set_country_flag = ahw_sealer_18 }
+		set_global_flag = ahw_sealed_18 $COUNTRY$ = { save_global_event_target_as = ahw_sealer_18 }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 19 } }
-		set_global_flag = ahw_sealed_19 every_country = { remove_country_flag = ahw_sealer_19 } $COUNTRY$ = { set_country_flag = ahw_sealer_19 }
+		set_global_flag = ahw_sealed_19 $COUNTRY$ = { save_global_event_target_as = ahw_sealer_19 }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 20 } }
-		set_global_flag = ahw_sealed_20 every_country = { remove_country_flag = ahw_sealer_20 } $COUNTRY$ = { set_country_flag = ahw_sealer_20 }
+		set_global_flag = ahw_sealed_20 $COUNTRY$ = { save_global_event_target_as = ahw_sealer_20 }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 21 } }
-		set_global_flag = ahw_sealed_21 every_country = { remove_country_flag = ahw_sealer_21 } $COUNTRY$ = { set_country_flag = ahw_sealer_21 }
+		set_global_flag = ahw_sealed_21 $COUNTRY$ = { save_global_event_target_as = ahw_sealer_21 }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 22 } }
-		set_global_flag = ahw_sealed_22 every_country = { remove_country_flag = ahw_sealer_22 } $COUNTRY$ = { set_country_flag = ahw_sealer_22 }
+		set_global_flag = ahw_sealed_22 $COUNTRY$ = { save_global_event_target_as = ahw_sealer_22 }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 23 } }
-		set_global_flag = ahw_sealed_23 every_country = { remove_country_flag = ahw_sealer_23 } $COUNTRY$ = { set_country_flag = ahw_sealer_23 }
+		set_global_flag = ahw_sealed_23 $COUNTRY$ = { save_global_event_target_as = ahw_sealer_23 }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 24 } }
-		set_global_flag = ahw_sealed_24 every_country = { remove_country_flag = ahw_sealer_24 } $COUNTRY$ = { set_country_flag = ahw_sealer_24 }
+		set_global_flag = ahw_sealed_24 $COUNTRY$ = { save_global_event_target_as = ahw_sealer_24 }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 25 } }
-		set_global_flag = ahw_sealed_25 every_country = { remove_country_flag = ahw_sealer_25 } $COUNTRY$ = { set_country_flag = ahw_sealer_25 }
+		set_global_flag = ahw_sealed_25 $COUNTRY$ = { save_global_event_target_as = ahw_sealer_25 }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 26 } }
-		set_global_flag = ahw_sealed_26 every_country = { remove_country_flag = ahw_sealer_26 } $COUNTRY$ = { set_country_flag = ahw_sealer_26 }
+		set_global_flag = ahw_sealed_26 $COUNTRY$ = { save_global_event_target_as = ahw_sealer_26 }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 27 } }
-		set_global_flag = ahw_sealed_27 every_country = { remove_country_flag = ahw_sealer_27 } $COUNTRY$ = { set_country_flag = ahw_sealer_27 }
+		set_global_flag = ahw_sealed_27 $COUNTRY$ = { save_global_event_target_as = ahw_sealer_27 }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 28 } }
-		set_global_flag = ahw_sealed_28 every_country = { remove_country_flag = ahw_sealer_28 } $COUNTRY$ = { set_country_flag = ahw_sealer_28 }
+		set_global_flag = ahw_sealed_28 $COUNTRY$ = { save_global_event_target_as = ahw_sealer_28 }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 29 } }
-		set_global_flag = ahw_sealed_29 every_country = { remove_country_flag = ahw_sealer_29 } $COUNTRY$ = { set_country_flag = ahw_sealer_29 }
+		set_global_flag = ahw_sealed_29 $COUNTRY$ = { save_global_event_target_as = ahw_sealer_29 }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 30 } }
-		set_global_flag = ahw_sealed_30 every_country = { remove_country_flag = ahw_sealer_30 } $COUNTRY$ = { set_country_flag = ahw_sealer_30 }
+		set_global_flag = ahw_sealed_30 $COUNTRY$ = { save_global_event_target_as = ahw_sealer_30 }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 31 } }
-		set_global_flag = ahw_sealed_31 every_country = { remove_country_flag = ahw_sealer_31 } $COUNTRY$ = { set_country_flag = ahw_sealer_31 }
+		set_global_flag = ahw_sealed_31 $COUNTRY$ = { save_global_event_target_as = ahw_sealer_31 }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 32 } }
-		set_global_flag = ahw_sealed_32 every_country = { remove_country_flag = ahw_sealer_32 } $COUNTRY$ = { set_country_flag = ahw_sealer_32 }
+		set_global_flag = ahw_sealed_32 $COUNTRY$ = { save_global_event_target_as = ahw_sealer_32 }
 	}
 }
 
@@ -19525,131 +19526,131 @@ ahw_spike_seal_pair_for = {
 ahw_spike_seal_pair_for_nobody = {
 	if = {
 		limit = { check_variable = { which = ahw_pair value = 1 } }
-		set_global_flag = ahw_sealed_1 every_country = { remove_country_flag = ahw_sealer_1 }
+		set_global_flag = ahw_sealed_1 clear_global_event_target = ahw_sealer_1
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 2 } }
-		set_global_flag = ahw_sealed_2 every_country = { remove_country_flag = ahw_sealer_2 }
+		set_global_flag = ahw_sealed_2 clear_global_event_target = ahw_sealer_2
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 3 } }
-		set_global_flag = ahw_sealed_3 every_country = { remove_country_flag = ahw_sealer_3 }
+		set_global_flag = ahw_sealed_3 clear_global_event_target = ahw_sealer_3
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 4 } }
-		set_global_flag = ahw_sealed_4 every_country = { remove_country_flag = ahw_sealer_4 }
+		set_global_flag = ahw_sealed_4 clear_global_event_target = ahw_sealer_4
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 5 } }
-		set_global_flag = ahw_sealed_5 every_country = { remove_country_flag = ahw_sealer_5 }
+		set_global_flag = ahw_sealed_5 clear_global_event_target = ahw_sealer_5
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 6 } }
-		set_global_flag = ahw_sealed_6 every_country = { remove_country_flag = ahw_sealer_6 }
+		set_global_flag = ahw_sealed_6 clear_global_event_target = ahw_sealer_6
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 7 } }
-		set_global_flag = ahw_sealed_7 every_country = { remove_country_flag = ahw_sealer_7 }
+		set_global_flag = ahw_sealed_7 clear_global_event_target = ahw_sealer_7
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 8 } }
-		set_global_flag = ahw_sealed_8 every_country = { remove_country_flag = ahw_sealer_8 }
+		set_global_flag = ahw_sealed_8 clear_global_event_target = ahw_sealer_8
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 9 } }
-		set_global_flag = ahw_sealed_9 every_country = { remove_country_flag = ahw_sealer_9 }
+		set_global_flag = ahw_sealed_9 clear_global_event_target = ahw_sealer_9
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 10 } }
-		set_global_flag = ahw_sealed_10 every_country = { remove_country_flag = ahw_sealer_10 }
+		set_global_flag = ahw_sealed_10 clear_global_event_target = ahw_sealer_10
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 11 } }
-		set_global_flag = ahw_sealed_11 every_country = { remove_country_flag = ahw_sealer_11 }
+		set_global_flag = ahw_sealed_11 clear_global_event_target = ahw_sealer_11
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 12 } }
-		set_global_flag = ahw_sealed_12 every_country = { remove_country_flag = ahw_sealer_12 }
+		set_global_flag = ahw_sealed_12 clear_global_event_target = ahw_sealer_12
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 13 } }
-		set_global_flag = ahw_sealed_13 every_country = { remove_country_flag = ahw_sealer_13 }
+		set_global_flag = ahw_sealed_13 clear_global_event_target = ahw_sealer_13
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 14 } }
-		set_global_flag = ahw_sealed_14 every_country = { remove_country_flag = ahw_sealer_14 }
+		set_global_flag = ahw_sealed_14 clear_global_event_target = ahw_sealer_14
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 15 } }
-		set_global_flag = ahw_sealed_15 every_country = { remove_country_flag = ahw_sealer_15 }
+		set_global_flag = ahw_sealed_15 clear_global_event_target = ahw_sealer_15
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 16 } }
-		set_global_flag = ahw_sealed_16 every_country = { remove_country_flag = ahw_sealer_16 }
+		set_global_flag = ahw_sealed_16 clear_global_event_target = ahw_sealer_16
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 17 } }
-		set_global_flag = ahw_sealed_17 every_country = { remove_country_flag = ahw_sealer_17 }
+		set_global_flag = ahw_sealed_17 clear_global_event_target = ahw_sealer_17
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 18 } }
-		set_global_flag = ahw_sealed_18 every_country = { remove_country_flag = ahw_sealer_18 }
+		set_global_flag = ahw_sealed_18 clear_global_event_target = ahw_sealer_18
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 19 } }
-		set_global_flag = ahw_sealed_19 every_country = { remove_country_flag = ahw_sealer_19 }
+		set_global_flag = ahw_sealed_19 clear_global_event_target = ahw_sealer_19
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 20 } }
-		set_global_flag = ahw_sealed_20 every_country = { remove_country_flag = ahw_sealer_20 }
+		set_global_flag = ahw_sealed_20 clear_global_event_target = ahw_sealer_20
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 21 } }
-		set_global_flag = ahw_sealed_21 every_country = { remove_country_flag = ahw_sealer_21 }
+		set_global_flag = ahw_sealed_21 clear_global_event_target = ahw_sealer_21
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 22 } }
-		set_global_flag = ahw_sealed_22 every_country = { remove_country_flag = ahw_sealer_22 }
+		set_global_flag = ahw_sealed_22 clear_global_event_target = ahw_sealer_22
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 23 } }
-		set_global_flag = ahw_sealed_23 every_country = { remove_country_flag = ahw_sealer_23 }
+		set_global_flag = ahw_sealed_23 clear_global_event_target = ahw_sealer_23
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 24 } }
-		set_global_flag = ahw_sealed_24 every_country = { remove_country_flag = ahw_sealer_24 }
+		set_global_flag = ahw_sealed_24 clear_global_event_target = ahw_sealer_24
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 25 } }
-		set_global_flag = ahw_sealed_25 every_country = { remove_country_flag = ahw_sealer_25 }
+		set_global_flag = ahw_sealed_25 clear_global_event_target = ahw_sealer_25
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 26 } }
-		set_global_flag = ahw_sealed_26 every_country = { remove_country_flag = ahw_sealer_26 }
+		set_global_flag = ahw_sealed_26 clear_global_event_target = ahw_sealer_26
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 27 } }
-		set_global_flag = ahw_sealed_27 every_country = { remove_country_flag = ahw_sealer_27 }
+		set_global_flag = ahw_sealed_27 clear_global_event_target = ahw_sealer_27
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 28 } }
-		set_global_flag = ahw_sealed_28 every_country = { remove_country_flag = ahw_sealer_28 }
+		set_global_flag = ahw_sealed_28 clear_global_event_target = ahw_sealer_28
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 29 } }
-		set_global_flag = ahw_sealed_29 every_country = { remove_country_flag = ahw_sealer_29 }
+		set_global_flag = ahw_sealed_29 clear_global_event_target = ahw_sealer_29
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 30 } }
-		set_global_flag = ahw_sealed_30 every_country = { remove_country_flag = ahw_sealer_30 }
+		set_global_flag = ahw_sealed_30 clear_global_event_target = ahw_sealer_30
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 31 } }
-		set_global_flag = ahw_sealed_31 every_country = { remove_country_flag = ahw_sealer_31 }
+		set_global_flag = ahw_sealed_31 clear_global_event_target = ahw_sealer_31
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 32 } }
-		set_global_flag = ahw_sealed_32 every_country = { remove_country_flag = ahw_sealer_32 }
+		set_global_flag = ahw_sealed_32 clear_global_event_target = ahw_sealer_32
 	}
 }
 
@@ -19657,131 +19658,131 @@ ahw_spike_seal_pair_for_nobody = {
 ahw_spike_unseal_pair = {
 	if = {
 		limit = { check_variable = { which = ahw_pair value = 1 } }
-		remove_global_flag = ahw_sealed_1 every_country = { remove_country_flag = ahw_sealer_1 }
+		remove_global_flag = ahw_sealed_1 clear_global_event_target = ahw_sealer_1
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 2 } }
-		remove_global_flag = ahw_sealed_2 every_country = { remove_country_flag = ahw_sealer_2 }
+		remove_global_flag = ahw_sealed_2 clear_global_event_target = ahw_sealer_2
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 3 } }
-		remove_global_flag = ahw_sealed_3 every_country = { remove_country_flag = ahw_sealer_3 }
+		remove_global_flag = ahw_sealed_3 clear_global_event_target = ahw_sealer_3
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 4 } }
-		remove_global_flag = ahw_sealed_4 every_country = { remove_country_flag = ahw_sealer_4 }
+		remove_global_flag = ahw_sealed_4 clear_global_event_target = ahw_sealer_4
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 5 } }
-		remove_global_flag = ahw_sealed_5 every_country = { remove_country_flag = ahw_sealer_5 }
+		remove_global_flag = ahw_sealed_5 clear_global_event_target = ahw_sealer_5
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 6 } }
-		remove_global_flag = ahw_sealed_6 every_country = { remove_country_flag = ahw_sealer_6 }
+		remove_global_flag = ahw_sealed_6 clear_global_event_target = ahw_sealer_6
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 7 } }
-		remove_global_flag = ahw_sealed_7 every_country = { remove_country_flag = ahw_sealer_7 }
+		remove_global_flag = ahw_sealed_7 clear_global_event_target = ahw_sealer_7
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 8 } }
-		remove_global_flag = ahw_sealed_8 every_country = { remove_country_flag = ahw_sealer_8 }
+		remove_global_flag = ahw_sealed_8 clear_global_event_target = ahw_sealer_8
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 9 } }
-		remove_global_flag = ahw_sealed_9 every_country = { remove_country_flag = ahw_sealer_9 }
+		remove_global_flag = ahw_sealed_9 clear_global_event_target = ahw_sealer_9
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 10 } }
-		remove_global_flag = ahw_sealed_10 every_country = { remove_country_flag = ahw_sealer_10 }
+		remove_global_flag = ahw_sealed_10 clear_global_event_target = ahw_sealer_10
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 11 } }
-		remove_global_flag = ahw_sealed_11 every_country = { remove_country_flag = ahw_sealer_11 }
+		remove_global_flag = ahw_sealed_11 clear_global_event_target = ahw_sealer_11
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 12 } }
-		remove_global_flag = ahw_sealed_12 every_country = { remove_country_flag = ahw_sealer_12 }
+		remove_global_flag = ahw_sealed_12 clear_global_event_target = ahw_sealer_12
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 13 } }
-		remove_global_flag = ahw_sealed_13 every_country = { remove_country_flag = ahw_sealer_13 }
+		remove_global_flag = ahw_sealed_13 clear_global_event_target = ahw_sealer_13
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 14 } }
-		remove_global_flag = ahw_sealed_14 every_country = { remove_country_flag = ahw_sealer_14 }
+		remove_global_flag = ahw_sealed_14 clear_global_event_target = ahw_sealer_14
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 15 } }
-		remove_global_flag = ahw_sealed_15 every_country = { remove_country_flag = ahw_sealer_15 }
+		remove_global_flag = ahw_sealed_15 clear_global_event_target = ahw_sealer_15
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 16 } }
-		remove_global_flag = ahw_sealed_16 every_country = { remove_country_flag = ahw_sealer_16 }
+		remove_global_flag = ahw_sealed_16 clear_global_event_target = ahw_sealer_16
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 17 } }
-		remove_global_flag = ahw_sealed_17 every_country = { remove_country_flag = ahw_sealer_17 }
+		remove_global_flag = ahw_sealed_17 clear_global_event_target = ahw_sealer_17
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 18 } }
-		remove_global_flag = ahw_sealed_18 every_country = { remove_country_flag = ahw_sealer_18 }
+		remove_global_flag = ahw_sealed_18 clear_global_event_target = ahw_sealer_18
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 19 } }
-		remove_global_flag = ahw_sealed_19 every_country = { remove_country_flag = ahw_sealer_19 }
+		remove_global_flag = ahw_sealed_19 clear_global_event_target = ahw_sealer_19
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 20 } }
-		remove_global_flag = ahw_sealed_20 every_country = { remove_country_flag = ahw_sealer_20 }
+		remove_global_flag = ahw_sealed_20 clear_global_event_target = ahw_sealer_20
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 21 } }
-		remove_global_flag = ahw_sealed_21 every_country = { remove_country_flag = ahw_sealer_21 }
+		remove_global_flag = ahw_sealed_21 clear_global_event_target = ahw_sealer_21
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 22 } }
-		remove_global_flag = ahw_sealed_22 every_country = { remove_country_flag = ahw_sealer_22 }
+		remove_global_flag = ahw_sealed_22 clear_global_event_target = ahw_sealer_22
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 23 } }
-		remove_global_flag = ahw_sealed_23 every_country = { remove_country_flag = ahw_sealer_23 }
+		remove_global_flag = ahw_sealed_23 clear_global_event_target = ahw_sealer_23
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 24 } }
-		remove_global_flag = ahw_sealed_24 every_country = { remove_country_flag = ahw_sealer_24 }
+		remove_global_flag = ahw_sealed_24 clear_global_event_target = ahw_sealer_24
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 25 } }
-		remove_global_flag = ahw_sealed_25 every_country = { remove_country_flag = ahw_sealer_25 }
+		remove_global_flag = ahw_sealed_25 clear_global_event_target = ahw_sealer_25
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 26 } }
-		remove_global_flag = ahw_sealed_26 every_country = { remove_country_flag = ahw_sealer_26 }
+		remove_global_flag = ahw_sealed_26 clear_global_event_target = ahw_sealer_26
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 27 } }
-		remove_global_flag = ahw_sealed_27 every_country = { remove_country_flag = ahw_sealer_27 }
+		remove_global_flag = ahw_sealed_27 clear_global_event_target = ahw_sealer_27
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 28 } }
-		remove_global_flag = ahw_sealed_28 every_country = { remove_country_flag = ahw_sealer_28 }
+		remove_global_flag = ahw_sealed_28 clear_global_event_target = ahw_sealer_28
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 29 } }
-		remove_global_flag = ahw_sealed_29 every_country = { remove_country_flag = ahw_sealer_29 }
+		remove_global_flag = ahw_sealed_29 clear_global_event_target = ahw_sealer_29
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 30 } }
-		remove_global_flag = ahw_sealed_30 every_country = { remove_country_flag = ahw_sealer_30 }
+		remove_global_flag = ahw_sealed_30 clear_global_event_target = ahw_sealer_30
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 31 } }
-		remove_global_flag = ahw_sealed_31 every_country = { remove_country_flag = ahw_sealer_31 }
+		remove_global_flag = ahw_sealed_31 clear_global_event_target = ahw_sealer_31
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 32 } }
-		remove_global_flag = ahw_sealed_32 every_country = { remove_country_flag = ahw_sealer_32 }
+		remove_global_flag = ahw_sealed_32 clear_global_event_target = ahw_sealer_32
 	}
 }
 

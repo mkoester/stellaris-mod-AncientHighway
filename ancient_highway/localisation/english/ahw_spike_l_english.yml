@@ -27,6 +27,6 @@
  ahw_spike_gate_sealed:0 "$overclock_mode$ §RSealed§!"
  ahw_spike_gate_sealed_desc:0 "Only our ships may pass the entry point - into the Highway and back out of it."
  MEGASTRUCTURE_AHW_SEAL_TAB:0 "Seal"
- MEGASTRUCTURE_AHW_SEAL_DESC:0 "Sealing the entry point keeps everyone but us out, in both directions. Opening it lets everyone through again from the next day."
- AHW_SPIKE_GATE_SEALED:0 "This entry point of the Ancient Highway has been sealed by its keeper."
+ MEGASTRUCTURE_AHW_SEAL_DESC:0 "Sealing the entry point keeps strangers out, in both directions. Our friends still pass: our federation, overlord and subjects, every empire we have a pact or guarantee with, everyone at peace with us whose borders and ours are open to each other, and everyone fighting on our side of a war. Opening it lets everyone through again from the next day."
+ AHW_SPIKE_GATE_SEALED:0 "This entry point of the Ancient Highway has been sealed by its keeper, and we are no friend of theirs."
  MEGASTRUCTURE_AHW_SEAL_ENABLED:0 "§YActive§!"

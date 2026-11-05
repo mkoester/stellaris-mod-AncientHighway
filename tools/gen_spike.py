@@ -260,15 +260,16 @@ def bypass_block(key, name, node, nexus, *, tech, windup, lockable, sensors, fra
 
 
 def sealed_check(n):
-    """0.0.23 (run 21: a lock_bypass lock never expired): a sealed pair is usable by its sealer
-    only - both ends, as the type covers both. this = country."""
+    """0.0.23 (run 21: a lock_bypass lock never expired): a sealed pair is closed - both ends, as
+    the type covers both - to all but the sealer and its friends (0.0.24, user: allies must still
+    get through). this = country."""
     return f'''
 	country_can_use = {{
 		custom_tooltip = {{
 			fail_text = AHW_SPIKE_GATE_SEALED
 			OR = {{
 				NOT = {{ has_global_flag = ahw_sealed_{n} }}
-				has_country_flag = ahw_sealer_{n}
+				ahw_spike_friend_of_sealer = {{ N = {n} }}
 			}}
 		}}
 	}}
@@ -282,19 +283,20 @@ def seal_switches():
 		{body(n)}
 	}}''' for n in range(1, PAIRS + 1))
     return f'''
-# this = a portal: its pair is sealed; only $COUNTRY$ may pass (country_can_use of the pair's type).
+# this = a portal: its pair is sealed by $COUNTRY$ - only it and its friends may pass
+# (country_can_use of the pair's type, ahw_spike_friend_of_sealer).
 ahw_spike_seal_pair_for = {{
-{sw(lambda n: f'set_global_flag = ahw_sealed_{n} every_country = {{ remove_country_flag = ahw_sealer_{n} }} $COUNTRY$ = {{ set_country_flag = ahw_sealer_{n} }}')}
+{sw(lambda n: f'set_global_flag = ahw_sealed_{n} $COUNTRY$ = {{ save_global_event_target_as = ahw_sealer_{n} }}')}
 }}
 
 # this = a portal: its pair is sealed against everyone (console test ahw_spike.25).
 ahw_spike_seal_pair_for_nobody = {{
-{sw(lambda n: f'set_global_flag = ahw_sealed_{n} every_country = {{ remove_country_flag = ahw_sealer_{n} }}')}
+{sw(lambda n: f'set_global_flag = ahw_sealed_{n} clear_global_event_target = ahw_sealer_{n}')}
 }}
 
 # this = a portal: its pair is open again.
 ahw_spike_unseal_pair = {{
-{sw(lambda n: f'remove_global_flag = ahw_sealed_{n} every_country = {{ remove_country_flag = ahw_sealer_{n} }}')}
+{sw(lambda n: f'remove_global_flag = ahw_sealed_{n} clear_global_event_target = ahw_sealer_{n}')}
 }}
 '''
 

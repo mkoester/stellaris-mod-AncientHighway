@@ -161,3 +161,14 @@ when would it happen? when an empire does the study itself, then someone else re
 
 let's allow the 65%
 doing the study, then seeing how somebody else did it should give a bonus compared to an empire that never saw the broken gate in their study
+
+non-nomadic empires can offer contracts to nomadic empires
+let's add a contract type to repair their broken gate
+
+keep the study requirement, fee as you suggest (most likely the currency is trade)
+
+ideally one would be able to issue a contract for most types of "friends", too (just having some commercial or tech pact would not suffice)
+
+wait, we got a missunderstanding regarding `issue a contract for most types of "friends"`
+
+only nomads can execute them. I meant that we could issue the contract on a broken gate which is not "ours"

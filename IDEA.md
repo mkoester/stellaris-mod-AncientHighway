@@ -118,3 +118,30 @@ It would be ok when numbers go higher than (decimal) 8, ...7,10,11,...
 `The type then lets only the sealer through`: the whole idea is that empires can still reach their allies - every type of friend must still be allowd through (esp. empires fighting on the same side of a war)
 
 one more definition of friends: two empires not at war with each other and having open borders for the other (both directions)
+
+### Access, debris, centres, storms, nomads, fast-forward wormholes (after spike run 22)
+
+- let's discuss when the access should become available
+  + what should it cost?
+  + how many stages?
+  + this should easily be available shortly before empires develop wormhole travel
+  + there should be a costly way to speed it up. my idea: high tech cost. expensive when done early (opportunity costs), rather affordable a few decades later
+- the highway is old. so it makes sense that some of them "collected" asteroids etc. should we add x (x=3?; on average) items to the orbit? and then 1/3 of them would actually have valuable deposits (relevant only for nomads)
+- can we draw the `artificial centers of mass` smaller? like only 20% the original size? (in both views: galaxy and system)
+- let's also use some other types of `artificial centers of mass` besides `black holes` - let's look at what is available and which effect each of them has on ships in the system
+- should `cosmic storms` be able to affect our artificial systems (I would say yes)?
+  + should they be able to affect the ring, too?
+- how would `nomadic empires` be able to repair the gate? they can't own systems
+- let's discuss my idea of `fast forward wormholes` in the ring
+
+(Answers to the questions that followed:)
+
+Fast-forward wormholes: rather the late game express: jump (on average) N nodes (both ways). wormholes: always 2 in a system, but on opposite sides of each other and orthogonal to the axis of the hyperlanes. and maybe we can mix in your `unstable` idea. and there could be events/situations/costs to make them more stable the later you are in game
+
+Nomads: nomads can always study and repair (no concept of ownership, thus no locking). if they do so, the "real owner" get's a boost for the tech once he owns the anchor system so he would be able to lock it a bit earlier
+
+Centres (option chosen: black hole, pulsar and toxoid mixed round the ring, no neutron stars): Mix, no slowdown (Rec.)
+
+Debris (option chosen: ring nodes and portals): Both
+
+nomads should count as "friends" regarding the lock, unless an empire explicitly "banned" them from their territory (e.g. during and after a war)

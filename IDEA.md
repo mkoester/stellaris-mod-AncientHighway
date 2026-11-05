@@ -97,3 +97,16 @@ can we make it that locking locks both directions (I want them tightly coupled)
 - can it be independent of the astral action? we define our own action on the gate and just re-use the effects of astral locks?
 
 (Answers to the questions that followed: "it should not matter from which side" means a locked gate blocks both ways; our own action is a switch on the gate megastructure.)
+
+### Portal names and lore (after spike run 18)
+
+do the portal names first
+
+let's come up with something that fits the lore
+
+maybe we number them but with base 8 numbers? we could number them by quadrant and each quadrant gets their own "ancient" name? maybe we could tie the highway to some fallen empire?
+get creative
+
+well, I meant the existing fallen empires from the game
+
+(Answer to the proposal that followed — built for the Fallen Empires, kept by the Ancient Caretakers, sealed by the Militant Isolationists, eight reaches with octal gate addresses: accepted.)

@@ -145,3 +145,11 @@ Centres (option chosen: black hole, pulsar and toxoid mixed round the ring, no n
 Debris (option chosen: ring nodes and portals): Both
 
 nomads should count as "friends" regarding the lock, unless an empire explicitly "banned" them from their territory (e.g. during and after a war)
+
+### Techs and grants (after the design round)
+
+- nomads need the tech too; anyone may stabilise
+
+- the study should grant 10%-20% of the tech cost. the owner of an anchor system with an already repaired gate should be granted 50% of the tech cost
+- how about two techs? one physics, one engineering? one needs to understand the gates from both perspectives to be able to repair it
+- what is the cost of the wormhole tech?

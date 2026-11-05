@@ -10,7 +10,9 @@ The user's original idea and requirements are kept verbatim in `IDEA.md` on the 
 (orphan, pushed, **never merged**; later requirements are appended there, also verbatim). Append
 in its **permanent** worktree `../worktrees/stellaris-mod-AncientHighway@idea` (user, 2026-11-05:
 keep it; recreate with `git worktree add ../worktrees/stellaris-mod-AncientHighway@idea idea`),
-never by switching the main checkout; hand over the commit, never a `worktree remove`. This
+never by switching the main checkout; hand over the commit, never a `worktree remove`. Append
+with the **absolute path** of the worktree's `IDEA.md`: a relative one written from the main
+checkout creates a stray `IDEA.md` there (2026-11-05). This
 file and `docs/` are the living design.
 
 Private for now. Workshop search 2026-11-03 found nothing alike: the nearest is *Wild Space*
@@ -95,11 +97,15 @@ placement and the shortcut do not.
    (they add up to 65 %; each once per empire); centres at 20 %
    size, our own star classes, the ring a mix of black hole / pulsar / toxoid (no neutron);
    debris (~3 asteroids, a third with deposits) in ring nodes and portals; cosmic storms
-   welcome on both; nomads study and repair any gate (with both techs; also hired by a contract), never seal it, get no portal, and pass
+   welcome on both; nomads study and repair any gate (with both techs), never seal it, get no portal, and pass
    seals unless banned (at war, or vanilla's `expelled_from_<owner>` flag; the clause is in
    `ahw_spike_friend_of_sealer` since 0.0.24, untested); late-game **express wormholes**
-   (stations ~a reach apart, two wormholes each, dormant → unstable → stable, anyone stabilises). Spike order
-   after run 23: centres and star classes → debris → tech cost → nomads → express (its own run).
+   (stations ~a reach apart, two wormholes each, dormant → unstable → stable, anyone stabilises);
+   a **repair contract** a settled empire issues to nomads (only nomads accept contracts) on its
+   own broken gate or a close friend's, no consent asked; the issuer must have studied a gate and
+   pays about the repair's cost in trade. Spike order after run 23: centres and star classes →
+   debris → techs and grants (does `add_tech_progress` work before the tech is offered?) →
+   nomads and the contract → express (its own run).
 8. Lore (`docs/lore.md`): builders and seal decided 2026-11-05 (the Fallen Empires, the
    Ancient Caretakers, the Militant Isolationists); the Caretaker node, guardians and the
    phase-2 reactions are open.

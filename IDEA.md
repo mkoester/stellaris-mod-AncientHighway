@@ -172,3 +172,8 @@ ideally one would be able to issue a contract for most types of "friends", too (
 wait, we got a missunderstanding regarding `issue a contract for most types of "friends"`
 
 only nomads can execute them. I meant that we could issue the contract on a broken gate which is not "ours"
+
+- Should a non-aggression pact, a migration treaty, or open borders both ways count too? no
+- Does the anchor's owner have to agree?
+  + is that even possible to model with vanilla methods?
+  + I lean towards `no`

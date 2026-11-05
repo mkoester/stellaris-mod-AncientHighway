@@ -228,7 +228,7 @@ ahw_spike_place_portal = {
 ''' + '\n'.join(lines) + '\n}\n'
 
 
-def bypass_block(key, name, node, nexus, *, tech, windup, lockable, sensors, frame, effect):
+def bypass_block(key, name, node, nexus, *, tech, windup, lockable, sensors, frame, effect, can_use=''):
     prereq = '\n\tprerequisites = {\n\t\tahw_tech_spike\n\t}\n' if tech else ''
     return f'''
 {key} = {{
@@ -250,12 +250,52 @@ def bypass_block(key, name, node, nexus, *, tech, windup, lockable, sensors, fra
 	ftl_ship_effect = "{effect}_ftl_ship_effect_entity"
 	ftl_bypass_effect = "{effect}_ftl_bypass_effect_entity"
 	can_bypass_be_locked = {lockable}
-
+{can_use}
 	scripted_connection = {{
 		node = {{ {node} }}
 		nexus = {{ {nexus} }}
 	}}
 {prereq}}}
+'''
+
+
+def sealed_check(n):
+    """0.0.23 (run 21: a lock_bypass lock never expired): a sealed pair is usable by its sealer
+    only - both ends, as the type covers both. this = country."""
+    return f'''
+	country_can_use = {{
+		custom_tooltip = {{
+			fail_text = AHW_SPIKE_GATE_SEALED
+			OR = {{
+				NOT = {{ has_global_flag = ahw_sealed_{n} }}
+				has_country_flag = ahw_sealer_{n}
+			}}
+		}}
+	}}
+'''
+
+
+def seal_switches():
+    """this = a portal (variable ahw_pair): set or clear its pair's seal flags."""
+    sw = lambda body: '\n'.join(f'''	{'if' if n == 1 else 'else_if'} = {{
+		limit = {{ check_variable = {{ which = ahw_pair value = {n} }} }}
+		{body(n)}
+	}}''' for n in range(1, PAIRS + 1))
+    return f'''
+# this = a portal: its pair is sealed; only $COUNTRY$ may pass (country_can_use of the pair's type).
+ahw_spike_seal_pair_for = {{
+{sw(lambda n: f'set_global_flag = ahw_sealed_{n} every_country = {{ remove_country_flag = ahw_sealer_{n} }} $COUNTRY$ = {{ set_country_flag = ahw_sealer_{n} }}')}
+}}
+
+# this = a portal: its pair is sealed against everyone (console test ahw_spike.25).
+ahw_spike_seal_pair_for_nobody = {{
+{sw(lambda n: f'set_global_flag = ahw_sealed_{n} every_country = {{ remove_country_flag = ahw_sealer_{n} }}')}
+}}
+
+# this = a portal: its pair is open again.
+ahw_spike_unseal_pair = {{
+{sw(lambda n: f'remove_global_flag = ahw_sealed_{n} every_country = {{ remove_country_flag = ahw_sealer_{n} }}')}
+}}
 '''
 
 
@@ -271,7 +311,8 @@ def gen_bypasses():
             f'ahw_spike_entry_{n}', 'AHW_SPIKE_ENTRY',
             f'has_star_flag = ahw_entry_{n} NOT = {{ has_star_flag = ahw_broken }}',
             f'has_star_flag = ahw_exit_{n}',
-            tech=True, windup=10, lockable='yes', sensors='yes', frame=25, effect='gateway'))
+            tech=True, windup=10, lockable='no', sensors='yes', frame=25, effect='gateway',
+            can_use=sealed_check(n)))
     return ''.join(out)
 
 
@@ -532,7 +573,7 @@ ahw_spike_move_probe_to_node = {{
 	event_target:$PROBE$ = {
 		remove_star_flag = ahw_core
 		set_star_flag = ahw_ring
-		set_name = $LABEL$
+		ahw_spike_rename_system = { KEY = $LABEL$ }
 		save_global_event_target_as = ahw_ring_$K$
 	}
 }
@@ -561,7 +602,7 @@ def portal_naming():
 	}}''' for r in range(len(REACHES)))
     by_count = '\n'.join(f'''	{'if' if s == 1 else 'else_if'} = {{
 		limit = {{ event_target:ahw_ring_1 = {{ check_variable = {{ which = ahw_portals_$R$ value = {s} }} }} }}
-		event_target:ahw_portal_tmp = {{ set_name = ahw_portal_$R$_{s} }}
+		event_target:ahw_portal_tmp = {{ ahw_spike_rename_system = {{ KEY = ahw_portal_$R$_{s} }} }}
 	}}''' for s in range(1, PAIRS + 1))
     return f'''
 # Names the portal event_target:ahw_portal_tmp after the reach of its exit node ahw_node_tmp and
@@ -696,18 +737,8 @@ ahw_spike_find_centre = {
 
     out.append(portal_placement())
 
-    lock = '\n'.join(f'''	{'if' if n == 1 else 'else_if'} = {{
-		limit = {{ check_variable = {{ which = ahw_pair value = {n} }} }}
-		every_system = {{
-			limit = {{ has_star_flag = ahw_exit_{n} }}
-			every_bypass_in_system = {{
-				limit = {{ is_bypass_type = ahw_spike_entry_{n} }}
-				lock_bypass = {{ country = $COUNTRY$ duration = $DAYS$ }}
-			}}
-		}}
-	}}''' for n in range(1, PAIRS + 1))
-    out.append(f'\n# this = a portal: locks the ring end of its pair for $COUNTRY$, $DAYS$ days (0.0.18 test:\n# does a lock on the portal\'s gate alone keep arrivals from the ring out?).\nahw_spike_lock_ring_end = {{\n{lock}\n}}\n')
     out.append(portal_naming())
+    out.append(seal_switches())
     learn = '\n'.join(f'\tadd_seen_bypass_type = ahw_spike_entry_{n}' for n in range(1, PAIRS + 1))
     out.append(f'\n# this = country: knows every highway bypass type (run 4).\nahw_spike_learn_types = {{\n{learn}\n}}\n')
     return ''.join(out)

@@ -1,4 +1,4 @@
-# SPIKE (Phase 0, 0.0.22): the outer ring round the galaxy, and a portal for every regular empire.
+# SPIKE (Phase 0, 0.0.23): the outer ring round the galaxy, and a portal for every regular empire.
 # ahw_spike.10 runs by itself at game start (common/on_actions/ahw_spike_on_actions.txt) and
 # fires the window ahw_spike.1 for the human player.
 # Console, with nothing selected (Esc) - see AGENTS.md, "Status":
@@ -6,7 +6,7 @@
 #   event ahw_spike.6   an outpost on our anchor (so we own it)
 #   event ahw_spike.7   run the monthly study/repair check for us now
 #   event ahw_spike.8   grant ahw_tech_spike
-#   event ahw_spike.9   release any locks on our pair (re-lock for us, 1 day)
+#   event ahw_spike.25  seal our pair against everyone, us included (again: open it)
 # Map changes reach route-finding on the next daily tick: let a day pass before ordering routes.
 namespace = ahw_spike
 
@@ -185,21 +185,6 @@ country_event = {
 	immediate = { country_event = { id = ahw_spike.20 } }
 }
 
-# Releases the test locks on our pair (run 18: there is no unlock effect): both ends re-locked for
-# us for 1 day, so they expire tomorrow. Q: does a second lock_bypass replace the first?
-country_event = {
-	id = ahw_spike.9
-	hide_window = yes
-	is_triggered_only = yes
-	immediate = {
-		event_target:ahw_player_portal = {
-			every_bypass_in_system = { lock_bypass = { country = root duration = 1 } }
-			ahw_spike_lock_ring_end = { COUNTRY = root DAYS = 1 }
-		}
-		log = "AHW SPIKE our pair re-locked for [Root.GetName] (both ends, 1 day)"
-	}
-}
-
 # Grants the entry-point tech (fallback for the console's research_technology).
 country_event = {
 	id = ahw_spike.8
@@ -235,7 +220,7 @@ country_event = {
 			}
 			if = {
 				limit = { has_star_flag = ahw_sealed }
-				ahw_spike_lock_pair = { COUNTRY = root DAYS = 36000 }
+				ahw_spike_seal_pair_for = { COUNTRY = root }
 			}
 			if = {
 				limit = {
@@ -336,5 +321,28 @@ bypass_event = {
 	immediate = {
 		log = "AHW SPIKE a bypass lock expired"
 		solar_system = { log = "AHW SPIKE   ... in [This.GetName]" }
+	}
+}
+
+# 0.0.23 console test: seals our pair against everyone, us included (a control for the seal: our
+# ship must be refused, both ways); run again to open it.
+country_event = {
+	id = ahw_spike.25
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		event_target:ahw_player_portal = {
+			if = {
+				limit = { has_star_flag = ahw_sealed }
+				remove_star_flag = ahw_sealed
+				ahw_spike_unseal_pair = yes
+				log = "AHW SPIKE test: our pair in [This.GetName] opened again"
+			}
+			else = {
+				set_star_flag = ahw_sealed
+				ahw_spike_seal_pair_for_nobody = yes
+				log = "AHW SPIKE test: our pair in [This.GetName] sealed against everyone, us included"
+			}
+		}
 	}
 }

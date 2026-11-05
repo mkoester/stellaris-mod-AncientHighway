@@ -23,7 +23,17 @@ ahw_spike_entry_1 = {
 	connection_type = scripted_connection
 	ftl_ship_effect = "gateway_ftl_ship_effect_entity"
 	ftl_bypass_effect = "gateway_ftl_bypass_effect_entity"
-	can_bypass_be_locked = yes
+	can_bypass_be_locked = no
+
+	country_can_use = {
+		custom_tooltip = {
+			fail_text = AHW_SPIKE_GATE_SEALED
+			OR = {
+				NOT = { has_global_flag = ahw_sealed_1 }
+				has_country_flag = ahw_sealer_1
+			}
+		}
+	}
 
 	scripted_connection = {
 		node = { has_star_flag = ahw_entry_1 NOT = { has_star_flag = ahw_broken } }
@@ -53,7 +63,17 @@ ahw_spike_entry_2 = {
 	connection_type = scripted_connection
 	ftl_ship_effect = "gateway_ftl_ship_effect_entity"
 	ftl_bypass_effect = "gateway_ftl_bypass_effect_entity"
-	can_bypass_be_locked = yes
+	can_bypass_be_locked = no
+
+	country_can_use = {
+		custom_tooltip = {
+			fail_text = AHW_SPIKE_GATE_SEALED
+			OR = {
+				NOT = { has_global_flag = ahw_sealed_2 }
+				has_country_flag = ahw_sealer_2
+			}
+		}
+	}
 
 	scripted_connection = {
 		node = { has_star_flag = ahw_entry_2 NOT = { has_star_flag = ahw_broken } }
@@ -83,7 +103,17 @@ ahw_spike_entry_3 = {
 	connection_type = scripted_connection
 	ftl_ship_effect = "gateway_ftl_ship_effect_entity"
 	ftl_bypass_effect = "gateway_ftl_bypass_effect_entity"
-	can_bypass_be_locked = yes
+	can_bypass_be_locked = no
+
+	country_can_use = {
+		custom_tooltip = {
+			fail_text = AHW_SPIKE_GATE_SEALED
+			OR = {
+				NOT = { has_global_flag = ahw_sealed_3 }
+				has_country_flag = ahw_sealer_3
+			}
+		}
+	}
 
 	scripted_connection = {
 		node = { has_star_flag = ahw_entry_3 NOT = { has_star_flag = ahw_broken } }
@@ -113,7 +143,17 @@ ahw_spike_entry_4 = {
 	connection_type = scripted_connection
 	ftl_ship_effect = "gateway_ftl_ship_effect_entity"
 	ftl_bypass_effect = "gateway_ftl_bypass_effect_entity"
-	can_bypass_be_locked = yes
+	can_bypass_be_locked = no
+
+	country_can_use = {
+		custom_tooltip = {
+			fail_text = AHW_SPIKE_GATE_SEALED
+			OR = {
+				NOT = { has_global_flag = ahw_sealed_4 }
+				has_country_flag = ahw_sealer_4
+			}
+		}
+	}
 
 	scripted_connection = {
 		node = { has_star_flag = ahw_entry_4 NOT = { has_star_flag = ahw_broken } }
@@ -143,7 +183,17 @@ ahw_spike_entry_5 = {
 	connection_type = scripted_connection
 	ftl_ship_effect = "gateway_ftl_ship_effect_entity"
 	ftl_bypass_effect = "gateway_ftl_bypass_effect_entity"
-	can_bypass_be_locked = yes
+	can_bypass_be_locked = no
+
+	country_can_use = {
+		custom_tooltip = {
+			fail_text = AHW_SPIKE_GATE_SEALED
+			OR = {
+				NOT = { has_global_flag = ahw_sealed_5 }
+				has_country_flag = ahw_sealer_5
+			}
+		}
+	}
 
 	scripted_connection = {
 		node = { has_star_flag = ahw_entry_5 NOT = { has_star_flag = ahw_broken } }
@@ -173,7 +223,17 @@ ahw_spike_entry_6 = {
 	connection_type = scripted_connection
 	ftl_ship_effect = "gateway_ftl_ship_effect_entity"
 	ftl_bypass_effect = "gateway_ftl_bypass_effect_entity"
-	can_bypass_be_locked = yes
+	can_bypass_be_locked = no
+
+	country_can_use = {
+		custom_tooltip = {
+			fail_text = AHW_SPIKE_GATE_SEALED
+			OR = {
+				NOT = { has_global_flag = ahw_sealed_6 }
+				has_country_flag = ahw_sealer_6
+			}
+		}
+	}
 
 	scripted_connection = {
 		node = { has_star_flag = ahw_entry_6 NOT = { has_star_flag = ahw_broken } }
@@ -203,7 +263,17 @@ ahw_spike_entry_7 = {
 	connection_type = scripted_connection
 	ftl_ship_effect = "gateway_ftl_ship_effect_entity"
 	ftl_bypass_effect = "gateway_ftl_bypass_effect_entity"
-	can_bypass_be_locked = yes
+	can_bypass_be_locked = no
+
+	country_can_use = {
+		custom_tooltip = {
+			fail_text = AHW_SPIKE_GATE_SEALED
+			OR = {
+				NOT = { has_global_flag = ahw_sealed_7 }
+				has_country_flag = ahw_sealer_7
+			}
+		}
+	}
 
 	scripted_connection = {
 		node = { has_star_flag = ahw_entry_7 NOT = { has_star_flag = ahw_broken } }
@@ -233,7 +303,17 @@ ahw_spike_entry_8 = {
 	connection_type = scripted_connection
 	ftl_ship_effect = "gateway_ftl_ship_effect_entity"
 	ftl_bypass_effect = "gateway_ftl_bypass_effect_entity"
-	can_bypass_be_locked = yes
+	can_bypass_be_locked = no
+
+	country_can_use = {
+		custom_tooltip = {
+			fail_text = AHW_SPIKE_GATE_SEALED
+			OR = {
+				NOT = { has_global_flag = ahw_sealed_8 }
+				has_country_flag = ahw_sealer_8
+			}
+		}
+	}
 
 	scripted_connection = {
 		node = { has_star_flag = ahw_entry_8 NOT = { has_star_flag = ahw_broken } }
@@ -263,7 +343,17 @@ ahw_spike_entry_9 = {
 	connection_type = scripted_connection
 	ftl_ship_effect = "gateway_ftl_ship_effect_entity"
 	ftl_bypass_effect = "gateway_ftl_bypass_effect_entity"
-	can_bypass_be_locked = yes
+	can_bypass_be_locked = no
+
+	country_can_use = {
+		custom_tooltip = {
+			fail_text = AHW_SPIKE_GATE_SEALED
+			OR = {
+				NOT = { has_global_flag = ahw_sealed_9 }
+				has_country_flag = ahw_sealer_9
+			}
+		}
+	}
 
 	scripted_connection = {
 		node = { has_star_flag = ahw_entry_9 NOT = { has_star_flag = ahw_broken } }
@@ -293,7 +383,17 @@ ahw_spike_entry_10 = {
 	connection_type = scripted_connection
 	ftl_ship_effect = "gateway_ftl_ship_effect_entity"
 	ftl_bypass_effect = "gateway_ftl_bypass_effect_entity"
-	can_bypass_be_locked = yes
+	can_bypass_be_locked = no
+
+	country_can_use = {
+		custom_tooltip = {
+			fail_text = AHW_SPIKE_GATE_SEALED
+			OR = {
+				NOT = { has_global_flag = ahw_sealed_10 }
+				has_country_flag = ahw_sealer_10
+			}
+		}
+	}
 
 	scripted_connection = {
 		node = { has_star_flag = ahw_entry_10 NOT = { has_star_flag = ahw_broken } }
@@ -323,7 +423,17 @@ ahw_spike_entry_11 = {
 	connection_type = scripted_connection
 	ftl_ship_effect = "gateway_ftl_ship_effect_entity"
 	ftl_bypass_effect = "gateway_ftl_bypass_effect_entity"
-	can_bypass_be_locked = yes
+	can_bypass_be_locked = no
+
+	country_can_use = {
+		custom_tooltip = {
+			fail_text = AHW_SPIKE_GATE_SEALED
+			OR = {
+				NOT = { has_global_flag = ahw_sealed_11 }
+				has_country_flag = ahw_sealer_11
+			}
+		}
+	}
 
 	scripted_connection = {
 		node = { has_star_flag = ahw_entry_11 NOT = { has_star_flag = ahw_broken } }
@@ -353,7 +463,17 @@ ahw_spike_entry_12 = {
 	connection_type = scripted_connection
 	ftl_ship_effect = "gateway_ftl_ship_effect_entity"
 	ftl_bypass_effect = "gateway_ftl_bypass_effect_entity"
-	can_bypass_be_locked = yes
+	can_bypass_be_locked = no
+
+	country_can_use = {
+		custom_tooltip = {
+			fail_text = AHW_SPIKE_GATE_SEALED
+			OR = {
+				NOT = { has_global_flag = ahw_sealed_12 }
+				has_country_flag = ahw_sealer_12
+			}
+		}
+	}
 
 	scripted_connection = {
 		node = { has_star_flag = ahw_entry_12 NOT = { has_star_flag = ahw_broken } }
@@ -383,7 +503,17 @@ ahw_spike_entry_13 = {
 	connection_type = scripted_connection
 	ftl_ship_effect = "gateway_ftl_ship_effect_entity"
 	ftl_bypass_effect = "gateway_ftl_bypass_effect_entity"
-	can_bypass_be_locked = yes
+	can_bypass_be_locked = no
+
+	country_can_use = {
+		custom_tooltip = {
+			fail_text = AHW_SPIKE_GATE_SEALED
+			OR = {
+				NOT = { has_global_flag = ahw_sealed_13 }
+				has_country_flag = ahw_sealer_13
+			}
+		}
+	}
 
 	scripted_connection = {
 		node = { has_star_flag = ahw_entry_13 NOT = { has_star_flag = ahw_broken } }
@@ -413,7 +543,17 @@ ahw_spike_entry_14 = {
 	connection_type = scripted_connection
 	ftl_ship_effect = "gateway_ftl_ship_effect_entity"
 	ftl_bypass_effect = "gateway_ftl_bypass_effect_entity"
-	can_bypass_be_locked = yes
+	can_bypass_be_locked = no
+
+	country_can_use = {
+		custom_tooltip = {
+			fail_text = AHW_SPIKE_GATE_SEALED
+			OR = {
+				NOT = { has_global_flag = ahw_sealed_14 }
+				has_country_flag = ahw_sealer_14
+			}
+		}
+	}
 
 	scripted_connection = {
 		node = { has_star_flag = ahw_entry_14 NOT = { has_star_flag = ahw_broken } }
@@ -443,7 +583,17 @@ ahw_spike_entry_15 = {
 	connection_type = scripted_connection
 	ftl_ship_effect = "gateway_ftl_ship_effect_entity"
 	ftl_bypass_effect = "gateway_ftl_bypass_effect_entity"
-	can_bypass_be_locked = yes
+	can_bypass_be_locked = no
+
+	country_can_use = {
+		custom_tooltip = {
+			fail_text = AHW_SPIKE_GATE_SEALED
+			OR = {
+				NOT = { has_global_flag = ahw_sealed_15 }
+				has_country_flag = ahw_sealer_15
+			}
+		}
+	}
 
 	scripted_connection = {
 		node = { has_star_flag = ahw_entry_15 NOT = { has_star_flag = ahw_broken } }
@@ -473,7 +623,17 @@ ahw_spike_entry_16 = {
 	connection_type = scripted_connection
 	ftl_ship_effect = "gateway_ftl_ship_effect_entity"
 	ftl_bypass_effect = "gateway_ftl_bypass_effect_entity"
-	can_bypass_be_locked = yes
+	can_bypass_be_locked = no
+
+	country_can_use = {
+		custom_tooltip = {
+			fail_text = AHW_SPIKE_GATE_SEALED
+			OR = {
+				NOT = { has_global_flag = ahw_sealed_16 }
+				has_country_flag = ahw_sealer_16
+			}
+		}
+	}
 
 	scripted_connection = {
 		node = { has_star_flag = ahw_entry_16 NOT = { has_star_flag = ahw_broken } }
@@ -503,7 +663,17 @@ ahw_spike_entry_17 = {
 	connection_type = scripted_connection
 	ftl_ship_effect = "gateway_ftl_ship_effect_entity"
 	ftl_bypass_effect = "gateway_ftl_bypass_effect_entity"
-	can_bypass_be_locked = yes
+	can_bypass_be_locked = no
+
+	country_can_use = {
+		custom_tooltip = {
+			fail_text = AHW_SPIKE_GATE_SEALED
+			OR = {
+				NOT = { has_global_flag = ahw_sealed_17 }
+				has_country_flag = ahw_sealer_17
+			}
+		}
+	}
 
 	scripted_connection = {
 		node = { has_star_flag = ahw_entry_17 NOT = { has_star_flag = ahw_broken } }
@@ -533,7 +703,17 @@ ahw_spike_entry_18 = {
 	connection_type = scripted_connection
 	ftl_ship_effect = "gateway_ftl_ship_effect_entity"
 	ftl_bypass_effect = "gateway_ftl_bypass_effect_entity"
-	can_bypass_be_locked = yes
+	can_bypass_be_locked = no
+
+	country_can_use = {
+		custom_tooltip = {
+			fail_text = AHW_SPIKE_GATE_SEALED
+			OR = {
+				NOT = { has_global_flag = ahw_sealed_18 }
+				has_country_flag = ahw_sealer_18
+			}
+		}
+	}
 
 	scripted_connection = {
 		node = { has_star_flag = ahw_entry_18 NOT = { has_star_flag = ahw_broken } }
@@ -563,7 +743,17 @@ ahw_spike_entry_19 = {
 	connection_type = scripted_connection
 	ftl_ship_effect = "gateway_ftl_ship_effect_entity"
 	ftl_bypass_effect = "gateway_ftl_bypass_effect_entity"
-	can_bypass_be_locked = yes
+	can_bypass_be_locked = no
+
+	country_can_use = {
+		custom_tooltip = {
+			fail_text = AHW_SPIKE_GATE_SEALED
+			OR = {
+				NOT = { has_global_flag = ahw_sealed_19 }
+				has_country_flag = ahw_sealer_19
+			}
+		}
+	}
 
 	scripted_connection = {
 		node = { has_star_flag = ahw_entry_19 NOT = { has_star_flag = ahw_broken } }
@@ -593,7 +783,17 @@ ahw_spike_entry_20 = {
 	connection_type = scripted_connection
 	ftl_ship_effect = "gateway_ftl_ship_effect_entity"
 	ftl_bypass_effect = "gateway_ftl_bypass_effect_entity"
-	can_bypass_be_locked = yes
+	can_bypass_be_locked = no
+
+	country_can_use = {
+		custom_tooltip = {
+			fail_text = AHW_SPIKE_GATE_SEALED
+			OR = {
+				NOT = { has_global_flag = ahw_sealed_20 }
+				has_country_flag = ahw_sealer_20
+			}
+		}
+	}
 
 	scripted_connection = {
 		node = { has_star_flag = ahw_entry_20 NOT = { has_star_flag = ahw_broken } }
@@ -623,7 +823,17 @@ ahw_spike_entry_21 = {
 	connection_type = scripted_connection
 	ftl_ship_effect = "gateway_ftl_ship_effect_entity"
 	ftl_bypass_effect = "gateway_ftl_bypass_effect_entity"
-	can_bypass_be_locked = yes
+	can_bypass_be_locked = no
+
+	country_can_use = {
+		custom_tooltip = {
+			fail_text = AHW_SPIKE_GATE_SEALED
+			OR = {
+				NOT = { has_global_flag = ahw_sealed_21 }
+				has_country_flag = ahw_sealer_21
+			}
+		}
+	}
 
 	scripted_connection = {
 		node = { has_star_flag = ahw_entry_21 NOT = { has_star_flag = ahw_broken } }
@@ -653,7 +863,17 @@ ahw_spike_entry_22 = {
 	connection_type = scripted_connection
 	ftl_ship_effect = "gateway_ftl_ship_effect_entity"
 	ftl_bypass_effect = "gateway_ftl_bypass_effect_entity"
-	can_bypass_be_locked = yes
+	can_bypass_be_locked = no
+
+	country_can_use = {
+		custom_tooltip = {
+			fail_text = AHW_SPIKE_GATE_SEALED
+			OR = {
+				NOT = { has_global_flag = ahw_sealed_22 }
+				has_country_flag = ahw_sealer_22
+			}
+		}
+	}
 
 	scripted_connection = {
 		node = { has_star_flag = ahw_entry_22 NOT = { has_star_flag = ahw_broken } }
@@ -683,7 +903,17 @@ ahw_spike_entry_23 = {
 	connection_type = scripted_connection
 	ftl_ship_effect = "gateway_ftl_ship_effect_entity"
 	ftl_bypass_effect = "gateway_ftl_bypass_effect_entity"
-	can_bypass_be_locked = yes
+	can_bypass_be_locked = no
+
+	country_can_use = {
+		custom_tooltip = {
+			fail_text = AHW_SPIKE_GATE_SEALED
+			OR = {
+				NOT = { has_global_flag = ahw_sealed_23 }
+				has_country_flag = ahw_sealer_23
+			}
+		}
+	}
 
 	scripted_connection = {
 		node = { has_star_flag = ahw_entry_23 NOT = { has_star_flag = ahw_broken } }
@@ -713,7 +943,17 @@ ahw_spike_entry_24 = {
 	connection_type = scripted_connection
 	ftl_ship_effect = "gateway_ftl_ship_effect_entity"
 	ftl_bypass_effect = "gateway_ftl_bypass_effect_entity"
-	can_bypass_be_locked = yes
+	can_bypass_be_locked = no
+
+	country_can_use = {
+		custom_tooltip = {
+			fail_text = AHW_SPIKE_GATE_SEALED
+			OR = {
+				NOT = { has_global_flag = ahw_sealed_24 }
+				has_country_flag = ahw_sealer_24
+			}
+		}
+	}
 
 	scripted_connection = {
 		node = { has_star_flag = ahw_entry_24 NOT = { has_star_flag = ahw_broken } }
@@ -743,7 +983,17 @@ ahw_spike_entry_25 = {
 	connection_type = scripted_connection
 	ftl_ship_effect = "gateway_ftl_ship_effect_entity"
 	ftl_bypass_effect = "gateway_ftl_bypass_effect_entity"
-	can_bypass_be_locked = yes
+	can_bypass_be_locked = no
+
+	country_can_use = {
+		custom_tooltip = {
+			fail_text = AHW_SPIKE_GATE_SEALED
+			OR = {
+				NOT = { has_global_flag = ahw_sealed_25 }
+				has_country_flag = ahw_sealer_25
+			}
+		}
+	}
 
 	scripted_connection = {
 		node = { has_star_flag = ahw_entry_25 NOT = { has_star_flag = ahw_broken } }
@@ -773,7 +1023,17 @@ ahw_spike_entry_26 = {
 	connection_type = scripted_connection
 	ftl_ship_effect = "gateway_ftl_ship_effect_entity"
 	ftl_bypass_effect = "gateway_ftl_bypass_effect_entity"
-	can_bypass_be_locked = yes
+	can_bypass_be_locked = no
+
+	country_can_use = {
+		custom_tooltip = {
+			fail_text = AHW_SPIKE_GATE_SEALED
+			OR = {
+				NOT = { has_global_flag = ahw_sealed_26 }
+				has_country_flag = ahw_sealer_26
+			}
+		}
+	}
 
 	scripted_connection = {
 		node = { has_star_flag = ahw_entry_26 NOT = { has_star_flag = ahw_broken } }
@@ -803,7 +1063,17 @@ ahw_spike_entry_27 = {
 	connection_type = scripted_connection
 	ftl_ship_effect = "gateway_ftl_ship_effect_entity"
 	ftl_bypass_effect = "gateway_ftl_bypass_effect_entity"
-	can_bypass_be_locked = yes
+	can_bypass_be_locked = no
+
+	country_can_use = {
+		custom_tooltip = {
+			fail_text = AHW_SPIKE_GATE_SEALED
+			OR = {
+				NOT = { has_global_flag = ahw_sealed_27 }
+				has_country_flag = ahw_sealer_27
+			}
+		}
+	}
 
 	scripted_connection = {
 		node = { has_star_flag = ahw_entry_27 NOT = { has_star_flag = ahw_broken } }
@@ -833,7 +1103,17 @@ ahw_spike_entry_28 = {
 	connection_type = scripted_connection
 	ftl_ship_effect = "gateway_ftl_ship_effect_entity"
 	ftl_bypass_effect = "gateway_ftl_bypass_effect_entity"
-	can_bypass_be_locked = yes
+	can_bypass_be_locked = no
+
+	country_can_use = {
+		custom_tooltip = {
+			fail_text = AHW_SPIKE_GATE_SEALED
+			OR = {
+				NOT = { has_global_flag = ahw_sealed_28 }
+				has_country_flag = ahw_sealer_28
+			}
+		}
+	}
 
 	scripted_connection = {
 		node = { has_star_flag = ahw_entry_28 NOT = { has_star_flag = ahw_broken } }
@@ -863,7 +1143,17 @@ ahw_spike_entry_29 = {
 	connection_type = scripted_connection
 	ftl_ship_effect = "gateway_ftl_ship_effect_entity"
 	ftl_bypass_effect = "gateway_ftl_bypass_effect_entity"
-	can_bypass_be_locked = yes
+	can_bypass_be_locked = no
+
+	country_can_use = {
+		custom_tooltip = {
+			fail_text = AHW_SPIKE_GATE_SEALED
+			OR = {
+				NOT = { has_global_flag = ahw_sealed_29 }
+				has_country_flag = ahw_sealer_29
+			}
+		}
+	}
 
 	scripted_connection = {
 		node = { has_star_flag = ahw_entry_29 NOT = { has_star_flag = ahw_broken } }
@@ -893,7 +1183,17 @@ ahw_spike_entry_30 = {
 	connection_type = scripted_connection
 	ftl_ship_effect = "gateway_ftl_ship_effect_entity"
 	ftl_bypass_effect = "gateway_ftl_bypass_effect_entity"
-	can_bypass_be_locked = yes
+	can_bypass_be_locked = no
+
+	country_can_use = {
+		custom_tooltip = {
+			fail_text = AHW_SPIKE_GATE_SEALED
+			OR = {
+				NOT = { has_global_flag = ahw_sealed_30 }
+				has_country_flag = ahw_sealer_30
+			}
+		}
+	}
 
 	scripted_connection = {
 		node = { has_star_flag = ahw_entry_30 NOT = { has_star_flag = ahw_broken } }
@@ -923,7 +1223,17 @@ ahw_spike_entry_31 = {
 	connection_type = scripted_connection
 	ftl_ship_effect = "gateway_ftl_ship_effect_entity"
 	ftl_bypass_effect = "gateway_ftl_bypass_effect_entity"
-	can_bypass_be_locked = yes
+	can_bypass_be_locked = no
+
+	country_can_use = {
+		custom_tooltip = {
+			fail_text = AHW_SPIKE_GATE_SEALED
+			OR = {
+				NOT = { has_global_flag = ahw_sealed_31 }
+				has_country_flag = ahw_sealer_31
+			}
+		}
+	}
 
 	scripted_connection = {
 		node = { has_star_flag = ahw_entry_31 NOT = { has_star_flag = ahw_broken } }
@@ -953,7 +1263,17 @@ ahw_spike_entry_32 = {
 	connection_type = scripted_connection
 	ftl_ship_effect = "gateway_ftl_ship_effect_entity"
 	ftl_bypass_effect = "gateway_ftl_bypass_effect_entity"
-	can_bypass_be_locked = yes
+	can_bypass_be_locked = no
+
+	country_can_use = {
+		custom_tooltip = {
+			fail_text = AHW_SPIKE_GATE_SEALED
+			OR = {
+				NOT = { has_global_flag = ahw_sealed_32 }
+				has_country_flag = ahw_sealer_32
+			}
+		}
+	}
 
 	scripted_connection = {
 		node = { has_star_flag = ahw_entry_32 NOT = { has_star_flag = ahw_broken } }

@@ -16,7 +16,7 @@ ahw_spike_spawn_ring_node = {
 		effect = {
 			set_star_flag = ahw_ring
 			set_star_flag = ahw_unclaimable
-			set_name = $LABEL$
+			ahw_spike_rename_system = { KEY = $LABEL$ }
 			save_global_event_target_as = $NAME$
 		}
 	}
@@ -115,31 +115,34 @@ ahw_spike_probe_step = {
 }
 
 # this = a portal: locks both ends of its pair (the gate here, the exit in the ring) for $COUNTRY$,
-# $DAYS$ days. A lock only stops ships entering that end (run 18), so both ends are needed.
-ahw_spike_lock_pair = {
-	every_bypass_in_system = {
-		lock_bypass = { country = $COUNTRY$ duration = $DAYS$ }
+# this = a system: renamed to $KEY$, with its star (run 21: the system view's label is the star's
+# name, so renaming only the system left "Highway Portal" there, also after a reload; vanilla
+# renames both, events/leviathans_events_2.txt).
+ahw_spike_rename_system = {
+	set_name = $KEY$
+	every_system_planet = {
+		limit = { is_star = yes }
+		set_name = $KEY$
 	}
-	ahw_spike_lock_ring_end = { COUNTRY = $COUNTRY$ DAYS = $DAYS$ }
 }
 
-# this = the gate megastructure (overclock mode Sealed): both ends locked for its owner, for good
-# (36000 days; renewed by the monthly check while sealed).
+# this = the gate megastructure (overclock mode Sealed): both ends closed to all but its owner.
+# 0.0.23: by flags the pair's bypass type checks (country_can_use), not lock_bypass - run 21: a
+# 1-day lock_bypass never expired, so Open could not undo a seal.
 ahw_spike_seal_gate = {
 	if = {
 		limit = { exists = owner }
 		owner = { save_event_target_as = ahw_sealer }
 		solar_system = {
 			set_star_flag = ahw_sealed
-			ahw_spike_lock_pair = { COUNTRY = event_target:ahw_sealer DAYS = 36000 }
+			ahw_spike_seal_pair_for = { COUNTRY = event_target:ahw_sealer }
 			log = "AHW SPIKE gate in \\[This.GetName] SEALED for \\[ahw_sealer.GetName]"
 		}
 	}
 }
 
-# this = the gate megastructure (overclock mode Open): if it was sealed, both ends re-locked for the
-# owner for 1 day - they open tomorrow (no unlock effect exists). Also runs when the mode is first
-# set at creation, hence the flag check.
+# this = the gate megastructure (overclock mode Open): if it was sealed, open to all again. Also
+# runs when the mode is first set at creation, hence the flag check.
 ahw_spike_unseal_gate = {
 	if = {
 		limit = {
@@ -149,8 +152,8 @@ ahw_spike_unseal_gate = {
 		owner = { save_event_target_as = ahw_sealer }
 		solar_system = {
 			remove_star_flag = ahw_sealed
-			ahw_spike_lock_pair = { COUNTRY = event_target:ahw_sealer DAYS = 1 }
-			log = "AHW SPIKE gate in \\[This.GetName] opened by \\[ahw_sealer.GetName] (both ends free tomorrow)"
+			ahw_spike_unseal_pair = yes
+			log = "AHW SPIKE gate in \\[This.GetName] opened by \\[ahw_sealer.GetName]"
 		}
 	}
 }

@@ -941,7 +941,7 @@ ahw_spike_move_probe_to_node = {
 	event_target:$PROBE$ = {
 		remove_star_flag = ahw_core
 		set_star_flag = ahw_ring
-		set_name = $LABEL$
+		ahw_spike_rename_system = { KEY = $LABEL$ }
 		save_global_event_target_as = ahw_ring_$K$
 	}
 }
@@ -19212,331 +19212,6 @@ ahw_spike_place_portal = {
 	}
 }
 
-# this = a portal: locks the ring end of its pair for $COUNTRY$, $DAYS$ days (0.0.18 test:
-# does a lock on the portal's gate alone keep arrivals from the ring out?).
-ahw_spike_lock_ring_end = {
-	if = {
-		limit = { check_variable = { which = ahw_pair value = 1 } }
-		every_system = {
-			limit = { has_star_flag = ahw_exit_1 }
-			every_bypass_in_system = {
-				limit = { is_bypass_type = ahw_spike_entry_1 }
-				lock_bypass = { country = $COUNTRY$ duration = $DAYS$ }
-			}
-		}
-	}
-	else_if = {
-		limit = { check_variable = { which = ahw_pair value = 2 } }
-		every_system = {
-			limit = { has_star_flag = ahw_exit_2 }
-			every_bypass_in_system = {
-				limit = { is_bypass_type = ahw_spike_entry_2 }
-				lock_bypass = { country = $COUNTRY$ duration = $DAYS$ }
-			}
-		}
-	}
-	else_if = {
-		limit = { check_variable = { which = ahw_pair value = 3 } }
-		every_system = {
-			limit = { has_star_flag = ahw_exit_3 }
-			every_bypass_in_system = {
-				limit = { is_bypass_type = ahw_spike_entry_3 }
-				lock_bypass = { country = $COUNTRY$ duration = $DAYS$ }
-			}
-		}
-	}
-	else_if = {
-		limit = { check_variable = { which = ahw_pair value = 4 } }
-		every_system = {
-			limit = { has_star_flag = ahw_exit_4 }
-			every_bypass_in_system = {
-				limit = { is_bypass_type = ahw_spike_entry_4 }
-				lock_bypass = { country = $COUNTRY$ duration = $DAYS$ }
-			}
-		}
-	}
-	else_if = {
-		limit = { check_variable = { which = ahw_pair value = 5 } }
-		every_system = {
-			limit = { has_star_flag = ahw_exit_5 }
-			every_bypass_in_system = {
-				limit = { is_bypass_type = ahw_spike_entry_5 }
-				lock_bypass = { country = $COUNTRY$ duration = $DAYS$ }
-			}
-		}
-	}
-	else_if = {
-		limit = { check_variable = { which = ahw_pair value = 6 } }
-		every_system = {
-			limit = { has_star_flag = ahw_exit_6 }
-			every_bypass_in_system = {
-				limit = { is_bypass_type = ahw_spike_entry_6 }
-				lock_bypass = { country = $COUNTRY$ duration = $DAYS$ }
-			}
-		}
-	}
-	else_if = {
-		limit = { check_variable = { which = ahw_pair value = 7 } }
-		every_system = {
-			limit = { has_star_flag = ahw_exit_7 }
-			every_bypass_in_system = {
-				limit = { is_bypass_type = ahw_spike_entry_7 }
-				lock_bypass = { country = $COUNTRY$ duration = $DAYS$ }
-			}
-		}
-	}
-	else_if = {
-		limit = { check_variable = { which = ahw_pair value = 8 } }
-		every_system = {
-			limit = { has_star_flag = ahw_exit_8 }
-			every_bypass_in_system = {
-				limit = { is_bypass_type = ahw_spike_entry_8 }
-				lock_bypass = { country = $COUNTRY$ duration = $DAYS$ }
-			}
-		}
-	}
-	else_if = {
-		limit = { check_variable = { which = ahw_pair value = 9 } }
-		every_system = {
-			limit = { has_star_flag = ahw_exit_9 }
-			every_bypass_in_system = {
-				limit = { is_bypass_type = ahw_spike_entry_9 }
-				lock_bypass = { country = $COUNTRY$ duration = $DAYS$ }
-			}
-		}
-	}
-	else_if = {
-		limit = { check_variable = { which = ahw_pair value = 10 } }
-		every_system = {
-			limit = { has_star_flag = ahw_exit_10 }
-			every_bypass_in_system = {
-				limit = { is_bypass_type = ahw_spike_entry_10 }
-				lock_bypass = { country = $COUNTRY$ duration = $DAYS$ }
-			}
-		}
-	}
-	else_if = {
-		limit = { check_variable = { which = ahw_pair value = 11 } }
-		every_system = {
-			limit = { has_star_flag = ahw_exit_11 }
-			every_bypass_in_system = {
-				limit = { is_bypass_type = ahw_spike_entry_11 }
-				lock_bypass = { country = $COUNTRY$ duration = $DAYS$ }
-			}
-		}
-	}
-	else_if = {
-		limit = { check_variable = { which = ahw_pair value = 12 } }
-		every_system = {
-			limit = { has_star_flag = ahw_exit_12 }
-			every_bypass_in_system = {
-				limit = { is_bypass_type = ahw_spike_entry_12 }
-				lock_bypass = { country = $COUNTRY$ duration = $DAYS$ }
-			}
-		}
-	}
-	else_if = {
-		limit = { check_variable = { which = ahw_pair value = 13 } }
-		every_system = {
-			limit = { has_star_flag = ahw_exit_13 }
-			every_bypass_in_system = {
-				limit = { is_bypass_type = ahw_spike_entry_13 }
-				lock_bypass = { country = $COUNTRY$ duration = $DAYS$ }
-			}
-		}
-	}
-	else_if = {
-		limit = { check_variable = { which = ahw_pair value = 14 } }
-		every_system = {
-			limit = { has_star_flag = ahw_exit_14 }
-			every_bypass_in_system = {
-				limit = { is_bypass_type = ahw_spike_entry_14 }
-				lock_bypass = { country = $COUNTRY$ duration = $DAYS$ }
-			}
-		}
-	}
-	else_if = {
-		limit = { check_variable = { which = ahw_pair value = 15 } }
-		every_system = {
-			limit = { has_star_flag = ahw_exit_15 }
-			every_bypass_in_system = {
-				limit = { is_bypass_type = ahw_spike_entry_15 }
-				lock_bypass = { country = $COUNTRY$ duration = $DAYS$ }
-			}
-		}
-	}
-	else_if = {
-		limit = { check_variable = { which = ahw_pair value = 16 } }
-		every_system = {
-			limit = { has_star_flag = ahw_exit_16 }
-			every_bypass_in_system = {
-				limit = { is_bypass_type = ahw_spike_entry_16 }
-				lock_bypass = { country = $COUNTRY$ duration = $DAYS$ }
-			}
-		}
-	}
-	else_if = {
-		limit = { check_variable = { which = ahw_pair value = 17 } }
-		every_system = {
-			limit = { has_star_flag = ahw_exit_17 }
-			every_bypass_in_system = {
-				limit = { is_bypass_type = ahw_spike_entry_17 }
-				lock_bypass = { country = $COUNTRY$ duration = $DAYS$ }
-			}
-		}
-	}
-	else_if = {
-		limit = { check_variable = { which = ahw_pair value = 18 } }
-		every_system = {
-			limit = { has_star_flag = ahw_exit_18 }
-			every_bypass_in_system = {
-				limit = { is_bypass_type = ahw_spike_entry_18 }
-				lock_bypass = { country = $COUNTRY$ duration = $DAYS$ }
-			}
-		}
-	}
-	else_if = {
-		limit = { check_variable = { which = ahw_pair value = 19 } }
-		every_system = {
-			limit = { has_star_flag = ahw_exit_19 }
-			every_bypass_in_system = {
-				limit = { is_bypass_type = ahw_spike_entry_19 }
-				lock_bypass = { country = $COUNTRY$ duration = $DAYS$ }
-			}
-		}
-	}
-	else_if = {
-		limit = { check_variable = { which = ahw_pair value = 20 } }
-		every_system = {
-			limit = { has_star_flag = ahw_exit_20 }
-			every_bypass_in_system = {
-				limit = { is_bypass_type = ahw_spike_entry_20 }
-				lock_bypass = { country = $COUNTRY$ duration = $DAYS$ }
-			}
-		}
-	}
-	else_if = {
-		limit = { check_variable = { which = ahw_pair value = 21 } }
-		every_system = {
-			limit = { has_star_flag = ahw_exit_21 }
-			every_bypass_in_system = {
-				limit = { is_bypass_type = ahw_spike_entry_21 }
-				lock_bypass = { country = $COUNTRY$ duration = $DAYS$ }
-			}
-		}
-	}
-	else_if = {
-		limit = { check_variable = { which = ahw_pair value = 22 } }
-		every_system = {
-			limit = { has_star_flag = ahw_exit_22 }
-			every_bypass_in_system = {
-				limit = { is_bypass_type = ahw_spike_entry_22 }
-				lock_bypass = { country = $COUNTRY$ duration = $DAYS$ }
-			}
-		}
-	}
-	else_if = {
-		limit = { check_variable = { which = ahw_pair value = 23 } }
-		every_system = {
-			limit = { has_star_flag = ahw_exit_23 }
-			every_bypass_in_system = {
-				limit = { is_bypass_type = ahw_spike_entry_23 }
-				lock_bypass = { country = $COUNTRY$ duration = $DAYS$ }
-			}
-		}
-	}
-	else_if = {
-		limit = { check_variable = { which = ahw_pair value = 24 } }
-		every_system = {
-			limit = { has_star_flag = ahw_exit_24 }
-			every_bypass_in_system = {
-				limit = { is_bypass_type = ahw_spike_entry_24 }
-				lock_bypass = { country = $COUNTRY$ duration = $DAYS$ }
-			}
-		}
-	}
-	else_if = {
-		limit = { check_variable = { which = ahw_pair value = 25 } }
-		every_system = {
-			limit = { has_star_flag = ahw_exit_25 }
-			every_bypass_in_system = {
-				limit = { is_bypass_type = ahw_spike_entry_25 }
-				lock_bypass = { country = $COUNTRY$ duration = $DAYS$ }
-			}
-		}
-	}
-	else_if = {
-		limit = { check_variable = { which = ahw_pair value = 26 } }
-		every_system = {
-			limit = { has_star_flag = ahw_exit_26 }
-			every_bypass_in_system = {
-				limit = { is_bypass_type = ahw_spike_entry_26 }
-				lock_bypass = { country = $COUNTRY$ duration = $DAYS$ }
-			}
-		}
-	}
-	else_if = {
-		limit = { check_variable = { which = ahw_pair value = 27 } }
-		every_system = {
-			limit = { has_star_flag = ahw_exit_27 }
-			every_bypass_in_system = {
-				limit = { is_bypass_type = ahw_spike_entry_27 }
-				lock_bypass = { country = $COUNTRY$ duration = $DAYS$ }
-			}
-		}
-	}
-	else_if = {
-		limit = { check_variable = { which = ahw_pair value = 28 } }
-		every_system = {
-			limit = { has_star_flag = ahw_exit_28 }
-			every_bypass_in_system = {
-				limit = { is_bypass_type = ahw_spike_entry_28 }
-				lock_bypass = { country = $COUNTRY$ duration = $DAYS$ }
-			}
-		}
-	}
-	else_if = {
-		limit = { check_variable = { which = ahw_pair value = 29 } }
-		every_system = {
-			limit = { has_star_flag = ahw_exit_29 }
-			every_bypass_in_system = {
-				limit = { is_bypass_type = ahw_spike_entry_29 }
-				lock_bypass = { country = $COUNTRY$ duration = $DAYS$ }
-			}
-		}
-	}
-	else_if = {
-		limit = { check_variable = { which = ahw_pair value = 30 } }
-		every_system = {
-			limit = { has_star_flag = ahw_exit_30 }
-			every_bypass_in_system = {
-				limit = { is_bypass_type = ahw_spike_entry_30 }
-				lock_bypass = { country = $COUNTRY$ duration = $DAYS$ }
-			}
-		}
-	}
-	else_if = {
-		limit = { check_variable = { which = ahw_pair value = 31 } }
-		every_system = {
-			limit = { has_star_flag = ahw_exit_31 }
-			every_bypass_in_system = {
-				limit = { is_bypass_type = ahw_spike_entry_31 }
-				lock_bypass = { country = $COUNTRY$ duration = $DAYS$ }
-			}
-		}
-	}
-	else_if = {
-		limit = { check_variable = { which = ahw_pair value = 32 } }
-		every_system = {
-			limit = { has_star_flag = ahw_exit_32 }
-			every_bypass_in_system = {
-				limit = { is_bypass_type = ahw_spike_entry_32 }
-				lock_bypass = { country = $COUNTRY$ duration = $DAYS$ }
-			}
-		}
-	}
-}
-
 # Names the portal event_target:ahw_portal_tmp after the reach of its exit node ahw_node_tmp and
 # its number in that reach (counters ahw_portals_<reach> on ring node 1). No scope.
 ahw_spike_name_portal = {
@@ -19586,131 +19261,527 @@ ahw_spike_name_portal = {
 ahw_spike_name_portal_in_reach = {
 	if = {
 		limit = { event_target:ahw_ring_1 = { check_variable = { which = ahw_portals_$R$ value = 1 } } }
-		event_target:ahw_portal_tmp = { set_name = ahw_portal_$R$_1 }
+		event_target:ahw_portal_tmp = { ahw_spike_rename_system = { KEY = ahw_portal_$R$_1 } }
 	}
 	else_if = {
 		limit = { event_target:ahw_ring_1 = { check_variable = { which = ahw_portals_$R$ value = 2 } } }
-		event_target:ahw_portal_tmp = { set_name = ahw_portal_$R$_2 }
+		event_target:ahw_portal_tmp = { ahw_spike_rename_system = { KEY = ahw_portal_$R$_2 } }
 	}
 	else_if = {
 		limit = { event_target:ahw_ring_1 = { check_variable = { which = ahw_portals_$R$ value = 3 } } }
-		event_target:ahw_portal_tmp = { set_name = ahw_portal_$R$_3 }
+		event_target:ahw_portal_tmp = { ahw_spike_rename_system = { KEY = ahw_portal_$R$_3 } }
 	}
 	else_if = {
 		limit = { event_target:ahw_ring_1 = { check_variable = { which = ahw_portals_$R$ value = 4 } } }
-		event_target:ahw_portal_tmp = { set_name = ahw_portal_$R$_4 }
+		event_target:ahw_portal_tmp = { ahw_spike_rename_system = { KEY = ahw_portal_$R$_4 } }
 	}
 	else_if = {
 		limit = { event_target:ahw_ring_1 = { check_variable = { which = ahw_portals_$R$ value = 5 } } }
-		event_target:ahw_portal_tmp = { set_name = ahw_portal_$R$_5 }
+		event_target:ahw_portal_tmp = { ahw_spike_rename_system = { KEY = ahw_portal_$R$_5 } }
 	}
 	else_if = {
 		limit = { event_target:ahw_ring_1 = { check_variable = { which = ahw_portals_$R$ value = 6 } } }
-		event_target:ahw_portal_tmp = { set_name = ahw_portal_$R$_6 }
+		event_target:ahw_portal_tmp = { ahw_spike_rename_system = { KEY = ahw_portal_$R$_6 } }
 	}
 	else_if = {
 		limit = { event_target:ahw_ring_1 = { check_variable = { which = ahw_portals_$R$ value = 7 } } }
-		event_target:ahw_portal_tmp = { set_name = ahw_portal_$R$_7 }
+		event_target:ahw_portal_tmp = { ahw_spike_rename_system = { KEY = ahw_portal_$R$_7 } }
 	}
 	else_if = {
 		limit = { event_target:ahw_ring_1 = { check_variable = { which = ahw_portals_$R$ value = 8 } } }
-		event_target:ahw_portal_tmp = { set_name = ahw_portal_$R$_8 }
+		event_target:ahw_portal_tmp = { ahw_spike_rename_system = { KEY = ahw_portal_$R$_8 } }
 	}
 	else_if = {
 		limit = { event_target:ahw_ring_1 = { check_variable = { which = ahw_portals_$R$ value = 9 } } }
-		event_target:ahw_portal_tmp = { set_name = ahw_portal_$R$_9 }
+		event_target:ahw_portal_tmp = { ahw_spike_rename_system = { KEY = ahw_portal_$R$_9 } }
 	}
 	else_if = {
 		limit = { event_target:ahw_ring_1 = { check_variable = { which = ahw_portals_$R$ value = 10 } } }
-		event_target:ahw_portal_tmp = { set_name = ahw_portal_$R$_10 }
+		event_target:ahw_portal_tmp = { ahw_spike_rename_system = { KEY = ahw_portal_$R$_10 } }
 	}
 	else_if = {
 		limit = { event_target:ahw_ring_1 = { check_variable = { which = ahw_portals_$R$ value = 11 } } }
-		event_target:ahw_portal_tmp = { set_name = ahw_portal_$R$_11 }
+		event_target:ahw_portal_tmp = { ahw_spike_rename_system = { KEY = ahw_portal_$R$_11 } }
 	}
 	else_if = {
 		limit = { event_target:ahw_ring_1 = { check_variable = { which = ahw_portals_$R$ value = 12 } } }
-		event_target:ahw_portal_tmp = { set_name = ahw_portal_$R$_12 }
+		event_target:ahw_portal_tmp = { ahw_spike_rename_system = { KEY = ahw_portal_$R$_12 } }
 	}
 	else_if = {
 		limit = { event_target:ahw_ring_1 = { check_variable = { which = ahw_portals_$R$ value = 13 } } }
-		event_target:ahw_portal_tmp = { set_name = ahw_portal_$R$_13 }
+		event_target:ahw_portal_tmp = { ahw_spike_rename_system = { KEY = ahw_portal_$R$_13 } }
 	}
 	else_if = {
 		limit = { event_target:ahw_ring_1 = { check_variable = { which = ahw_portals_$R$ value = 14 } } }
-		event_target:ahw_portal_tmp = { set_name = ahw_portal_$R$_14 }
+		event_target:ahw_portal_tmp = { ahw_spike_rename_system = { KEY = ahw_portal_$R$_14 } }
 	}
 	else_if = {
 		limit = { event_target:ahw_ring_1 = { check_variable = { which = ahw_portals_$R$ value = 15 } } }
-		event_target:ahw_portal_tmp = { set_name = ahw_portal_$R$_15 }
+		event_target:ahw_portal_tmp = { ahw_spike_rename_system = { KEY = ahw_portal_$R$_15 } }
 	}
 	else_if = {
 		limit = { event_target:ahw_ring_1 = { check_variable = { which = ahw_portals_$R$ value = 16 } } }
-		event_target:ahw_portal_tmp = { set_name = ahw_portal_$R$_16 }
+		event_target:ahw_portal_tmp = { ahw_spike_rename_system = { KEY = ahw_portal_$R$_16 } }
 	}
 	else_if = {
 		limit = { event_target:ahw_ring_1 = { check_variable = { which = ahw_portals_$R$ value = 17 } } }
-		event_target:ahw_portal_tmp = { set_name = ahw_portal_$R$_17 }
+		event_target:ahw_portal_tmp = { ahw_spike_rename_system = { KEY = ahw_portal_$R$_17 } }
 	}
 	else_if = {
 		limit = { event_target:ahw_ring_1 = { check_variable = { which = ahw_portals_$R$ value = 18 } } }
-		event_target:ahw_portal_tmp = { set_name = ahw_portal_$R$_18 }
+		event_target:ahw_portal_tmp = { ahw_spike_rename_system = { KEY = ahw_portal_$R$_18 } }
 	}
 	else_if = {
 		limit = { event_target:ahw_ring_1 = { check_variable = { which = ahw_portals_$R$ value = 19 } } }
-		event_target:ahw_portal_tmp = { set_name = ahw_portal_$R$_19 }
+		event_target:ahw_portal_tmp = { ahw_spike_rename_system = { KEY = ahw_portal_$R$_19 } }
 	}
 	else_if = {
 		limit = { event_target:ahw_ring_1 = { check_variable = { which = ahw_portals_$R$ value = 20 } } }
-		event_target:ahw_portal_tmp = { set_name = ahw_portal_$R$_20 }
+		event_target:ahw_portal_tmp = { ahw_spike_rename_system = { KEY = ahw_portal_$R$_20 } }
 	}
 	else_if = {
 		limit = { event_target:ahw_ring_1 = { check_variable = { which = ahw_portals_$R$ value = 21 } } }
-		event_target:ahw_portal_tmp = { set_name = ahw_portal_$R$_21 }
+		event_target:ahw_portal_tmp = { ahw_spike_rename_system = { KEY = ahw_portal_$R$_21 } }
 	}
 	else_if = {
 		limit = { event_target:ahw_ring_1 = { check_variable = { which = ahw_portals_$R$ value = 22 } } }
-		event_target:ahw_portal_tmp = { set_name = ahw_portal_$R$_22 }
+		event_target:ahw_portal_tmp = { ahw_spike_rename_system = { KEY = ahw_portal_$R$_22 } }
 	}
 	else_if = {
 		limit = { event_target:ahw_ring_1 = { check_variable = { which = ahw_portals_$R$ value = 23 } } }
-		event_target:ahw_portal_tmp = { set_name = ahw_portal_$R$_23 }
+		event_target:ahw_portal_tmp = { ahw_spike_rename_system = { KEY = ahw_portal_$R$_23 } }
 	}
 	else_if = {
 		limit = { event_target:ahw_ring_1 = { check_variable = { which = ahw_portals_$R$ value = 24 } } }
-		event_target:ahw_portal_tmp = { set_name = ahw_portal_$R$_24 }
+		event_target:ahw_portal_tmp = { ahw_spike_rename_system = { KEY = ahw_portal_$R$_24 } }
 	}
 	else_if = {
 		limit = { event_target:ahw_ring_1 = { check_variable = { which = ahw_portals_$R$ value = 25 } } }
-		event_target:ahw_portal_tmp = { set_name = ahw_portal_$R$_25 }
+		event_target:ahw_portal_tmp = { ahw_spike_rename_system = { KEY = ahw_portal_$R$_25 } }
 	}
 	else_if = {
 		limit = { event_target:ahw_ring_1 = { check_variable = { which = ahw_portals_$R$ value = 26 } } }
-		event_target:ahw_portal_tmp = { set_name = ahw_portal_$R$_26 }
+		event_target:ahw_portal_tmp = { ahw_spike_rename_system = { KEY = ahw_portal_$R$_26 } }
 	}
 	else_if = {
 		limit = { event_target:ahw_ring_1 = { check_variable = { which = ahw_portals_$R$ value = 27 } } }
-		event_target:ahw_portal_tmp = { set_name = ahw_portal_$R$_27 }
+		event_target:ahw_portal_tmp = { ahw_spike_rename_system = { KEY = ahw_portal_$R$_27 } }
 	}
 	else_if = {
 		limit = { event_target:ahw_ring_1 = { check_variable = { which = ahw_portals_$R$ value = 28 } } }
-		event_target:ahw_portal_tmp = { set_name = ahw_portal_$R$_28 }
+		event_target:ahw_portal_tmp = { ahw_spike_rename_system = { KEY = ahw_portal_$R$_28 } }
 	}
 	else_if = {
 		limit = { event_target:ahw_ring_1 = { check_variable = { which = ahw_portals_$R$ value = 29 } } }
-		event_target:ahw_portal_tmp = { set_name = ahw_portal_$R$_29 }
+		event_target:ahw_portal_tmp = { ahw_spike_rename_system = { KEY = ahw_portal_$R$_29 } }
 	}
 	else_if = {
 		limit = { event_target:ahw_ring_1 = { check_variable = { which = ahw_portals_$R$ value = 30 } } }
-		event_target:ahw_portal_tmp = { set_name = ahw_portal_$R$_30 }
+		event_target:ahw_portal_tmp = { ahw_spike_rename_system = { KEY = ahw_portal_$R$_30 } }
 	}
 	else_if = {
 		limit = { event_target:ahw_ring_1 = { check_variable = { which = ahw_portals_$R$ value = 31 } } }
-		event_target:ahw_portal_tmp = { set_name = ahw_portal_$R$_31 }
+		event_target:ahw_portal_tmp = { ahw_spike_rename_system = { KEY = ahw_portal_$R$_31 } }
 	}
 	else_if = {
 		limit = { event_target:ahw_ring_1 = { check_variable = { which = ahw_portals_$R$ value = 32 } } }
-		event_target:ahw_portal_tmp = { set_name = ahw_portal_$R$_32 }
+		event_target:ahw_portal_tmp = { ahw_spike_rename_system = { KEY = ahw_portal_$R$_32 } }
+	}
+}
+
+# this = a portal: its pair is sealed; only $COUNTRY$ may pass (country_can_use of the pair's type).
+ahw_spike_seal_pair_for = {
+	if = {
+		limit = { check_variable = { which = ahw_pair value = 1 } }
+		set_global_flag = ahw_sealed_1 every_country = { remove_country_flag = ahw_sealer_1 } $COUNTRY$ = { set_country_flag = ahw_sealer_1 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 2 } }
+		set_global_flag = ahw_sealed_2 every_country = { remove_country_flag = ahw_sealer_2 } $COUNTRY$ = { set_country_flag = ahw_sealer_2 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 3 } }
+		set_global_flag = ahw_sealed_3 every_country = { remove_country_flag = ahw_sealer_3 } $COUNTRY$ = { set_country_flag = ahw_sealer_3 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 4 } }
+		set_global_flag = ahw_sealed_4 every_country = { remove_country_flag = ahw_sealer_4 } $COUNTRY$ = { set_country_flag = ahw_sealer_4 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 5 } }
+		set_global_flag = ahw_sealed_5 every_country = { remove_country_flag = ahw_sealer_5 } $COUNTRY$ = { set_country_flag = ahw_sealer_5 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 6 } }
+		set_global_flag = ahw_sealed_6 every_country = { remove_country_flag = ahw_sealer_6 } $COUNTRY$ = { set_country_flag = ahw_sealer_6 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 7 } }
+		set_global_flag = ahw_sealed_7 every_country = { remove_country_flag = ahw_sealer_7 } $COUNTRY$ = { set_country_flag = ahw_sealer_7 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 8 } }
+		set_global_flag = ahw_sealed_8 every_country = { remove_country_flag = ahw_sealer_8 } $COUNTRY$ = { set_country_flag = ahw_sealer_8 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 9 } }
+		set_global_flag = ahw_sealed_9 every_country = { remove_country_flag = ahw_sealer_9 } $COUNTRY$ = { set_country_flag = ahw_sealer_9 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 10 } }
+		set_global_flag = ahw_sealed_10 every_country = { remove_country_flag = ahw_sealer_10 } $COUNTRY$ = { set_country_flag = ahw_sealer_10 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 11 } }
+		set_global_flag = ahw_sealed_11 every_country = { remove_country_flag = ahw_sealer_11 } $COUNTRY$ = { set_country_flag = ahw_sealer_11 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 12 } }
+		set_global_flag = ahw_sealed_12 every_country = { remove_country_flag = ahw_sealer_12 } $COUNTRY$ = { set_country_flag = ahw_sealer_12 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 13 } }
+		set_global_flag = ahw_sealed_13 every_country = { remove_country_flag = ahw_sealer_13 } $COUNTRY$ = { set_country_flag = ahw_sealer_13 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 14 } }
+		set_global_flag = ahw_sealed_14 every_country = { remove_country_flag = ahw_sealer_14 } $COUNTRY$ = { set_country_flag = ahw_sealer_14 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 15 } }
+		set_global_flag = ahw_sealed_15 every_country = { remove_country_flag = ahw_sealer_15 } $COUNTRY$ = { set_country_flag = ahw_sealer_15 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 16 } }
+		set_global_flag = ahw_sealed_16 every_country = { remove_country_flag = ahw_sealer_16 } $COUNTRY$ = { set_country_flag = ahw_sealer_16 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 17 } }
+		set_global_flag = ahw_sealed_17 every_country = { remove_country_flag = ahw_sealer_17 } $COUNTRY$ = { set_country_flag = ahw_sealer_17 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 18 } }
+		set_global_flag = ahw_sealed_18 every_country = { remove_country_flag = ahw_sealer_18 } $COUNTRY$ = { set_country_flag = ahw_sealer_18 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 19 } }
+		set_global_flag = ahw_sealed_19 every_country = { remove_country_flag = ahw_sealer_19 } $COUNTRY$ = { set_country_flag = ahw_sealer_19 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 20 } }
+		set_global_flag = ahw_sealed_20 every_country = { remove_country_flag = ahw_sealer_20 } $COUNTRY$ = { set_country_flag = ahw_sealer_20 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 21 } }
+		set_global_flag = ahw_sealed_21 every_country = { remove_country_flag = ahw_sealer_21 } $COUNTRY$ = { set_country_flag = ahw_sealer_21 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 22 } }
+		set_global_flag = ahw_sealed_22 every_country = { remove_country_flag = ahw_sealer_22 } $COUNTRY$ = { set_country_flag = ahw_sealer_22 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 23 } }
+		set_global_flag = ahw_sealed_23 every_country = { remove_country_flag = ahw_sealer_23 } $COUNTRY$ = { set_country_flag = ahw_sealer_23 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 24 } }
+		set_global_flag = ahw_sealed_24 every_country = { remove_country_flag = ahw_sealer_24 } $COUNTRY$ = { set_country_flag = ahw_sealer_24 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 25 } }
+		set_global_flag = ahw_sealed_25 every_country = { remove_country_flag = ahw_sealer_25 } $COUNTRY$ = { set_country_flag = ahw_sealer_25 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 26 } }
+		set_global_flag = ahw_sealed_26 every_country = { remove_country_flag = ahw_sealer_26 } $COUNTRY$ = { set_country_flag = ahw_sealer_26 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 27 } }
+		set_global_flag = ahw_sealed_27 every_country = { remove_country_flag = ahw_sealer_27 } $COUNTRY$ = { set_country_flag = ahw_sealer_27 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 28 } }
+		set_global_flag = ahw_sealed_28 every_country = { remove_country_flag = ahw_sealer_28 } $COUNTRY$ = { set_country_flag = ahw_sealer_28 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 29 } }
+		set_global_flag = ahw_sealed_29 every_country = { remove_country_flag = ahw_sealer_29 } $COUNTRY$ = { set_country_flag = ahw_sealer_29 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 30 } }
+		set_global_flag = ahw_sealed_30 every_country = { remove_country_flag = ahw_sealer_30 } $COUNTRY$ = { set_country_flag = ahw_sealer_30 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 31 } }
+		set_global_flag = ahw_sealed_31 every_country = { remove_country_flag = ahw_sealer_31 } $COUNTRY$ = { set_country_flag = ahw_sealer_31 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 32 } }
+		set_global_flag = ahw_sealed_32 every_country = { remove_country_flag = ahw_sealer_32 } $COUNTRY$ = { set_country_flag = ahw_sealer_32 }
+	}
+}
+
+# this = a portal: its pair is sealed against everyone (console test ahw_spike.25).
+ahw_spike_seal_pair_for_nobody = {
+	if = {
+		limit = { check_variable = { which = ahw_pair value = 1 } }
+		set_global_flag = ahw_sealed_1 every_country = { remove_country_flag = ahw_sealer_1 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 2 } }
+		set_global_flag = ahw_sealed_2 every_country = { remove_country_flag = ahw_sealer_2 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 3 } }
+		set_global_flag = ahw_sealed_3 every_country = { remove_country_flag = ahw_sealer_3 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 4 } }
+		set_global_flag = ahw_sealed_4 every_country = { remove_country_flag = ahw_sealer_4 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 5 } }
+		set_global_flag = ahw_sealed_5 every_country = { remove_country_flag = ahw_sealer_5 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 6 } }
+		set_global_flag = ahw_sealed_6 every_country = { remove_country_flag = ahw_sealer_6 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 7 } }
+		set_global_flag = ahw_sealed_7 every_country = { remove_country_flag = ahw_sealer_7 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 8 } }
+		set_global_flag = ahw_sealed_8 every_country = { remove_country_flag = ahw_sealer_8 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 9 } }
+		set_global_flag = ahw_sealed_9 every_country = { remove_country_flag = ahw_sealer_9 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 10 } }
+		set_global_flag = ahw_sealed_10 every_country = { remove_country_flag = ahw_sealer_10 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 11 } }
+		set_global_flag = ahw_sealed_11 every_country = { remove_country_flag = ahw_sealer_11 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 12 } }
+		set_global_flag = ahw_sealed_12 every_country = { remove_country_flag = ahw_sealer_12 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 13 } }
+		set_global_flag = ahw_sealed_13 every_country = { remove_country_flag = ahw_sealer_13 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 14 } }
+		set_global_flag = ahw_sealed_14 every_country = { remove_country_flag = ahw_sealer_14 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 15 } }
+		set_global_flag = ahw_sealed_15 every_country = { remove_country_flag = ahw_sealer_15 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 16 } }
+		set_global_flag = ahw_sealed_16 every_country = { remove_country_flag = ahw_sealer_16 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 17 } }
+		set_global_flag = ahw_sealed_17 every_country = { remove_country_flag = ahw_sealer_17 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 18 } }
+		set_global_flag = ahw_sealed_18 every_country = { remove_country_flag = ahw_sealer_18 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 19 } }
+		set_global_flag = ahw_sealed_19 every_country = { remove_country_flag = ahw_sealer_19 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 20 } }
+		set_global_flag = ahw_sealed_20 every_country = { remove_country_flag = ahw_sealer_20 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 21 } }
+		set_global_flag = ahw_sealed_21 every_country = { remove_country_flag = ahw_sealer_21 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 22 } }
+		set_global_flag = ahw_sealed_22 every_country = { remove_country_flag = ahw_sealer_22 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 23 } }
+		set_global_flag = ahw_sealed_23 every_country = { remove_country_flag = ahw_sealer_23 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 24 } }
+		set_global_flag = ahw_sealed_24 every_country = { remove_country_flag = ahw_sealer_24 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 25 } }
+		set_global_flag = ahw_sealed_25 every_country = { remove_country_flag = ahw_sealer_25 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 26 } }
+		set_global_flag = ahw_sealed_26 every_country = { remove_country_flag = ahw_sealer_26 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 27 } }
+		set_global_flag = ahw_sealed_27 every_country = { remove_country_flag = ahw_sealer_27 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 28 } }
+		set_global_flag = ahw_sealed_28 every_country = { remove_country_flag = ahw_sealer_28 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 29 } }
+		set_global_flag = ahw_sealed_29 every_country = { remove_country_flag = ahw_sealer_29 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 30 } }
+		set_global_flag = ahw_sealed_30 every_country = { remove_country_flag = ahw_sealer_30 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 31 } }
+		set_global_flag = ahw_sealed_31 every_country = { remove_country_flag = ahw_sealer_31 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 32 } }
+		set_global_flag = ahw_sealed_32 every_country = { remove_country_flag = ahw_sealer_32 }
+	}
+}
+
+# this = a portal: its pair is open again.
+ahw_spike_unseal_pair = {
+	if = {
+		limit = { check_variable = { which = ahw_pair value = 1 } }
+		remove_global_flag = ahw_sealed_1 every_country = { remove_country_flag = ahw_sealer_1 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 2 } }
+		remove_global_flag = ahw_sealed_2 every_country = { remove_country_flag = ahw_sealer_2 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 3 } }
+		remove_global_flag = ahw_sealed_3 every_country = { remove_country_flag = ahw_sealer_3 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 4 } }
+		remove_global_flag = ahw_sealed_4 every_country = { remove_country_flag = ahw_sealer_4 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 5 } }
+		remove_global_flag = ahw_sealed_5 every_country = { remove_country_flag = ahw_sealer_5 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 6 } }
+		remove_global_flag = ahw_sealed_6 every_country = { remove_country_flag = ahw_sealer_6 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 7 } }
+		remove_global_flag = ahw_sealed_7 every_country = { remove_country_flag = ahw_sealer_7 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 8 } }
+		remove_global_flag = ahw_sealed_8 every_country = { remove_country_flag = ahw_sealer_8 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 9 } }
+		remove_global_flag = ahw_sealed_9 every_country = { remove_country_flag = ahw_sealer_9 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 10 } }
+		remove_global_flag = ahw_sealed_10 every_country = { remove_country_flag = ahw_sealer_10 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 11 } }
+		remove_global_flag = ahw_sealed_11 every_country = { remove_country_flag = ahw_sealer_11 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 12 } }
+		remove_global_flag = ahw_sealed_12 every_country = { remove_country_flag = ahw_sealer_12 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 13 } }
+		remove_global_flag = ahw_sealed_13 every_country = { remove_country_flag = ahw_sealer_13 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 14 } }
+		remove_global_flag = ahw_sealed_14 every_country = { remove_country_flag = ahw_sealer_14 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 15 } }
+		remove_global_flag = ahw_sealed_15 every_country = { remove_country_flag = ahw_sealer_15 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 16 } }
+		remove_global_flag = ahw_sealed_16 every_country = { remove_country_flag = ahw_sealer_16 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 17 } }
+		remove_global_flag = ahw_sealed_17 every_country = { remove_country_flag = ahw_sealer_17 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 18 } }
+		remove_global_flag = ahw_sealed_18 every_country = { remove_country_flag = ahw_sealer_18 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 19 } }
+		remove_global_flag = ahw_sealed_19 every_country = { remove_country_flag = ahw_sealer_19 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 20 } }
+		remove_global_flag = ahw_sealed_20 every_country = { remove_country_flag = ahw_sealer_20 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 21 } }
+		remove_global_flag = ahw_sealed_21 every_country = { remove_country_flag = ahw_sealer_21 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 22 } }
+		remove_global_flag = ahw_sealed_22 every_country = { remove_country_flag = ahw_sealer_22 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 23 } }
+		remove_global_flag = ahw_sealed_23 every_country = { remove_country_flag = ahw_sealer_23 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 24 } }
+		remove_global_flag = ahw_sealed_24 every_country = { remove_country_flag = ahw_sealer_24 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 25 } }
+		remove_global_flag = ahw_sealed_25 every_country = { remove_country_flag = ahw_sealer_25 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 26 } }
+		remove_global_flag = ahw_sealed_26 every_country = { remove_country_flag = ahw_sealer_26 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 27 } }
+		remove_global_flag = ahw_sealed_27 every_country = { remove_country_flag = ahw_sealer_27 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 28 } }
+		remove_global_flag = ahw_sealed_28 every_country = { remove_country_flag = ahw_sealer_28 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 29 } }
+		remove_global_flag = ahw_sealed_29 every_country = { remove_country_flag = ahw_sealer_29 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 30 } }
+		remove_global_flag = ahw_sealed_30 every_country = { remove_country_flag = ahw_sealer_30 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 31 } }
+		remove_global_flag = ahw_sealed_31 every_country = { remove_country_flag = ahw_sealer_31 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 32 } }
+		remove_global_flag = ahw_sealed_32 every_country = { remove_country_flag = ahw_sealer_32 }
 	}
 }
 

@@ -1,4 +1,4 @@
-# SPIKE (Phase 0, 0.0.18): the outer ring round the galaxy, and a portal for every regular empire.
+# SPIKE (Phase 0, 0.0.21): the outer ring round the galaxy, and a portal for every regular empire.
 # ahw_spike.10 runs by itself at game start (common/on_actions/ahw_spike_on_actions.txt) and
 # fires the window ahw_spike.1 for the human player.
 # Console, with nothing selected (Esc) - see AGENTS.md, "Status":
@@ -115,6 +115,8 @@ event = {
 				add_hyperlane = { from = event_target:ahw_portal_tmp to = event_target:ahw_x_tmp }
 				ahw_spike_find_nearest_node = yes
 				ahw_spike_make_next_pair = yes
+				# 0.0.21: named after the ring's reach it leads into, with an octal address.
+				ahw_spike_name_portal = yes
 				# 0.0.18: broken until studied and repaired by the anchor's owner (ahw_spike.20-.23);
 				# the study teaches the types and the ring (runs 4-5).
 				event_target:ahw_portal_tmp = { set_star_flag = ahw_broken }

@@ -2957,6 +2957,46 @@ ahw_spike_build_outer_ring_40 = {
 	add_hyperlane = { from = event_target:ahw_ring_38 to = event_target:ahw_ring_39 }
 	add_hyperlane = { from = event_target:ahw_ring_39 to = event_target:ahw_ring_40 }
 	add_hyperlane = { from = event_target:ahw_ring_40 to = event_target:ahw_ring_1 }
+	event_target:ahw_ring_1 = { set_variable = { which = ahw_reach value = 0 } }
+	event_target:ahw_ring_2 = { set_variable = { which = ahw_reach value = 0 } }
+	event_target:ahw_ring_3 = { set_variable = { which = ahw_reach value = 0 } }
+	event_target:ahw_ring_4 = { set_variable = { which = ahw_reach value = 0 } }
+	event_target:ahw_ring_5 = { set_variable = { which = ahw_reach value = 0 } }
+	event_target:ahw_ring_6 = { set_variable = { which = ahw_reach value = 1 } }
+	event_target:ahw_ring_7 = { set_variable = { which = ahw_reach value = 1 } }
+	event_target:ahw_ring_8 = { set_variable = { which = ahw_reach value = 1 } }
+	event_target:ahw_ring_9 = { set_variable = { which = ahw_reach value = 1 } }
+	event_target:ahw_ring_10 = { set_variable = { which = ahw_reach value = 1 } }
+	event_target:ahw_ring_11 = { set_variable = { which = ahw_reach value = 2 } }
+	event_target:ahw_ring_12 = { set_variable = { which = ahw_reach value = 2 } }
+	event_target:ahw_ring_13 = { set_variable = { which = ahw_reach value = 2 } }
+	event_target:ahw_ring_14 = { set_variable = { which = ahw_reach value = 2 } }
+	event_target:ahw_ring_15 = { set_variable = { which = ahw_reach value = 2 } }
+	event_target:ahw_ring_16 = { set_variable = { which = ahw_reach value = 3 } }
+	event_target:ahw_ring_17 = { set_variable = { which = ahw_reach value = 3 } }
+	event_target:ahw_ring_18 = { set_variable = { which = ahw_reach value = 3 } }
+	event_target:ahw_ring_19 = { set_variable = { which = ahw_reach value = 3 } }
+	event_target:ahw_ring_20 = { set_variable = { which = ahw_reach value = 3 } }
+	event_target:ahw_ring_21 = { set_variable = { which = ahw_reach value = 4 } }
+	event_target:ahw_ring_22 = { set_variable = { which = ahw_reach value = 4 } }
+	event_target:ahw_ring_23 = { set_variable = { which = ahw_reach value = 4 } }
+	event_target:ahw_ring_24 = { set_variable = { which = ahw_reach value = 4 } }
+	event_target:ahw_ring_25 = { set_variable = { which = ahw_reach value = 4 } }
+	event_target:ahw_ring_26 = { set_variable = { which = ahw_reach value = 5 } }
+	event_target:ahw_ring_27 = { set_variable = { which = ahw_reach value = 5 } }
+	event_target:ahw_ring_28 = { set_variable = { which = ahw_reach value = 5 } }
+	event_target:ahw_ring_29 = { set_variable = { which = ahw_reach value = 5 } }
+	event_target:ahw_ring_30 = { set_variable = { which = ahw_reach value = 5 } }
+	event_target:ahw_ring_31 = { set_variable = { which = ahw_reach value = 6 } }
+	event_target:ahw_ring_32 = { set_variable = { which = ahw_reach value = 6 } }
+	event_target:ahw_ring_33 = { set_variable = { which = ahw_reach value = 6 } }
+	event_target:ahw_ring_34 = { set_variable = { which = ahw_reach value = 6 } }
+	event_target:ahw_ring_35 = { set_variable = { which = ahw_reach value = 6 } }
+	event_target:ahw_ring_36 = { set_variable = { which = ahw_reach value = 7 } }
+	event_target:ahw_ring_37 = { set_variable = { which = ahw_reach value = 7 } }
+	event_target:ahw_ring_38 = { set_variable = { which = ahw_reach value = 7 } }
+	event_target:ahw_ring_39 = { set_variable = { which = ahw_reach value = 7 } }
+	event_target:ahw_ring_40 = { set_variable = { which = ahw_reach value = 7 } }
 	set_global_flag = ahw_ring_size_40
 	event_target:ahw_ring_40 = {
 		export_trigger_value_to_variable = { trigger = distance parameters = { source = event_target:ahw_ring_39 type = euclidean } variable = ahw_dprev }
@@ -5776,6 +5816,62 @@ ahw_spike_build_outer_ring_56 = {
 	add_hyperlane = { from = event_target:ahw_ring_54 to = event_target:ahw_ring_55 }
 	add_hyperlane = { from = event_target:ahw_ring_55 to = event_target:ahw_ring_56 }
 	add_hyperlane = { from = event_target:ahw_ring_56 to = event_target:ahw_ring_1 }
+	event_target:ahw_ring_1 = { set_variable = { which = ahw_reach value = 0 } }
+	event_target:ahw_ring_2 = { set_variable = { which = ahw_reach value = 0 } }
+	event_target:ahw_ring_3 = { set_variable = { which = ahw_reach value = 0 } }
+	event_target:ahw_ring_4 = { set_variable = { which = ahw_reach value = 0 } }
+	event_target:ahw_ring_5 = { set_variable = { which = ahw_reach value = 0 } }
+	event_target:ahw_ring_6 = { set_variable = { which = ahw_reach value = 0 } }
+	event_target:ahw_ring_7 = { set_variable = { which = ahw_reach value = 0 } }
+	event_target:ahw_ring_8 = { set_variable = { which = ahw_reach value = 1 } }
+	event_target:ahw_ring_9 = { set_variable = { which = ahw_reach value = 1 } }
+	event_target:ahw_ring_10 = { set_variable = { which = ahw_reach value = 1 } }
+	event_target:ahw_ring_11 = { set_variable = { which = ahw_reach value = 1 } }
+	event_target:ahw_ring_12 = { set_variable = { which = ahw_reach value = 1 } }
+	event_target:ahw_ring_13 = { set_variable = { which = ahw_reach value = 1 } }
+	event_target:ahw_ring_14 = { set_variable = { which = ahw_reach value = 1 } }
+	event_target:ahw_ring_15 = { set_variable = { which = ahw_reach value = 2 } }
+	event_target:ahw_ring_16 = { set_variable = { which = ahw_reach value = 2 } }
+	event_target:ahw_ring_17 = { set_variable = { which = ahw_reach value = 2 } }
+	event_target:ahw_ring_18 = { set_variable = { which = ahw_reach value = 2 } }
+	event_target:ahw_ring_19 = { set_variable = { which = ahw_reach value = 2 } }
+	event_target:ahw_ring_20 = { set_variable = { which = ahw_reach value = 2 } }
+	event_target:ahw_ring_21 = { set_variable = { which = ahw_reach value = 2 } }
+	event_target:ahw_ring_22 = { set_variable = { which = ahw_reach value = 3 } }
+	event_target:ahw_ring_23 = { set_variable = { which = ahw_reach value = 3 } }
+	event_target:ahw_ring_24 = { set_variable = { which = ahw_reach value = 3 } }
+	event_target:ahw_ring_25 = { set_variable = { which = ahw_reach value = 3 } }
+	event_target:ahw_ring_26 = { set_variable = { which = ahw_reach value = 3 } }
+	event_target:ahw_ring_27 = { set_variable = { which = ahw_reach value = 3 } }
+	event_target:ahw_ring_28 = { set_variable = { which = ahw_reach value = 3 } }
+	event_target:ahw_ring_29 = { set_variable = { which = ahw_reach value = 4 } }
+	event_target:ahw_ring_30 = { set_variable = { which = ahw_reach value = 4 } }
+	event_target:ahw_ring_31 = { set_variable = { which = ahw_reach value = 4 } }
+	event_target:ahw_ring_32 = { set_variable = { which = ahw_reach value = 4 } }
+	event_target:ahw_ring_33 = { set_variable = { which = ahw_reach value = 4 } }
+	event_target:ahw_ring_34 = { set_variable = { which = ahw_reach value = 4 } }
+	event_target:ahw_ring_35 = { set_variable = { which = ahw_reach value = 4 } }
+	event_target:ahw_ring_36 = { set_variable = { which = ahw_reach value = 5 } }
+	event_target:ahw_ring_37 = { set_variable = { which = ahw_reach value = 5 } }
+	event_target:ahw_ring_38 = { set_variable = { which = ahw_reach value = 5 } }
+	event_target:ahw_ring_39 = { set_variable = { which = ahw_reach value = 5 } }
+	event_target:ahw_ring_40 = { set_variable = { which = ahw_reach value = 5 } }
+	event_target:ahw_ring_41 = { set_variable = { which = ahw_reach value = 5 } }
+	event_target:ahw_ring_42 = { set_variable = { which = ahw_reach value = 5 } }
+	event_target:ahw_ring_43 = { set_variable = { which = ahw_reach value = 6 } }
+	event_target:ahw_ring_44 = { set_variable = { which = ahw_reach value = 6 } }
+	event_target:ahw_ring_45 = { set_variable = { which = ahw_reach value = 6 } }
+	event_target:ahw_ring_46 = { set_variable = { which = ahw_reach value = 6 } }
+	event_target:ahw_ring_47 = { set_variable = { which = ahw_reach value = 6 } }
+	event_target:ahw_ring_48 = { set_variable = { which = ahw_reach value = 6 } }
+	event_target:ahw_ring_49 = { set_variable = { which = ahw_reach value = 6 } }
+	event_target:ahw_ring_50 = { set_variable = { which = ahw_reach value = 7 } }
+	event_target:ahw_ring_51 = { set_variable = { which = ahw_reach value = 7 } }
+	event_target:ahw_ring_52 = { set_variable = { which = ahw_reach value = 7 } }
+	event_target:ahw_ring_53 = { set_variable = { which = ahw_reach value = 7 } }
+	event_target:ahw_ring_54 = { set_variable = { which = ahw_reach value = 7 } }
+	event_target:ahw_ring_55 = { set_variable = { which = ahw_reach value = 7 } }
+	event_target:ahw_ring_56 = { set_variable = { which = ahw_reach value = 7 } }
 	set_global_flag = ahw_ring_size_56
 	event_target:ahw_ring_56 = {
 		export_trigger_value_to_variable = { trigger = distance parameters = { source = event_target:ahw_ring_55 type = euclidean } variable = ahw_dprev }
@@ -9195,6 +9291,74 @@ ahw_spike_build_outer_ring_68 = {
 	add_hyperlane = { from = event_target:ahw_ring_66 to = event_target:ahw_ring_67 }
 	add_hyperlane = { from = event_target:ahw_ring_67 to = event_target:ahw_ring_68 }
 	add_hyperlane = { from = event_target:ahw_ring_68 to = event_target:ahw_ring_1 }
+	event_target:ahw_ring_1 = { set_variable = { which = ahw_reach value = 0 } }
+	event_target:ahw_ring_2 = { set_variable = { which = ahw_reach value = 0 } }
+	event_target:ahw_ring_3 = { set_variable = { which = ahw_reach value = 0 } }
+	event_target:ahw_ring_4 = { set_variable = { which = ahw_reach value = 0 } }
+	event_target:ahw_ring_5 = { set_variable = { which = ahw_reach value = 0 } }
+	event_target:ahw_ring_6 = { set_variable = { which = ahw_reach value = 0 } }
+	event_target:ahw_ring_7 = { set_variable = { which = ahw_reach value = 0 } }
+	event_target:ahw_ring_8 = { set_variable = { which = ahw_reach value = 0 } }
+	event_target:ahw_ring_9 = { set_variable = { which = ahw_reach value = 0 } }
+	event_target:ahw_ring_10 = { set_variable = { which = ahw_reach value = 1 } }
+	event_target:ahw_ring_11 = { set_variable = { which = ahw_reach value = 1 } }
+	event_target:ahw_ring_12 = { set_variable = { which = ahw_reach value = 1 } }
+	event_target:ahw_ring_13 = { set_variable = { which = ahw_reach value = 1 } }
+	event_target:ahw_ring_14 = { set_variable = { which = ahw_reach value = 1 } }
+	event_target:ahw_ring_15 = { set_variable = { which = ahw_reach value = 1 } }
+	event_target:ahw_ring_16 = { set_variable = { which = ahw_reach value = 1 } }
+	event_target:ahw_ring_17 = { set_variable = { which = ahw_reach value = 1 } }
+	event_target:ahw_ring_18 = { set_variable = { which = ahw_reach value = 2 } }
+	event_target:ahw_ring_19 = { set_variable = { which = ahw_reach value = 2 } }
+	event_target:ahw_ring_20 = { set_variable = { which = ahw_reach value = 2 } }
+	event_target:ahw_ring_21 = { set_variable = { which = ahw_reach value = 2 } }
+	event_target:ahw_ring_22 = { set_variable = { which = ahw_reach value = 2 } }
+	event_target:ahw_ring_23 = { set_variable = { which = ahw_reach value = 2 } }
+	event_target:ahw_ring_24 = { set_variable = { which = ahw_reach value = 2 } }
+	event_target:ahw_ring_25 = { set_variable = { which = ahw_reach value = 2 } }
+	event_target:ahw_ring_26 = { set_variable = { which = ahw_reach value = 2 } }
+	event_target:ahw_ring_27 = { set_variable = { which = ahw_reach value = 3 } }
+	event_target:ahw_ring_28 = { set_variable = { which = ahw_reach value = 3 } }
+	event_target:ahw_ring_29 = { set_variable = { which = ahw_reach value = 3 } }
+	event_target:ahw_ring_30 = { set_variable = { which = ahw_reach value = 3 } }
+	event_target:ahw_ring_31 = { set_variable = { which = ahw_reach value = 3 } }
+	event_target:ahw_ring_32 = { set_variable = { which = ahw_reach value = 3 } }
+	event_target:ahw_ring_33 = { set_variable = { which = ahw_reach value = 3 } }
+	event_target:ahw_ring_34 = { set_variable = { which = ahw_reach value = 3 } }
+	event_target:ahw_ring_35 = { set_variable = { which = ahw_reach value = 4 } }
+	event_target:ahw_ring_36 = { set_variable = { which = ahw_reach value = 4 } }
+	event_target:ahw_ring_37 = { set_variable = { which = ahw_reach value = 4 } }
+	event_target:ahw_ring_38 = { set_variable = { which = ahw_reach value = 4 } }
+	event_target:ahw_ring_39 = { set_variable = { which = ahw_reach value = 4 } }
+	event_target:ahw_ring_40 = { set_variable = { which = ahw_reach value = 4 } }
+	event_target:ahw_ring_41 = { set_variable = { which = ahw_reach value = 4 } }
+	event_target:ahw_ring_42 = { set_variable = { which = ahw_reach value = 4 } }
+	event_target:ahw_ring_43 = { set_variable = { which = ahw_reach value = 4 } }
+	event_target:ahw_ring_44 = { set_variable = { which = ahw_reach value = 5 } }
+	event_target:ahw_ring_45 = { set_variable = { which = ahw_reach value = 5 } }
+	event_target:ahw_ring_46 = { set_variable = { which = ahw_reach value = 5 } }
+	event_target:ahw_ring_47 = { set_variable = { which = ahw_reach value = 5 } }
+	event_target:ahw_ring_48 = { set_variable = { which = ahw_reach value = 5 } }
+	event_target:ahw_ring_49 = { set_variable = { which = ahw_reach value = 5 } }
+	event_target:ahw_ring_50 = { set_variable = { which = ahw_reach value = 5 } }
+	event_target:ahw_ring_51 = { set_variable = { which = ahw_reach value = 5 } }
+	event_target:ahw_ring_52 = { set_variable = { which = ahw_reach value = 6 } }
+	event_target:ahw_ring_53 = { set_variable = { which = ahw_reach value = 6 } }
+	event_target:ahw_ring_54 = { set_variable = { which = ahw_reach value = 6 } }
+	event_target:ahw_ring_55 = { set_variable = { which = ahw_reach value = 6 } }
+	event_target:ahw_ring_56 = { set_variable = { which = ahw_reach value = 6 } }
+	event_target:ahw_ring_57 = { set_variable = { which = ahw_reach value = 6 } }
+	event_target:ahw_ring_58 = { set_variable = { which = ahw_reach value = 6 } }
+	event_target:ahw_ring_59 = { set_variable = { which = ahw_reach value = 6 } }
+	event_target:ahw_ring_60 = { set_variable = { which = ahw_reach value = 6 } }
+	event_target:ahw_ring_61 = { set_variable = { which = ahw_reach value = 7 } }
+	event_target:ahw_ring_62 = { set_variable = { which = ahw_reach value = 7 } }
+	event_target:ahw_ring_63 = { set_variable = { which = ahw_reach value = 7 } }
+	event_target:ahw_ring_64 = { set_variable = { which = ahw_reach value = 7 } }
+	event_target:ahw_ring_65 = { set_variable = { which = ahw_reach value = 7 } }
+	event_target:ahw_ring_66 = { set_variable = { which = ahw_reach value = 7 } }
+	event_target:ahw_ring_67 = { set_variable = { which = ahw_reach value = 7 } }
+	event_target:ahw_ring_68 = { set_variable = { which = ahw_reach value = 7 } }
 	set_global_flag = ahw_ring_size_68
 	event_target:ahw_ring_68 = {
 		export_trigger_value_to_variable = { trigger = distance parameters = { source = event_target:ahw_ring_67 type = euclidean } variable = ahw_dprev }
@@ -13214,6 +13378,86 @@ ahw_spike_build_outer_ring_80 = {
 	add_hyperlane = { from = event_target:ahw_ring_78 to = event_target:ahw_ring_79 }
 	add_hyperlane = { from = event_target:ahw_ring_79 to = event_target:ahw_ring_80 }
 	add_hyperlane = { from = event_target:ahw_ring_80 to = event_target:ahw_ring_1 }
+	event_target:ahw_ring_1 = { set_variable = { which = ahw_reach value = 0 } }
+	event_target:ahw_ring_2 = { set_variable = { which = ahw_reach value = 0 } }
+	event_target:ahw_ring_3 = { set_variable = { which = ahw_reach value = 0 } }
+	event_target:ahw_ring_4 = { set_variable = { which = ahw_reach value = 0 } }
+	event_target:ahw_ring_5 = { set_variable = { which = ahw_reach value = 0 } }
+	event_target:ahw_ring_6 = { set_variable = { which = ahw_reach value = 0 } }
+	event_target:ahw_ring_7 = { set_variable = { which = ahw_reach value = 0 } }
+	event_target:ahw_ring_8 = { set_variable = { which = ahw_reach value = 0 } }
+	event_target:ahw_ring_9 = { set_variable = { which = ahw_reach value = 0 } }
+	event_target:ahw_ring_10 = { set_variable = { which = ahw_reach value = 0 } }
+	event_target:ahw_ring_11 = { set_variable = { which = ahw_reach value = 1 } }
+	event_target:ahw_ring_12 = { set_variable = { which = ahw_reach value = 1 } }
+	event_target:ahw_ring_13 = { set_variable = { which = ahw_reach value = 1 } }
+	event_target:ahw_ring_14 = { set_variable = { which = ahw_reach value = 1 } }
+	event_target:ahw_ring_15 = { set_variable = { which = ahw_reach value = 1 } }
+	event_target:ahw_ring_16 = { set_variable = { which = ahw_reach value = 1 } }
+	event_target:ahw_ring_17 = { set_variable = { which = ahw_reach value = 1 } }
+	event_target:ahw_ring_18 = { set_variable = { which = ahw_reach value = 1 } }
+	event_target:ahw_ring_19 = { set_variable = { which = ahw_reach value = 1 } }
+	event_target:ahw_ring_20 = { set_variable = { which = ahw_reach value = 1 } }
+	event_target:ahw_ring_21 = { set_variable = { which = ahw_reach value = 2 } }
+	event_target:ahw_ring_22 = { set_variable = { which = ahw_reach value = 2 } }
+	event_target:ahw_ring_23 = { set_variable = { which = ahw_reach value = 2 } }
+	event_target:ahw_ring_24 = { set_variable = { which = ahw_reach value = 2 } }
+	event_target:ahw_ring_25 = { set_variable = { which = ahw_reach value = 2 } }
+	event_target:ahw_ring_26 = { set_variable = { which = ahw_reach value = 2 } }
+	event_target:ahw_ring_27 = { set_variable = { which = ahw_reach value = 2 } }
+	event_target:ahw_ring_28 = { set_variable = { which = ahw_reach value = 2 } }
+	event_target:ahw_ring_29 = { set_variable = { which = ahw_reach value = 2 } }
+	event_target:ahw_ring_30 = { set_variable = { which = ahw_reach value = 2 } }
+	event_target:ahw_ring_31 = { set_variable = { which = ahw_reach value = 3 } }
+	event_target:ahw_ring_32 = { set_variable = { which = ahw_reach value = 3 } }
+	event_target:ahw_ring_33 = { set_variable = { which = ahw_reach value = 3 } }
+	event_target:ahw_ring_34 = { set_variable = { which = ahw_reach value = 3 } }
+	event_target:ahw_ring_35 = { set_variable = { which = ahw_reach value = 3 } }
+	event_target:ahw_ring_36 = { set_variable = { which = ahw_reach value = 3 } }
+	event_target:ahw_ring_37 = { set_variable = { which = ahw_reach value = 3 } }
+	event_target:ahw_ring_38 = { set_variable = { which = ahw_reach value = 3 } }
+	event_target:ahw_ring_39 = { set_variable = { which = ahw_reach value = 3 } }
+	event_target:ahw_ring_40 = { set_variable = { which = ahw_reach value = 3 } }
+	event_target:ahw_ring_41 = { set_variable = { which = ahw_reach value = 4 } }
+	event_target:ahw_ring_42 = { set_variable = { which = ahw_reach value = 4 } }
+	event_target:ahw_ring_43 = { set_variable = { which = ahw_reach value = 4 } }
+	event_target:ahw_ring_44 = { set_variable = { which = ahw_reach value = 4 } }
+	event_target:ahw_ring_45 = { set_variable = { which = ahw_reach value = 4 } }
+	event_target:ahw_ring_46 = { set_variable = { which = ahw_reach value = 4 } }
+	event_target:ahw_ring_47 = { set_variable = { which = ahw_reach value = 4 } }
+	event_target:ahw_ring_48 = { set_variable = { which = ahw_reach value = 4 } }
+	event_target:ahw_ring_49 = { set_variable = { which = ahw_reach value = 4 } }
+	event_target:ahw_ring_50 = { set_variable = { which = ahw_reach value = 4 } }
+	event_target:ahw_ring_51 = { set_variable = { which = ahw_reach value = 5 } }
+	event_target:ahw_ring_52 = { set_variable = { which = ahw_reach value = 5 } }
+	event_target:ahw_ring_53 = { set_variable = { which = ahw_reach value = 5 } }
+	event_target:ahw_ring_54 = { set_variable = { which = ahw_reach value = 5 } }
+	event_target:ahw_ring_55 = { set_variable = { which = ahw_reach value = 5 } }
+	event_target:ahw_ring_56 = { set_variable = { which = ahw_reach value = 5 } }
+	event_target:ahw_ring_57 = { set_variable = { which = ahw_reach value = 5 } }
+	event_target:ahw_ring_58 = { set_variable = { which = ahw_reach value = 5 } }
+	event_target:ahw_ring_59 = { set_variable = { which = ahw_reach value = 5 } }
+	event_target:ahw_ring_60 = { set_variable = { which = ahw_reach value = 5 } }
+	event_target:ahw_ring_61 = { set_variable = { which = ahw_reach value = 6 } }
+	event_target:ahw_ring_62 = { set_variable = { which = ahw_reach value = 6 } }
+	event_target:ahw_ring_63 = { set_variable = { which = ahw_reach value = 6 } }
+	event_target:ahw_ring_64 = { set_variable = { which = ahw_reach value = 6 } }
+	event_target:ahw_ring_65 = { set_variable = { which = ahw_reach value = 6 } }
+	event_target:ahw_ring_66 = { set_variable = { which = ahw_reach value = 6 } }
+	event_target:ahw_ring_67 = { set_variable = { which = ahw_reach value = 6 } }
+	event_target:ahw_ring_68 = { set_variable = { which = ahw_reach value = 6 } }
+	event_target:ahw_ring_69 = { set_variable = { which = ahw_reach value = 6 } }
+	event_target:ahw_ring_70 = { set_variable = { which = ahw_reach value = 6 } }
+	event_target:ahw_ring_71 = { set_variable = { which = ahw_reach value = 7 } }
+	event_target:ahw_ring_72 = { set_variable = { which = ahw_reach value = 7 } }
+	event_target:ahw_ring_73 = { set_variable = { which = ahw_reach value = 7 } }
+	event_target:ahw_ring_74 = { set_variable = { which = ahw_reach value = 7 } }
+	event_target:ahw_ring_75 = { set_variable = { which = ahw_reach value = 7 } }
+	event_target:ahw_ring_76 = { set_variable = { which = ahw_reach value = 7 } }
+	event_target:ahw_ring_77 = { set_variable = { which = ahw_reach value = 7 } }
+	event_target:ahw_ring_78 = { set_variable = { which = ahw_reach value = 7 } }
+	event_target:ahw_ring_79 = { set_variable = { which = ahw_reach value = 7 } }
+	event_target:ahw_ring_80 = { set_variable = { which = ahw_reach value = 7 } }
 	set_global_flag = ahw_ring_size_80
 	event_target:ahw_ring_80 = {
 		export_trigger_value_to_variable = { trigger = distance parameters = { source = event_target:ahw_ring_79 type = euclidean } variable = ahw_dprev }
@@ -17633,6 +17877,94 @@ ahw_spike_build_outer_ring_88 = {
 	add_hyperlane = { from = event_target:ahw_ring_86 to = event_target:ahw_ring_87 }
 	add_hyperlane = { from = event_target:ahw_ring_87 to = event_target:ahw_ring_88 }
 	add_hyperlane = { from = event_target:ahw_ring_88 to = event_target:ahw_ring_1 }
+	event_target:ahw_ring_1 = { set_variable = { which = ahw_reach value = 0 } }
+	event_target:ahw_ring_2 = { set_variable = { which = ahw_reach value = 0 } }
+	event_target:ahw_ring_3 = { set_variable = { which = ahw_reach value = 0 } }
+	event_target:ahw_ring_4 = { set_variable = { which = ahw_reach value = 0 } }
+	event_target:ahw_ring_5 = { set_variable = { which = ahw_reach value = 0 } }
+	event_target:ahw_ring_6 = { set_variable = { which = ahw_reach value = 0 } }
+	event_target:ahw_ring_7 = { set_variable = { which = ahw_reach value = 0 } }
+	event_target:ahw_ring_8 = { set_variable = { which = ahw_reach value = 0 } }
+	event_target:ahw_ring_9 = { set_variable = { which = ahw_reach value = 0 } }
+	event_target:ahw_ring_10 = { set_variable = { which = ahw_reach value = 0 } }
+	event_target:ahw_ring_11 = { set_variable = { which = ahw_reach value = 0 } }
+	event_target:ahw_ring_12 = { set_variable = { which = ahw_reach value = 1 } }
+	event_target:ahw_ring_13 = { set_variable = { which = ahw_reach value = 1 } }
+	event_target:ahw_ring_14 = { set_variable = { which = ahw_reach value = 1 } }
+	event_target:ahw_ring_15 = { set_variable = { which = ahw_reach value = 1 } }
+	event_target:ahw_ring_16 = { set_variable = { which = ahw_reach value = 1 } }
+	event_target:ahw_ring_17 = { set_variable = { which = ahw_reach value = 1 } }
+	event_target:ahw_ring_18 = { set_variable = { which = ahw_reach value = 1 } }
+	event_target:ahw_ring_19 = { set_variable = { which = ahw_reach value = 1 } }
+	event_target:ahw_ring_20 = { set_variable = { which = ahw_reach value = 1 } }
+	event_target:ahw_ring_21 = { set_variable = { which = ahw_reach value = 1 } }
+	event_target:ahw_ring_22 = { set_variable = { which = ahw_reach value = 1 } }
+	event_target:ahw_ring_23 = { set_variable = { which = ahw_reach value = 2 } }
+	event_target:ahw_ring_24 = { set_variable = { which = ahw_reach value = 2 } }
+	event_target:ahw_ring_25 = { set_variable = { which = ahw_reach value = 2 } }
+	event_target:ahw_ring_26 = { set_variable = { which = ahw_reach value = 2 } }
+	event_target:ahw_ring_27 = { set_variable = { which = ahw_reach value = 2 } }
+	event_target:ahw_ring_28 = { set_variable = { which = ahw_reach value = 2 } }
+	event_target:ahw_ring_29 = { set_variable = { which = ahw_reach value = 2 } }
+	event_target:ahw_ring_30 = { set_variable = { which = ahw_reach value = 2 } }
+	event_target:ahw_ring_31 = { set_variable = { which = ahw_reach value = 2 } }
+	event_target:ahw_ring_32 = { set_variable = { which = ahw_reach value = 2 } }
+	event_target:ahw_ring_33 = { set_variable = { which = ahw_reach value = 2 } }
+	event_target:ahw_ring_34 = { set_variable = { which = ahw_reach value = 3 } }
+	event_target:ahw_ring_35 = { set_variable = { which = ahw_reach value = 3 } }
+	event_target:ahw_ring_36 = { set_variable = { which = ahw_reach value = 3 } }
+	event_target:ahw_ring_37 = { set_variable = { which = ahw_reach value = 3 } }
+	event_target:ahw_ring_38 = { set_variable = { which = ahw_reach value = 3 } }
+	event_target:ahw_ring_39 = { set_variable = { which = ahw_reach value = 3 } }
+	event_target:ahw_ring_40 = { set_variable = { which = ahw_reach value = 3 } }
+	event_target:ahw_ring_41 = { set_variable = { which = ahw_reach value = 3 } }
+	event_target:ahw_ring_42 = { set_variable = { which = ahw_reach value = 3 } }
+	event_target:ahw_ring_43 = { set_variable = { which = ahw_reach value = 3 } }
+	event_target:ahw_ring_44 = { set_variable = { which = ahw_reach value = 3 } }
+	event_target:ahw_ring_45 = { set_variable = { which = ahw_reach value = 4 } }
+	event_target:ahw_ring_46 = { set_variable = { which = ahw_reach value = 4 } }
+	event_target:ahw_ring_47 = { set_variable = { which = ahw_reach value = 4 } }
+	event_target:ahw_ring_48 = { set_variable = { which = ahw_reach value = 4 } }
+	event_target:ahw_ring_49 = { set_variable = { which = ahw_reach value = 4 } }
+	event_target:ahw_ring_50 = { set_variable = { which = ahw_reach value = 4 } }
+	event_target:ahw_ring_51 = { set_variable = { which = ahw_reach value = 4 } }
+	event_target:ahw_ring_52 = { set_variable = { which = ahw_reach value = 4 } }
+	event_target:ahw_ring_53 = { set_variable = { which = ahw_reach value = 4 } }
+	event_target:ahw_ring_54 = { set_variable = { which = ahw_reach value = 4 } }
+	event_target:ahw_ring_55 = { set_variable = { which = ahw_reach value = 4 } }
+	event_target:ahw_ring_56 = { set_variable = { which = ahw_reach value = 5 } }
+	event_target:ahw_ring_57 = { set_variable = { which = ahw_reach value = 5 } }
+	event_target:ahw_ring_58 = { set_variable = { which = ahw_reach value = 5 } }
+	event_target:ahw_ring_59 = { set_variable = { which = ahw_reach value = 5 } }
+	event_target:ahw_ring_60 = { set_variable = { which = ahw_reach value = 5 } }
+	event_target:ahw_ring_61 = { set_variable = { which = ahw_reach value = 5 } }
+	event_target:ahw_ring_62 = { set_variable = { which = ahw_reach value = 5 } }
+	event_target:ahw_ring_63 = { set_variable = { which = ahw_reach value = 5 } }
+	event_target:ahw_ring_64 = { set_variable = { which = ahw_reach value = 5 } }
+	event_target:ahw_ring_65 = { set_variable = { which = ahw_reach value = 5 } }
+	event_target:ahw_ring_66 = { set_variable = { which = ahw_reach value = 5 } }
+	event_target:ahw_ring_67 = { set_variable = { which = ahw_reach value = 6 } }
+	event_target:ahw_ring_68 = { set_variable = { which = ahw_reach value = 6 } }
+	event_target:ahw_ring_69 = { set_variable = { which = ahw_reach value = 6 } }
+	event_target:ahw_ring_70 = { set_variable = { which = ahw_reach value = 6 } }
+	event_target:ahw_ring_71 = { set_variable = { which = ahw_reach value = 6 } }
+	event_target:ahw_ring_72 = { set_variable = { which = ahw_reach value = 6 } }
+	event_target:ahw_ring_73 = { set_variable = { which = ahw_reach value = 6 } }
+	event_target:ahw_ring_74 = { set_variable = { which = ahw_reach value = 6 } }
+	event_target:ahw_ring_75 = { set_variable = { which = ahw_reach value = 6 } }
+	event_target:ahw_ring_76 = { set_variable = { which = ahw_reach value = 6 } }
+	event_target:ahw_ring_77 = { set_variable = { which = ahw_reach value = 6 } }
+	event_target:ahw_ring_78 = { set_variable = { which = ahw_reach value = 7 } }
+	event_target:ahw_ring_79 = { set_variable = { which = ahw_reach value = 7 } }
+	event_target:ahw_ring_80 = { set_variable = { which = ahw_reach value = 7 } }
+	event_target:ahw_ring_81 = { set_variable = { which = ahw_reach value = 7 } }
+	event_target:ahw_ring_82 = { set_variable = { which = ahw_reach value = 7 } }
+	event_target:ahw_ring_83 = { set_variable = { which = ahw_reach value = 7 } }
+	event_target:ahw_ring_84 = { set_variable = { which = ahw_reach value = 7 } }
+	event_target:ahw_ring_85 = { set_variable = { which = ahw_reach value = 7 } }
+	event_target:ahw_ring_86 = { set_variable = { which = ahw_reach value = 7 } }
+	event_target:ahw_ring_87 = { set_variable = { which = ahw_reach value = 7 } }
+	event_target:ahw_ring_88 = { set_variable = { which = ahw_reach value = 7 } }
 	set_global_flag = ahw_ring_size_88
 	event_target:ahw_ring_88 = {
 		export_trigger_value_to_variable = { trigger = distance parameters = { source = event_target:ahw_ring_87 type = euclidean } variable = ahw_dprev }
@@ -19202,6 +19534,183 @@ ahw_spike_lock_ring_end = {
 				lock_bypass = { country = $COUNTRY$ duration = $DAYS$ }
 			}
 		}
+	}
+}
+
+# Names the portal event_target:ahw_portal_tmp after the reach of its exit node ahw_node_tmp and
+# its number in that reach (counters ahw_portals_<reach> on ring node 1). No scope.
+ahw_spike_name_portal = {
+	if = {
+		limit = { event_target:ahw_node_tmp = { check_variable = { which = ahw_reach value = 0 } } }
+		event_target:ahw_ring_1 = { change_variable = { which = ahw_portals_0 value = 1 } }
+		ahw_spike_name_portal_in_reach = { R = 0 }
+	}
+	else_if = {
+		limit = { event_target:ahw_node_tmp = { check_variable = { which = ahw_reach value = 1 } } }
+		event_target:ahw_ring_1 = { change_variable = { which = ahw_portals_1 value = 1 } }
+		ahw_spike_name_portal_in_reach = { R = 1 }
+	}
+	else_if = {
+		limit = { event_target:ahw_node_tmp = { check_variable = { which = ahw_reach value = 2 } } }
+		event_target:ahw_ring_1 = { change_variable = { which = ahw_portals_2 value = 1 } }
+		ahw_spike_name_portal_in_reach = { R = 2 }
+	}
+	else_if = {
+		limit = { event_target:ahw_node_tmp = { check_variable = { which = ahw_reach value = 3 } } }
+		event_target:ahw_ring_1 = { change_variable = { which = ahw_portals_3 value = 1 } }
+		ahw_spike_name_portal_in_reach = { R = 3 }
+	}
+	else_if = {
+		limit = { event_target:ahw_node_tmp = { check_variable = { which = ahw_reach value = 4 } } }
+		event_target:ahw_ring_1 = { change_variable = { which = ahw_portals_4 value = 1 } }
+		ahw_spike_name_portal_in_reach = { R = 4 }
+	}
+	else_if = {
+		limit = { event_target:ahw_node_tmp = { check_variable = { which = ahw_reach value = 5 } } }
+		event_target:ahw_ring_1 = { change_variable = { which = ahw_portals_5 value = 1 } }
+		ahw_spike_name_portal_in_reach = { R = 5 }
+	}
+	else_if = {
+		limit = { event_target:ahw_node_tmp = { check_variable = { which = ahw_reach value = 6 } } }
+		event_target:ahw_ring_1 = { change_variable = { which = ahw_portals_6 value = 1 } }
+		ahw_spike_name_portal_in_reach = { R = 6 }
+	}
+	else_if = {
+		limit = { event_target:ahw_node_tmp = { check_variable = { which = ahw_reach value = 7 } } }
+		event_target:ahw_ring_1 = { change_variable = { which = ahw_portals_7 value = 1 } }
+		ahw_spike_name_portal_in_reach = { R = 7 }
+	}
+}
+
+# The $R$th reach's next portal name, by the counter ahw_portals_$R$.
+ahw_spike_name_portal_in_reach = {
+	if = {
+		limit = { event_target:ahw_ring_1 = { check_variable = { which = ahw_portals_$R$ value = 1 } } }
+		event_target:ahw_portal_tmp = { set_name = ahw_portal_$R$_1 }
+	}
+	else_if = {
+		limit = { event_target:ahw_ring_1 = { check_variable = { which = ahw_portals_$R$ value = 2 } } }
+		event_target:ahw_portal_tmp = { set_name = ahw_portal_$R$_2 }
+	}
+	else_if = {
+		limit = { event_target:ahw_ring_1 = { check_variable = { which = ahw_portals_$R$ value = 3 } } }
+		event_target:ahw_portal_tmp = { set_name = ahw_portal_$R$_3 }
+	}
+	else_if = {
+		limit = { event_target:ahw_ring_1 = { check_variable = { which = ahw_portals_$R$ value = 4 } } }
+		event_target:ahw_portal_tmp = { set_name = ahw_portal_$R$_4 }
+	}
+	else_if = {
+		limit = { event_target:ahw_ring_1 = { check_variable = { which = ahw_portals_$R$ value = 5 } } }
+		event_target:ahw_portal_tmp = { set_name = ahw_portal_$R$_5 }
+	}
+	else_if = {
+		limit = { event_target:ahw_ring_1 = { check_variable = { which = ahw_portals_$R$ value = 6 } } }
+		event_target:ahw_portal_tmp = { set_name = ahw_portal_$R$_6 }
+	}
+	else_if = {
+		limit = { event_target:ahw_ring_1 = { check_variable = { which = ahw_portals_$R$ value = 7 } } }
+		event_target:ahw_portal_tmp = { set_name = ahw_portal_$R$_7 }
+	}
+	else_if = {
+		limit = { event_target:ahw_ring_1 = { check_variable = { which = ahw_portals_$R$ value = 8 } } }
+		event_target:ahw_portal_tmp = { set_name = ahw_portal_$R$_8 }
+	}
+	else_if = {
+		limit = { event_target:ahw_ring_1 = { check_variable = { which = ahw_portals_$R$ value = 9 } } }
+		event_target:ahw_portal_tmp = { set_name = ahw_portal_$R$_9 }
+	}
+	else_if = {
+		limit = { event_target:ahw_ring_1 = { check_variable = { which = ahw_portals_$R$ value = 10 } } }
+		event_target:ahw_portal_tmp = { set_name = ahw_portal_$R$_10 }
+	}
+	else_if = {
+		limit = { event_target:ahw_ring_1 = { check_variable = { which = ahw_portals_$R$ value = 11 } } }
+		event_target:ahw_portal_tmp = { set_name = ahw_portal_$R$_11 }
+	}
+	else_if = {
+		limit = { event_target:ahw_ring_1 = { check_variable = { which = ahw_portals_$R$ value = 12 } } }
+		event_target:ahw_portal_tmp = { set_name = ahw_portal_$R$_12 }
+	}
+	else_if = {
+		limit = { event_target:ahw_ring_1 = { check_variable = { which = ahw_portals_$R$ value = 13 } } }
+		event_target:ahw_portal_tmp = { set_name = ahw_portal_$R$_13 }
+	}
+	else_if = {
+		limit = { event_target:ahw_ring_1 = { check_variable = { which = ahw_portals_$R$ value = 14 } } }
+		event_target:ahw_portal_tmp = { set_name = ahw_portal_$R$_14 }
+	}
+	else_if = {
+		limit = { event_target:ahw_ring_1 = { check_variable = { which = ahw_portals_$R$ value = 15 } } }
+		event_target:ahw_portal_tmp = { set_name = ahw_portal_$R$_15 }
+	}
+	else_if = {
+		limit = { event_target:ahw_ring_1 = { check_variable = { which = ahw_portals_$R$ value = 16 } } }
+		event_target:ahw_portal_tmp = { set_name = ahw_portal_$R$_16 }
+	}
+	else_if = {
+		limit = { event_target:ahw_ring_1 = { check_variable = { which = ahw_portals_$R$ value = 17 } } }
+		event_target:ahw_portal_tmp = { set_name = ahw_portal_$R$_17 }
+	}
+	else_if = {
+		limit = { event_target:ahw_ring_1 = { check_variable = { which = ahw_portals_$R$ value = 18 } } }
+		event_target:ahw_portal_tmp = { set_name = ahw_portal_$R$_18 }
+	}
+	else_if = {
+		limit = { event_target:ahw_ring_1 = { check_variable = { which = ahw_portals_$R$ value = 19 } } }
+		event_target:ahw_portal_tmp = { set_name = ahw_portal_$R$_19 }
+	}
+	else_if = {
+		limit = { event_target:ahw_ring_1 = { check_variable = { which = ahw_portals_$R$ value = 20 } } }
+		event_target:ahw_portal_tmp = { set_name = ahw_portal_$R$_20 }
+	}
+	else_if = {
+		limit = { event_target:ahw_ring_1 = { check_variable = { which = ahw_portals_$R$ value = 21 } } }
+		event_target:ahw_portal_tmp = { set_name = ahw_portal_$R$_21 }
+	}
+	else_if = {
+		limit = { event_target:ahw_ring_1 = { check_variable = { which = ahw_portals_$R$ value = 22 } } }
+		event_target:ahw_portal_tmp = { set_name = ahw_portal_$R$_22 }
+	}
+	else_if = {
+		limit = { event_target:ahw_ring_1 = { check_variable = { which = ahw_portals_$R$ value = 23 } } }
+		event_target:ahw_portal_tmp = { set_name = ahw_portal_$R$_23 }
+	}
+	else_if = {
+		limit = { event_target:ahw_ring_1 = { check_variable = { which = ahw_portals_$R$ value = 24 } } }
+		event_target:ahw_portal_tmp = { set_name = ahw_portal_$R$_24 }
+	}
+	else_if = {
+		limit = { event_target:ahw_ring_1 = { check_variable = { which = ahw_portals_$R$ value = 25 } } }
+		event_target:ahw_portal_tmp = { set_name = ahw_portal_$R$_25 }
+	}
+	else_if = {
+		limit = { event_target:ahw_ring_1 = { check_variable = { which = ahw_portals_$R$ value = 26 } } }
+		event_target:ahw_portal_tmp = { set_name = ahw_portal_$R$_26 }
+	}
+	else_if = {
+		limit = { event_target:ahw_ring_1 = { check_variable = { which = ahw_portals_$R$ value = 27 } } }
+		event_target:ahw_portal_tmp = { set_name = ahw_portal_$R$_27 }
+	}
+	else_if = {
+		limit = { event_target:ahw_ring_1 = { check_variable = { which = ahw_portals_$R$ value = 28 } } }
+		event_target:ahw_portal_tmp = { set_name = ahw_portal_$R$_28 }
+	}
+	else_if = {
+		limit = { event_target:ahw_ring_1 = { check_variable = { which = ahw_portals_$R$ value = 29 } } }
+		event_target:ahw_portal_tmp = { set_name = ahw_portal_$R$_29 }
+	}
+	else_if = {
+		limit = { event_target:ahw_ring_1 = { check_variable = { which = ahw_portals_$R$ value = 30 } } }
+		event_target:ahw_portal_tmp = { set_name = ahw_portal_$R$_30 }
+	}
+	else_if = {
+		limit = { event_target:ahw_ring_1 = { check_variable = { which = ahw_portals_$R$ value = 31 } } }
+		event_target:ahw_portal_tmp = { set_name = ahw_portal_$R$_31 }
+	}
+	else_if = {
+		limit = { event_target:ahw_ring_1 = { check_variable = { which = ahw_portals_$R$ value = 32 } } }
+		event_target:ahw_portal_tmp = { set_name = ahw_portal_$R$_32 }
 	}
 }
 

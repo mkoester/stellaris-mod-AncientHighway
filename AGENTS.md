@@ -23,7 +23,7 @@ level. Prefix every key, id, flag and variable with `ahw_`. Tested in game on Li
 
 ---
 
-## Status (2026-11-04): spike runs 1–18 done (4.5.3 live); `0.0.20-SPIKE` (run 20: the Open/Sealed switch) not yet run
+## Status (2026-11-05): spike runs 1–18 done (4.5.3 live); `0.0.21-SPIKE` (run 20: the Open/Sealed switch, portal names) not yet run
 
 **Next session: run 20** (steps below), then the rest of the open list (the ring's exact
 speed is parked — user, 2026-11-04: "not too important to me now"). Everything is still the
@@ -68,14 +68,20 @@ placement and the shortcut do not.
    vanilla locks was never committed). Unknown: does the mode tab show for an owned megastructure
    in a system nobody owns? Run 18 found the facts behind it: a lock stops only ships *entering*
    that end (a gate lock let our ship back in from the ring), and a new lock replaces the old one.
-3. **Portal names**: every portal is "Highway Portal" — indistinguishable in the outliner and the
-   log (run 18: identical log lines are dropped, so the report lost most portals). Name them by
-   their empire or pair.
+3. **Portal names** (built, `0.0.21-SPIKE`): "Highway Portal" for all made them indistinguishable
+   in the outliner and the log (run 18: identical log lines are dropped, so the report lost most
+   portals). Now named after the reach their exit node lies in, plus an octal address: the
+   reach's digit, then the portal's number in that reach (`Caedris 23`; `tools/gen_spike.py`,
+   `REACHES`; lore: `docs/lore.md`, "built for the Fallen Empires, kept by the Caretakers"). Unknown: does `set_name` with a key
+   show on a system spawned with an initializer name (the ring nodes are named in the spawn's own
+   effect)?
 4. **AI**: does it path through, study, repair, lock, close?
 5. Galaxy shapes beyond small elliptical, and large/huge sizes (32 pairs, performance).
 6. Labels/menus: built at game start they show; ring-side gates need sight (a usable entry point)
    for the label and a ship in the system for the right-click menu (runs 6–7).
-7. Lore (`docs/lore.md`).
+7. Lore (`docs/lore.md`): builders and seal decided 2026-11-05 (the Fallen Empires, the
+   Ancient Caretakers, the Militant Isolationists); the Caretaker node, guardians and the
+   phase-2 reactions are open.
 
 ### The spike (`0.0.18-SPIKE`): what it does, how to run it
 
@@ -150,6 +156,9 @@ elliptical, AI empires on, console on):
    (`event ahw_spike.2`) should list our portal and its exit node as LOCKED.
 5. Wait out the cooldown (30 days), choose **Open**, let two days pass: the report should show no
    lock.
+6. Portal names: in the outliner and the report, does every portal have its own name, such as
+   "Caedris 23", instead of "Highway Portal"? Does the first digit match the name (Ashkara 0,
+   Belun 1, Caedris 2, Dovhar 3, Eshmet 4, Furon 5, Galvaas 6, Hethra 7)?
 
 Copy `logs/game.log` and `logs/error.log` before restarting the game.
 

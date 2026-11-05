@@ -13,3 +13,10 @@ on_monthly_pulse_country = {
 		ahw_spike.20
 	}
 }
+
+# 0.0.22: when does a lock expire (ahw_spike.24)?
+on_dimensional_lock_expired = {
+	events = {
+		ahw_spike.24
+	}
+}

@@ -88,426 +88,426 @@ ahw_spike_measure_outline = {
 ahw_spike_spawn_outer_node = {
 	if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 560 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 560 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 560 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 555 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 555 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 555 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 550 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 550 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 550 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 545 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 545 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 545 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 540 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 540 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 540 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 535 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 535 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 535 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 530 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 530 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 530 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 525 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 525 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 525 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 520 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 520 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 520 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 515 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 515 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 515 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 510 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 510 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 510 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 505 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 505 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 505 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 500 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 500 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 500 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 495 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 495 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 495 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 490 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 490 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 490 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 485 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 485 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 485 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 480 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 480 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 480 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 475 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 475 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 475 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 470 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 470 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 470 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 465 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 465 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 465 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 460 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 460 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 460 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 455 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 455 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 455 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 450 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 450 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 450 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 445 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 445 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 445 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 440 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 440 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 440 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 435 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 435 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 435 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 430 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 430 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 430 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 425 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 425 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 425 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 420 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 420 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 420 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 415 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 415 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 415 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 410 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 410 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 410 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 405 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 405 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 405 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 400 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 400 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 400 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 395 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 395 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 395 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 390 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 390 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 390 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 385 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 385 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 385 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 380 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 380 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 380 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 375 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 375 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 375 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 370 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 370 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 370 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 365 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 365 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 365 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 360 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 360 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 360 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 355 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 355 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 355 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 350 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 350 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 350 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 345 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 345 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 345 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 340 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 340 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 340 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 335 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 335 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 335 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 330 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 330 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 330 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 325 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 325 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 325 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 320 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 320 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 320 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 315 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 315 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 315 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 310 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 310 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 310 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 305 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 305 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 305 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 300 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 300 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 300 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 295 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 295 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 295 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 290 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 290 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 290 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 285 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 285 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 285 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 280 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 280 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 280 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 275 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 275 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 275 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 270 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 270 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 270 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 265 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 265 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 265 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 260 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 260 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 260 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 255 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 255 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 255 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 250 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 250 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 250 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 245 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 245 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 245 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 240 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 240 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 240 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 235 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 235 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 235 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 230 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 230 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 230 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 225 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 225 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 225 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 220 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 220 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 220 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 215 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 215 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 215 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 210 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 210 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 210 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 205 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 205 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 205 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 200 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 200 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 200 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 195 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 195 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 195 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 190 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 190 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 190 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 185 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 185 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 185 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 180 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 180 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 180 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 175 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 175 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 175 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 170 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 170 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 170 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 165 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 165 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 165 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 160 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 160 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 160 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 155 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 155 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 155 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 150 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 150 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 150 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 145 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 145 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 145 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 140 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 140 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 140 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 135 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 135 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 135 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 130 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 130 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 130 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 125 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 125 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 125 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 120 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 120 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 120 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 115 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 115 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 115 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 110 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 110 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 110 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 105 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 105 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 105 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 100 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 100 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 100 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 95 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 95 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 95 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 90 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 90 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 90 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 85 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 85 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 85 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 80 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 80 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 80 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 75 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 75 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 75 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 70 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 70 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 70 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 65 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 65 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 65 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 60 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 60 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 60 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 55 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 55 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 55 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 50 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 50 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 50 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 45 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 45 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 45 ANGLE = $ANGLE$ }
 	}
 	else_if = {
 		limit = { check_variable = { which = ahw_rad_$K$ value >= 40 } }
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 40 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 40 ANGLE = $ANGLE$ }
 	}
 	else = {
-		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ R = 40 ANGLE = $ANGLE$ }
+		ahw_spike_spawn_ring_node = { NAME = ahw_ring_$K$ LABEL = $LABEL$ R = 40 ANGLE = $ANGLE$ }
 	}
 }
 
@@ -941,7 +941,7 @@ ahw_spike_move_probe_to_node = {
 	event_target:$PROBE$ = {
 		remove_star_flag = ahw_core
 		set_star_flag = ahw_ring
-		set_name = ahw_ring_$K$
+		set_name = $LABEL$
 		save_global_event_target_as = ahw_ring_$K$
 	}
 }
@@ -2518,45 +2518,45 @@ ahw_spike_build_outer_ring_40 = {
 			limit = { check_variable = { which = ahw_rad_1 value < ahw_t } }
 			set_variable = { which = ahw_rad_1 value = ahw_t }
 		}
-		ahw_spike_spawn_outer_node = { K = 1 ANGLE = 0.0 }
-		ahw_spike_spawn_outer_node = { K = 2 ANGLE = 9.0 }
-		ahw_spike_spawn_outer_node = { K = 3 ANGLE = 18.0 }
-		ahw_spike_spawn_outer_node = { K = 4 ANGLE = 27.0 }
-		ahw_spike_spawn_outer_node = { K = 5 ANGLE = 36.0 }
-		ahw_spike_spawn_outer_node = { K = 6 ANGLE = 45.0 }
-		ahw_spike_spawn_outer_node = { K = 7 ANGLE = 54.0 }
-		ahw_spike_spawn_outer_node = { K = 8 ANGLE = 63.0 }
-		ahw_spike_spawn_outer_node = { K = 9 ANGLE = 72.0 }
-		ahw_spike_spawn_outer_node = { K = 10 ANGLE = 81.0 }
-		ahw_spike_spawn_outer_node = { K = 11 ANGLE = 90.0 }
-		ahw_spike_spawn_outer_node = { K = 12 ANGLE = 99.0 }
-		ahw_spike_spawn_outer_node = { K = 13 ANGLE = 108.0 }
-		ahw_spike_spawn_outer_node = { K = 14 ANGLE = 117.0 }
-		ahw_spike_spawn_outer_node = { K = 15 ANGLE = 126.0 }
-		ahw_spike_spawn_outer_node = { K = 16 ANGLE = 135.0 }
-		ahw_spike_spawn_outer_node = { K = 17 ANGLE = 144.0 }
-		ahw_spike_spawn_outer_node = { K = 18 ANGLE = 153.0 }
-		ahw_spike_spawn_outer_node = { K = 19 ANGLE = 162.0 }
-		ahw_spike_spawn_outer_node = { K = 20 ANGLE = 171.0 }
-		ahw_spike_spawn_outer_node = { K = 21 ANGLE = 180.0 }
-		ahw_spike_spawn_outer_node = { K = 22 ANGLE = 189.0 }
-		ahw_spike_spawn_outer_node = { K = 23 ANGLE = 198.0 }
-		ahw_spike_spawn_outer_node = { K = 24 ANGLE = 207.0 }
-		ahw_spike_spawn_outer_node = { K = 25 ANGLE = 216.0 }
-		ahw_spike_spawn_outer_node = { K = 26 ANGLE = 225.0 }
-		ahw_spike_spawn_outer_node = { K = 27 ANGLE = 234.0 }
-		ahw_spike_spawn_outer_node = { K = 28 ANGLE = 243.0 }
-		ahw_spike_spawn_outer_node = { K = 29 ANGLE = 252.0 }
-		ahw_spike_spawn_outer_node = { K = 30 ANGLE = 261.0 }
-		ahw_spike_spawn_outer_node = { K = 31 ANGLE = 270.0 }
-		ahw_spike_spawn_outer_node = { K = 32 ANGLE = 279.0 }
-		ahw_spike_spawn_outer_node = { K = 33 ANGLE = 288.0 }
-		ahw_spike_spawn_outer_node = { K = 34 ANGLE = 297.0 }
-		ahw_spike_spawn_outer_node = { K = 35 ANGLE = 306.0 }
-		ahw_spike_spawn_outer_node = { K = 36 ANGLE = 315.0 }
-		ahw_spike_spawn_outer_node = { K = 37 ANGLE = 324.0 }
-		ahw_spike_spawn_outer_node = { K = 38 ANGLE = 333.0 }
-		ahw_spike_move_probe_to_node = { PROBE = ahw_probe_t K = 39 ANGLE = 342.0 }
+		ahw_spike_spawn_outer_node = { K = 1 ANGLE = 0.0 LABEL = ahw_node_40_1 }
+		ahw_spike_spawn_outer_node = { K = 2 ANGLE = 9.0 LABEL = ahw_node_40_2 }
+		ahw_spike_spawn_outer_node = { K = 3 ANGLE = 18.0 LABEL = ahw_node_40_3 }
+		ahw_spike_spawn_outer_node = { K = 4 ANGLE = 27.0 LABEL = ahw_node_40_4 }
+		ahw_spike_spawn_outer_node = { K = 5 ANGLE = 36.0 LABEL = ahw_node_40_5 }
+		ahw_spike_spawn_outer_node = { K = 6 ANGLE = 45.0 LABEL = ahw_node_40_6 }
+		ahw_spike_spawn_outer_node = { K = 7 ANGLE = 54.0 LABEL = ahw_node_40_7 }
+		ahw_spike_spawn_outer_node = { K = 8 ANGLE = 63.0 LABEL = ahw_node_40_8 }
+		ahw_spike_spawn_outer_node = { K = 9 ANGLE = 72.0 LABEL = ahw_node_40_9 }
+		ahw_spike_spawn_outer_node = { K = 10 ANGLE = 81.0 LABEL = ahw_node_40_10 }
+		ahw_spike_spawn_outer_node = { K = 11 ANGLE = 90.0 LABEL = ahw_node_40_11 }
+		ahw_spike_spawn_outer_node = { K = 12 ANGLE = 99.0 LABEL = ahw_node_40_12 }
+		ahw_spike_spawn_outer_node = { K = 13 ANGLE = 108.0 LABEL = ahw_node_40_13 }
+		ahw_spike_spawn_outer_node = { K = 14 ANGLE = 117.0 LABEL = ahw_node_40_14 }
+		ahw_spike_spawn_outer_node = { K = 15 ANGLE = 126.0 LABEL = ahw_node_40_15 }
+		ahw_spike_spawn_outer_node = { K = 16 ANGLE = 135.0 LABEL = ahw_node_40_16 }
+		ahw_spike_spawn_outer_node = { K = 17 ANGLE = 144.0 LABEL = ahw_node_40_17 }
+		ahw_spike_spawn_outer_node = { K = 18 ANGLE = 153.0 LABEL = ahw_node_40_18 }
+		ahw_spike_spawn_outer_node = { K = 19 ANGLE = 162.0 LABEL = ahw_node_40_19 }
+		ahw_spike_spawn_outer_node = { K = 20 ANGLE = 171.0 LABEL = ahw_node_40_20 }
+		ahw_spike_spawn_outer_node = { K = 21 ANGLE = 180.0 LABEL = ahw_node_40_21 }
+		ahw_spike_spawn_outer_node = { K = 22 ANGLE = 189.0 LABEL = ahw_node_40_22 }
+		ahw_spike_spawn_outer_node = { K = 23 ANGLE = 198.0 LABEL = ahw_node_40_23 }
+		ahw_spike_spawn_outer_node = { K = 24 ANGLE = 207.0 LABEL = ahw_node_40_24 }
+		ahw_spike_spawn_outer_node = { K = 25 ANGLE = 216.0 LABEL = ahw_node_40_25 }
+		ahw_spike_spawn_outer_node = { K = 26 ANGLE = 225.0 LABEL = ahw_node_40_26 }
+		ahw_spike_spawn_outer_node = { K = 27 ANGLE = 234.0 LABEL = ahw_node_40_27 }
+		ahw_spike_spawn_outer_node = { K = 28 ANGLE = 243.0 LABEL = ahw_node_40_28 }
+		ahw_spike_spawn_outer_node = { K = 29 ANGLE = 252.0 LABEL = ahw_node_40_29 }
+		ahw_spike_spawn_outer_node = { K = 30 ANGLE = 261.0 LABEL = ahw_node_40_30 }
+		ahw_spike_spawn_outer_node = { K = 31 ANGLE = 270.0 LABEL = ahw_node_40_31 }
+		ahw_spike_spawn_outer_node = { K = 32 ANGLE = 279.0 LABEL = ahw_node_40_32 }
+		ahw_spike_spawn_outer_node = { K = 33 ANGLE = 288.0 LABEL = ahw_node_40_33 }
+		ahw_spike_spawn_outer_node = { K = 34 ANGLE = 297.0 LABEL = ahw_node_40_34 }
+		ahw_spike_spawn_outer_node = { K = 35 ANGLE = 306.0 LABEL = ahw_node_40_35 }
+		ahw_spike_spawn_outer_node = { K = 36 ANGLE = 315.0 LABEL = ahw_node_40_36 }
+		ahw_spike_spawn_outer_node = { K = 37 ANGLE = 324.0 LABEL = ahw_node_40_37 }
+		ahw_spike_spawn_outer_node = { K = 38 ANGLE = 333.0 LABEL = ahw_node_40_38 }
+		ahw_spike_move_probe_to_node = { PROBE = ahw_probe_t K = 39 ANGLE = 342.0 LABEL = ahw_node_40_39 }
 		export_trigger_value_to_variable = { trigger = distance parameters = { source = event_target:ahw_ring_1 type = euclidean } variable = ahw_got_1 }
 		log = "AHW SPIKE node 1 at angle 0.0: edge \\[This.ahw_edge_1], wanted \\[This.ahw_rad_1], placed \\[This.ahw_got_1] from the centre"
 		event_target:ahw_ring_1 = {
@@ -2908,7 +2908,7 @@ ahw_spike_build_outer_ring_40 = {
 			multiply_variable = { which = ahw_y value = -0.309 }
 			set_star_flag = ahw_xy
 		}
-		ahw_spike_move_probe_to_node = { PROBE = ahw_probe_a K = 40 ANGLE = 351.0 }
+		ahw_spike_move_probe_to_node = { PROBE = ahw_probe_a K = 40 ANGLE = 351.0 LABEL = ahw_node_40_40 }
 		event_target:ahw_ring_40 = {
 			set_variable = { which = ahw_x value = ahw_rad_40 }
 			multiply_variable = { which = ahw_x value = 0.9877 }
@@ -5201,61 +5201,61 @@ ahw_spike_build_outer_ring_56 = {
 			limit = { check_variable = { which = ahw_rad_1 value < ahw_t } }
 			set_variable = { which = ahw_rad_1 value = ahw_t }
 		}
-		ahw_spike_spawn_outer_node = { K = 1 ANGLE = 0.0 }
-		ahw_spike_spawn_outer_node = { K = 2 ANGLE = 6.43 }
-		ahw_spike_spawn_outer_node = { K = 3 ANGLE = 12.86 }
-		ahw_spike_spawn_outer_node = { K = 4 ANGLE = 19.29 }
-		ahw_spike_spawn_outer_node = { K = 5 ANGLE = 25.71 }
-		ahw_spike_spawn_outer_node = { K = 6 ANGLE = 32.14 }
-		ahw_spike_spawn_outer_node = { K = 7 ANGLE = 38.57 }
-		ahw_spike_spawn_outer_node = { K = 8 ANGLE = 45.0 }
-		ahw_spike_spawn_outer_node = { K = 9 ANGLE = 51.43 }
-		ahw_spike_spawn_outer_node = { K = 10 ANGLE = 57.86 }
-		ahw_spike_spawn_outer_node = { K = 11 ANGLE = 64.29 }
-		ahw_spike_spawn_outer_node = { K = 12 ANGLE = 70.71 }
-		ahw_spike_spawn_outer_node = { K = 13 ANGLE = 77.14 }
-		ahw_spike_spawn_outer_node = { K = 14 ANGLE = 83.57 }
-		ahw_spike_spawn_outer_node = { K = 15 ANGLE = 90.0 }
-		ahw_spike_spawn_outer_node = { K = 16 ANGLE = 96.43 }
-		ahw_spike_spawn_outer_node = { K = 17 ANGLE = 102.86 }
-		ahw_spike_spawn_outer_node = { K = 18 ANGLE = 109.29 }
-		ahw_spike_spawn_outer_node = { K = 19 ANGLE = 115.71 }
-		ahw_spike_spawn_outer_node = { K = 20 ANGLE = 122.14 }
-		ahw_spike_spawn_outer_node = { K = 21 ANGLE = 128.57 }
-		ahw_spike_spawn_outer_node = { K = 22 ANGLE = 135.0 }
-		ahw_spike_spawn_outer_node = { K = 23 ANGLE = 141.43 }
-		ahw_spike_spawn_outer_node = { K = 24 ANGLE = 147.86 }
-		ahw_spike_spawn_outer_node = { K = 25 ANGLE = 154.29 }
-		ahw_spike_spawn_outer_node = { K = 26 ANGLE = 160.71 }
-		ahw_spike_spawn_outer_node = { K = 27 ANGLE = 167.14 }
-		ahw_spike_spawn_outer_node = { K = 28 ANGLE = 173.57 }
-		ahw_spike_spawn_outer_node = { K = 29 ANGLE = 180.0 }
-		ahw_spike_spawn_outer_node = { K = 30 ANGLE = 186.43 }
-		ahw_spike_spawn_outer_node = { K = 31 ANGLE = 192.86 }
-		ahw_spike_spawn_outer_node = { K = 32 ANGLE = 199.29 }
-		ahw_spike_spawn_outer_node = { K = 33 ANGLE = 205.71 }
-		ahw_spike_spawn_outer_node = { K = 34 ANGLE = 212.14 }
-		ahw_spike_spawn_outer_node = { K = 35 ANGLE = 218.57 }
-		ahw_spike_spawn_outer_node = { K = 36 ANGLE = 225.0 }
-		ahw_spike_spawn_outer_node = { K = 37 ANGLE = 231.43 }
-		ahw_spike_spawn_outer_node = { K = 38 ANGLE = 237.86 }
-		ahw_spike_spawn_outer_node = { K = 39 ANGLE = 244.29 }
-		ahw_spike_spawn_outer_node = { K = 40 ANGLE = 250.71 }
-		ahw_spike_spawn_outer_node = { K = 41 ANGLE = 257.14 }
-		ahw_spike_spawn_outer_node = { K = 42 ANGLE = 263.57 }
-		ahw_spike_spawn_outer_node = { K = 43 ANGLE = 270.0 }
-		ahw_spike_spawn_outer_node = { K = 44 ANGLE = 276.43 }
-		ahw_spike_spawn_outer_node = { K = 45 ANGLE = 282.86 }
-		ahw_spike_spawn_outer_node = { K = 46 ANGLE = 289.29 }
-		ahw_spike_spawn_outer_node = { K = 47 ANGLE = 295.71 }
-		ahw_spike_spawn_outer_node = { K = 48 ANGLE = 302.14 }
-		ahw_spike_spawn_outer_node = { K = 49 ANGLE = 308.57 }
-		ahw_spike_spawn_outer_node = { K = 50 ANGLE = 315.0 }
-		ahw_spike_spawn_outer_node = { K = 51 ANGLE = 321.43 }
-		ahw_spike_spawn_outer_node = { K = 52 ANGLE = 327.86 }
-		ahw_spike_spawn_outer_node = { K = 53 ANGLE = 334.29 }
-		ahw_spike_spawn_outer_node = { K = 54 ANGLE = 340.71 }
-		ahw_spike_move_probe_to_node = { PROBE = ahw_probe_t K = 55 ANGLE = 347.14 }
+		ahw_spike_spawn_outer_node = { K = 1 ANGLE = 0.0 LABEL = ahw_node_56_1 }
+		ahw_spike_spawn_outer_node = { K = 2 ANGLE = 6.43 LABEL = ahw_node_56_2 }
+		ahw_spike_spawn_outer_node = { K = 3 ANGLE = 12.86 LABEL = ahw_node_56_3 }
+		ahw_spike_spawn_outer_node = { K = 4 ANGLE = 19.29 LABEL = ahw_node_56_4 }
+		ahw_spike_spawn_outer_node = { K = 5 ANGLE = 25.71 LABEL = ahw_node_56_5 }
+		ahw_spike_spawn_outer_node = { K = 6 ANGLE = 32.14 LABEL = ahw_node_56_6 }
+		ahw_spike_spawn_outer_node = { K = 7 ANGLE = 38.57 LABEL = ahw_node_56_7 }
+		ahw_spike_spawn_outer_node = { K = 8 ANGLE = 45.0 LABEL = ahw_node_56_8 }
+		ahw_spike_spawn_outer_node = { K = 9 ANGLE = 51.43 LABEL = ahw_node_56_9 }
+		ahw_spike_spawn_outer_node = { K = 10 ANGLE = 57.86 LABEL = ahw_node_56_10 }
+		ahw_spike_spawn_outer_node = { K = 11 ANGLE = 64.29 LABEL = ahw_node_56_11 }
+		ahw_spike_spawn_outer_node = { K = 12 ANGLE = 70.71 LABEL = ahw_node_56_12 }
+		ahw_spike_spawn_outer_node = { K = 13 ANGLE = 77.14 LABEL = ahw_node_56_13 }
+		ahw_spike_spawn_outer_node = { K = 14 ANGLE = 83.57 LABEL = ahw_node_56_14 }
+		ahw_spike_spawn_outer_node = { K = 15 ANGLE = 90.0 LABEL = ahw_node_56_15 }
+		ahw_spike_spawn_outer_node = { K = 16 ANGLE = 96.43 LABEL = ahw_node_56_16 }
+		ahw_spike_spawn_outer_node = { K = 17 ANGLE = 102.86 LABEL = ahw_node_56_17 }
+		ahw_spike_spawn_outer_node = { K = 18 ANGLE = 109.29 LABEL = ahw_node_56_18 }
+		ahw_spike_spawn_outer_node = { K = 19 ANGLE = 115.71 LABEL = ahw_node_56_19 }
+		ahw_spike_spawn_outer_node = { K = 20 ANGLE = 122.14 LABEL = ahw_node_56_20 }
+		ahw_spike_spawn_outer_node = { K = 21 ANGLE = 128.57 LABEL = ahw_node_56_21 }
+		ahw_spike_spawn_outer_node = { K = 22 ANGLE = 135.0 LABEL = ahw_node_56_22 }
+		ahw_spike_spawn_outer_node = { K = 23 ANGLE = 141.43 LABEL = ahw_node_56_23 }
+		ahw_spike_spawn_outer_node = { K = 24 ANGLE = 147.86 LABEL = ahw_node_56_24 }
+		ahw_spike_spawn_outer_node = { K = 25 ANGLE = 154.29 LABEL = ahw_node_56_25 }
+		ahw_spike_spawn_outer_node = { K = 26 ANGLE = 160.71 LABEL = ahw_node_56_26 }
+		ahw_spike_spawn_outer_node = { K = 27 ANGLE = 167.14 LABEL = ahw_node_56_27 }
+		ahw_spike_spawn_outer_node = { K = 28 ANGLE = 173.57 LABEL = ahw_node_56_28 }
+		ahw_spike_spawn_outer_node = { K = 29 ANGLE = 180.0 LABEL = ahw_node_56_29 }
+		ahw_spike_spawn_outer_node = { K = 30 ANGLE = 186.43 LABEL = ahw_node_56_30 }
+		ahw_spike_spawn_outer_node = { K = 31 ANGLE = 192.86 LABEL = ahw_node_56_31 }
+		ahw_spike_spawn_outer_node = { K = 32 ANGLE = 199.29 LABEL = ahw_node_56_32 }
+		ahw_spike_spawn_outer_node = { K = 33 ANGLE = 205.71 LABEL = ahw_node_56_33 }
+		ahw_spike_spawn_outer_node = { K = 34 ANGLE = 212.14 LABEL = ahw_node_56_34 }
+		ahw_spike_spawn_outer_node = { K = 35 ANGLE = 218.57 LABEL = ahw_node_56_35 }
+		ahw_spike_spawn_outer_node = { K = 36 ANGLE = 225.0 LABEL = ahw_node_56_36 }
+		ahw_spike_spawn_outer_node = { K = 37 ANGLE = 231.43 LABEL = ahw_node_56_37 }
+		ahw_spike_spawn_outer_node = { K = 38 ANGLE = 237.86 LABEL = ahw_node_56_38 }
+		ahw_spike_spawn_outer_node = { K = 39 ANGLE = 244.29 LABEL = ahw_node_56_39 }
+		ahw_spike_spawn_outer_node = { K = 40 ANGLE = 250.71 LABEL = ahw_node_56_40 }
+		ahw_spike_spawn_outer_node = { K = 41 ANGLE = 257.14 LABEL = ahw_node_56_41 }
+		ahw_spike_spawn_outer_node = { K = 42 ANGLE = 263.57 LABEL = ahw_node_56_42 }
+		ahw_spike_spawn_outer_node = { K = 43 ANGLE = 270.0 LABEL = ahw_node_56_43 }
+		ahw_spike_spawn_outer_node = { K = 44 ANGLE = 276.43 LABEL = ahw_node_56_44 }
+		ahw_spike_spawn_outer_node = { K = 45 ANGLE = 282.86 LABEL = ahw_node_56_45 }
+		ahw_spike_spawn_outer_node = { K = 46 ANGLE = 289.29 LABEL = ahw_node_56_46 }
+		ahw_spike_spawn_outer_node = { K = 47 ANGLE = 295.71 LABEL = ahw_node_56_47 }
+		ahw_spike_spawn_outer_node = { K = 48 ANGLE = 302.14 LABEL = ahw_node_56_48 }
+		ahw_spike_spawn_outer_node = { K = 49 ANGLE = 308.57 LABEL = ahw_node_56_49 }
+		ahw_spike_spawn_outer_node = { K = 50 ANGLE = 315.0 LABEL = ahw_node_56_50 }
+		ahw_spike_spawn_outer_node = { K = 51 ANGLE = 321.43 LABEL = ahw_node_56_51 }
+		ahw_spike_spawn_outer_node = { K = 52 ANGLE = 327.86 LABEL = ahw_node_56_52 }
+		ahw_spike_spawn_outer_node = { K = 53 ANGLE = 334.29 LABEL = ahw_node_56_53 }
+		ahw_spike_spawn_outer_node = { K = 54 ANGLE = 340.71 LABEL = ahw_node_56_54 }
+		ahw_spike_move_probe_to_node = { PROBE = ahw_probe_t K = 55 ANGLE = 347.14 LABEL = ahw_node_56_55 }
 		export_trigger_value_to_variable = { trigger = distance parameters = { source = event_target:ahw_ring_1 type = euclidean } variable = ahw_got_1 }
 		log = "AHW SPIKE node 1 at angle 0.0: edge \\[This.ahw_edge_1], wanted \\[This.ahw_rad_1], placed \\[This.ahw_got_1] from the centre"
 		event_target:ahw_ring_1 = {
@@ -5751,7 +5751,7 @@ ahw_spike_build_outer_ring_56 = {
 			multiply_variable = { which = ahw_y value = -0.2226 }
 			set_star_flag = ahw_xy
 		}
-		ahw_spike_move_probe_to_node = { PROBE = ahw_probe_a K = 56 ANGLE = 353.57 }
+		ahw_spike_move_probe_to_node = { PROBE = ahw_probe_a K = 56 ANGLE = 353.57 LABEL = ahw_node_56_56 }
 		event_target:ahw_ring_56 = {
 			set_variable = { which = ahw_x value = ahw_rad_56 }
 			multiply_variable = { which = ahw_x value = 0.9937 }
@@ -8544,73 +8544,73 @@ ahw_spike_build_outer_ring_68 = {
 			limit = { check_variable = { which = ahw_rad_1 value < ahw_t } }
 			set_variable = { which = ahw_rad_1 value = ahw_t }
 		}
-		ahw_spike_spawn_outer_node = { K = 1 ANGLE = 0.0 }
-		ahw_spike_spawn_outer_node = { K = 2 ANGLE = 5.29 }
-		ahw_spike_spawn_outer_node = { K = 3 ANGLE = 10.59 }
-		ahw_spike_spawn_outer_node = { K = 4 ANGLE = 15.88 }
-		ahw_spike_spawn_outer_node = { K = 5 ANGLE = 21.18 }
-		ahw_spike_spawn_outer_node = { K = 6 ANGLE = 26.47 }
-		ahw_spike_spawn_outer_node = { K = 7 ANGLE = 31.76 }
-		ahw_spike_spawn_outer_node = { K = 8 ANGLE = 37.06 }
-		ahw_spike_spawn_outer_node = { K = 9 ANGLE = 42.35 }
-		ahw_spike_spawn_outer_node = { K = 10 ANGLE = 47.65 }
-		ahw_spike_spawn_outer_node = { K = 11 ANGLE = 52.94 }
-		ahw_spike_spawn_outer_node = { K = 12 ANGLE = 58.24 }
-		ahw_spike_spawn_outer_node = { K = 13 ANGLE = 63.53 }
-		ahw_spike_spawn_outer_node = { K = 14 ANGLE = 68.82 }
-		ahw_spike_spawn_outer_node = { K = 15 ANGLE = 74.12 }
-		ahw_spike_spawn_outer_node = { K = 16 ANGLE = 79.41 }
-		ahw_spike_spawn_outer_node = { K = 17 ANGLE = 84.71 }
-		ahw_spike_spawn_outer_node = { K = 18 ANGLE = 90.0 }
-		ahw_spike_spawn_outer_node = { K = 19 ANGLE = 95.29 }
-		ahw_spike_spawn_outer_node = { K = 20 ANGLE = 100.59 }
-		ahw_spike_spawn_outer_node = { K = 21 ANGLE = 105.88 }
-		ahw_spike_spawn_outer_node = { K = 22 ANGLE = 111.18 }
-		ahw_spike_spawn_outer_node = { K = 23 ANGLE = 116.47 }
-		ahw_spike_spawn_outer_node = { K = 24 ANGLE = 121.76 }
-		ahw_spike_spawn_outer_node = { K = 25 ANGLE = 127.06 }
-		ahw_spike_spawn_outer_node = { K = 26 ANGLE = 132.35 }
-		ahw_spike_spawn_outer_node = { K = 27 ANGLE = 137.65 }
-		ahw_spike_spawn_outer_node = { K = 28 ANGLE = 142.94 }
-		ahw_spike_spawn_outer_node = { K = 29 ANGLE = 148.24 }
-		ahw_spike_spawn_outer_node = { K = 30 ANGLE = 153.53 }
-		ahw_spike_spawn_outer_node = { K = 31 ANGLE = 158.82 }
-		ahw_spike_spawn_outer_node = { K = 32 ANGLE = 164.12 }
-		ahw_spike_spawn_outer_node = { K = 33 ANGLE = 169.41 }
-		ahw_spike_spawn_outer_node = { K = 34 ANGLE = 174.71 }
-		ahw_spike_spawn_outer_node = { K = 35 ANGLE = 180.0 }
-		ahw_spike_spawn_outer_node = { K = 36 ANGLE = 185.29 }
-		ahw_spike_spawn_outer_node = { K = 37 ANGLE = 190.59 }
-		ahw_spike_spawn_outer_node = { K = 38 ANGLE = 195.88 }
-		ahw_spike_spawn_outer_node = { K = 39 ANGLE = 201.18 }
-		ahw_spike_spawn_outer_node = { K = 40 ANGLE = 206.47 }
-		ahw_spike_spawn_outer_node = { K = 41 ANGLE = 211.76 }
-		ahw_spike_spawn_outer_node = { K = 42 ANGLE = 217.06 }
-		ahw_spike_spawn_outer_node = { K = 43 ANGLE = 222.35 }
-		ahw_spike_spawn_outer_node = { K = 44 ANGLE = 227.65 }
-		ahw_spike_spawn_outer_node = { K = 45 ANGLE = 232.94 }
-		ahw_spike_spawn_outer_node = { K = 46 ANGLE = 238.24 }
-		ahw_spike_spawn_outer_node = { K = 47 ANGLE = 243.53 }
-		ahw_spike_spawn_outer_node = { K = 48 ANGLE = 248.82 }
-		ahw_spike_spawn_outer_node = { K = 49 ANGLE = 254.12 }
-		ahw_spike_spawn_outer_node = { K = 50 ANGLE = 259.41 }
-		ahw_spike_spawn_outer_node = { K = 51 ANGLE = 264.71 }
-		ahw_spike_spawn_outer_node = { K = 52 ANGLE = 270.0 }
-		ahw_spike_spawn_outer_node = { K = 53 ANGLE = 275.29 }
-		ahw_spike_spawn_outer_node = { K = 54 ANGLE = 280.59 }
-		ahw_spike_spawn_outer_node = { K = 55 ANGLE = 285.88 }
-		ahw_spike_spawn_outer_node = { K = 56 ANGLE = 291.18 }
-		ahw_spike_spawn_outer_node = { K = 57 ANGLE = 296.47 }
-		ahw_spike_spawn_outer_node = { K = 58 ANGLE = 301.76 }
-		ahw_spike_spawn_outer_node = { K = 59 ANGLE = 307.06 }
-		ahw_spike_spawn_outer_node = { K = 60 ANGLE = 312.35 }
-		ahw_spike_spawn_outer_node = { K = 61 ANGLE = 317.65 }
-		ahw_spike_spawn_outer_node = { K = 62 ANGLE = 322.94 }
-		ahw_spike_spawn_outer_node = { K = 63 ANGLE = 328.24 }
-		ahw_spike_spawn_outer_node = { K = 64 ANGLE = 333.53 }
-		ahw_spike_spawn_outer_node = { K = 65 ANGLE = 338.82 }
-		ahw_spike_spawn_outer_node = { K = 66 ANGLE = 344.12 }
-		ahw_spike_move_probe_to_node = { PROBE = ahw_probe_t K = 67 ANGLE = 349.41 }
+		ahw_spike_spawn_outer_node = { K = 1 ANGLE = 0.0 LABEL = ahw_node_68_1 }
+		ahw_spike_spawn_outer_node = { K = 2 ANGLE = 5.29 LABEL = ahw_node_68_2 }
+		ahw_spike_spawn_outer_node = { K = 3 ANGLE = 10.59 LABEL = ahw_node_68_3 }
+		ahw_spike_spawn_outer_node = { K = 4 ANGLE = 15.88 LABEL = ahw_node_68_4 }
+		ahw_spike_spawn_outer_node = { K = 5 ANGLE = 21.18 LABEL = ahw_node_68_5 }
+		ahw_spike_spawn_outer_node = { K = 6 ANGLE = 26.47 LABEL = ahw_node_68_6 }
+		ahw_spike_spawn_outer_node = { K = 7 ANGLE = 31.76 LABEL = ahw_node_68_7 }
+		ahw_spike_spawn_outer_node = { K = 8 ANGLE = 37.06 LABEL = ahw_node_68_8 }
+		ahw_spike_spawn_outer_node = { K = 9 ANGLE = 42.35 LABEL = ahw_node_68_9 }
+		ahw_spike_spawn_outer_node = { K = 10 ANGLE = 47.65 LABEL = ahw_node_68_10 }
+		ahw_spike_spawn_outer_node = { K = 11 ANGLE = 52.94 LABEL = ahw_node_68_11 }
+		ahw_spike_spawn_outer_node = { K = 12 ANGLE = 58.24 LABEL = ahw_node_68_12 }
+		ahw_spike_spawn_outer_node = { K = 13 ANGLE = 63.53 LABEL = ahw_node_68_13 }
+		ahw_spike_spawn_outer_node = { K = 14 ANGLE = 68.82 LABEL = ahw_node_68_14 }
+		ahw_spike_spawn_outer_node = { K = 15 ANGLE = 74.12 LABEL = ahw_node_68_15 }
+		ahw_spike_spawn_outer_node = { K = 16 ANGLE = 79.41 LABEL = ahw_node_68_16 }
+		ahw_spike_spawn_outer_node = { K = 17 ANGLE = 84.71 LABEL = ahw_node_68_17 }
+		ahw_spike_spawn_outer_node = { K = 18 ANGLE = 90.0 LABEL = ahw_node_68_18 }
+		ahw_spike_spawn_outer_node = { K = 19 ANGLE = 95.29 LABEL = ahw_node_68_19 }
+		ahw_spike_spawn_outer_node = { K = 20 ANGLE = 100.59 LABEL = ahw_node_68_20 }
+		ahw_spike_spawn_outer_node = { K = 21 ANGLE = 105.88 LABEL = ahw_node_68_21 }
+		ahw_spike_spawn_outer_node = { K = 22 ANGLE = 111.18 LABEL = ahw_node_68_22 }
+		ahw_spike_spawn_outer_node = { K = 23 ANGLE = 116.47 LABEL = ahw_node_68_23 }
+		ahw_spike_spawn_outer_node = { K = 24 ANGLE = 121.76 LABEL = ahw_node_68_24 }
+		ahw_spike_spawn_outer_node = { K = 25 ANGLE = 127.06 LABEL = ahw_node_68_25 }
+		ahw_spike_spawn_outer_node = { K = 26 ANGLE = 132.35 LABEL = ahw_node_68_26 }
+		ahw_spike_spawn_outer_node = { K = 27 ANGLE = 137.65 LABEL = ahw_node_68_27 }
+		ahw_spike_spawn_outer_node = { K = 28 ANGLE = 142.94 LABEL = ahw_node_68_28 }
+		ahw_spike_spawn_outer_node = { K = 29 ANGLE = 148.24 LABEL = ahw_node_68_29 }
+		ahw_spike_spawn_outer_node = { K = 30 ANGLE = 153.53 LABEL = ahw_node_68_30 }
+		ahw_spike_spawn_outer_node = { K = 31 ANGLE = 158.82 LABEL = ahw_node_68_31 }
+		ahw_spike_spawn_outer_node = { K = 32 ANGLE = 164.12 LABEL = ahw_node_68_32 }
+		ahw_spike_spawn_outer_node = { K = 33 ANGLE = 169.41 LABEL = ahw_node_68_33 }
+		ahw_spike_spawn_outer_node = { K = 34 ANGLE = 174.71 LABEL = ahw_node_68_34 }
+		ahw_spike_spawn_outer_node = { K = 35 ANGLE = 180.0 LABEL = ahw_node_68_35 }
+		ahw_spike_spawn_outer_node = { K = 36 ANGLE = 185.29 LABEL = ahw_node_68_36 }
+		ahw_spike_spawn_outer_node = { K = 37 ANGLE = 190.59 LABEL = ahw_node_68_37 }
+		ahw_spike_spawn_outer_node = { K = 38 ANGLE = 195.88 LABEL = ahw_node_68_38 }
+		ahw_spike_spawn_outer_node = { K = 39 ANGLE = 201.18 LABEL = ahw_node_68_39 }
+		ahw_spike_spawn_outer_node = { K = 40 ANGLE = 206.47 LABEL = ahw_node_68_40 }
+		ahw_spike_spawn_outer_node = { K = 41 ANGLE = 211.76 LABEL = ahw_node_68_41 }
+		ahw_spike_spawn_outer_node = { K = 42 ANGLE = 217.06 LABEL = ahw_node_68_42 }
+		ahw_spike_spawn_outer_node = { K = 43 ANGLE = 222.35 LABEL = ahw_node_68_43 }
+		ahw_spike_spawn_outer_node = { K = 44 ANGLE = 227.65 LABEL = ahw_node_68_44 }
+		ahw_spike_spawn_outer_node = { K = 45 ANGLE = 232.94 LABEL = ahw_node_68_45 }
+		ahw_spike_spawn_outer_node = { K = 46 ANGLE = 238.24 LABEL = ahw_node_68_46 }
+		ahw_spike_spawn_outer_node = { K = 47 ANGLE = 243.53 LABEL = ahw_node_68_47 }
+		ahw_spike_spawn_outer_node = { K = 48 ANGLE = 248.82 LABEL = ahw_node_68_48 }
+		ahw_spike_spawn_outer_node = { K = 49 ANGLE = 254.12 LABEL = ahw_node_68_49 }
+		ahw_spike_spawn_outer_node = { K = 50 ANGLE = 259.41 LABEL = ahw_node_68_50 }
+		ahw_spike_spawn_outer_node = { K = 51 ANGLE = 264.71 LABEL = ahw_node_68_51 }
+		ahw_spike_spawn_outer_node = { K = 52 ANGLE = 270.0 LABEL = ahw_node_68_52 }
+		ahw_spike_spawn_outer_node = { K = 53 ANGLE = 275.29 LABEL = ahw_node_68_53 }
+		ahw_spike_spawn_outer_node = { K = 54 ANGLE = 280.59 LABEL = ahw_node_68_54 }
+		ahw_spike_spawn_outer_node = { K = 55 ANGLE = 285.88 LABEL = ahw_node_68_55 }
+		ahw_spike_spawn_outer_node = { K = 56 ANGLE = 291.18 LABEL = ahw_node_68_56 }
+		ahw_spike_spawn_outer_node = { K = 57 ANGLE = 296.47 LABEL = ahw_node_68_57 }
+		ahw_spike_spawn_outer_node = { K = 58 ANGLE = 301.76 LABEL = ahw_node_68_58 }
+		ahw_spike_spawn_outer_node = { K = 59 ANGLE = 307.06 LABEL = ahw_node_68_59 }
+		ahw_spike_spawn_outer_node = { K = 60 ANGLE = 312.35 LABEL = ahw_node_68_60 }
+		ahw_spike_spawn_outer_node = { K = 61 ANGLE = 317.65 LABEL = ahw_node_68_61 }
+		ahw_spike_spawn_outer_node = { K = 62 ANGLE = 322.94 LABEL = ahw_node_68_62 }
+		ahw_spike_spawn_outer_node = { K = 63 ANGLE = 328.24 LABEL = ahw_node_68_63 }
+		ahw_spike_spawn_outer_node = { K = 64 ANGLE = 333.53 LABEL = ahw_node_68_64 }
+		ahw_spike_spawn_outer_node = { K = 65 ANGLE = 338.82 LABEL = ahw_node_68_65 }
+		ahw_spike_spawn_outer_node = { K = 66 ANGLE = 344.12 LABEL = ahw_node_68_66 }
+		ahw_spike_move_probe_to_node = { PROBE = ahw_probe_t K = 67 ANGLE = 349.41 LABEL = ahw_node_68_67 }
 		export_trigger_value_to_variable = { trigger = distance parameters = { source = event_target:ahw_ring_1 type = euclidean } variable = ahw_got_1 }
 		log = "AHW SPIKE node 1 at angle 0.0: edge \\[This.ahw_edge_1], wanted \\[This.ahw_rad_1], placed \\[This.ahw_got_1] from the centre"
 		event_target:ahw_ring_1 = {
@@ -9214,7 +9214,7 @@ ahw_spike_build_outer_ring_68 = {
 			multiply_variable = { which = ahw_y value = -0.1838 }
 			set_star_flag = ahw_xy
 		}
-		ahw_spike_move_probe_to_node = { PROBE = ahw_probe_a K = 68 ANGLE = 354.71 }
+		ahw_spike_move_probe_to_node = { PROBE = ahw_probe_a K = 68 ANGLE = 354.71 LABEL = ahw_node_68_68 }
 		event_target:ahw_ring_68 = {
 			set_variable = { which = ahw_x value = ahw_rad_68 }
 			multiply_variable = { which = ahw_x value = 0.9957 }
@@ -12499,85 +12499,85 @@ ahw_spike_build_outer_ring_80 = {
 			limit = { check_variable = { which = ahw_rad_1 value < ahw_t } }
 			set_variable = { which = ahw_rad_1 value = ahw_t }
 		}
-		ahw_spike_spawn_outer_node = { K = 1 ANGLE = 0.0 }
-		ahw_spike_spawn_outer_node = { K = 2 ANGLE = 4.5 }
-		ahw_spike_spawn_outer_node = { K = 3 ANGLE = 9.0 }
-		ahw_spike_spawn_outer_node = { K = 4 ANGLE = 13.5 }
-		ahw_spike_spawn_outer_node = { K = 5 ANGLE = 18.0 }
-		ahw_spike_spawn_outer_node = { K = 6 ANGLE = 22.5 }
-		ahw_spike_spawn_outer_node = { K = 7 ANGLE = 27.0 }
-		ahw_spike_spawn_outer_node = { K = 8 ANGLE = 31.5 }
-		ahw_spike_spawn_outer_node = { K = 9 ANGLE = 36.0 }
-		ahw_spike_spawn_outer_node = { K = 10 ANGLE = 40.5 }
-		ahw_spike_spawn_outer_node = { K = 11 ANGLE = 45.0 }
-		ahw_spike_spawn_outer_node = { K = 12 ANGLE = 49.5 }
-		ahw_spike_spawn_outer_node = { K = 13 ANGLE = 54.0 }
-		ahw_spike_spawn_outer_node = { K = 14 ANGLE = 58.5 }
-		ahw_spike_spawn_outer_node = { K = 15 ANGLE = 63.0 }
-		ahw_spike_spawn_outer_node = { K = 16 ANGLE = 67.5 }
-		ahw_spike_spawn_outer_node = { K = 17 ANGLE = 72.0 }
-		ahw_spike_spawn_outer_node = { K = 18 ANGLE = 76.5 }
-		ahw_spike_spawn_outer_node = { K = 19 ANGLE = 81.0 }
-		ahw_spike_spawn_outer_node = { K = 20 ANGLE = 85.5 }
-		ahw_spike_spawn_outer_node = { K = 21 ANGLE = 90.0 }
-		ahw_spike_spawn_outer_node = { K = 22 ANGLE = 94.5 }
-		ahw_spike_spawn_outer_node = { K = 23 ANGLE = 99.0 }
-		ahw_spike_spawn_outer_node = { K = 24 ANGLE = 103.5 }
-		ahw_spike_spawn_outer_node = { K = 25 ANGLE = 108.0 }
-		ahw_spike_spawn_outer_node = { K = 26 ANGLE = 112.5 }
-		ahw_spike_spawn_outer_node = { K = 27 ANGLE = 117.0 }
-		ahw_spike_spawn_outer_node = { K = 28 ANGLE = 121.5 }
-		ahw_spike_spawn_outer_node = { K = 29 ANGLE = 126.0 }
-		ahw_spike_spawn_outer_node = { K = 30 ANGLE = 130.5 }
-		ahw_spike_spawn_outer_node = { K = 31 ANGLE = 135.0 }
-		ahw_spike_spawn_outer_node = { K = 32 ANGLE = 139.5 }
-		ahw_spike_spawn_outer_node = { K = 33 ANGLE = 144.0 }
-		ahw_spike_spawn_outer_node = { K = 34 ANGLE = 148.5 }
-		ahw_spike_spawn_outer_node = { K = 35 ANGLE = 153.0 }
-		ahw_spike_spawn_outer_node = { K = 36 ANGLE = 157.5 }
-		ahw_spike_spawn_outer_node = { K = 37 ANGLE = 162.0 }
-		ahw_spike_spawn_outer_node = { K = 38 ANGLE = 166.5 }
-		ahw_spike_spawn_outer_node = { K = 39 ANGLE = 171.0 }
-		ahw_spike_spawn_outer_node = { K = 40 ANGLE = 175.5 }
-		ahw_spike_spawn_outer_node = { K = 41 ANGLE = 180.0 }
-		ahw_spike_spawn_outer_node = { K = 42 ANGLE = 184.5 }
-		ahw_spike_spawn_outer_node = { K = 43 ANGLE = 189.0 }
-		ahw_spike_spawn_outer_node = { K = 44 ANGLE = 193.5 }
-		ahw_spike_spawn_outer_node = { K = 45 ANGLE = 198.0 }
-		ahw_spike_spawn_outer_node = { K = 46 ANGLE = 202.5 }
-		ahw_spike_spawn_outer_node = { K = 47 ANGLE = 207.0 }
-		ahw_spike_spawn_outer_node = { K = 48 ANGLE = 211.5 }
-		ahw_spike_spawn_outer_node = { K = 49 ANGLE = 216.0 }
-		ahw_spike_spawn_outer_node = { K = 50 ANGLE = 220.5 }
-		ahw_spike_spawn_outer_node = { K = 51 ANGLE = 225.0 }
-		ahw_spike_spawn_outer_node = { K = 52 ANGLE = 229.5 }
-		ahw_spike_spawn_outer_node = { K = 53 ANGLE = 234.0 }
-		ahw_spike_spawn_outer_node = { K = 54 ANGLE = 238.5 }
-		ahw_spike_spawn_outer_node = { K = 55 ANGLE = 243.0 }
-		ahw_spike_spawn_outer_node = { K = 56 ANGLE = 247.5 }
-		ahw_spike_spawn_outer_node = { K = 57 ANGLE = 252.0 }
-		ahw_spike_spawn_outer_node = { K = 58 ANGLE = 256.5 }
-		ahw_spike_spawn_outer_node = { K = 59 ANGLE = 261.0 }
-		ahw_spike_spawn_outer_node = { K = 60 ANGLE = 265.5 }
-		ahw_spike_spawn_outer_node = { K = 61 ANGLE = 270.0 }
-		ahw_spike_spawn_outer_node = { K = 62 ANGLE = 274.5 }
-		ahw_spike_spawn_outer_node = { K = 63 ANGLE = 279.0 }
-		ahw_spike_spawn_outer_node = { K = 64 ANGLE = 283.5 }
-		ahw_spike_spawn_outer_node = { K = 65 ANGLE = 288.0 }
-		ahw_spike_spawn_outer_node = { K = 66 ANGLE = 292.5 }
-		ahw_spike_spawn_outer_node = { K = 67 ANGLE = 297.0 }
-		ahw_spike_spawn_outer_node = { K = 68 ANGLE = 301.5 }
-		ahw_spike_spawn_outer_node = { K = 69 ANGLE = 306.0 }
-		ahw_spike_spawn_outer_node = { K = 70 ANGLE = 310.5 }
-		ahw_spike_spawn_outer_node = { K = 71 ANGLE = 315.0 }
-		ahw_spike_spawn_outer_node = { K = 72 ANGLE = 319.5 }
-		ahw_spike_spawn_outer_node = { K = 73 ANGLE = 324.0 }
-		ahw_spike_spawn_outer_node = { K = 74 ANGLE = 328.5 }
-		ahw_spike_spawn_outer_node = { K = 75 ANGLE = 333.0 }
-		ahw_spike_spawn_outer_node = { K = 76 ANGLE = 337.5 }
-		ahw_spike_spawn_outer_node = { K = 77 ANGLE = 342.0 }
-		ahw_spike_spawn_outer_node = { K = 78 ANGLE = 346.5 }
-		ahw_spike_move_probe_to_node = { PROBE = ahw_probe_t K = 79 ANGLE = 351.0 }
+		ahw_spike_spawn_outer_node = { K = 1 ANGLE = 0.0 LABEL = ahw_node_80_1 }
+		ahw_spike_spawn_outer_node = { K = 2 ANGLE = 4.5 LABEL = ahw_node_80_2 }
+		ahw_spike_spawn_outer_node = { K = 3 ANGLE = 9.0 LABEL = ahw_node_80_3 }
+		ahw_spike_spawn_outer_node = { K = 4 ANGLE = 13.5 LABEL = ahw_node_80_4 }
+		ahw_spike_spawn_outer_node = { K = 5 ANGLE = 18.0 LABEL = ahw_node_80_5 }
+		ahw_spike_spawn_outer_node = { K = 6 ANGLE = 22.5 LABEL = ahw_node_80_6 }
+		ahw_spike_spawn_outer_node = { K = 7 ANGLE = 27.0 LABEL = ahw_node_80_7 }
+		ahw_spike_spawn_outer_node = { K = 8 ANGLE = 31.5 LABEL = ahw_node_80_8 }
+		ahw_spike_spawn_outer_node = { K = 9 ANGLE = 36.0 LABEL = ahw_node_80_9 }
+		ahw_spike_spawn_outer_node = { K = 10 ANGLE = 40.5 LABEL = ahw_node_80_10 }
+		ahw_spike_spawn_outer_node = { K = 11 ANGLE = 45.0 LABEL = ahw_node_80_11 }
+		ahw_spike_spawn_outer_node = { K = 12 ANGLE = 49.5 LABEL = ahw_node_80_12 }
+		ahw_spike_spawn_outer_node = { K = 13 ANGLE = 54.0 LABEL = ahw_node_80_13 }
+		ahw_spike_spawn_outer_node = { K = 14 ANGLE = 58.5 LABEL = ahw_node_80_14 }
+		ahw_spike_spawn_outer_node = { K = 15 ANGLE = 63.0 LABEL = ahw_node_80_15 }
+		ahw_spike_spawn_outer_node = { K = 16 ANGLE = 67.5 LABEL = ahw_node_80_16 }
+		ahw_spike_spawn_outer_node = { K = 17 ANGLE = 72.0 LABEL = ahw_node_80_17 }
+		ahw_spike_spawn_outer_node = { K = 18 ANGLE = 76.5 LABEL = ahw_node_80_18 }
+		ahw_spike_spawn_outer_node = { K = 19 ANGLE = 81.0 LABEL = ahw_node_80_19 }
+		ahw_spike_spawn_outer_node = { K = 20 ANGLE = 85.5 LABEL = ahw_node_80_20 }
+		ahw_spike_spawn_outer_node = { K = 21 ANGLE = 90.0 LABEL = ahw_node_80_21 }
+		ahw_spike_spawn_outer_node = { K = 22 ANGLE = 94.5 LABEL = ahw_node_80_22 }
+		ahw_spike_spawn_outer_node = { K = 23 ANGLE = 99.0 LABEL = ahw_node_80_23 }
+		ahw_spike_spawn_outer_node = { K = 24 ANGLE = 103.5 LABEL = ahw_node_80_24 }
+		ahw_spike_spawn_outer_node = { K = 25 ANGLE = 108.0 LABEL = ahw_node_80_25 }
+		ahw_spike_spawn_outer_node = { K = 26 ANGLE = 112.5 LABEL = ahw_node_80_26 }
+		ahw_spike_spawn_outer_node = { K = 27 ANGLE = 117.0 LABEL = ahw_node_80_27 }
+		ahw_spike_spawn_outer_node = { K = 28 ANGLE = 121.5 LABEL = ahw_node_80_28 }
+		ahw_spike_spawn_outer_node = { K = 29 ANGLE = 126.0 LABEL = ahw_node_80_29 }
+		ahw_spike_spawn_outer_node = { K = 30 ANGLE = 130.5 LABEL = ahw_node_80_30 }
+		ahw_spike_spawn_outer_node = { K = 31 ANGLE = 135.0 LABEL = ahw_node_80_31 }
+		ahw_spike_spawn_outer_node = { K = 32 ANGLE = 139.5 LABEL = ahw_node_80_32 }
+		ahw_spike_spawn_outer_node = { K = 33 ANGLE = 144.0 LABEL = ahw_node_80_33 }
+		ahw_spike_spawn_outer_node = { K = 34 ANGLE = 148.5 LABEL = ahw_node_80_34 }
+		ahw_spike_spawn_outer_node = { K = 35 ANGLE = 153.0 LABEL = ahw_node_80_35 }
+		ahw_spike_spawn_outer_node = { K = 36 ANGLE = 157.5 LABEL = ahw_node_80_36 }
+		ahw_spike_spawn_outer_node = { K = 37 ANGLE = 162.0 LABEL = ahw_node_80_37 }
+		ahw_spike_spawn_outer_node = { K = 38 ANGLE = 166.5 LABEL = ahw_node_80_38 }
+		ahw_spike_spawn_outer_node = { K = 39 ANGLE = 171.0 LABEL = ahw_node_80_39 }
+		ahw_spike_spawn_outer_node = { K = 40 ANGLE = 175.5 LABEL = ahw_node_80_40 }
+		ahw_spike_spawn_outer_node = { K = 41 ANGLE = 180.0 LABEL = ahw_node_80_41 }
+		ahw_spike_spawn_outer_node = { K = 42 ANGLE = 184.5 LABEL = ahw_node_80_42 }
+		ahw_spike_spawn_outer_node = { K = 43 ANGLE = 189.0 LABEL = ahw_node_80_43 }
+		ahw_spike_spawn_outer_node = { K = 44 ANGLE = 193.5 LABEL = ahw_node_80_44 }
+		ahw_spike_spawn_outer_node = { K = 45 ANGLE = 198.0 LABEL = ahw_node_80_45 }
+		ahw_spike_spawn_outer_node = { K = 46 ANGLE = 202.5 LABEL = ahw_node_80_46 }
+		ahw_spike_spawn_outer_node = { K = 47 ANGLE = 207.0 LABEL = ahw_node_80_47 }
+		ahw_spike_spawn_outer_node = { K = 48 ANGLE = 211.5 LABEL = ahw_node_80_48 }
+		ahw_spike_spawn_outer_node = { K = 49 ANGLE = 216.0 LABEL = ahw_node_80_49 }
+		ahw_spike_spawn_outer_node = { K = 50 ANGLE = 220.5 LABEL = ahw_node_80_50 }
+		ahw_spike_spawn_outer_node = { K = 51 ANGLE = 225.0 LABEL = ahw_node_80_51 }
+		ahw_spike_spawn_outer_node = { K = 52 ANGLE = 229.5 LABEL = ahw_node_80_52 }
+		ahw_spike_spawn_outer_node = { K = 53 ANGLE = 234.0 LABEL = ahw_node_80_53 }
+		ahw_spike_spawn_outer_node = { K = 54 ANGLE = 238.5 LABEL = ahw_node_80_54 }
+		ahw_spike_spawn_outer_node = { K = 55 ANGLE = 243.0 LABEL = ahw_node_80_55 }
+		ahw_spike_spawn_outer_node = { K = 56 ANGLE = 247.5 LABEL = ahw_node_80_56 }
+		ahw_spike_spawn_outer_node = { K = 57 ANGLE = 252.0 LABEL = ahw_node_80_57 }
+		ahw_spike_spawn_outer_node = { K = 58 ANGLE = 256.5 LABEL = ahw_node_80_58 }
+		ahw_spike_spawn_outer_node = { K = 59 ANGLE = 261.0 LABEL = ahw_node_80_59 }
+		ahw_spike_spawn_outer_node = { K = 60 ANGLE = 265.5 LABEL = ahw_node_80_60 }
+		ahw_spike_spawn_outer_node = { K = 61 ANGLE = 270.0 LABEL = ahw_node_80_61 }
+		ahw_spike_spawn_outer_node = { K = 62 ANGLE = 274.5 LABEL = ahw_node_80_62 }
+		ahw_spike_spawn_outer_node = { K = 63 ANGLE = 279.0 LABEL = ahw_node_80_63 }
+		ahw_spike_spawn_outer_node = { K = 64 ANGLE = 283.5 LABEL = ahw_node_80_64 }
+		ahw_spike_spawn_outer_node = { K = 65 ANGLE = 288.0 LABEL = ahw_node_80_65 }
+		ahw_spike_spawn_outer_node = { K = 66 ANGLE = 292.5 LABEL = ahw_node_80_66 }
+		ahw_spike_spawn_outer_node = { K = 67 ANGLE = 297.0 LABEL = ahw_node_80_67 }
+		ahw_spike_spawn_outer_node = { K = 68 ANGLE = 301.5 LABEL = ahw_node_80_68 }
+		ahw_spike_spawn_outer_node = { K = 69 ANGLE = 306.0 LABEL = ahw_node_80_69 }
+		ahw_spike_spawn_outer_node = { K = 70 ANGLE = 310.5 LABEL = ahw_node_80_70 }
+		ahw_spike_spawn_outer_node = { K = 71 ANGLE = 315.0 LABEL = ahw_node_80_71 }
+		ahw_spike_spawn_outer_node = { K = 72 ANGLE = 319.5 LABEL = ahw_node_80_72 }
+		ahw_spike_spawn_outer_node = { K = 73 ANGLE = 324.0 LABEL = ahw_node_80_73 }
+		ahw_spike_spawn_outer_node = { K = 74 ANGLE = 328.5 LABEL = ahw_node_80_74 }
+		ahw_spike_spawn_outer_node = { K = 75 ANGLE = 333.0 LABEL = ahw_node_80_75 }
+		ahw_spike_spawn_outer_node = { K = 76 ANGLE = 337.5 LABEL = ahw_node_80_76 }
+		ahw_spike_spawn_outer_node = { K = 77 ANGLE = 342.0 LABEL = ahw_node_80_77 }
+		ahw_spike_spawn_outer_node = { K = 78 ANGLE = 346.5 LABEL = ahw_node_80_78 }
+		ahw_spike_move_probe_to_node = { PROBE = ahw_probe_t K = 79 ANGLE = 351.0 LABEL = ahw_node_80_79 }
 		export_trigger_value_to_variable = { trigger = distance parameters = { source = event_target:ahw_ring_1 type = euclidean } variable = ahw_got_1 }
 		log = "AHW SPIKE node 1 at angle 0.0: edge \\[This.ahw_edge_1], wanted \\[This.ahw_rad_1], placed \\[This.ahw_got_1] from the centre"
 		event_target:ahw_ring_1 = {
@@ -13289,7 +13289,7 @@ ahw_spike_build_outer_ring_80 = {
 			multiply_variable = { which = ahw_y value = -0.1564 }
 			set_star_flag = ahw_xy
 		}
-		ahw_spike_move_probe_to_node = { PROBE = ahw_probe_a K = 80 ANGLE = 355.5 }
+		ahw_spike_move_probe_to_node = { PROBE = ahw_probe_a K = 80 ANGLE = 355.5 LABEL = ahw_node_80_80 }
 		event_target:ahw_ring_80 = {
 			set_variable = { which = ahw_x value = ahw_rad_80 }
 			multiply_variable = { which = ahw_x value = 0.9969 }
@@ -16910,93 +16910,93 @@ ahw_spike_build_outer_ring_88 = {
 			limit = { check_variable = { which = ahw_rad_1 value < ahw_t } }
 			set_variable = { which = ahw_rad_1 value = ahw_t }
 		}
-		ahw_spike_spawn_outer_node = { K = 1 ANGLE = 0.0 }
-		ahw_spike_spawn_outer_node = { K = 2 ANGLE = 4.09 }
-		ahw_spike_spawn_outer_node = { K = 3 ANGLE = 8.18 }
-		ahw_spike_spawn_outer_node = { K = 4 ANGLE = 12.27 }
-		ahw_spike_spawn_outer_node = { K = 5 ANGLE = 16.36 }
-		ahw_spike_spawn_outer_node = { K = 6 ANGLE = 20.45 }
-		ahw_spike_spawn_outer_node = { K = 7 ANGLE = 24.55 }
-		ahw_spike_spawn_outer_node = { K = 8 ANGLE = 28.64 }
-		ahw_spike_spawn_outer_node = { K = 9 ANGLE = 32.73 }
-		ahw_spike_spawn_outer_node = { K = 10 ANGLE = 36.82 }
-		ahw_spike_spawn_outer_node = { K = 11 ANGLE = 40.91 }
-		ahw_spike_spawn_outer_node = { K = 12 ANGLE = 45.0 }
-		ahw_spike_spawn_outer_node = { K = 13 ANGLE = 49.09 }
-		ahw_spike_spawn_outer_node = { K = 14 ANGLE = 53.18 }
-		ahw_spike_spawn_outer_node = { K = 15 ANGLE = 57.27 }
-		ahw_spike_spawn_outer_node = { K = 16 ANGLE = 61.36 }
-		ahw_spike_spawn_outer_node = { K = 17 ANGLE = 65.45 }
-		ahw_spike_spawn_outer_node = { K = 18 ANGLE = 69.55 }
-		ahw_spike_spawn_outer_node = { K = 19 ANGLE = 73.64 }
-		ahw_spike_spawn_outer_node = { K = 20 ANGLE = 77.73 }
-		ahw_spike_spawn_outer_node = { K = 21 ANGLE = 81.82 }
-		ahw_spike_spawn_outer_node = { K = 22 ANGLE = 85.91 }
-		ahw_spike_spawn_outer_node = { K = 23 ANGLE = 90.0 }
-		ahw_spike_spawn_outer_node = { K = 24 ANGLE = 94.09 }
-		ahw_spike_spawn_outer_node = { K = 25 ANGLE = 98.18 }
-		ahw_spike_spawn_outer_node = { K = 26 ANGLE = 102.27 }
-		ahw_spike_spawn_outer_node = { K = 27 ANGLE = 106.36 }
-		ahw_spike_spawn_outer_node = { K = 28 ANGLE = 110.45 }
-		ahw_spike_spawn_outer_node = { K = 29 ANGLE = 114.55 }
-		ahw_spike_spawn_outer_node = { K = 30 ANGLE = 118.64 }
-		ahw_spike_spawn_outer_node = { K = 31 ANGLE = 122.73 }
-		ahw_spike_spawn_outer_node = { K = 32 ANGLE = 126.82 }
-		ahw_spike_spawn_outer_node = { K = 33 ANGLE = 130.91 }
-		ahw_spike_spawn_outer_node = { K = 34 ANGLE = 135.0 }
-		ahw_spike_spawn_outer_node = { K = 35 ANGLE = 139.09 }
-		ahw_spike_spawn_outer_node = { K = 36 ANGLE = 143.18 }
-		ahw_spike_spawn_outer_node = { K = 37 ANGLE = 147.27 }
-		ahw_spike_spawn_outer_node = { K = 38 ANGLE = 151.36 }
-		ahw_spike_spawn_outer_node = { K = 39 ANGLE = 155.45 }
-		ahw_spike_spawn_outer_node = { K = 40 ANGLE = 159.55 }
-		ahw_spike_spawn_outer_node = { K = 41 ANGLE = 163.64 }
-		ahw_spike_spawn_outer_node = { K = 42 ANGLE = 167.73 }
-		ahw_spike_spawn_outer_node = { K = 43 ANGLE = 171.82 }
-		ahw_spike_spawn_outer_node = { K = 44 ANGLE = 175.91 }
-		ahw_spike_spawn_outer_node = { K = 45 ANGLE = 180.0 }
-		ahw_spike_spawn_outer_node = { K = 46 ANGLE = 184.09 }
-		ahw_spike_spawn_outer_node = { K = 47 ANGLE = 188.18 }
-		ahw_spike_spawn_outer_node = { K = 48 ANGLE = 192.27 }
-		ahw_spike_spawn_outer_node = { K = 49 ANGLE = 196.36 }
-		ahw_spike_spawn_outer_node = { K = 50 ANGLE = 200.45 }
-		ahw_spike_spawn_outer_node = { K = 51 ANGLE = 204.55 }
-		ahw_spike_spawn_outer_node = { K = 52 ANGLE = 208.64 }
-		ahw_spike_spawn_outer_node = { K = 53 ANGLE = 212.73 }
-		ahw_spike_spawn_outer_node = { K = 54 ANGLE = 216.82 }
-		ahw_spike_spawn_outer_node = { K = 55 ANGLE = 220.91 }
-		ahw_spike_spawn_outer_node = { K = 56 ANGLE = 225.0 }
-		ahw_spike_spawn_outer_node = { K = 57 ANGLE = 229.09 }
-		ahw_spike_spawn_outer_node = { K = 58 ANGLE = 233.18 }
-		ahw_spike_spawn_outer_node = { K = 59 ANGLE = 237.27 }
-		ahw_spike_spawn_outer_node = { K = 60 ANGLE = 241.36 }
-		ahw_spike_spawn_outer_node = { K = 61 ANGLE = 245.45 }
-		ahw_spike_spawn_outer_node = { K = 62 ANGLE = 249.55 }
-		ahw_spike_spawn_outer_node = { K = 63 ANGLE = 253.64 }
-		ahw_spike_spawn_outer_node = { K = 64 ANGLE = 257.73 }
-		ahw_spike_spawn_outer_node = { K = 65 ANGLE = 261.82 }
-		ahw_spike_spawn_outer_node = { K = 66 ANGLE = 265.91 }
-		ahw_spike_spawn_outer_node = { K = 67 ANGLE = 270.0 }
-		ahw_spike_spawn_outer_node = { K = 68 ANGLE = 274.09 }
-		ahw_spike_spawn_outer_node = { K = 69 ANGLE = 278.18 }
-		ahw_spike_spawn_outer_node = { K = 70 ANGLE = 282.27 }
-		ahw_spike_spawn_outer_node = { K = 71 ANGLE = 286.36 }
-		ahw_spike_spawn_outer_node = { K = 72 ANGLE = 290.45 }
-		ahw_spike_spawn_outer_node = { K = 73 ANGLE = 294.55 }
-		ahw_spike_spawn_outer_node = { K = 74 ANGLE = 298.64 }
-		ahw_spike_spawn_outer_node = { K = 75 ANGLE = 302.73 }
-		ahw_spike_spawn_outer_node = { K = 76 ANGLE = 306.82 }
-		ahw_spike_spawn_outer_node = { K = 77 ANGLE = 310.91 }
-		ahw_spike_spawn_outer_node = { K = 78 ANGLE = 315.0 }
-		ahw_spike_spawn_outer_node = { K = 79 ANGLE = 319.09 }
-		ahw_spike_spawn_outer_node = { K = 80 ANGLE = 323.18 }
-		ahw_spike_spawn_outer_node = { K = 81 ANGLE = 327.27 }
-		ahw_spike_spawn_outer_node = { K = 82 ANGLE = 331.36 }
-		ahw_spike_spawn_outer_node = { K = 83 ANGLE = 335.45 }
-		ahw_spike_spawn_outer_node = { K = 84 ANGLE = 339.55 }
-		ahw_spike_spawn_outer_node = { K = 85 ANGLE = 343.64 }
-		ahw_spike_spawn_outer_node = { K = 86 ANGLE = 347.73 }
-		ahw_spike_move_probe_to_node = { PROBE = ahw_probe_t K = 87 ANGLE = 351.82 }
+		ahw_spike_spawn_outer_node = { K = 1 ANGLE = 0.0 LABEL = ahw_node_88_1 }
+		ahw_spike_spawn_outer_node = { K = 2 ANGLE = 4.09 LABEL = ahw_node_88_2 }
+		ahw_spike_spawn_outer_node = { K = 3 ANGLE = 8.18 LABEL = ahw_node_88_3 }
+		ahw_spike_spawn_outer_node = { K = 4 ANGLE = 12.27 LABEL = ahw_node_88_4 }
+		ahw_spike_spawn_outer_node = { K = 5 ANGLE = 16.36 LABEL = ahw_node_88_5 }
+		ahw_spike_spawn_outer_node = { K = 6 ANGLE = 20.45 LABEL = ahw_node_88_6 }
+		ahw_spike_spawn_outer_node = { K = 7 ANGLE = 24.55 LABEL = ahw_node_88_7 }
+		ahw_spike_spawn_outer_node = { K = 8 ANGLE = 28.64 LABEL = ahw_node_88_8 }
+		ahw_spike_spawn_outer_node = { K = 9 ANGLE = 32.73 LABEL = ahw_node_88_9 }
+		ahw_spike_spawn_outer_node = { K = 10 ANGLE = 36.82 LABEL = ahw_node_88_10 }
+		ahw_spike_spawn_outer_node = { K = 11 ANGLE = 40.91 LABEL = ahw_node_88_11 }
+		ahw_spike_spawn_outer_node = { K = 12 ANGLE = 45.0 LABEL = ahw_node_88_12 }
+		ahw_spike_spawn_outer_node = { K = 13 ANGLE = 49.09 LABEL = ahw_node_88_13 }
+		ahw_spike_spawn_outer_node = { K = 14 ANGLE = 53.18 LABEL = ahw_node_88_14 }
+		ahw_spike_spawn_outer_node = { K = 15 ANGLE = 57.27 LABEL = ahw_node_88_15 }
+		ahw_spike_spawn_outer_node = { K = 16 ANGLE = 61.36 LABEL = ahw_node_88_16 }
+		ahw_spike_spawn_outer_node = { K = 17 ANGLE = 65.45 LABEL = ahw_node_88_17 }
+		ahw_spike_spawn_outer_node = { K = 18 ANGLE = 69.55 LABEL = ahw_node_88_18 }
+		ahw_spike_spawn_outer_node = { K = 19 ANGLE = 73.64 LABEL = ahw_node_88_19 }
+		ahw_spike_spawn_outer_node = { K = 20 ANGLE = 77.73 LABEL = ahw_node_88_20 }
+		ahw_spike_spawn_outer_node = { K = 21 ANGLE = 81.82 LABEL = ahw_node_88_21 }
+		ahw_spike_spawn_outer_node = { K = 22 ANGLE = 85.91 LABEL = ahw_node_88_22 }
+		ahw_spike_spawn_outer_node = { K = 23 ANGLE = 90.0 LABEL = ahw_node_88_23 }
+		ahw_spike_spawn_outer_node = { K = 24 ANGLE = 94.09 LABEL = ahw_node_88_24 }
+		ahw_spike_spawn_outer_node = { K = 25 ANGLE = 98.18 LABEL = ahw_node_88_25 }
+		ahw_spike_spawn_outer_node = { K = 26 ANGLE = 102.27 LABEL = ahw_node_88_26 }
+		ahw_spike_spawn_outer_node = { K = 27 ANGLE = 106.36 LABEL = ahw_node_88_27 }
+		ahw_spike_spawn_outer_node = { K = 28 ANGLE = 110.45 LABEL = ahw_node_88_28 }
+		ahw_spike_spawn_outer_node = { K = 29 ANGLE = 114.55 LABEL = ahw_node_88_29 }
+		ahw_spike_spawn_outer_node = { K = 30 ANGLE = 118.64 LABEL = ahw_node_88_30 }
+		ahw_spike_spawn_outer_node = { K = 31 ANGLE = 122.73 LABEL = ahw_node_88_31 }
+		ahw_spike_spawn_outer_node = { K = 32 ANGLE = 126.82 LABEL = ahw_node_88_32 }
+		ahw_spike_spawn_outer_node = { K = 33 ANGLE = 130.91 LABEL = ahw_node_88_33 }
+		ahw_spike_spawn_outer_node = { K = 34 ANGLE = 135.0 LABEL = ahw_node_88_34 }
+		ahw_spike_spawn_outer_node = { K = 35 ANGLE = 139.09 LABEL = ahw_node_88_35 }
+		ahw_spike_spawn_outer_node = { K = 36 ANGLE = 143.18 LABEL = ahw_node_88_36 }
+		ahw_spike_spawn_outer_node = { K = 37 ANGLE = 147.27 LABEL = ahw_node_88_37 }
+		ahw_spike_spawn_outer_node = { K = 38 ANGLE = 151.36 LABEL = ahw_node_88_38 }
+		ahw_spike_spawn_outer_node = { K = 39 ANGLE = 155.45 LABEL = ahw_node_88_39 }
+		ahw_spike_spawn_outer_node = { K = 40 ANGLE = 159.55 LABEL = ahw_node_88_40 }
+		ahw_spike_spawn_outer_node = { K = 41 ANGLE = 163.64 LABEL = ahw_node_88_41 }
+		ahw_spike_spawn_outer_node = { K = 42 ANGLE = 167.73 LABEL = ahw_node_88_42 }
+		ahw_spike_spawn_outer_node = { K = 43 ANGLE = 171.82 LABEL = ahw_node_88_43 }
+		ahw_spike_spawn_outer_node = { K = 44 ANGLE = 175.91 LABEL = ahw_node_88_44 }
+		ahw_spike_spawn_outer_node = { K = 45 ANGLE = 180.0 LABEL = ahw_node_88_45 }
+		ahw_spike_spawn_outer_node = { K = 46 ANGLE = 184.09 LABEL = ahw_node_88_46 }
+		ahw_spike_spawn_outer_node = { K = 47 ANGLE = 188.18 LABEL = ahw_node_88_47 }
+		ahw_spike_spawn_outer_node = { K = 48 ANGLE = 192.27 LABEL = ahw_node_88_48 }
+		ahw_spike_spawn_outer_node = { K = 49 ANGLE = 196.36 LABEL = ahw_node_88_49 }
+		ahw_spike_spawn_outer_node = { K = 50 ANGLE = 200.45 LABEL = ahw_node_88_50 }
+		ahw_spike_spawn_outer_node = { K = 51 ANGLE = 204.55 LABEL = ahw_node_88_51 }
+		ahw_spike_spawn_outer_node = { K = 52 ANGLE = 208.64 LABEL = ahw_node_88_52 }
+		ahw_spike_spawn_outer_node = { K = 53 ANGLE = 212.73 LABEL = ahw_node_88_53 }
+		ahw_spike_spawn_outer_node = { K = 54 ANGLE = 216.82 LABEL = ahw_node_88_54 }
+		ahw_spike_spawn_outer_node = { K = 55 ANGLE = 220.91 LABEL = ahw_node_88_55 }
+		ahw_spike_spawn_outer_node = { K = 56 ANGLE = 225.0 LABEL = ahw_node_88_56 }
+		ahw_spike_spawn_outer_node = { K = 57 ANGLE = 229.09 LABEL = ahw_node_88_57 }
+		ahw_spike_spawn_outer_node = { K = 58 ANGLE = 233.18 LABEL = ahw_node_88_58 }
+		ahw_spike_spawn_outer_node = { K = 59 ANGLE = 237.27 LABEL = ahw_node_88_59 }
+		ahw_spike_spawn_outer_node = { K = 60 ANGLE = 241.36 LABEL = ahw_node_88_60 }
+		ahw_spike_spawn_outer_node = { K = 61 ANGLE = 245.45 LABEL = ahw_node_88_61 }
+		ahw_spike_spawn_outer_node = { K = 62 ANGLE = 249.55 LABEL = ahw_node_88_62 }
+		ahw_spike_spawn_outer_node = { K = 63 ANGLE = 253.64 LABEL = ahw_node_88_63 }
+		ahw_spike_spawn_outer_node = { K = 64 ANGLE = 257.73 LABEL = ahw_node_88_64 }
+		ahw_spike_spawn_outer_node = { K = 65 ANGLE = 261.82 LABEL = ahw_node_88_65 }
+		ahw_spike_spawn_outer_node = { K = 66 ANGLE = 265.91 LABEL = ahw_node_88_66 }
+		ahw_spike_spawn_outer_node = { K = 67 ANGLE = 270.0 LABEL = ahw_node_88_67 }
+		ahw_spike_spawn_outer_node = { K = 68 ANGLE = 274.09 LABEL = ahw_node_88_68 }
+		ahw_spike_spawn_outer_node = { K = 69 ANGLE = 278.18 LABEL = ahw_node_88_69 }
+		ahw_spike_spawn_outer_node = { K = 70 ANGLE = 282.27 LABEL = ahw_node_88_70 }
+		ahw_spike_spawn_outer_node = { K = 71 ANGLE = 286.36 LABEL = ahw_node_88_71 }
+		ahw_spike_spawn_outer_node = { K = 72 ANGLE = 290.45 LABEL = ahw_node_88_72 }
+		ahw_spike_spawn_outer_node = { K = 73 ANGLE = 294.55 LABEL = ahw_node_88_73 }
+		ahw_spike_spawn_outer_node = { K = 74 ANGLE = 298.64 LABEL = ahw_node_88_74 }
+		ahw_spike_spawn_outer_node = { K = 75 ANGLE = 302.73 LABEL = ahw_node_88_75 }
+		ahw_spike_spawn_outer_node = { K = 76 ANGLE = 306.82 LABEL = ahw_node_88_76 }
+		ahw_spike_spawn_outer_node = { K = 77 ANGLE = 310.91 LABEL = ahw_node_88_77 }
+		ahw_spike_spawn_outer_node = { K = 78 ANGLE = 315.0 LABEL = ahw_node_88_78 }
+		ahw_spike_spawn_outer_node = { K = 79 ANGLE = 319.09 LABEL = ahw_node_88_79 }
+		ahw_spike_spawn_outer_node = { K = 80 ANGLE = 323.18 LABEL = ahw_node_88_80 }
+		ahw_spike_spawn_outer_node = { K = 81 ANGLE = 327.27 LABEL = ahw_node_88_81 }
+		ahw_spike_spawn_outer_node = { K = 82 ANGLE = 331.36 LABEL = ahw_node_88_82 }
+		ahw_spike_spawn_outer_node = { K = 83 ANGLE = 335.45 LABEL = ahw_node_88_83 }
+		ahw_spike_spawn_outer_node = { K = 84 ANGLE = 339.55 LABEL = ahw_node_88_84 }
+		ahw_spike_spawn_outer_node = { K = 85 ANGLE = 343.64 LABEL = ahw_node_88_85 }
+		ahw_spike_spawn_outer_node = { K = 86 ANGLE = 347.73 LABEL = ahw_node_88_86 }
+		ahw_spike_move_probe_to_node = { PROBE = ahw_probe_t K = 87 ANGLE = 351.82 LABEL = ahw_node_88_87 }
 		export_trigger_value_to_variable = { trigger = distance parameters = { source = event_target:ahw_ring_1 type = euclidean } variable = ahw_got_1 }
 		log = "AHW SPIKE node 1 at angle 0.0: edge \\[This.ahw_edge_1], wanted \\[This.ahw_rad_1], placed \\[This.ahw_got_1] from the centre"
 		event_target:ahw_ring_1 = {
@@ -17780,7 +17780,7 @@ ahw_spike_build_outer_ring_88 = {
 			multiply_variable = { which = ahw_y value = -0.1423 }
 			set_star_flag = ahw_xy
 		}
-		ahw_spike_move_probe_to_node = { PROBE = ahw_probe_a K = 88 ANGLE = 355.91 }
+		ahw_spike_move_probe_to_node = { PROBE = ahw_probe_a K = 88 ANGLE = 355.91 LABEL = ahw_node_88_88 }
 		event_target:ahw_ring_88 = {
 			set_variable = { which = ahw_x value = ahw_rad_88 }
 			multiply_variable = { which = ahw_x value = 0.9975 }

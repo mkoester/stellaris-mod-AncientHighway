@@ -1,4 +1,4 @@
-# SPIKE (Phase 0, 0.0.21): the outer ring round the galaxy, and a portal for every regular empire.
+# SPIKE (Phase 0, 0.0.22): the outer ring round the galaxy, and a portal for every regular empire.
 # ahw_spike.10 runs by itself at game start (common/on_actions/ahw_spike_on_actions.txt) and
 # fires the window ahw_spike.1 for the human player.
 # Console, with nothing selected (Esc) - see AGENTS.md, "Status":
@@ -228,7 +228,8 @@ country_event = {
 			# owner only); a sealed gate stays locked for the current owner (renewed, so it also
 			# follows a change of hands).
 			every_system_megastructure = {
-				limit = { NOT = { owner = { is_same_value = root } } }
+				# 0.0.22: an unowned gate has no owner scope (run 20: "Invalid context switch [owner]").
+				limit = { OR = { NOT = { exists = owner } NOT = { owner = { is_same_value = root } } } }
 				set_owner = root
 				log = "AHW SPIKE [Root.GetName] now owns the gate in [Prev.GetName]"
 			}
@@ -322,5 +323,18 @@ ship_event = {
 			every_system_megastructure = { set_owner = event_target:ahw_repairer }
 		}
 		solar_system = { log = "AHW SPIKE entry point in [This.GetName] repaired by [Root.Owner.GetName]" }
+	}
+}
+
+# 0.0.22 (run 20: two days after Open, the report still showed our pair LOCKED). Logs when the game
+# lets a bypass lock expire (on_dimensional_lock_expired, this = bypass) - does it fire for our
+# lock_bypass locks at all, and when?
+bypass_event = {
+	id = ahw_spike.24
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		log = "AHW SPIKE a bypass lock expired"
+		solar_system = { log = "AHW SPIKE   ... in [This.GetName]" }
 	}
 }

@@ -23,9 +23,9 @@ level. Prefix every key, id, flag and variable with `ahw_`. Tested in game on Li
 
 ---
 
-## Status (2026-11-05): spike runs 1–18 done (4.5.3 live); `0.0.21-SPIKE` (run 20: the Open/Sealed switch, portal names) not yet run
+## Status (2026-11-05): spike runs 1–20 done (4.5.3 live); `0.0.22-SPIKE` (run 21: node names, when a lock expires) not yet run
 
-**Next session: run 20** (steps below), then the rest of the open list (the ring's exact
+**Next session: run 21** (steps below), then the rest of the open list (the ring's exact
 speed is parked — user, 2026-11-04: "not too important to me now"). Everything is still the
 spike (`*spike*` files); nothing is shippable yet.
 
@@ -58,23 +58,25 @@ placement and the shortcut do not.
    the asteroid at orbit 270, ~1.5× slower than without. The like-for-like yardstick — a quarter
    lap by hyperlanes at mid radius vs. the same via the ring — is still unmeasured; tune the
    asteroid's orbit (or the node count) from it.
-2. **Sealing** (built, `0.0.20-SPIKE`; user, 2026-11-04: only the owner, both ways, independent
+2. **Sealing** (built, `0.0.20-SPIKE`; run 20: the Seal tab shows and Sealed locks both ends;
+   **after Open the lock was still reported two days later** — run 21 logs when it expires; user, 2026-11-04: only the owner, both ways, independent
    of the astral action, an action on the gate): the gate megastructure has two overclock modes,
    `ahw_spike_gate_open` / `ahw_spike_gate_sealed` (tab renamed "Seal", 30-day cooldown, sealing
    costs 25 influence). Sealed locks both ends of the pair for the gate's owner (`lock_bypass`,
    36000 days); Open re-locks them for 1 day. The gate belongs to the anchor's owner (set on
    repair and by the monthly check, which also renews a seal for the current owner). The vanilla
    lock order no longer applies: the `can_lock_bypass` override is gone (0.0.19's mirroring of
-   vanilla locks was never committed). Unknown: does the mode tab show for an owned megastructure
-   in a system nobody owns? Run 18 found the facts behind it: a lock stops only ships *entering*
+   vanilla locks was never committed). Run 18 found the facts behind it: a lock stops only ships *entering*
    that end (a gate lock let our ship back in from the ring), and a new lock replaces the old one.
 3. **Portal names** (built, `0.0.21-SPIKE`): "Highway Portal" for all made them indistinguishable
    in the outliner and the log (run 18: identical log lines are dropped, so the report lost most
    portals). Now named after the reach their exit node lies in, plus an octal address: the
    reach's digit, then the portal's number in that reach (`Caedris 23`; `tools/gen_spike.py`,
-   `REACHES`; lore: `docs/lore.md`, "built for the Fallen Empires, kept by the Caretakers"). Unknown: does `set_name` with a key
-   show on a system spawned with an initializer name (the ring nodes are named in the spawn's own
-   effect)?
+   `REACHES`; lore: `docs/lore.md`, "built for the Fallen Empires, kept by the Caretakers"). Run 20:
+   distinct in the outliner and the log, but the **system view's label still says "Highway
+   Portal"** (renamed after the spawn; does a save and reload fix it?). **Ring nodes**
+   (`0.0.22-SPIKE`): `<reach> Node <octal number in the reach, from 0>` (Ashkara Node 0 …
+   Hethra Node 6 on a small galaxy), named in the spawn's own effect.
 4. **AI**: does it path through, study, repair, lock, close?
 5. Galaxy shapes beyond small elliptical, and large/huge sizes (32 pairs, performance).
 6. Labels/menus: built at game start they show; ring-side gates need sight (a usable entry point)
@@ -83,7 +85,7 @@ placement and the shortcut do not.
    Ancient Caretakers, the Militant Isolationists); the Caretaker node, guardians and the
    phase-2 reactions are open.
 
-### The spike (`0.0.18-SPIKE`): what it does, how to run it
+### The spike (`0.0.22-SPIKE`): what it does, how to run it
 
 **Generated parts: `tools/gen_spike.py`** writes the bypass types (32 entry pairs; the
 shortcut is gone), their megastructures, outliner icons, texts, and the outline measurement, the
@@ -141,24 +143,21 @@ next game, so give a console line for the running one when needed.
 `tools/check_script.py $(find ancient_highway -name '*.txt' -o -name '*.gfx')` and
 `tools/check_refs.py ancient_highway` (every used name defined, every text and icon present).
 
-**Test, run 20** (in plain words for the user; Linux, only this mod, a new campaign, small
+**Test, run 21** (in plain words for the user; Linux, only this mod, a new campaign, small
 elliptical, AI empires on, console on):
 
-1. Get the gate repaired as in run 18: `event ahw_spike.6` (an outpost on the system your portal
-   hangs off), `event ahw_spike.7`, send the science ship, `event ahw_spike.8` (the tech),
-   `event ahw_spike.7` again, accept the offer (`resource alloys 1000` if short), send the
-   construction ship.
-2. When it is done, click the gate in your portal: does its window have a tab **"Seal"** with
-   two modes, Open and Sealed? Screenshot it.
-3. Choose **Sealed**. A day later: can your science ship still go through, both ways? (It
-   should.) The log will say "SEALED".
-4. Another empire's ship would be the real test, and none is at the gate. So instead: the report
-   (`event ahw_spike.2`) should list our portal and its exit node as LOCKED.
-5. Wait out the cooldown (30 days), choose **Open**, let two days pass: the report should show no
-   lock.
-6. Portal names: in the outliner and the report, does every portal have its own name, such as
-   "Caedris 23", instead of "Highway Portal"? Does the first digit match the name (Ashkara 0,
-   Belun 1, Caedris 2, Dovhar 3, Eshmet 4, Furon 5, Galvaas 6, Hethra 7)?
+1. **Node names**: open the galaxy map and look at the ring round the outside. The ring's systems
+   should be called "Ashkara Node 0", "Ashkara Node 1", … "Hethra Node 6" instead of "Highway
+   Node 1" … 56. Screenshot a stretch where two names meet (e.g. Ashkara Node 6 next to Belun
+   Node 0).
+2. **Portal label**: look at your portal in the system view: does its label say its name (e.g.
+   "Ashkara 01") or still "Highway Portal"? Save, load that save, look again. Screenshot both.
+3. Repair your gate as in run 20 (`event ahw_spike.6`, `event ahw_spike.7`, science ship,
+   `event ahw_spike.8`, `event ahw_spike.7`, accept, construction ship).
+4. Choose **Sealed**. While sealed: send your science ship into the ring and back out. Does it
+   get through both ways?
+5. After the 30 days, choose **Open**. Then `event ahw_spike.2` after two days, and again on the
+   2nd of the next month. Note the dates. Did a message about an expired lock pop up?
 
 Copy `logs/game.log` and `logs/error.log` before restarting the game.
 
@@ -551,6 +550,27 @@ lock order work.** No screenshots; the user: "everything worked as expected".
 - AI empires had not studied their portals by 20:06 (their anchors unowned; ~a year in).
 - error.log: nothing new.
 
+**Run 20 (2026-11-05, `0.0.21-SPIKE`, small elliptical, ten empires): the Seal switch and
+portal names work; a lock outlived Open.** Screenshots `2026_11_05_1`–`_3` (the game's folder).
+- **The tech shows after the study** (`_1`, 2200.11.01: "SPIKE: Highway Entry Points" among the
+  physics options): `add_research_option` in the study event works.
+- **The Seal tab shows** for our gate in a system nobody owns (`_3`): Open / Sealed, 25 influence
+  to switch, the tooltip text. Sealed on 2201.3.17 (log "SEALED"); the report on 2201.5.16 lists
+  our portal as LOCKED.
+- **After Open (2201.5.16) the report on 5.18 still shows LOCKED.** Open re-locks for 1 day; that
+  lock had not visibly expired after two. Run 18 never proved expiry either: it re-locked *for
+  us*, and our ships pass our own lock. Unknown whether the game expires locks only on some
+  later tick, or whether `has_lock` stays true. `0.0.22-SPIKE` logs `on_dimensional_lock_expired`
+  (`ahw_spike.24`). Our ship's passage while sealed was not recorded in the log.
+- **Portal names**: the report lists all ten portals under their own names (Furon 51, Dovhar 32,
+  Ashkara 02, Caedris 22, Dovhar 31, Caedris 21, Belun 12, Eshmet 41, Belun 11, Ashkara 01 for
+  ours). The reach digit matches the exit node (ours: Highway Node 7 → reach 0; node 12 → Belun).
+  Outliner and the bottom bar say "Ashkara 01"; **the system view's label still says "Highway
+  Portal"** (`_2`, `_3`). The gate's order "Travel to Highway Node 7": nodes were not renamed yet.
+- error.log: the monthly check's `owner = { … }` on an unowned gate errors ("Invalid context
+  switch [owner]", ×3, logged as "now owns the gate" each time) → guarded in `0.0.22-SPIKE`.
+  Otherwise only the expected missing icons.
+
 Expected noise in `error.log`: a missing icon for `ahw_tech_spike` and missing portraits. Anything
 naming an `ahw_` key otherwise is a finding. Record the findings here and in
 `../stellaris-modding-insights` (proposed, not silently); delete the spike files once Phase 1 starts.
@@ -613,7 +633,7 @@ ring gets relays, how the shortcut count scales, lore (`docs/lore.md`).
 
 ## Plan
 
-- **Phase 0 — spike**: runs 1–18 done (see "Status").
+- **Phase 0 — spike**: runs 1–20 done (see "Status").
 - **Phase 1** — the real mod from the spike's findings (drop the `*spike*` files, keep the
   generator): game-start generation for all sizes and shapes, entry-point lifecycle (study →
   research → repair → use), locking portals, localisation.

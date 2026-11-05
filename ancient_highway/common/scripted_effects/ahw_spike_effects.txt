@@ -2,7 +2,7 @@
 # In effects with parameters, "[" in a log string must be written "\\[" (run 1).
 # A $PARAM$ next to "\\[" comes out mangled (run 2), so parameters go last in each log line.
 
-# One ring node $NAME$, $R$ from the scope (no scope: the galaxy's origin?), direction $ANGLE$.
+# One ring node (event target $NAME$, named $LABEL$), $R$ from the scope (no scope: the galaxy's origin?), direction $ANGLE$.
 ahw_spike_spawn_ring_node = {
 	spawn_system = {
 		min_distance = $R$
@@ -16,7 +16,7 @@ ahw_spike_spawn_ring_node = {
 		effect = {
 			set_star_flag = ahw_ring
 			set_star_flag = ahw_unclaimable
-			set_name = $NAME$
+			set_name = $LABEL$
 			save_global_event_target_as = $NAME$
 		}
 	}

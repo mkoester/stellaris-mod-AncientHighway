@@ -334,6 +334,8 @@ def gen_loc():
         lines += [f' {key}:0 "{name}"', f' {key}_DESC:0 "SPIKE: {desc}"',
                   f' {key}_MEGASTRUCTURE_DETAILS:0 "SPIKE: {desc}"']
     lines += [f' ahw_ring_{i}:0 "Highway Node {i}"' for i in range(1, MAX_NODES + 1)]
+    for n in sorted(set(NODES.values())):
+        lines += [f' {node_labels(n)[k]}:0 "{name}"' for k, name in node_names(n).items()]
     lines += [f' ahw_portal_{r}_{s}:0 "{portal_label(r, s)}"' for r in range(len(REACHES)) for s in range(1, PAIRS + 1)]
     return '\n'.join(lines) + '\n'
 
@@ -405,11 +407,30 @@ def node_xy(node, radius, a):
 		}}'''
 
 
+def ring_nodes(n):
+    """[(k, angle)] for nodes 1..n, evenly round the ring from angle 0."""
+    return list(enumerate([round(360 * k / n, 2) for k in range(n)], 1))
+
+
+def node_names(n):
+    """Node k -> its display name: the reach, then the node's number in that reach in octal,
+    counted from 0 (Ashkara Node 0, ..., Belun Node 0, ...)."""
+    names, seen = {}, {}
+    for k, a in ring_nodes(n):
+        r = int(a // REACH_DEG)
+        names[k] = f'{REACHES[r]} Node {seen.get(r, 0):o}'
+        seen[r] = seen.get(r, 0) + 1
+    return names
+
+
+def node_labels(n):
+    return {k: f'ahw_node_{n}_{k}' for k, _ in ring_nodes(n)}
+
+
 def outer_ring(n):
     """The ring of n nodes round the outline, joined in order. No scope."""
     cos_half = round(math.cos(math.radians(OUTLINE_HALF)), 4)
-    angles = [round(360 * k / n, 2) for k in range(n)]
-    nodes = list(enumerate(angles, 1))
+    nodes = ring_nodes(n)
     init = '\n'.join(f'\t\tset_variable = {{ which = ahw_edge_{k} value = 0 }}' for k, _ in nodes)
     sectors = '\n'.join(f'''		set_variable = {{ which = ahw_p value = ahw_x }}
 		multiply_variable = {{ which = ahw_p value = {round(math.cos(math.radians(a)), 4)} }}
@@ -434,7 +455,8 @@ def outer_ring(n):
     order = list(range(1, n + 1))
     smooth = '\n'.join([lift(k, (k - 2) % n + 1) for _ in range(2) for k in order]
                        + [lift(k, k % n + 1) for _ in range(2) for k in reversed(order)])
-    spawns = '\n'.join(f'\t\tahw_spike_spawn_outer_node = {{ K = {k} ANGLE = {a} }}' for k, a in nodes[:-2])
+    label = node_labels(n)
+    spawns = '\n'.join(f'\t\tahw_spike_spawn_outer_node = {{ K = {k} ANGLE = {a} LABEL = {label[k]} }}' for k, a in nodes[:-2])
     (kt, at), (ka, aa) = nodes[-2], nodes[-1]
     lanes = '\n'.join(f'\tadd_hyperlane = {{ from = event_target:ahw_ring_{k} to = event_target:ahw_ring_{k % n + 1} }}'
                       for k, _ in nodes)
@@ -461,9 +483,9 @@ ahw_spike_build_outer_ring_{n} = {{
 		# smoothing: at most {RING_SLOPE} below a neighbour
 {smooth}
 {spawns}
-		ahw_spike_move_probe_to_node = {{ PROBE = ahw_probe_t K = {kt} ANGLE = {at} }}
+		ahw_spike_move_probe_to_node = {{ PROBE = ahw_probe_t K = {kt} ANGLE = {at} LABEL = {label[kt]} }}
 {logs}
-		ahw_spike_move_probe_to_node = {{ PROBE = ahw_probe_a K = {ka} ANGLE = {aa} }}
+		ahw_spike_move_probe_to_node = {{ PROBE = ahw_probe_a K = {ka} ANGLE = {aa} LABEL = {label[ka]} }}
 {node_xy('event_target:ahw_ring_' + str(ka), 'ahw_rad_' + str(ka), aa)}
 	}}
 {lanes}
@@ -499,7 +521,7 @@ def spawn_outer_node():
 # this = the centre system: outer node $K$ at the radius ahw_rad_$K$, rounded down to {RAD_STEP}
 # (spawn_system takes literal distances only), direction $ANGLE$.
 ahw_spike_spawn_outer_node = {{
-''' + radius_chain(lambda r: f'ahw_spike_spawn_ring_node = {{ NAME = ahw_ring_$K$ R = {r} ANGLE = $ANGLE$ }}') + f'''
+''' + radius_chain(lambda r: f'ahw_spike_spawn_ring_node = {{ NAME = ahw_ring_$K$ LABEL = $LABEL$ R = {r} ANGLE = $ANGLE$ }}') + f'''
 }}
 
 # this = the centre system: the centre probe $PROBE$ becomes outer node $K$ (as above). For the
@@ -510,7 +532,7 @@ ahw_spike_move_probe_to_node = {{
 	event_target:$PROBE$ = {
 		remove_star_flag = ahw_core
 		set_star_flag = ahw_ring
-		set_name = ahw_ring_$K$
+		set_name = $LABEL$
 		save_global_event_target_as = ahw_ring_$K$
 	}
 }

@@ -90,13 +90,14 @@ placement and the shortcut do not.
 6. Labels/menus: built at game start they show; ring-side gates need sight (a usable entry point)
    for the label and a ship in the system for the right-click menu (runs 6–7).
 7. **Design round 2026-11-05** (decided; `docs/design.md`; not built yet): access in three
-   stages with the tech as the throttle (no tier prerequisites, cost ≈ 5000); centres at 20 %
+   stages; two techs (physics: use and seal; engineering, with physics: repair; 3000 each, no
+   tier prerequisites); the study grants 15 % of each, an anchor with a repaired gate 50 %; centres at 20 %
    size, our own star classes, the ring a mix of black hole / pulsar / toxoid (no neutron);
    debris (~3 asteroids, a third with deposits) in ring nodes and portals; cosmic storms
-   welcome on both; nomads study and repair any gate, never seal it, get no portal, and pass
+   welcome on both; nomads study and repair any gate (with both techs), never seal it, get no portal, and pass
    seals unless banned (at war, or vanilla's `expelled_from_<owner>` flag; the clause is in
    `ahw_spike_friend_of_sealer` since 0.0.24, untested); late-game **express wormholes**
-   (stations ~a reach apart, two wormholes each, dormant → unstable → stable). Spike order
+   (stations ~a reach apart, two wormholes each, dormant → unstable → stable, anyone stabilises). Spike order
    after run 23: centres and star classes → debris → tech cost → nomads → express (its own run).
 8. Lore (`docs/lore.md`): builders and seal decided 2026-11-05 (the Fallen Empires, the
    Ancient Caretakers, the Militant Isolationists); the Caretaker node, guardians and the

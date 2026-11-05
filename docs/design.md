@@ -88,7 +88,7 @@ The base ring still meets the yardstick; the express is a late-game addition.
     checks, as the seal does.
   - Stabilised by events, situations or a paid project, **cheaper the later in the game**.
     Stable means open for good. Nobody owns or seals them.
-- Open: who may stabilise (anyone, or only with the tech); the exact odds and durations of the
+- **Anyone may stabilise** (2026-11-05). Open: the exact odds and durations of the
   unstable phase; whether the AI handles a route that keeps opening and closing.
 
 ### Entry points
@@ -101,14 +101,27 @@ The connections between the ring and the regular galaxy are special, not hyperla
   throttle.** It should be easy to get shortly before an empire develops wormhole travel
   (`tech_wormhole_stabilization`: tier 3, 4000, rare). A costly early rush is possible, which is
   the user's speed-up: expensive early (opportunity cost), affordable a few decades later.
-  1. **Study** (science ship, ~60 days, cheap). It unlocks the tech option.
-  2. **Tech** (physics, rare). **No tier prerequisites, cost ≈ 5000** (`@tier3cost2`), so
-     it can be researched as soon as the study is done. At year 5 that is years of physics; by
-     year 30 it is an ordinary tier-3 research. Possible cost modifiers: ×0.75 once known empires
-     have it, ×0.5 late in the game.
-  3. **Repair** (construction ship, ~90 days): about 300 alloys + 50 influence.
+  1. **Study** (science ship, ~60 days, cheap). It unlocks both techs as research options and
+     **grants 15 % of each** (user: 10–20 %; `add_tech_progress`).
+  2. **Two techs (user, 2026-11-05): one has to understand the gates from both sides to repair
+     them.** Both are rare and have no tier prerequisites, so they can be researched as soon as the
+     study is done. They are researched in parallel, in two departments.
+     - **Physics: the gates' theory.** Needed to **use** a gate and to **seal** one.
+       `@tier2cost3` (3000).
+     - **Engineering: the gates' construction.** Needed, **with the physics one**, to **repair**.
+       `@tier2cost3` (3000).
+     For comparison, vanilla's `tech_wormhole_stabilization` costs `@tier3cost1` = **4000** base
+     (tier 3, rare, after `tech_hyper_drive_2`). The game then scales every tech cost by the
+     galaxy's research-cost setting and by +0.2 % per point of empire size over the base
+     (`EMPIRE_SIZE_TECH_COST_PENALTY`); ours scale the same way. With 3000 in each of two
+     departments, both are done at about the time a 4000 tech in one department would be:
+     shortly before wormhole travel. At year 5 they are a real rush (opportunity cost); a few
+     decades in, they are routine. Possible cost modifiers: ×0.75 once known empires have them.
+  3. **Repair** (construction ship, ~90 days): about 300 alloys + 50 influence. Both techs.
+  **Head start**: an empire that gains an anchor whose gate is already repaired (by a nomad, or by
+  a former owner) is granted **50 % of each tech**, once, along with the study. The two grants
+  stack: a study plus a repaired gate gives 65 %.
   The network adds a throttle of its own: one can exit only at gates others have repaired.
-  **Sealing needs the tech too** (2026-11-05).
 - **At first every entry point is broken.** **The anchor's owner** — whoever owns the system the
   portal hangs off — studies it with a science ship (a special project), which reveals the ring
   and the network and makes the technology researchable; then pays alloys and repairs it with a
@@ -128,9 +141,9 @@ The connections between the ring and the regular galaxy are special, not hyperla
   side of a war. **Nomads count as friends** unless the sealer has banned them: at war with it,
   or expelled (vanilla's 10-year flag `expelled_from_<owner>` after an Expel Nomads war).
 - **Nomads (decided 2026-11-05)** own no systems, so they **can always study and repair** any
-  broken gate, never seal one, and get no portal of their own. When a nomad has repaired a gate,
-  the anchor's owner later gets **a head start on the tech** (the study counts as done, plus tech
-  progress), so they can seal sooner. Open: whether nomads need the tech before repairing.
+  broken gate, never seal one, and get no portal of their own. Like everyone else they need
+  **both techs** to repair (2026-11-05). When a nomad has repaired a gate, the anchor's owner
+  later gets the head start above (50 % of each tech), so they can seal sooner.
   No decisions or edicts (the user's preference).
 - **The ring-side end can never be disabled or damaged.**
 

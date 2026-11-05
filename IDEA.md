@@ -158,3 +158,6 @@ let's change the base cost for both to 2500.
 
 `The two add up`: not sure about that
 when would it happen? when an empire does the study itself, then someone else repairs it? we must prevent that this could be abused
+
+let's allow the 65%
+doing the study, then seeing how somebody else did it should give a bonus compared to an empire that never saw the broken gate in their study

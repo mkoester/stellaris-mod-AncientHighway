@@ -33,14 +33,14 @@ exploring), then the **spawn probe**: in the run-25 game, console `effect` with 
 hyperlane = no }` inside `random_system = { limit = { has_star_flag = ahw_ring } … }`, and a second
 `log` line; the seconds between the two lines decide it — ~7 s or more: a spawn costs as much
 mid-game, so building in the background only trades the wait for daily hitches; much less: build
-the ring (and maybe the portals) in the background after the start. **`0.0.29-SPIKE`** logs the
-regular-system count and a timestamp every 10th ring spawn; with it, start a **tiny** and a
-**large** elliptical game (quit after the start, keep `game.log`) to fit the cost per spawn
-against galaxy size (small 0.18 s, medium 0.74 s: worse than linear). **Decided (user,
-2026-11-06), if mid-game spawns are tolerable:** one staged build after the start serves new
-games, existing saves (started by the monthly pulse when the build flag is unset) and empires
-born later (every regular empire without a portal gets one; anchor unowned, else the empire's
-own, never foreign). Script-spawned gates lack their system-view label until a load (run 5).
+the ring (and maybe the portals) in the background after the start. **Answered by run 26: a
+mid-game spawn costs ~4.5× more** (2.5 s vs 0.55 s), so background building is out at this cost;
+building at the start stays the cheapest moment. Still open: a **tiny** and a **large** start
+with `0.0.29-SPIKE` (quit after the start, keep `game.log`) to fit the cost per spawn against
+galaxy size. **Decided (user, 2026-11-06)** for adding the mod to a running game and for empires
+born later: every regular empire without a portal gets one; anchor unowned, else the empire's
+own, never foreign. How (one announced freeze, fewer spawns) is open after run 26.
+Script-spawned gates lack their system-view label until a load (run 5).
 Then the spike order in item 7 (debris next); then the rest of the open list (the ring's exact
 speed is parked — user, 2026-11-04: "not too important to me now"). Everything is still the
 spike (`*spike*` files); nothing is shippable yet.
@@ -218,6 +218,18 @@ each console `event`, so nothing — not even a ship — is selected.
    node's lanes appear once it arrives? Screenshot.
 
 Copy `logs/game.log` and `logs/error.log` before restarting the game.
+
+**Run 26 (2026-11-06, `0.0.29-SPIKE`, medium elliptical, thirteen empires, on mkDell): a
+mid-game spawn costs ~4.5× a start-time one.**
+- **597 regular systems.** Game start 81 s of the mod (20:36:10 → 20:37:31): centre 13 s, ring
+  38 s, thirteen portals 30 s (2.3 s each).
+- **Ring spawns are flat within the run**: 5–6 s per 10 nodes from the first ten to the last
+  (≈ 0.55 s each; runs 24–25: 0.74). The cost per call depends on the galaxy, not on how many
+  nodes are already spawned.
+- **Mid-game probe** (2200.3.18, console `effect`, ten `spawn_system`s with `while = { count = 10
+  }` off a ring node): 20:39:23 → 20:39:48, **25 s, 2.5 s per spawn**; no error.log lines.
+  Whether all ten systems appeared was not checked. So spreading the build over days would mean a
+  ~2.5 s freeze per spawn on medium; the cheapest moment is the start.
 
 **Run 25 (2026-11-06, `0.0.27-SPIKE`, medium elliptical, twelve empires, on mkDell): centres
 work; tiny on the map.** Screenshots `2026_11_06_8`, `_9`.

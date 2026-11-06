@@ -63,7 +63,7 @@ Nothing player-local may decide what is built. The freeze is the slowest machine
 **Timings are from mkDell** (user, 2026-11-06: about as old as the base game; nobody is expected to
 play on such a machine): acceptable there is acceptable for players.
 
-**Next:** decide the drain's strength and the centres' deposits (run 32), then the spike order in item 7 (techs and grants next); then the rest of the open list (the ring's exact
+**Next:** run 33 (`0.0.33-SPIKE`: debris without vanilla deposits, bare centres, drain −0.02), then the spike order in item 7 (techs and grants next); then the rest of the open list (the ring's exact
 speed is parked — user, 2026-11-04: "not too important to me now"). Everything is still the
 spike (`*spike*` files); nothing is shippable yet.
 
@@ -242,6 +242,13 @@ each console `event`, so nothing — not even a ship — is selected.
 
 Copy `logs/game.log` and `logs/error.log` before restarting the game.
 
+**Test, run 33** (`0.0.33-SPIKE`; as run 32, a new medium game). Save now and then — the saves
+carry the numbers (armour and shields per ship, deposits per asteroid), the screenshots only show.
+1. A few ring nodes and portals (system view): asteroids with a deposit about one in three, the
+   centre without one. Screenshot one.
+2. Study, tech, repair as before; park the 1st Fleet ~60 days in a toxoid (green) node, then
+   ~60 days in a pulsar node; save at each arrival and departure.
+
 **Test, run 32** (`0.0.32-SPIKE`; Linux, only this mod, a new **medium** elliptical game, AI
 empires on, console on; Esc before each console `event`). New: **debris** (`ahw_spike_add_debris`:
 0–6 asteroids per ring node and portal, ~3 on average, a third with an orbital deposit, orbits
@@ -293,7 +300,12 @@ debris works; the drain is 20× weaker than meant.** Screenshots `2026_11_06_6`�
   `ship_armor_regen_add_perc = -0.001`. So it lowers the current value, slowly and linearly; the
   user's 0.1 %/day would be about −0.02 (if it stays linear). **Shields**: the user saw no drain
   (their guess: shield regeneration outweighs it); no save shows the fleet in a pulsar node.
-  Whether armour comes back after leaving: not checked.
+  **The construction ship** (saves): 0.45 armour a month of 300 in the same toxoid node — the
+  same 0.005 %/day, so the drain scales with the maximum; then 37 days in a pulsar node
+  (2202.04.11 → 05.18): armour stayed at 298.35 (lost armour does not come back outside friendly
+  space), shields 100/100 throughout.
+- **Decided (user, 2026-11-06)**: drain −0.02 for both (0.1 %/day if linear); the centres'
+  deposits cleared. Both in `0.0.33-SPIKE`.
 
 **Run 31, part 1 (2026-11-06, `0.0.31-SPIKE`, a new medium game, twelve empires): the refactor
 builds as before.** The batch ~2 s (22:03:23 → :25); save 2200.01.01: 675 systems = 595 + 68 + 12

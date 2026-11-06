@@ -58,10 +58,12 @@ ordinary hyperlanes — or a bit longer, never shorter.
   `STARBASE_AURA_CETANA_STORM`) gives hostile ships system-wide `ship_hull_regen_add_perc = -0.15`
   and `ship_armor_regen_add_perc = -0.05`; `ship_shield_regen_add_perc` is used negatively too.
   So the star class's `modifier` can swap the nullification for a negative regen of armour
-  (toxoid) or shields (pulsar). Open, to measure in a spike: the unit of `_add_perc` (share of
-  the maximum per day?), so ~0.1 %/day is set right; whether a negative regen actually lowers
-  the current value or only cancels regeneration; how the out-of-combat ×5 acts on a negative
-  value.
+  (toxoid) or shields (pulsar). **Measured (run 32)**: −0.001 takes 0.005 % of the maximum
+  armour per day, linearly, whatever the maximum; lost armour stays lost outside friendly space.
+  **Decided (user, 2026-11-06): −0.02 for both** (0.1 %/day if it scales). Shields did not drop
+  at −0.001 (regeneration outweighs it?) — open until run 33.
+- **The centres carry no deposit** (user, 2026-11-06; vanilla gave all 80 one in run 32): the
+  debris is the road's only resource.
 
   The combat terrain varies round the ring, which gives the neutral battlefield some character.
   In a portal it varies the dead end's defence per empire: a pulsar portal strips shields, a

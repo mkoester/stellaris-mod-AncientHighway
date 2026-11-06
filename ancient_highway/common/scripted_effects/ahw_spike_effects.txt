@@ -324,6 +324,9 @@ ahw_spike_pick_centre = {
 			set_star_class = ahw_sc_neutron_star
 		}
 	}
+	# 0.0.33 (run 32: all 80 centres carried a vanilla deposit - dark matter, physics, engineering;
+	# user, 2026-11-06: clear them): the debris is the road's only resource
+	every_system_planet = { limit = { is_star = yes } clear_deposits = yes }
 }
 
 # What the ring nodes and portals are now (the result, not the dice): counts on ring node 1, logged.

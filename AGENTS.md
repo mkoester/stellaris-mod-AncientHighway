@@ -25,9 +25,10 @@ level. Prefix every key, id, flag and variable with `ahw_`. Tested in game on Li
 
 ---
 
-## Status (2026-11-06): spike runs 1–22 done (4.5.3 live); run 23 (`0.0.24-SPIKE`: friends pass a seal) in progress; `0.0.25-SPIKE` (faster ring edges, timing) built
+## Status (2026-11-06): spike runs 1–23 done (4.5.3 live); `0.0.25-SPIKE` (faster ring edges, timing) built, not yet run
 
-**Next session: run 23** (steps below), then the rest of the open list (the ring's exact
+**Next:** the spike order in item 7 (centres and star classes first), with `0.0.25-SPIKE`'s
+timing read at that run's game start; then the rest of the open list (the ring's exact
 speed is parked — user, 2026-11-04: "not too important to me now"). Everything is still the
 spike (`*spike*` files); nothing is shippable yet.
 
@@ -74,8 +75,8 @@ placement and the shortcut do not.
    guarantee either way, at peace with borders open both ways (and in contact; user, 2026-11-05),
    the same side of any war. The type covers both ends, so both ways.
    **Run 22: a sealed pair refuses a stranger's ship** ("Travel to …" crossed out, the fail
-   text in its tooltip) and lets it through the day after opening. `0.0.24-SPIKE`: friends —
-   untested (run 23).
+   text in its tooltip) and lets it through the day after opening. **Run 23: a friend (our
+   subject) passes**; the other friend kinds untested.
 3. **Portal names** (built, `0.0.21-SPIKE`): "Highway Portal" for all made them indistinguishable
    in the outliner and the log (run 18: identical log lines are dropped, so the report lost most
    portals). Now named after the reach their exit node lies in, plus an octal address: the
@@ -176,7 +177,7 @@ next game, so give a console line for the running one when needed.
 `tools/check_script.py $(find ancient_highway -name '*.txt' -o -name '*.gfx')` and
 `tools/check_refs.py ancient_highway` (every used name defined, every text and icon present).
 
-**Test, run 23** (in plain words for the user; Linux, only this mod, a new campaign, small
+**Test, run 23** (done 2026-11-06; kept as the model for test steps — in plain words for the user; Linux, only this mod, a new campaign, small
 elliptical, AI empires on, console on). Press Esc before each console `event`, so nothing — not
 even a ship — is selected (runs 21–22: the event fired on the selection and failed).
 
@@ -192,9 +193,9 @@ even a ship — is selected (runs 21–22: the event fired on the selection and 
 
 Copy `logs/game.log` and `logs/error.log` before restarting the game.
 
-**Run 23 (2026-11-06, `0.0.24-SPIKE`, medium elliptical, twelve empires, on mkDell): in
-progress.** Screenshot `2026_11_06_1` (the map round Sol; our portal Galvaas 61, exit Galvaas
-Node 1).
+**Run 23 (2026-11-06, `0.0.24-SPIKE`, medium elliptical, twelve empires, on mkDell): a seal
+lets friends through.** Screenshot `2026_11_06_1` (the map round Sol; our portal Galvaas 61, exit Galvaas
+Node 1). **Steps 1–4 passed.**
 - **Game start: 90 s of the mod** (19:31:40 → 19:33:10; the game's own generation 32 s before):
   centre 12 s, ring 37 s (68 nodes), portals 40 s (3.3 s each). Run 17 (small): 4 / 10 / 8 s.
   The centre search makes ~21 moves whatever the size, yet took 3× longer, so the machine (or a
@@ -202,6 +203,19 @@ Node 1).
   search tests only the nodes near each system's octant (14 of 68 instead of all; the generator
   checks the octant lists before writing), and logs timing after the edges, the smoothing and the
   spawns, to split the 37 s.
+- **Ring stars carry the node names** (step 1): the save (2201.11.16) names all 68 ring systems
+  *and* their stars `ahw_node_68_<k>` (the system view's label is the star's); no "recursive
+  depth" error any more (run 22's). On the map, hovering a node shows "Furon Node 7" (`_2`).
+- After the study the whole ring shows with its hyperlanes (`_2`) — the `set_visited` that the
+  2026-11-06 design replaces by exploration.
+- **A stranger's seal refuses us** (step 3, `_3`, 2201.11.16): after `ahw_spike.26` the gate's
+  order "Travel to Galvaas Node 1" is crossed out, the tooltip: "… sealed by its keeper, and we
+  are no friend of theirs." The portal's own label reads "Galvaas 61".
+- **A friend passes the seal** (step 4, user): after `ahw_spike.27` (that empire becomes our
+  subject) and a day, our ship went through. So `ahw_spike_friend_of_sealer` works, at least for
+  overlord/subject; the other friend kinds and the nomad clause are untested.
+- The monthly check still re-takes the repaired-to-be gate each month ("now owns the gate" ×5
+  between study and repair), as in run 21.
 
 **Run 1 (2026-11-03, 4.5.3 open beta, elliptical galaxy, `0.0.1-SPIKE`): stopped at the anchor.**
 - `random_system` with `distance_to_core_percent` 25–40 matched **nothing**, although the

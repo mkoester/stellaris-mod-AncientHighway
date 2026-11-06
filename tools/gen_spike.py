@@ -743,6 +743,21 @@ ahw_spike_make_pair = {
 		ahw_spike_make_pair = {{ N = {n} }}
 	}}''')
     sw.append('\telse = {\n\t\tlog = "AHW SPIKE no entry-point type left (more empires than PAIRS)"\n\t}')
+    # the study reveals only the studied portal's own exit node (0.0.26, design 2026-11-06: the
+    # rest of the ring is explored by flying it); a gate needs its destination visited (run 4)
+    rev = []
+    for n in range(1, PAIRS + 1):
+        kw = 'if' if n == 1 else 'else_if'
+        rev.append(f'''	{kw} = {{
+		limit = {{ check_variable = {{ which = ahw_pair value = {n} }} }}
+		random_system = {{
+			limit = {{ has_star_flag = ahw_exit_{n} }}
+			event_target:ahw_studier = {{ set_visited = prev }}
+		}}
+	}}''')
+    out.append('\n# this = a portal: event_target:ahw_studier learns where its gate leads (only that ring node).\n'
+               'ahw_spike_reveal_exit = {\n' + '\n'.join(rev) + '\n}\n')
+
     out.append('\n# The next pair, numbered by the counter ahw_pairs on ring node 1.\nahw_spike_make_next_pair = {\n'
                '\tevent_target:ahw_ring_1 = { change_variable = { which = ahw_pairs value = 1 } }\n'
                + '\n'.join(sw) + '\n}\n')

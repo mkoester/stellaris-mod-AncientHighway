@@ -1,16 +1,17 @@
-# SPIKE (Phase 0): a ring system. A black hole stands in for the artificial centre object.
+# SPIKE (Phase 0): a ring system. Its centre: one of our three star classes (0.0.26,
+# common/star_classes/ahw_spike_star_classes.txt), drawn at 20 % of vanilla's size (vanilla 20-35).
 ahw_spike_ring_init = {
 	name = NAME_ahw_spike_ring
-	class = "sc_black_hole"
+	class = "ahw_rl_centres"
 	prevent_anomalies = yes
 
 	flags = { ahw_ring ahw_unclaimable suppress_archaeological_sites }
 
 	planet = {
-		class = "pc_black_hole"
+		class = star
 		orbit_distance = 0
 		orbit_angle = 1
-		size = 30
+		size = 6
 		has_ring = no
 	}
 
@@ -18,7 +19,7 @@ ahw_spike_ring_init = {
 	# speeds up with better ships). Hyperlanes arrive at max(SYSTEM_MIN_INNER_RADIUS = 150, the
 	# outermost planet's orbit + SYSTEM_INNER_RADIUS_OFFSET = 30) (common/defines/00_defines.txt):
 	# a body at orbit 270 puts the arrivals at 300, double the black hole's 150. Orbits in an
-	# initializer add up (run 3); the black hole is at 0. Q: does an asteroid count, and how much
+	# initializer add up (run 3); the centre is at 0. Q: does an asteroid count, and how much
 	# slower is a node then (run 15: ~70 days each)?
 	planet = {
 		class = "pc_asteroid"
@@ -32,34 +33,34 @@ ahw_spike_ring_init = {
 # SPIKE (0.0.8): an empire's portal system - one hyperlane, the entry gate, nobody may claim it.
 ahw_spike_portal_init = {
 	name = NAME_ahw_spike_portal
-	class = "sc_black_hole"
+	class = "ahw_rl_centres"
 	prevent_anomalies = yes
 
 	flags = { ahw_portal ahw_unclaimable suppress_archaeological_sites }
 
 	planet = {
-		class = "pc_black_hole"
+		class = star
 		orbit_distance = 0
 		orbit_angle = 1
-		size = 15
+		size = 6
 		has_ring = no
 	}
 }
 
-# SPIKE (0.0.8): the two probe systems that find the centre; they stay in the empty core, without
-# lanes (no effect deletes a system). Lore candidate: the highway's heart.
+# SPIKE (0.0.8): the two probe systems that find the centre; since 0.0.15 they become the ring's
+# last two nodes, hence the same centres (0.0.26).
 ahw_spike_core_init = {
 	name = NAME_ahw_spike_core
-	class = "sc_black_hole"
+	class = "ahw_rl_centres"
 	prevent_anomalies = yes
 
 	flags = { ahw_core ahw_unclaimable suppress_archaeological_sites }
 
 	planet = {
-		class = "pc_black_hole"
+		class = star
 		orbit_distance = 0
 		orbit_angle = 1
-		size = 20
+		size = 6
 		has_ring = no
 	}
 }

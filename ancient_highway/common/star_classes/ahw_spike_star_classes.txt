@@ -1,0 +1,48 @@
+# SPIKE (0.0.26, design 2026-11-05/06): the highway's artificial centres - ring nodes and portals.
+# Look and ship effect are vanilla's (class = the GFX id, the modifiers copied from
+# common/star_classes/00_star_classes.txt); our own keys so vanilla's black-hole/pulsar events
+# never pick them, and so the map icon can be ours: far smaller than a star's (user, 2026-11-06:
+# a small centre of mass, hard to detect - faint specks until explored), here 10 % of vanilla's
+# icon_scale. Q (run 24): does an icon_scale this small still draw, and can one click it?
+# No neutron star: -50 % sub-light speed would throw off the ring's speed.
+
+ahw_sc_black_hole = {
+	class = black_hole
+	icon_scale = 0.2
+	planet = { key = pc_black_hole }
+	spawn_odds = 0
+	is_environmental_hazard = yes
+	can_be_crisis_terraformed = no
+	arkship_picture = "arkship_black_hole"
+	modifier = {
+		ship_disengage_chance_reduction = 0.5
+		ship_emergency_ftl_min_days_mult = 0.5
+	}
+}
+
+ahw_sc_pulsar = {
+	class = pulsar
+	icon_scale = 0.225
+	planet = { key = pc_pulsar }
+	spawn_odds = 0
+	is_environmental_hazard = yes
+	can_be_crisis_terraformed = no
+	arkship_picture = "arkship_pulsar"
+	modifier = {
+		ship_shield_reduction = 1.0
+	}
+}
+
+ahw_sc_toxoid_star = {
+	class = toxoid_star
+	icon = x_star
+	icon_scale = 0.1
+	planet = { key = pc_toxoid_star }
+	spawn_odds = 0
+	is_environmental_hazard = yes
+	can_be_crisis_terraformed = no
+	arkship_picture = "arkship_class_g"
+	modifier = {
+		ship_armor_reduction = 1.0
+	}
+}

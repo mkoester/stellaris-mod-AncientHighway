@@ -21043,6 +21043,234 @@ ahw_spike_make_pair = {
 	log = "AHW SPIKE pair $N$ built"
 }
 
+# this = a portal: event_target:ahw_studier learns where its gate leads (only that ring node).
+ahw_spike_reveal_exit = {
+	if = {
+		limit = { check_variable = { which = ahw_pair value = 1 } }
+		random_system = {
+			limit = { has_star_flag = ahw_exit_1 }
+			event_target:ahw_studier = { set_visited = prev }
+		}
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 2 } }
+		random_system = {
+			limit = { has_star_flag = ahw_exit_2 }
+			event_target:ahw_studier = { set_visited = prev }
+		}
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 3 } }
+		random_system = {
+			limit = { has_star_flag = ahw_exit_3 }
+			event_target:ahw_studier = { set_visited = prev }
+		}
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 4 } }
+		random_system = {
+			limit = { has_star_flag = ahw_exit_4 }
+			event_target:ahw_studier = { set_visited = prev }
+		}
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 5 } }
+		random_system = {
+			limit = { has_star_flag = ahw_exit_5 }
+			event_target:ahw_studier = { set_visited = prev }
+		}
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 6 } }
+		random_system = {
+			limit = { has_star_flag = ahw_exit_6 }
+			event_target:ahw_studier = { set_visited = prev }
+		}
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 7 } }
+		random_system = {
+			limit = { has_star_flag = ahw_exit_7 }
+			event_target:ahw_studier = { set_visited = prev }
+		}
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 8 } }
+		random_system = {
+			limit = { has_star_flag = ahw_exit_8 }
+			event_target:ahw_studier = { set_visited = prev }
+		}
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 9 } }
+		random_system = {
+			limit = { has_star_flag = ahw_exit_9 }
+			event_target:ahw_studier = { set_visited = prev }
+		}
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 10 } }
+		random_system = {
+			limit = { has_star_flag = ahw_exit_10 }
+			event_target:ahw_studier = { set_visited = prev }
+		}
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 11 } }
+		random_system = {
+			limit = { has_star_flag = ahw_exit_11 }
+			event_target:ahw_studier = { set_visited = prev }
+		}
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 12 } }
+		random_system = {
+			limit = { has_star_flag = ahw_exit_12 }
+			event_target:ahw_studier = { set_visited = prev }
+		}
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 13 } }
+		random_system = {
+			limit = { has_star_flag = ahw_exit_13 }
+			event_target:ahw_studier = { set_visited = prev }
+		}
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 14 } }
+		random_system = {
+			limit = { has_star_flag = ahw_exit_14 }
+			event_target:ahw_studier = { set_visited = prev }
+		}
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 15 } }
+		random_system = {
+			limit = { has_star_flag = ahw_exit_15 }
+			event_target:ahw_studier = { set_visited = prev }
+		}
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 16 } }
+		random_system = {
+			limit = { has_star_flag = ahw_exit_16 }
+			event_target:ahw_studier = { set_visited = prev }
+		}
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 17 } }
+		random_system = {
+			limit = { has_star_flag = ahw_exit_17 }
+			event_target:ahw_studier = { set_visited = prev }
+		}
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 18 } }
+		random_system = {
+			limit = { has_star_flag = ahw_exit_18 }
+			event_target:ahw_studier = { set_visited = prev }
+		}
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 19 } }
+		random_system = {
+			limit = { has_star_flag = ahw_exit_19 }
+			event_target:ahw_studier = { set_visited = prev }
+		}
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 20 } }
+		random_system = {
+			limit = { has_star_flag = ahw_exit_20 }
+			event_target:ahw_studier = { set_visited = prev }
+		}
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 21 } }
+		random_system = {
+			limit = { has_star_flag = ahw_exit_21 }
+			event_target:ahw_studier = { set_visited = prev }
+		}
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 22 } }
+		random_system = {
+			limit = { has_star_flag = ahw_exit_22 }
+			event_target:ahw_studier = { set_visited = prev }
+		}
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 23 } }
+		random_system = {
+			limit = { has_star_flag = ahw_exit_23 }
+			event_target:ahw_studier = { set_visited = prev }
+		}
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 24 } }
+		random_system = {
+			limit = { has_star_flag = ahw_exit_24 }
+			event_target:ahw_studier = { set_visited = prev }
+		}
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 25 } }
+		random_system = {
+			limit = { has_star_flag = ahw_exit_25 }
+			event_target:ahw_studier = { set_visited = prev }
+		}
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 26 } }
+		random_system = {
+			limit = { has_star_flag = ahw_exit_26 }
+			event_target:ahw_studier = { set_visited = prev }
+		}
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 27 } }
+		random_system = {
+			limit = { has_star_flag = ahw_exit_27 }
+			event_target:ahw_studier = { set_visited = prev }
+		}
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 28 } }
+		random_system = {
+			limit = { has_star_flag = ahw_exit_28 }
+			event_target:ahw_studier = { set_visited = prev }
+		}
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 29 } }
+		random_system = {
+			limit = { has_star_flag = ahw_exit_29 }
+			event_target:ahw_studier = { set_visited = prev }
+		}
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 30 } }
+		random_system = {
+			limit = { has_star_flag = ahw_exit_30 }
+			event_target:ahw_studier = { set_visited = prev }
+		}
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 31 } }
+		random_system = {
+			limit = { has_star_flag = ahw_exit_31 }
+			event_target:ahw_studier = { set_visited = prev }
+		}
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_pair value = 32 } }
+		random_system = {
+			limit = { has_star_flag = ahw_exit_32 }
+			event_target:ahw_studier = { set_visited = prev }
+		}
+	}
+}
+
 # The next pair, numbered by the counter ahw_pairs on ring node 1.
 ahw_spike_make_next_pair = {
 	event_target:ahw_ring_1 = { change_variable = { which = ahw_pairs value = 1 } }

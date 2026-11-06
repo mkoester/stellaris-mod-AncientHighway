@@ -25,10 +25,9 @@ level. Prefix every key, id, flag and variable with `ahw_`. Tested in game on Li
 
 ---
 
-## Status (2026-11-06): spike runs 1–23 done (4.5.3 live); `0.0.25-SPIKE` (faster ring edges, timing) built, not yet run
+## Status (2026-11-06): spike runs 1–23 done (4.5.3 live); `0.0.26-SPIKE` (run 24: centres, faint icons, the study reveals only our exit; faster ring edges and timing from 0.0.25) built, not yet run
 
-**Next:** the spike order in item 7 (centres and star classes first), with `0.0.25-SPIKE`'s
-timing read at that run's game start; then the rest of the open list (the ring's exact
+**Next: run 24** (steps below), then the spike order in item 7 (debris next); then the rest of the open list (the ring's exact
 speed is parked — user, 2026-11-04: "not too important to me now"). Everything is still the
 spike (`*spike*` files); nothing is shippable yet.
 
@@ -117,7 +116,7 @@ placement and the shortcut do not.
    Ancient Caretakers, the Militant Isolationists); the Caretaker node, guardians and the
    phase-2 reactions are open.
 
-### The spike (`0.0.24-SPIKE`): what it does, how to run it
+### The spike (`0.0.26-SPIKE`): what it does, how to run it
 
 **Generated parts: `tools/gen_spike.py`** writes the bypass types (32 entry pairs; the
 shortcut is gone), their megastructures, outliner icons, texts, and the outline measurement, the
@@ -141,7 +140,7 @@ At game start `ahw_spike.10` (from `on_game_start`, no scope, as vanilla's `game
    medium 68, large 80, huge 88. No shortcut;
 4. **a portal for every regular empire** (AI too): a system 2–3
    jumps from the capital (not the capital, not next to it, unowned, no portal yet) — **searched, not walked**: from the best
-   tier (fewest lanes; without a bypass before with one; logged); a new black-hole system 15 units from it,
+   tier (fewest lanes; without a bypass before with one; logged); a new system 15 units from it (0.0.26: a centre like the ring's),
    **spawned once** (0.0.17; runs 10–16 measured it at 4 compass points by moving it) at the angle,
    computed from the outline's coordinates, where its lane arrives
    farthest from the anchor's other lanes (worst margin logged: +15 = opposite all, −15 = beside
@@ -151,7 +150,7 @@ At game start `ahw_spike.10` (from `on_game_start`, no scope, as vanilla's `game
    angle (facing away from the anchor, opposite the portal's lane — run 10), orbit 230; its exit in the nearest
    ring node, in that node's next free slot. **All broken** (0.0.18): the anchor's owner gets the
    study offered by the monthly check `ahw_spike.20`; the study (`ahw_spike.22`) teaches the types
-   and the ring; then the tech, the paid repair offer (`ahw_spike.21`) and the repair
+   and **only its own exit node** (0.0.26, `ahw_spike_reveal_exit`; the rest is explored); then the tech, the paid repair offer (`ahw_spike.21`) and the repair
    (`ahw_spike.23`);
 5. fires `ahw_spike.1` (our window: our portal, its anchor, our exit node) and a report.
 
@@ -177,19 +176,27 @@ next game, so give a console line for the running one when needed.
 `tools/check_script.py $(find ancient_highway -name '*.txt' -o -name '*.gfx')` and
 `tools/check_refs.py ancient_highway` (every used name defined, every text and icon present).
 
-**Test, run 23** (done 2026-11-06; kept as the model for test steps — in plain words for the user; Linux, only this mod, a new campaign, small
-elliptical, AI empires on, console on). Press Esc before each console `event`, so nothing — not
-even a ship — is selected (runs 21–22: the event fired on the selection and failed).
+**Centres (0.0.26)**: ring nodes, portals and the two centre probes (which become ring nodes)
+draw a centre from `ahw_rl_centres` — our own `ahw_sc_black_hole` / `_pulsar` / `_toxoid_star`
+(`common/star_classes/ahw_spike_star_classes.txt`: vanilla's look and modifiers, `spawn_odds = 0`,
+`icon_scale` 10 % of vanilla's), the star planet at size 6 (vanilla 20–35).
 
-1. **Ring stars**: open a ring system (e.g. your exit node) in the system view: does its label say
-   "<reach> Node <n>", not "Highway Node"? Screenshot.
-2. Repair your gate as before (`event ahw_spike.6`, `event ahw_spike.7`, science ship,
-   `event ahw_spike.8`, `event ahw_spike.7`, accept, construction ship). Leave your science ship
-   in the portal.
-3. **A stranger's seal**: `event ahw_spike.26`, let a day pass, order the ship into the ring. It
-   should be **refused**. Screenshot the order's tooltip.
-4. **Now a friend**: `event ahw_spike.27` (that empire becomes our subject), let a day pass,
-   order it again: it should **go**. Bring it back into the portal.
+**Test, run 24** (in plain words for the user; Linux, only this mod, a new campaign, **medium**
+elliptical as in run 23 so the start times compare, AI empires on, console on). Press Esc before
+each console `event`, so nothing — not even a ship — is selected.
+
+1. **How long did the start take?** Nothing to do: the log has it.
+2. **The ring on the map**: zoom out until the ring round the galaxy is in view. Are its systems
+   tiny specks now (much smaller than ordinary stars)? Can you still hover one and see its
+   tooltip? Screenshot, with a tooltip open.
+3. **Your portal** (system view): which centre is it — black hole, pulsar or a toxoid (green)
+   star — and is it small? Screenshot.
+4. **Study** (`event ahw_spike.6`, `event ahw_spike.7`, send the science ship). When it is done:
+   on the map, only **your exit node** should now show its hyperlanes; the rest of the ring stays
+   specks without lanes. Screenshot.
+5. **Exploring**: `event ahw_spike.8`, let a day pass, send the science ship through the gate
+   into your exit node, then on to the next ring node along the ring. Does it go, and do that
+   node's lanes appear once it arrives? Screenshot.
 
 Copy `logs/game.log` and `logs/error.log` before restarting the game.
 

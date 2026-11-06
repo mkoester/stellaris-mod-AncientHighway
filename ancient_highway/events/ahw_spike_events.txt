@@ -275,7 +275,7 @@ country_event = {
 	}
 }
 
-# Study done (this = the science ship, in the portal): the country knows the network and the ring.
+# Study done (this = the science ship, in the portal): the country knows the network and its exit node.
 ship_event = {
 	id = ahw_spike.22
 	hide_window = yes
@@ -288,11 +288,11 @@ ship_event = {
 			# ruined gateway (tech_gateway_activation): the option appears at once and stays.
 			add_research_option = ahw_tech_spike
 			ahw_spike_learn_types = yes
-			every_system = {
-				limit = { has_star_flag = ahw_ring }
-				prev = { set_visited = prev }
-			}
+			save_event_target_as = ahw_studier
 		}
+		# 0.0.26 (design 2026-11-06): only this gate's exit node, not the whole ring - the rest is
+		# explored by flying it.
+		solar_system = { ahw_spike_reveal_exit = yes }
 		solar_system = { log = "AHW SPIKE entry point in [This.GetName] studied by [Root.Owner.GetName]" }
 	}
 }

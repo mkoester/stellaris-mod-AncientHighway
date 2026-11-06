@@ -25,9 +25,15 @@ level. Prefix every key, id, flag and variable with `ahw_`. Tested in game on Li
 
 ---
 
-## Status (2026-11-06): spike runs 1–24 done (4.5.3 live); `0.0.27-SPIKE` (run 25: centres, faint icons, the study reveals only our exit) built, not yet run
+## Status (2026-11-06): spike runs 1–24 done (4.5.3 live); run 25 (`0.0.27-SPIKE`) half done; `0.0.28-SPIKE` (neutron-star portals) built, not yet run
 
-**Next: run 25** (steps below), then the spike order in item 7 (debris next); then the rest of the open list (the ring's exact
+**Next: finish run 25** — steps 3–5 below (portal system view, the study reveals only our exit,
+exploring), then the **spawn probe**: in the run-25 game, console `effect` with a `log` line, ten
+`spawn_system = { min_distance >= 60 max_distance <= 90 initializer = ahw_spike_core_init
+hyperlane = no }` inside `random_system = { limit = { has_star_flag = ahw_ring } … }`, and a second
+`log` line; the seconds between the two lines decide it — ~7 s or more: a spawn costs as much
+mid-game, so building in the background only trades the wait for daily hitches; much less: build
+the ring (and maybe the portals) in the background after the start. Then the spike order in item 7 (debris next); then the rest of the open list (the ring's exact
 speed is parked — user, 2026-11-04: "not too important to me now"). Everything is still the
 spike (`*spike*` files); nothing is shippable yet.
 

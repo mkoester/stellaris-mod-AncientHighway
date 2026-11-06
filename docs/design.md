@@ -69,7 +69,7 @@ ordinary hyperlanes — or a bit longer, never shorter.
   node (`set_visited`; a gate needs its destination known, run 4); the rest of the ring is found
   by flying it, node by node, as in vanilla. **On the map the ring is hard to see**: its centres
   are artificial, with a far smaller centre of mass than a star, so our ring star classes get a
-  faint, tiny icon (`icon_scale` ~0.1) — unexplored nodes read as specks, and their hyperlanes are
+  faint, tiny icon (`icon_scale` 10 % of vanilla's; run 25: a node shows as its frame, the star a dot at most — kept, user 2026-11-06) — unexplored nodes read as specks, and their hyperlanes are
   not drawn until explored (vanilla, runs 2 and 12). **Hiding a system from one empire only is not
   possible** (4.5.3: no such trigger or effect; `is_hidden` is for leaders, star classes and
   `set_star_class` are global), so every empire sees the same specks.

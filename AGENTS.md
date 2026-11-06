@@ -202,6 +202,18 @@ each console `event`, so nothing — not even a ship — is selected.
 
 Copy `logs/game.log` and `logs/error.log` before restarting the game.
 
+**Run 25 (2026-11-06, `0.0.27-SPIKE`, medium elliptical, twelve empires, on mkDell): centres
+work; tiny on the map.** Screenshots `2026_11_06_8`, `_9`.
+- **Centres**: black hole 25, pulsar 33, toxoid 22, other 0 (68 nodes + 12 portals).
+- **At 10 % a ring node shows only its frame** — the star a faint dot at most (`_8`); our portal
+  Furon 51 a tiny blue speck in its frame, with name and lane (`_9`). **Kept** (user,
+  2026-11-06: "that's ok").
+- **Game start 104 s of the mod**: centre 13 s, spawning 68 nodes 52 s, twelve portals 36 s.
+  **All runs were on mkDell** (user): small 0.18 s per spawn/move (runs 15–17), medium ~0.75 s —
+  the cost grows faster than the system count. Building at game start cannot ship for large/huge.
+  Open: does a spawn cost as much mid-game (a 10-spawn console probe, logged)? If not, the ring
+  is built in the background after the start.
+
 **Run 24 (2026-11-06, `0.0.26-SPIKE`, medium elliptical, eleven empires, on mkDell): the ring
 and portals came out empty; spawning is the cost.**
 - **An initializer whose `class` is a random list of our star classes spawned empty systems**:

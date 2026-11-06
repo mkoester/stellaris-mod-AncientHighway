@@ -25,40 +25,32 @@ level. Prefix every key, id, flag and variable with `ahw_`. Tested in game on Li
 
 ---
 
-## Status (2026-11-06): spike runs 1–24 done (4.5.3 live); run 25 (`0.0.27-SPIKE`) half done; `0.0.28-SPIKE` (neutron-star portals) built, not yet run
+## Status (2026-11-06): spike runs 1–30 done (4.5.3 live); `0.0.31-SPIKE` (mid-game install, late empires) built, not yet run
 
-**Next: finish run 25** — steps 3–5 below (portal system view, the study reveals only our exit,
-exploring), then the **spawn probe**: in the run-25 game, console `effect` with a `log` line, ten
-`spawn_system = { min_distance >= 60 max_distance <= 90 initializer = ahw_spike_core_init
-hyperlane = no }` inside `random_system = { limit = { has_star_flag = ahw_ring } … }`, and a second
-`log` line; the seconds between the two lines decide it — ~7 s or more: a spawn costs as much
-mid-game, so building in the background only trades the wait for daily hitches; much less: build
-the ring (and maybe the portals) in the background after the start. **Answered by run 26: a
-mid-game spawn costs ~4.5× more** (2.5 s vs 0.55 s), so background building is out at this cost;
-building at the start stays the cheapest moment. **Run 27: per spawn ∝ ~N^2.7 in the star
-count; huge takes ~8 minutes at the start** — cannot ship; fewer spawns or spawns the engine does
-not pay for are the levers. **Galaxy generation can't add systems** (2026-11-06, game files): an
-initializer's `neighbor_system` picks an *existing* system, and a `static_galaxy_scenario`
-replaces the random galaxy. **But vanilla batches its spawns**: `set_spawn_system_batch = begin
-… end` "batch-processes the spawn_system effects … so caches are recalculated only once rather
-than for every system spawned" and "can also be used when removing and adding hyperlanes"
-(`events/distant_stars_events_2.txt` distar.290, `distant_stars_events_3.txt` the L-Cluster,
-`common/scripted_effects/01_start_of_game_effects.txt`). **`0.0.30-SPIKE` wraps the whole build up
-to the portals in one batch** — **run 28 (medium): 81 s → ~4 s, result unchanged; run 29 (huge):
-~8 min → ≤ 15 s.** In play a batch of ten spawns took 16 s on huge (run 29) — a one-off freeze for
-installing mid-game is acceptable; **a single spawn in play costs ~10 s on huge too (run 30)**, so
-each late empire's portal is a freeze of that size — open: accept it, or give late empires no
-spawn — **decided (user, 2026-11-06): accept the freeze; late empires get their own portal**
-(`docs/design.md`, Portals). Also found, not used yet: **`no_scope = { spawn_system … }` spawns
-relative to the galactic core** — the L-Cluster goes 550 out, beyond the rim, at game start (run 8
-tried without any scope, which spawns nothing) — could replace the centre search and its probes;
-and `on_single_player_save_game_load` (no scope; not in multiplayer) for a mid-game install. **Option,
-noted (user, 2026-11-06): fewer ring nodes on large and huge** — saves linearly, ties into the
-ring's speed (open item 1). **Decided (user, 2026-11-06)** for adding the mod to a running game and for empires
-born later: every regular empire without a portal gets one; anchor unowned, else the empire's
-own, never foreign. How (one announced freeze, fewer spawns) is open after run 26.
-Script-spawned gates lack their system-view label until a load (run 5).
-Then the spike order in item 7 (debris next); then the rest of the open list (the ring's exact
+**Build cost — solved by batching** (runs 26–30): unbatched, every `spawn_system`/`move_system`
+paid a recalculation growing with ~N^2.7 in the star count (huge: ~8 min at the start). Since
+`0.0.30-SPIKE` the whole build runs inside `set_spawn_system_batch = begin … end` (vanilla's own
+tool): medium ~4 s, huge 11 s. In play every spawn still costs ~10 s on huge (~2.5 s medium),
+batched or not. Galaxy generation cannot add systems (an initializer's `neighbor_system` picks an
+existing one; a static galaxy replaces the random one). Not used yet: `no_scope = { spawn_system … }`
+spawns relative to the galactic core (vanilla's L-Cluster, 550 out) — could replace the centre
+search. **Option, noted (user, 2026-11-06): fewer ring nodes on large and huge** (linear saving;
+ties into the ring's speed, open item 1).
+
+**Mid-game and late empires (decided 2026-11-06, `0.0.31-SPIKE`, `docs/design.md` "Portals")**:
+the mod added to a running game builds everything once, in one batch, on the save's load
+(`on_single_player_save_game_load`) or the next month (`on_monthly_pulse`, for multiplayer).
+Every regular empire without a portal gets one (`ahw_spike.30`, monthly; country flag
+`ahw_has_portal`; `ahw_spike_build_portal` serves both the start and later): empires born later,
+and those with no anchor before; each costs a freeze — accepted. Anchor: unowned first, else the
+empire's own, never another's (`ahw_spike_portal_anchor_own_ok`; the log's tier lines end in
+`-- unowned` / `-- own`). Out of generated pairs (`PAIRS` = 32, `ahw_spike_pair_left`): no portal.
+Known limits, untested: systems vanilla spawns during play beyond the rim (the L-Cluster) count
+into the outline and push the ring out; the gates of a portal built in play lack their system-view
+label until a load (run 5).
+
+**Next: run 31** (test steps below), then finish run 25's steps 3–5 (portal system view, the
+study reveals only our exit, exploring). Then the spike order in item 7 (debris next); then the rest of the open list (the ring's exact
 speed is parked — user, 2026-11-04: "not too important to me now"). Everything is still the
 spike (`*spike*` files); nothing is shippable yet.
 
@@ -196,6 +188,7 @@ At game start `ahw_spike.10` (from `on_game_start`, no scope, as vanilla's `game
 | `event ahw_spike.25` | seal our pair against everyone, us included (a control for the seal); again: open it |
 | `event ahw_spike.26` | seal our pair for another empire (we are strangers to it) |
 | `event ahw_spike.27` | make that empire our subject (we become its friend) |
+| `effect every_country = { limit = { is_ai = no } remove_country_flag = ahw_has_portal }` | (0.0.31) count us as an empire without a portal: the next month gives us a second one |
 
 All findings go to `game.log`, lines starting `AHW SPIKE`. **Deselect before each console
 `event`** (Esc). **Let a day pass before judging any route.**
@@ -235,6 +228,21 @@ each console `event`, so nothing — not even a ship — is selected.
    node's lanes appear once it arrives? Screenshot.
 
 Copy `logs/game.log` and `logs/error.log` before restarting the game.
+
+**Test, run 31** (`0.0.31-SPIKE`; Linux, only this mod, medium elliptical, AI empires on, console
+on; quit the game completely between parts, and copy `logs/game.log` and `logs/error.log` before each relaunch).
+1. **A new game still works**: start one, look at the map — ring round the galaxy, our portal
+   off a system 2–3 jumps from the capital. Quit.
+2. **Adding the mod to a running game**: switch the mod **off**, start a new medium game, play
+   about **ten years** at the fastest speed (so the space round the capitals fills up), save,
+   quit. Switch the mod **on** and load that save. Expected: a short freeze while it loads (a
+   few seconds), then the ring and a portal for every empire. Screenshot the map round your
+   capital. Note whether your portal hangs off a system you own.
+3. **A late empire's portal**: in that game, press Esc and type
+   `effect every_country = { limit = { is_ai = no } remove_country_flag = ahw_has_portal }`, then
+   let the game run past the 1st of the next month. Expected: a freeze of a few seconds on the 1st,
+   then a second portal near your capital. Screenshot.
+4. Save once more and copy the logs.
 
 **Run 30 (2026-11-06, `0.0.30-SPIKE`, huge elliptical, a fresh launch): the whole mod 11 s; one
 spawn in play 10 s.**

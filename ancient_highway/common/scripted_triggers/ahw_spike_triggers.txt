@@ -11,6 +11,23 @@ ahw_spike_portal_anchor_ok = {
 	NOT = { any_neighbor_system = { has_star_flag = ahw_portal } }
 }
 
+# 0.0.31 (user, 2026-11-06): in a running game most systems near a capital are owned; the anchor
+# may then be one the empire (event_target:ahw_country_tmp) owns itself, never another's.
+ahw_spike_portal_anchor_own_ok = {
+	NOT = { is_same_value = event_target:ahw_cap_tmp }
+	NOT = { has_hyperlane_to = event_target:ahw_cap_tmp }
+	NOT = { has_star_flag = ahw_unclaimable }
+	exists = owner
+	owner = { is_same_value = event_target:ahw_country_tmp }
+	NOT = { any_neighbor_system = { has_star_flag = ahw_portal } }
+}
+
+# 0.0.31: a generated pair is left for one more portal (ahw_pairs counts the used ones, ahw_pairs_max
+# is tools/gen_spike.py's PAIRS; both on ring node 1). No scope needed.
+ahw_spike_pair_left = {
+	event_target:ahw_ring_1 = { check_variable = { which = ahw_pairs value < ahw_pairs_max } }
+}
+
 # Run 11: the random walk saw one path only and missed 3-jump candidates; ahw_spike.10 now
 # searches every system. this = system: 1 to 3 jumps from the capital (with
 # ahw_spike_portal_anchor_ok, which rules out the capital and its neighbours: 2 to 3 jumps).

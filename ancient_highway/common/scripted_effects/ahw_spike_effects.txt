@@ -168,26 +168,35 @@ ahw_spike_unseal_gate = {
 ahw_spike_pick_centres = {
 	every_system = {
 		limit = { OR = { has_star_flag = ahw_ring has_star_flag = ahw_portal } }
-		random_list = {
-			1 = { }
-			1 = {
-				every_system_planet = { limit = { is_star = yes } change_pc = pc_pulsar }
-				set_star_class = ahw_sc_pulsar
-			}
-			1 = {
-				every_system_planet = { limit = { is_star = yes } change_pc = pc_toxoid_star }
-				set_star_class = ahw_sc_toxoid_star
-			}
-			# portals only (user, 2026-11-06): the neutron star's -50 % sub-light speed would throw
-			# off the ring's speed tuning, but in a dead end it only slows whoever comes and goes
-			1 = {
-				modifier = { factor = 0 has_star_flag = ahw_ring }
-				every_system_planet = { limit = { is_star = yes } change_pc = pc_neutron_star }
-				set_star_class = ahw_sc_neutron_star
-			}
+		ahw_spike_pick_centre = yes
+	}
+	ahw_spike_count_centres = yes
+}
+
+# 0.0.31: this = a ring node or portal system: its centre (also for a late empire's portal).
+ahw_spike_pick_centre = {
+	random_list = {
+		1 = { }
+		1 = {
+			every_system_planet = { limit = { is_star = yes } change_pc = pc_pulsar }
+			set_star_class = ahw_sc_pulsar
+		}
+		1 = {
+			every_system_planet = { limit = { is_star = yes } change_pc = pc_toxoid_star }
+			set_star_class = ahw_sc_toxoid_star
+		}
+		# portals only (user, 2026-11-06): the neutron star's -50 % sub-light speed would throw
+		# off the ring's speed tuning, but in a dead end it only slows whoever comes and goes
+		1 = {
+			modifier = { factor = 0 has_star_flag = ahw_ring }
+			every_system_planet = { limit = { is_star = yes } change_pc = pc_neutron_star }
+			set_star_class = ahw_sc_neutron_star
 		}
 	}
-	# what the systems are now (the result, not the dice): counts on ring node 1, logged
+}
+
+# What the ring nodes and portals are now (the result, not the dice): counts on ring node 1, logged.
+ahw_spike_count_centres = {
 	event_target:ahw_ring_1 = {
 		set_variable = { which = ahw_n_bh value = 0 }
 		set_variable = { which = ahw_n_pulsar value = 0 }
@@ -219,5 +228,113 @@ ahw_spike_pick_centres = {
 	}
 	event_target:ahw_ring_1 = {
 		log = "AHW SPIKE centres: black hole \\[This.ahw_n_bh], pulsar \\[This.ahw_n_pulsar], toxoid \\[This.ahw_n_toxoid], neutron (portals only) \\[This.ahw_n_neutron], other \\[This.ahw_n_other] (ring nodes and portals)"
+	}
+}
+
+# 0.0.31: one portal for the country in scope (this = country), from the game-start build and,
+# for empires born later or a build in a running game, from ahw_spike.30. The caller holds the
+# spawn batch. The anchor: an unowned system first; else (a running game, where most systems near
+# a capital are owned) one the empire owns itself, never another's (user, 2026-11-06).
+ahw_spike_build_portal = {
+	clear_global_event_target = ahw_x_tmp
+	clear_global_event_target = ahw_portal_tmp
+	clear_global_event_target = ahw_node_tmp
+	capital_star = { solar_system = { save_global_event_target_as = ahw_cap_tmp } }
+	save_global_event_target_as = ahw_country_tmp
+	ahw_spike_pick_anchor = { OK = ahw_spike_portal_anchor_ok WHO = unowned }
+	if = {
+		limit = { NOT = { exists = event_target:ahw_x_tmp } }
+		ahw_spike_pick_anchor = { OK = ahw_spike_portal_anchor_own_ok WHO = own }
+	}
+	if = {
+		limit = { exists = event_target:ahw_x_tmp }
+		# Run 8 (user): the portal's lane must arrive in the anchor system away from its
+		# other lanes, so an attacker from the portal has to pass the anchor's starbase.
+		# 0.0.17: spawned there at once, the angle computed from coordinates (generated).
+		ahw_spike_place_portal = yes
+		add_hyperlane = { from = event_target:ahw_portal_tmp to = event_target:ahw_x_tmp }
+		ahw_spike_find_nearest_node = yes
+		ahw_spike_make_next_pair = yes
+		set_country_flag = ahw_has_portal
+		# 0.0.21: named after the ring's reach it leads into, with an octal address.
+		ahw_spike_name_portal = yes
+		# 0.0.18: broken until studied and repaired by the anchor's owner (ahw_spike.20-.23);
+		# the study teaches the types and the ring (runs 4-5).
+		event_target:ahw_portal_tmp = { set_star_flag = ahw_broken }
+		set_visited = event_target:ahw_portal_tmp
+		if = {
+			limit = { is_ai = no }
+			event_target:ahw_portal_tmp = { save_global_event_target_as = ahw_player_portal }
+			event_target:ahw_node_tmp = { save_global_event_target_as = ahw_player_node }
+			event_target:ahw_x_tmp = { save_global_event_target_as = ahw_player_anchor }
+		}
+		log = "AHW SPIKE portal for [This.GetName] (capital [ahw_cap_tmp.GetName]): off [ahw_x_tmp.GetName], exit in [ahw_node_tmp.GetName]"
+	}
+	else = {
+		log = "AHW SPIKE NO portal for [This.GetName]: the random walk found no unowned or own system 2-3 jumps out"
+	}
+}
+
+# this = country: the anchor for its portal into event_target:ahw_x_tmp, from the best tier of the
+# systems 2-3 jumps from the capital that pass the scripted trigger $OK$. Log lines: escaped "[",
+# parameters last (see the top of this file).
+ahw_spike_pick_anchor = {
+	# Run 11 (user): search every system 2-3 jumps from the capital and take one from the best
+	# tier: fewest lanes first, systems that already hold a bypass after those without.
+	if = {
+		limit = { any_system = { $OK$ = yes count_neighbor_system = { count <= 1 } NOT = { ahw_spike_has_bypass = yes } ahw_spike_within_3_jumps_of_capital = yes } }
+		random_system = {
+			limit = { $OK$ = yes count_neighbor_system = { count <= 1 } NOT = { ahw_spike_has_bypass = yes } ahw_spike_within_3_jumps_of_capital = yes }
+			save_global_event_target_as = ahw_x_tmp
+		}
+		log = "AHW SPIKE anchor for \\[This.GetName] (capital \\[ahw_cap_tmp.GetName]): tier 1 (a dead end) -- $WHO$"
+	}
+	else_if = {
+		limit = { any_system = { $OK$ = yes count_neighbor_system = { count <= 2 } NOT = { ahw_spike_has_bypass = yes } ahw_spike_within_3_jumps_of_capital = yes } }
+		random_system = {
+			limit = { $OK$ = yes count_neighbor_system = { count <= 2 } NOT = { ahw_spike_has_bypass = yes } ahw_spike_within_3_jumps_of_capital = yes }
+			save_global_event_target_as = ahw_x_tmp
+		}
+		log = "AHW SPIKE anchor for \\[This.GetName] (capital \\[ahw_cap_tmp.GetName]): tier 2 (at most two lanes) -- $WHO$"
+	}
+	else_if = {
+		limit = { any_system = { $OK$ = yes count_neighbor_system = { count <= 2 } ahw_spike_within_3_jumps_of_capital = yes } }
+		random_system = {
+			limit = { $OK$ = yes count_neighbor_system = { count <= 2 } ahw_spike_within_3_jumps_of_capital = yes }
+			save_global_event_target_as = ahw_x_tmp
+		}
+		log = "AHW SPIKE anchor for \\[This.GetName] (capital \\[ahw_cap_tmp.GetName]): tier 3 (at most two lanes, but a bypass) -- $WHO$"
+	}
+	else_if = {
+		limit = { any_system = { $OK$ = yes count_neighbor_system = { count <= 3 } NOT = { ahw_spike_has_bypass = yes } ahw_spike_within_3_jumps_of_capital = yes } }
+		random_system = {
+			limit = { $OK$ = yes count_neighbor_system = { count <= 3 } NOT = { ahw_spike_has_bypass = yes } ahw_spike_within_3_jumps_of_capital = yes }
+			save_global_event_target_as = ahw_x_tmp
+		}
+		log = "AHW SPIKE anchor for \\[This.GetName] (capital \\[ahw_cap_tmp.GetName]): tier 4 (at most three lanes) -- $WHO$"
+	}
+	else_if = {
+		limit = { any_system = { $OK$ = yes count_neighbor_system = { count <= 3 } ahw_spike_within_3_jumps_of_capital = yes } }
+		random_system = {
+			limit = { $OK$ = yes count_neighbor_system = { count <= 3 } ahw_spike_within_3_jumps_of_capital = yes }
+			save_global_event_target_as = ahw_x_tmp
+		}
+		log = "AHW SPIKE anchor for \\[This.GetName] (capital \\[ahw_cap_tmp.GetName]): tier 5 (at most three lanes, but a bypass) -- $WHO$"
+	}
+	else_if = {
+		limit = { any_system = { $OK$ = yes NOT = { ahw_spike_has_bypass = yes } ahw_spike_within_3_jumps_of_capital = yes } }
+		random_system = {
+			limit = { $OK$ = yes NOT = { ahw_spike_has_bypass = yes } ahw_spike_within_3_jumps_of_capital = yes }
+			save_global_event_target_as = ahw_x_tmp
+		}
+		log = "AHW SPIKE anchor for \\[This.GetName] (capital \\[ahw_cap_tmp.GetName]): tier 6 (more lanes) -- $WHO$"
+	}
+	else_if = {
+		limit = { any_system = { $OK$ = yes ahw_spike_within_3_jumps_of_capital = yes } }
+		random_system = {
+			limit = { $OK$ = yes ahw_spike_within_3_jumps_of_capital = yes }
+			save_global_event_target_as = ahw_x_tmp
+		}
+		log = "AHW SPIKE anchor for \\[This.GetName] (capital \\[ahw_cap_tmp.GetName]): tier 7 (more lanes and a bypass) -- $WHO$"
 	}
 }

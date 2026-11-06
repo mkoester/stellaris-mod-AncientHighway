@@ -594,6 +594,7 @@ ahw_spike_build_outer_ring_{n} = {{
 {lanes}
 {reaches}
 	set_global_flag = ahw_ring_size_{n}
+	event_target:ahw_ring_1 = {{ set_variable = {{ which = ahw_pairs_max value = {PAIRS} }} }}
 	event_target:ahw_ring_{ka} = {{
 		export_trigger_value_to_variable = {{ trigger = distance parameters = {{ source = event_target:ahw_ring_{kt} type = euclidean }} variable = ahw_dprev }}
 		export_trigger_value_to_variable = {{ trigger = distance parameters = {{ source = event_target:ahw_ring_1 type = euclidean }} variable = ahw_dnext }}

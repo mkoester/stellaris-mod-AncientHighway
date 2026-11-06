@@ -3320,6 +3320,7 @@ ahw_spike_build_outer_ring_40 = {
 	event_target:ahw_ring_39 = { set_variable = { which = ahw_reach value = 7 } }
 	event_target:ahw_ring_40 = { set_variable = { which = ahw_reach value = 7 } }
 	set_global_flag = ahw_ring_size_40
+	event_target:ahw_ring_1 = { set_variable = { which = ahw_pairs_max value = 32 } }
 	event_target:ahw_ring_40 = {
 		export_trigger_value_to_variable = { trigger = distance parameters = { source = event_target:ahw_ring_39 type = euclidean } variable = ahw_dprev }
 		export_trigger_value_to_variable = { trigger = distance parameters = { source = event_target:ahw_ring_1 type = euclidean } variable = ahw_dnext }
@@ -6711,6 +6712,7 @@ ahw_spike_build_outer_ring_56 = {
 	event_target:ahw_ring_55 = { set_variable = { which = ahw_reach value = 7 } }
 	event_target:ahw_ring_56 = { set_variable = { which = ahw_reach value = 7 } }
 	set_global_flag = ahw_ring_size_56
+	event_target:ahw_ring_1 = { set_variable = { which = ahw_pairs_max value = 32 } }
 	event_target:ahw_ring_56 = {
 		export_trigger_value_to_variable = { trigger = distance parameters = { source = event_target:ahw_ring_55 type = euclidean } variable = ahw_dprev }
 		export_trigger_value_to_variable = { trigger = distance parameters = { source = event_target:ahw_ring_1 type = euclidean } variable = ahw_dnext }
@@ -10763,6 +10765,7 @@ ahw_spike_build_outer_ring_68 = {
 	event_target:ahw_ring_67 = { set_variable = { which = ahw_reach value = 7 } }
 	event_target:ahw_ring_68 = { set_variable = { which = ahw_reach value = 7 } }
 	set_global_flag = ahw_ring_size_68
+	event_target:ahw_ring_1 = { set_variable = { which = ahw_pairs_max value = 32 } }
 	event_target:ahw_ring_68 = {
 		export_trigger_value_to_variable = { trigger = distance parameters = { source = event_target:ahw_ring_67 type = euclidean } variable = ahw_dprev }
 		export_trigger_value_to_variable = { trigger = distance parameters = { source = event_target:ahw_ring_1 type = euclidean } variable = ahw_dnext }
@@ -15572,6 +15575,7 @@ ahw_spike_build_outer_ring_80 = {
 	event_target:ahw_ring_79 = { set_variable = { which = ahw_reach value = 7 } }
 	event_target:ahw_ring_80 = { set_variable = { which = ahw_reach value = 7 } }
 	set_global_flag = ahw_ring_size_80
+	event_target:ahw_ring_1 = { set_variable = { which = ahw_pairs_max value = 32 } }
 	event_target:ahw_ring_80 = {
 		export_trigger_value_to_variable = { trigger = distance parameters = { source = event_target:ahw_ring_79 type = euclidean } variable = ahw_dprev }
 		export_trigger_value_to_variable = { trigger = distance parameters = { source = event_target:ahw_ring_1 type = euclidean } variable = ahw_dnext }
@@ -20790,6 +20794,7 @@ ahw_spike_build_outer_ring_88 = {
 	event_target:ahw_ring_87 = { set_variable = { which = ahw_reach value = 7 } }
 	event_target:ahw_ring_88 = { set_variable = { which = ahw_reach value = 7 } }
 	set_global_flag = ahw_ring_size_88
+	event_target:ahw_ring_1 = { set_variable = { which = ahw_pairs_max value = 32 } }
 	event_target:ahw_ring_88 = {
 		export_trigger_value_to_variable = { trigger = distance parameters = { source = event_target:ahw_ring_87 type = euclidean } variable = ahw_dprev }
 		export_trigger_value_to_variable = { trigger = distance parameters = { source = event_target:ahw_ring_1 type = euclidean } variable = ahw_dnext }

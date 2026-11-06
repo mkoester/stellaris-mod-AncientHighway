@@ -231,7 +231,8 @@ ahw_spike_count_centres = {
 	}
 }
 
-# 0.0.31: one portal for the country in scope (this = country), from the game-start build and,
+# 0.0.31: one portal for the country in scope (this = country; "[" in its logs escaped too - run 31:
+# "Invalid macro entry in ahw_spike_build_portal", although it takes no parameters), from the game-start build and,
 # for empires born later or a build in a running game, from ahw_spike.30. The caller holds the
 # spawn batch. The anchor: an unowned system first; else (a running game, where most systems near
 # a capital are owned) one the empire owns itself, never another's (user, 2026-11-06).
@@ -268,10 +269,10 @@ ahw_spike_build_portal = {
 			event_target:ahw_node_tmp = { save_global_event_target_as = ahw_player_node }
 			event_target:ahw_x_tmp = { save_global_event_target_as = ahw_player_anchor }
 		}
-		log = "AHW SPIKE portal for [This.GetName] (capital [ahw_cap_tmp.GetName]): off [ahw_x_tmp.GetName], exit in [ahw_node_tmp.GetName]"
+		log = "AHW SPIKE portal for \\[This.GetName] (capital \\[ahw_cap_tmp.GetName]): off \\[ahw_x_tmp.GetName], exit in \\[ahw_node_tmp.GetName]"
 	}
 	else = {
-		log = "AHW SPIKE NO portal for [This.GetName]: the random walk found no unowned or own system 2-3 jumps out"
+		log = "AHW SPIKE NO portal for \\[This.GetName]: the random walk found no unowned or own system 2-3 jumps out"
 	}
 }
 

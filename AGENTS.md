@@ -25,7 +25,11 @@ level. Prefix every key, id, flag and variable with `ahw_`. Tested in game on Li
 
 ---
 
-## Status (2026-11-06): spike runs 1–30 done (4.5.3 live); `0.0.31-SPIKE` (mid-game install, late empires) built, not yet run
+## Status (2026-11-06): spike runs 1–31 done (4.5.3 live); `0.0.31-SPIKE`'s mid-game install and late portals built, their test deferred
+
+**Run 31's parts 2–3 (a running game, a late empire's portal) are deferred** (user, 2026-11-06:
+"not my priority right now", tested once the mod is mostly done for a fresh start); the steps
+stay below.
 
 **Build cost — solved by batching** (runs 26–30): unbatched, every `spawn_system`/`move_system`
 paid a recalculation growing with ~N^2.7 in the star count (huge: ~8 min at the start). Since
@@ -49,7 +53,17 @@ Known limits, untested: systems vanilla spawns during play beyond the rim (the L
 into the outline and push the ring out; the gates of a portal built in play lack their system-view
 label until a load (run 5).
 
-**Next: run 31** (test steps below), then finish run 25's steps 3–5 (portal system view, the
+**Multiplayer** (2026-11-06, reasoning, untested in MP): Stellaris runs every machine in lockstep —
+each one executes the same events and effects with the same random numbers, and nothing is sent
+from a host (vanilla's `on_single_player_save_game_load`: "Does not run when loading MP saves due
+to OOS concerns"; its L-Cluster spawns the same way on every machine). So the build runs on every
+player's machine and comes out identical, as long as all run the same mod set (the game checks).
+Nothing player-local may decide what is built. The freeze is the slowest machine's.
+
+**Timings are from mkDell** (user, 2026-11-06: about as old as the base game; nobody is expected to
+play on such a machine): acceptable there is acceptable for players.
+
+**Next:** finish run 25's steps 3–5 (portal system view, the
 study reveals only our exit, exploring). Then the spike order in item 7 (debris next); then the rest of the open list (the ring's exact
 speed is parked — user, 2026-11-04: "not too important to me now"). Everything is still the
 spike (`*spike*` files); nothing is shippable yet.
@@ -229,7 +243,7 @@ each console `event`, so nothing — not even a ship — is selected.
 
 Copy `logs/game.log` and `logs/error.log` before restarting the game.
 
-**Test, run 31** (`0.0.31-SPIKE`; Linux, only this mod, medium elliptical, AI empires on, console
+**Test, run 31** (part 1 done; parts 2–3 deferred; `0.0.31-SPIKE`; Linux, only this mod, medium elliptical, AI empires on, console
 on; quit the game completely between parts, and copy `logs/game.log` and `logs/error.log` before each relaunch).
 1. **A new game still works**: start one, look at the map — ring round the galaxy, our portal
    off a system 2–3 jumps from the capital. Quit.
@@ -243,6 +257,16 @@ on; quit the game completely between parts, and copy `logs/game.log` and `logs/e
    let the game run past the 1st of the next month. Expected: a freeze of a few seconds on the 1st,
    then a second portal near your capital. Screenshot.
 4. Save once more and copy the logs.
+
+**Run 31, part 1 (2026-11-06, `0.0.31-SPIKE`, a new medium game, twelve empires): the refactor
+builds as before.** The batch ~2 s (22:03:23 → :25); save 2200.01.01: 675 systems = 595 + 68 + 12
+portals, ring nodes two lanes, portals one, 24 entry bypasses, `ahw_has_portal` on twelve
+countries, no two systems closer than 10. Every anchor `-- unowned` (game start). **Bug**: the
+portal lines in `ahw_spike_build_portal` came out as "portal for ): off" (the twelve identical
+lines then dropped to one) with "Invalid macro entry in ahw_spike_build_portal: his.GetName" in
+error.log — `[` must be escaped in a scripted effect **even without parameters of its own** (it
+calls one with parameters? or every scripted effect); fixed after the run. The `$WHO$` suffix
+prints as "--unowned$" (cosmetic, as the report's "--ring_node$").
 
 **Run 30 (2026-11-06, `0.0.30-SPIKE`, huge elliptical, a fresh launch): the whole mod 11 s; one
 spawn in play 10 s.**

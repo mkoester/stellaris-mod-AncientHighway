@@ -46,8 +46,9 @@ than for every system spawned" and "can also be used when removing and adding hy
 `common/scripted_effects/01_start_of_game_effects.txt`). **`0.0.30-SPIKE` wraps the whole build up
 to the portals in one batch** — **run 28 (medium): 81 s → ~4 s, result unchanged; run 29 (huge):
 ~8 min → ≤ 15 s.** In play a batch of ten spawns took 16 s on huge (run 29) — a one-off freeze for
-installing mid-game is acceptable; for a single late empire's portal, measure one unbatched spawn
-in play on huge first. Also found, not used yet: **`no_scope = { spawn_system … }` spawns
+installing mid-game is acceptable; **a single spawn in play costs ~10 s on huge too (run 30)**, so
+each late empire's portal is a freeze of that size — open: accept it, or give late empires no
+spawn (they use the gates their anchors already hold). Also found, not used yet: **`no_scope = { spawn_system … }` spawns
 relative to the galactic core** — the L-Cluster goes 550 out, beyond the rim, at game start (run 8
 tried without any scope, which spawns nothing) — could replace the centre search and its probes;
 and `on_single_player_save_game_load` (no scope; not in multiplayer) for a mid-game install. **Option,
@@ -233,6 +234,16 @@ each console `event`, so nothing — not even a ship — is selected.
    node's lanes appear once it arrives? Screenshot.
 
 Copy `logs/game.log` and `logs/error.log` before restarting the game.
+
+**Run 30 (2026-11-06, `0.0.30-SPIKE`, huge elliptical, a fresh launch): the whole mod 11 s; one
+spawn in play 10 s.**
+- Every line from the start through the portals at 21:47:23 (centre search included), the batch's
+  end at 21:47:34: **11 s for the whole build on huge** (992 systems; galaxy generation began
+  21:45:15).
+- **One unbatched `spawn_system` in play** (console, probe3): 21:49:49 → 21:49:59, **10 s** — about
+  a whole batch's end (run 29: ten in a batch, 16 s). In play every spawn pays a full
+  recalculation; at the start an unbatched one cost 2.4 s (run 27). The save is from 2 s before the
+  probe, so the system is unchecked.
 
 **Run 29 (2026-11-06, `0.0.30-SPIKE`, huge elliptical, 19 empires, same launch as run 28): huge
 in ~15 s; a batch in play costs about as much.**

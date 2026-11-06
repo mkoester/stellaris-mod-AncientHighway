@@ -61,7 +61,9 @@ ordinary hyperlanes — or a bit longer, never shorter.
   (toxoid) or shields (pulsar). **Measured (run 32)**: −0.001 takes 0.005 % of the maximum
   armour per day, linearly, whatever the maximum; lost armour stays lost outside friendly space.
   **Decided (user, 2026-11-06): −0.02 for both** (0.1 %/day if it scales). Shields did not drop
-  at −0.001 (regeneration outweighs it?) — open until run 33.
+  at −0.001 (regeneration outweighs it?). **Shields need to drain more** (user, 2026-11-06):
+  more than armour, since they regenerate; run 33 measures −0.02 first, then the pulsar's value
+  goes up (or regeneration is cut as well) until shields actually fall.
 - **The centres carry no deposit** (user, 2026-11-06; vanilla gave all 80 one in run 32): the
   debris is the road's only resource.
 

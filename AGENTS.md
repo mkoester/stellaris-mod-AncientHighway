@@ -305,7 +305,12 @@ debris works; the drain is 20× weaker than meant.** Screenshots `2026_11_06_6`�
   (2202.04.11 → 05.18): armour stayed at 298.35 (lost armour does not come back outside friendly
   space), shields 100/100 throughout.
 - **Decided (user, 2026-11-06)**: drain −0.02 for both (0.1 %/day if linear); the centres'
-  deposits cleared. Both in `0.0.33-SPIKE`.
+  deposits cleared. Both in `0.0.33-SPIKE`. Then: **shields need to drain more** — raise the
+  pulsar's value after run 33 shows what −0.02 does to shields.
+- **Read numbers from the saves, not screenshots** (per ship in `ships`: `armor_hitpoints`,
+  `shield_hitpoints`, `hitpoints` and their `max_…`, `fleet`, `coordinate.origin` = the system;
+  a fleet's `ship_class`; systems' name keys `ahw_portal_<reach>_<n>` / `ahw_node_<N>_<k>`;
+  planets' flags and `deposits`). Every save of a run carries the history.
 
 **Run 31, part 1 (2026-11-06, `0.0.31-SPIKE`, a new medium game, twelve empires): the refactor
 builds as before.** The batch ~2 s (22:03:23 → :25); save 2200.01.01: 675 systems = 595 + 68 + 12

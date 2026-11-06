@@ -33,7 +33,15 @@ exploring), then the **spawn probe**: in the run-25 game, console `effect` with 
 hyperlane = no }` inside `random_system = { limit = { has_star_flag = ahw_ring } … }`, and a second
 `log` line; the seconds between the two lines decide it — ~7 s or more: a spawn costs as much
 mid-game, so building in the background only trades the wait for daily hitches; much less: build
-the ring (and maybe the portals) in the background after the start. Then the spike order in item 7 (debris next); then the rest of the open list (the ring's exact
+the ring (and maybe the portals) in the background after the start. **`0.0.29-SPIKE`** logs the
+regular-system count and a timestamp every 10th ring spawn; with it, start a **tiny** and a
+**large** elliptical game (quit after the start, keep `game.log`) to fit the cost per spawn
+against galaxy size (small 0.18 s, medium 0.74 s: worse than linear). **Decided (user,
+2026-11-06), if mid-game spawns are tolerable:** one staged build after the start serves new
+games, existing saves (started by the monthly pulse when the build flag is unset) and empires
+born later (every regular empire without a portal gets one; anchor unowned, else the empire's
+own, never foreign). Script-spawned gates lack their system-view label until a load (run 5).
+Then the spike order in item 7 (debris next); then the rest of the open list (the ring's exact
 speed is parked — user, 2026-11-04: "not too important to me now"). Everything is still the
 spike (`*spike*` files); nothing is shippable yet.
 

@@ -38,6 +38,15 @@ event = {
 		log = "AHW SPIKE timing: centre found"
 		ahw_spike_measure_outline = yes
 		log = "AHW SPIKE timing: outline measured"
+		# 0.0.29: the galaxy's size in systems, to fit the cost per spawn against it.
+		event_target:ahw_centre_system = {
+			set_variable = { which = ahw_n_sys value = 0 }
+			every_system = {
+				limit = { NOT = { has_star_flag = ahw_unclaimable } }
+				prev = { change_variable = { which = ahw_n_sys value = 1 } }
+			}
+			log = "AHW SPIKE systems: [This.ahw_n_sys] regular systems"
+		}
 		ahw_spike_build_outer_ring = yes
 		log = "AHW SPIKE timing: outer ring built"
 

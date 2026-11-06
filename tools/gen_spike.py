@@ -547,7 +547,11 @@ def outer_ring(n):
     smooth = '\n'.join([lift(k, (k - 2) % n + 1) for _ in range(2) for k in order]
                        + [lift(k, k % n + 1) for _ in range(2) for k in reversed(order)])
     label = node_labels(n)
-    spawns = '\n'.join(f'\t\tahw_spike_spawn_outer_node = {{ K = {k} ANGLE = {a} LABEL = {label[k]} }}' for k, a in nodes[:-2])
+    # 0.0.29: a timestamp every 10th spawn (the index keeps the lines unique), to see whether a
+    # spawn gets dearer as the ring grows.
+    spawns = '\n'.join(f'\t\tahw_spike_spawn_outer_node = {{ K = {k} ANGLE = {a} LABEL = {label[k]} }}'
+                       + (f'\n\t\tlog = "AHW SPIKE timing: {i + 1} ring nodes spawned"' if (i + 1) % 10 == 0 else '')
+                       for i, (k, a) in enumerate(nodes[:-2]))
     (kt, at), (ka, aa) = nodes[-2], nodes[-1]
     lanes = '\n'.join(f'\tadd_hyperlane = {{ from = event_target:ahw_ring_{k} to = event_target:ahw_ring_{k % n + 1} }}'
                       for k, _ in nodes)

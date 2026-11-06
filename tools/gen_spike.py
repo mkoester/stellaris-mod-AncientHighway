@@ -470,12 +470,55 @@ def node_labels(n):
     return {k: f'ahw_node_{n}_{k}' for k, _ in ring_nodes(n)}
 
 
+# Octants (0.0.25, run 23: the ring took 37 s on a medium galaxy): a system is only within
+# OUTLINE_HALF of the nodes near its own direction, so each system first finds its octant (signs of
+# x, y and which is larger) and tests only those nodes - about a fifth of the ring instead of all.
+# Octant o holds the directions [45 o, 45 (o + 1)), with ahw_nx = -x, ahw_ny = -y.
+OCTANTS = [
+    'check_variable = { which = ahw_y value >= 0 } check_variable = { which = ahw_x value >= ahw_y }',
+    'check_variable = { which = ahw_x value >= 0 } check_variable = { which = ahw_y value >= ahw_x }',
+    'check_variable = { which = ahw_y value >= 0 } check_variable = { which = ahw_y value >= ahw_nx }',
+    'check_variable = { which = ahw_y value >= 0 }',
+    'check_variable = { which = ahw_x value < 0 } check_variable = { which = ahw_nx value >= ahw_ny }',
+    'check_variable = { which = ahw_x value < 0 }',
+    'check_variable = { which = ahw_y value < 0 } check_variable = { which = ahw_ny value >= ahw_x }',
+    None,  # the rest: y < 0, x > -y
+]
+
+
+def octant_of(x, y):
+    """Mirrors the OCTANTS if/else_if chain (for the self-check)."""
+    nx, ny = -x, -y
+    tests = [y >= 0 and x >= y, x >= 0 and y >= x, y >= 0 and y >= nx, y >= 0,
+             x < 0 and nx >= ny, x < 0, y < 0 and ny >= x]
+    return next((o for o, t in enumerate(tests) if t), 7)
+
+
+def octant_nodes(n, o):
+    """Nodes whose direction lies within OUTLINE_HALF (plus rounding slack) of octant o."""
+    lo, hi = 45 * o - OUTLINE_HALF - 0.5, 45 * (o + 1) + OUTLINE_HALF + 0.5
+    return [(k, a) for k, a in ring_nodes(n) if any(lo <= a + t <= hi for t in (-360, 0, 360))]
+
+
+def check_octants():
+    """Every node a system can belong to (projection >= r cos OUTLINE_HALF) is in its octant's list."""
+    for n in set(NODES.values()):
+        for i in range(3600):
+            th = math.radians(i / 10)
+            x, y = math.cos(th) * 100, math.sin(th) * 100
+            got = {k for k, _ in octant_nodes(n, octant_of(x, y))}
+            need = {k for k, a in ring_nodes(n)
+                    if x * math.cos(math.radians(a)) + y * math.sin(math.radians(a))
+                    >= 100 * math.cos(math.radians(OUTLINE_HALF))}
+            assert need <= got, (n, i / 10, sorted(need - got))
+
+
 def outer_ring(n):
     """The ring of n nodes round the outline, joined in order. No scope."""
     cos_half = round(math.cos(math.radians(OUTLINE_HALF)), 4)
     nodes = ring_nodes(n)
     init = '\n'.join(f'\t\tset_variable = {{ which = ahw_edge_{k} value = 0 }}' for k, _ in nodes)
-    sectors = '\n'.join(f'''		set_variable = {{ which = ahw_p value = ahw_x }}
+    sector = lambda k, a: f'''		set_variable = {{ which = ahw_p value = ahw_x }}
 		multiply_variable = {{ which = ahw_p value = {round(math.cos(math.radians(a)), 4)} }}
 		set_variable = {{ which = ahw_q value = ahw_y }}
 		multiply_variable = {{ which = ahw_q value = {round(math.sin(math.radians(a)), 4)} }}
@@ -486,7 +529,12 @@ def outer_ring(n):
 				check_variable = {{ which = ahw_r value > event_target:ahw_centre_system.ahw_edge_{k} }}
 			}}
 			event_target:ahw_centre_system = {{ set_variable = {{ which = ahw_edge_{k} value = prev.ahw_r }} }}
-		}}''' for k, a in nodes)
+		}}'''
+    indent = lambda text: '\n'.join('\t' + line for line in text.split('\n'))
+    sectors = '\n'.join(
+        f'''		{'if' if o == 0 else 'else_if' if cond else 'else'} = {{
+{f'			limit = {{ {cond} }}' + chr(10) if cond else ''}{indent(chr(10).join(sector(k, a) for k, a in octant_nodes(n, o)))}
+		}}''' for o, cond in enumerate(OCTANTS))
     rads = '\n'.join(f'''		set_variable = {{ which = ahw_rad_{k} value = ahw_edge_{k} }}
 		change_variable = {{ which = ahw_rad_{k} value = {RING_MARGIN} }}''' for k, _ in nodes)
     lift = lambda k, j: f'''		set_variable = {{ which = ahw_t value = ahw_rad_{j} }}
@@ -519,13 +567,21 @@ ahw_spike_build_outer_ring_{n} = {{
 		limit = {{ NOT = {{ has_star_flag = ahw_unclaimable }} }}
 		set_variable = {{ which = ahw_h value = ahw_r }}
 		multiply_variable = {{ which = ahw_h value = {cos_half} }}
+		set_variable = {{ which = ahw_nx value = 0 }}
+		subtract_variable = {{ which = ahw_nx value = ahw_x }}
+		set_variable = {{ which = ahw_ny value = 0 }}
+		subtract_variable = {{ which = ahw_ny value = ahw_y }}
+		# only the nodes near the system's own octant (0.0.25)
 {sectors}
 	}}
 	event_target:ahw_centre_system = {{
+		log = "AHW SPIKE timing: ring edges found"
 {rads}
 		# smoothing: at most {RING_SLOPE} below a neighbour
 {smooth}
+		log = "AHW SPIKE timing: ring smoothed"
 {spawns}
+		log = "AHW SPIKE timing: ring nodes spawned"
 		ahw_spike_move_probe_to_node = {{ PROBE = ahw_probe_t K = {kt} ANGLE = {at} LABEL = {label[kt]} }}
 {logs}
 		ahw_spike_move_probe_to_node = {{ PROBE = ahw_probe_a K = {ka} ANGLE = {aa} LABEL = {label[ka]} }}
@@ -747,6 +803,7 @@ ahw_spike_find_centre = {
 
 
 def main():
+    check_octants()
     files = {
         'common/bypass/ahw_spike_bypasses.txt': gen_bypasses(),
         'common/megastructures/ahw_spike_megastructures.txt': gen_megastructures(),

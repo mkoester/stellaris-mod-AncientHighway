@@ -25,7 +25,7 @@ level. Prefix every key, id, flag and variable with `ahw_`. Tested in game on Li
 
 ---
 
-## Status (2026-11-05): spike runs 1–22 done (4.5.3 live); `0.0.24-SPIKE` (run 23: friends pass a seal) not yet run
+## Status (2026-11-06): spike runs 1–22 done (4.5.3 live); run 23 (`0.0.24-SPIKE`: friends pass a seal) in progress; `0.0.25-SPIKE` (faster ring edges, timing) built
 
 **Next session: run 23** (steps below), then the rest of the open list (the ring's exact
 speed is parked — user, 2026-11-04: "not too important to me now"). Everything is still the
@@ -191,6 +191,17 @@ even a ship — is selected (runs 21–22: the event fired on the selection and 
    order it again: it should **go**. Bring it back into the portal.
 
 Copy `logs/game.log` and `logs/error.log` before restarting the game.
+
+**Run 23 (2026-11-06, `0.0.24-SPIKE`, medium elliptical, twelve empires, on mkDell): in
+progress.** Screenshot `2026_11_06_1` (the map round Sol; our portal Galvaas 61, exit Galvaas
+Node 1).
+- **Game start: 90 s of the mod** (19:31:40 → 19:33:10; the game's own generation 32 s before):
+  centre 12 s, ring 37 s (68 nodes), portals 40 s (3.3 s each). Run 17 (small): 4 / 10 / 8 s.
+  The centre search makes ~21 moves whatever the size, yet took 3× longer, so the machine (or a
+  per-call cost growing with the galaxy) carries much of it. `0.0.25-SPIKE`: the ring's edge
+  search tests only the nodes near each system's octant (14 of 68 instead of all; the generator
+  checks the octant lists before writing), and logs timing after the edges, the smoothing and the
+  spawns, to split the 37 s.
 
 **Run 1 (2026-11-03, 4.5.3 open beta, elliptical galaxy, `0.0.1-SPIKE`): stopped at the anchor.**
 - `random_system` with `distance_to_core_percent` 25–40 matched **nothing**, although the

@@ -162,7 +162,7 @@ ahw_spike_unseal_gate = {
 }
 
 # No scope (0.0.26): every ring node and portal keeps its black hole or becomes a pulsar or a toxoid
-# star, a third each (design 2026-11-05/06), as vanilla's storms change a star (change_pc on the
+# star, a third each (portals: a quarter each, a neutron star the fourth; 0.0.28) (design 2026-11-05/06), as vanilla's storms change a star (change_pc on the
 # star, set_star_class on the system; events/cosmic_storms_events_1.txt). Called once after the
 # build, at depth 1 (run 22: scripted effects nest at most 5 deep).
 ahw_spike_pick_centres = {
@@ -178,6 +178,13 @@ ahw_spike_pick_centres = {
 				every_system_planet = { limit = { is_star = yes } change_pc = pc_toxoid_star }
 				set_star_class = ahw_sc_toxoid_star
 			}
+			# portals only (user, 2026-11-06): the neutron star's -50 % sub-light speed would throw
+			# off the ring's speed tuning, but in a dead end it only slows whoever comes and goes
+			1 = {
+				modifier = { factor = 0 has_star_flag = ahw_ring }
+				every_system_planet = { limit = { is_star = yes } change_pc = pc_neutron_star }
+				set_star_class = ahw_sc_neutron_star
+			}
 		}
 	}
 	# what the systems are now (the result, not the dice): counts on ring node 1, logged
@@ -185,6 +192,7 @@ ahw_spike_pick_centres = {
 		set_variable = { which = ahw_n_bh value = 0 }
 		set_variable = { which = ahw_n_pulsar value = 0 }
 		set_variable = { which = ahw_n_toxoid value = 0 }
+		set_variable = { which = ahw_n_neutron value = 0 }
 		set_variable = { which = ahw_n_other value = 0 }
 	}
 	every_system = {
@@ -201,11 +209,15 @@ ahw_spike_pick_centres = {
 			limit = { is_star_class = ahw_sc_toxoid_star }
 			event_target:ahw_ring_1 = { change_variable = { which = ahw_n_toxoid value = 1 } }
 		}
+		else_if = {
+			limit = { is_star_class = ahw_sc_neutron_star has_star_flag = ahw_portal }
+			event_target:ahw_ring_1 = { change_variable = { which = ahw_n_neutron value = 1 } }
+		}
 		else = {
 			event_target:ahw_ring_1 = { change_variable = { which = ahw_n_other value = 1 } }
 		}
 	}
 	event_target:ahw_ring_1 = {
-		log = "AHW SPIKE centres: black hole \\[This.ahw_n_bh], pulsar \\[This.ahw_n_pulsar], toxoid \\[This.ahw_n_toxoid], other \\[This.ahw_n_other] (ring nodes and portals)"
+		log = "AHW SPIKE centres: black hole \\[This.ahw_n_bh], pulsar \\[This.ahw_n_pulsar], toxoid \\[This.ahw_n_toxoid], neutron (portals only) \\[This.ahw_n_neutron], other \\[This.ahw_n_other] (ring nodes and portals)"
 	}
 }

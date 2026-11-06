@@ -107,8 +107,10 @@ placement and the shortcut do not.
    revealed (the study `set_visited`s only our exit node; ring stars a faint ~10 % map icon —
    per-empire hiding does not exist); portals get the centre mix too; after one's own study,
    inspecting a gate someone else repaired (any fleet, ~10 days) gives engineering +5 % (+7 % on
-   first entry, `on_entering_system_first_time`), a foreign portal with a centre type not yet
-   seen gives physics +5/+7 %; all grants together at most 80 %. Spike order after run 23:
+   first entry, `on_entering_system_first_time`), a foreign portal gives physics +7 % when its
+   centre is a kind not seen before, else +5 % (once per portal; portals also come as neutron
+   stars, 2026-11-06: four kinds);
+   all grants together at most 80 %. Spike order after run 23:
    centres and star classes (portals too, the faint icon) → debris → techs and grants (does
    `add_tech_progress` work before the tech is offered?) → exploration and inspection grants →
    nomads and the contract → express (its own run).
@@ -179,6 +181,7 @@ next game, so give a console line for the running one when needed.
 **Centres (0.0.27)**: ring nodes, portals and the two centre probes (which become ring nodes)
 are spawned with our `ahw_sc_black_hole`, the star planet at size 6 (vanilla 20–35); after the
 build `ahw_spike_pick_centres` turns two in three into `ahw_sc_pulsar` / `ahw_sc_toxoid_star`
+(portals, 0.0.28: three in four, `ahw_sc_neutron_star` the fourth — never in the ring)
 (`change_pc` + `set_star_class`, as vanilla's storms do) and logs the resulting counts. Our classes
 (`common/star_classes/ahw_spike_star_classes.txt`): vanilla's look and modifiers,
 `spawn_odds = 0` (so the galaxy never draws them), `icon_scale` 10 % of vanilla's.

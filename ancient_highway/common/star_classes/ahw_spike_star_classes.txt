@@ -4,7 +4,8 @@
 # never pick them, and so the map icon can be ours: far smaller than a star's (user, 2026-11-06:
 # a small centre of mass, hard to detect - faint specks until explored), here 10 % of vanilla's
 # icon_scale. Q (run 24): does an icon_scale this small still draw, and can one click it?
-# No neutron star: -50 % sub-light speed would throw off the ring's speed.
+# The neutron star (0.0.28, user 2026-11-06) is for portals only: -50 % sub-light speed would throw
+# off the ring's speed.
 
 ahw_sc_black_hole = {
 	class = black_hole
@@ -44,5 +45,18 @@ ahw_sc_toxoid_star = {
 	arkship_picture = "arkship_class_g"
 	modifier = {
 		ship_armor_reduction = 1.0
+	}
+}
+
+ahw_sc_neutron_star = {
+	class = neutron_star
+	icon_scale = 0.15
+	planet = { key = pc_neutron_star }
+	spawn_odds = 0
+	is_environmental_hazard = yes
+	can_be_crisis_terraformed = no
+	arkship_picture = "arkship_neutron_star"
+	modifier = {
+		ship_speed_reduction = 0.5
 	}
 }

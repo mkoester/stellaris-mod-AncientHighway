@@ -44,9 +44,10 @@ ordinary hyperlanes — or a bit longer, never shorter.
 
   The combat terrain varies round the ring, which gives the neutral battlefield some character.
   In a portal it varies the dead end's defence per empire: a pulsar portal strips shields, a
-  toxoid one armour.
-  **No neutron stars**: −50 % sub-light speed would throw off the ring's speed tuning. Not used
-  either: the rift star (no effect, Astral Planes look).
+  toxoid one armour, and a **neutron-star portal** (portals only, user 2026-11-06) halves
+  sub-light speed for whoever comes and goes.
+  **No neutron stars in the ring**: −50 % sub-light speed would throw off the ring's speed
+  tuning. Not used either: the rift star (no effect, Astral Planes look).
 - **Collected debris (decided 2026-11-05)**: the road is old and has gathered asteroids, about 3
   per system on average (0–6), in ring nodes **and** portals. About a third carry a valuable
   deposit. Only nomads profit, since they harvest without owning anything. They sit inside the
@@ -140,10 +141,12 @@ The connections between the ring and the regular galaxy are special, not hyperla
     its exit in the ring): any fleet — every ship type — stays about 10 days in the system (a
     short event). **+5 %**, or **+7 %** when that was the empire's first entry into the system
     (`on_entering_system_first_time`). Once per gate.
-  - **Physics: a new kind of centre.** A fleet staying at a foreign portal whose centre type the
-    empire has not seen yet: **+5 %**, **+7 %** on a first entry. The own portal's type counts as
-    seen, so at most two (≤ 14 %). Ring centres cannot feed physics: no ship reaches the ring
-    without it.
+  - **Physics: other centres.** A fleet staying at a foreign portal (any ship, about 10 days, as
+    above): **+7 %** when its centre is a kind the empire has never seen before, **+5 %** when it
+    has (user, 2026-11-06: the higher grant is for the first sight of a kind, not for a first entry
+    into the system). Once per portal. Four kinds exist (black hole, pulsar, toxoid, and the
+    neutron star in portals only); the own portal's kind counts as seen. Ring centres cannot feed
+    physics: no ship reaches the ring without it.
   - **Cap: all grants together give at most 80 % of each tech** (user, 2026-11-06), so a
     study-only empire can still earn up to 65 % by exploring.
   They meet when an empire studies its own gate and a nomad then repairs it, or when it gives up

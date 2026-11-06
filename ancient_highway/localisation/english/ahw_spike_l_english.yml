@@ -20,6 +20,7 @@
  ahw_sc_black_hole:0 "$pc_black_hole$"
  ahw_sc_pulsar:0 "$pc_pulsar$"
  ahw_sc_toxoid_star:0 "$pc_toxoid_star$"
+ ahw_sc_neutron_star:0 "$pc_neutron_star$"
  AHW_SPIKE_ENTRY:0 "Highway Entry Point"
  AHW_SPIKE_ENTRY_DESC:0 "SPIKE: an entry point of the Ancient Highway. Needs ahw_tech_spike, and the gate repaired."
  AHW_RING_UNCLAIMABLE:0 "The Ancient Highway cannot be claimed."

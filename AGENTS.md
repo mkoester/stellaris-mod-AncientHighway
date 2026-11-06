@@ -35,9 +35,9 @@ hyperlane = no }` inside `random_system = { limit = { has_star_flag = ahw_ring }
 mid-game, so building in the background only trades the wait for daily hitches; much less: build
 the ring (and maybe the portals) in the background after the start. **Answered by run 26: a
 mid-game spawn costs ~4.5× more** (2.5 s vs 0.55 s), so background building is out at this cost;
-building at the start stays the cheapest moment. Still open: a **tiny** and a **large** start
-with `0.0.29-SPIKE` (quit after the start, keep `game.log`) to fit the cost per spawn against
-galaxy size. **Decided (user, 2026-11-06)** for adding the mod to a running game and for empires
+building at the start stays the cheapest moment. **Run 27: per spawn ∝ ~N^2.7 in the star
+count; huge takes ~8 minutes at the start** — cannot ship; fewer spawns or spawns the engine does
+not pay for are the levers. **Decided (user, 2026-11-06)** for adding the mod to a running game and for empires
 born later: every regular empire without a portal gets one; anchor unowned, else the empire's
 own, never foreign. How (one announced freeze, fewer spawns) is open after run 26.
 Script-spawned gates lack their system-view label until a load (run 5).
@@ -218,6 +218,31 @@ each console `event`, so nothing — not even a ship — is selected.
    node's lanes appear once it arrives? Screenshot.
 
 Copy `logs/game.log` and `logs/error.log` before restarting the game.
+
+**Run 27 (2026-11-06, `0.0.29-SPIKE`, every galaxy size, elliptical, one launch, on mkDell):
+the cost per spawn grows with about the cube of the star count.** Logs in `~/ahw-logs/`. In one
+launch the game drops a `log` line whose text **and script line** it has logged before, so the
+later sizes lack the start and centre lines (their ring lines come from per-size effects and
+survived); `game.log` is rewritten per launch, not per new game.
+
+| size (setup radius) | systems | ring nodes | ring | per spawn | per portal | portals |
+|---|---|---|---|---|---|---|
+| tiny (200) | 201 | 38 | ~2 s | ~0.05 s | < 0.2 s | 5 in < 1 s |
+| small (300) | 400 | 54 | 11 s | 0.20 s | 0.9 s | 11 in ~10 s |
+| medium (400) | 597 | 66 | 37 s | 0.56 s | 2.3 s | 13 in 30 s (run 26) |
+| large (450) | 797 | 78 | 108 s | 1.38 s | 6.2 s | 17 in 106 s |
+| huge (450) | 989 | 86 | 208 s | 2.42 s | 13.5 s | 18 in ~250 s |
+
+- **Per spawn ∝ ~N^2.7** (small → huge: 12× for 2.5× the stars); the whole build ∝ ~N^3.2 (√N
+  nodes and portals). Huge: **~8 minutes** of the mod at game start (ring + portals, centre not
+  logged).
+- **It follows the stars, not the radius**: large and huge share radius 450, huge costs 1.75×.
+- A portal costs a steady ~4–5 ring spawns at every size. Spawns stay flat within a run (each
+  ten as dear as the first ten).
+- In play (probe of ten spawns): tiny ~0.1 s, medium 2.5 s per spawn (2× / 4.5× the start).
+- Inference, not tested: every spawn or move rebuilds something over all systems (the route
+  cache is a candidate — run 5's "Galactic Map Cache Distance"), so the levers are fewer calls
+  or calls the engine does not pay for (systems made during galaxy generation), not faster script.
 
 **Run 26 (2026-11-06, `0.0.29-SPIKE`, medium elliptical, thirteen empires, on mkDell): a
 mid-game spawn costs ~4.5× a start-time one.**

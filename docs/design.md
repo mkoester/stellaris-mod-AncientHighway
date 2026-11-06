@@ -45,9 +45,23 @@ ordinary hyperlanes — or a bit longer, never shorter.
   **To rethink (user, 2026-11-06, after run 25):** the full vanilla effects may be too hard —
   "especially toxoid: 0% armor instantly and normally no repair on route might defeat the purpose
   of the mod." Idea: keep each centre's general effect but apply it slowly, "like 0.1% damage per
-  day in that system". Open: what vanilla's −100 % actually does (likely armour/shields not
-  counting in combat while in the system, not lost — check), and how to script a slow drain
-  (a negative regen modifier on the star class? an event — there is no daily pulse).
+  day in that system".
+  **What vanilla's −100 % does** (game files read 2026-11-06, plus the user's test): the modifiers
+  are `ship_armor_reduction` / `ship_shield_reduction`, named "Armor Nullification" / "Shield
+  Nullification"; the engine applies them, nothing in `common/` explains more. The user's
+  construction ship came out of a toxoid system **still at 0 % armour** — it is lost, not just
+  ignored in combat, and comes back only by repair (a ship without armour regeneration needs a
+  starbase). Shields come back by themselves (shield regeneration, ×5 out of combat,
+  `OUT_OF_COMBAT_SHIELD_REGEN_MULT`), so a pulsar costs much less than a toxoid star.
+  **The slow drain exists in vanilla:** negative regeneration modifiers — the Cetana storm's
+  starbase aura (`common/component_templates/00_starbase_building_auras.txt`,
+  `STARBASE_AURA_CETANA_STORM`) gives hostile ships system-wide `ship_hull_regen_add_perc = -0.15`
+  and `ship_armor_regen_add_perc = -0.05`; `ship_shield_regen_add_perc` is used negatively too.
+  So the star class's `modifier` can swap the nullification for a negative regen of armour
+  (toxoid) or shields (pulsar). Open, to measure in a spike: the unit of `_add_perc` (share of
+  the maximum per day?), so ~0.1 %/day is set right; whether a negative regen actually lowers
+  the current value or only cancels regeneration; how the out-of-combat ×5 acts on a negative
+  value.
 
   The combat terrain varies round the ring, which gives the neutral battlefield some character.
   In a portal it varies the dead end's defence per empire: a pulsar portal strips shields, a

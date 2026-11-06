@@ -32,7 +32,9 @@ ordinary hyperlanes — or a bit longer, never shorter.
   vanilla's size** in both the galaxy map and the system view (user, 2026-11-05): our own star
   classes (`icon_scale`) and a small `size` in the initializer.
 - **Centre types (decided 2026-11-05): a mix, no slowdown.** Look and ship effect come from the
-  star class, so we define our own. The ring mixes three, the portals stay black holes:
+  star class, so we define our own. The ring **and the portals** mix three (portals: user,
+  2026-11-06, replacing "portals stay black holes" — a new kind of centre feeds the physics tech,
+  "Access"):
 
   | Type | Effect on ships in the system (vanilla's) |
   |---|---|
@@ -41,6 +43,8 @@ ordinary hyperlanes — or a bit longer, never shorter.
   | Toxoid star | armour −100 % |
 
   The combat terrain varies round the ring, which gives the neutral battlefield some character.
+  In a portal it varies the dead end's defence per empire: a pulsar portal strips shields, a
+  toxoid one armour.
   **No neutron stars**: −50 % sub-light speed would throw off the ring's speed tuning. Not used
   either: the rift star (no effect, Astral Planes look).
 - **Collected debris (decided 2026-11-05)**: the road is old and has gathered asteroids, about 3
@@ -61,6 +65,14 @@ ordinary hyperlanes — or a bit longer, never shorter.
   passing through could avoid one another). With the yardstick a run-4 crossing (171 days for an
   early science ship) is far too slow. **Fights are accepted** (decided 2026-11-04): with quick
   crossings, passing empires meet; the ring is the neutral battlefield ("Consequences for play").
+- **Explored, not revealed (user, 2026-11-06).** The study reveals only the empire's own exit
+  node (`set_visited`; a gate needs its destination known, run 4); the rest of the ring is found
+  by flying it, node by node, as in vanilla. **On the map the ring is hard to see**: its centres
+  are artificial, with a far smaller centre of mass than a star, so our ring star classes get a
+  faint, tiny icon (`icon_scale` ~0.1) — unexplored nodes read as specks, and their hyperlanes are
+  not drawn until explored (vanilla, runs 2 and 12). **Hiding a system from one empire only is not
+  possible** (4.5.3: no such trigger or effect; `is_hidden` is for leaders, star classes and
+  `set_star_class` are global), so every empire sees the same specks.
 - Visually distinct from the rest of the galaxy (own star class, possibly a nebula). The first
   idea — the ring sitting a bit above or below the galactic plane — is likely impossible: systems
   spawned during a game get no height coordinate.
@@ -122,15 +134,27 @@ The connections between the ring and the regular galaxy are special, not hyperla
   a former owner) gets the study for free and **50 % of each tech**.
   **The grants add up: 15 % + 50 % = 65 %** (user, 2026-11-05: having studied the broken gate,
   then seeing how somebody else repaired it, is worth more than never having seen it broken).
+  **More by looking around (user, 2026-11-06)**, each once per empire, and only **after its own
+  study** (one has to know what one is looking at):
+  - **Engineering: inspecting a gate somebody else repaired**, at either end (in its portal or at
+    its exit in the ring): any fleet — every ship type — stays about 10 days in the system (a
+    short event). **+5 %**, or **+7 %** when that was the empire's first entry into the system
+    (`on_entering_system_first_time`). Once per gate.
+  - **Physics: a new kind of centre.** A fleet staying at a foreign portal whose centre type the
+    empire has not seen yet: **+5 %**, **+7 %** on a first entry. The own portal's type counts as
+    seen, so at most two (≤ 14 %). Ring centres cannot feed physics: no ship reaches the ring
+    without it.
+  - **Cap: all grants together give at most 80 % of each tech** (user, 2026-11-06), so a
+    study-only empire can still earn up to 65 % by exploring.
   They meet when an empire studies its own gate and a nomad then repairs it, or when it gives up
   a studied anchor and later owns it again (or another anchor) with a repaired gate. **Each grant
-  at most once per empire**, so 65 % is the ceiling: no farming by giving anchors up and taking
+  at most once per empire**, so 65 % is the ceiling of these two: no farming by giving anchors up and taking
   them back, and that detour gains nothing over the honest case. A tech already researched gets
   nothing.
   The network adds a throttle of its own: one can exit only at gates others have repaired.
 - **At first every entry point is broken.** **The anchor's owner** — whoever owns the system the
-  portal hangs off — studies it with a science ship (a special project), which reveals the ring
-  and the network and makes the technology researchable; then pays alloys and repairs it with a
+  portal hangs off — studies it with a science ship (a special project), which reveals its exit node (the
+  rest of the ring is explored, "The ring") and makes the technologies researchable; then pays alloys and repairs it with a
   construction ship (a special project) — **once, for good** (decided 2026-11-04).
 - **Using entry points needs a special technology**, unlocked by the study.
 - **One can only exit at an entry point that is already repaired.** An unrepaired entry point

@@ -94,7 +94,7 @@ placement and the shortcut do not.
 7. **Design round 2026-11-05** (decided; `docs/design.md`; not built yet): access in three
    stages; two techs (physics: use and seal; engineering, with physics: repair; 2500 each, no
    tier prerequisites); the study grants 15 % of each, an anchor with a repaired gate 50 %
-   (they add up to 65 %; each once per empire); centres at 20 %
+   (they add up to 65 %; each once per empire; more below, cap 80 %); centres at 20 %
    size, our own star classes, the ring a mix of black hole / pulsar / toxoid (no neutron);
    debris (~3 asteroids, a third with deposits) in ring nodes and portals; cosmic storms
    welcome on both; nomads study and repair any gate (with both techs), never seal it, get no portal, and pass
@@ -103,8 +103,14 @@ placement and the shortcut do not.
    (stations ~a reach apart, two wormholes each, dormant → unstable → stable, anyone stabilises);
    a **repair contract** a settled empire issues to nomads (only nomads accept contracts) on its
    own broken gate or a close friend's, no consent asked; the issuer must have studied a gate and
-   pays about the repair's cost in trade. Spike order after run 23: centres and star classes →
-   debris → techs and grants (does `add_tech_progress` work before the tech is offered?) →
+   pays about the repair's cost in trade. **Round 2026-11-06**: the ring is explored, not
+   revealed (the study `set_visited`s only our exit node; ring stars a faint ~10 % map icon —
+   per-empire hiding does not exist); portals get the centre mix too; after one's own study,
+   inspecting a gate someone else repaired (any fleet, ~10 days) gives engineering +5 % (+7 % on
+   first entry, `on_entering_system_first_time`), a foreign portal with a centre type not yet
+   seen gives physics +5/+7 %; all grants together at most 80 %. Spike order after run 23:
+   centres and star classes (portals too, the faint icon) → debris → techs and grants (does
+   `add_tech_progress` work before the tech is offered?) → exploration and inspection grants →
    nomads and the contract → express (its own run).
 8. Lore (`docs/lore.md`): builders and seal decided 2026-11-05 (the Fallen Empires, the
    Ancient Caretakers, the Militant Isolationists); the Caretaker node, guardians and the

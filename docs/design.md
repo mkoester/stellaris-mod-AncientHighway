@@ -131,6 +131,9 @@ The connections between the ring and the regular galaxy are special, not hyperla
      would be: shortly before wormhole travel. At year 5 they are a real rush (opportunity cost); a few
      decades in, they are routine. Possible cost modifiers: ×0.75 once known empires have them.
   3. **Repair** (construction ship, ~90 days): about 300 alloys + 50 influence. Both techs.
+     **Started on the gate** (user, 2026-11-06, run 25: "the repair event should be rather on the
+     gate"): an action on the broken gate megastructure, not a pop-up offer (the spike's
+     `ahw_spike.21`).
   **Head start**: an empire that owns an anchor whose gate is already repaired (by a nomad, or by
   a former owner) gets the study for free and **50 % of each tech**.
   **The grants add up: 15 % + 50 % = 65 %** (user, 2026-11-05: having studied the broken gate,

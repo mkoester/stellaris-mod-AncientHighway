@@ -279,6 +279,9 @@ ahw_spike_debris_spawn = {
 		orbit_distance_offset = $ORBIT$
 		orbit_angle_offset = $ANGLE$
 		init_effect = {
+			# run 32: spawn_planet rolls the class's own deposits (55 % of the asteroids had one, ours
+			# refused next to one of another station class); ours alone decide
+			clear_deposits = yes
 			set_planet_flag = ahw_debris
 			random_list = {
 				2 = { }

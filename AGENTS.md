@@ -63,7 +63,7 @@ Nothing player-local may decide what is built. The freeze is the slowest machine
 **Timings are from mkDell** (user, 2026-11-06: about as old as the base game; nobody is expected to
 play on such a machine): acceptable there is acceptable for players.
 
-**Next:** run 32 (`0.0.32-SPIKE`: debris, and the centres' slow drain; steps below), then the spike order in item 7 (techs and grants next); then the rest of the open list (the ring's exact
+**Next:** decide the drain's strength and the centres' deposits (run 32), then the spike order in item 7 (techs and grants next); then the rest of the open list (the ring's exact
 speed is parked — user, 2026-11-04: "not too important to me now"). Everything is still the
 spike (`*spike*` files); nothing is shippable yet.
 
@@ -278,6 +278,22 @@ on; quit the game completely between parts, and copy `logs/game.log` and `logs/e
    let the game run past the 1st of the next month. Expected: a freeze of a few seconds on the 1st,
    then a second portal near your capital. Screenshot.
 4. Save once more and copy the logs.
+
+**Run 32 (2026-11-06, `0.0.32-SPIKE`, medium elliptical, from the saves 2200.01.01–2202.05.18):
+debris works; the drain is 20× weaker than meant.** Screenshots `2026_11_06_6`–`_8`.
+- **Debris**: 239 asteroids in 80 systems (0–6 each: 5/11/16/15/19/9/5), orbits 70–200; the build's
+  last step stayed within the same second. Our portal Furon 51 drew **none** (1 in 16; the user saw
+  an empty portal). **Vanilla's deposits come along**: `spawn_planet` rolls the class's own (55 %
+  of the asteroids had one, ours drawn on 36 %; error.log: ours refused next to one of another
+  station class, e.g. research vs mining). `0.0.33`: `clear_deposits = yes` first. **Every
+  centre carries a vanilla deposit too** (80 of 80: dark matter on black holes, physics or
+  engineering 3–4 on the others).
+- **Drain**: a corvette parked in a toxoid ring node lost **0.01 armour per day** (200 max:
+  0.005 %/day; 2202.02.01 → 04.11 linear: 0.30, 0.30, 0.10 per 28, 31, 10 days) — with
+  `ship_armor_regen_add_perc = -0.001`. So it lowers the current value, slowly and linearly; the
+  user's 0.1 %/day would be about −0.02 (if it stays linear). **Shields**: the user saw no drain
+  (their guess: shield regeneration outweighs it); no save shows the fleet in a pulsar node.
+  Whether armour comes back after leaving: not checked.
 
 **Run 31, part 1 (2026-11-06, `0.0.31-SPIKE`, a new medium game, twelve empires): the refactor
 builds as before.** The batch ~2 s (22:03:23 → :25); save 2200.01.01: 675 systems = 595 + 68 + 12

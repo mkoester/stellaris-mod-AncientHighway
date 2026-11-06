@@ -65,9 +65,10 @@ event = {
 		set_spawn_system_batch = end
 		log = "AHW SPIKE timing: spawn batch ended"
 
-		# 0.0.26: a third of the centres stay black holes, the rest become pulsars or toxoid stars
+		# 0.0.26: a third of the centres stay black holes, the rest become pulsars or toxoid stars;
+		# 0.0.32: and debris in each
 		ahw_spike_pick_centres = yes
-		log = "AHW SPIKE timing: centres picked"
+		log = "AHW SPIKE timing: centres and debris done"
 
 		every_country = {
 			limit = { is_ai = no }
@@ -350,7 +351,7 @@ country_event = {
 			set_spawn_system_batch = end
 			if = {
 				limit = { has_country_flag = ahw_has_portal }
-				event_target:ahw_portal_tmp = { ahw_spike_pick_centre = yes }
+				event_target:ahw_portal_tmp = { ahw_spike_pick_centre = yes ahw_spike_add_debris = yes }
 				log = "AHW SPIKE late portal for [This.GetName] (capital [ahw_cap_tmp.GetName]) on [GetDate]: [ahw_portal_tmp.GetName], off [ahw_x_tmp.GetName], exit in [ahw_node_tmp.GetName]"
 			}
 		}

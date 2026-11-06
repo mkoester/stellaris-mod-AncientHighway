@@ -63,7 +63,7 @@ Nothing player-local may decide what is built. The freeze is the slowest machine
 **Timings are from mkDell** (user, 2026-11-06: about as old as the base game; nobody is expected to
 play on such a machine): acceptable there is acceptable for players.
 
-**Next:** the spike order in item 7 (debris next; run 25 is done); then the rest of the open list (the ring's exact
+**Next:** run 32 (`0.0.32-SPIKE`: debris, and the centres' slow drain; steps below), then the spike order in item 7 (techs and grants next); then the rest of the open list (the ring's exact
 speed is parked — user, 2026-11-04: "not too important to me now"). Everything is still the
 spike (`*spike*` files); nothing is shippable yet.
 
@@ -241,6 +241,28 @@ each console `event`, so nothing — not even a ship — is selected.
    node's lanes appear once it arrives? Screenshot.
 
 Copy `logs/game.log` and `logs/error.log` before restarting the game.
+
+**Test, run 32** (`0.0.32-SPIKE`; Linux, only this mod, a new **medium** elliptical game, AI
+empires on, console on; Esc before each console `event`). New: **debris** (`ahw_spike_add_debris`:
+0–6 asteroids per ring node and portal, ~3 on average, a third with an orbital deposit, orbits
+70–200) and **the pulsar and toxoid centres drain slowly** (`ship_shield_regen_add_perc` /
+`ship_armor_regen_add_perc = -0.001` instead of −100 % shields / armour).
+1. **Debris in your portal**: open its system view. Are there a few asteroids inside the gate's
+   circle, not on top of the gate? Hover them: do some have a deposit? Screenshot.
+2. **Reach the ring**: `event ahw_spike.6`, `event ahw_spike.7`, study with the science ship;
+   then `event ahw_spike.8`, `event ahw_spike.7` again, `resource alloys 1000` if needed, accept
+   the repair, let the construction ship finish.
+3. **Debris in a ring node**: send the science ship into your exit node and look at its system
+   view. Asteroids inside, the big one at the edge still there? Screenshot.
+4. **The drain**: with the science ship, find a ring node with a **green** (toxoid) centre and one
+   with a **pulsar** (your exit node or its neighbours; the system view shows the centre).
+   Select your **1st Fleet**, note one ship's armour and shields (hover the bars; numbers, not
+   just %), and send it into the toxoid node. Note the numbers on arrival, then after **30 days**
+   parked there. Then the same in the pulsar node for shields. Then out of the ring: do they
+   come back? Screenshot each reading.
+
+Copy `logs/game.log` and `logs/error.log` before restarting the game (the log has the debris count
+and how long it took: "centres and debris done" against "spawn batch ended").
 
 **Test, run 31** (part 1 done; parts 2–3 deferred; `0.0.31-SPIKE`; Linux, only this mod, medium elliptical, AI empires on, console
 on; quit the game completely between parts, and copy `logs/game.log` and `logs/error.log` before each relaunch).

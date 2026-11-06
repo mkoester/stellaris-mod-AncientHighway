@@ -6,6 +6,12 @@
 # icon_scale. Q (run 24): does an icon_scale this small still draw, and can one click it?
 # The neutron star (0.0.28, user 2026-11-06) is for portals only: -50 % sub-light speed would throw
 # off the ring's speed.
+# 0.0.32 (user, 2026-11-06, run 25: a toxoid star's armour nullification left a construction ship at
+# 0 % armour after it had left - lost, not ignored, and no repair on the way): pulsar and toxoid
+# drain shields / armour slowly instead, by a negative regeneration, as vanilla's Cetana storm aura
+# does (common/component_templates/00_starbase_building_auras.txt). -0.001 is the user's "0.1 % per
+# day" IF the unit is a share of the maximum per day - unknown; run 32 measures it (and whether it
+# lowers the current value at all, and what the out-of-combat x5 does to a negative regen).
 
 ahw_sc_black_hole = {
 	class = black_hole
@@ -30,7 +36,7 @@ ahw_sc_pulsar = {
 	can_be_crisis_terraformed = no
 	arkship_picture = "arkship_pulsar"
 	modifier = {
-		ship_shield_reduction = 1.0
+		ship_shield_regen_add_perc = -0.001
 	}
 }
 
@@ -44,7 +50,7 @@ ahw_sc_toxoid_star = {
 	can_be_crisis_terraformed = no
 	arkship_picture = "arkship_class_g"
 	modifier = {
-		ship_armor_reduction = 1.0
+		ship_armor_regen_add_perc = -0.001
 	}
 }
 

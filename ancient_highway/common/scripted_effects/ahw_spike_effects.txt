@@ -169,8 +169,136 @@ ahw_spike_pick_centres = {
 	every_system = {
 		limit = { OR = { has_star_flag = ahw_ring has_star_flag = ahw_portal } }
 		ahw_spike_pick_centre = yes
+		ahw_spike_add_debris = yes
 	}
 	ahw_spike_count_centres = yes
+}
+
+# 0.0.32 (design 2026-11-05, "Collected debris"): this = a ring node or portal system. 0-6 asteroids,
+# 3 on average; each a third likely to carry an orbital deposit. All inside orbit 200: below the
+# ring's 270 asteroid (which sets the lane arrivals, so the speed) and its 220 exit slots, and
+# below the portal's gate at 230. spawn_planet off the star, as vanilla's red giant does
+# (events/infernals_1_events.txt). Also for a late empire's portal.
+ahw_spike_add_debris = {
+	random_list = {
+		1 = { }
+		2 = { ahw_spike_debris_rock = yes }
+		3 = { ahw_spike_debris_rock = yes ahw_spike_debris_rock = yes }
+		4 = { ahw_spike_debris_rock = yes ahw_spike_debris_rock = yes ahw_spike_debris_rock = yes }
+		3 = { ahw_spike_debris_rock = yes ahw_spike_debris_rock = yes ahw_spike_debris_rock = yes ahw_spike_debris_rock = yes }
+		2 = { ahw_spike_debris_rock = yes ahw_spike_debris_rock = yes ahw_spike_debris_rock = yes ahw_spike_debris_rock = yes ahw_spike_debris_rock = yes }
+		1 = { ahw_spike_debris_rock = yes ahw_spike_debris_rock = yes ahw_spike_debris_rock = yes ahw_spike_debris_rock = yes ahw_spike_debris_rock = yes ahw_spike_debris_rock = yes }
+	}
+}
+
+# One asteroid in the system in scope: orbit 70-200, any of twelve angles - one flat list, so the
+# chain stays at depth 4 from the game-start event (pick_centres 1, add_debris 2, this 3, spawn 4;
+# run 22: scripted effects nest at most 5 deep).
+ahw_spike_debris_rock = {
+	star = { save_event_target_as = ahw_debris_star }
+	random_list = {
+		1 = { ahw_spike_debris_spawn = { ORBIT = 70 ANGLE = 0 } }
+		1 = { ahw_spike_debris_spawn = { ORBIT = 70 ANGLE = 30 } }
+		1 = { ahw_spike_debris_spawn = { ORBIT = 70 ANGLE = 60 } }
+		1 = { ahw_spike_debris_spawn = { ORBIT = 70 ANGLE = 90 } }
+		1 = { ahw_spike_debris_spawn = { ORBIT = 70 ANGLE = 120 } }
+		1 = { ahw_spike_debris_spawn = { ORBIT = 70 ANGLE = 150 } }
+		1 = { ahw_spike_debris_spawn = { ORBIT = 70 ANGLE = 180 } }
+		1 = { ahw_spike_debris_spawn = { ORBIT = 70 ANGLE = 210 } }
+		1 = { ahw_spike_debris_spawn = { ORBIT = 70 ANGLE = 240 } }
+		1 = { ahw_spike_debris_spawn = { ORBIT = 70 ANGLE = 270 } }
+		1 = { ahw_spike_debris_spawn = { ORBIT = 70 ANGLE = 300 } }
+		1 = { ahw_spike_debris_spawn = { ORBIT = 70 ANGLE = 330 } }
+		1 = { ahw_spike_debris_spawn = { ORBIT = 95 ANGLE = 0 } }
+		1 = { ahw_spike_debris_spawn = { ORBIT = 95 ANGLE = 30 } }
+		1 = { ahw_spike_debris_spawn = { ORBIT = 95 ANGLE = 60 } }
+		1 = { ahw_spike_debris_spawn = { ORBIT = 95 ANGLE = 90 } }
+		1 = { ahw_spike_debris_spawn = { ORBIT = 95 ANGLE = 120 } }
+		1 = { ahw_spike_debris_spawn = { ORBIT = 95 ANGLE = 150 } }
+		1 = { ahw_spike_debris_spawn = { ORBIT = 95 ANGLE = 180 } }
+		1 = { ahw_spike_debris_spawn = { ORBIT = 95 ANGLE = 210 } }
+		1 = { ahw_spike_debris_spawn = { ORBIT = 95 ANGLE = 240 } }
+		1 = { ahw_spike_debris_spawn = { ORBIT = 95 ANGLE = 270 } }
+		1 = { ahw_spike_debris_spawn = { ORBIT = 95 ANGLE = 300 } }
+		1 = { ahw_spike_debris_spawn = { ORBIT = 95 ANGLE = 330 } }
+		1 = { ahw_spike_debris_spawn = { ORBIT = 120 ANGLE = 0 } }
+		1 = { ahw_spike_debris_spawn = { ORBIT = 120 ANGLE = 30 } }
+		1 = { ahw_spike_debris_spawn = { ORBIT = 120 ANGLE = 60 } }
+		1 = { ahw_spike_debris_spawn = { ORBIT = 120 ANGLE = 90 } }
+		1 = { ahw_spike_debris_spawn = { ORBIT = 120 ANGLE = 120 } }
+		1 = { ahw_spike_debris_spawn = { ORBIT = 120 ANGLE = 150 } }
+		1 = { ahw_spike_debris_spawn = { ORBIT = 120 ANGLE = 180 } }
+		1 = { ahw_spike_debris_spawn = { ORBIT = 120 ANGLE = 210 } }
+		1 = { ahw_spike_debris_spawn = { ORBIT = 120 ANGLE = 240 } }
+		1 = { ahw_spike_debris_spawn = { ORBIT = 120 ANGLE = 270 } }
+		1 = { ahw_spike_debris_spawn = { ORBIT = 120 ANGLE = 300 } }
+		1 = { ahw_spike_debris_spawn = { ORBIT = 120 ANGLE = 330 } }
+		1 = { ahw_spike_debris_spawn = { ORBIT = 145 ANGLE = 0 } }
+		1 = { ahw_spike_debris_spawn = { ORBIT = 145 ANGLE = 30 } }
+		1 = { ahw_spike_debris_spawn = { ORBIT = 145 ANGLE = 60 } }
+		1 = { ahw_spike_debris_spawn = { ORBIT = 145 ANGLE = 90 } }
+		1 = { ahw_spike_debris_spawn = { ORBIT = 145 ANGLE = 120 } }
+		1 = { ahw_spike_debris_spawn = { ORBIT = 145 ANGLE = 150 } }
+		1 = { ahw_spike_debris_spawn = { ORBIT = 145 ANGLE = 180 } }
+		1 = { ahw_spike_debris_spawn = { ORBIT = 145 ANGLE = 210 } }
+		1 = { ahw_spike_debris_spawn = { ORBIT = 145 ANGLE = 240 } }
+		1 = { ahw_spike_debris_spawn = { ORBIT = 145 ANGLE = 270 } }
+		1 = { ahw_spike_debris_spawn = { ORBIT = 145 ANGLE = 300 } }
+		1 = { ahw_spike_debris_spawn = { ORBIT = 145 ANGLE = 330 } }
+		1 = { ahw_spike_debris_spawn = { ORBIT = 170 ANGLE = 0 } }
+		1 = { ahw_spike_debris_spawn = { ORBIT = 170 ANGLE = 30 } }
+		1 = { ahw_spike_debris_spawn = { ORBIT = 170 ANGLE = 60 } }
+		1 = { ahw_spike_debris_spawn = { ORBIT = 170 ANGLE = 90 } }
+		1 = { ahw_spike_debris_spawn = { ORBIT = 170 ANGLE = 120 } }
+		1 = { ahw_spike_debris_spawn = { ORBIT = 170 ANGLE = 150 } }
+		1 = { ahw_spike_debris_spawn = { ORBIT = 170 ANGLE = 180 } }
+		1 = { ahw_spike_debris_spawn = { ORBIT = 170 ANGLE = 210 } }
+		1 = { ahw_spike_debris_spawn = { ORBIT = 170 ANGLE = 240 } }
+		1 = { ahw_spike_debris_spawn = { ORBIT = 170 ANGLE = 270 } }
+		1 = { ahw_spike_debris_spawn = { ORBIT = 170 ANGLE = 300 } }
+		1 = { ahw_spike_debris_spawn = { ORBIT = 170 ANGLE = 330 } }
+		1 = { ahw_spike_debris_spawn = { ORBIT = 200 ANGLE = 0 } }
+		1 = { ahw_spike_debris_spawn = { ORBIT = 200 ANGLE = 30 } }
+		1 = { ahw_spike_debris_spawn = { ORBIT = 200 ANGLE = 60 } }
+		1 = { ahw_spike_debris_spawn = { ORBIT = 200 ANGLE = 90 } }
+		1 = { ahw_spike_debris_spawn = { ORBIT = 200 ANGLE = 120 } }
+		1 = { ahw_spike_debris_spawn = { ORBIT = 200 ANGLE = 150 } }
+		1 = { ahw_spike_debris_spawn = { ORBIT = 200 ANGLE = 180 } }
+		1 = { ahw_spike_debris_spawn = { ORBIT = 200 ANGLE = 210 } }
+		1 = { ahw_spike_debris_spawn = { ORBIT = 200 ANGLE = 240 } }
+		1 = { ahw_spike_debris_spawn = { ORBIT = 200 ANGLE = 270 } }
+		1 = { ahw_spike_debris_spawn = { ORBIT = 200 ANGLE = 300 } }
+		1 = { ahw_spike_debris_spawn = { ORBIT = 200 ANGLE = 330 } }
+	}
+}
+
+ahw_spike_debris_spawn = {
+	spawn_planet = {
+		class = pc_asteroid
+		location = event_target:ahw_debris_star
+		orbit_distance_offset = $ORBIT$
+		orbit_angle_offset = $ANGLE$
+		init_effect = {
+			set_planet_flag = ahw_debris
+			random_list = {
+				2 = { }
+				1 = {
+					set_planet_flag = ahw_debris_deposit
+					random_list = {
+						2 = { add_deposit = d_minerals_3 }
+						2 = { add_deposit = d_energy_3 }
+						2 = { add_deposit = d_alloys_1 }
+						1 = { add_deposit = d_alloys_2 }
+						1 = { add_deposit = d_rare_crystals_1 }
+						1 = { add_deposit = d_volatile_motes_1 }
+						1 = { add_deposit = d_exotic_gases_1 }
+						1 = { add_deposit = d_physics_2 }
+						1 = { add_deposit = d_engineering_2 }
+					}
+				}
+			}
+		}
+	}
 }
 
 # 0.0.31: this = a ring node or portal system: its centre (also for a late empire's portal).
@@ -203,6 +331,8 @@ ahw_spike_count_centres = {
 		set_variable = { which = ahw_n_toxoid value = 0 }
 		set_variable = { which = ahw_n_neutron value = 0 }
 		set_variable = { which = ahw_n_other value = 0 }
+		set_variable = { which = ahw_n_debris value = 0 }
+		set_variable = { which = ahw_n_deposit value = 0 }
 	}
 	every_system = {
 		limit = { OR = { has_star_flag = ahw_ring has_star_flag = ahw_portal } }
@@ -225,9 +355,18 @@ ahw_spike_count_centres = {
 		else = {
 			event_target:ahw_ring_1 = { change_variable = { which = ahw_n_other value = 1 } }
 		}
+		every_system_planet = {
+			limit = { has_planet_flag = ahw_debris }
+			event_target:ahw_ring_1 = { change_variable = { which = ahw_n_debris value = 1 } }
+		}
+		every_system_planet = {
+			limit = { has_planet_flag = ahw_debris_deposit }
+			event_target:ahw_ring_1 = { change_variable = { which = ahw_n_deposit value = 1 } }
+		}
 	}
 	event_target:ahw_ring_1 = {
 		log = "AHW SPIKE centres: black hole \\[This.ahw_n_bh], pulsar \\[This.ahw_n_pulsar], toxoid \\[This.ahw_n_toxoid], neutron (portals only) \\[This.ahw_n_neutron], other \\[This.ahw_n_other] (ring nodes and portals)"
+		log = "AHW SPIKE debris: \\[This.ahw_n_debris] asteroids, \\[This.ahw_n_deposit] with a deposit (ring nodes and portals)"
 	}
 }
 

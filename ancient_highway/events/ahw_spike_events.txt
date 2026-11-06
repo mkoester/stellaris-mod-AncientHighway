@@ -136,6 +136,10 @@ event = {
 			}
 		}
 
+		# 0.0.26: a third of the centres stay black holes, the rest become pulsars or toxoid stars
+		ahw_spike_pick_centres = yes
+		log = "AHW SPIKE timing: centres picked"
+
 		every_country = {
 			limit = { is_ai = no }
 			ahw_spike_report = { WHEN = at_game_start }

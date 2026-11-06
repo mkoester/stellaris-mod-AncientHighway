@@ -1,8 +1,0 @@
-# SPIKE (0.0.26): a centre for every ring node and portal, a third each.
-ahw_rl_centres = {
-	stars = {
-		"ahw_sc_black_hole"
-		"ahw_sc_pulsar"
-		"ahw_sc_toxoid_star"
-	}
-}

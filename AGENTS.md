@@ -25,9 +25,9 @@ level. Prefix every key, id, flag and variable with `ahw_`. Tested in game on Li
 
 ---
 
-## Status (2026-11-06): spike runs 1–23 done (4.5.3 live); `0.0.26-SPIKE` (run 24: centres, faint icons, the study reveals only our exit; faster ring edges and timing from 0.0.25) built, not yet run
+## Status (2026-11-06): spike runs 1–24 done (4.5.3 live); `0.0.27-SPIKE` (run 25: centres, faint icons, the study reveals only our exit) built, not yet run
 
-**Next: run 24** (steps below), then the spike order in item 7 (debris next); then the rest of the open list (the ring's exact
+**Next: run 25** (steps below), then the spike order in item 7 (debris next); then the rest of the open list (the ring's exact
 speed is parked — user, 2026-11-04: "not too important to me now"). Everything is still the
 spike (`*spike*` files); nothing is shippable yet.
 
@@ -176,13 +176,15 @@ next game, so give a console line for the running one when needed.
 `tools/check_script.py $(find ancient_highway -name '*.txt' -o -name '*.gfx')` and
 `tools/check_refs.py ancient_highway` (every used name defined, every text and icon present).
 
-**Centres (0.0.26)**: ring nodes, portals and the two centre probes (which become ring nodes)
-draw a centre from `ahw_rl_centres` — our own `ahw_sc_black_hole` / `_pulsar` / `_toxoid_star`
-(`common/star_classes/ahw_spike_star_classes.txt`: vanilla's look and modifiers, `spawn_odds = 0`,
-`icon_scale` 10 % of vanilla's), the star planet at size 6 (vanilla 20–35).
+**Centres (0.0.27)**: ring nodes, portals and the two centre probes (which become ring nodes)
+are spawned with our `ahw_sc_black_hole`, the star planet at size 6 (vanilla 20–35); after the
+build `ahw_spike_pick_centres` turns two in three into `ahw_sc_pulsar` / `ahw_sc_toxoid_star`
+(`change_pc` + `set_star_class`, as vanilla's storms do) and logs the resulting counts. Our classes
+(`common/star_classes/ahw_spike_star_classes.txt`): vanilla's look and modifiers,
+`spawn_odds = 0` (so the galaxy never draws them), `icon_scale` 10 % of vanilla's.
 
-**Test, run 24** (in plain words for the user; Linux, only this mod, a new campaign, **medium**
-elliptical as in run 23 so the start times compare, AI empires on, console on). Press Esc before
+**Test, run 25** (in plain words for the user; Linux, only this mod, a new campaign, **medium**
+elliptical as in runs 23–24 so the start times compare, AI empires on, console on). Press Esc before
 each console `event`, so nothing — not even a ship — is selected.
 
 1. **How long did the start take?** Nothing to do: the log has it.
@@ -199,6 +201,24 @@ each console `event`, so nothing — not even a ship — is selected.
    node's lanes appear once it arrives? Screenshot.
 
 Copy `logs/game.log` and `logs/error.log` before restarting the game.
+
+**Run 24 (2026-11-06, `0.0.26-SPIKE`, medium elliptical, eleven empires, on mkDell): the ring
+and portals came out empty; spawning is the cost.**
+- **An initializer whose `class` is a random list of our star classes spawned empty systems**:
+  no star, not even the asteroid (the save has no `planet=`/`star_class` in ring node 1).
+  error.log, once (identical lines are dropped): "Failed to find star class or valid random_list
+  by key: ahw_rl_centres". The path `common/star_classes/randomizers/` is the one the binary
+  reads; every vanilla list holds only classes with `spawn_odds` > 0, ours have 0 — likely the
+  list draws by `spawn_odds`. `0.0.27-SPIKE`: no list; a fixed class, then `set_star_class`.
+  A system without a star (error.log: "Unable to initialize system due to invalid star class …
+  skip initialization") shows a **black system view** (`2026_11_06_7`, our portal Furon 51); on the
+  map it has no icon, but its frame and name still show and can be hovered and clicked (`_6`).
+  The ring was invisible for that reason, so run 24 says nothing about the 10 % icon.
+- **Game start 101 s of the mod** (19:58:59 → 20:00:40): centre 19 s, outline 2 s, **ring edges
+  and smoothing under 1 s, spawning the 68 nodes 50 s** (0.74 s each), the last two nodes and the
+  lanes 2 s, eleven portals 28 s (2.5 s each). So the octant search (0.0.25) did not matter:
+  the cost is `spawn_system`/`move_system`, ~0.5–0.75 s per call on a medium galaxy on mkDell
+  (the farthest system 482). Fewer or cheaper spawns are the lever, not the loops.
 
 **Run 23 (2026-11-06, `0.0.24-SPIKE`, medium elliptical, twelve empires, on mkDell): a seal
 lets friends through.** Screenshot `2026_11_06_1` (the map round Sol; our portal Galvaas 61, exit Galvaas

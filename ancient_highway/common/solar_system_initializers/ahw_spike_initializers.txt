@@ -1,14 +1,17 @@
-# SPIKE (Phase 0): a ring system. Its centre: one of our three star classes (0.0.26,
-# common/star_classes/ahw_spike_star_classes.txt), drawn at 20 % of vanilla's size (vanilla 20-35).
+# SPIKE (Phase 0): a ring system. Its centre: our black hole (common/star_classes/
+# ahw_spike_star_classes.txt), at 20 % of vanilla's size (vanilla 20-35); ahw_spike_pick_centres
+# turns two in three into a pulsar or a toxoid star after the build. Run 24: an initializer whose
+# class is a random list of our classes left the systems EMPTY (no star, no asteroid; "Failed to
+# find star class or valid random_list by key") - likely because they all have spawn_odds = 0.
 ahw_spike_ring_init = {
 	name = NAME_ahw_spike_ring
-	class = "ahw_rl_centres"
+	class = "ahw_sc_black_hole"
 	prevent_anomalies = yes
 
 	flags = { ahw_ring ahw_unclaimable suppress_archaeological_sites }
 
 	planet = {
-		class = star
+		class = "pc_black_hole"
 		orbit_distance = 0
 		orbit_angle = 1
 		size = 6
@@ -33,13 +36,13 @@ ahw_spike_ring_init = {
 # SPIKE (0.0.8): an empire's portal system - one hyperlane, the entry gate, nobody may claim it.
 ahw_spike_portal_init = {
 	name = NAME_ahw_spike_portal
-	class = "ahw_rl_centres"
+	class = "ahw_sc_black_hole"
 	prevent_anomalies = yes
 
 	flags = { ahw_portal ahw_unclaimable suppress_archaeological_sites }
 
 	planet = {
-		class = star
+		class = "pc_black_hole"
 		orbit_distance = 0
 		orbit_angle = 1
 		size = 6
@@ -51,13 +54,13 @@ ahw_spike_portal_init = {
 # last two nodes, hence the same centres (0.0.26).
 ahw_spike_core_init = {
 	name = NAME_ahw_spike_core
-	class = "ahw_rl_centres"
+	class = "ahw_sc_black_hole"
 	prevent_anomalies = yes
 
 	flags = { ahw_core ahw_unclaimable suppress_archaeological_sites }
 
 	planet = {
-		class = star
+		class = "pc_black_hole"
 		orbit_distance = 0
 		orbit_angle = 1
 		size = 6

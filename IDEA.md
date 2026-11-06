@@ -194,3 +194,11 @@ Answers in the discussion:
 - unexplored ring nodes on the map: Faint specks
 - the 80 % cap: One cap, 80 %
 - own study first before inspections count: Yes
+
+- are the ring nodes too faint? no, that's ok
+- and for the system with the gates inside the galaxy: allow for that star type which slows down ships by 50%, too (and grant the higher physics reward for that, too)
+  + answer in the discussion: a 4th type, same rule
+- physics: +7 % if it's also your first time in that system
+  not first time in the system, but first time seeing that that new type
+  + new system, type seen: +5%
+  + new system, new type: + 7%

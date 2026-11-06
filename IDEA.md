@@ -207,3 +207,5 @@ Answers in the discussion:
 
 - having the full effects of the stars might be too hard, especially tocix: 0% armor instantly and normally no repair on route might defeat the purpuse of the mod.
   maybe we keep the general effect of each star and apply it's effect slowly, like 0.1% damage per day in that system
+
+- shield needs to drain more

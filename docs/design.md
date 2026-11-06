@@ -225,6 +225,16 @@ which the empire can claim and fortify. Placement details (decided 2026-11-03):
   whoever comes out of the portal has to cross the anchor system past its starbase;
 - the gate inside the portal sits opposite the portal's lane, near the system's edge.
 
+Mid-game (decided 2026-11-06): **the mod can be added to a running game**, and **every regular
+empire without a portal gets one**, including empires born later (rebels, secessions, released
+subjects). In a running game the anchor may be unowned or the empire's own, never another
+empire's. Each such portal costs a freeze while the game spawns its system (runs 29–30: ~10 s on a
+huge galaxy, ~2.5 s on medium) — **accepted** (user, 2026-11-06). Adding the mod to a running game
+costs one freeze of about the same size, for the whole highway built in one spawn batch.
+**Removing the mod from a save is not supported**: the save keeps our star classes, megastructures
+and bypass types, and without their definitions systems break (run 24: a missing star class gives
+a black system view) or the save may not load.
+
 ### Hyper relays
 
 Possibly everyone may build hyper relays on the ring (vanilla relays need own territory, so this is
@@ -256,5 +266,6 @@ an own megastructure type). Alternative: ruined relays come with the ring and ca
 9. Fallen and awakened empires, crises: special rules?
 10. ~~Disabling~~ — none; the gate's Seal switch (2026-11-04). ~~The repair's cost and time~~ —
     "Access" under Entry points (2026-11-05).
-11. Can systems be spawned beyond the galaxy's outer edge at all (map bounds, camera, the galaxy
-    map's background)? Spike first.
+11. ~~Can systems be spawned beyond the galaxy's outer edge~~ — yes (run 14). A spawn seems to be
+    clamped at the map's bound on huge (run 29: no ring node further left than x ≈ −538), which
+    matters only where the galaxy reaches it.

@@ -48,7 +48,8 @@ to the portals in one batch** — **run 28 (medium): 81 s → ~4 s, result uncha
 ~8 min → ≤ 15 s.** In play a batch of ten spawns took 16 s on huge (run 29) — a one-off freeze for
 installing mid-game is acceptable; **a single spawn in play costs ~10 s on huge too (run 30)**, so
 each late empire's portal is a freeze of that size — open: accept it, or give late empires no
-spawn (they use the gates their anchors already hold). Also found, not used yet: **`no_scope = { spawn_system … }` spawns
+spawn — **decided (user, 2026-11-06): accept the freeze; late empires get their own portal**
+(`docs/design.md`, Portals). Also found, not used yet: **`no_scope = { spawn_system … }` spawns
 relative to the galactic core** — the L-Cluster goes 550 out, beyond the rim, at game start (run 8
 tried without any scope, which spawns nothing) — could replace the centre search and its probes;
 and `on_single_player_save_game_load` (no scope; not in multiplayer) for a mid-game install. **Option,

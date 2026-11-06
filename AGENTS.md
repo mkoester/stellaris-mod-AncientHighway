@@ -25,7 +25,7 @@ level. Prefix every key, id, flag and variable with `ahw_`. Tested in game on Li
 
 ---
 
-## Status (2026-11-06): spike runs 1–31 done (4.5.3 live); `0.0.31-SPIKE`'s mid-game install and late portals built, their test deferred
+## Status (2026-11-06): spike runs 1–31 done, run 25 completed (4.5.3 live); `0.0.31-SPIKE`'s mid-game install and late portals built, their test deferred
 
 **Run 31's parts 2–3 (a running game, a late empire's portal) are deferred** (user, 2026-11-06:
 "not my priority right now", tested once the mod is mostly done for a fresh start); the steps
@@ -63,8 +63,7 @@ Nothing player-local may decide what is built. The freeze is the slowest machine
 **Timings are from mkDell** (user, 2026-11-06: about as old as the base game; nobody is expected to
 play on such a machine): acceptable there is acceptable for players.
 
-**Next:** finish run 25's steps 3–5 (portal system view, the
-study reveals only our exit, exploring). Then the spike order in item 7 (debris next); then the rest of the open list (the ring's exact
+**Next:** the spike order in item 7 (debris next; run 25 is done); then the rest of the open list (the ring's exact
 speed is parked — user, 2026-11-04: "not too important to me now"). Everything is still the
 spike (`*spike*` files); nothing is shippable yet.
 
@@ -342,6 +341,17 @@ mid-game spawn costs ~4.5× a start-time one.**
   }` off a ring node): 20:39:23 → 20:39:48, **25 s, 2.5 s per spawn**; no error.log lines.
   Whether all ten systems appeared was not checked. So spreading the build over days would mean a
   ~2.5 s freeze per spawn on medium; the cheapest moment is the start.
+
+**Run 25, steps 3–5 (2026-11-06, `0.0.31-SPIKE`, a new medium game, twelve empires): the ring
+is explored, not revealed — passed.** Screenshots `2026_11_06_1` (our portal Eshmet 41: a small
+black hole), `_2` (the gate before the tech: red ✗ "SPIKE: Highway Entry Points"). Study done
+2200.12.20; after it only our exit node (Eshmet Node 5) showed lanes; with the tech and the repair
+the science ship went through and on round the ring, each node's lanes appearing on arrival (user:
+"looks good"). The 0.0.31 log fix holds: the portal lines name every empire and capital. The
+step list had left out the repair (`event ahw_spike.7` again after the tech, 500 alloys) — the
+gate stays broken without it. **User: the repair belongs on the gate**, not in a pop-up
+(`docs/design.md`, Access 3); **the centres' full effects may be too hard** (`docs/design.md`,
+centre types).
 
 **Run 25 (2026-11-06, `0.0.27-SPIKE`, medium elliptical, twelve empires, on mkDell): centres
 work; tiny on the map.** Screenshots `2026_11_06_8`, `_9`.

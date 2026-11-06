@@ -42,6 +42,13 @@ ordinary hyperlanes — or a bit longer, never shorter.
   | Pulsar | shields −100 % |
   | Toxoid star | armour −100 % |
 
+  **To rethink (user, 2026-11-06, after run 25):** the full vanilla effects may be too hard —
+  "especially toxoid: 0% armor instantly and normally no repair on route might defeat the purpose
+  of the mod." Idea: keep each centre's general effect but apply it slowly, "like 0.1% damage per
+  day in that system". Open: what vanilla's −100 % actually does (likely armour/shields not
+  counting in combat while in the system, not lost — check), and how to script a slow drain
+  (a negative regen modifier on the star class? an event — there is no daily pulse).
+
   The combat terrain varies round the ring, which gives the neutral battlefield some character.
   In a portal it varies the dead end's defence per empire: a pulsar portal strips shields, a
   toxoid one armour, and a **neutron-star portal** (portals only, user 2026-11-06) halves

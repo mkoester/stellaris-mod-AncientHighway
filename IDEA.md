@@ -177,3 +177,20 @@ only nomads can execute them. I meant that we could issue the contract on a brok
 - Does the anchor's owner have to agree?
   + is that even possible to model with vanilla methods?
   + I lean towards `no`
+
+## 2026-11-06
+
+- I don't want the whole ring to be discovered at once. the user should explore it
+- if possible: don't even show the ring systems on the map until you explore them. the idea: they are artificial and their center of mass way smaller than regular ones, thus way harder to detect
+- let's add some more possible progress to the research. currently we can get up to 65%, right?
+  + when visiting other gates which are already repaired by someone else: grant another small bonus, but only via a (relatively short) event which every type of ship should be able to complete
+  + another though: only visiting repaired gates in not-seen artificial centers grants a bonus / or grants a bonus which is a little bit higher (e.g. seen: +5%, not seen: +7%
+  + but one should never get more than 80%
+  +since we have to techs: maybe seeing other types of artificial stars grants bonuses to the physics one while seeing repaired ones grants bonuses to the engineering one
+  + let's discuss this
+
+Answers in the discussion:
+- physics bonus source: Varied portal centres
+- unexplored ring nodes on the map: Faint specks
+- the 80 % cap: One cap, 80 %
+- own study first before inspections count: Yes

@@ -202,3 +202,5 @@ Answers in the discussion:
   not first time in the system, but first time seeing that that new type
   + new system, type seen: +5%
   + new system, new type: + 7%
+
+- the repair event should be rather on the gate

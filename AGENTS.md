@@ -44,9 +44,10 @@ replaces the random galaxy. **But vanilla batches its spawns**: `set_spawn_syste
 than for every system spawned" and "can also be used when removing and adding hyperlanes"
 (`events/distant_stars_events_2.txt` distar.290, `distant_stars_events_3.txt` the L-Cluster,
 `common/scripted_effects/01_start_of_game_effects.txt`). **`0.0.30-SPIKE` wraps the whole build up
-to the portals in one batch** — **run 28 (medium): 81 s → ~4 s, result unchanged.** Next: a huge
-start (run 27: ~8 min), and the mid-game probe inside a batch (run 26: 2.5 s per spawn) — if cheap,
-installing mid-game and portals for late empires come back. Also found, not used yet: **`no_scope = { spawn_system … }` spawns
+to the portals in one batch** — **run 28 (medium): 81 s → ~4 s, result unchanged; run 29 (huge):
+~8 min → ≤ 15 s.** In play a batch of ten spawns took 16 s on huge (run 29) — a one-off freeze for
+installing mid-game is acceptable; for a single late empire's portal, measure one unbatched spawn
+in play on huge first. Also found, not used yet: **`no_scope = { spawn_system … }` spawns
 relative to the galactic core** — the L-Cluster goes 550 out, beyond the rim, at game start (run 8
 tried without any scope, which spawns nothing) — could replace the centre search and its probes;
 and `on_single_player_save_game_load` (no scope; not in multiplayer) for a mid-game install. **Option,
@@ -232,6 +233,22 @@ each console `event`, so nothing — not even a ship — is selected.
    node's lanes appear once it arrives? Screenshot.
 
 Copy `logs/game.log` and `logs/error.log` before restarting the game.
+
+**Run 29 (2026-11-06, `0.0.30-SPIKE`, huge elliptical, 19 empires, same launch as run 28): huge
+in ~15 s; a batch in play costs about as much.**
+- Ring and portals logged within one second (21:34:55); the next line after `set_spawn_system_batch
+  = end` at 21:35:10, so **the batch's end takes ≤ 15 s** (run 27: ~8 min). The start and centre
+  lines were dropped as repeats of run 28's, so the centre search is not timed.
+- **Autosave 2200.02.01 agrees**: 1105 systems = 998 + 88 ring + 19 portals; ring nodes two lanes,
+  portals one, all with a star class; 38 entry bypasses; the one pair closer than 10 is vanilla's.
+- **Ring nodes off near the far left of the map**: nodes 1–6 and 85–87 wanted 544–562 from the
+  centre, got 538–555, without an error. In the save the ring's x never goes below −538.5.
+  Inference, untested: a spawn is clamped to a map bound (|x| ≈ 540 = 1.2 × the setup radius
+  450?). Matters only where the galaxy reaches its bound; the smoothing hides it.
+- **Probe in play inside a batch** (2200.02.x, ten spawns): 21:37:33 → 21:37:49, **16 s**. Whether
+  the ten systems exist is unchecked (the autosave is from before). So in play the batch's end is
+  the cost unit — ~15 s on huge — however few systems it holds; one portal for a late empire may
+  cost about that. Untested: one unbatched spawn in play on huge.
 
 **Run 28 (2026-11-06, `0.0.30-SPIKE`, medium elliptical, fourteen empires, on mkDell): the spawn
 batch takes the build from 81 s to ~4 s.**

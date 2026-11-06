@@ -37,7 +37,21 @@ the ring (and maybe the portals) in the background after the start. **Answered b
 mid-game spawn costs ~4.5× more** (2.5 s vs 0.55 s), so background building is out at this cost;
 building at the start stays the cheapest moment. **Run 27: per spawn ∝ ~N^2.7 in the star
 count; huge takes ~8 minutes at the start** — cannot ship; fewer spawns or spawns the engine does
-not pay for are the levers. **Decided (user, 2026-11-06)** for adding the mod to a running game and for empires
+not pay for are the levers. **Galaxy generation can't add systems** (2026-11-06, game files): an
+initializer's `neighbor_system` picks an *existing* system, and a `static_galaxy_scenario`
+replaces the random galaxy. **But vanilla batches its spawns**: `set_spawn_system_batch = begin
+… end` "batch-processes the spawn_system effects … so caches are recalculated only once rather
+than for every system spawned" and "can also be used when removing and adding hyperlanes"
+(`events/distant_stars_events_2.txt` distar.290, `distant_stars_events_3.txt` the L-Cluster,
+`common/scripted_effects/01_start_of_game_effects.txt`). **`0.0.30-SPIKE` wraps the whole build up
+to the portals in one batch** — **run 28 (medium): 81 s → ~4 s, result unchanged.** Next: a huge
+start (run 27: ~8 min), and the mid-game probe inside a batch (run 26: 2.5 s per spawn) — if cheap,
+installing mid-game and portals for late empires come back. Also found, not used yet: **`no_scope = { spawn_system … }` spawns
+relative to the galactic core** — the L-Cluster goes 550 out, beyond the rim, at game start (run 8
+tried without any scope, which spawns nothing) — could replace the centre search and its probes;
+and `on_single_player_save_game_load` (no scope; not in multiplayer) for a mid-game install. **Option,
+noted (user, 2026-11-06): fewer ring nodes on large and huge** — saves linearly, ties into the
+ring's speed (open item 1). **Decided (user, 2026-11-06)** for adding the mod to a running game and for empires
 born later: every regular empire without a portal gets one; anchor unowned, else the empire's
 own, never foreign. How (one announced freeze, fewer spawns) is open after run 26.
 Script-spawned gates lack their system-view label until a load (run 5).
@@ -218,6 +232,18 @@ each console `event`, so nothing — not even a ship — is selected.
    node's lanes appear once it arrives? Screenshot.
 
 Copy `logs/game.log` and `logs/error.log` before restarting the game.
+
+**Run 28 (2026-11-06, `0.0.30-SPIKE`, medium elliptical, fourteen empires, on mkDell): the spawn
+batch takes the build from 81 s to ~4 s.**
+- Every `AHW SPIKE` line up to the portals carries the same second (21:29:26); `set_spawn_system_batch
+  = end` then takes 4 s (→ 21:29:30), the one recalculation. Run 26, same size: 81 s.
+- **Correct inside the batch**: distances and positions of systems spawned earlier in the batch
+  are current (centre probe at 0, ring nodes within 4.3 of the wanted radius, the moved centre
+  probe 45/46 from its neighbours, portal margins and clearances as before: 13 of 14 clear, Zhir
+  10.5 — no clear angle, as run 14's Annawan).
+- **The autosave (2200.02.01) agrees**: 680 systems = 598 + 68 ring + 14 portals; every ring node
+  two lanes, every portal one; star classes on all; no two systems closer than 10; 28 entry
+  bypasses (14 pairs). error.log: nothing new.
 
 **Run 27 (2026-11-06, `0.0.29-SPIKE`, every galaxy size, elliptical, one launch, on mkDell):
 the cost per spawn grows with about the cube of the star count.** Logs in `~/ahw-logs/`. In one

@@ -26,6 +26,10 @@ event = {
 		set_global_flag = ahw_spike_done
 		log = "AHW SPIKE ===== ahw_spike.10: building the highway at game start ====="
 
+		# 0.0.30 (run 27: a spawn costs ~N^2.7): vanilla batches its spawns so "caches are
+		# recalculated only once rather than for every system spawned" (distar.290, the L-Cluster;
+		# also for adding and removing hyperlanes). Everything up to the portals runs in one batch.
+		set_spawn_system_batch = begin
 		ahw_spike_core_band = { FRACTION = 0.1 }
 		ahw_spike_core_band = { FRACTION = 0.15 }
 		ahw_spike_core_band = { FRACTION = 0.2 }
@@ -144,6 +148,9 @@ event = {
 				log = "AHW SPIKE NO portal for [This.GetName]: the random walk found no system 2-3 jumps out"
 			}
 		}
+
+		set_spawn_system_batch = end
+		log = "AHW SPIKE timing: spawn batch ended"
 
 		# 0.0.26: a third of the centres stay black holes, the rest become pulsars or toxoid stars
 		ahw_spike_pick_centres = yes

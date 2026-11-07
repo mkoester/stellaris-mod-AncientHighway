@@ -337,6 +337,12 @@ nomads", "repaired by …" show whether nomads studied or repaired anything unas
 
 ## Working on it
 
+- **The dashboard reads this mod** (`stellaris-empire-dashboard`, branch `feature/highway`,
+  `src/lib/highway.ts`; 2026-11-07): the star flags, global and country flags, variables and
+  megastructure types named in "How it works", and the texts in `localisation/english/`. Renaming
+  one of them needs the dashboard changed in the same session, or its highway tab goes wrong
+  silently.
+
 - **Thumbnail** (2026-11-07): `assets/thumbnail.svg`, our own art — a faint galaxy, a road of
   light, a fleet racing along it; on purpose nothing of how the highway works (user: no ring, no
   gates). Render: `rsvg-convert -w 512 -h 512 assets/thumbnail.svg -o ancient_highway/thumbnail.png`

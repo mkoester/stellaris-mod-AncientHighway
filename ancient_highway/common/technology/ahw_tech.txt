@@ -19,6 +19,12 @@ ahw_tech_gate_theory = {
 		has_country_flag = ahw_highway_studied
 	}
 	weight = 100
+	# run 43: without an ai_weight no AI empire researched a gate tech in 13 years after its
+	# study (seven had the option). Vanilla's priorities are 1.25-2, must-haves 100; 3 is a
+	# clear preference, not a rush (tunable).
+	ai_weight = {
+		factor = 3
+	}
 }
 
 # Engineering: the gates' construction - with the theory, repair one.
@@ -34,4 +40,10 @@ ahw_tech_gate_construction = {
 		has_country_flag = ahw_highway_studied
 	}
 	weight = 100
+	# run 43: without an ai_weight no AI empire researched a gate tech in 13 years after its
+	# study (seven had the option). Vanilla's priorities are 1.25-2, must-haves 100; 3 is a
+	# clear preference, not a rush (tunable).
+	ai_weight = {
+		factor = 3
+	}
 }

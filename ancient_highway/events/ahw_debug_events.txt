@@ -312,3 +312,31 @@ country_event = {
 		}
 	}
 }
+
+# 0.1.0 (run 43: the AI took 5-12 years to claim its anchor and study): every AI empire's portal
+# studied now - an outpost on its anchor if nobody owns it, then the study's real result
+# (ahw_mark_studied). To watch the AI research the gate techs without waiting decades.
+country_event = {
+	id = ahw_debug.74
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		every_country = {
+			limit = { is_ai = yes is_country_type = default has_country_flag = ahw_has_portal }
+			save_event_target_as = ahw_studier
+			random_system = {
+				limit = { has_star_flag = ahw_portal_for@prev }
+				random_neighbor_system = {
+					limit = { NOT = { exists = owner } }
+					create_starbase = { size = starbase_outpost owner = event_target:ahw_studier }
+				}
+				if = {
+					limit = { NOT = { has_star_flag = ahw_studied } }
+					set_star_flag = ahw_study_offered
+					ahw_mark_studied = yes
+				}
+				log = "AHW test: [ahw_studier.GetName] studied its portal [This.GetName]"
+			}
+		}
+	}
+}

@@ -114,6 +114,7 @@ All findings go to `game.log`, lines starting `AHW`.
 | `event ahw_debug.70` | the express awake now (as at the mid game) |
 | `event ahw_debug.71` | every express link stable |
 | `event ahw_debug.72` | our three test fleets at the express station nearest our exit node |
+| `event ahw_debug.74` | every AI empire's portal studied now (an outpost on a free anchor first) — to watch the AI research |
 | `event ahw_debug.73` | a nomad in contact with us, with both techs, its arkship at our anchor |
 | `effect every_country = { limit = { is_ai = no } remove_country_flag = ahw_has_portal }` | we get a second portal on the next 1st (the console targets move to it) |
 
@@ -171,6 +172,20 @@ back); cause open, its Seal switch is unusable meanwhile.
 gate tech or a repaired gate yet. **Every gate loses its owner** — the AI's broken gates are taken
 back almost every month (171 "now owns the gate" lines); open whether it hinders the AI's repair
 (the upgrade needs the gate's owner). Next look: ~2230.
+
+**Run 43, years 2211–2220: the AI studies, but researches no gate tech.** By 2220 seven AI
+empires have studied their gate (Wacegian 2211.10, Andarian 2212.06, Shapan 2212.11 joined);
+none has either tech, though four have had the option 8–13 years (`add_research_option` keeps
+it). We got Gate Theory 2213. Our techs had no `ai_weight` (vanilla's gateway tech has one only
+for human auto-research). Fixed after the run: `ai_weight` factor 3 on both (vanilla priorities
+are 1.25–2) — needs a new game to show.
+
+## Test, run 44 (does the AI research, repair, use and seal?)
+
+A new medium game, this mod and dev tools, AI empires and nomads on. Let a month pass, then
+`ahw_debug.74` (every AI empire's portal studied). Play on at speed (or `observe`) for ~15
+years, checking in after 5. game.log: the yearly lines (who has which tech, repaired and sealed
+portals), "repaired by", "SEALED".
 
 ## Test, run 43 (a new campaign: the contract again, then a long game)
 

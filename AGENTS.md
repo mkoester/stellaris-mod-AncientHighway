@@ -155,6 +155,15 @@ the offer (03.01), `ahw_debug.73` (Roaming Quentian Starfarers), accepted 03.28,
 gate repaired 07.05 "by Roaming Quentian Starfarers" — the repairer fix holds (run 41: "by"
 us). No shuttling, no cancel; the first attempt's cancel stays unexplained (the logging stays in).
 
+**Run 43, years 2200–2205**: the head start came on 08.01 (15 → 65 %) — contract to head start
+works without console help. The yearly lines: only we and the contracted nomad have studied a
+gate. **No AI empire owns its anchor after five years** (save 2205.01.15: 8 of 8 AI anchors
+without a starbase), so no AI study, repair or use is possible yet — dead-end anchors seem low on
+the AI's outpost list. Check again around 2230; if still unclaimed: offer study and repair to
+the portal's own empire while nobody owns the anchor, or find a lever for the AI's outpost
+choice. **The repaired gate loses its owner in 14 of 41 months** (the monthly check takes it
+back); cause open, its Seal switch is unusable meanwhile.
+
 ## Test, run 43 (a new campaign: the contract again, then a long game)
 
 Run 42's plan, with the shuttling fix: a new medium game, this mod and dev tools, AI empires and

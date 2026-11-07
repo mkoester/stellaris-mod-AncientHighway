@@ -139,7 +139,17 @@ repair). **The broken gate loses its owner now and then** (save 2200.07.23: no o
 check takes it back — the "now owns the gate" lines since run 21); presumably the nomad then
 heads off to reactivate it (`nomad_reactivatable`). Fixed after the run (untested): a nomad on
 our contract does not qualify for the upgrade (`potential`). Open: what clears the owner.
-The yearly summary `ahw.80` works.
+The yearly summary `ahw.80` works. **Step 2 passed** (`_73`, 2201.08.02): the stabilise study
+shows "Cost: 4000" (153 months), no error. Step 3 (decades of play) moved to run 43.
+
+## Test, run 43 (a new campaign: the contract again, then a long game)
+
+Run 42's plan, with the shuttling fix: a new medium game, this mod and dev tools, AI empires and
+nomads on. `ahw_debug.6`, `ahw_debug.41`; the study on the next 1st with the test science ship;
+then `ahw_debug.73` and the contract in the anchor. Expected: the arkship stays in the anchor
+for the 90 days, the gate is repaired, and on the next 1st both techs +50 %. Watch whether the
+monthly "now owns the gate" line still appears (what clears the owner is open). Then play on
+for decades; game.log's "AHW yearly" lines and the saves tell what the AI did.
 
 ## Test, run 42 (a long game)
 

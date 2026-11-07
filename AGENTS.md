@@ -150,6 +150,11 @@ fired — which one, unknown (no save in between). The arkship stayed in the anc
 After the run: `on_cancel` logs which abort conditions hold, the work project logs success and
 failure. Run 41's contract, same code but the upgrade `potential`, succeeded.
 
+**Run 43, second attempt (2026-11-07, with the cancel logging): the contract completes.** Study by
+the offer (03.01), `ahw_debug.73` (Roaming Quentian Starfarers), accepted 03.28, work done 07.04,
+gate repaired 07.05 "by Roaming Quentian Starfarers" — the repairer fix holds (run 41: "by"
+us). No shuttling, no cancel; the first attempt's cancel stays unexplained (the logging stays in).
+
 ## Test, run 43 (a new campaign: the contract again, then a long game)
 
 Run 42's plan, with the shuttling fix: a new medium game, this mod and dev tools, AI empires and

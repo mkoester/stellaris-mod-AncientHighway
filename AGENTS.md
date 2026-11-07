@@ -28,10 +28,20 @@ level. Prefix every key, id, flag and variable with `ahw_`. Tested in game on Li
 ## Status (2026-11-07): Phase 1 — building the real mod (`0.1.0`)
 
 The spike is over (runs 1–39, `docs/spike-runs.md`). Its files are now the mod's (`ahw_*`, the
-generator `tools/gen.py`). **Built, untested** (so that one game tests many things at once — user,
-2026-11-07: restarting and generating a galaxy is most of each run): **repair on the gate**,
-**nomads study and repair**, **the repair contract**, **express wormholes**. Next: run 40, below.
-Nothing is public; old spike saves do not load.
+generator `tools/gen.py`). Tests now cover many features per game (user, 2026-11-07:
+restarting and generating a galaxy is most of each run). Nothing is public; old spike saves do
+not load. As of runs 40–43:
+- **Work in game**: repair as an upgrade on the gate, the seal, a second (late) portal, the
+  express (closed tooltip, flips, routes through an open link), the repair contract with a nomad
+  to the head start (run 43), the yearly summary `ahw.80`.
+- **The AI** claims its anchor after 5–10 years and then studies within 1–2 (run 43); it
+  researched no gate tech until the techs got `ai_weight` 3 — then one empire in 18 months.
+  **Next**: run 43's save on to ~2230 (does the AI get both techs, repair, use, seal?), then run 44.
+- **Open**: what clears a portal gate's owner (almost monthly for every gate; the monthly check
+  takes it back, the Seal switch is unusable meanwhile); one unexplained contract cancel 12 days
+  after acceptance (run 43, first try — `on_cancel` now logs the cause); the issue-contract menu
+  appeared only months after console `communications` (run 40); nomads studying or repairing on
+  their own — not seen yet; the express's stabilise cost (4000) is untested at the mid game.
 
 **Deferred**: run 31's parts 2–3 (the mod added to a running game; a late empire's portal — user,
 2026-11-06: tested once the mod is mostly done). **Parked**: the ring's exact speed (user,
@@ -358,6 +368,23 @@ nomads", "repaired by …" show whether nomads studied or repaired anything unas
   - a spawn counts as an entry for `on_entering_system_fleet`, not for
     `on_entering_system_first_time`;
   - a tech put among the options by `add_research_option` takes `add_tech_progress`.
+- **Gotchas of Phase 1** (runs 40–43):
+  - `give_technology` refuses a tech whose `potential` fails ("invalid technology"): set the
+    potential's flag first (`ahw_debug.73`);
+  - a special project's `cost` and `days_to_research` are exclusive (error.log at load); `cost`
+    modifiers want a `desc`;
+  - a megastructure upgrade finished by script (`upgrade_megastructure_to` + `finish_upgrade`)
+    runs `on_build_complete` at once, with `from` = the megastructure's owner, not the caller —
+    hand the real actor over in a global target;
+  - a contract's AI operator goes to the contract's location: its work project must be there,
+    not in a neighbouring system (run 40); and the result belongs in the contract's `on_success`
+    (vanilla's note), or the abort trigger fires first;
+  - the AI researches a custom tech only with an `ai_weight` (vanilla's gateway tech has one for
+    human auto-research only);
+  - tech definitions (and other `common/` files) load from the mod at each game start, so a
+    resumed save picks up a changed weight; flags set at the build do not reach old saves;
+  - a megastructure in a system nobody owns loses its owner from time to time (cause unknown);
+  - an upgrade's button reads a disabled "Complete" while the megastructure has no owner.
 - **Timings are from mkDell** (as old as the base game; acceptable there is acceptable for
   players). **Multiplayer**: every machine runs the same script in lockstep, so the build comes
   out identical as long as nothing player-local decides it (untested in MP).

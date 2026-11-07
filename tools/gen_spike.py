@@ -229,7 +229,7 @@ ahw_spike_place_portal = {
 
 
 def bypass_block(key, name, node, nexus, *, tech, windup, lockable, sensors, frame, effect, can_use=''):
-    prereq = '\n\tprerequisites = {\n\t\tahw_tech_spike\n\t}\n' if tech else ''
+    prereq = '\n\tprerequisites = {\n\t\tahw_tech_gate_theory\n\t}\n' if tech else ''
     return f'''
 {key} = {{
 	name = {name}

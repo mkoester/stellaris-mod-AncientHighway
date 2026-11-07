@@ -1,9 +1,13 @@
-# SPIKE (Phase 0, 0.0.18): researchable once the country has studied an entry point (special
-# project AHW_SPIKE_STUDY_PROJECT -> country flag ahw_highway_studied, and add_research_option
-# puts it among the options at once, as vanilla's gateway study does). `event ahw_spike.8` grants it anyway (give_technology). Run 3: research_technology
-# refuses a tech whose potential fails.
-ahw_tech_spike = {
-	cost = 1
+# SPIKE (0.0.38, design 2026-11-05): two techs, researched in parallel. Researchable once the
+# country has studied an entry point (special project AHW_SPIKE_STUDY_PROJECT -> country flag
+# ahw_highway_studied; add_research_option puts them among the options at once, as vanilla's
+# gateway study does) or got the head start (ahw_spike.20). Tier 1: its previously_unlocked is 0,
+# so no tier prerequisite (common/technology/tier/00_tier.txt). Run 3: research_technology refuses a
+# tech whose potential fails; `event ahw_spike.8` grants both anyway (give_technology).
+
+# Physics: the gates' theory - use a gate, seal one.
+ahw_tech_gate_theory = {
+	cost = @tier2cost2
 	area = physics
 	tier = 1
 	category = { particles }
@@ -12,5 +16,19 @@ ahw_tech_spike = {
 	potential = {
 		has_country_flag = ahw_highway_studied
 	}
-	weight = 10000
+	weight = 100
+}
+
+# Engineering: the gates' construction - with the theory, repair one.
+ahw_tech_gate_construction = {
+	cost = @tier2cost2
+	area = engineering
+	tier = 1
+	category = { voidcraft }
+	is_rare = yes
+	is_reverse_engineerable = no
+	potential = {
+		has_country_flag = ahw_highway_studied
+	}
+	weight = 100
 }

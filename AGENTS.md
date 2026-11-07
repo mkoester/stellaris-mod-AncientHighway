@@ -63,7 +63,7 @@ Nothing player-local may decide what is built. The freeze is the slowest machine
 **Timings are from mkDell** (user, 2026-11-06: about as old as the base game; nobody is expected to
 play on such a machine): acceptable there is acceptable for players.
 
-**Next:** the spike order in item 7 — techs and grants (runs 32–35 finished debris, bare centres and the drain: toxoid −0.02 armour regen, pulsar no shield regen plus −10 % of max a month); then the rest of the open list (the ring's exact
+**Next:** run 36 (`0.0.38-SPIKE`: the two techs and the study/head-start grants), then the rest of the spike order in item 7 — exploration and inspection grants next (runs 32–35 finished debris, bare centres and the drain: toxoid −0.02 armour regen, pulsar no shield regen plus −10 % of max a month); then the rest of the open list (the ring's exact
 speed is parked — user, 2026-11-04: "not too important to me now"). Everything is still the
 spike (`*spike*` files); nothing is shippable yet.
 
@@ -262,6 +262,29 @@ skips work again.** Our portal Furon 51 studied, the others broken; test ships i
 hull 200, armour 100, shields 200 each; the science and construction ships 300 / 100 / 200. No
 error.log lines after the build (the build's own: the probe's `move_system` misses, the
 `ahw_*_tmp` targets, `ahw_exits`/`ahw_pair` in log texts — as before).
+
+**Techs and grants (`0.0.38-SPIKE`, design 2026-11-05)**: `ahw_tech_spike` is gone. Two techs,
+`ahw_tech_gate_theory` (physics, particles) and `ahw_tech_gate_construction` (engineering,
+voidcraft), `@tier2cost2` = 2500, rare, tier 1 (`previously_unlocked = 0`: no tier gate),
+potential `ahw_highway_studied`. Theory: the bypasses' prerequisite (`tools/gen_spike.py`) and
+the Seal mode's `possible`; both: the repair offer. Grants by `ahw_spike_grant` (once per empire by
+country flag; nothing for a tech already researched): the study 15 % (`ahw_grant_study`, in
+`ahw_spike_mark_studied`); the **head start** 50 % (`ahw_grant_head_start`, `ahw_spike.20`: an
+anchor of ours whose gate is not broken — it also gives the study's knowledge,
+`ahw_spike_country_learns`, without its 15 %); the repairer gets `ahw_grant_head_start` set, so
+its own gate never counts. The 80 % cap waits for the exploration grants (study + head start
+reach 65). `ahw_spike.44`: another empire repairs our portal's gate (console test).
+
+**Test, run 36** (`0.0.38-SPIKE`, a new medium game, this mod and dev tools; Esc before each
+console line). Question: does `add_tech_progress` show on a tech put among the options by
+`add_research_option`, and do the grants add up?
+1. `event ahw_spike.6` (outpost on the anchor), `event ahw_spike.41` (test ships in our portal),
+   `event ahw_spike.7` (the study offer); the study project with the test science ship (30 days).
+   Expected: Gate Theory among the physics options and Gate Construction among the engineering
+   ones, each at **15 %**. Screenshot both, save.
+2. `event ahw_spike.44`, `event ahw_spike.7`. Expected: both at **65 %**; game.log "head start".
+   Screenshot, save.
+3. The gate in our portal (now ours): its Seal mode should be refused (no Gate Theory yet).
 
 **Run 35 (2026-11-07, `0.0.37-SPIKE`, saves 2200.01.01–06.02): the pulsar drain works.** AHW Test
 Fleet (shields 100 max this game) in pulsar node `ahw_node_68_64` from 03.02: 100 → 90 (04.01)

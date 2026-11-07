@@ -5,7 +5,8 @@
 #   event ahw_spike.2   report the state to game.log
 #   event ahw_spike.6   an outpost on our anchor (so we own it)
 #   event ahw_spike.7   run the monthly study/repair check for us now
-#   event ahw_spike.8   grant ahw_tech_spike
+#   event ahw_spike.8   grant both gate techs
+#   event ahw_spike.44  our portal's gate repaired by another empire (for the head start)
 #   event ahw_spike.25  seal our pair against everyone, us included (again: open it)
 #   event ahw_spike.26  seal our pair for another empire (a stranger to us)
 #   event ahw_spike.27  make that empire our subject (now a friend of the sealer)
@@ -121,13 +122,14 @@ country_event = {
 	immediate = { country_event = { id = ahw_spike.20 } }
 }
 
-# Grants the entry-point tech (fallback for the console's research_technology).
+# Grants both gate techs (fallback for the console's research_technology).
 country_event = {
 	id = ahw_spike.8
 	hide_window = yes
 	is_triggered_only = yes
 	immediate = {
-		give_technology = { tech = ahw_tech_spike message = no }
+		give_technology = { tech = ahw_tech_gate_theory message = no }
+		give_technology = { tech = ahw_tech_gate_construction message = no }
 		ahw_spike_report = { WHEN = after_granting_the_tech }
 	}
 }
@@ -158,6 +160,19 @@ country_event = {
 				limit = { has_star_flag = ahw_sealed }
 				ahw_spike_seal_pair_for = { COUNTRY = root }
 			}
+			# 0.0.38, the head start (design 2026-11-05): an anchor whose gate somebody else
+			# repaired gives the study for free and 50 % of each tech, once per empire (the
+			# repairer itself is flagged as served, ahw_spike_mark_repaired).
+			if = {
+				limit = {
+					NOT = { has_star_flag = ahw_broken }
+					root = { NOT = { has_country_flag = ahw_grant_head_start } }
+				}
+				root = { save_event_target_as = ahw_studier }
+				ahw_spike_country_learns = yes
+				root = { ahw_spike_grant = { FLAG = ahw_grant_head_start PROGRESS = 0.5 } }
+				log = "AHW SPIKE head start at the entry point in [This.GetName] for [Root.GetName]"
+			}
 			if = {
 				limit = {
 					NOT = { has_star_flag = ahw_studied }
@@ -172,7 +187,10 @@ country_event = {
 					has_star_flag = ahw_studied
 					has_star_flag = ahw_broken
 					NOT = { has_star_flag = ahw_repair_offered }
-					root = { has_technology = ahw_tech_spike }
+					root = {
+						has_technology = ahw_tech_gate_theory
+						has_technology = ahw_tech_gate_construction
+					}
 				}
 				set_star_flag = ahw_repair_offered
 				save_event_target_as = ahw_repair_portal
@@ -370,7 +388,8 @@ country_event = {
 			ahw_spike_mark_studied = yes
 			ahw_spike_mark_repaired = yes
 		}
-		give_technology = { tech = ahw_tech_spike message = no }
+		give_technology = { tech = ahw_tech_gate_theory message = no }
+		give_technology = { tech = ahw_tech_gate_construction message = no }
 		ahw_spike_report = { WHEN = after_the_skip }
 	}
 }
@@ -430,6 +449,26 @@ event = {
 			every_ship_in_system = {
 				limit = { has_shield_hp > 0 }
 				repair_shield_percentage = -0.10
+			}
+		}
+	}
+}
+
+# Test (0.0.38): another empire repairs our portal's gate, so the next monthly check (or
+# `event ahw_spike.7`) gives us the head start. Leaves the study flags alone.
+country_event = {
+	id = ahw_spike.44
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		random_country = {
+			limit = { is_country_type = default NOT = { is_same_value = root } }
+			save_event_target_as = ahw_repairer
+		}
+		event_target:ahw_player_portal = {
+			if = {
+				limit = { has_star_flag = ahw_broken }
+				ahw_spike_mark_repaired = yes
 			}
 		}
 	}

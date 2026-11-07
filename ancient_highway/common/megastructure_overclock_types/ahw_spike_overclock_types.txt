@@ -17,6 +17,7 @@ ahw_spike_gate_sealed = {
 	icon = GFX_overclock_gc_war
 	possible = {
 		exists = owner
+		owner = { has_technology = ahw_tech_gate_theory }	# 0.0.38: sealing needs the theory
 		solar_system = { NOT = { has_star_flag = ahw_broken } }
 	}
 	resources = {

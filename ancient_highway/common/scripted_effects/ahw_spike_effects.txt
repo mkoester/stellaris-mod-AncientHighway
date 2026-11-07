@@ -60,13 +60,8 @@ ahw_spike_core_band = {
 # this = country (the player)
 ahw_spike_report = {
 	log = "AHW SPIKE ===== report: $WHEN$ ====="
-	if = {
-		limit = { has_technology = ahw_tech_spike }
-		log = "AHW SPIKE \\[This.GetName] has ahw_tech_spike"
-	}
-	else = {
-		log = "AHW SPIKE \\[This.GetName] does NOT have ahw_tech_spike"
-	}
+	ahw_spike_log_tech = { TECH = ahw_tech_gate_theory }
+	ahw_spike_log_tech = { TECH = ahw_tech_gate_construction }
 	every_system = {
 		limit = { has_star_flag = ahw_ring }
 		ahw_spike_log_system = { WHAT = ring_node }
@@ -489,17 +484,57 @@ ahw_spike_pick_anchor = {
 # the console skip ahw_spike.40 - one code path, so the skip tests the real thing).
 ahw_spike_mark_studied = {
 	set_star_flag = ahw_studied
+	ahw_spike_country_learns = yes
+	# 0.0.38 (design 2026-11-05): the study grants 15 % of each tech, once per empire.
+	event_target:ahw_studier = { ahw_spike_grant = { FLAG = ahw_grant_study PROGRESS = 0.15 } }
+	log = "AHW SPIKE entry point in \\[This.GetName] studied by \\[ahw_studier.GetName]"
+}
+
+# this = a portal, event_target:ahw_studier = the country: what the country knows after studying
+# this gate, or after the head start at it (ahw_spike.20) - no grant.
+ahw_spike_country_learns = {
 	event_target:ahw_studier = {
 		set_country_flag = ahw_highway_studied
 		# Run 18: the tech waited for the next physics draw. Vanilla does this after studying a
 		# ruined gateway (tech_gateway_activation): the option appears at once and stays.
-		add_research_option = ahw_tech_spike
+		add_research_option = ahw_tech_gate_theory
+		add_research_option = ahw_tech_gate_construction
 		ahw_spike_learn_types = yes
 	}
 	# 0.0.26 (design 2026-11-06): only this gate's exit node, not the whole ring - the rest is
 	# explored by flying it.
 	ahw_spike_reveal_exit = yes
-	log = "AHW SPIKE entry point in \\[This.GetName] studied by \\[ahw_studier.GetName]"
+}
+
+# this = a country. A share of both techs, once per empire (FLAG); a tech already researched
+# gets nothing (design 2026-11-05). add_tech_progress takes a fraction of the cost (0.0-1.0).
+# Not yet: the 80 % cap over all grants - study (15) and head start (50) reach 65 at most; it
+# comes with the exploration grants.
+ahw_spike_grant = {
+	if = {
+		limit = { NOT = { has_country_flag = $FLAG$ } }
+		set_country_flag = $FLAG$
+		if = {
+			limit = { NOT = { has_technology = ahw_tech_gate_theory } }
+			add_tech_progress = { tech = ahw_tech_gate_theory progress = $PROGRESS$ }
+		}
+		if = {
+			limit = { NOT = { has_technology = ahw_tech_gate_construction } }
+			add_tech_progress = { tech = ahw_tech_gate_construction progress = $PROGRESS$ }
+		}
+		log = "AHW SPIKE grant $FLAG$ ($PROGRESS$ of each tech) to \\[This.GetName]"
+	}
+}
+
+# this = a country
+ahw_spike_log_tech = {
+	if = {
+		limit = { has_technology = $TECH$ }
+		log = "AHW SPIKE \\[This.GetName] has $TECH$"
+	}
+	else = {
+		log = "AHW SPIKE \\[This.GetName] does NOT have $TECH$"
+	}
 }
 
 # this = a portal, event_target:ahw_repairer = the country: the repair's result (ahw_spike.23,
@@ -508,6 +543,8 @@ ahw_spike_mark_repaired = {
 	remove_star_flag = ahw_broken
 	# 0.0.20: the gate belongs to the repairer (the anchor's owner): its Open/Sealed switch
 	every_system_megastructure = { set_owner = event_target:ahw_repairer }
+	# 0.0.38: the head start is for a gate somebody else repaired, never for one's own.
+	event_target:ahw_repairer = { set_country_flag = ahw_grant_head_start }
 	log = "AHW SPIKE entry point in \\[This.GetName] repaired by \\[ahw_repairer.GetName]"
 }
 

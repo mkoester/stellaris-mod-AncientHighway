@@ -63,7 +63,7 @@ Nothing player-local may decide what is built. The freeze is the slowest machine
 **Timings are from mkDell** (user, 2026-11-06: about as old as the base game; nobody is expected to
 play on such a machine): acceptable there is acceptable for players.
 
-**Next:** run 35 (`0.0.37-SPIKE`: the pulsar's monthly shield drain; runs 33–34 found the regen modifiers cannot do it), then the spike order in item 7 (techs and grants next); then the rest of the open list (the ring's exact
+**Next:** the spike order in item 7 — techs and grants (runs 32–35 finished debris, bare centres and the drain: toxoid −0.02 armour regen, pulsar no shield regen plus −10 % of max a month); then the rest of the open list (the ring's exact
 speed is parked — user, 2026-11-04: "not too important to me now"). Everything is still the
 spike (`*spike*` files); nothing is shippable yet.
 
@@ -262,6 +262,13 @@ skips work again.** Our portal Furon 51 studied, the others broken; test ships i
 hull 200, armour 100, shields 200 each; the science and construction ships 300 / 100 / 200. No
 error.log lines after the build (the build's own: the probe's `move_system` misses, the
 `ahw_*_tmp` targets, `ahw_exits`/`ahw_pair` in log texts — as before).
+
+**Run 35 (2026-11-07, `0.0.37-SPIKE`, saves 2200.01.01–06.02): the pulsar drain works.** AHW Test
+Fleet (shields 100 max this game) in pulsar node `ahw_node_68_64` from 03.02: 100 → 90 (04.01)
+→ 80 (05.01) → 70 (06.01) — a negative `repair_shield_percentage` works and takes **10 % of the
+maximum** each 1st, not of what is left; nothing comes back in between. On the way, in a toxoid
+node: armour 200 → 194 → 188.8 (3 %/month, as run 33). No error.log line from it. **The drain
+stage is done** (both values the user's to retune).
 
 **Run 34 (2026-11-07, `0.0.36-SPIKE`, saves 2200.01.01–05.06; `ahw_spike.43` on 03.06): the
 pulsar stops shield regeneration, but nothing drains.** The 1st Fleet at home (Sol, shields 100):

@@ -63,7 +63,7 @@ Nothing player-local may decide what is built. The freeze is the slowest machine
 **Timings are from mkDell** (user, 2026-11-06: about as old as the base game; nobody is expected to
 play on such a machine): acceptable there is acceptable for players.
 
-**Next:** run 37 (`0.0.39-SPIKE`: inspection grants and the 80 % cap); then the rest of the spike order in item 7 — nomads and the contract next (run 36: the techs, study and head-start grants work) (runs 32–35 finished debris, bare centres and the drain: toxoid −0.02 armour regen, pulsar no shield regen plus −10 % of max a month); then the rest of the open list (the ring's exact
+**Next:** the rest of the spike order in item 7 — nomads and the contract next, then express (runs 36–37: techs, all grants and the 80 % cap work) (runs 32–35 finished debris, bare centres and the drain: toxoid −0.02 armour regen, pulsar no shield regen plus −10 % of max a month); then the rest of the open list (the ring's exact
 speed is parked — user, 2026-11-04: "not too important to me now"). Everything is still the
 spike (`*spike*` files); nothing is shippable yet.
 
@@ -262,6 +262,17 @@ skips work again.** Our portal Furon 51 studied, the others broken; test ships i
 hull 200, armour 100, shields 200 each; the science and construction ships 300 / 100 / 200. No
 error.log lines after the build (the build's own: the probe's `move_system` misses, the
 `ahw_*_tmp` targets, `ahw_exits`/`ahw_pair` in log texts — as before).
+
+**Run 37 (2026-11-07, `0.0.39-SPIKE`, saves 2200.01.01–06.02, game.log): every grant works, the cap
+holds.** Study 15 → head start 65 (01.02); Gate Construction **+7 → 72** (03.08, our own portal
+Caedris 21, repaired by "someone else" via `.44` — +7: the test ships were spawned there on 01.01,
+and their return from the anchor counted as the country's **first entry**, so a spawn is no
+entry); Gate Theory **+7 → 72** (05.26, the foreign portal Furon 52, a toxoid; ours a black
+hole); `.47` asked 0.3 and got **+0.08** each → 0.8. Save 06.02: `stored_techpoints_for_tech`
+2200 of 2750 for both, both `always_available_tech`; country flags `ahw_insp_1`,
+`ahw_repaired_1` (on the "repairer"), `ahw_phys_12`, `ahw_first_12`, `ahw_kind_black_hole` /
+`_toxoid`. A country with **every** tech (584, id 16777226, no type) lists ours too — a
+game-internal one, not an empire.
 
 **Exploration and inspection grants, the cap (`0.0.39-SPIKE`, design 2026-11-06)**: every grant
 goes through `ahw_spike_grant_tech` — at most 0.8 of a tech over all grants, counted in the

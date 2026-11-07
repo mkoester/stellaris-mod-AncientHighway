@@ -22,6 +22,15 @@ ahw_spike_portal_anchor_own_ok = {
 	NOT = { any_neighbor_system = { has_star_flag = ahw_portal } }
 }
 
+# 0.0.41, this = country: gets a portal - a regular empire, not a nomad (design: nomads get no
+# portal; run 38's nomadic Murmies had one). is_nomadic is the engine's country code flag, set
+# before on_game_start (vanilla's nomads.20 tests it from on_game_start_country); an empire that
+# settles counts from then on, one that embarks keeps the portal it has.
+ahw_spike_gets_portal = {
+	is_country_type = default
+	is_nomadic = no
+}
+
 # 0.0.31: a generated pair is left for one more portal (ahw_pairs counts the used ones, ahw_pairs_max
 # is tools/gen_spike.py's PAIRS; both on ring node 1). No scope needed.
 ahw_spike_pair_left = {

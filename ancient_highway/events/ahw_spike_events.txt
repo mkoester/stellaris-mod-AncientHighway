@@ -62,8 +62,13 @@ event = {
 		# A portal for every regular empire (ahw_spike_build_portal; 0.0.31: the same effect serves
 		# empires born later, ahw_spike.30).
 		every_country = {
-			limit = { is_country_type = default }
+			limit = { ahw_spike_gets_portal = yes }
 			ahw_spike_build_portal = yes
+		}
+		# 0.0.41: nomads get none - logged, so a run shows the filter fired
+		every_country = {
+			limit = { is_country_type = default is_nomadic = yes }
+			log = "AHW SPIKE no portal for nomadic [This.GetName]"
 		}
 
 		set_spawn_system_batch = end
@@ -331,7 +336,7 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		is_country_type = default
+		ahw_spike_gets_portal = yes
 		has_global_flag = ahw_spike_done
 		NOT = { has_country_flag = ahw_has_portal }
 		exists = capital_star

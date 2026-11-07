@@ -63,7 +63,7 @@ Nothing player-local may decide what is built. The freeze is the slowest machine
 **Timings are from mkDell** (user, 2026-11-06: about as old as the base game; nobody is expected to
 play on such a machine): acceptable there is acceptable for players.
 
-**Next:** the rest of the spike order in item 7 — nomads and the contract (first: **nomadic empires get a portal today**, against the design — the build counts every `is_country_type = default`; vanilla's test is the scripted trigger `is_nomadic`; run 38's Murmies were nomadic), then express (runs 36–38: techs, all grants, inspection studies and the 80 % cap work) (runs 32–35 finished debris, bare centres and the drain: toxoid −0.02 armour regen, pulsar no shield regen plus −10 % of max a month); then the rest of the open list (the ring's exact
+**Next:** the rest of the spike order in item 7 — nomads and the contract (first: **nomads get no portal** — `0.0.41-SPIKE`, untested: `ahw_spike_gets_portal` = `is_country_type = default` and `is_nomadic = no`, at the start and in `ahw_spike.30`; `is_nomadic` is the engine's country code flag, already set at `on_game_start` (vanilla's `nomads.20` tests it from `on_game_start_country`); each skipped nomad logs "no portal for nomadic …"; an empire that embarks later keeps its portal, one that settles gets one; run 38's nomadic Murmies had one), then express (runs 36–38: techs, all grants, inspection studies and the 80 % cap work) (runs 32–35 finished debris, bare centres and the drain: toxoid −0.02 armour regen, pulsar no shield regen plus −10 % of max a month); then the rest of the open list (the ring's exact
 speed is parked — user, 2026-11-04: "not too important to me now"). Everything is still the
 spike (`*spike*` files); nothing is shippable yet.
 

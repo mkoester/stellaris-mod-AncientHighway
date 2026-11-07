@@ -22716,6 +22716,7 @@ ahw_seal_pair_for_nobody = {
 # finish_upgrade. Its on_build_complete marks the portal repaired; if the engine does not run it
 # for a scripted finish, the fallback below does (ahw_mark_repaired runs once either way).
 ahw_repair_gate = {
+	event_target:ahw_repairer = { save_global_event_target_as = ahw_script_repairer }
 	every_system_megastructure = {
 		if = { limit = { is_megastructure_type = ahw_gate_broken_1 } upgrade_megastructure_to = ahw_gate_1 finish_upgrade = yes }
 		if = { limit = { is_megastructure_type = ahw_gate_broken_2 } upgrade_megastructure_to = ahw_gate_2 finish_upgrade = yes }
@@ -22755,6 +22756,7 @@ ahw_repair_gate = {
 		log = "AHW \\[This.GetName]: the scripted upgrade did not mark the gate repaired - marked now"
 		ahw_mark_repaired = yes
 	}
+	clear_global_event_target = ahw_script_repairer
 }
 
 # this = a portal: its pair is open again.

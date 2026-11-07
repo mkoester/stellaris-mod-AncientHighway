@@ -309,6 +309,7 @@ ahw_seal_pair_for_nobody = {{
 # finish_upgrade. Its on_build_complete marks the portal repaired; if the engine does not run it
 # for a scripted finish, the fallback below does (ahw_mark_repaired runs once either way).
 ahw_repair_gate = {{
+	event_target:ahw_repairer = {{ save_global_event_target_as = ahw_script_repairer }}
 	every_system_megastructure = {{
 {chr(10).join(f"""		if = {{ limit = {{ is_megastructure_type = ahw_gate_broken_{n} }} upgrade_megastructure_to = ahw_gate_{n} finish_upgrade = yes }}""" for n in range(1, PAIRS + 1))}
 	}}
@@ -317,6 +318,7 @@ ahw_repair_gate = {{
 		log = "AHW \\\\[This.GetName]: the scripted upgrade did not mark the gate repaired - marked now"
 		ahw_mark_repaired = yes
 	}}
+	clear_global_event_target = ahw_script_repairer
 }}
 
 # this = a portal: its pair is open again.
@@ -395,7 +397,13 @@ def mega_block(key, entity, btype, kind, comment, n):
 		}}
 	}}
 	on_build_complete = {{
+		# run 41: finished by script (the contract), `from` is the gate's owner, not the nomad -
+		# ahw_repair_gate hands the real repairer over in a global target
 		if = {{
+			limit = {{ exists = event_target:ahw_script_repairer }}
+			event_target:ahw_script_repairer = {{ save_event_target_as = ahw_repairer }}
+		}}
+		else_if = {{
 			limit = {{ exists = from }}
 			from = {{ save_event_target_as = ahw_repairer }}
 		}}

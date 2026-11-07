@@ -54,7 +54,13 @@ ahw_gate_1 = {
 		}
 	}
 	on_build_complete = {
+		# run 41: finished by script (the contract), `from` is the gate's owner, not the nomad -
+		# ahw_repair_gate hands the real repairer over in a global target
 		if = {
+			limit = { exists = event_target:ahw_script_repairer }
+			event_target:ahw_script_repairer = { save_event_target_as = ahw_repairer }
+		}
+		else_if = {
 			limit = { exists = from }
 			from = { save_event_target_as = ahw_repairer }
 		}
@@ -135,7 +141,13 @@ ahw_gate_2 = {
 		}
 	}
 	on_build_complete = {
+		# run 41: finished by script (the contract), `from` is the gate's owner, not the nomad -
+		# ahw_repair_gate hands the real repairer over in a global target
 		if = {
+			limit = { exists = event_target:ahw_script_repairer }
+			event_target:ahw_script_repairer = { save_event_target_as = ahw_repairer }
+		}
+		else_if = {
 			limit = { exists = from }
 			from = { save_event_target_as = ahw_repairer }
 		}
@@ -216,7 +228,13 @@ ahw_gate_3 = {
 		}
 	}
 	on_build_complete = {
+		# run 41: finished by script (the contract), `from` is the gate's owner, not the nomad -
+		# ahw_repair_gate hands the real repairer over in a global target
 		if = {
+			limit = { exists = event_target:ahw_script_repairer }
+			event_target:ahw_script_repairer = { save_event_target_as = ahw_repairer }
+		}
+		else_if = {
 			limit = { exists = from }
 			from = { save_event_target_as = ahw_repairer }
 		}
@@ -297,7 +315,13 @@ ahw_gate_4 = {
 		}
 	}
 	on_build_complete = {
+		# run 41: finished by script (the contract), `from` is the gate's owner, not the nomad -
+		# ahw_repair_gate hands the real repairer over in a global target
 		if = {
+			limit = { exists = event_target:ahw_script_repairer }
+			event_target:ahw_script_repairer = { save_event_target_as = ahw_repairer }
+		}
+		else_if = {
 			limit = { exists = from }
 			from = { save_event_target_as = ahw_repairer }
 		}
@@ -378,7 +402,13 @@ ahw_gate_5 = {
 		}
 	}
 	on_build_complete = {
+		# run 41: finished by script (the contract), `from` is the gate's owner, not the nomad -
+		# ahw_repair_gate hands the real repairer over in a global target
 		if = {
+			limit = { exists = event_target:ahw_script_repairer }
+			event_target:ahw_script_repairer = { save_event_target_as = ahw_repairer }
+		}
+		else_if = {
 			limit = { exists = from }
 			from = { save_event_target_as = ahw_repairer }
 		}
@@ -459,7 +489,13 @@ ahw_gate_6 = {
 		}
 	}
 	on_build_complete = {
+		# run 41: finished by script (the contract), `from` is the gate's owner, not the nomad -
+		# ahw_repair_gate hands the real repairer over in a global target
 		if = {
+			limit = { exists = event_target:ahw_script_repairer }
+			event_target:ahw_script_repairer = { save_event_target_as = ahw_repairer }
+		}
+		else_if = {
 			limit = { exists = from }
 			from = { save_event_target_as = ahw_repairer }
 		}
@@ -540,7 +576,13 @@ ahw_gate_7 = {
 		}
 	}
 	on_build_complete = {
+		# run 41: finished by script (the contract), `from` is the gate's owner, not the nomad -
+		# ahw_repair_gate hands the real repairer over in a global target
 		if = {
+			limit = { exists = event_target:ahw_script_repairer }
+			event_target:ahw_script_repairer = { save_event_target_as = ahw_repairer }
+		}
+		else_if = {
 			limit = { exists = from }
 			from = { save_event_target_as = ahw_repairer }
 		}
@@ -621,7 +663,13 @@ ahw_gate_8 = {
 		}
 	}
 	on_build_complete = {
+		# run 41: finished by script (the contract), `from` is the gate's owner, not the nomad -
+		# ahw_repair_gate hands the real repairer over in a global target
 		if = {
+			limit = { exists = event_target:ahw_script_repairer }
+			event_target:ahw_script_repairer = { save_event_target_as = ahw_repairer }
+		}
+		else_if = {
 			limit = { exists = from }
 			from = { save_event_target_as = ahw_repairer }
 		}
@@ -702,7 +750,13 @@ ahw_gate_9 = {
 		}
 	}
 	on_build_complete = {
+		# run 41: finished by script (the contract), `from` is the gate's owner, not the nomad -
+		# ahw_repair_gate hands the real repairer over in a global target
 		if = {
+			limit = { exists = event_target:ahw_script_repairer }
+			event_target:ahw_script_repairer = { save_event_target_as = ahw_repairer }
+		}
+		else_if = {
 			limit = { exists = from }
 			from = { save_event_target_as = ahw_repairer }
 		}
@@ -783,7 +837,13 @@ ahw_gate_10 = {
 		}
 	}
 	on_build_complete = {
+		# run 41: finished by script (the contract), `from` is the gate's owner, not the nomad -
+		# ahw_repair_gate hands the real repairer over in a global target
 		if = {
+			limit = { exists = event_target:ahw_script_repairer }
+			event_target:ahw_script_repairer = { save_event_target_as = ahw_repairer }
+		}
+		else_if = {
 			limit = { exists = from }
 			from = { save_event_target_as = ahw_repairer }
 		}
@@ -864,7 +924,13 @@ ahw_gate_11 = {
 		}
 	}
 	on_build_complete = {
+		# run 41: finished by script (the contract), `from` is the gate's owner, not the nomad -
+		# ahw_repair_gate hands the real repairer over in a global target
 		if = {
+			limit = { exists = event_target:ahw_script_repairer }
+			event_target:ahw_script_repairer = { save_event_target_as = ahw_repairer }
+		}
+		else_if = {
 			limit = { exists = from }
 			from = { save_event_target_as = ahw_repairer }
 		}
@@ -945,7 +1011,13 @@ ahw_gate_12 = {
 		}
 	}
 	on_build_complete = {
+		# run 41: finished by script (the contract), `from` is the gate's owner, not the nomad -
+		# ahw_repair_gate hands the real repairer over in a global target
 		if = {
+			limit = { exists = event_target:ahw_script_repairer }
+			event_target:ahw_script_repairer = { save_event_target_as = ahw_repairer }
+		}
+		else_if = {
 			limit = { exists = from }
 			from = { save_event_target_as = ahw_repairer }
 		}
@@ -1026,7 +1098,13 @@ ahw_gate_13 = {
 		}
 	}
 	on_build_complete = {
+		# run 41: finished by script (the contract), `from` is the gate's owner, not the nomad -
+		# ahw_repair_gate hands the real repairer over in a global target
 		if = {
+			limit = { exists = event_target:ahw_script_repairer }
+			event_target:ahw_script_repairer = { save_event_target_as = ahw_repairer }
+		}
+		else_if = {
 			limit = { exists = from }
 			from = { save_event_target_as = ahw_repairer }
 		}
@@ -1107,7 +1185,13 @@ ahw_gate_14 = {
 		}
 	}
 	on_build_complete = {
+		# run 41: finished by script (the contract), `from` is the gate's owner, not the nomad -
+		# ahw_repair_gate hands the real repairer over in a global target
 		if = {
+			limit = { exists = event_target:ahw_script_repairer }
+			event_target:ahw_script_repairer = { save_event_target_as = ahw_repairer }
+		}
+		else_if = {
 			limit = { exists = from }
 			from = { save_event_target_as = ahw_repairer }
 		}
@@ -1188,7 +1272,13 @@ ahw_gate_15 = {
 		}
 	}
 	on_build_complete = {
+		# run 41: finished by script (the contract), `from` is the gate's owner, not the nomad -
+		# ahw_repair_gate hands the real repairer over in a global target
 		if = {
+			limit = { exists = event_target:ahw_script_repairer }
+			event_target:ahw_script_repairer = { save_event_target_as = ahw_repairer }
+		}
+		else_if = {
 			limit = { exists = from }
 			from = { save_event_target_as = ahw_repairer }
 		}
@@ -1269,7 +1359,13 @@ ahw_gate_16 = {
 		}
 	}
 	on_build_complete = {
+		# run 41: finished by script (the contract), `from` is the gate's owner, not the nomad -
+		# ahw_repair_gate hands the real repairer over in a global target
 		if = {
+			limit = { exists = event_target:ahw_script_repairer }
+			event_target:ahw_script_repairer = { save_event_target_as = ahw_repairer }
+		}
+		else_if = {
 			limit = { exists = from }
 			from = { save_event_target_as = ahw_repairer }
 		}
@@ -1350,7 +1446,13 @@ ahw_gate_17 = {
 		}
 	}
 	on_build_complete = {
+		# run 41: finished by script (the contract), `from` is the gate's owner, not the nomad -
+		# ahw_repair_gate hands the real repairer over in a global target
 		if = {
+			limit = { exists = event_target:ahw_script_repairer }
+			event_target:ahw_script_repairer = { save_event_target_as = ahw_repairer }
+		}
+		else_if = {
 			limit = { exists = from }
 			from = { save_event_target_as = ahw_repairer }
 		}
@@ -1431,7 +1533,13 @@ ahw_gate_18 = {
 		}
 	}
 	on_build_complete = {
+		# run 41: finished by script (the contract), `from` is the gate's owner, not the nomad -
+		# ahw_repair_gate hands the real repairer over in a global target
 		if = {
+			limit = { exists = event_target:ahw_script_repairer }
+			event_target:ahw_script_repairer = { save_event_target_as = ahw_repairer }
+		}
+		else_if = {
 			limit = { exists = from }
 			from = { save_event_target_as = ahw_repairer }
 		}
@@ -1512,7 +1620,13 @@ ahw_gate_19 = {
 		}
 	}
 	on_build_complete = {
+		# run 41: finished by script (the contract), `from` is the gate's owner, not the nomad -
+		# ahw_repair_gate hands the real repairer over in a global target
 		if = {
+			limit = { exists = event_target:ahw_script_repairer }
+			event_target:ahw_script_repairer = { save_event_target_as = ahw_repairer }
+		}
+		else_if = {
 			limit = { exists = from }
 			from = { save_event_target_as = ahw_repairer }
 		}
@@ -1593,7 +1707,13 @@ ahw_gate_20 = {
 		}
 	}
 	on_build_complete = {
+		# run 41: finished by script (the contract), `from` is the gate's owner, not the nomad -
+		# ahw_repair_gate hands the real repairer over in a global target
 		if = {
+			limit = { exists = event_target:ahw_script_repairer }
+			event_target:ahw_script_repairer = { save_event_target_as = ahw_repairer }
+		}
+		else_if = {
 			limit = { exists = from }
 			from = { save_event_target_as = ahw_repairer }
 		}
@@ -1674,7 +1794,13 @@ ahw_gate_21 = {
 		}
 	}
 	on_build_complete = {
+		# run 41: finished by script (the contract), `from` is the gate's owner, not the nomad -
+		# ahw_repair_gate hands the real repairer over in a global target
 		if = {
+			limit = { exists = event_target:ahw_script_repairer }
+			event_target:ahw_script_repairer = { save_event_target_as = ahw_repairer }
+		}
+		else_if = {
 			limit = { exists = from }
 			from = { save_event_target_as = ahw_repairer }
 		}
@@ -1755,7 +1881,13 @@ ahw_gate_22 = {
 		}
 	}
 	on_build_complete = {
+		# run 41: finished by script (the contract), `from` is the gate's owner, not the nomad -
+		# ahw_repair_gate hands the real repairer over in a global target
 		if = {
+			limit = { exists = event_target:ahw_script_repairer }
+			event_target:ahw_script_repairer = { save_event_target_as = ahw_repairer }
+		}
+		else_if = {
 			limit = { exists = from }
 			from = { save_event_target_as = ahw_repairer }
 		}
@@ -1836,7 +1968,13 @@ ahw_gate_23 = {
 		}
 	}
 	on_build_complete = {
+		# run 41: finished by script (the contract), `from` is the gate's owner, not the nomad -
+		# ahw_repair_gate hands the real repairer over in a global target
 		if = {
+			limit = { exists = event_target:ahw_script_repairer }
+			event_target:ahw_script_repairer = { save_event_target_as = ahw_repairer }
+		}
+		else_if = {
 			limit = { exists = from }
 			from = { save_event_target_as = ahw_repairer }
 		}
@@ -1917,7 +2055,13 @@ ahw_gate_24 = {
 		}
 	}
 	on_build_complete = {
+		# run 41: finished by script (the contract), `from` is the gate's owner, not the nomad -
+		# ahw_repair_gate hands the real repairer over in a global target
 		if = {
+			limit = { exists = event_target:ahw_script_repairer }
+			event_target:ahw_script_repairer = { save_event_target_as = ahw_repairer }
+		}
+		else_if = {
 			limit = { exists = from }
 			from = { save_event_target_as = ahw_repairer }
 		}
@@ -1998,7 +2142,13 @@ ahw_gate_25 = {
 		}
 	}
 	on_build_complete = {
+		# run 41: finished by script (the contract), `from` is the gate's owner, not the nomad -
+		# ahw_repair_gate hands the real repairer over in a global target
 		if = {
+			limit = { exists = event_target:ahw_script_repairer }
+			event_target:ahw_script_repairer = { save_event_target_as = ahw_repairer }
+		}
+		else_if = {
 			limit = { exists = from }
 			from = { save_event_target_as = ahw_repairer }
 		}
@@ -2079,7 +2229,13 @@ ahw_gate_26 = {
 		}
 	}
 	on_build_complete = {
+		# run 41: finished by script (the contract), `from` is the gate's owner, not the nomad -
+		# ahw_repair_gate hands the real repairer over in a global target
 		if = {
+			limit = { exists = event_target:ahw_script_repairer }
+			event_target:ahw_script_repairer = { save_event_target_as = ahw_repairer }
+		}
+		else_if = {
 			limit = { exists = from }
 			from = { save_event_target_as = ahw_repairer }
 		}
@@ -2160,7 +2316,13 @@ ahw_gate_27 = {
 		}
 	}
 	on_build_complete = {
+		# run 41: finished by script (the contract), `from` is the gate's owner, not the nomad -
+		# ahw_repair_gate hands the real repairer over in a global target
 		if = {
+			limit = { exists = event_target:ahw_script_repairer }
+			event_target:ahw_script_repairer = { save_event_target_as = ahw_repairer }
+		}
+		else_if = {
 			limit = { exists = from }
 			from = { save_event_target_as = ahw_repairer }
 		}
@@ -2241,7 +2403,13 @@ ahw_gate_28 = {
 		}
 	}
 	on_build_complete = {
+		# run 41: finished by script (the contract), `from` is the gate's owner, not the nomad -
+		# ahw_repair_gate hands the real repairer over in a global target
 		if = {
+			limit = { exists = event_target:ahw_script_repairer }
+			event_target:ahw_script_repairer = { save_event_target_as = ahw_repairer }
+		}
+		else_if = {
 			limit = { exists = from }
 			from = { save_event_target_as = ahw_repairer }
 		}
@@ -2322,7 +2490,13 @@ ahw_gate_29 = {
 		}
 	}
 	on_build_complete = {
+		# run 41: finished by script (the contract), `from` is the gate's owner, not the nomad -
+		# ahw_repair_gate hands the real repairer over in a global target
 		if = {
+			limit = { exists = event_target:ahw_script_repairer }
+			event_target:ahw_script_repairer = { save_event_target_as = ahw_repairer }
+		}
+		else_if = {
 			limit = { exists = from }
 			from = { save_event_target_as = ahw_repairer }
 		}
@@ -2403,7 +2577,13 @@ ahw_gate_30 = {
 		}
 	}
 	on_build_complete = {
+		# run 41: finished by script (the contract), `from` is the gate's owner, not the nomad -
+		# ahw_repair_gate hands the real repairer over in a global target
 		if = {
+			limit = { exists = event_target:ahw_script_repairer }
+			event_target:ahw_script_repairer = { save_event_target_as = ahw_repairer }
+		}
+		else_if = {
 			limit = { exists = from }
 			from = { save_event_target_as = ahw_repairer }
 		}
@@ -2484,7 +2664,13 @@ ahw_gate_31 = {
 		}
 	}
 	on_build_complete = {
+		# run 41: finished by script (the contract), `from` is the gate's owner, not the nomad -
+		# ahw_repair_gate hands the real repairer over in a global target
 		if = {
+			limit = { exists = event_target:ahw_script_repairer }
+			event_target:ahw_script_repairer = { save_event_target_as = ahw_repairer }
+		}
+		else_if = {
 			limit = { exists = from }
 			from = { save_event_target_as = ahw_repairer }
 		}
@@ -2565,7 +2751,13 @@ ahw_gate_32 = {
 		}
 	}
 	on_build_complete = {
+		# run 41: finished by script (the contract), `from` is the gate's owner, not the nomad -
+		# ahw_repair_gate hands the real repairer over in a global target
 		if = {
+			limit = { exists = event_target:ahw_script_repairer }
+			event_target:ahw_script_repairer = { save_event_target_as = ahw_repairer }
+		}
+		else_if = {
 			limit = { exists = from }
 			from = { save_event_target_as = ahw_repairer }
 		}

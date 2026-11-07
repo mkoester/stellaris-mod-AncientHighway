@@ -117,6 +117,30 @@ All findings go to `game.log`, lines starting `AHW`.
 | `event ahw_debug.73` | a nomad in contact with us, with both techs, its arkship at our anchor |
 | `effect every_country = { limit = { is_ai = no } remove_country_flag = ahw_has_portal }` | we get a second portal on the next 1st (the console targets move to it) |
 
+**Run 41, steps 1–2 (2026-11-07): the contract works end to end; the head start did not come.**
+Three nomads logged. Gate study on 01.02, the Upgrade at once (user). `ahw_debug.73`: Roaming
+Uqo'Praknaran, techs given (no error). Contract accepted 01.11, **repaired 04.13** — the arkship
+worked from the anchor. But game.log: "repaired by United Nations of Earth": finished by script,
+the repaired gate's `on_build_complete` has `from` = the gate's owner (us), which overwrote the
+nomad as `ahw_repairer`; the repairer is denied the head start, so we got none. Fixed after the
+run: `ahw_repair_gate` hands the repairer over in the global target `ahw_script_repairer`, which
+`on_build_complete` prefers (also fixes `ahw_debug.44`).
+
+## Test, run 41 (`0.1.0` + run 40 fixes)
+
+Only what changed or failed in run 40; the rest works. A new medium game, this mod and dev tools,
+AI empires and nomads on; Esc before each console line; save after each step; copy both logs
+before quitting.
+1. `ahw_debug.6`, a day, `ahw_debug.45`: the broken gate's **Upgrade** is clickable at once (run
+   40: only after the next 1st). Do not start it.
+2. `ahw_debug.73` (game.log: "test nomad … both techs" — no "invalid technology" in error.log).
+   Right-click the anchor on the galaxy map, nothing selected: issue "Repair a Highway Gate" (if
+   no menu, let a few months pass, as in run 40). Let time run: a nomad accepts, its arkship
+   comes to the anchor and works there 90 days, the gate is repaired, and on the next 1st both
+   techs jump by the head start.
+3. `ahw_debug.70`, `ahw_debug.72`, a day: "Stabilise the Express Station" shows its cost, and
+   error.log has no "both set both days_to_research and cost".
+
 ## Test, run 40 (`0.1.0`)
 
 A new **medium** elliptical game, this mod and the dev-tools mod, AI empires on, **three nomadic

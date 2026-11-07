@@ -63,7 +63,7 @@ Nothing player-local may decide what is built. The freeze is the slowest machine
 **Timings are from mkDell** (user, 2026-11-06: about as old as the base game; nobody is expected to
 play on such a machine): acceptable there is acceptable for players.
 
-**Next:** finish run 33 (in progress since 2026-11-07 in a `0.0.34-SPIKE` game; the skips worked; `0.0.35-SPIKE` only resizes the test fleet: debris without vanilla deposits, bare centres, drain −0.02), then the spike order in item 7 (techs and grants next); then the rest of the open list (the ring's exact
+**Next:** finish run 33 (step 1 done in a `0.0.35-SPIKE` game; steps 2–4 open: debris without vanilla deposits, bare centres, drain −0.02), then the spike order in item 7 (techs and grants next); then the rest of the open list (the ring's exact
 speed is parked — user, 2026-11-04: "not too important to me now"). Everything is still the
 spike (`*spike*` files); nothing is shippable yet.
 
@@ -254,7 +254,14 @@ Copy `logs/game.log` and `logs/error.log` before restarting the game.
 the gate ours, the tech and `ahw_highway_studied` granted, an outpost on the anchor Sirius; no new
 error.log lines. `ahw_spike.42`: the three test fleets in our exit node Furon Node 5 (system 438 =
 `ahw_player_node`) — on the map only from the next day. The fleet was one corvette: `size` of
-`create_random_fleet` counts naval capacity → 25 in `0.0.35-SPIKE`.
+`create_random_fleet` is not a ship count → 25 in `0.0.35-SPIKE`.
+
+**Run 33, step 1 again (2026-11-07, `0.0.35-SPIKE`, a new medium game, save 2200.01.02): the
+skips work again.** Our portal Furon 51 studied, the others broken; test ships in Furon Node 5
+(`ahw_node_68_49`). `size = 25` gave **five corvettes** (one per 5, not naval capacity), at
+hull 200, armour 100, shields 200 each; the science and construction ships 300 / 100 / 200. No
+error.log lines after the build (the build's own: the probe's `move_system` misses, the
+`ahw_*_tmp` targets, `ahw_exits`/`ahw_pair` in log texts — as before).
 
 **Test, run 33** (`0.0.34-SPIKE` — 0.0.33's content plus the skips; as run 32, a new medium
 game, with the dev-tools mod loaded too). Save now and then — the saves carry the numbers (armour

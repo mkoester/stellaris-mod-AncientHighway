@@ -535,7 +535,7 @@ ahw_spike_spawn_test_ships = {
 	# empires get theirs.
 	create_random_fleet = {
 		name = "AHW Test Fleet"
-		# size counts naval capacity, not ships: 5 gave one corvette (5/50, 2026-11-07)
+		# size is not a ship count: 5 gave one corvette, 25 five (runs 33, 2026-11-07)
 		size = 25
 		effect = { set_location = event_target:ahw_spawn_here.star }
 	}

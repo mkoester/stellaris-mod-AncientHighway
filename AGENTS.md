@@ -63,7 +63,7 @@ Nothing player-local may decide what is built. The freeze is the slowest machine
 **Timings are from mkDell** (user, 2026-11-06: about as old as the base game; nobody is expected to
 play on such a machine): acceptable there is acceptable for players.
 
-**Next:** run 38 (`0.0.40-SPIKE`: inspection as studies, offered on entry, withdrawn at the cap); then the rest of the spike order in item 7 — nomads and the contract, then express (runs 36–37: techs, all grants and the 80 % cap work) (runs 32–35 finished debris, bare centres and the drain: toxoid −0.02 armour regen, pulsar no shield regen plus −10 % of max a month); then the rest of the open list (the ring's exact
+**Next:** the rest of the spike order in item 7 — nomads and the contract, then express (runs 36–38: techs, all grants, inspection studies and the 80 % cap work) (runs 32–35 finished debris, bare centres and the drain: toxoid −0.02 armour regen, pulsar no shield regen plus −10 % of max a month); then the rest of the open list (the ring's exact
 speed is parked — user, 2026-11-04: "not too important to me now"). Everything is still the
 spike (`*spike*` files); nothing is shippable yet.
 
@@ -262,6 +262,20 @@ skips work again.** Our portal Furon 51 studied, the others broken; test ships i
 hull 200, armour 100, shields 200 each; the science and construction ships 300 / 100 / 200. No
 error.log lines after the build (the build's own: the probe's `move_system` misses, the
 `ahw_*_tmp` targets, `ahw_exits`/`ahw_pair` in log texts — as before).
+
+**Run 38 (2026-11-07, `0.0.40-SPIKE`, saves 2200.01.01–09.10, screenshots `2026_11_07_10`–`_14`):
+the studies work (user: "looks good").** 65 % after study + head start; the gate study in our
+portal Dovhar 31 offered on the science ship's return (02.24), done 03.26: Gate Construction
+**+5 → 70 %** (1925/2750) — not +7: **a spawn counts as an entry for `on_entering_system_fleet`**
+(`ahw_entered_1` without `ahw_first_1`; the test ships were spawned there before the study),
+unlike `on_entering_system_first_time` in run 37 — a test artefact, no spawns in play. Centre
+study at the foreign portal Belun 11 (military variant, the test fleet): Gate Theory **+7 → 72 %**
+(1980/2750). Second foreign portal Caedris 22: study offered 09.08; `.47` on 09.10 → both 0.8, both
+"capped … withdrawn" lines, the situation log empty (`_14`), the save keeps only
+`last_completed_special_project`. **The "Alien Space Station" at the edge of Antares** (`_11`,
+Belun 11's anchor; user: unusual) is vanilla: the waystation (`swaystation_energy`, at the
+system's inner radius 175) of the Murmies, a Nomadic empire (`type="default"`) — Antares itself is
+another empire's second colony (`neighbor_t2_second_colony`).
 
 **Inspection as studies (`0.0.40-SPIKE`, user 2026-11-07: "how would a player/AI empire know"
 about 10 days of waiting?)**: `ahw_spike.60` (`on_entering_system_fleet`, every regular

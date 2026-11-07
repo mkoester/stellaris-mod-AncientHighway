@@ -135,9 +135,10 @@ Gate Theory researched (as designed).
 The real stages by hand, then decades of play to see what the AI and the nomads do. New: the
 yearly summary `ahw.80` in game.log (who studied, who has which tech, which portals are repaired
 or sealed, the express). A new medium game, this mod and dev tools, AI empires and nomads on.
-1. **Contract → head start, in one go**: claim your anchor by hand (an outpost), study the gate
-   when the monthly offer comes (science ship, 30 days), then `ahw_debug.73` and issue the
-   contract in the anchor. After the repair, on the next 1st: both techs +50 % (no console help).
+1. **Contract → head start, in one go**: `ahw_debug.6` (outpost on the anchor) and
+   `ahw_debug.41` (test ships in the portal; user: claiming and flying take too long for a test);
+   on the next 1st the study is offered — do it with the test science ship (30 days); then
+   `ahw_debug.73` and issue the contract in the anchor. After the repair, on the next 1st: both techs +50 % (no console help).
 2. **The express study's cost on screen**: `ahw_debug.8`, `ahw_debug.70`, `ahw_debug.72`, a day:
    the study shows 4000 physics.
 3. **Play on** at a high speed for a few decades, as you like. Autosaves yearly. Then quit and

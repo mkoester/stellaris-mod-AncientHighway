@@ -124,7 +124,11 @@ worked from the anchor. But game.log: "repaired by United Nations of Earth": fin
 the repaired gate's `on_build_complete` has `from` = the gate's owner (us), which overwrote the
 nomad as `ahw_repairer`; the repairer is denied the head start, so we got none. Fixed after the
 run: `ahw_repair_gate` hands the repairer over in the global target `ahw_script_repairer`, which
-`on_build_complete` prefers (also fixes `ahw_debug.44`).
+`on_build_complete` prefers (also fixes `ahw_debug.44`). **The rest of the head start works**:
+with our `ahw_grant_head_start` removed by console and `ahw_debug.7`, both techs went 412 →
+1787/2750 (15 → 65 %, `2026_11_07_33`–`_37`); the techs show vanilla's gateway icons. Step 3:
+no "cost and days exclusive" error at load any more; the stabilise study is not offered without
+Gate Theory researched (as designed).
 
 ## Test, run 41 (`0.1.0` + run 40 fixes)
 

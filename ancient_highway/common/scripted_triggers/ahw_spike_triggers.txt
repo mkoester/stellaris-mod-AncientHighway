@@ -102,3 +102,13 @@ ahw_spike_friend_of_sealer = {
 		}
 	}
 }
+
+# this = a portal: WHO has seen a centre of its kind (ahw_spike_see_kind).
+ahw_spike_kind_seen = {
+	OR = {
+		AND = { is_star_class = ahw_sc_black_hole $WHO$ = { has_country_flag = ahw_kind_black_hole } }
+		AND = { is_star_class = ahw_sc_pulsar $WHO$ = { has_country_flag = ahw_kind_pulsar } }
+		AND = { is_star_class = ahw_sc_toxoid_star $WHO$ = { has_country_flag = ahw_kind_toxoid } }
+		AND = { is_star_class = ahw_sc_neutron_star $WHO$ = { has_country_flag = ahw_kind_neutron } }
+	}
+}

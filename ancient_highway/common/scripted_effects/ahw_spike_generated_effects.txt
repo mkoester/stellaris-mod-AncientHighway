@@ -22878,3 +22878,1111 @@ ahw_spike_learn_types = {
 	add_seen_bypass_type = ahw_spike_entry_31
 	add_seen_bypass_type = ahw_spike_entry_32
 }
+
+# this = a system an empire's ship entered for the first time: remember it 30 days per pair whose
+# gate is here (either end), for the +7 % (on_entering_system_first_time, ahw_spike.62).
+ahw_spike_mark_first_entry = {
+	if = {
+		limit = { OR = { has_star_flag = ahw_entry_1 has_star_flag = ahw_exit_1 } }
+		event_target:ahw_insp_country = { set_timed_country_flag = { flag = ahw_first_1 days = 30 } }
+	}
+	if = {
+		limit = { OR = { has_star_flag = ahw_entry_2 has_star_flag = ahw_exit_2 } }
+		event_target:ahw_insp_country = { set_timed_country_flag = { flag = ahw_first_2 days = 30 } }
+	}
+	if = {
+		limit = { OR = { has_star_flag = ahw_entry_3 has_star_flag = ahw_exit_3 } }
+		event_target:ahw_insp_country = { set_timed_country_flag = { flag = ahw_first_3 days = 30 } }
+	}
+	if = {
+		limit = { OR = { has_star_flag = ahw_entry_4 has_star_flag = ahw_exit_4 } }
+		event_target:ahw_insp_country = { set_timed_country_flag = { flag = ahw_first_4 days = 30 } }
+	}
+	if = {
+		limit = { OR = { has_star_flag = ahw_entry_5 has_star_flag = ahw_exit_5 } }
+		event_target:ahw_insp_country = { set_timed_country_flag = { flag = ahw_first_5 days = 30 } }
+	}
+	if = {
+		limit = { OR = { has_star_flag = ahw_entry_6 has_star_flag = ahw_exit_6 } }
+		event_target:ahw_insp_country = { set_timed_country_flag = { flag = ahw_first_6 days = 30 } }
+	}
+	if = {
+		limit = { OR = { has_star_flag = ahw_entry_7 has_star_flag = ahw_exit_7 } }
+		event_target:ahw_insp_country = { set_timed_country_flag = { flag = ahw_first_7 days = 30 } }
+	}
+	if = {
+		limit = { OR = { has_star_flag = ahw_entry_8 has_star_flag = ahw_exit_8 } }
+		event_target:ahw_insp_country = { set_timed_country_flag = { flag = ahw_first_8 days = 30 } }
+	}
+	if = {
+		limit = { OR = { has_star_flag = ahw_entry_9 has_star_flag = ahw_exit_9 } }
+		event_target:ahw_insp_country = { set_timed_country_flag = { flag = ahw_first_9 days = 30 } }
+	}
+	if = {
+		limit = { OR = { has_star_flag = ahw_entry_10 has_star_flag = ahw_exit_10 } }
+		event_target:ahw_insp_country = { set_timed_country_flag = { flag = ahw_first_10 days = 30 } }
+	}
+	if = {
+		limit = { OR = { has_star_flag = ahw_entry_11 has_star_flag = ahw_exit_11 } }
+		event_target:ahw_insp_country = { set_timed_country_flag = { flag = ahw_first_11 days = 30 } }
+	}
+	if = {
+		limit = { OR = { has_star_flag = ahw_entry_12 has_star_flag = ahw_exit_12 } }
+		event_target:ahw_insp_country = { set_timed_country_flag = { flag = ahw_first_12 days = 30 } }
+	}
+	if = {
+		limit = { OR = { has_star_flag = ahw_entry_13 has_star_flag = ahw_exit_13 } }
+		event_target:ahw_insp_country = { set_timed_country_flag = { flag = ahw_first_13 days = 30 } }
+	}
+	if = {
+		limit = { OR = { has_star_flag = ahw_entry_14 has_star_flag = ahw_exit_14 } }
+		event_target:ahw_insp_country = { set_timed_country_flag = { flag = ahw_first_14 days = 30 } }
+	}
+	if = {
+		limit = { OR = { has_star_flag = ahw_entry_15 has_star_flag = ahw_exit_15 } }
+		event_target:ahw_insp_country = { set_timed_country_flag = { flag = ahw_first_15 days = 30 } }
+	}
+	if = {
+		limit = { OR = { has_star_flag = ahw_entry_16 has_star_flag = ahw_exit_16 } }
+		event_target:ahw_insp_country = { set_timed_country_flag = { flag = ahw_first_16 days = 30 } }
+	}
+	if = {
+		limit = { OR = { has_star_flag = ahw_entry_17 has_star_flag = ahw_exit_17 } }
+		event_target:ahw_insp_country = { set_timed_country_flag = { flag = ahw_first_17 days = 30 } }
+	}
+	if = {
+		limit = { OR = { has_star_flag = ahw_entry_18 has_star_flag = ahw_exit_18 } }
+		event_target:ahw_insp_country = { set_timed_country_flag = { flag = ahw_first_18 days = 30 } }
+	}
+	if = {
+		limit = { OR = { has_star_flag = ahw_entry_19 has_star_flag = ahw_exit_19 } }
+		event_target:ahw_insp_country = { set_timed_country_flag = { flag = ahw_first_19 days = 30 } }
+	}
+	if = {
+		limit = { OR = { has_star_flag = ahw_entry_20 has_star_flag = ahw_exit_20 } }
+		event_target:ahw_insp_country = { set_timed_country_flag = { flag = ahw_first_20 days = 30 } }
+	}
+	if = {
+		limit = { OR = { has_star_flag = ahw_entry_21 has_star_flag = ahw_exit_21 } }
+		event_target:ahw_insp_country = { set_timed_country_flag = { flag = ahw_first_21 days = 30 } }
+	}
+	if = {
+		limit = { OR = { has_star_flag = ahw_entry_22 has_star_flag = ahw_exit_22 } }
+		event_target:ahw_insp_country = { set_timed_country_flag = { flag = ahw_first_22 days = 30 } }
+	}
+	if = {
+		limit = { OR = { has_star_flag = ahw_entry_23 has_star_flag = ahw_exit_23 } }
+		event_target:ahw_insp_country = { set_timed_country_flag = { flag = ahw_first_23 days = 30 } }
+	}
+	if = {
+		limit = { OR = { has_star_flag = ahw_entry_24 has_star_flag = ahw_exit_24 } }
+		event_target:ahw_insp_country = { set_timed_country_flag = { flag = ahw_first_24 days = 30 } }
+	}
+	if = {
+		limit = { OR = { has_star_flag = ahw_entry_25 has_star_flag = ahw_exit_25 } }
+		event_target:ahw_insp_country = { set_timed_country_flag = { flag = ahw_first_25 days = 30 } }
+	}
+	if = {
+		limit = { OR = { has_star_flag = ahw_entry_26 has_star_flag = ahw_exit_26 } }
+		event_target:ahw_insp_country = { set_timed_country_flag = { flag = ahw_first_26 days = 30 } }
+	}
+	if = {
+		limit = { OR = { has_star_flag = ahw_entry_27 has_star_flag = ahw_exit_27 } }
+		event_target:ahw_insp_country = { set_timed_country_flag = { flag = ahw_first_27 days = 30 } }
+	}
+	if = {
+		limit = { OR = { has_star_flag = ahw_entry_28 has_star_flag = ahw_exit_28 } }
+		event_target:ahw_insp_country = { set_timed_country_flag = { flag = ahw_first_28 days = 30 } }
+	}
+	if = {
+		limit = { OR = { has_star_flag = ahw_entry_29 has_star_flag = ahw_exit_29 } }
+		event_target:ahw_insp_country = { set_timed_country_flag = { flag = ahw_first_29 days = 30 } }
+	}
+	if = {
+		limit = { OR = { has_star_flag = ahw_entry_30 has_star_flag = ahw_exit_30 } }
+		event_target:ahw_insp_country = { set_timed_country_flag = { flag = ahw_first_30 days = 30 } }
+	}
+	if = {
+		limit = { OR = { has_star_flag = ahw_entry_31 has_star_flag = ahw_exit_31 } }
+		event_target:ahw_insp_country = { set_timed_country_flag = { flag = ahw_first_31 days = 30 } }
+	}
+	if = {
+		limit = { OR = { has_star_flag = ahw_entry_32 has_star_flag = ahw_exit_32 } }
+		event_target:ahw_insp_country = { set_timed_country_flag = { flag = ahw_first_32 days = 30 } }
+	}
+}
+
+# this = a system where a fleet of event_target:ahw_insp_country stayed 10 days (ahw_spike.61):
+# Gate Construction +5 % (+7 % after a first entry) per repaired gate here that the country did
+# not repair itself, once per gate (either end).
+ahw_spike_inspect_gates = {
+	if = {
+		limit = {
+			OR = { has_star_flag = ahw_entry_1 has_star_flag = ahw_exit_1 }
+			any_system = { has_star_flag = ahw_entry_1 NOT = { has_star_flag = ahw_broken } }
+			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_insp_1 has_country_flag = ahw_repaired_1 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_insp_1
+			if = {
+				limit = { has_country_flag = ahw_first_1 }
+				ahw_spike_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
+			}
+			else = {
+				ahw_spike_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+			}
+		}
+		log = "AHW SPIKE gate of pair 1 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
+	}
+	if = {
+		limit = {
+			OR = { has_star_flag = ahw_entry_2 has_star_flag = ahw_exit_2 }
+			any_system = { has_star_flag = ahw_entry_2 NOT = { has_star_flag = ahw_broken } }
+			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_insp_2 has_country_flag = ahw_repaired_2 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_insp_2
+			if = {
+				limit = { has_country_flag = ahw_first_2 }
+				ahw_spike_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
+			}
+			else = {
+				ahw_spike_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+			}
+		}
+		log = "AHW SPIKE gate of pair 2 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
+	}
+	if = {
+		limit = {
+			OR = { has_star_flag = ahw_entry_3 has_star_flag = ahw_exit_3 }
+			any_system = { has_star_flag = ahw_entry_3 NOT = { has_star_flag = ahw_broken } }
+			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_insp_3 has_country_flag = ahw_repaired_3 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_insp_3
+			if = {
+				limit = { has_country_flag = ahw_first_3 }
+				ahw_spike_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
+			}
+			else = {
+				ahw_spike_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+			}
+		}
+		log = "AHW SPIKE gate of pair 3 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
+	}
+	if = {
+		limit = {
+			OR = { has_star_flag = ahw_entry_4 has_star_flag = ahw_exit_4 }
+			any_system = { has_star_flag = ahw_entry_4 NOT = { has_star_flag = ahw_broken } }
+			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_insp_4 has_country_flag = ahw_repaired_4 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_insp_4
+			if = {
+				limit = { has_country_flag = ahw_first_4 }
+				ahw_spike_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
+			}
+			else = {
+				ahw_spike_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+			}
+		}
+		log = "AHW SPIKE gate of pair 4 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
+	}
+	if = {
+		limit = {
+			OR = { has_star_flag = ahw_entry_5 has_star_flag = ahw_exit_5 }
+			any_system = { has_star_flag = ahw_entry_5 NOT = { has_star_flag = ahw_broken } }
+			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_insp_5 has_country_flag = ahw_repaired_5 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_insp_5
+			if = {
+				limit = { has_country_flag = ahw_first_5 }
+				ahw_spike_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
+			}
+			else = {
+				ahw_spike_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+			}
+		}
+		log = "AHW SPIKE gate of pair 5 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
+	}
+	if = {
+		limit = {
+			OR = { has_star_flag = ahw_entry_6 has_star_flag = ahw_exit_6 }
+			any_system = { has_star_flag = ahw_entry_6 NOT = { has_star_flag = ahw_broken } }
+			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_insp_6 has_country_flag = ahw_repaired_6 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_insp_6
+			if = {
+				limit = { has_country_flag = ahw_first_6 }
+				ahw_spike_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
+			}
+			else = {
+				ahw_spike_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+			}
+		}
+		log = "AHW SPIKE gate of pair 6 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
+	}
+	if = {
+		limit = {
+			OR = { has_star_flag = ahw_entry_7 has_star_flag = ahw_exit_7 }
+			any_system = { has_star_flag = ahw_entry_7 NOT = { has_star_flag = ahw_broken } }
+			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_insp_7 has_country_flag = ahw_repaired_7 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_insp_7
+			if = {
+				limit = { has_country_flag = ahw_first_7 }
+				ahw_spike_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
+			}
+			else = {
+				ahw_spike_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+			}
+		}
+		log = "AHW SPIKE gate of pair 7 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
+	}
+	if = {
+		limit = {
+			OR = { has_star_flag = ahw_entry_8 has_star_flag = ahw_exit_8 }
+			any_system = { has_star_flag = ahw_entry_8 NOT = { has_star_flag = ahw_broken } }
+			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_insp_8 has_country_flag = ahw_repaired_8 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_insp_8
+			if = {
+				limit = { has_country_flag = ahw_first_8 }
+				ahw_spike_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
+			}
+			else = {
+				ahw_spike_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+			}
+		}
+		log = "AHW SPIKE gate of pair 8 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
+	}
+	if = {
+		limit = {
+			OR = { has_star_flag = ahw_entry_9 has_star_flag = ahw_exit_9 }
+			any_system = { has_star_flag = ahw_entry_9 NOT = { has_star_flag = ahw_broken } }
+			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_insp_9 has_country_flag = ahw_repaired_9 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_insp_9
+			if = {
+				limit = { has_country_flag = ahw_first_9 }
+				ahw_spike_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
+			}
+			else = {
+				ahw_spike_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+			}
+		}
+		log = "AHW SPIKE gate of pair 9 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
+	}
+	if = {
+		limit = {
+			OR = { has_star_flag = ahw_entry_10 has_star_flag = ahw_exit_10 }
+			any_system = { has_star_flag = ahw_entry_10 NOT = { has_star_flag = ahw_broken } }
+			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_insp_10 has_country_flag = ahw_repaired_10 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_insp_10
+			if = {
+				limit = { has_country_flag = ahw_first_10 }
+				ahw_spike_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
+			}
+			else = {
+				ahw_spike_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+			}
+		}
+		log = "AHW SPIKE gate of pair 10 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
+	}
+	if = {
+		limit = {
+			OR = { has_star_flag = ahw_entry_11 has_star_flag = ahw_exit_11 }
+			any_system = { has_star_flag = ahw_entry_11 NOT = { has_star_flag = ahw_broken } }
+			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_insp_11 has_country_flag = ahw_repaired_11 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_insp_11
+			if = {
+				limit = { has_country_flag = ahw_first_11 }
+				ahw_spike_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
+			}
+			else = {
+				ahw_spike_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+			}
+		}
+		log = "AHW SPIKE gate of pair 11 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
+	}
+	if = {
+		limit = {
+			OR = { has_star_flag = ahw_entry_12 has_star_flag = ahw_exit_12 }
+			any_system = { has_star_flag = ahw_entry_12 NOT = { has_star_flag = ahw_broken } }
+			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_insp_12 has_country_flag = ahw_repaired_12 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_insp_12
+			if = {
+				limit = { has_country_flag = ahw_first_12 }
+				ahw_spike_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
+			}
+			else = {
+				ahw_spike_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+			}
+		}
+		log = "AHW SPIKE gate of pair 12 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
+	}
+	if = {
+		limit = {
+			OR = { has_star_flag = ahw_entry_13 has_star_flag = ahw_exit_13 }
+			any_system = { has_star_flag = ahw_entry_13 NOT = { has_star_flag = ahw_broken } }
+			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_insp_13 has_country_flag = ahw_repaired_13 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_insp_13
+			if = {
+				limit = { has_country_flag = ahw_first_13 }
+				ahw_spike_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
+			}
+			else = {
+				ahw_spike_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+			}
+		}
+		log = "AHW SPIKE gate of pair 13 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
+	}
+	if = {
+		limit = {
+			OR = { has_star_flag = ahw_entry_14 has_star_flag = ahw_exit_14 }
+			any_system = { has_star_flag = ahw_entry_14 NOT = { has_star_flag = ahw_broken } }
+			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_insp_14 has_country_flag = ahw_repaired_14 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_insp_14
+			if = {
+				limit = { has_country_flag = ahw_first_14 }
+				ahw_spike_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
+			}
+			else = {
+				ahw_spike_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+			}
+		}
+		log = "AHW SPIKE gate of pair 14 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
+	}
+	if = {
+		limit = {
+			OR = { has_star_flag = ahw_entry_15 has_star_flag = ahw_exit_15 }
+			any_system = { has_star_flag = ahw_entry_15 NOT = { has_star_flag = ahw_broken } }
+			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_insp_15 has_country_flag = ahw_repaired_15 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_insp_15
+			if = {
+				limit = { has_country_flag = ahw_first_15 }
+				ahw_spike_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
+			}
+			else = {
+				ahw_spike_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+			}
+		}
+		log = "AHW SPIKE gate of pair 15 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
+	}
+	if = {
+		limit = {
+			OR = { has_star_flag = ahw_entry_16 has_star_flag = ahw_exit_16 }
+			any_system = { has_star_flag = ahw_entry_16 NOT = { has_star_flag = ahw_broken } }
+			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_insp_16 has_country_flag = ahw_repaired_16 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_insp_16
+			if = {
+				limit = { has_country_flag = ahw_first_16 }
+				ahw_spike_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
+			}
+			else = {
+				ahw_spike_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+			}
+		}
+		log = "AHW SPIKE gate of pair 16 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
+	}
+	if = {
+		limit = {
+			OR = { has_star_flag = ahw_entry_17 has_star_flag = ahw_exit_17 }
+			any_system = { has_star_flag = ahw_entry_17 NOT = { has_star_flag = ahw_broken } }
+			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_insp_17 has_country_flag = ahw_repaired_17 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_insp_17
+			if = {
+				limit = { has_country_flag = ahw_first_17 }
+				ahw_spike_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
+			}
+			else = {
+				ahw_spike_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+			}
+		}
+		log = "AHW SPIKE gate of pair 17 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
+	}
+	if = {
+		limit = {
+			OR = { has_star_flag = ahw_entry_18 has_star_flag = ahw_exit_18 }
+			any_system = { has_star_flag = ahw_entry_18 NOT = { has_star_flag = ahw_broken } }
+			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_insp_18 has_country_flag = ahw_repaired_18 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_insp_18
+			if = {
+				limit = { has_country_flag = ahw_first_18 }
+				ahw_spike_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
+			}
+			else = {
+				ahw_spike_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+			}
+		}
+		log = "AHW SPIKE gate of pair 18 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
+	}
+	if = {
+		limit = {
+			OR = { has_star_flag = ahw_entry_19 has_star_flag = ahw_exit_19 }
+			any_system = { has_star_flag = ahw_entry_19 NOT = { has_star_flag = ahw_broken } }
+			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_insp_19 has_country_flag = ahw_repaired_19 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_insp_19
+			if = {
+				limit = { has_country_flag = ahw_first_19 }
+				ahw_spike_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
+			}
+			else = {
+				ahw_spike_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+			}
+		}
+		log = "AHW SPIKE gate of pair 19 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
+	}
+	if = {
+		limit = {
+			OR = { has_star_flag = ahw_entry_20 has_star_flag = ahw_exit_20 }
+			any_system = { has_star_flag = ahw_entry_20 NOT = { has_star_flag = ahw_broken } }
+			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_insp_20 has_country_flag = ahw_repaired_20 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_insp_20
+			if = {
+				limit = { has_country_flag = ahw_first_20 }
+				ahw_spike_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
+			}
+			else = {
+				ahw_spike_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+			}
+		}
+		log = "AHW SPIKE gate of pair 20 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
+	}
+	if = {
+		limit = {
+			OR = { has_star_flag = ahw_entry_21 has_star_flag = ahw_exit_21 }
+			any_system = { has_star_flag = ahw_entry_21 NOT = { has_star_flag = ahw_broken } }
+			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_insp_21 has_country_flag = ahw_repaired_21 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_insp_21
+			if = {
+				limit = { has_country_flag = ahw_first_21 }
+				ahw_spike_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
+			}
+			else = {
+				ahw_spike_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+			}
+		}
+		log = "AHW SPIKE gate of pair 21 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
+	}
+	if = {
+		limit = {
+			OR = { has_star_flag = ahw_entry_22 has_star_flag = ahw_exit_22 }
+			any_system = { has_star_flag = ahw_entry_22 NOT = { has_star_flag = ahw_broken } }
+			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_insp_22 has_country_flag = ahw_repaired_22 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_insp_22
+			if = {
+				limit = { has_country_flag = ahw_first_22 }
+				ahw_spike_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
+			}
+			else = {
+				ahw_spike_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+			}
+		}
+		log = "AHW SPIKE gate of pair 22 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
+	}
+	if = {
+		limit = {
+			OR = { has_star_flag = ahw_entry_23 has_star_flag = ahw_exit_23 }
+			any_system = { has_star_flag = ahw_entry_23 NOT = { has_star_flag = ahw_broken } }
+			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_insp_23 has_country_flag = ahw_repaired_23 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_insp_23
+			if = {
+				limit = { has_country_flag = ahw_first_23 }
+				ahw_spike_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
+			}
+			else = {
+				ahw_spike_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+			}
+		}
+		log = "AHW SPIKE gate of pair 23 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
+	}
+	if = {
+		limit = {
+			OR = { has_star_flag = ahw_entry_24 has_star_flag = ahw_exit_24 }
+			any_system = { has_star_flag = ahw_entry_24 NOT = { has_star_flag = ahw_broken } }
+			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_insp_24 has_country_flag = ahw_repaired_24 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_insp_24
+			if = {
+				limit = { has_country_flag = ahw_first_24 }
+				ahw_spike_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
+			}
+			else = {
+				ahw_spike_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+			}
+		}
+		log = "AHW SPIKE gate of pair 24 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
+	}
+	if = {
+		limit = {
+			OR = { has_star_flag = ahw_entry_25 has_star_flag = ahw_exit_25 }
+			any_system = { has_star_flag = ahw_entry_25 NOT = { has_star_flag = ahw_broken } }
+			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_insp_25 has_country_flag = ahw_repaired_25 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_insp_25
+			if = {
+				limit = { has_country_flag = ahw_first_25 }
+				ahw_spike_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
+			}
+			else = {
+				ahw_spike_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+			}
+		}
+		log = "AHW SPIKE gate of pair 25 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
+	}
+	if = {
+		limit = {
+			OR = { has_star_flag = ahw_entry_26 has_star_flag = ahw_exit_26 }
+			any_system = { has_star_flag = ahw_entry_26 NOT = { has_star_flag = ahw_broken } }
+			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_insp_26 has_country_flag = ahw_repaired_26 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_insp_26
+			if = {
+				limit = { has_country_flag = ahw_first_26 }
+				ahw_spike_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
+			}
+			else = {
+				ahw_spike_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+			}
+		}
+		log = "AHW SPIKE gate of pair 26 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
+	}
+	if = {
+		limit = {
+			OR = { has_star_flag = ahw_entry_27 has_star_flag = ahw_exit_27 }
+			any_system = { has_star_flag = ahw_entry_27 NOT = { has_star_flag = ahw_broken } }
+			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_insp_27 has_country_flag = ahw_repaired_27 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_insp_27
+			if = {
+				limit = { has_country_flag = ahw_first_27 }
+				ahw_spike_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
+			}
+			else = {
+				ahw_spike_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+			}
+		}
+		log = "AHW SPIKE gate of pair 27 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
+	}
+	if = {
+		limit = {
+			OR = { has_star_flag = ahw_entry_28 has_star_flag = ahw_exit_28 }
+			any_system = { has_star_flag = ahw_entry_28 NOT = { has_star_flag = ahw_broken } }
+			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_insp_28 has_country_flag = ahw_repaired_28 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_insp_28
+			if = {
+				limit = { has_country_flag = ahw_first_28 }
+				ahw_spike_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
+			}
+			else = {
+				ahw_spike_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+			}
+		}
+		log = "AHW SPIKE gate of pair 28 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
+	}
+	if = {
+		limit = {
+			OR = { has_star_flag = ahw_entry_29 has_star_flag = ahw_exit_29 }
+			any_system = { has_star_flag = ahw_entry_29 NOT = { has_star_flag = ahw_broken } }
+			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_insp_29 has_country_flag = ahw_repaired_29 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_insp_29
+			if = {
+				limit = { has_country_flag = ahw_first_29 }
+				ahw_spike_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
+			}
+			else = {
+				ahw_spike_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+			}
+		}
+		log = "AHW SPIKE gate of pair 29 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
+	}
+	if = {
+		limit = {
+			OR = { has_star_flag = ahw_entry_30 has_star_flag = ahw_exit_30 }
+			any_system = { has_star_flag = ahw_entry_30 NOT = { has_star_flag = ahw_broken } }
+			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_insp_30 has_country_flag = ahw_repaired_30 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_insp_30
+			if = {
+				limit = { has_country_flag = ahw_first_30 }
+				ahw_spike_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
+			}
+			else = {
+				ahw_spike_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+			}
+		}
+		log = "AHW SPIKE gate of pair 30 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
+	}
+	if = {
+		limit = {
+			OR = { has_star_flag = ahw_entry_31 has_star_flag = ahw_exit_31 }
+			any_system = { has_star_flag = ahw_entry_31 NOT = { has_star_flag = ahw_broken } }
+			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_insp_31 has_country_flag = ahw_repaired_31 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_insp_31
+			if = {
+				limit = { has_country_flag = ahw_first_31 }
+				ahw_spike_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
+			}
+			else = {
+				ahw_spike_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+			}
+		}
+		log = "AHW SPIKE gate of pair 31 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
+	}
+	if = {
+		limit = {
+			OR = { has_star_flag = ahw_entry_32 has_star_flag = ahw_exit_32 }
+			any_system = { has_star_flag = ahw_entry_32 NOT = { has_star_flag = ahw_broken } }
+			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_insp_32 has_country_flag = ahw_repaired_32 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_insp_32
+			if = {
+				limit = { has_country_flag = ahw_first_32 }
+				ahw_spike_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
+			}
+			else = {
+				ahw_spike_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+			}
+		}
+		log = "AHW SPIKE gate of pair 32 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
+	}
+}
+
+# this = a portal just repaired: its repairer remembers the pair (no inspection grant for it).
+ahw_spike_flag_repairer = {
+	if = {
+		limit = { check_variable = { which = ahw_pair value = 1 } }
+		event_target:ahw_repairer = { set_country_flag = ahw_repaired_1 }
+	}
+	if = {
+		limit = { check_variable = { which = ahw_pair value = 2 } }
+		event_target:ahw_repairer = { set_country_flag = ahw_repaired_2 }
+	}
+	if = {
+		limit = { check_variable = { which = ahw_pair value = 3 } }
+		event_target:ahw_repairer = { set_country_flag = ahw_repaired_3 }
+	}
+	if = {
+		limit = { check_variable = { which = ahw_pair value = 4 } }
+		event_target:ahw_repairer = { set_country_flag = ahw_repaired_4 }
+	}
+	if = {
+		limit = { check_variable = { which = ahw_pair value = 5 } }
+		event_target:ahw_repairer = { set_country_flag = ahw_repaired_5 }
+	}
+	if = {
+		limit = { check_variable = { which = ahw_pair value = 6 } }
+		event_target:ahw_repairer = { set_country_flag = ahw_repaired_6 }
+	}
+	if = {
+		limit = { check_variable = { which = ahw_pair value = 7 } }
+		event_target:ahw_repairer = { set_country_flag = ahw_repaired_7 }
+	}
+	if = {
+		limit = { check_variable = { which = ahw_pair value = 8 } }
+		event_target:ahw_repairer = { set_country_flag = ahw_repaired_8 }
+	}
+	if = {
+		limit = { check_variable = { which = ahw_pair value = 9 } }
+		event_target:ahw_repairer = { set_country_flag = ahw_repaired_9 }
+	}
+	if = {
+		limit = { check_variable = { which = ahw_pair value = 10 } }
+		event_target:ahw_repairer = { set_country_flag = ahw_repaired_10 }
+	}
+	if = {
+		limit = { check_variable = { which = ahw_pair value = 11 } }
+		event_target:ahw_repairer = { set_country_flag = ahw_repaired_11 }
+	}
+	if = {
+		limit = { check_variable = { which = ahw_pair value = 12 } }
+		event_target:ahw_repairer = { set_country_flag = ahw_repaired_12 }
+	}
+	if = {
+		limit = { check_variable = { which = ahw_pair value = 13 } }
+		event_target:ahw_repairer = { set_country_flag = ahw_repaired_13 }
+	}
+	if = {
+		limit = { check_variable = { which = ahw_pair value = 14 } }
+		event_target:ahw_repairer = { set_country_flag = ahw_repaired_14 }
+	}
+	if = {
+		limit = { check_variable = { which = ahw_pair value = 15 } }
+		event_target:ahw_repairer = { set_country_flag = ahw_repaired_15 }
+	}
+	if = {
+		limit = { check_variable = { which = ahw_pair value = 16 } }
+		event_target:ahw_repairer = { set_country_flag = ahw_repaired_16 }
+	}
+	if = {
+		limit = { check_variable = { which = ahw_pair value = 17 } }
+		event_target:ahw_repairer = { set_country_flag = ahw_repaired_17 }
+	}
+	if = {
+		limit = { check_variable = { which = ahw_pair value = 18 } }
+		event_target:ahw_repairer = { set_country_flag = ahw_repaired_18 }
+	}
+	if = {
+		limit = { check_variable = { which = ahw_pair value = 19 } }
+		event_target:ahw_repairer = { set_country_flag = ahw_repaired_19 }
+	}
+	if = {
+		limit = { check_variable = { which = ahw_pair value = 20 } }
+		event_target:ahw_repairer = { set_country_flag = ahw_repaired_20 }
+	}
+	if = {
+		limit = { check_variable = { which = ahw_pair value = 21 } }
+		event_target:ahw_repairer = { set_country_flag = ahw_repaired_21 }
+	}
+	if = {
+		limit = { check_variable = { which = ahw_pair value = 22 } }
+		event_target:ahw_repairer = { set_country_flag = ahw_repaired_22 }
+	}
+	if = {
+		limit = { check_variable = { which = ahw_pair value = 23 } }
+		event_target:ahw_repairer = { set_country_flag = ahw_repaired_23 }
+	}
+	if = {
+		limit = { check_variable = { which = ahw_pair value = 24 } }
+		event_target:ahw_repairer = { set_country_flag = ahw_repaired_24 }
+	}
+	if = {
+		limit = { check_variable = { which = ahw_pair value = 25 } }
+		event_target:ahw_repairer = { set_country_flag = ahw_repaired_25 }
+	}
+	if = {
+		limit = { check_variable = { which = ahw_pair value = 26 } }
+		event_target:ahw_repairer = { set_country_flag = ahw_repaired_26 }
+	}
+	if = {
+		limit = { check_variable = { which = ahw_pair value = 27 } }
+		event_target:ahw_repairer = { set_country_flag = ahw_repaired_27 }
+	}
+	if = {
+		limit = { check_variable = { which = ahw_pair value = 28 } }
+		event_target:ahw_repairer = { set_country_flag = ahw_repaired_28 }
+	}
+	if = {
+		limit = { check_variable = { which = ahw_pair value = 29 } }
+		event_target:ahw_repairer = { set_country_flag = ahw_repaired_29 }
+	}
+	if = {
+		limit = { check_variable = { which = ahw_pair value = 30 } }
+		event_target:ahw_repairer = { set_country_flag = ahw_repaired_30 }
+	}
+	if = {
+		limit = { check_variable = { which = ahw_pair value = 31 } }
+		event_target:ahw_repairer = { set_country_flag = ahw_repaired_31 }
+	}
+	if = {
+		limit = { check_variable = { which = ahw_pair value = 32 } }
+		event_target:ahw_repairer = { set_country_flag = ahw_repaired_32 }
+	}
+}
+
+# this = a foreign portal where a fleet of event_target:ahw_insp_country stayed 10 days: Gate
+# Theory by its centre's kind, once per portal (ahw_spike_centre_grant).
+ahw_spike_inspect_centre = {
+	if = {
+		limit = {
+			check_variable = { which = ahw_pair value = 1 }
+			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_1 } }
+		}
+		event_target:ahw_insp_country = { set_country_flag = ahw_phys_1 }
+		ahw_spike_centre_grant = yes
+	}
+	if = {
+		limit = {
+			check_variable = { which = ahw_pair value = 2 }
+			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_2 } }
+		}
+		event_target:ahw_insp_country = { set_country_flag = ahw_phys_2 }
+		ahw_spike_centre_grant = yes
+	}
+	if = {
+		limit = {
+			check_variable = { which = ahw_pair value = 3 }
+			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_3 } }
+		}
+		event_target:ahw_insp_country = { set_country_flag = ahw_phys_3 }
+		ahw_spike_centre_grant = yes
+	}
+	if = {
+		limit = {
+			check_variable = { which = ahw_pair value = 4 }
+			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_4 } }
+		}
+		event_target:ahw_insp_country = { set_country_flag = ahw_phys_4 }
+		ahw_spike_centre_grant = yes
+	}
+	if = {
+		limit = {
+			check_variable = { which = ahw_pair value = 5 }
+			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_5 } }
+		}
+		event_target:ahw_insp_country = { set_country_flag = ahw_phys_5 }
+		ahw_spike_centre_grant = yes
+	}
+	if = {
+		limit = {
+			check_variable = { which = ahw_pair value = 6 }
+			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_6 } }
+		}
+		event_target:ahw_insp_country = { set_country_flag = ahw_phys_6 }
+		ahw_spike_centre_grant = yes
+	}
+	if = {
+		limit = {
+			check_variable = { which = ahw_pair value = 7 }
+			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_7 } }
+		}
+		event_target:ahw_insp_country = { set_country_flag = ahw_phys_7 }
+		ahw_spike_centre_grant = yes
+	}
+	if = {
+		limit = {
+			check_variable = { which = ahw_pair value = 8 }
+			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_8 } }
+		}
+		event_target:ahw_insp_country = { set_country_flag = ahw_phys_8 }
+		ahw_spike_centre_grant = yes
+	}
+	if = {
+		limit = {
+			check_variable = { which = ahw_pair value = 9 }
+			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_9 } }
+		}
+		event_target:ahw_insp_country = { set_country_flag = ahw_phys_9 }
+		ahw_spike_centre_grant = yes
+	}
+	if = {
+		limit = {
+			check_variable = { which = ahw_pair value = 10 }
+			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_10 } }
+		}
+		event_target:ahw_insp_country = { set_country_flag = ahw_phys_10 }
+		ahw_spike_centre_grant = yes
+	}
+	if = {
+		limit = {
+			check_variable = { which = ahw_pair value = 11 }
+			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_11 } }
+		}
+		event_target:ahw_insp_country = { set_country_flag = ahw_phys_11 }
+		ahw_spike_centre_grant = yes
+	}
+	if = {
+		limit = {
+			check_variable = { which = ahw_pair value = 12 }
+			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_12 } }
+		}
+		event_target:ahw_insp_country = { set_country_flag = ahw_phys_12 }
+		ahw_spike_centre_grant = yes
+	}
+	if = {
+		limit = {
+			check_variable = { which = ahw_pair value = 13 }
+			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_13 } }
+		}
+		event_target:ahw_insp_country = { set_country_flag = ahw_phys_13 }
+		ahw_spike_centre_grant = yes
+	}
+	if = {
+		limit = {
+			check_variable = { which = ahw_pair value = 14 }
+			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_14 } }
+		}
+		event_target:ahw_insp_country = { set_country_flag = ahw_phys_14 }
+		ahw_spike_centre_grant = yes
+	}
+	if = {
+		limit = {
+			check_variable = { which = ahw_pair value = 15 }
+			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_15 } }
+		}
+		event_target:ahw_insp_country = { set_country_flag = ahw_phys_15 }
+		ahw_spike_centre_grant = yes
+	}
+	if = {
+		limit = {
+			check_variable = { which = ahw_pair value = 16 }
+			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_16 } }
+		}
+		event_target:ahw_insp_country = { set_country_flag = ahw_phys_16 }
+		ahw_spike_centre_grant = yes
+	}
+	if = {
+		limit = {
+			check_variable = { which = ahw_pair value = 17 }
+			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_17 } }
+		}
+		event_target:ahw_insp_country = { set_country_flag = ahw_phys_17 }
+		ahw_spike_centre_grant = yes
+	}
+	if = {
+		limit = {
+			check_variable = { which = ahw_pair value = 18 }
+			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_18 } }
+		}
+		event_target:ahw_insp_country = { set_country_flag = ahw_phys_18 }
+		ahw_spike_centre_grant = yes
+	}
+	if = {
+		limit = {
+			check_variable = { which = ahw_pair value = 19 }
+			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_19 } }
+		}
+		event_target:ahw_insp_country = { set_country_flag = ahw_phys_19 }
+		ahw_spike_centre_grant = yes
+	}
+	if = {
+		limit = {
+			check_variable = { which = ahw_pair value = 20 }
+			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_20 } }
+		}
+		event_target:ahw_insp_country = { set_country_flag = ahw_phys_20 }
+		ahw_spike_centre_grant = yes
+	}
+	if = {
+		limit = {
+			check_variable = { which = ahw_pair value = 21 }
+			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_21 } }
+		}
+		event_target:ahw_insp_country = { set_country_flag = ahw_phys_21 }
+		ahw_spike_centre_grant = yes
+	}
+	if = {
+		limit = {
+			check_variable = { which = ahw_pair value = 22 }
+			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_22 } }
+		}
+		event_target:ahw_insp_country = { set_country_flag = ahw_phys_22 }
+		ahw_spike_centre_grant = yes
+	}
+	if = {
+		limit = {
+			check_variable = { which = ahw_pair value = 23 }
+			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_23 } }
+		}
+		event_target:ahw_insp_country = { set_country_flag = ahw_phys_23 }
+		ahw_spike_centre_grant = yes
+	}
+	if = {
+		limit = {
+			check_variable = { which = ahw_pair value = 24 }
+			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_24 } }
+		}
+		event_target:ahw_insp_country = { set_country_flag = ahw_phys_24 }
+		ahw_spike_centre_grant = yes
+	}
+	if = {
+		limit = {
+			check_variable = { which = ahw_pair value = 25 }
+			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_25 } }
+		}
+		event_target:ahw_insp_country = { set_country_flag = ahw_phys_25 }
+		ahw_spike_centre_grant = yes
+	}
+	if = {
+		limit = {
+			check_variable = { which = ahw_pair value = 26 }
+			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_26 } }
+		}
+		event_target:ahw_insp_country = { set_country_flag = ahw_phys_26 }
+		ahw_spike_centre_grant = yes
+	}
+	if = {
+		limit = {
+			check_variable = { which = ahw_pair value = 27 }
+			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_27 } }
+		}
+		event_target:ahw_insp_country = { set_country_flag = ahw_phys_27 }
+		ahw_spike_centre_grant = yes
+	}
+	if = {
+		limit = {
+			check_variable = { which = ahw_pair value = 28 }
+			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_28 } }
+		}
+		event_target:ahw_insp_country = { set_country_flag = ahw_phys_28 }
+		ahw_spike_centre_grant = yes
+	}
+	if = {
+		limit = {
+			check_variable = { which = ahw_pair value = 29 }
+			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_29 } }
+		}
+		event_target:ahw_insp_country = { set_country_flag = ahw_phys_29 }
+		ahw_spike_centre_grant = yes
+	}
+	if = {
+		limit = {
+			check_variable = { which = ahw_pair value = 30 }
+			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_30 } }
+		}
+		event_target:ahw_insp_country = { set_country_flag = ahw_phys_30 }
+		ahw_spike_centre_grant = yes
+	}
+	if = {
+		limit = {
+			check_variable = { which = ahw_pair value = 31 }
+			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_31 } }
+		}
+		event_target:ahw_insp_country = { set_country_flag = ahw_phys_31 }
+		ahw_spike_centre_grant = yes
+	}
+	if = {
+		limit = {
+			check_variable = { which = ahw_pair value = 32 }
+			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_32 } }
+		}
+		event_target:ahw_insp_country = { set_country_flag = ahw_phys_32 }
+		ahw_spike_centre_grant = yes
+	}
+}

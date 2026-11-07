@@ -37,3 +37,17 @@ on_dimensional_lock_expired = {
 		ahw_spike.24
 	}
 }
+
+# 0.0.39: the inspection grants - a fleet staying 10 days in a portal or ring node (ahw_spike.60,
+# .61), and the +7 % for a first entry (ahw_spike.62).
+on_entering_system_fleet = {
+	events = {
+		ahw_spike.60
+	}
+}
+on_entering_system_first_time = {
+	events = {
+		ahw_spike.62
+	}
+}
+

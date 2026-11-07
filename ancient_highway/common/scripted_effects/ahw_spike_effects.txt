@@ -501,28 +501,82 @@ ahw_spike_country_learns = {
 		add_research_option = ahw_tech_gate_construction
 		ahw_spike_learn_types = yes
 	}
+	# 0.0.39: the own portal's centre counts as seen (physics grants for other kinds only).
+	ahw_spike_see_kind = { WHO = event_target:ahw_studier }
 	# 0.0.26 (design 2026-11-06): only this gate's exit node, not the whole ring - the rest is
 	# explored by flying it.
 	ahw_spike_reveal_exit = yes
 }
 
-# this = a country. A share of both techs, once per empire (FLAG); a tech already researched
-# gets nothing (design 2026-11-05). add_tech_progress takes a fraction of the cost (0.0-1.0).
-# Not yet: the 80 % cap over all grants - study (15) and head start (50) reach 65 at most; it
-# comes with the exploration grants.
+# this = a country. A share of both techs, once per empire (FLAG) - the study and the head start
+# (design 2026-11-05).
 ahw_spike_grant = {
 	if = {
 		limit = { NOT = { has_country_flag = $FLAG$ } }
 		set_country_flag = $FLAG$
-		if = {
-			limit = { NOT = { has_technology = ahw_tech_gate_theory } }
-			add_tech_progress = { tech = ahw_tech_gate_theory progress = $PROGRESS$ }
-		}
-		if = {
-			limit = { NOT = { has_technology = ahw_tech_gate_construction } }
-			add_tech_progress = { tech = ahw_tech_gate_construction progress = $PROGRESS$ }
-		}
+		ahw_spike_grant_tech = { TECH = ahw_tech_gate_theory VAR = ahw_got_theory PROGRESS = $PROGRESS$ }
+		ahw_spike_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = $PROGRESS$ }
 		log = "AHW SPIKE grant $FLAG$ ($PROGRESS$ of each tech) to \\[This.GetName]"
+	}
+}
+
+# this = a country. PROGRESS of TECH (a fraction of its cost, add_tech_progress), but all grants
+# of a tech together at most 0.8 (0.0.39, design 2026-11-06), counted in the country variable VAR;
+# nothing for a tech already researched.
+ahw_spike_grant_tech = {
+	if = {
+		limit = { NOT = { has_technology = $TECH$ } }
+		set_variable = { which = ahw_g value = 0.8 }
+		subtract_variable = { which = ahw_g value = $VAR$ }
+		if = {
+			limit = { check_variable = { which = ahw_g value > $PROGRESS$ } }
+			set_variable = { which = ahw_g value = $PROGRESS$ }
+		}
+		if = {
+			limit = { check_variable = { which = ahw_g value > 0 } }
+			add_tech_progress = { tech = $TECH$ progress = ahw_g }
+			change_variable = { which = $VAR$ value = ahw_g }
+		}
+		# (a $PARAM$ inside a string is mangled, run 36: the tech's name stays readable, a [This.$VAR$] would not)
+		log = "AHW SPIKE \\[This.GetName]: +\\[This.ahw_g] of $TECH$ (asked $PROGRESS$); granted so far: theory \\[This.ahw_got_theory], construction \\[This.ahw_got_construction]"
+	}
+}
+
+# this = a portal, event_target:ahw_insp_country = the country (ahw_spike_inspect_centre): Gate
+# Theory +7 % for a centre of a kind the country has not seen, else +5 % (design 2026-11-06).
+ahw_spike_centre_grant = {
+	if = {
+		limit = { ahw_spike_kind_seen = { WHO = event_target:ahw_insp_country } }
+		event_target:ahw_insp_country = {
+			ahw_spike_grant_tech = { TECH = ahw_tech_gate_theory VAR = ahw_got_theory PROGRESS = 0.05 }
+		}
+	}
+	else = {
+		event_target:ahw_insp_country = {
+			ahw_spike_grant_tech = { TECH = ahw_tech_gate_theory VAR = ahw_got_theory PROGRESS = 0.07 }
+		}
+	}
+	ahw_spike_see_kind = { WHO = event_target:ahw_insp_country }
+	log = "AHW SPIKE centre of \\[This.GetName] inspected by \\[ahw_insp_country.GetName]"
+}
+
+# this = a portal: WHO has now seen its centre's kind (country flags ahw_kind_<class>).
+ahw_spike_see_kind = {
+	if = {
+		limit = { is_star_class = ahw_sc_black_hole }
+		$WHO$ = { set_country_flag = ahw_kind_black_hole }
+	}
+	else_if = {
+		limit = { is_star_class = ahw_sc_pulsar }
+		$WHO$ = { set_country_flag = ahw_kind_pulsar }
+	}
+	else_if = {
+		limit = { is_star_class = ahw_sc_toxoid_star }
+		$WHO$ = { set_country_flag = ahw_kind_toxoid }
+	}
+	else_if = {
+		limit = { is_star_class = ahw_sc_neutron_star }
+		$WHO$ = { set_country_flag = ahw_kind_neutron }
 	}
 }
 
@@ -545,6 +599,8 @@ ahw_spike_mark_repaired = {
 	every_system_megastructure = { set_owner = event_target:ahw_repairer }
 	# 0.0.38: the head start is for a gate somebody else repaired, never for one's own.
 	event_target:ahw_repairer = { set_country_flag = ahw_grant_head_start }
+	# 0.0.39: nor the inspection grant for it.
+	ahw_spike_flag_repairer = yes
 	log = "AHW SPIKE entry point in \\[This.GetName] repaired by \\[ahw_repairer.GetName]"
 }
 

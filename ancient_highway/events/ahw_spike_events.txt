@@ -7,6 +7,9 @@
 #   event ahw_spike.7   run the monthly study/repair check for us now
 #   event ahw_spike.8   grant both gate techs
 #   event ahw_spike.44  our portal's gate repaired by another empire (for the head start)
+#   event ahw_spike.45  our portal studied now (the study's real result, without the 30 days)
+#   event ahw_spike.46  test ships at the anchor of a foreign portal (a centre kind not seen, if any)
+#   event ahw_spike.47  ask for 30 % more of each tech (the 80 % cap)
 #   event ahw_spike.25  seal our pair against everyone, us included (again: open it)
 #   event ahw_spike.26  seal our pair for another empire (a stranger to us)
 #   event ahw_spike.27  make that empire our subject (now a friend of the sealer)
@@ -473,3 +476,130 @@ country_event = {
 		}
 	}
 }
+
+# 0.0.39, the inspection grants (design 2026-11-06): a fleet of a country that has studied a gate
+# (or got the head start) arrives in a portal or a ring node; ten days later, if it is idle there
+# and has not arrived anywhere since (ahw_arrived lasts 9 days), it has inspected the system.
+# Scope: fleet, from = the system (on_entering_system_fleet).
+fleet_event = {
+	id = ahw_spike.60
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		exists = owner
+		owner = { has_country_flag = ahw_highway_studied }
+		from = { OR = { has_star_flag = ahw_portal has_star_flag = ahw_ring } }
+	}
+	immediate = {
+		set_timed_fleet_flag = { flag = ahw_arrived days = 9 }
+		fleet_event = { id = ahw_spike.61 days = 10 }
+	}
+}
+
+fleet_event = {
+	id = ahw_spike.61
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		exists = owner
+		owner = { has_country_flag = ahw_highway_studied }
+		is_fleet_idle = yes
+		NOT = { has_fleet_flag = ahw_arrived }
+		exists = solar_system
+		solar_system = { OR = { has_star_flag = ahw_portal has_star_flag = ahw_ring } }
+	}
+	immediate = {
+		owner = { save_event_target_as = ahw_insp_country }
+		solar_system = {
+			# Gate Construction: a repaired gate here (either end) that someone else repaired.
+			ahw_spike_inspect_gates = yes
+			# Gate Theory: a foreign portal's centre (ring centres cannot feed it).
+			if = {
+				limit = {
+					has_star_flag = ahw_portal
+					NOT = { any_neighbor_system = { exists = owner owner = { is_same_value = event_target:ahw_insp_country } } }
+				}
+				ahw_spike_inspect_centre = yes
+			}
+		}
+	}
+}
+
+# The +7 % for a first entry: a ship's first entry of its country into a system (scope ship,
+# from = the system, fromfrom = the country; on_entering_system_first_time).
+ship_event = {
+	id = ahw_spike.62
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		from = { OR = { has_star_flag = ahw_portal has_star_flag = ahw_ring } }
+	}
+	immediate = {
+		fromfrom = { save_event_target_as = ahw_insp_country }
+		from = { ahw_spike_mark_first_entry = yes }
+	}
+}
+
+# Test (0.0.39): our portal studied now - the study's real result (ahw_spike_mark_studied).
+country_event = {
+	id = ahw_spike.45
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		save_event_target_as = ahw_studier
+		event_target:ahw_player_portal = {
+			set_star_flag = ahw_study_offered
+			ahw_spike_mark_studied = yes
+		}
+	}
+}
+
+# Test (0.0.39): our three test fleets at the anchor of a foreign portal - one whose centre kind we
+# have not seen, if there is one - so that one jump takes them into it.
+country_event = {
+	id = ahw_spike.46
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		if = {
+			limit = {
+				any_system = {
+					has_star_flag = ahw_portal
+					NOT = { is_same_value = event_target:ahw_player_portal }
+					NOT = { ahw_spike_kind_seen = { WHO = root } }
+				}
+			}
+			random_system = {
+				limit = {
+					has_star_flag = ahw_portal
+					NOT = { is_same_value = event_target:ahw_player_portal }
+					NOT = { ahw_spike_kind_seen = { WHO = root } }
+				}
+				save_event_target_as = ahw_foreign_portal
+			}
+		}
+		else = {
+			random_system = {
+				limit = { has_star_flag = ahw_portal NOT = { is_same_value = event_target:ahw_player_portal } }
+				save_event_target_as = ahw_foreign_portal
+			}
+		}
+		event_target:ahw_foreign_portal = {
+			random_neighbor_system = { save_event_target_as = ahw_spawn_here }
+			log = "AHW SPIKE test ships next to the foreign portal \[This.GetName]"
+		}
+		ahw_spike_spawn_test_ships = yes
+	}
+}
+
+# Test (0.0.39): ask for 30 % more of each tech; the cap should hold both at 80 %.
+country_event = {
+	id = ahw_spike.47
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		ahw_spike_grant_tech = { TECH = ahw_tech_gate_theory VAR = ahw_got_theory PROGRESS = 0.3 }
+		ahw_spike_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.3 }
+	}
+}
+

@@ -819,7 +819,76 @@ ahw_spike_find_centre = {
     out.append(seal_switches())
     learn = '\n'.join(f'\tadd_seen_bypass_type = ahw_spike_entry_{n}' for n in range(1, PAIRS + 1))
     out.append(f'\n# this = country: knows every highway bypass type (run 4).\nahw_spike_learn_types = {{\n{learn}\n}}\n')
+    out.append(inspection())
     return ''.join(out)
+
+
+def inspection():
+    """0.0.39 (design 2026-11-06): the exploration and inspection grants keep per-pair memory in
+    country flags, so they need one block per pair. All run in a system, with
+    event_target:ahw_insp_country (or ahw_repairer) the country."""
+    first, gates, repairer, centre = [], [], [], []
+    for n in range(1, PAIRS + 1):
+        here = f'OR = {{ has_star_flag = ahw_entry_{n} has_star_flag = ahw_exit_{n} }}'
+        first.append(f'''	if = {{
+		limit = {{ {here} }}
+		event_target:ahw_insp_country = {{ set_timed_country_flag = {{ flag = ahw_first_{n} days = 30 }} }}
+	}}''')
+        gates.append(f'''	if = {{
+		limit = {{
+			{here}
+			any_system = {{ has_star_flag = ahw_entry_{n} NOT = {{ has_star_flag = ahw_broken }} }}
+			event_target:ahw_insp_country = {{ NOR = {{ has_country_flag = ahw_insp_{n} has_country_flag = ahw_repaired_{n} }} }}
+		}}
+		event_target:ahw_insp_country = {{
+			set_country_flag = ahw_insp_{n}
+			if = {{
+				limit = {{ has_country_flag = ahw_first_{n} }}
+				ahw_spike_grant_tech = {{ TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }}
+			}}
+			else = {{
+				ahw_spike_grant_tech = {{ TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }}
+			}}
+		}}
+		log = "AHW SPIKE gate of pair {n} inspected in \\\\[This.GetName] by \\\\[ahw_insp_country.GetName]"
+	}}''')
+        repairer.append(f'''	if = {{
+		limit = {{ check_variable = {{ which = ahw_pair value = {n} }} }}
+		event_target:ahw_repairer = {{ set_country_flag = ahw_repaired_{n} }}
+	}}''')
+        centre.append(f'''	if = {{
+		limit = {{
+			check_variable = {{ which = ahw_pair value = {n} }}
+			event_target:ahw_insp_country = {{ NOT = {{ has_country_flag = ahw_phys_{n} }} }}
+		}}
+		event_target:ahw_insp_country = {{ set_country_flag = ahw_phys_{n} }}
+		ahw_spike_centre_grant = yes
+	}}''')
+    return ('''
+# this = a system an empire's ship entered for the first time: remember it 30 days per pair whose
+# gate is here (either end), for the +7 % (on_entering_system_first_time, ahw_spike.62).
+ahw_spike_mark_first_entry = {
+''' + '\n'.join(first) + '''
+}
+
+# this = a system where a fleet of event_target:ahw_insp_country stayed 10 days (ahw_spike.61):
+# Gate Construction +5 % (+7 % after a first entry) per repaired gate here that the country did
+# not repair itself, once per gate (either end).
+ahw_spike_inspect_gates = {
+''' + '\n'.join(gates) + '''
+}
+
+# this = a portal just repaired: its repairer remembers the pair (no inspection grant for it).
+ahw_spike_flag_repairer = {
+''' + '\n'.join(repairer) + '''
+}
+
+# this = a foreign portal where a fleet of event_target:ahw_insp_country stayed 10 days: Gate
+# Theory by its centre's kind, once per portal (ahw_spike_centre_grant).
+ahw_spike_inspect_centre = {
+''' + '\n'.join(centre) + '''
+}
+''')
 
 
 def main():

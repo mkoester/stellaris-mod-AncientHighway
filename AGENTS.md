@@ -63,7 +63,7 @@ Nothing player-local may decide what is built. The freeze is the slowest machine
 **Timings are from mkDell** (user, 2026-11-06: about as old as the base game; nobody is expected to
 play on such a machine): acceptable there is acceptable for players.
 
-**Next:** the rest of the spike order in item 7 — exploration and inspection grants next, with the 80 % cap (run 36: the techs, study and head-start grants work) (runs 32–35 finished debris, bare centres and the drain: toxoid −0.02 armour regen, pulsar no shield regen plus −10 % of max a month); then the rest of the open list (the ring's exact
+**Next:** run 37 (`0.0.39-SPIKE`: inspection grants and the 80 % cap); then the rest of the spike order in item 7 — nomads and the contract next (run 36: the techs, study and head-start grants work) (runs 32–35 finished debris, bare centres and the drain: toxoid −0.02 armour regen, pulsar no shield regen plus −10 % of max a month); then the rest of the open list (the ring's exact
 speed is parked — user, 2026-11-04: "not too important to me now"). Everything is still the
 spike (`*spike*` files); nothing is shippable yet.
 
@@ -262,6 +262,35 @@ skips work again.** Our portal Furon 51 studied, the others broken; test ships i
 hull 200, armour 100, shields 200 each; the science and construction ships 300 / 100 / 200. No
 error.log lines after the build (the build's own: the probe's `move_system` misses, the
 `ahw_*_tmp` targets, `ahw_exits`/`ahw_pair` in log texts — as before).
+
+**Exploration and inspection grants, the cap (`0.0.39-SPIKE`, design 2026-11-06)**: every grant
+goes through `ahw_spike_grant_tech` — at most 0.8 of a tech over all grants, counted in the
+country variables `ahw_got_theory` / `ahw_got_construction`. **Inspection**: a fleet of a studied
+country (`ahw_highway_studied`, so the head start counts) entering a portal or ring node
+(`on_entering_system_fleet` → `ahw_spike.60`) is checked 10 days later (`.61`): idle there, and no
+arrival since (timed fleet flag `ahw_arrived`, 9 days — a fleet that moved on and stopped
+elsewhere for under 10 days is not counted; one that arrived 1–9 days before an older check
+is, a known slack). Then, generated per pair (`tools/gen_spike.py` `inspection()`):
+**Gate Construction** +5 % per repaired gate with an end in that system, +7 % if the country's
+first entry into it was within 30 days (`on_entering_system_first_time` → `.62`, timed country
+flag `ahw_first_<n>`); once per gate (`ahw_insp_<n>`); never for a gate the country repaired
+(`ahw_repaired_<n>`, set in `ahw_spike_mark_repaired`). **Gate Theory** at a foreign portal (its
+anchor not ours): +7 % for a centre kind not seen (`ahw_kind_<class>`; the studied portal's kind
+counts as seen), else +5 %; once per portal (`ahw_phys_<n>`). Test events: `.45` our portal
+studied at once, `.46` test ships next to a foreign portal of an unseen kind, `.47` asks 30 % more
+of each (the cap).
+
+**Test, run 37** (`0.0.39-SPIKE`, a new medium game, this mod and dev tools; Esc before each
+console line; save after each step — the numbers come from the saves and the log).
+1. `event ahw_spike.6`, `event ahw_spike.41`, a day, `event ahw_spike.45`, `event ahw_spike.44`,
+   `event ahw_spike.7`: both techs at 65 % (15 study + 50 head start).
+2. Our own gate, repaired by "someone else": move AHW Test Fleet out of the portal to the anchor
+   and back in; leave it idle there 10+ days. Expected: Gate Construction **70 %** (+5; the
+   test ships were spawned in the portal, so it is no first entry — or 72 % if the spawn counted).
+3. `event ahw_spike.46`: test ships next to a foreign portal (game.log names it). Send the test
+   science ship one jump into it; idle 10+ days. Expected: Gate Theory **72 %** (+7, a new kind);
+   Gate Construction unchanged (that gate is broken).
+4. `event ahw_spike.47`: both at **80 %** exactly.
 
 **Run 36 (2026-11-07, `0.0.38-SPIKE`, saves 2200.01.01–03.05, screenshots `2026_11_07_3`–`_6`):
 the techs and both grants work.** After the study (03.01) Gate Construction sat among the

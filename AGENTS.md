@@ -180,6 +180,10 @@ it). We got Gate Theory 2213. Our techs had no `ai_weight` (vanilla's gateway te
 for human auto-research). Fixed after the run: `ai_weight` factor 3 on both (vanilla priorities
 are 1.25–2) — needs a new game to show.
 
+**Run 43, resumed at 2220 with `ai_weight` 3** (tech definitions load from the files, not the
+save): Shapan Entity researched Gate Theory 2221.06.02 — the first AI gate tech; by 2222 still
+the only one (seven AI empires have both options). Slow; raise the weight if it stays so.
+
 ## Test, run 44 (does the AI research, repair, use and seal?)
 
 A new medium game, this mod and dev tools, AI empires and nomads on. Let a month pass, then

@@ -37,6 +37,9 @@ ahw_sc_pulsar = {
 	can_be_crisis_terraformed = no
 	arkship_picture = "arkship_pulsar"
 	modifier = {
+		# shield components regenerate (0.5/day a small one, x5 out of combat): stop that
+		# first, or the drain never shows (run 33)
+		ship_shield_regen_mult = -1
 		ship_shield_regen_add_perc = -0.02
 	}
 }

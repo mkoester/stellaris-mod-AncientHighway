@@ -63,7 +63,7 @@ Nothing player-local may decide what is built. The freeze is the slowest machine
 **Timings are from mkDell** (user, 2026-11-06: about as old as the base game; nobody is expected to
 play on such a machine): acceptable there is acceptable for players.
 
-**Next:** finish run 33 (step 1 done in a `0.0.35-SPIKE` game; steps 2–4 open: debris without vanilla deposits, bare centres, drain −0.02), then the spike order in item 7 (techs and grants next); then the rest of the open list (the ring's exact
+**Next:** run 34 (`0.0.36-SPIKE`: the pulsar's shield drain — run 33 found it does nothing, everything else of 33 good), then the spike order in item 7 (techs and grants next); then the rest of the open list (the ring's exact
 speed is parked — user, 2026-11-04: "not too important to me now"). Everything is still the
 spike (`*spike*` files); nothing is shippable yet.
 
@@ -262,6 +262,25 @@ skips work again.** Our portal Furon 51 studied, the others broken; test ships i
 hull 200, armour 100, shields 200 each; the science and construction ships 300 / 100 / 200. No
 error.log lines after the build (the build's own: the probe's `move_system` misses, the
 `ahw_*_tmp` targets, `ahw_exits`/`ahw_pair` in log texts — as before).
+
+**Run 33 (2026-11-07, `0.0.35-SPIKE`, saves 2200.01.02–2200.11.01): debris and bare centres
+look right (user); the toxoid drain works, the pulsar does nothing.** Test corvettes (armour 100,
+shields 200): in toxoid nodes armour 99.9 → 81.3 from 04.21 to 11.01, **0.1 a day = 0.1 %/day**,
+as decided. In the pulsar exit node Furon Node 5 from 01.02 to 04.21 (and the science and
+construction ships the whole ten months): shields 200/200, armour 100, unchanged. Why (from the
+files): shield components regenerate by themselves, `ship_shield_regen_add_static` = 0.5/day a
+small one (`@regen_S1`), ×5 out of combat (`OUT_OF_COMBAT_SHIELD_REGEN_MULT`), and that outweighs
+−0.02 (~0.2/day on 200); these ships have no armour regeneration, so the toxoid drain shows.
+Vanilla's electric storm does it with `affect_shield_regen = yes` (storm types only) plus a monthly
+`reduce_shield` (`cstorms.1100`). `0.0.36-SPIKE`: the pulsar adds `ship_shield_regen_mult = -1`;
+`ahw_spike.43` takes 100 shields off every warship we own, so refilling shows.
+
+**Test, run 34** (`0.0.36-SPIKE`, a new medium game, this mod and dev tools; Esc before each
+console line). `event ahw_spike.40`, `event ahw_spike.42`, let a day pass; move AHW Test Fleet into
+a **pulsar** node (or keep it there if the exit node is one); leave the 1st Fleet at home.
+`event ahw_spike.43`; save at once, then after ~10 and ~60 days. Expected: the 1st Fleet back to
+full within days; the test fleet stays at ≤ 100 and sinks ~0.2 a day. If it stays at 100
+exactly, `_mult = -1` zeroes our negative too — then a monthly `reduce_shield` as the storms do.
 
 **Test, run 33** (`0.0.34-SPIKE` — 0.0.33's content plus the skips; as run 32, a new medium
 game, with the dev-tools mod loaded too). Save now and then — the saves carry the numbers (armour

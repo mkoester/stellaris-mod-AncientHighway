@@ -63,7 +63,10 @@ ordinary hyperlanes — or a bit longer, never shorter.
   **Decided (user, 2026-11-06): −0.02 for both** (0.1 %/day if it scales). Shields did not drop
   at −0.001 (regeneration outweighs it?). **Shields need to drain more** (user, 2026-11-06):
   more than armour, since they regenerate; run 33 measures −0.02 first, then the pulsar's value
-  goes up (or regeneration is cut as well) until shields actually fall.
+  goes up (or regeneration is cut as well) until shields actually fall. **Run 33**: armour
+  −0.1 %/day as meant; shields untouched — shield components regenerate 0.5/day each (×5 out
+  of combat), far above −0.02. So the pulsar also cuts regeneration (`ship_shield_regen_mult
+  = -1`, run 34).
 - **The centres carry no deposit** (user, 2026-11-06; vanilla gave all 80 one in run 32): the
   debris is the road's only resource.
 

@@ -396,3 +396,18 @@ country_event = {
 		ahw_spike_spawn_test_ships = yes
 	}
 }
+
+# Test: every warship we own loses 100 shields, so refilling shows (run 34: the
+# pulsar should keep them down, home space refill them).
+country_event = {
+	id = ahw_spike.43
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		every_owned_ship = {
+			limit = { is_ship_class = shipclass_military }
+			reduce_shield = 100
+		}
+		log = "AHW SPIKE shields reduced by 100"
+	}
+}

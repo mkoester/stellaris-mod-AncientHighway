@@ -176,13 +176,49 @@ Let a day pass. In that station's system view: two wormholes, one on each side o
 along the line from the galaxy's middle? Screenshot. A study "Stabilise the Express Station"
 should be offered (situation log); before starting it, order the science ship through a
 wormhole: refused while the link is closed (tooltip)? Then start the study with the science ship
-(60 days). Afterwards: order the ship to the next station — does the route go through the
+(research points; it may take a while). Afterwards: order the ship to the next station — does the route go through the
 wormhole? Screenshot the route.
 
 **E. Nomads on their own** (no action): at the end, game.log's lines "study … offered to the
 nomads", "repaired by …" show whether nomads studied or repaired anything unasked.
 
+**Run 40, steps 1–4 (2026-11-07, `0.1.0`, medium, nine portals, two nomads logged, screenshots
+`2026_11_07_15`–`_23`): repair on the gate, the seal and the express work.**
+- Build 3 s; the express's 8 stations logged; error.log free of "Could not find project".
+- **Repair as an upgrade works**: the broken gate shows a disabled "Complete" until it has an
+  owner (`_15`, 01.02 — the console study ran before the monthly check gave it to us; since then
+  the study gives it at once), "Upgrade" from 02.01 (`_16`), repaired 05.01 (`_17`, "repaired by"
+  in game.log): the engine ran `on_build_complete` (no fallback line).
+- **Seal**: Sealed for 25 influence (71 → 46, `_22`, `_23`).
+- **Express**: two wormholes on opposite sides of the station (`_18`); a closed link refuses with
+  our tooltip ("Travel to Unknown" crossed out); links flipped 4 + 5 (06.01), 7 (07.01); with
+  link 4 open the science ship's route took the wormhole (`_21`) and reached the next station in
+  29 days. The stabilise study: 4000 physics = **149 months in year 2200** (`_19`) — fine at the
+  mid game, where it starts; to tune later.
+- **Step 5**: the second portal works (Dovhar 32 off Procyon, 08.01; study offered 09.01).
+  **The contract is untested**: right-clicking any system on the galaxy map (nothing selected)
+  opens no contract menu at all — vanilla contracts neither — after console `communications`
+  (Nomads DLC active; no define, game rule or tech gates issuing). Decided (user, 2026-11-07):
+  test it later in a game where nomads are met the normal way; a control without the mod if it
+  fails again. `ahw_debug.73` failed to give the techs ("invalid technology": their potential
+  needs `ahw_highway_studied`) — fixed after the run. The monthly check logs "now owns the gate"
+  for an already owned gate each month (runs 21, 23 too) — to look into.
+- **The contract** (later in run 40): the issue menu appeared by itself a few months after the
+  console `communications` (cause unknown; normal contact should not need it). Issued in Procyon
+  for 1000 (`_24`, `_25`); **Nomadic Alarian accepted** (2201.03.28, `_26`); its arkship flew to
+  Procyon — the contract's location — and left: the work project was in the portal (save
+  2202.04.18: location the star of Dovhar 32), where the AI never went. Fixed after the run: the
+  project is in the anchor (`location = fromfrom`). The contract's rewards preview lists our
+  repair's ownership change (`_27`).
+- **Fixed after the run**: the express study had `cost` and `days_to_research` (exclusive,
+  error.log); cost modifiers lacked `desc`; the first grant read unset variables.
+
 ## Working on it
+
+- **Thumbnail** (2026-11-07): `assets/thumbnail.svg`, our own art — a faint galaxy, a road of
+  light, a fleet racing along it; on purpose nothing of how the highway works (user: no ring, no
+  gates). Render: `rsvg-convert -w 512 -h 512 assets/thumbnail.svg -o ancient_highway/thumbnail.png`
+  (`picture="thumbnail.png"` in the descriptor).
 
 - **Checks before each test**: `tools/gen.py` (if the generator changed), then
   `tools/check_script.py $(find ancient_highway -name '*.txt' -o -name '*.gfx')` and

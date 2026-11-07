@@ -433,6 +433,12 @@ ahw_mark_studied = {
 	if = {
 		limit = { event_target:ahw_studier = { is_nomadic = no } }
 		set_star_flag = ahw_studied
+		# run 40: the gate is the anchor owner's at once, not from the next monthly check (the
+		# console skip studied before it, and the upgrade showed a disabled "Complete" until then)
+		if = {
+			limit = { any_neighbor_system = { exists = owner owner = { is_same_value = event_target:ahw_studier } } }
+			every_system_megastructure = { set_owner = event_target:ahw_studier }
+		}
 	}
 	ahw_country_learns = yes
 	# 0.0.38 (design 2026-11-05): the study grants 15 % of each tech, once per empire.
@@ -476,6 +482,11 @@ ahw_grant = {
 ahw_grant_tech = {
 	if = {
 		limit = { NOT = { has_technology = $TECH$ } }
+		# run 40: unset on the first grant ("Variable ... is not set" in error.log)
+		if = {
+			limit = { NOT = { is_variable_set = $VAR$ } }
+			set_variable = { which = $VAR$ value = 0 }
+		}
 		set_variable = { which = ahw_g value = 0.8 }
 		subtract_variable = { which = ahw_g value = $VAR$ }
 		if = {

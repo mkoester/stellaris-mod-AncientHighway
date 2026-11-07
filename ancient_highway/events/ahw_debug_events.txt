@@ -294,6 +294,10 @@ country_event = {
 			event_target:ahw_player_anchor = { star = { save_event_target_as = ahw_test_star } }
 			event_target:ahw_test_nomad = {
 				establish_communications_no_message = root
+				# run 40: our techs are only valid for a country that has studied a gate (their
+				# potential) - "Attempting to give invalid technology" otherwise
+				set_country_flag = ahw_highway_studied
+				ahw_learn_types = yes
 				give_technology = { tech = ahw_tech_gate_theory message = no }
 				give_technology = { tech = ahw_tech_gate_construction message = no }
 				random_owned_fleet = {

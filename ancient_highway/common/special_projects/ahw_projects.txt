@@ -162,11 +162,11 @@ special_project = {
 	key = AHW_EXPRESS_STABILISE
 	cost = {
 		base = 4000
-		modifier = { factor = 0.75 years_passed > 125 }
-		modifier = { factor = 0.75 years_passed > 150 }
-		modifier = { factor = 0.75 years_passed > 175 }
+		modifier = { factor = 0.75 years_passed > 125 desc = AHW_EXPRESS_LATER }
+		modifier = { factor = 0.75 years_passed > 150 desc = AHW_EXPRESS_LATER }
+		modifier = { factor = 0.75 years_passed > 175 desc = AHW_EXPRESS_LATER }
 	}
-	days_to_research = 60
+	# run 40: cost and days_to_research are exclusive (error.log) - the cost, which falls
 	tech_department = physics_technology
 	picture = GFX_evt_wormhole
 	icon = "gfx/interface/icons/situation_log/situation_log_quest.dds"

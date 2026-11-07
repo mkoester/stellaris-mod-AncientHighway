@@ -99,9 +99,11 @@ ahw_contract_repair_gate = {
 				save_event_target_as = ahw_contract_portal
 			}
 		}
+		# Run 40: in the portal, the AI's arkship flew to the contract's location (the anchor),
+		# never into the portal, and left. The work is done from the anchor, next door.
 		enable_special_project = {
 			name = "AHW_CONTRACT_REPAIR_PROJECT"
-			location = event_target:ahw_contract_portal
+			location = fromfrom
 			owner = root
 		}
 		log = "AHW contract: [Root.GetName] accepted the repair of [ahw_contract_portal.GetName]"

@@ -484,3 +484,59 @@ ahw_spike_pick_anchor = {
 		log = "AHW SPIKE anchor for \\[This.GetName] (capital \\[ahw_cap_tmp.GetName]): tier 7 (more lanes and a bypass) -- $WHO$"
 	}
 }
+
+# this = a portal, event_target:ahw_studier = the country: the study's result (ahw_spike.22, and
+# the console skip ahw_spike.40 - one code path, so the skip tests the real thing).
+ahw_spike_mark_studied = {
+	set_star_flag = ahw_studied
+	event_target:ahw_studier = {
+		set_country_flag = ahw_highway_studied
+		# Run 18: the tech waited for the next physics draw. Vanilla does this after studying a
+		# ruined gateway (tech_gateway_activation): the option appears at once and stays.
+		add_research_option = ahw_tech_spike
+		ahw_spike_learn_types = yes
+	}
+	# 0.0.26 (design 2026-11-06): only this gate's exit node, not the whole ring - the rest is
+	# explored by flying it.
+	ahw_spike_reveal_exit = yes
+	log = "AHW SPIKE entry point in \\[This.GetName] studied by \\[ahw_studier.GetName]"
+}
+
+# this = a portal, event_target:ahw_repairer = the country: the repair's result (ahw_spike.23,
+# and the console skip ahw_spike.40).
+ahw_spike_mark_repaired = {
+	remove_star_flag = ahw_broken
+	# 0.0.20: the gate belongs to the repairer (the anchor's owner): its Open/Sealed switch
+	every_system_megastructure = { set_owner = event_target:ahw_repairer }
+	log = "AHW SPIKE entry point in \\[This.GetName] repaired by \\[ahw_repairer.GetName]"
+}
+
+# Console helper (0.0.34): a science ship, a construction ship and a small battle fleet of the
+# country in scope, at the star of event_target:ahw_spawn_here (a system).
+ahw_spike_spawn_test_ships = {
+	save_event_target_as = ahw_spawn_owner
+	create_fleet = {
+		name = "AHW Test Science"
+		effect = {
+			set_owner = event_target:ahw_spawn_owner
+			create_ship = { name = random random_existing_design = science }
+			set_location = event_target:ahw_spawn_here.star
+		}
+	}
+	create_fleet = {
+		name = "AHW Test Construction"
+		effect = {
+			set_owner = event_target:ahw_spawn_owner
+			create_ship = { name = random random_existing_design = constructor }
+			set_location = event_target:ahw_spawn_here.star
+		}
+	}
+	# The country's own designs (create_random_fleet without ship_designs), so bio and machine
+	# empires get theirs.
+	create_random_fleet = {
+		name = "AHW Test Fleet"
+		size = 5
+		effect = { set_location = event_target:ahw_spawn_here.star }
+	}
+	event_target:ahw_spawn_here = { log = "AHW SPIKE test ships spawned in \\[This.GetName]" }
+}

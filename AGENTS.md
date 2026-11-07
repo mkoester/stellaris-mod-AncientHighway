@@ -63,7 +63,7 @@ Nothing player-local may decide what is built. The freeze is the slowest machine
 **Timings are from mkDell** (user, 2026-11-06: about as old as the base game; nobody is expected to
 play on such a machine): acceptable there is acceptable for players.
 
-**Next:** run 33 (`0.0.33-SPIKE`: debris without vanilla deposits, bare centres, drain −0.02), then the spike order in item 7 (techs and grants next); then the rest of the open list (the ring's exact
+**Next:** run 33 (`0.0.34-SPIKE`, with the console skips `ahw_spike.40`–`.42`: debris without vanilla deposits, bare centres, drain −0.02), then the spike order in item 7 (techs and grants next); then the rest of the open list (the ring's exact
 speed is parked — user, 2026-11-04: "not too important to me now"). Everything is still the
 spike (`*spike*` files); nothing is shippable yet.
 
@@ -201,6 +201,9 @@ At game start `ahw_spike.10` (from `on_game_start`, no scope, as vanilla's `game
 | `event ahw_spike.25` | seal our pair against everyone, us included (a control for the seal); again: open it |
 | `event ahw_spike.26` | seal our pair for another empire (we are strangers to it) |
 | `event ahw_spike.27` | make that empire our subject (we become its friend) |
+| `event ahw_spike.40` | (0.0.34) **skip to a working gate**: outpost on our anchor, study, tech, repair — through the same effects as the real stages |
+| `event ahw_spike.41` | (0.0.34) a science ship, a construction ship and a 5-ship fleet of ours **in our portal** |
+| `event ahw_spike.42` | (0.0.34) the same **in our exit node** (inside the ring) |
 | `effect every_country = { limit = { is_ai = no } remove_country_flag = ahw_has_portal }` | (0.0.31) count us as an empire without a portal: the next month gives us a second one |
 
 All findings go to `game.log`, lines starting `AHW SPIKE`. **Deselect before each console
@@ -209,7 +212,11 @@ All findings go to `game.log`, lines starting `AHW SPIKE`. **Deselect before eac
 **Test steps for the user are written in plain words** — what to set up, what to type, what to
 click, what to screenshot — not as numbered checks naming internals (user, run 17: "I don't really
 understand the steps"). Mod files load at game start: a change made during a run reaches only the
-next game, so give a console line for the running one when needed.
+next game, so give a console line for the running one when needed. **Console commands go one per
+line in a code block** (workspace `AGENTS.md`), never inline. **Skip what already works**
+(user, 2026-11-07): `ahw_spike.40` instead of outpost → study → tech → repair by hand, `.41` /
+`.42` (and the dev-tools mod's `devtools.*`) instead of flying ships there — unless the run tests
+that stage itself.
 
 **Checks before each run** (a brace count misses a `}` moved between blocks, `0.0.5-SPIKE`): `tools/gen_spike.py` (if the generator changed), then
 `tools/check_script.py $(find ancient_highway -name '*.txt' -o -name '*.gfx')` and
@@ -242,12 +249,25 @@ each console `event`, so nothing — not even a ship — is selected.
 
 Copy `logs/game.log` and `logs/error.log` before restarting the game.
 
-**Test, run 33** (`0.0.33-SPIKE`; as run 32, a new medium game). Save now and then — the saves
-carry the numbers (armour and shields per ship, deposits per asteroid), the screenshots only show.
-1. A few ring nodes and portals (system view): asteroids with a deposit about one in three, the
+**Test, run 33** (`0.0.34-SPIKE` — 0.0.33's content plus the skips; as run 32, a new medium
+game, with the dev-tools mod loaded too). Save now and then — the saves carry the numbers (armour
+and shields per ship, deposits per asteroid), the screenshots only show. Press Esc before each
+console line.
+1. **Skip to a working gate and get ships into the ring**:
+   ```
+   event ahw_spike.40
+   ```
+   ```
+   event ahw_spike.42
+   ```
+   Let a day pass. Three new fleets ("AHW Test …") should sit in your exit node. Screenshot.
+2. A few ring nodes and portals (system view): asteroids with a deposit about one in three, the
    centre without one. Screenshot one.
-2. Study, tech, repair as before; park the 1st Fleet ~60 days in a toxoid (green) node, then
-   ~60 days in a pulsar node; save at each arrival and departure.
+3. Park "AHW Test Fleet" ~60 days in a toxoid (green) node, then ~60 days in a pulsar node; save
+   at each arrival and departure.
+4. **Do the skips hold?** Send the test science ship from the exit node back through the gate
+   into your portal (it should go), and check that no study or repair offer pops up on the next
+   1st of the month.
 
 **Test, run 32** (`0.0.32-SPIKE`; Linux, only this mod, a new **medium** elliptical game, AI
 empires on, console on; Esc before each console `event`). New: **debris** (`ahw_spike_add_debris`:

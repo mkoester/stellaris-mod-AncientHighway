@@ -136,6 +136,23 @@ ahw_contract_repair_gate = {
 	}
 
 	on_cancel = {
+		# run 43: cancelled 12 days after acceptance, cause unknown - log which abort conditions hold
+		log = "AHW contract cancelled on [GetDate] (operator [Root.GetName])"
+		if = {
+			limit = { has_event_chain = ahw_contract_repair_gate_chain }
+			log = "AHW   the operator still has the contract's event chain"
+		}
+		else = { log = "AHW   the operator has LOST the contract's event chain" }
+		if = {
+			limit = { contract_target_system_reachable = { SYSTEM = fromfrom } }
+			log = "AHW   the anchor is reachable for the operator"
+		}
+		else = { log = "AHW   the anchor is NOT reachable for the operator" }
+		if = {
+			limit = { fromfrom = { ahw_anchor_of_broken_portal = yes } }
+			log = "AHW   the anchor's gate is still broken"
+		}
+		else = { log = "AHW   the anchor's gate is NOT broken any more" }
 		if = {
 			limit = { exists = root }
 			prev = { add_opinion_modifier = { modifier = opinion_failed_contract_small who = root } }

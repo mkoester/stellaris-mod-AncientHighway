@@ -39,6 +39,7 @@ special_project = {
 	}
 
 	on_success = {
+		log = "AHW contract work done on [GetDate] by [This.Owner.GetName]"
 		owner = {
 			add_mission_counter = {
 				mission = ahw_contract_repair_gate
@@ -49,6 +50,7 @@ special_project = {
 	}
 
 	on_fail = {
+		log = "AHW contract work FAILED on [GetDate] for [This.Owner.GetName]"
 		owner = { end_event_chain = ahw_contract_repair_gate_chain }
 	}
 }

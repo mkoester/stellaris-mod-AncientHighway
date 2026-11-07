@@ -142,6 +142,14 @@ our contract does not qualify for the upgrade (`potential`). Open: what clears t
 The yearly summary `ahw.80` works. **Step 2 passed** (`_73`, 2201.08.02): the stabilise study
 shows "Cost: 4000" (153 months), no error. Step 3 (decades of play) moved to run 43.
 
+**Run 43 (2026-11-07, `_74`): the contract was cancelled 12 days after acceptance.** Study by
+the offer, `ahw_debug.73` (Nomadic Rackuddon, arkship at the anchor Bindur), accepted 04.06,
+"abandoned" 04.19 (save 2200.05.01: `TOAST_CONTRACT_ABORTED_ISSUER`; the nomad holds the chain as
+completed; our borders open to it). Vanilla AI abandons only after 20 years, so an abort trigger
+fired — which one, unknown (no save in between). The arkship stayed in the anchor (no shuttling).
+After the run: `on_cancel` logs which abort conditions hold, the work project logs success and
+failure. Run 41's contract, same code but the upgrade `potential`, succeeded.
+
 ## Test, run 43 (a new campaign: the contract again, then a long game)
 
 Run 42's plan, with the shuttling fix: a new medium game, this mod and dev tools, AI empires and

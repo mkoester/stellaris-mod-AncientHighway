@@ -63,7 +63,7 @@ Nothing player-local may decide what is built. The freeze is the slowest machine
 **Timings are from mkDell** (user, 2026-11-06: about as old as the base game; nobody is expected to
 play on such a machine): acceptable there is acceptable for players.
 
-**Next:** the rest of the spike order in item 7 — nomads and the contract, then express (runs 36–38: techs, all grants, inspection studies and the 80 % cap work) (runs 32–35 finished debris, bare centres and the drain: toxoid −0.02 armour regen, pulsar no shield regen plus −10 % of max a month); then the rest of the open list (the ring's exact
+**Next:** the rest of the spike order in item 7 — nomads and the contract (first: **nomadic empires get a portal today**, against the design — the build counts every `is_country_type = default`; vanilla's test is the scripted trigger `is_nomadic`; run 38's Murmies were nomadic), then express (runs 36–38: techs, all grants, inspection studies and the 80 % cap work) (runs 32–35 finished debris, bare centres and the drain: toxoid −0.02 armour regen, pulsar no shield regen plus −10 % of max a month); then the rest of the open list (the ring's exact
 speed is parked — user, 2026-11-04: "not too important to me now"). Everything is still the
 spike (`*spike*` files); nothing is shippable yet.
 

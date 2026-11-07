@@ -22879,148 +22879,992 @@ ahw_spike_learn_types = {
 	add_seen_bypass_type = ahw_spike_entry_32
 }
 
-# this = a system an empire's ship entered for the first time: remember it 30 days per pair whose
-# gate is here (either end), for the +7 % (on_entering_system_first_time, ahw_spike.62).
-ahw_spike_mark_first_entry = {
-	if = {
-		limit = { OR = { has_star_flag = ahw_entry_1 has_star_flag = ahw_exit_1 } }
-		event_target:ahw_insp_country = { set_timed_country_flag = { flag = ahw_first_1 days = 30 } }
-	}
-	if = {
-		limit = { OR = { has_star_flag = ahw_entry_2 has_star_flag = ahw_exit_2 } }
-		event_target:ahw_insp_country = { set_timed_country_flag = { flag = ahw_first_2 days = 30 } }
-	}
-	if = {
-		limit = { OR = { has_star_flag = ahw_entry_3 has_star_flag = ahw_exit_3 } }
-		event_target:ahw_insp_country = { set_timed_country_flag = { flag = ahw_first_3 days = 30 } }
-	}
-	if = {
-		limit = { OR = { has_star_flag = ahw_entry_4 has_star_flag = ahw_exit_4 } }
-		event_target:ahw_insp_country = { set_timed_country_flag = { flag = ahw_first_4 days = 30 } }
-	}
-	if = {
-		limit = { OR = { has_star_flag = ahw_entry_5 has_star_flag = ahw_exit_5 } }
-		event_target:ahw_insp_country = { set_timed_country_flag = { flag = ahw_first_5 days = 30 } }
-	}
-	if = {
-		limit = { OR = { has_star_flag = ahw_entry_6 has_star_flag = ahw_exit_6 } }
-		event_target:ahw_insp_country = { set_timed_country_flag = { flag = ahw_first_6 days = 30 } }
-	}
-	if = {
-		limit = { OR = { has_star_flag = ahw_entry_7 has_star_flag = ahw_exit_7 } }
-		event_target:ahw_insp_country = { set_timed_country_flag = { flag = ahw_first_7 days = 30 } }
-	}
-	if = {
-		limit = { OR = { has_star_flag = ahw_entry_8 has_star_flag = ahw_exit_8 } }
-		event_target:ahw_insp_country = { set_timed_country_flag = { flag = ahw_first_8 days = 30 } }
-	}
-	if = {
-		limit = { OR = { has_star_flag = ahw_entry_9 has_star_flag = ahw_exit_9 } }
-		event_target:ahw_insp_country = { set_timed_country_flag = { flag = ahw_first_9 days = 30 } }
-	}
-	if = {
-		limit = { OR = { has_star_flag = ahw_entry_10 has_star_flag = ahw_exit_10 } }
-		event_target:ahw_insp_country = { set_timed_country_flag = { flag = ahw_first_10 days = 30 } }
-	}
-	if = {
-		limit = { OR = { has_star_flag = ahw_entry_11 has_star_flag = ahw_exit_11 } }
-		event_target:ahw_insp_country = { set_timed_country_flag = { flag = ahw_first_11 days = 30 } }
-	}
-	if = {
-		limit = { OR = { has_star_flag = ahw_entry_12 has_star_flag = ahw_exit_12 } }
-		event_target:ahw_insp_country = { set_timed_country_flag = { flag = ahw_first_12 days = 30 } }
-	}
-	if = {
-		limit = { OR = { has_star_flag = ahw_entry_13 has_star_flag = ahw_exit_13 } }
-		event_target:ahw_insp_country = { set_timed_country_flag = { flag = ahw_first_13 days = 30 } }
-	}
-	if = {
-		limit = { OR = { has_star_flag = ahw_entry_14 has_star_flag = ahw_exit_14 } }
-		event_target:ahw_insp_country = { set_timed_country_flag = { flag = ahw_first_14 days = 30 } }
-	}
-	if = {
-		limit = { OR = { has_star_flag = ahw_entry_15 has_star_flag = ahw_exit_15 } }
-		event_target:ahw_insp_country = { set_timed_country_flag = { flag = ahw_first_15 days = 30 } }
-	}
-	if = {
-		limit = { OR = { has_star_flag = ahw_entry_16 has_star_flag = ahw_exit_16 } }
-		event_target:ahw_insp_country = { set_timed_country_flag = { flag = ahw_first_16 days = 30 } }
-	}
-	if = {
-		limit = { OR = { has_star_flag = ahw_entry_17 has_star_flag = ahw_exit_17 } }
-		event_target:ahw_insp_country = { set_timed_country_flag = { flag = ahw_first_17 days = 30 } }
-	}
-	if = {
-		limit = { OR = { has_star_flag = ahw_entry_18 has_star_flag = ahw_exit_18 } }
-		event_target:ahw_insp_country = { set_timed_country_flag = { flag = ahw_first_18 days = 30 } }
-	}
-	if = {
-		limit = { OR = { has_star_flag = ahw_entry_19 has_star_flag = ahw_exit_19 } }
-		event_target:ahw_insp_country = { set_timed_country_flag = { flag = ahw_first_19 days = 30 } }
-	}
-	if = {
-		limit = { OR = { has_star_flag = ahw_entry_20 has_star_flag = ahw_exit_20 } }
-		event_target:ahw_insp_country = { set_timed_country_flag = { flag = ahw_first_20 days = 30 } }
-	}
-	if = {
-		limit = { OR = { has_star_flag = ahw_entry_21 has_star_flag = ahw_exit_21 } }
-		event_target:ahw_insp_country = { set_timed_country_flag = { flag = ahw_first_21 days = 30 } }
-	}
-	if = {
-		limit = { OR = { has_star_flag = ahw_entry_22 has_star_flag = ahw_exit_22 } }
-		event_target:ahw_insp_country = { set_timed_country_flag = { flag = ahw_first_22 days = 30 } }
-	}
-	if = {
-		limit = { OR = { has_star_flag = ahw_entry_23 has_star_flag = ahw_exit_23 } }
-		event_target:ahw_insp_country = { set_timed_country_flag = { flag = ahw_first_23 days = 30 } }
-	}
-	if = {
-		limit = { OR = { has_star_flag = ahw_entry_24 has_star_flag = ahw_exit_24 } }
-		event_target:ahw_insp_country = { set_timed_country_flag = { flag = ahw_first_24 days = 30 } }
-	}
-	if = {
-		limit = { OR = { has_star_flag = ahw_entry_25 has_star_flag = ahw_exit_25 } }
-		event_target:ahw_insp_country = { set_timed_country_flag = { flag = ahw_first_25 days = 30 } }
-	}
-	if = {
-		limit = { OR = { has_star_flag = ahw_entry_26 has_star_flag = ahw_exit_26 } }
-		event_target:ahw_insp_country = { set_timed_country_flag = { flag = ahw_first_26 days = 30 } }
-	}
-	if = {
-		limit = { OR = { has_star_flag = ahw_entry_27 has_star_flag = ahw_exit_27 } }
-		event_target:ahw_insp_country = { set_timed_country_flag = { flag = ahw_first_27 days = 30 } }
-	}
-	if = {
-		limit = { OR = { has_star_flag = ahw_entry_28 has_star_flag = ahw_exit_28 } }
-		event_target:ahw_insp_country = { set_timed_country_flag = { flag = ahw_first_28 days = 30 } }
-	}
-	if = {
-		limit = { OR = { has_star_flag = ahw_entry_29 has_star_flag = ahw_exit_29 } }
-		event_target:ahw_insp_country = { set_timed_country_flag = { flag = ahw_first_29 days = 30 } }
-	}
-	if = {
-		limit = { OR = { has_star_flag = ahw_entry_30 has_star_flag = ahw_exit_30 } }
-		event_target:ahw_insp_country = { set_timed_country_flag = { flag = ahw_first_30 days = 30 } }
-	}
-	if = {
-		limit = { OR = { has_star_flag = ahw_entry_31 has_star_flag = ahw_exit_31 } }
-		event_target:ahw_insp_country = { set_timed_country_flag = { flag = ahw_first_31 days = 30 } }
-	}
-	if = {
-		limit = { OR = { has_star_flag = ahw_entry_32 has_star_flag = ahw_exit_32 } }
-		event_target:ahw_insp_country = { set_timed_country_flag = { flag = ahw_first_32 days = 30 } }
-	}
-}
-
-# this = a system where a fleet of event_target:ahw_insp_country stayed 10 days (ahw_spike.61):
-# Gate Construction +5 % (+7 % after a first entry) per repaired gate here that the country did
-# not repair itself, once per gate (either end).
-ahw_spike_inspect_gates = {
+# this = a portal or ring node a ship (fleet event_target:ahw_finder) of event_target:ahw_insp_country
+# entered: offer a gate study for the repaired gates here that we did not repair and were not
+# offered yet (country flag ahw_offer_gate for the caller); +7 % if this is our first entry.
+ahw_spike_scan_gates = {
 	if = {
 		limit = {
 			OR = { has_star_flag = ahw_entry_1 has_star_flag = ahw_exit_1 }
 			any_system = { has_star_flag = ahw_entry_1 NOT = { has_star_flag = ahw_broken } }
-			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_insp_1 has_country_flag = ahw_repaired_1 } }
+			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_eng_offered_1 has_country_flag = ahw_repaired_1 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_eng_offered_1
+			set_country_flag = ahw_offer_gate
+			if = {
+				limit = { NOT = { has_country_flag = ahw_entered_1 } }
+				set_country_flag = ahw_first_1
+			}
+		}
+	}
+	if = {
+		limit = {
+			OR = { has_star_flag = ahw_entry_2 has_star_flag = ahw_exit_2 }
+			any_system = { has_star_flag = ahw_entry_2 NOT = { has_star_flag = ahw_broken } }
+			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_eng_offered_2 has_country_flag = ahw_repaired_2 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_eng_offered_2
+			set_country_flag = ahw_offer_gate
+			if = {
+				limit = { NOT = { has_country_flag = ahw_entered_2 } }
+				set_country_flag = ahw_first_2
+			}
+		}
+	}
+	if = {
+		limit = {
+			OR = { has_star_flag = ahw_entry_3 has_star_flag = ahw_exit_3 }
+			any_system = { has_star_flag = ahw_entry_3 NOT = { has_star_flag = ahw_broken } }
+			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_eng_offered_3 has_country_flag = ahw_repaired_3 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_eng_offered_3
+			set_country_flag = ahw_offer_gate
+			if = {
+				limit = { NOT = { has_country_flag = ahw_entered_3 } }
+				set_country_flag = ahw_first_3
+			}
+		}
+	}
+	if = {
+		limit = {
+			OR = { has_star_flag = ahw_entry_4 has_star_flag = ahw_exit_4 }
+			any_system = { has_star_flag = ahw_entry_4 NOT = { has_star_flag = ahw_broken } }
+			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_eng_offered_4 has_country_flag = ahw_repaired_4 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_eng_offered_4
+			set_country_flag = ahw_offer_gate
+			if = {
+				limit = { NOT = { has_country_flag = ahw_entered_4 } }
+				set_country_flag = ahw_first_4
+			}
+		}
+	}
+	if = {
+		limit = {
+			OR = { has_star_flag = ahw_entry_5 has_star_flag = ahw_exit_5 }
+			any_system = { has_star_flag = ahw_entry_5 NOT = { has_star_flag = ahw_broken } }
+			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_eng_offered_5 has_country_flag = ahw_repaired_5 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_eng_offered_5
+			set_country_flag = ahw_offer_gate
+			if = {
+				limit = { NOT = { has_country_flag = ahw_entered_5 } }
+				set_country_flag = ahw_first_5
+			}
+		}
+	}
+	if = {
+		limit = {
+			OR = { has_star_flag = ahw_entry_6 has_star_flag = ahw_exit_6 }
+			any_system = { has_star_flag = ahw_entry_6 NOT = { has_star_flag = ahw_broken } }
+			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_eng_offered_6 has_country_flag = ahw_repaired_6 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_eng_offered_6
+			set_country_flag = ahw_offer_gate
+			if = {
+				limit = { NOT = { has_country_flag = ahw_entered_6 } }
+				set_country_flag = ahw_first_6
+			}
+		}
+	}
+	if = {
+		limit = {
+			OR = { has_star_flag = ahw_entry_7 has_star_flag = ahw_exit_7 }
+			any_system = { has_star_flag = ahw_entry_7 NOT = { has_star_flag = ahw_broken } }
+			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_eng_offered_7 has_country_flag = ahw_repaired_7 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_eng_offered_7
+			set_country_flag = ahw_offer_gate
+			if = {
+				limit = { NOT = { has_country_flag = ahw_entered_7 } }
+				set_country_flag = ahw_first_7
+			}
+		}
+	}
+	if = {
+		limit = {
+			OR = { has_star_flag = ahw_entry_8 has_star_flag = ahw_exit_8 }
+			any_system = { has_star_flag = ahw_entry_8 NOT = { has_star_flag = ahw_broken } }
+			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_eng_offered_8 has_country_flag = ahw_repaired_8 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_eng_offered_8
+			set_country_flag = ahw_offer_gate
+			if = {
+				limit = { NOT = { has_country_flag = ahw_entered_8 } }
+				set_country_flag = ahw_first_8
+			}
+		}
+	}
+	if = {
+		limit = {
+			OR = { has_star_flag = ahw_entry_9 has_star_flag = ahw_exit_9 }
+			any_system = { has_star_flag = ahw_entry_9 NOT = { has_star_flag = ahw_broken } }
+			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_eng_offered_9 has_country_flag = ahw_repaired_9 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_eng_offered_9
+			set_country_flag = ahw_offer_gate
+			if = {
+				limit = { NOT = { has_country_flag = ahw_entered_9 } }
+				set_country_flag = ahw_first_9
+			}
+		}
+	}
+	if = {
+		limit = {
+			OR = { has_star_flag = ahw_entry_10 has_star_flag = ahw_exit_10 }
+			any_system = { has_star_flag = ahw_entry_10 NOT = { has_star_flag = ahw_broken } }
+			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_eng_offered_10 has_country_flag = ahw_repaired_10 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_eng_offered_10
+			set_country_flag = ahw_offer_gate
+			if = {
+				limit = { NOT = { has_country_flag = ahw_entered_10 } }
+				set_country_flag = ahw_first_10
+			}
+		}
+	}
+	if = {
+		limit = {
+			OR = { has_star_flag = ahw_entry_11 has_star_flag = ahw_exit_11 }
+			any_system = { has_star_flag = ahw_entry_11 NOT = { has_star_flag = ahw_broken } }
+			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_eng_offered_11 has_country_flag = ahw_repaired_11 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_eng_offered_11
+			set_country_flag = ahw_offer_gate
+			if = {
+				limit = { NOT = { has_country_flag = ahw_entered_11 } }
+				set_country_flag = ahw_first_11
+			}
+		}
+	}
+	if = {
+		limit = {
+			OR = { has_star_flag = ahw_entry_12 has_star_flag = ahw_exit_12 }
+			any_system = { has_star_flag = ahw_entry_12 NOT = { has_star_flag = ahw_broken } }
+			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_eng_offered_12 has_country_flag = ahw_repaired_12 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_eng_offered_12
+			set_country_flag = ahw_offer_gate
+			if = {
+				limit = { NOT = { has_country_flag = ahw_entered_12 } }
+				set_country_flag = ahw_first_12
+			}
+		}
+	}
+	if = {
+		limit = {
+			OR = { has_star_flag = ahw_entry_13 has_star_flag = ahw_exit_13 }
+			any_system = { has_star_flag = ahw_entry_13 NOT = { has_star_flag = ahw_broken } }
+			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_eng_offered_13 has_country_flag = ahw_repaired_13 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_eng_offered_13
+			set_country_flag = ahw_offer_gate
+			if = {
+				limit = { NOT = { has_country_flag = ahw_entered_13 } }
+				set_country_flag = ahw_first_13
+			}
+		}
+	}
+	if = {
+		limit = {
+			OR = { has_star_flag = ahw_entry_14 has_star_flag = ahw_exit_14 }
+			any_system = { has_star_flag = ahw_entry_14 NOT = { has_star_flag = ahw_broken } }
+			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_eng_offered_14 has_country_flag = ahw_repaired_14 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_eng_offered_14
+			set_country_flag = ahw_offer_gate
+			if = {
+				limit = { NOT = { has_country_flag = ahw_entered_14 } }
+				set_country_flag = ahw_first_14
+			}
+		}
+	}
+	if = {
+		limit = {
+			OR = { has_star_flag = ahw_entry_15 has_star_flag = ahw_exit_15 }
+			any_system = { has_star_flag = ahw_entry_15 NOT = { has_star_flag = ahw_broken } }
+			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_eng_offered_15 has_country_flag = ahw_repaired_15 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_eng_offered_15
+			set_country_flag = ahw_offer_gate
+			if = {
+				limit = { NOT = { has_country_flag = ahw_entered_15 } }
+				set_country_flag = ahw_first_15
+			}
+		}
+	}
+	if = {
+		limit = {
+			OR = { has_star_flag = ahw_entry_16 has_star_flag = ahw_exit_16 }
+			any_system = { has_star_flag = ahw_entry_16 NOT = { has_star_flag = ahw_broken } }
+			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_eng_offered_16 has_country_flag = ahw_repaired_16 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_eng_offered_16
+			set_country_flag = ahw_offer_gate
+			if = {
+				limit = { NOT = { has_country_flag = ahw_entered_16 } }
+				set_country_flag = ahw_first_16
+			}
+		}
+	}
+	if = {
+		limit = {
+			OR = { has_star_flag = ahw_entry_17 has_star_flag = ahw_exit_17 }
+			any_system = { has_star_flag = ahw_entry_17 NOT = { has_star_flag = ahw_broken } }
+			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_eng_offered_17 has_country_flag = ahw_repaired_17 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_eng_offered_17
+			set_country_flag = ahw_offer_gate
+			if = {
+				limit = { NOT = { has_country_flag = ahw_entered_17 } }
+				set_country_flag = ahw_first_17
+			}
+		}
+	}
+	if = {
+		limit = {
+			OR = { has_star_flag = ahw_entry_18 has_star_flag = ahw_exit_18 }
+			any_system = { has_star_flag = ahw_entry_18 NOT = { has_star_flag = ahw_broken } }
+			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_eng_offered_18 has_country_flag = ahw_repaired_18 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_eng_offered_18
+			set_country_flag = ahw_offer_gate
+			if = {
+				limit = { NOT = { has_country_flag = ahw_entered_18 } }
+				set_country_flag = ahw_first_18
+			}
+		}
+	}
+	if = {
+		limit = {
+			OR = { has_star_flag = ahw_entry_19 has_star_flag = ahw_exit_19 }
+			any_system = { has_star_flag = ahw_entry_19 NOT = { has_star_flag = ahw_broken } }
+			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_eng_offered_19 has_country_flag = ahw_repaired_19 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_eng_offered_19
+			set_country_flag = ahw_offer_gate
+			if = {
+				limit = { NOT = { has_country_flag = ahw_entered_19 } }
+				set_country_flag = ahw_first_19
+			}
+		}
+	}
+	if = {
+		limit = {
+			OR = { has_star_flag = ahw_entry_20 has_star_flag = ahw_exit_20 }
+			any_system = { has_star_flag = ahw_entry_20 NOT = { has_star_flag = ahw_broken } }
+			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_eng_offered_20 has_country_flag = ahw_repaired_20 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_eng_offered_20
+			set_country_flag = ahw_offer_gate
+			if = {
+				limit = { NOT = { has_country_flag = ahw_entered_20 } }
+				set_country_flag = ahw_first_20
+			}
+		}
+	}
+	if = {
+		limit = {
+			OR = { has_star_flag = ahw_entry_21 has_star_flag = ahw_exit_21 }
+			any_system = { has_star_flag = ahw_entry_21 NOT = { has_star_flag = ahw_broken } }
+			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_eng_offered_21 has_country_flag = ahw_repaired_21 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_eng_offered_21
+			set_country_flag = ahw_offer_gate
+			if = {
+				limit = { NOT = { has_country_flag = ahw_entered_21 } }
+				set_country_flag = ahw_first_21
+			}
+		}
+	}
+	if = {
+		limit = {
+			OR = { has_star_flag = ahw_entry_22 has_star_flag = ahw_exit_22 }
+			any_system = { has_star_flag = ahw_entry_22 NOT = { has_star_flag = ahw_broken } }
+			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_eng_offered_22 has_country_flag = ahw_repaired_22 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_eng_offered_22
+			set_country_flag = ahw_offer_gate
+			if = {
+				limit = { NOT = { has_country_flag = ahw_entered_22 } }
+				set_country_flag = ahw_first_22
+			}
+		}
+	}
+	if = {
+		limit = {
+			OR = { has_star_flag = ahw_entry_23 has_star_flag = ahw_exit_23 }
+			any_system = { has_star_flag = ahw_entry_23 NOT = { has_star_flag = ahw_broken } }
+			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_eng_offered_23 has_country_flag = ahw_repaired_23 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_eng_offered_23
+			set_country_flag = ahw_offer_gate
+			if = {
+				limit = { NOT = { has_country_flag = ahw_entered_23 } }
+				set_country_flag = ahw_first_23
+			}
+		}
+	}
+	if = {
+		limit = {
+			OR = { has_star_flag = ahw_entry_24 has_star_flag = ahw_exit_24 }
+			any_system = { has_star_flag = ahw_entry_24 NOT = { has_star_flag = ahw_broken } }
+			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_eng_offered_24 has_country_flag = ahw_repaired_24 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_eng_offered_24
+			set_country_flag = ahw_offer_gate
+			if = {
+				limit = { NOT = { has_country_flag = ahw_entered_24 } }
+				set_country_flag = ahw_first_24
+			}
+		}
+	}
+	if = {
+		limit = {
+			OR = { has_star_flag = ahw_entry_25 has_star_flag = ahw_exit_25 }
+			any_system = { has_star_flag = ahw_entry_25 NOT = { has_star_flag = ahw_broken } }
+			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_eng_offered_25 has_country_flag = ahw_repaired_25 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_eng_offered_25
+			set_country_flag = ahw_offer_gate
+			if = {
+				limit = { NOT = { has_country_flag = ahw_entered_25 } }
+				set_country_flag = ahw_first_25
+			}
+		}
+	}
+	if = {
+		limit = {
+			OR = { has_star_flag = ahw_entry_26 has_star_flag = ahw_exit_26 }
+			any_system = { has_star_flag = ahw_entry_26 NOT = { has_star_flag = ahw_broken } }
+			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_eng_offered_26 has_country_flag = ahw_repaired_26 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_eng_offered_26
+			set_country_flag = ahw_offer_gate
+			if = {
+				limit = { NOT = { has_country_flag = ahw_entered_26 } }
+				set_country_flag = ahw_first_26
+			}
+		}
+	}
+	if = {
+		limit = {
+			OR = { has_star_flag = ahw_entry_27 has_star_flag = ahw_exit_27 }
+			any_system = { has_star_flag = ahw_entry_27 NOT = { has_star_flag = ahw_broken } }
+			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_eng_offered_27 has_country_flag = ahw_repaired_27 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_eng_offered_27
+			set_country_flag = ahw_offer_gate
+			if = {
+				limit = { NOT = { has_country_flag = ahw_entered_27 } }
+				set_country_flag = ahw_first_27
+			}
+		}
+	}
+	if = {
+		limit = {
+			OR = { has_star_flag = ahw_entry_28 has_star_flag = ahw_exit_28 }
+			any_system = { has_star_flag = ahw_entry_28 NOT = { has_star_flag = ahw_broken } }
+			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_eng_offered_28 has_country_flag = ahw_repaired_28 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_eng_offered_28
+			set_country_flag = ahw_offer_gate
+			if = {
+				limit = { NOT = { has_country_flag = ahw_entered_28 } }
+				set_country_flag = ahw_first_28
+			}
+		}
+	}
+	if = {
+		limit = {
+			OR = { has_star_flag = ahw_entry_29 has_star_flag = ahw_exit_29 }
+			any_system = { has_star_flag = ahw_entry_29 NOT = { has_star_flag = ahw_broken } }
+			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_eng_offered_29 has_country_flag = ahw_repaired_29 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_eng_offered_29
+			set_country_flag = ahw_offer_gate
+			if = {
+				limit = { NOT = { has_country_flag = ahw_entered_29 } }
+				set_country_flag = ahw_first_29
+			}
+		}
+	}
+	if = {
+		limit = {
+			OR = { has_star_flag = ahw_entry_30 has_star_flag = ahw_exit_30 }
+			any_system = { has_star_flag = ahw_entry_30 NOT = { has_star_flag = ahw_broken } }
+			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_eng_offered_30 has_country_flag = ahw_repaired_30 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_eng_offered_30
+			set_country_flag = ahw_offer_gate
+			if = {
+				limit = { NOT = { has_country_flag = ahw_entered_30 } }
+				set_country_flag = ahw_first_30
+			}
+		}
+	}
+	if = {
+		limit = {
+			OR = { has_star_flag = ahw_entry_31 has_star_flag = ahw_exit_31 }
+			any_system = { has_star_flag = ahw_entry_31 NOT = { has_star_flag = ahw_broken } }
+			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_eng_offered_31 has_country_flag = ahw_repaired_31 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_eng_offered_31
+			set_country_flag = ahw_offer_gate
+			if = {
+				limit = { NOT = { has_country_flag = ahw_entered_31 } }
+				set_country_flag = ahw_first_31
+			}
+		}
+	}
+	if = {
+		limit = {
+			OR = { has_star_flag = ahw_entry_32 has_star_flag = ahw_exit_32 }
+			any_system = { has_star_flag = ahw_entry_32 NOT = { has_star_flag = ahw_broken } }
+			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_eng_offered_32 has_country_flag = ahw_repaired_32 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_eng_offered_32
+			set_country_flag = ahw_offer_gate
+			if = {
+				limit = { NOT = { has_country_flag = ahw_entered_32 } }
+				set_country_flag = ahw_first_32
+			}
+		}
+	}
+}
+
+# this = as above: remember the entry (after the scans).
+ahw_spike_note_entered = {
+	if = {
+		limit = { OR = { has_star_flag = ahw_entry_1 has_star_flag = ahw_exit_1 } }
+		event_target:ahw_insp_country = { set_country_flag = ahw_entered_1 }
+	}
+	if = {
+		limit = { OR = { has_star_flag = ahw_entry_2 has_star_flag = ahw_exit_2 } }
+		event_target:ahw_insp_country = { set_country_flag = ahw_entered_2 }
+	}
+	if = {
+		limit = { OR = { has_star_flag = ahw_entry_3 has_star_flag = ahw_exit_3 } }
+		event_target:ahw_insp_country = { set_country_flag = ahw_entered_3 }
+	}
+	if = {
+		limit = { OR = { has_star_flag = ahw_entry_4 has_star_flag = ahw_exit_4 } }
+		event_target:ahw_insp_country = { set_country_flag = ahw_entered_4 }
+	}
+	if = {
+		limit = { OR = { has_star_flag = ahw_entry_5 has_star_flag = ahw_exit_5 } }
+		event_target:ahw_insp_country = { set_country_flag = ahw_entered_5 }
+	}
+	if = {
+		limit = { OR = { has_star_flag = ahw_entry_6 has_star_flag = ahw_exit_6 } }
+		event_target:ahw_insp_country = { set_country_flag = ahw_entered_6 }
+	}
+	if = {
+		limit = { OR = { has_star_flag = ahw_entry_7 has_star_flag = ahw_exit_7 } }
+		event_target:ahw_insp_country = { set_country_flag = ahw_entered_7 }
+	}
+	if = {
+		limit = { OR = { has_star_flag = ahw_entry_8 has_star_flag = ahw_exit_8 } }
+		event_target:ahw_insp_country = { set_country_flag = ahw_entered_8 }
+	}
+	if = {
+		limit = { OR = { has_star_flag = ahw_entry_9 has_star_flag = ahw_exit_9 } }
+		event_target:ahw_insp_country = { set_country_flag = ahw_entered_9 }
+	}
+	if = {
+		limit = { OR = { has_star_flag = ahw_entry_10 has_star_flag = ahw_exit_10 } }
+		event_target:ahw_insp_country = { set_country_flag = ahw_entered_10 }
+	}
+	if = {
+		limit = { OR = { has_star_flag = ahw_entry_11 has_star_flag = ahw_exit_11 } }
+		event_target:ahw_insp_country = { set_country_flag = ahw_entered_11 }
+	}
+	if = {
+		limit = { OR = { has_star_flag = ahw_entry_12 has_star_flag = ahw_exit_12 } }
+		event_target:ahw_insp_country = { set_country_flag = ahw_entered_12 }
+	}
+	if = {
+		limit = { OR = { has_star_flag = ahw_entry_13 has_star_flag = ahw_exit_13 } }
+		event_target:ahw_insp_country = { set_country_flag = ahw_entered_13 }
+	}
+	if = {
+		limit = { OR = { has_star_flag = ahw_entry_14 has_star_flag = ahw_exit_14 } }
+		event_target:ahw_insp_country = { set_country_flag = ahw_entered_14 }
+	}
+	if = {
+		limit = { OR = { has_star_flag = ahw_entry_15 has_star_flag = ahw_exit_15 } }
+		event_target:ahw_insp_country = { set_country_flag = ahw_entered_15 }
+	}
+	if = {
+		limit = { OR = { has_star_flag = ahw_entry_16 has_star_flag = ahw_exit_16 } }
+		event_target:ahw_insp_country = { set_country_flag = ahw_entered_16 }
+	}
+	if = {
+		limit = { OR = { has_star_flag = ahw_entry_17 has_star_flag = ahw_exit_17 } }
+		event_target:ahw_insp_country = { set_country_flag = ahw_entered_17 }
+	}
+	if = {
+		limit = { OR = { has_star_flag = ahw_entry_18 has_star_flag = ahw_exit_18 } }
+		event_target:ahw_insp_country = { set_country_flag = ahw_entered_18 }
+	}
+	if = {
+		limit = { OR = { has_star_flag = ahw_entry_19 has_star_flag = ahw_exit_19 } }
+		event_target:ahw_insp_country = { set_country_flag = ahw_entered_19 }
+	}
+	if = {
+		limit = { OR = { has_star_flag = ahw_entry_20 has_star_flag = ahw_exit_20 } }
+		event_target:ahw_insp_country = { set_country_flag = ahw_entered_20 }
+	}
+	if = {
+		limit = { OR = { has_star_flag = ahw_entry_21 has_star_flag = ahw_exit_21 } }
+		event_target:ahw_insp_country = { set_country_flag = ahw_entered_21 }
+	}
+	if = {
+		limit = { OR = { has_star_flag = ahw_entry_22 has_star_flag = ahw_exit_22 } }
+		event_target:ahw_insp_country = { set_country_flag = ahw_entered_22 }
+	}
+	if = {
+		limit = { OR = { has_star_flag = ahw_entry_23 has_star_flag = ahw_exit_23 } }
+		event_target:ahw_insp_country = { set_country_flag = ahw_entered_23 }
+	}
+	if = {
+		limit = { OR = { has_star_flag = ahw_entry_24 has_star_flag = ahw_exit_24 } }
+		event_target:ahw_insp_country = { set_country_flag = ahw_entered_24 }
+	}
+	if = {
+		limit = { OR = { has_star_flag = ahw_entry_25 has_star_flag = ahw_exit_25 } }
+		event_target:ahw_insp_country = { set_country_flag = ahw_entered_25 }
+	}
+	if = {
+		limit = { OR = { has_star_flag = ahw_entry_26 has_star_flag = ahw_exit_26 } }
+		event_target:ahw_insp_country = { set_country_flag = ahw_entered_26 }
+	}
+	if = {
+		limit = { OR = { has_star_flag = ahw_entry_27 has_star_flag = ahw_exit_27 } }
+		event_target:ahw_insp_country = { set_country_flag = ahw_entered_27 }
+	}
+	if = {
+		limit = { OR = { has_star_flag = ahw_entry_28 has_star_flag = ahw_exit_28 } }
+		event_target:ahw_insp_country = { set_country_flag = ahw_entered_28 }
+	}
+	if = {
+		limit = { OR = { has_star_flag = ahw_entry_29 has_star_flag = ahw_exit_29 } }
+		event_target:ahw_insp_country = { set_country_flag = ahw_entered_29 }
+	}
+	if = {
+		limit = { OR = { has_star_flag = ahw_entry_30 has_star_flag = ahw_exit_30 } }
+		event_target:ahw_insp_country = { set_country_flag = ahw_entered_30 }
+	}
+	if = {
+		limit = { OR = { has_star_flag = ahw_entry_31 has_star_flag = ahw_exit_31 } }
+		event_target:ahw_insp_country = { set_country_flag = ahw_entered_31 }
+	}
+	if = {
+		limit = { OR = { has_star_flag = ahw_entry_32 has_star_flag = ahw_exit_32 } }
+		event_target:ahw_insp_country = { set_country_flag = ahw_entered_32 }
+	}
+}
+
+# this = a foreign portal entered (as above): offer its centre study unless offered before
+# (country flag ahw_offer_centre for the caller).
+ahw_spike_scan_centre = {
+	if = {
+		limit = {
+			check_variable = { which = ahw_pair value = 1 }
+			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_offered_1 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_phys_offered_1
+			set_country_flag = ahw_offer_centre
+		}
+	}
+	if = {
+		limit = {
+			check_variable = { which = ahw_pair value = 2 }
+			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_offered_2 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_phys_offered_2
+			set_country_flag = ahw_offer_centre
+		}
+	}
+	if = {
+		limit = {
+			check_variable = { which = ahw_pair value = 3 }
+			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_offered_3 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_phys_offered_3
+			set_country_flag = ahw_offer_centre
+		}
+	}
+	if = {
+		limit = {
+			check_variable = { which = ahw_pair value = 4 }
+			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_offered_4 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_phys_offered_4
+			set_country_flag = ahw_offer_centre
+		}
+	}
+	if = {
+		limit = {
+			check_variable = { which = ahw_pair value = 5 }
+			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_offered_5 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_phys_offered_5
+			set_country_flag = ahw_offer_centre
+		}
+	}
+	if = {
+		limit = {
+			check_variable = { which = ahw_pair value = 6 }
+			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_offered_6 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_phys_offered_6
+			set_country_flag = ahw_offer_centre
+		}
+	}
+	if = {
+		limit = {
+			check_variable = { which = ahw_pair value = 7 }
+			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_offered_7 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_phys_offered_7
+			set_country_flag = ahw_offer_centre
+		}
+	}
+	if = {
+		limit = {
+			check_variable = { which = ahw_pair value = 8 }
+			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_offered_8 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_phys_offered_8
+			set_country_flag = ahw_offer_centre
+		}
+	}
+	if = {
+		limit = {
+			check_variable = { which = ahw_pair value = 9 }
+			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_offered_9 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_phys_offered_9
+			set_country_flag = ahw_offer_centre
+		}
+	}
+	if = {
+		limit = {
+			check_variable = { which = ahw_pair value = 10 }
+			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_offered_10 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_phys_offered_10
+			set_country_flag = ahw_offer_centre
+		}
+	}
+	if = {
+		limit = {
+			check_variable = { which = ahw_pair value = 11 }
+			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_offered_11 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_phys_offered_11
+			set_country_flag = ahw_offer_centre
+		}
+	}
+	if = {
+		limit = {
+			check_variable = { which = ahw_pair value = 12 }
+			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_offered_12 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_phys_offered_12
+			set_country_flag = ahw_offer_centre
+		}
+	}
+	if = {
+		limit = {
+			check_variable = { which = ahw_pair value = 13 }
+			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_offered_13 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_phys_offered_13
+			set_country_flag = ahw_offer_centre
+		}
+	}
+	if = {
+		limit = {
+			check_variable = { which = ahw_pair value = 14 }
+			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_offered_14 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_phys_offered_14
+			set_country_flag = ahw_offer_centre
+		}
+	}
+	if = {
+		limit = {
+			check_variable = { which = ahw_pair value = 15 }
+			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_offered_15 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_phys_offered_15
+			set_country_flag = ahw_offer_centre
+		}
+	}
+	if = {
+		limit = {
+			check_variable = { which = ahw_pair value = 16 }
+			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_offered_16 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_phys_offered_16
+			set_country_flag = ahw_offer_centre
+		}
+	}
+	if = {
+		limit = {
+			check_variable = { which = ahw_pair value = 17 }
+			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_offered_17 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_phys_offered_17
+			set_country_flag = ahw_offer_centre
+		}
+	}
+	if = {
+		limit = {
+			check_variable = { which = ahw_pair value = 18 }
+			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_offered_18 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_phys_offered_18
+			set_country_flag = ahw_offer_centre
+		}
+	}
+	if = {
+		limit = {
+			check_variable = { which = ahw_pair value = 19 }
+			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_offered_19 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_phys_offered_19
+			set_country_flag = ahw_offer_centre
+		}
+	}
+	if = {
+		limit = {
+			check_variable = { which = ahw_pair value = 20 }
+			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_offered_20 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_phys_offered_20
+			set_country_flag = ahw_offer_centre
+		}
+	}
+	if = {
+		limit = {
+			check_variable = { which = ahw_pair value = 21 }
+			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_offered_21 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_phys_offered_21
+			set_country_flag = ahw_offer_centre
+		}
+	}
+	if = {
+		limit = {
+			check_variable = { which = ahw_pair value = 22 }
+			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_offered_22 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_phys_offered_22
+			set_country_flag = ahw_offer_centre
+		}
+	}
+	if = {
+		limit = {
+			check_variable = { which = ahw_pair value = 23 }
+			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_offered_23 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_phys_offered_23
+			set_country_flag = ahw_offer_centre
+		}
+	}
+	if = {
+		limit = {
+			check_variable = { which = ahw_pair value = 24 }
+			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_offered_24 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_phys_offered_24
+			set_country_flag = ahw_offer_centre
+		}
+	}
+	if = {
+		limit = {
+			check_variable = { which = ahw_pair value = 25 }
+			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_offered_25 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_phys_offered_25
+			set_country_flag = ahw_offer_centre
+		}
+	}
+	if = {
+		limit = {
+			check_variable = { which = ahw_pair value = 26 }
+			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_offered_26 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_phys_offered_26
+			set_country_flag = ahw_offer_centre
+		}
+	}
+	if = {
+		limit = {
+			check_variable = { which = ahw_pair value = 27 }
+			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_offered_27 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_phys_offered_27
+			set_country_flag = ahw_offer_centre
+		}
+	}
+	if = {
+		limit = {
+			check_variable = { which = ahw_pair value = 28 }
+			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_offered_28 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_phys_offered_28
+			set_country_flag = ahw_offer_centre
+		}
+	}
+	if = {
+		limit = {
+			check_variable = { which = ahw_pair value = 29 }
+			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_offered_29 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_phys_offered_29
+			set_country_flag = ahw_offer_centre
+		}
+	}
+	if = {
+		limit = {
+			check_variable = { which = ahw_pair value = 30 }
+			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_offered_30 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_phys_offered_30
+			set_country_flag = ahw_offer_centre
+		}
+	}
+	if = {
+		limit = {
+			check_variable = { which = ahw_pair value = 31 }
+			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_offered_31 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_phys_offered_31
+			set_country_flag = ahw_offer_centre
+		}
+	}
+	if = {
+		limit = {
+			check_variable = { which = ahw_pair value = 32 }
+			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_offered_32 } }
+		}
+		event_target:ahw_insp_country = {
+			set_country_flag = ahw_phys_offered_32
+			set_country_flag = ahw_offer_centre
+		}
+	}
+}
+
+# this = a system: the study for the class of event_target:ahw_finder (science if none fits).
+ahw_spike_offer_gate_study = {
+	if = {
+		limit = { event_target:ahw_finder = { is_ship_class = shipclass_science_ship } }
+		enable_special_project = { name = AHW_INSPECT_GATE_SCI location = this owner = event_target:ahw_insp_country }
+	}
+	else_if = {
+		limit = { event_target:ahw_finder = { is_ship_class = shipclass_constructor } }
+		enable_special_project = { name = AHW_INSPECT_GATE_CON location = this owner = event_target:ahw_insp_country }
+	}
+	else_if = {
+		limit = { event_target:ahw_finder = { is_ship_class = shipclass_military } }
+		enable_special_project = { name = AHW_INSPECT_GATE_MIL location = this owner = event_target:ahw_insp_country }
+	}
+	else = {
+		enable_special_project = { name = AHW_INSPECT_GATE_SCI location = this owner = event_target:ahw_insp_country }
+	}
+}
+ahw_spike_offer_centre_study = {
+	if = {
+		limit = { event_target:ahw_finder = { is_ship_class = shipclass_science_ship } }
+		enable_special_project = { name = AHW_INSPECT_CENTRE_SCI location = this owner = event_target:ahw_insp_country }
+	}
+	else_if = {
+		limit = { event_target:ahw_finder = { is_ship_class = shipclass_constructor } }
+		enable_special_project = { name = AHW_INSPECT_CENTRE_CON location = this owner = event_target:ahw_insp_country }
+	}
+	else_if = {
+		limit = { event_target:ahw_finder = { is_ship_class = shipclass_military } }
+		enable_special_project = { name = AHW_INSPECT_CENTRE_MIL location = this owner = event_target:ahw_insp_country }
+	}
+	else = {
+		enable_special_project = { name = AHW_INSPECT_CENTRE_SCI location = this owner = event_target:ahw_insp_country }
+	}
+}
+
+# this = the system of a finished gate study: Gate Construction +5 % (+7 % if offered on our
+# first entry) per gate here whose study was offered and not done, once per gate.
+ahw_spike_inspect_gates = {
+	if = {
+		limit = {
+			OR = { has_star_flag = ahw_entry_1 has_star_flag = ahw_exit_1 }
+			event_target:ahw_insp_country = { has_country_flag = ahw_eng_offered_1 NOT = { has_country_flag = ahw_insp_1 } }
 		}
 		event_target:ahw_insp_country = {
 			set_country_flag = ahw_insp_1
@@ -23037,8 +23881,7 @@ ahw_spike_inspect_gates = {
 	if = {
 		limit = {
 			OR = { has_star_flag = ahw_entry_2 has_star_flag = ahw_exit_2 }
-			any_system = { has_star_flag = ahw_entry_2 NOT = { has_star_flag = ahw_broken } }
-			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_insp_2 has_country_flag = ahw_repaired_2 } }
+			event_target:ahw_insp_country = { has_country_flag = ahw_eng_offered_2 NOT = { has_country_flag = ahw_insp_2 } }
 		}
 		event_target:ahw_insp_country = {
 			set_country_flag = ahw_insp_2
@@ -23055,8 +23898,7 @@ ahw_spike_inspect_gates = {
 	if = {
 		limit = {
 			OR = { has_star_flag = ahw_entry_3 has_star_flag = ahw_exit_3 }
-			any_system = { has_star_flag = ahw_entry_3 NOT = { has_star_flag = ahw_broken } }
-			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_insp_3 has_country_flag = ahw_repaired_3 } }
+			event_target:ahw_insp_country = { has_country_flag = ahw_eng_offered_3 NOT = { has_country_flag = ahw_insp_3 } }
 		}
 		event_target:ahw_insp_country = {
 			set_country_flag = ahw_insp_3
@@ -23073,8 +23915,7 @@ ahw_spike_inspect_gates = {
 	if = {
 		limit = {
 			OR = { has_star_flag = ahw_entry_4 has_star_flag = ahw_exit_4 }
-			any_system = { has_star_flag = ahw_entry_4 NOT = { has_star_flag = ahw_broken } }
-			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_insp_4 has_country_flag = ahw_repaired_4 } }
+			event_target:ahw_insp_country = { has_country_flag = ahw_eng_offered_4 NOT = { has_country_flag = ahw_insp_4 } }
 		}
 		event_target:ahw_insp_country = {
 			set_country_flag = ahw_insp_4
@@ -23091,8 +23932,7 @@ ahw_spike_inspect_gates = {
 	if = {
 		limit = {
 			OR = { has_star_flag = ahw_entry_5 has_star_flag = ahw_exit_5 }
-			any_system = { has_star_flag = ahw_entry_5 NOT = { has_star_flag = ahw_broken } }
-			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_insp_5 has_country_flag = ahw_repaired_5 } }
+			event_target:ahw_insp_country = { has_country_flag = ahw_eng_offered_5 NOT = { has_country_flag = ahw_insp_5 } }
 		}
 		event_target:ahw_insp_country = {
 			set_country_flag = ahw_insp_5
@@ -23109,8 +23949,7 @@ ahw_spike_inspect_gates = {
 	if = {
 		limit = {
 			OR = { has_star_flag = ahw_entry_6 has_star_flag = ahw_exit_6 }
-			any_system = { has_star_flag = ahw_entry_6 NOT = { has_star_flag = ahw_broken } }
-			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_insp_6 has_country_flag = ahw_repaired_6 } }
+			event_target:ahw_insp_country = { has_country_flag = ahw_eng_offered_6 NOT = { has_country_flag = ahw_insp_6 } }
 		}
 		event_target:ahw_insp_country = {
 			set_country_flag = ahw_insp_6
@@ -23127,8 +23966,7 @@ ahw_spike_inspect_gates = {
 	if = {
 		limit = {
 			OR = { has_star_flag = ahw_entry_7 has_star_flag = ahw_exit_7 }
-			any_system = { has_star_flag = ahw_entry_7 NOT = { has_star_flag = ahw_broken } }
-			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_insp_7 has_country_flag = ahw_repaired_7 } }
+			event_target:ahw_insp_country = { has_country_flag = ahw_eng_offered_7 NOT = { has_country_flag = ahw_insp_7 } }
 		}
 		event_target:ahw_insp_country = {
 			set_country_flag = ahw_insp_7
@@ -23145,8 +23983,7 @@ ahw_spike_inspect_gates = {
 	if = {
 		limit = {
 			OR = { has_star_flag = ahw_entry_8 has_star_flag = ahw_exit_8 }
-			any_system = { has_star_flag = ahw_entry_8 NOT = { has_star_flag = ahw_broken } }
-			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_insp_8 has_country_flag = ahw_repaired_8 } }
+			event_target:ahw_insp_country = { has_country_flag = ahw_eng_offered_8 NOT = { has_country_flag = ahw_insp_8 } }
 		}
 		event_target:ahw_insp_country = {
 			set_country_flag = ahw_insp_8
@@ -23163,8 +24000,7 @@ ahw_spike_inspect_gates = {
 	if = {
 		limit = {
 			OR = { has_star_flag = ahw_entry_9 has_star_flag = ahw_exit_9 }
-			any_system = { has_star_flag = ahw_entry_9 NOT = { has_star_flag = ahw_broken } }
-			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_insp_9 has_country_flag = ahw_repaired_9 } }
+			event_target:ahw_insp_country = { has_country_flag = ahw_eng_offered_9 NOT = { has_country_flag = ahw_insp_9 } }
 		}
 		event_target:ahw_insp_country = {
 			set_country_flag = ahw_insp_9
@@ -23181,8 +24017,7 @@ ahw_spike_inspect_gates = {
 	if = {
 		limit = {
 			OR = { has_star_flag = ahw_entry_10 has_star_flag = ahw_exit_10 }
-			any_system = { has_star_flag = ahw_entry_10 NOT = { has_star_flag = ahw_broken } }
-			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_insp_10 has_country_flag = ahw_repaired_10 } }
+			event_target:ahw_insp_country = { has_country_flag = ahw_eng_offered_10 NOT = { has_country_flag = ahw_insp_10 } }
 		}
 		event_target:ahw_insp_country = {
 			set_country_flag = ahw_insp_10
@@ -23199,8 +24034,7 @@ ahw_spike_inspect_gates = {
 	if = {
 		limit = {
 			OR = { has_star_flag = ahw_entry_11 has_star_flag = ahw_exit_11 }
-			any_system = { has_star_flag = ahw_entry_11 NOT = { has_star_flag = ahw_broken } }
-			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_insp_11 has_country_flag = ahw_repaired_11 } }
+			event_target:ahw_insp_country = { has_country_flag = ahw_eng_offered_11 NOT = { has_country_flag = ahw_insp_11 } }
 		}
 		event_target:ahw_insp_country = {
 			set_country_flag = ahw_insp_11
@@ -23217,8 +24051,7 @@ ahw_spike_inspect_gates = {
 	if = {
 		limit = {
 			OR = { has_star_flag = ahw_entry_12 has_star_flag = ahw_exit_12 }
-			any_system = { has_star_flag = ahw_entry_12 NOT = { has_star_flag = ahw_broken } }
-			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_insp_12 has_country_flag = ahw_repaired_12 } }
+			event_target:ahw_insp_country = { has_country_flag = ahw_eng_offered_12 NOT = { has_country_flag = ahw_insp_12 } }
 		}
 		event_target:ahw_insp_country = {
 			set_country_flag = ahw_insp_12
@@ -23235,8 +24068,7 @@ ahw_spike_inspect_gates = {
 	if = {
 		limit = {
 			OR = { has_star_flag = ahw_entry_13 has_star_flag = ahw_exit_13 }
-			any_system = { has_star_flag = ahw_entry_13 NOT = { has_star_flag = ahw_broken } }
-			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_insp_13 has_country_flag = ahw_repaired_13 } }
+			event_target:ahw_insp_country = { has_country_flag = ahw_eng_offered_13 NOT = { has_country_flag = ahw_insp_13 } }
 		}
 		event_target:ahw_insp_country = {
 			set_country_flag = ahw_insp_13
@@ -23253,8 +24085,7 @@ ahw_spike_inspect_gates = {
 	if = {
 		limit = {
 			OR = { has_star_flag = ahw_entry_14 has_star_flag = ahw_exit_14 }
-			any_system = { has_star_flag = ahw_entry_14 NOT = { has_star_flag = ahw_broken } }
-			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_insp_14 has_country_flag = ahw_repaired_14 } }
+			event_target:ahw_insp_country = { has_country_flag = ahw_eng_offered_14 NOT = { has_country_flag = ahw_insp_14 } }
 		}
 		event_target:ahw_insp_country = {
 			set_country_flag = ahw_insp_14
@@ -23271,8 +24102,7 @@ ahw_spike_inspect_gates = {
 	if = {
 		limit = {
 			OR = { has_star_flag = ahw_entry_15 has_star_flag = ahw_exit_15 }
-			any_system = { has_star_flag = ahw_entry_15 NOT = { has_star_flag = ahw_broken } }
-			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_insp_15 has_country_flag = ahw_repaired_15 } }
+			event_target:ahw_insp_country = { has_country_flag = ahw_eng_offered_15 NOT = { has_country_flag = ahw_insp_15 } }
 		}
 		event_target:ahw_insp_country = {
 			set_country_flag = ahw_insp_15
@@ -23289,8 +24119,7 @@ ahw_spike_inspect_gates = {
 	if = {
 		limit = {
 			OR = { has_star_flag = ahw_entry_16 has_star_flag = ahw_exit_16 }
-			any_system = { has_star_flag = ahw_entry_16 NOT = { has_star_flag = ahw_broken } }
-			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_insp_16 has_country_flag = ahw_repaired_16 } }
+			event_target:ahw_insp_country = { has_country_flag = ahw_eng_offered_16 NOT = { has_country_flag = ahw_insp_16 } }
 		}
 		event_target:ahw_insp_country = {
 			set_country_flag = ahw_insp_16
@@ -23307,8 +24136,7 @@ ahw_spike_inspect_gates = {
 	if = {
 		limit = {
 			OR = { has_star_flag = ahw_entry_17 has_star_flag = ahw_exit_17 }
-			any_system = { has_star_flag = ahw_entry_17 NOT = { has_star_flag = ahw_broken } }
-			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_insp_17 has_country_flag = ahw_repaired_17 } }
+			event_target:ahw_insp_country = { has_country_flag = ahw_eng_offered_17 NOT = { has_country_flag = ahw_insp_17 } }
 		}
 		event_target:ahw_insp_country = {
 			set_country_flag = ahw_insp_17
@@ -23325,8 +24153,7 @@ ahw_spike_inspect_gates = {
 	if = {
 		limit = {
 			OR = { has_star_flag = ahw_entry_18 has_star_flag = ahw_exit_18 }
-			any_system = { has_star_flag = ahw_entry_18 NOT = { has_star_flag = ahw_broken } }
-			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_insp_18 has_country_flag = ahw_repaired_18 } }
+			event_target:ahw_insp_country = { has_country_flag = ahw_eng_offered_18 NOT = { has_country_flag = ahw_insp_18 } }
 		}
 		event_target:ahw_insp_country = {
 			set_country_flag = ahw_insp_18
@@ -23343,8 +24170,7 @@ ahw_spike_inspect_gates = {
 	if = {
 		limit = {
 			OR = { has_star_flag = ahw_entry_19 has_star_flag = ahw_exit_19 }
-			any_system = { has_star_flag = ahw_entry_19 NOT = { has_star_flag = ahw_broken } }
-			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_insp_19 has_country_flag = ahw_repaired_19 } }
+			event_target:ahw_insp_country = { has_country_flag = ahw_eng_offered_19 NOT = { has_country_flag = ahw_insp_19 } }
 		}
 		event_target:ahw_insp_country = {
 			set_country_flag = ahw_insp_19
@@ -23361,8 +24187,7 @@ ahw_spike_inspect_gates = {
 	if = {
 		limit = {
 			OR = { has_star_flag = ahw_entry_20 has_star_flag = ahw_exit_20 }
-			any_system = { has_star_flag = ahw_entry_20 NOT = { has_star_flag = ahw_broken } }
-			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_insp_20 has_country_flag = ahw_repaired_20 } }
+			event_target:ahw_insp_country = { has_country_flag = ahw_eng_offered_20 NOT = { has_country_flag = ahw_insp_20 } }
 		}
 		event_target:ahw_insp_country = {
 			set_country_flag = ahw_insp_20
@@ -23379,8 +24204,7 @@ ahw_spike_inspect_gates = {
 	if = {
 		limit = {
 			OR = { has_star_flag = ahw_entry_21 has_star_flag = ahw_exit_21 }
-			any_system = { has_star_flag = ahw_entry_21 NOT = { has_star_flag = ahw_broken } }
-			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_insp_21 has_country_flag = ahw_repaired_21 } }
+			event_target:ahw_insp_country = { has_country_flag = ahw_eng_offered_21 NOT = { has_country_flag = ahw_insp_21 } }
 		}
 		event_target:ahw_insp_country = {
 			set_country_flag = ahw_insp_21
@@ -23397,8 +24221,7 @@ ahw_spike_inspect_gates = {
 	if = {
 		limit = {
 			OR = { has_star_flag = ahw_entry_22 has_star_flag = ahw_exit_22 }
-			any_system = { has_star_flag = ahw_entry_22 NOT = { has_star_flag = ahw_broken } }
-			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_insp_22 has_country_flag = ahw_repaired_22 } }
+			event_target:ahw_insp_country = { has_country_flag = ahw_eng_offered_22 NOT = { has_country_flag = ahw_insp_22 } }
 		}
 		event_target:ahw_insp_country = {
 			set_country_flag = ahw_insp_22
@@ -23415,8 +24238,7 @@ ahw_spike_inspect_gates = {
 	if = {
 		limit = {
 			OR = { has_star_flag = ahw_entry_23 has_star_flag = ahw_exit_23 }
-			any_system = { has_star_flag = ahw_entry_23 NOT = { has_star_flag = ahw_broken } }
-			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_insp_23 has_country_flag = ahw_repaired_23 } }
+			event_target:ahw_insp_country = { has_country_flag = ahw_eng_offered_23 NOT = { has_country_flag = ahw_insp_23 } }
 		}
 		event_target:ahw_insp_country = {
 			set_country_flag = ahw_insp_23
@@ -23433,8 +24255,7 @@ ahw_spike_inspect_gates = {
 	if = {
 		limit = {
 			OR = { has_star_flag = ahw_entry_24 has_star_flag = ahw_exit_24 }
-			any_system = { has_star_flag = ahw_entry_24 NOT = { has_star_flag = ahw_broken } }
-			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_insp_24 has_country_flag = ahw_repaired_24 } }
+			event_target:ahw_insp_country = { has_country_flag = ahw_eng_offered_24 NOT = { has_country_flag = ahw_insp_24 } }
 		}
 		event_target:ahw_insp_country = {
 			set_country_flag = ahw_insp_24
@@ -23451,8 +24272,7 @@ ahw_spike_inspect_gates = {
 	if = {
 		limit = {
 			OR = { has_star_flag = ahw_entry_25 has_star_flag = ahw_exit_25 }
-			any_system = { has_star_flag = ahw_entry_25 NOT = { has_star_flag = ahw_broken } }
-			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_insp_25 has_country_flag = ahw_repaired_25 } }
+			event_target:ahw_insp_country = { has_country_flag = ahw_eng_offered_25 NOT = { has_country_flag = ahw_insp_25 } }
 		}
 		event_target:ahw_insp_country = {
 			set_country_flag = ahw_insp_25
@@ -23469,8 +24289,7 @@ ahw_spike_inspect_gates = {
 	if = {
 		limit = {
 			OR = { has_star_flag = ahw_entry_26 has_star_flag = ahw_exit_26 }
-			any_system = { has_star_flag = ahw_entry_26 NOT = { has_star_flag = ahw_broken } }
-			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_insp_26 has_country_flag = ahw_repaired_26 } }
+			event_target:ahw_insp_country = { has_country_flag = ahw_eng_offered_26 NOT = { has_country_flag = ahw_insp_26 } }
 		}
 		event_target:ahw_insp_country = {
 			set_country_flag = ahw_insp_26
@@ -23487,8 +24306,7 @@ ahw_spike_inspect_gates = {
 	if = {
 		limit = {
 			OR = { has_star_flag = ahw_entry_27 has_star_flag = ahw_exit_27 }
-			any_system = { has_star_flag = ahw_entry_27 NOT = { has_star_flag = ahw_broken } }
-			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_insp_27 has_country_flag = ahw_repaired_27 } }
+			event_target:ahw_insp_country = { has_country_flag = ahw_eng_offered_27 NOT = { has_country_flag = ahw_insp_27 } }
 		}
 		event_target:ahw_insp_country = {
 			set_country_flag = ahw_insp_27
@@ -23505,8 +24323,7 @@ ahw_spike_inspect_gates = {
 	if = {
 		limit = {
 			OR = { has_star_flag = ahw_entry_28 has_star_flag = ahw_exit_28 }
-			any_system = { has_star_flag = ahw_entry_28 NOT = { has_star_flag = ahw_broken } }
-			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_insp_28 has_country_flag = ahw_repaired_28 } }
+			event_target:ahw_insp_country = { has_country_flag = ahw_eng_offered_28 NOT = { has_country_flag = ahw_insp_28 } }
 		}
 		event_target:ahw_insp_country = {
 			set_country_flag = ahw_insp_28
@@ -23523,8 +24340,7 @@ ahw_spike_inspect_gates = {
 	if = {
 		limit = {
 			OR = { has_star_flag = ahw_entry_29 has_star_flag = ahw_exit_29 }
-			any_system = { has_star_flag = ahw_entry_29 NOT = { has_star_flag = ahw_broken } }
-			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_insp_29 has_country_flag = ahw_repaired_29 } }
+			event_target:ahw_insp_country = { has_country_flag = ahw_eng_offered_29 NOT = { has_country_flag = ahw_insp_29 } }
 		}
 		event_target:ahw_insp_country = {
 			set_country_flag = ahw_insp_29
@@ -23541,8 +24357,7 @@ ahw_spike_inspect_gates = {
 	if = {
 		limit = {
 			OR = { has_star_flag = ahw_entry_30 has_star_flag = ahw_exit_30 }
-			any_system = { has_star_flag = ahw_entry_30 NOT = { has_star_flag = ahw_broken } }
-			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_insp_30 has_country_flag = ahw_repaired_30 } }
+			event_target:ahw_insp_country = { has_country_flag = ahw_eng_offered_30 NOT = { has_country_flag = ahw_insp_30 } }
 		}
 		event_target:ahw_insp_country = {
 			set_country_flag = ahw_insp_30
@@ -23559,8 +24374,7 @@ ahw_spike_inspect_gates = {
 	if = {
 		limit = {
 			OR = { has_star_flag = ahw_entry_31 has_star_flag = ahw_exit_31 }
-			any_system = { has_star_flag = ahw_entry_31 NOT = { has_star_flag = ahw_broken } }
-			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_insp_31 has_country_flag = ahw_repaired_31 } }
+			event_target:ahw_insp_country = { has_country_flag = ahw_eng_offered_31 NOT = { has_country_flag = ahw_insp_31 } }
 		}
 		event_target:ahw_insp_country = {
 			set_country_flag = ahw_insp_31
@@ -23577,8 +24391,7 @@ ahw_spike_inspect_gates = {
 	if = {
 		limit = {
 			OR = { has_star_flag = ahw_entry_32 has_star_flag = ahw_exit_32 }
-			any_system = { has_star_flag = ahw_entry_32 NOT = { has_star_flag = ahw_broken } }
-			event_target:ahw_insp_country = { NOR = { has_country_flag = ahw_insp_32 has_country_flag = ahw_repaired_32 } }
+			event_target:ahw_insp_country = { has_country_flag = ahw_eng_offered_32 NOT = { has_country_flag = ahw_insp_32 } }
 		}
 		event_target:ahw_insp_country = {
 			set_country_flag = ahw_insp_32
@@ -23594,7 +24407,7 @@ ahw_spike_inspect_gates = {
 	}
 }
 
-# this = a portal just repaired: its repairer remembers the pair (no inspection grant for it).
+# this = a portal just repaired: its repairer remembers the pair (no inspection study for it).
 ahw_spike_flag_repairer = {
 	if = {
 		limit = { check_variable = { which = ahw_pair value = 1 } }
@@ -23726,13 +24539,13 @@ ahw_spike_flag_repairer = {
 	}
 }
 
-# this = a foreign portal where a fleet of event_target:ahw_insp_country stayed 10 days: Gate
-# Theory by its centre's kind, once per portal (ahw_spike_centre_grant).
+# this = the portal of a finished centre study: Gate Theory by its centre's kind
+# (ahw_spike_centre_grant), once per portal.
 ahw_spike_inspect_centre = {
 	if = {
 		limit = {
 			check_variable = { which = ahw_pair value = 1 }
-			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_1 } }
+			event_target:ahw_insp_country = { has_country_flag = ahw_phys_offered_1 NOT = { has_country_flag = ahw_phys_1 } }
 		}
 		event_target:ahw_insp_country = { set_country_flag = ahw_phys_1 }
 		ahw_spike_centre_grant = yes
@@ -23740,7 +24553,7 @@ ahw_spike_inspect_centre = {
 	if = {
 		limit = {
 			check_variable = { which = ahw_pair value = 2 }
-			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_2 } }
+			event_target:ahw_insp_country = { has_country_flag = ahw_phys_offered_2 NOT = { has_country_flag = ahw_phys_2 } }
 		}
 		event_target:ahw_insp_country = { set_country_flag = ahw_phys_2 }
 		ahw_spike_centre_grant = yes
@@ -23748,7 +24561,7 @@ ahw_spike_inspect_centre = {
 	if = {
 		limit = {
 			check_variable = { which = ahw_pair value = 3 }
-			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_3 } }
+			event_target:ahw_insp_country = { has_country_flag = ahw_phys_offered_3 NOT = { has_country_flag = ahw_phys_3 } }
 		}
 		event_target:ahw_insp_country = { set_country_flag = ahw_phys_3 }
 		ahw_spike_centre_grant = yes
@@ -23756,7 +24569,7 @@ ahw_spike_inspect_centre = {
 	if = {
 		limit = {
 			check_variable = { which = ahw_pair value = 4 }
-			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_4 } }
+			event_target:ahw_insp_country = { has_country_flag = ahw_phys_offered_4 NOT = { has_country_flag = ahw_phys_4 } }
 		}
 		event_target:ahw_insp_country = { set_country_flag = ahw_phys_4 }
 		ahw_spike_centre_grant = yes
@@ -23764,7 +24577,7 @@ ahw_spike_inspect_centre = {
 	if = {
 		limit = {
 			check_variable = { which = ahw_pair value = 5 }
-			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_5 } }
+			event_target:ahw_insp_country = { has_country_flag = ahw_phys_offered_5 NOT = { has_country_flag = ahw_phys_5 } }
 		}
 		event_target:ahw_insp_country = { set_country_flag = ahw_phys_5 }
 		ahw_spike_centre_grant = yes
@@ -23772,7 +24585,7 @@ ahw_spike_inspect_centre = {
 	if = {
 		limit = {
 			check_variable = { which = ahw_pair value = 6 }
-			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_6 } }
+			event_target:ahw_insp_country = { has_country_flag = ahw_phys_offered_6 NOT = { has_country_flag = ahw_phys_6 } }
 		}
 		event_target:ahw_insp_country = { set_country_flag = ahw_phys_6 }
 		ahw_spike_centre_grant = yes
@@ -23780,7 +24593,7 @@ ahw_spike_inspect_centre = {
 	if = {
 		limit = {
 			check_variable = { which = ahw_pair value = 7 }
-			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_7 } }
+			event_target:ahw_insp_country = { has_country_flag = ahw_phys_offered_7 NOT = { has_country_flag = ahw_phys_7 } }
 		}
 		event_target:ahw_insp_country = { set_country_flag = ahw_phys_7 }
 		ahw_spike_centre_grant = yes
@@ -23788,7 +24601,7 @@ ahw_spike_inspect_centre = {
 	if = {
 		limit = {
 			check_variable = { which = ahw_pair value = 8 }
-			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_8 } }
+			event_target:ahw_insp_country = { has_country_flag = ahw_phys_offered_8 NOT = { has_country_flag = ahw_phys_8 } }
 		}
 		event_target:ahw_insp_country = { set_country_flag = ahw_phys_8 }
 		ahw_spike_centre_grant = yes
@@ -23796,7 +24609,7 @@ ahw_spike_inspect_centre = {
 	if = {
 		limit = {
 			check_variable = { which = ahw_pair value = 9 }
-			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_9 } }
+			event_target:ahw_insp_country = { has_country_flag = ahw_phys_offered_9 NOT = { has_country_flag = ahw_phys_9 } }
 		}
 		event_target:ahw_insp_country = { set_country_flag = ahw_phys_9 }
 		ahw_spike_centre_grant = yes
@@ -23804,7 +24617,7 @@ ahw_spike_inspect_centre = {
 	if = {
 		limit = {
 			check_variable = { which = ahw_pair value = 10 }
-			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_10 } }
+			event_target:ahw_insp_country = { has_country_flag = ahw_phys_offered_10 NOT = { has_country_flag = ahw_phys_10 } }
 		}
 		event_target:ahw_insp_country = { set_country_flag = ahw_phys_10 }
 		ahw_spike_centre_grant = yes
@@ -23812,7 +24625,7 @@ ahw_spike_inspect_centre = {
 	if = {
 		limit = {
 			check_variable = { which = ahw_pair value = 11 }
-			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_11 } }
+			event_target:ahw_insp_country = { has_country_flag = ahw_phys_offered_11 NOT = { has_country_flag = ahw_phys_11 } }
 		}
 		event_target:ahw_insp_country = { set_country_flag = ahw_phys_11 }
 		ahw_spike_centre_grant = yes
@@ -23820,7 +24633,7 @@ ahw_spike_inspect_centre = {
 	if = {
 		limit = {
 			check_variable = { which = ahw_pair value = 12 }
-			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_12 } }
+			event_target:ahw_insp_country = { has_country_flag = ahw_phys_offered_12 NOT = { has_country_flag = ahw_phys_12 } }
 		}
 		event_target:ahw_insp_country = { set_country_flag = ahw_phys_12 }
 		ahw_spike_centre_grant = yes
@@ -23828,7 +24641,7 @@ ahw_spike_inspect_centre = {
 	if = {
 		limit = {
 			check_variable = { which = ahw_pair value = 13 }
-			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_13 } }
+			event_target:ahw_insp_country = { has_country_flag = ahw_phys_offered_13 NOT = { has_country_flag = ahw_phys_13 } }
 		}
 		event_target:ahw_insp_country = { set_country_flag = ahw_phys_13 }
 		ahw_spike_centre_grant = yes
@@ -23836,7 +24649,7 @@ ahw_spike_inspect_centre = {
 	if = {
 		limit = {
 			check_variable = { which = ahw_pair value = 14 }
-			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_14 } }
+			event_target:ahw_insp_country = { has_country_flag = ahw_phys_offered_14 NOT = { has_country_flag = ahw_phys_14 } }
 		}
 		event_target:ahw_insp_country = { set_country_flag = ahw_phys_14 }
 		ahw_spike_centre_grant = yes
@@ -23844,7 +24657,7 @@ ahw_spike_inspect_centre = {
 	if = {
 		limit = {
 			check_variable = { which = ahw_pair value = 15 }
-			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_15 } }
+			event_target:ahw_insp_country = { has_country_flag = ahw_phys_offered_15 NOT = { has_country_flag = ahw_phys_15 } }
 		}
 		event_target:ahw_insp_country = { set_country_flag = ahw_phys_15 }
 		ahw_spike_centre_grant = yes
@@ -23852,7 +24665,7 @@ ahw_spike_inspect_centre = {
 	if = {
 		limit = {
 			check_variable = { which = ahw_pair value = 16 }
-			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_16 } }
+			event_target:ahw_insp_country = { has_country_flag = ahw_phys_offered_16 NOT = { has_country_flag = ahw_phys_16 } }
 		}
 		event_target:ahw_insp_country = { set_country_flag = ahw_phys_16 }
 		ahw_spike_centre_grant = yes
@@ -23860,7 +24673,7 @@ ahw_spike_inspect_centre = {
 	if = {
 		limit = {
 			check_variable = { which = ahw_pair value = 17 }
-			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_17 } }
+			event_target:ahw_insp_country = { has_country_flag = ahw_phys_offered_17 NOT = { has_country_flag = ahw_phys_17 } }
 		}
 		event_target:ahw_insp_country = { set_country_flag = ahw_phys_17 }
 		ahw_spike_centre_grant = yes
@@ -23868,7 +24681,7 @@ ahw_spike_inspect_centre = {
 	if = {
 		limit = {
 			check_variable = { which = ahw_pair value = 18 }
-			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_18 } }
+			event_target:ahw_insp_country = { has_country_flag = ahw_phys_offered_18 NOT = { has_country_flag = ahw_phys_18 } }
 		}
 		event_target:ahw_insp_country = { set_country_flag = ahw_phys_18 }
 		ahw_spike_centre_grant = yes
@@ -23876,7 +24689,7 @@ ahw_spike_inspect_centre = {
 	if = {
 		limit = {
 			check_variable = { which = ahw_pair value = 19 }
-			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_19 } }
+			event_target:ahw_insp_country = { has_country_flag = ahw_phys_offered_19 NOT = { has_country_flag = ahw_phys_19 } }
 		}
 		event_target:ahw_insp_country = { set_country_flag = ahw_phys_19 }
 		ahw_spike_centre_grant = yes
@@ -23884,7 +24697,7 @@ ahw_spike_inspect_centre = {
 	if = {
 		limit = {
 			check_variable = { which = ahw_pair value = 20 }
-			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_20 } }
+			event_target:ahw_insp_country = { has_country_flag = ahw_phys_offered_20 NOT = { has_country_flag = ahw_phys_20 } }
 		}
 		event_target:ahw_insp_country = { set_country_flag = ahw_phys_20 }
 		ahw_spike_centre_grant = yes
@@ -23892,7 +24705,7 @@ ahw_spike_inspect_centre = {
 	if = {
 		limit = {
 			check_variable = { which = ahw_pair value = 21 }
-			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_21 } }
+			event_target:ahw_insp_country = { has_country_flag = ahw_phys_offered_21 NOT = { has_country_flag = ahw_phys_21 } }
 		}
 		event_target:ahw_insp_country = { set_country_flag = ahw_phys_21 }
 		ahw_spike_centre_grant = yes
@@ -23900,7 +24713,7 @@ ahw_spike_inspect_centre = {
 	if = {
 		limit = {
 			check_variable = { which = ahw_pair value = 22 }
-			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_22 } }
+			event_target:ahw_insp_country = { has_country_flag = ahw_phys_offered_22 NOT = { has_country_flag = ahw_phys_22 } }
 		}
 		event_target:ahw_insp_country = { set_country_flag = ahw_phys_22 }
 		ahw_spike_centre_grant = yes
@@ -23908,7 +24721,7 @@ ahw_spike_inspect_centre = {
 	if = {
 		limit = {
 			check_variable = { which = ahw_pair value = 23 }
-			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_23 } }
+			event_target:ahw_insp_country = { has_country_flag = ahw_phys_offered_23 NOT = { has_country_flag = ahw_phys_23 } }
 		}
 		event_target:ahw_insp_country = { set_country_flag = ahw_phys_23 }
 		ahw_spike_centre_grant = yes
@@ -23916,7 +24729,7 @@ ahw_spike_inspect_centre = {
 	if = {
 		limit = {
 			check_variable = { which = ahw_pair value = 24 }
-			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_24 } }
+			event_target:ahw_insp_country = { has_country_flag = ahw_phys_offered_24 NOT = { has_country_flag = ahw_phys_24 } }
 		}
 		event_target:ahw_insp_country = { set_country_flag = ahw_phys_24 }
 		ahw_spike_centre_grant = yes
@@ -23924,7 +24737,7 @@ ahw_spike_inspect_centre = {
 	if = {
 		limit = {
 			check_variable = { which = ahw_pair value = 25 }
-			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_25 } }
+			event_target:ahw_insp_country = { has_country_flag = ahw_phys_offered_25 NOT = { has_country_flag = ahw_phys_25 } }
 		}
 		event_target:ahw_insp_country = { set_country_flag = ahw_phys_25 }
 		ahw_spike_centre_grant = yes
@@ -23932,7 +24745,7 @@ ahw_spike_inspect_centre = {
 	if = {
 		limit = {
 			check_variable = { which = ahw_pair value = 26 }
-			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_26 } }
+			event_target:ahw_insp_country = { has_country_flag = ahw_phys_offered_26 NOT = { has_country_flag = ahw_phys_26 } }
 		}
 		event_target:ahw_insp_country = { set_country_flag = ahw_phys_26 }
 		ahw_spike_centre_grant = yes
@@ -23940,7 +24753,7 @@ ahw_spike_inspect_centre = {
 	if = {
 		limit = {
 			check_variable = { which = ahw_pair value = 27 }
-			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_27 } }
+			event_target:ahw_insp_country = { has_country_flag = ahw_phys_offered_27 NOT = { has_country_flag = ahw_phys_27 } }
 		}
 		event_target:ahw_insp_country = { set_country_flag = ahw_phys_27 }
 		ahw_spike_centre_grant = yes
@@ -23948,7 +24761,7 @@ ahw_spike_inspect_centre = {
 	if = {
 		limit = {
 			check_variable = { which = ahw_pair value = 28 }
-			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_28 } }
+			event_target:ahw_insp_country = { has_country_flag = ahw_phys_offered_28 NOT = { has_country_flag = ahw_phys_28 } }
 		}
 		event_target:ahw_insp_country = { set_country_flag = ahw_phys_28 }
 		ahw_spike_centre_grant = yes
@@ -23956,7 +24769,7 @@ ahw_spike_inspect_centre = {
 	if = {
 		limit = {
 			check_variable = { which = ahw_pair value = 29 }
-			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_29 } }
+			event_target:ahw_insp_country = { has_country_flag = ahw_phys_offered_29 NOT = { has_country_flag = ahw_phys_29 } }
 		}
 		event_target:ahw_insp_country = { set_country_flag = ahw_phys_29 }
 		ahw_spike_centre_grant = yes
@@ -23964,7 +24777,7 @@ ahw_spike_inspect_centre = {
 	if = {
 		limit = {
 			check_variable = { which = ahw_pair value = 30 }
-			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_30 } }
+			event_target:ahw_insp_country = { has_country_flag = ahw_phys_offered_30 NOT = { has_country_flag = ahw_phys_30 } }
 		}
 		event_target:ahw_insp_country = { set_country_flag = ahw_phys_30 }
 		ahw_spike_centre_grant = yes
@@ -23972,7 +24785,7 @@ ahw_spike_inspect_centre = {
 	if = {
 		limit = {
 			check_variable = { which = ahw_pair value = 31 }
-			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_31 } }
+			event_target:ahw_insp_country = { has_country_flag = ahw_phys_offered_31 NOT = { has_country_flag = ahw_phys_31 } }
 		}
 		event_target:ahw_insp_country = { set_country_flag = ahw_phys_31 }
 		ahw_spike_centre_grant = yes
@@ -23980,9 +24793,721 @@ ahw_spike_inspect_centre = {
 	if = {
 		limit = {
 			check_variable = { which = ahw_pair value = 32 }
-			event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_phys_32 } }
+			event_target:ahw_insp_country = { has_country_flag = ahw_phys_offered_32 NOT = { has_country_flag = ahw_phys_32 } }
 		}
 		event_target:ahw_insp_country = { set_country_flag = ahw_phys_32 }
 		ahw_spike_centre_grant = yes
+	}
+}
+
+# this = a country whose Gate Construction is capped or researched: withdraw its open gate studies.
+ahw_spike_abort_gate_studies = {
+	if = {
+		limit = { has_country_flag = ahw_eng_offered_1 NOT = { has_country_flag = ahw_insp_1 } }
+		every_system = {
+			limit = { OR = { has_star_flag = ahw_entry_1 has_star_flag = ahw_exit_1 } }
+			prev = {	# the country again; its prev = the system
+			abort_special_project = { type = AHW_INSPECT_GATE_SCI location = prev }
+			abort_special_project = { type = AHW_INSPECT_GATE_CON location = prev }
+			abort_special_project = { type = AHW_INSPECT_GATE_MIL location = prev }
+			}
+		}
+	}
+	if = {
+		limit = { has_country_flag = ahw_eng_offered_2 NOT = { has_country_flag = ahw_insp_2 } }
+		every_system = {
+			limit = { OR = { has_star_flag = ahw_entry_2 has_star_flag = ahw_exit_2 } }
+			prev = {	# the country again; its prev = the system
+			abort_special_project = { type = AHW_INSPECT_GATE_SCI location = prev }
+			abort_special_project = { type = AHW_INSPECT_GATE_CON location = prev }
+			abort_special_project = { type = AHW_INSPECT_GATE_MIL location = prev }
+			}
+		}
+	}
+	if = {
+		limit = { has_country_flag = ahw_eng_offered_3 NOT = { has_country_flag = ahw_insp_3 } }
+		every_system = {
+			limit = { OR = { has_star_flag = ahw_entry_3 has_star_flag = ahw_exit_3 } }
+			prev = {	# the country again; its prev = the system
+			abort_special_project = { type = AHW_INSPECT_GATE_SCI location = prev }
+			abort_special_project = { type = AHW_INSPECT_GATE_CON location = prev }
+			abort_special_project = { type = AHW_INSPECT_GATE_MIL location = prev }
+			}
+		}
+	}
+	if = {
+		limit = { has_country_flag = ahw_eng_offered_4 NOT = { has_country_flag = ahw_insp_4 } }
+		every_system = {
+			limit = { OR = { has_star_flag = ahw_entry_4 has_star_flag = ahw_exit_4 } }
+			prev = {	# the country again; its prev = the system
+			abort_special_project = { type = AHW_INSPECT_GATE_SCI location = prev }
+			abort_special_project = { type = AHW_INSPECT_GATE_CON location = prev }
+			abort_special_project = { type = AHW_INSPECT_GATE_MIL location = prev }
+			}
+		}
+	}
+	if = {
+		limit = { has_country_flag = ahw_eng_offered_5 NOT = { has_country_flag = ahw_insp_5 } }
+		every_system = {
+			limit = { OR = { has_star_flag = ahw_entry_5 has_star_flag = ahw_exit_5 } }
+			prev = {	# the country again; its prev = the system
+			abort_special_project = { type = AHW_INSPECT_GATE_SCI location = prev }
+			abort_special_project = { type = AHW_INSPECT_GATE_CON location = prev }
+			abort_special_project = { type = AHW_INSPECT_GATE_MIL location = prev }
+			}
+		}
+	}
+	if = {
+		limit = { has_country_flag = ahw_eng_offered_6 NOT = { has_country_flag = ahw_insp_6 } }
+		every_system = {
+			limit = { OR = { has_star_flag = ahw_entry_6 has_star_flag = ahw_exit_6 } }
+			prev = {	# the country again; its prev = the system
+			abort_special_project = { type = AHW_INSPECT_GATE_SCI location = prev }
+			abort_special_project = { type = AHW_INSPECT_GATE_CON location = prev }
+			abort_special_project = { type = AHW_INSPECT_GATE_MIL location = prev }
+			}
+		}
+	}
+	if = {
+		limit = { has_country_flag = ahw_eng_offered_7 NOT = { has_country_flag = ahw_insp_7 } }
+		every_system = {
+			limit = { OR = { has_star_flag = ahw_entry_7 has_star_flag = ahw_exit_7 } }
+			prev = {	# the country again; its prev = the system
+			abort_special_project = { type = AHW_INSPECT_GATE_SCI location = prev }
+			abort_special_project = { type = AHW_INSPECT_GATE_CON location = prev }
+			abort_special_project = { type = AHW_INSPECT_GATE_MIL location = prev }
+			}
+		}
+	}
+	if = {
+		limit = { has_country_flag = ahw_eng_offered_8 NOT = { has_country_flag = ahw_insp_8 } }
+		every_system = {
+			limit = { OR = { has_star_flag = ahw_entry_8 has_star_flag = ahw_exit_8 } }
+			prev = {	# the country again; its prev = the system
+			abort_special_project = { type = AHW_INSPECT_GATE_SCI location = prev }
+			abort_special_project = { type = AHW_INSPECT_GATE_CON location = prev }
+			abort_special_project = { type = AHW_INSPECT_GATE_MIL location = prev }
+			}
+		}
+	}
+	if = {
+		limit = { has_country_flag = ahw_eng_offered_9 NOT = { has_country_flag = ahw_insp_9 } }
+		every_system = {
+			limit = { OR = { has_star_flag = ahw_entry_9 has_star_flag = ahw_exit_9 } }
+			prev = {	# the country again; its prev = the system
+			abort_special_project = { type = AHW_INSPECT_GATE_SCI location = prev }
+			abort_special_project = { type = AHW_INSPECT_GATE_CON location = prev }
+			abort_special_project = { type = AHW_INSPECT_GATE_MIL location = prev }
+			}
+		}
+	}
+	if = {
+		limit = { has_country_flag = ahw_eng_offered_10 NOT = { has_country_flag = ahw_insp_10 } }
+		every_system = {
+			limit = { OR = { has_star_flag = ahw_entry_10 has_star_flag = ahw_exit_10 } }
+			prev = {	# the country again; its prev = the system
+			abort_special_project = { type = AHW_INSPECT_GATE_SCI location = prev }
+			abort_special_project = { type = AHW_INSPECT_GATE_CON location = prev }
+			abort_special_project = { type = AHW_INSPECT_GATE_MIL location = prev }
+			}
+		}
+	}
+	if = {
+		limit = { has_country_flag = ahw_eng_offered_11 NOT = { has_country_flag = ahw_insp_11 } }
+		every_system = {
+			limit = { OR = { has_star_flag = ahw_entry_11 has_star_flag = ahw_exit_11 } }
+			prev = {	# the country again; its prev = the system
+			abort_special_project = { type = AHW_INSPECT_GATE_SCI location = prev }
+			abort_special_project = { type = AHW_INSPECT_GATE_CON location = prev }
+			abort_special_project = { type = AHW_INSPECT_GATE_MIL location = prev }
+			}
+		}
+	}
+	if = {
+		limit = { has_country_flag = ahw_eng_offered_12 NOT = { has_country_flag = ahw_insp_12 } }
+		every_system = {
+			limit = { OR = { has_star_flag = ahw_entry_12 has_star_flag = ahw_exit_12 } }
+			prev = {	# the country again; its prev = the system
+			abort_special_project = { type = AHW_INSPECT_GATE_SCI location = prev }
+			abort_special_project = { type = AHW_INSPECT_GATE_CON location = prev }
+			abort_special_project = { type = AHW_INSPECT_GATE_MIL location = prev }
+			}
+		}
+	}
+	if = {
+		limit = { has_country_flag = ahw_eng_offered_13 NOT = { has_country_flag = ahw_insp_13 } }
+		every_system = {
+			limit = { OR = { has_star_flag = ahw_entry_13 has_star_flag = ahw_exit_13 } }
+			prev = {	# the country again; its prev = the system
+			abort_special_project = { type = AHW_INSPECT_GATE_SCI location = prev }
+			abort_special_project = { type = AHW_INSPECT_GATE_CON location = prev }
+			abort_special_project = { type = AHW_INSPECT_GATE_MIL location = prev }
+			}
+		}
+	}
+	if = {
+		limit = { has_country_flag = ahw_eng_offered_14 NOT = { has_country_flag = ahw_insp_14 } }
+		every_system = {
+			limit = { OR = { has_star_flag = ahw_entry_14 has_star_flag = ahw_exit_14 } }
+			prev = {	# the country again; its prev = the system
+			abort_special_project = { type = AHW_INSPECT_GATE_SCI location = prev }
+			abort_special_project = { type = AHW_INSPECT_GATE_CON location = prev }
+			abort_special_project = { type = AHW_INSPECT_GATE_MIL location = prev }
+			}
+		}
+	}
+	if = {
+		limit = { has_country_flag = ahw_eng_offered_15 NOT = { has_country_flag = ahw_insp_15 } }
+		every_system = {
+			limit = { OR = { has_star_flag = ahw_entry_15 has_star_flag = ahw_exit_15 } }
+			prev = {	# the country again; its prev = the system
+			abort_special_project = { type = AHW_INSPECT_GATE_SCI location = prev }
+			abort_special_project = { type = AHW_INSPECT_GATE_CON location = prev }
+			abort_special_project = { type = AHW_INSPECT_GATE_MIL location = prev }
+			}
+		}
+	}
+	if = {
+		limit = { has_country_flag = ahw_eng_offered_16 NOT = { has_country_flag = ahw_insp_16 } }
+		every_system = {
+			limit = { OR = { has_star_flag = ahw_entry_16 has_star_flag = ahw_exit_16 } }
+			prev = {	# the country again; its prev = the system
+			abort_special_project = { type = AHW_INSPECT_GATE_SCI location = prev }
+			abort_special_project = { type = AHW_INSPECT_GATE_CON location = prev }
+			abort_special_project = { type = AHW_INSPECT_GATE_MIL location = prev }
+			}
+		}
+	}
+	if = {
+		limit = { has_country_flag = ahw_eng_offered_17 NOT = { has_country_flag = ahw_insp_17 } }
+		every_system = {
+			limit = { OR = { has_star_flag = ahw_entry_17 has_star_flag = ahw_exit_17 } }
+			prev = {	# the country again; its prev = the system
+			abort_special_project = { type = AHW_INSPECT_GATE_SCI location = prev }
+			abort_special_project = { type = AHW_INSPECT_GATE_CON location = prev }
+			abort_special_project = { type = AHW_INSPECT_GATE_MIL location = prev }
+			}
+		}
+	}
+	if = {
+		limit = { has_country_flag = ahw_eng_offered_18 NOT = { has_country_flag = ahw_insp_18 } }
+		every_system = {
+			limit = { OR = { has_star_flag = ahw_entry_18 has_star_flag = ahw_exit_18 } }
+			prev = {	# the country again; its prev = the system
+			abort_special_project = { type = AHW_INSPECT_GATE_SCI location = prev }
+			abort_special_project = { type = AHW_INSPECT_GATE_CON location = prev }
+			abort_special_project = { type = AHW_INSPECT_GATE_MIL location = prev }
+			}
+		}
+	}
+	if = {
+		limit = { has_country_flag = ahw_eng_offered_19 NOT = { has_country_flag = ahw_insp_19 } }
+		every_system = {
+			limit = { OR = { has_star_flag = ahw_entry_19 has_star_flag = ahw_exit_19 } }
+			prev = {	# the country again; its prev = the system
+			abort_special_project = { type = AHW_INSPECT_GATE_SCI location = prev }
+			abort_special_project = { type = AHW_INSPECT_GATE_CON location = prev }
+			abort_special_project = { type = AHW_INSPECT_GATE_MIL location = prev }
+			}
+		}
+	}
+	if = {
+		limit = { has_country_flag = ahw_eng_offered_20 NOT = { has_country_flag = ahw_insp_20 } }
+		every_system = {
+			limit = { OR = { has_star_flag = ahw_entry_20 has_star_flag = ahw_exit_20 } }
+			prev = {	# the country again; its prev = the system
+			abort_special_project = { type = AHW_INSPECT_GATE_SCI location = prev }
+			abort_special_project = { type = AHW_INSPECT_GATE_CON location = prev }
+			abort_special_project = { type = AHW_INSPECT_GATE_MIL location = prev }
+			}
+		}
+	}
+	if = {
+		limit = { has_country_flag = ahw_eng_offered_21 NOT = { has_country_flag = ahw_insp_21 } }
+		every_system = {
+			limit = { OR = { has_star_flag = ahw_entry_21 has_star_flag = ahw_exit_21 } }
+			prev = {	# the country again; its prev = the system
+			abort_special_project = { type = AHW_INSPECT_GATE_SCI location = prev }
+			abort_special_project = { type = AHW_INSPECT_GATE_CON location = prev }
+			abort_special_project = { type = AHW_INSPECT_GATE_MIL location = prev }
+			}
+		}
+	}
+	if = {
+		limit = { has_country_flag = ahw_eng_offered_22 NOT = { has_country_flag = ahw_insp_22 } }
+		every_system = {
+			limit = { OR = { has_star_flag = ahw_entry_22 has_star_flag = ahw_exit_22 } }
+			prev = {	# the country again; its prev = the system
+			abort_special_project = { type = AHW_INSPECT_GATE_SCI location = prev }
+			abort_special_project = { type = AHW_INSPECT_GATE_CON location = prev }
+			abort_special_project = { type = AHW_INSPECT_GATE_MIL location = prev }
+			}
+		}
+	}
+	if = {
+		limit = { has_country_flag = ahw_eng_offered_23 NOT = { has_country_flag = ahw_insp_23 } }
+		every_system = {
+			limit = { OR = { has_star_flag = ahw_entry_23 has_star_flag = ahw_exit_23 } }
+			prev = {	# the country again; its prev = the system
+			abort_special_project = { type = AHW_INSPECT_GATE_SCI location = prev }
+			abort_special_project = { type = AHW_INSPECT_GATE_CON location = prev }
+			abort_special_project = { type = AHW_INSPECT_GATE_MIL location = prev }
+			}
+		}
+	}
+	if = {
+		limit = { has_country_flag = ahw_eng_offered_24 NOT = { has_country_flag = ahw_insp_24 } }
+		every_system = {
+			limit = { OR = { has_star_flag = ahw_entry_24 has_star_flag = ahw_exit_24 } }
+			prev = {	# the country again; its prev = the system
+			abort_special_project = { type = AHW_INSPECT_GATE_SCI location = prev }
+			abort_special_project = { type = AHW_INSPECT_GATE_CON location = prev }
+			abort_special_project = { type = AHW_INSPECT_GATE_MIL location = prev }
+			}
+		}
+	}
+	if = {
+		limit = { has_country_flag = ahw_eng_offered_25 NOT = { has_country_flag = ahw_insp_25 } }
+		every_system = {
+			limit = { OR = { has_star_flag = ahw_entry_25 has_star_flag = ahw_exit_25 } }
+			prev = {	# the country again; its prev = the system
+			abort_special_project = { type = AHW_INSPECT_GATE_SCI location = prev }
+			abort_special_project = { type = AHW_INSPECT_GATE_CON location = prev }
+			abort_special_project = { type = AHW_INSPECT_GATE_MIL location = prev }
+			}
+		}
+	}
+	if = {
+		limit = { has_country_flag = ahw_eng_offered_26 NOT = { has_country_flag = ahw_insp_26 } }
+		every_system = {
+			limit = { OR = { has_star_flag = ahw_entry_26 has_star_flag = ahw_exit_26 } }
+			prev = {	# the country again; its prev = the system
+			abort_special_project = { type = AHW_INSPECT_GATE_SCI location = prev }
+			abort_special_project = { type = AHW_INSPECT_GATE_CON location = prev }
+			abort_special_project = { type = AHW_INSPECT_GATE_MIL location = prev }
+			}
+		}
+	}
+	if = {
+		limit = { has_country_flag = ahw_eng_offered_27 NOT = { has_country_flag = ahw_insp_27 } }
+		every_system = {
+			limit = { OR = { has_star_flag = ahw_entry_27 has_star_flag = ahw_exit_27 } }
+			prev = {	# the country again; its prev = the system
+			abort_special_project = { type = AHW_INSPECT_GATE_SCI location = prev }
+			abort_special_project = { type = AHW_INSPECT_GATE_CON location = prev }
+			abort_special_project = { type = AHW_INSPECT_GATE_MIL location = prev }
+			}
+		}
+	}
+	if = {
+		limit = { has_country_flag = ahw_eng_offered_28 NOT = { has_country_flag = ahw_insp_28 } }
+		every_system = {
+			limit = { OR = { has_star_flag = ahw_entry_28 has_star_flag = ahw_exit_28 } }
+			prev = {	# the country again; its prev = the system
+			abort_special_project = { type = AHW_INSPECT_GATE_SCI location = prev }
+			abort_special_project = { type = AHW_INSPECT_GATE_CON location = prev }
+			abort_special_project = { type = AHW_INSPECT_GATE_MIL location = prev }
+			}
+		}
+	}
+	if = {
+		limit = { has_country_flag = ahw_eng_offered_29 NOT = { has_country_flag = ahw_insp_29 } }
+		every_system = {
+			limit = { OR = { has_star_flag = ahw_entry_29 has_star_flag = ahw_exit_29 } }
+			prev = {	# the country again; its prev = the system
+			abort_special_project = { type = AHW_INSPECT_GATE_SCI location = prev }
+			abort_special_project = { type = AHW_INSPECT_GATE_CON location = prev }
+			abort_special_project = { type = AHW_INSPECT_GATE_MIL location = prev }
+			}
+		}
+	}
+	if = {
+		limit = { has_country_flag = ahw_eng_offered_30 NOT = { has_country_flag = ahw_insp_30 } }
+		every_system = {
+			limit = { OR = { has_star_flag = ahw_entry_30 has_star_flag = ahw_exit_30 } }
+			prev = {	# the country again; its prev = the system
+			abort_special_project = { type = AHW_INSPECT_GATE_SCI location = prev }
+			abort_special_project = { type = AHW_INSPECT_GATE_CON location = prev }
+			abort_special_project = { type = AHW_INSPECT_GATE_MIL location = prev }
+			}
+		}
+	}
+	if = {
+		limit = { has_country_flag = ahw_eng_offered_31 NOT = { has_country_flag = ahw_insp_31 } }
+		every_system = {
+			limit = { OR = { has_star_flag = ahw_entry_31 has_star_flag = ahw_exit_31 } }
+			prev = {	# the country again; its prev = the system
+			abort_special_project = { type = AHW_INSPECT_GATE_SCI location = prev }
+			abort_special_project = { type = AHW_INSPECT_GATE_CON location = prev }
+			abort_special_project = { type = AHW_INSPECT_GATE_MIL location = prev }
+			}
+		}
+	}
+	if = {
+		limit = { has_country_flag = ahw_eng_offered_32 NOT = { has_country_flag = ahw_insp_32 } }
+		every_system = {
+			limit = { OR = { has_star_flag = ahw_entry_32 has_star_flag = ahw_exit_32 } }
+			prev = {	# the country again; its prev = the system
+			abort_special_project = { type = AHW_INSPECT_GATE_SCI location = prev }
+			abort_special_project = { type = AHW_INSPECT_GATE_CON location = prev }
+			abort_special_project = { type = AHW_INSPECT_GATE_MIL location = prev }
+			}
+		}
+	}
+}
+
+# this = a country whose Gate Theory is capped or researched: withdraw its open centre studies.
+ahw_spike_abort_centre_studies = {
+	if = {
+		limit = { has_country_flag = ahw_phys_offered_1 NOT = { has_country_flag = ahw_phys_1 } }
+		every_system = {
+			limit = { has_star_flag = ahw_entry_1 }
+			prev = {
+			abort_special_project = { type = AHW_INSPECT_CENTRE_SCI location = prev }
+			abort_special_project = { type = AHW_INSPECT_CENTRE_CON location = prev }
+			abort_special_project = { type = AHW_INSPECT_CENTRE_MIL location = prev }
+			}
+		}
+	}
+	if = {
+		limit = { has_country_flag = ahw_phys_offered_2 NOT = { has_country_flag = ahw_phys_2 } }
+		every_system = {
+			limit = { has_star_flag = ahw_entry_2 }
+			prev = {
+			abort_special_project = { type = AHW_INSPECT_CENTRE_SCI location = prev }
+			abort_special_project = { type = AHW_INSPECT_CENTRE_CON location = prev }
+			abort_special_project = { type = AHW_INSPECT_CENTRE_MIL location = prev }
+			}
+		}
+	}
+	if = {
+		limit = { has_country_flag = ahw_phys_offered_3 NOT = { has_country_flag = ahw_phys_3 } }
+		every_system = {
+			limit = { has_star_flag = ahw_entry_3 }
+			prev = {
+			abort_special_project = { type = AHW_INSPECT_CENTRE_SCI location = prev }
+			abort_special_project = { type = AHW_INSPECT_CENTRE_CON location = prev }
+			abort_special_project = { type = AHW_INSPECT_CENTRE_MIL location = prev }
+			}
+		}
+	}
+	if = {
+		limit = { has_country_flag = ahw_phys_offered_4 NOT = { has_country_flag = ahw_phys_4 } }
+		every_system = {
+			limit = { has_star_flag = ahw_entry_4 }
+			prev = {
+			abort_special_project = { type = AHW_INSPECT_CENTRE_SCI location = prev }
+			abort_special_project = { type = AHW_INSPECT_CENTRE_CON location = prev }
+			abort_special_project = { type = AHW_INSPECT_CENTRE_MIL location = prev }
+			}
+		}
+	}
+	if = {
+		limit = { has_country_flag = ahw_phys_offered_5 NOT = { has_country_flag = ahw_phys_5 } }
+		every_system = {
+			limit = { has_star_flag = ahw_entry_5 }
+			prev = {
+			abort_special_project = { type = AHW_INSPECT_CENTRE_SCI location = prev }
+			abort_special_project = { type = AHW_INSPECT_CENTRE_CON location = prev }
+			abort_special_project = { type = AHW_INSPECT_CENTRE_MIL location = prev }
+			}
+		}
+	}
+	if = {
+		limit = { has_country_flag = ahw_phys_offered_6 NOT = { has_country_flag = ahw_phys_6 } }
+		every_system = {
+			limit = { has_star_flag = ahw_entry_6 }
+			prev = {
+			abort_special_project = { type = AHW_INSPECT_CENTRE_SCI location = prev }
+			abort_special_project = { type = AHW_INSPECT_CENTRE_CON location = prev }
+			abort_special_project = { type = AHW_INSPECT_CENTRE_MIL location = prev }
+			}
+		}
+	}
+	if = {
+		limit = { has_country_flag = ahw_phys_offered_7 NOT = { has_country_flag = ahw_phys_7 } }
+		every_system = {
+			limit = { has_star_flag = ahw_entry_7 }
+			prev = {
+			abort_special_project = { type = AHW_INSPECT_CENTRE_SCI location = prev }
+			abort_special_project = { type = AHW_INSPECT_CENTRE_CON location = prev }
+			abort_special_project = { type = AHW_INSPECT_CENTRE_MIL location = prev }
+			}
+		}
+	}
+	if = {
+		limit = { has_country_flag = ahw_phys_offered_8 NOT = { has_country_flag = ahw_phys_8 } }
+		every_system = {
+			limit = { has_star_flag = ahw_entry_8 }
+			prev = {
+			abort_special_project = { type = AHW_INSPECT_CENTRE_SCI location = prev }
+			abort_special_project = { type = AHW_INSPECT_CENTRE_CON location = prev }
+			abort_special_project = { type = AHW_INSPECT_CENTRE_MIL location = prev }
+			}
+		}
+	}
+	if = {
+		limit = { has_country_flag = ahw_phys_offered_9 NOT = { has_country_flag = ahw_phys_9 } }
+		every_system = {
+			limit = { has_star_flag = ahw_entry_9 }
+			prev = {
+			abort_special_project = { type = AHW_INSPECT_CENTRE_SCI location = prev }
+			abort_special_project = { type = AHW_INSPECT_CENTRE_CON location = prev }
+			abort_special_project = { type = AHW_INSPECT_CENTRE_MIL location = prev }
+			}
+		}
+	}
+	if = {
+		limit = { has_country_flag = ahw_phys_offered_10 NOT = { has_country_flag = ahw_phys_10 } }
+		every_system = {
+			limit = { has_star_flag = ahw_entry_10 }
+			prev = {
+			abort_special_project = { type = AHW_INSPECT_CENTRE_SCI location = prev }
+			abort_special_project = { type = AHW_INSPECT_CENTRE_CON location = prev }
+			abort_special_project = { type = AHW_INSPECT_CENTRE_MIL location = prev }
+			}
+		}
+	}
+	if = {
+		limit = { has_country_flag = ahw_phys_offered_11 NOT = { has_country_flag = ahw_phys_11 } }
+		every_system = {
+			limit = { has_star_flag = ahw_entry_11 }
+			prev = {
+			abort_special_project = { type = AHW_INSPECT_CENTRE_SCI location = prev }
+			abort_special_project = { type = AHW_INSPECT_CENTRE_CON location = prev }
+			abort_special_project = { type = AHW_INSPECT_CENTRE_MIL location = prev }
+			}
+		}
+	}
+	if = {
+		limit = { has_country_flag = ahw_phys_offered_12 NOT = { has_country_flag = ahw_phys_12 } }
+		every_system = {
+			limit = { has_star_flag = ahw_entry_12 }
+			prev = {
+			abort_special_project = { type = AHW_INSPECT_CENTRE_SCI location = prev }
+			abort_special_project = { type = AHW_INSPECT_CENTRE_CON location = prev }
+			abort_special_project = { type = AHW_INSPECT_CENTRE_MIL location = prev }
+			}
+		}
+	}
+	if = {
+		limit = { has_country_flag = ahw_phys_offered_13 NOT = { has_country_flag = ahw_phys_13 } }
+		every_system = {
+			limit = { has_star_flag = ahw_entry_13 }
+			prev = {
+			abort_special_project = { type = AHW_INSPECT_CENTRE_SCI location = prev }
+			abort_special_project = { type = AHW_INSPECT_CENTRE_CON location = prev }
+			abort_special_project = { type = AHW_INSPECT_CENTRE_MIL location = prev }
+			}
+		}
+	}
+	if = {
+		limit = { has_country_flag = ahw_phys_offered_14 NOT = { has_country_flag = ahw_phys_14 } }
+		every_system = {
+			limit = { has_star_flag = ahw_entry_14 }
+			prev = {
+			abort_special_project = { type = AHW_INSPECT_CENTRE_SCI location = prev }
+			abort_special_project = { type = AHW_INSPECT_CENTRE_CON location = prev }
+			abort_special_project = { type = AHW_INSPECT_CENTRE_MIL location = prev }
+			}
+		}
+	}
+	if = {
+		limit = { has_country_flag = ahw_phys_offered_15 NOT = { has_country_flag = ahw_phys_15 } }
+		every_system = {
+			limit = { has_star_flag = ahw_entry_15 }
+			prev = {
+			abort_special_project = { type = AHW_INSPECT_CENTRE_SCI location = prev }
+			abort_special_project = { type = AHW_INSPECT_CENTRE_CON location = prev }
+			abort_special_project = { type = AHW_INSPECT_CENTRE_MIL location = prev }
+			}
+		}
+	}
+	if = {
+		limit = { has_country_flag = ahw_phys_offered_16 NOT = { has_country_flag = ahw_phys_16 } }
+		every_system = {
+			limit = { has_star_flag = ahw_entry_16 }
+			prev = {
+			abort_special_project = { type = AHW_INSPECT_CENTRE_SCI location = prev }
+			abort_special_project = { type = AHW_INSPECT_CENTRE_CON location = prev }
+			abort_special_project = { type = AHW_INSPECT_CENTRE_MIL location = prev }
+			}
+		}
+	}
+	if = {
+		limit = { has_country_flag = ahw_phys_offered_17 NOT = { has_country_flag = ahw_phys_17 } }
+		every_system = {
+			limit = { has_star_flag = ahw_entry_17 }
+			prev = {
+			abort_special_project = { type = AHW_INSPECT_CENTRE_SCI location = prev }
+			abort_special_project = { type = AHW_INSPECT_CENTRE_CON location = prev }
+			abort_special_project = { type = AHW_INSPECT_CENTRE_MIL location = prev }
+			}
+		}
+	}
+	if = {
+		limit = { has_country_flag = ahw_phys_offered_18 NOT = { has_country_flag = ahw_phys_18 } }
+		every_system = {
+			limit = { has_star_flag = ahw_entry_18 }
+			prev = {
+			abort_special_project = { type = AHW_INSPECT_CENTRE_SCI location = prev }
+			abort_special_project = { type = AHW_INSPECT_CENTRE_CON location = prev }
+			abort_special_project = { type = AHW_INSPECT_CENTRE_MIL location = prev }
+			}
+		}
+	}
+	if = {
+		limit = { has_country_flag = ahw_phys_offered_19 NOT = { has_country_flag = ahw_phys_19 } }
+		every_system = {
+			limit = { has_star_flag = ahw_entry_19 }
+			prev = {
+			abort_special_project = { type = AHW_INSPECT_CENTRE_SCI location = prev }
+			abort_special_project = { type = AHW_INSPECT_CENTRE_CON location = prev }
+			abort_special_project = { type = AHW_INSPECT_CENTRE_MIL location = prev }
+			}
+		}
+	}
+	if = {
+		limit = { has_country_flag = ahw_phys_offered_20 NOT = { has_country_flag = ahw_phys_20 } }
+		every_system = {
+			limit = { has_star_flag = ahw_entry_20 }
+			prev = {
+			abort_special_project = { type = AHW_INSPECT_CENTRE_SCI location = prev }
+			abort_special_project = { type = AHW_INSPECT_CENTRE_CON location = prev }
+			abort_special_project = { type = AHW_INSPECT_CENTRE_MIL location = prev }
+			}
+		}
+	}
+	if = {
+		limit = { has_country_flag = ahw_phys_offered_21 NOT = { has_country_flag = ahw_phys_21 } }
+		every_system = {
+			limit = { has_star_flag = ahw_entry_21 }
+			prev = {
+			abort_special_project = { type = AHW_INSPECT_CENTRE_SCI location = prev }
+			abort_special_project = { type = AHW_INSPECT_CENTRE_CON location = prev }
+			abort_special_project = { type = AHW_INSPECT_CENTRE_MIL location = prev }
+			}
+		}
+	}
+	if = {
+		limit = { has_country_flag = ahw_phys_offered_22 NOT = { has_country_flag = ahw_phys_22 } }
+		every_system = {
+			limit = { has_star_flag = ahw_entry_22 }
+			prev = {
+			abort_special_project = { type = AHW_INSPECT_CENTRE_SCI location = prev }
+			abort_special_project = { type = AHW_INSPECT_CENTRE_CON location = prev }
+			abort_special_project = { type = AHW_INSPECT_CENTRE_MIL location = prev }
+			}
+		}
+	}
+	if = {
+		limit = { has_country_flag = ahw_phys_offered_23 NOT = { has_country_flag = ahw_phys_23 } }
+		every_system = {
+			limit = { has_star_flag = ahw_entry_23 }
+			prev = {
+			abort_special_project = { type = AHW_INSPECT_CENTRE_SCI location = prev }
+			abort_special_project = { type = AHW_INSPECT_CENTRE_CON location = prev }
+			abort_special_project = { type = AHW_INSPECT_CENTRE_MIL location = prev }
+			}
+		}
+	}
+	if = {
+		limit = { has_country_flag = ahw_phys_offered_24 NOT = { has_country_flag = ahw_phys_24 } }
+		every_system = {
+			limit = { has_star_flag = ahw_entry_24 }
+			prev = {
+			abort_special_project = { type = AHW_INSPECT_CENTRE_SCI location = prev }
+			abort_special_project = { type = AHW_INSPECT_CENTRE_CON location = prev }
+			abort_special_project = { type = AHW_INSPECT_CENTRE_MIL location = prev }
+			}
+		}
+	}
+	if = {
+		limit = { has_country_flag = ahw_phys_offered_25 NOT = { has_country_flag = ahw_phys_25 } }
+		every_system = {
+			limit = { has_star_flag = ahw_entry_25 }
+			prev = {
+			abort_special_project = { type = AHW_INSPECT_CENTRE_SCI location = prev }
+			abort_special_project = { type = AHW_INSPECT_CENTRE_CON location = prev }
+			abort_special_project = { type = AHW_INSPECT_CENTRE_MIL location = prev }
+			}
+		}
+	}
+	if = {
+		limit = { has_country_flag = ahw_phys_offered_26 NOT = { has_country_flag = ahw_phys_26 } }
+		every_system = {
+			limit = { has_star_flag = ahw_entry_26 }
+			prev = {
+			abort_special_project = { type = AHW_INSPECT_CENTRE_SCI location = prev }
+			abort_special_project = { type = AHW_INSPECT_CENTRE_CON location = prev }
+			abort_special_project = { type = AHW_INSPECT_CENTRE_MIL location = prev }
+			}
+		}
+	}
+	if = {
+		limit = { has_country_flag = ahw_phys_offered_27 NOT = { has_country_flag = ahw_phys_27 } }
+		every_system = {
+			limit = { has_star_flag = ahw_entry_27 }
+			prev = {
+			abort_special_project = { type = AHW_INSPECT_CENTRE_SCI location = prev }
+			abort_special_project = { type = AHW_INSPECT_CENTRE_CON location = prev }
+			abort_special_project = { type = AHW_INSPECT_CENTRE_MIL location = prev }
+			}
+		}
+	}
+	if = {
+		limit = { has_country_flag = ahw_phys_offered_28 NOT = { has_country_flag = ahw_phys_28 } }
+		every_system = {
+			limit = { has_star_flag = ahw_entry_28 }
+			prev = {
+			abort_special_project = { type = AHW_INSPECT_CENTRE_SCI location = prev }
+			abort_special_project = { type = AHW_INSPECT_CENTRE_CON location = prev }
+			abort_special_project = { type = AHW_INSPECT_CENTRE_MIL location = prev }
+			}
+		}
+	}
+	if = {
+		limit = { has_country_flag = ahw_phys_offered_29 NOT = { has_country_flag = ahw_phys_29 } }
+		every_system = {
+			limit = { has_star_flag = ahw_entry_29 }
+			prev = {
+			abort_special_project = { type = AHW_INSPECT_CENTRE_SCI location = prev }
+			abort_special_project = { type = AHW_INSPECT_CENTRE_CON location = prev }
+			abort_special_project = { type = AHW_INSPECT_CENTRE_MIL location = prev }
+			}
+		}
+	}
+	if = {
+		limit = { has_country_flag = ahw_phys_offered_30 NOT = { has_country_flag = ahw_phys_30 } }
+		every_system = {
+			limit = { has_star_flag = ahw_entry_30 }
+			prev = {
+			abort_special_project = { type = AHW_INSPECT_CENTRE_SCI location = prev }
+			abort_special_project = { type = AHW_INSPECT_CENTRE_CON location = prev }
+			abort_special_project = { type = AHW_INSPECT_CENTRE_MIL location = prev }
+			}
+		}
+	}
+	if = {
+		limit = { has_country_flag = ahw_phys_offered_31 NOT = { has_country_flag = ahw_phys_31 } }
+		every_system = {
+			limit = { has_star_flag = ahw_entry_31 }
+			prev = {
+			abort_special_project = { type = AHW_INSPECT_CENTRE_SCI location = prev }
+			abort_special_project = { type = AHW_INSPECT_CENTRE_CON location = prev }
+			abort_special_project = { type = AHW_INSPECT_CENTRE_MIL location = prev }
+			}
+		}
+	}
+	if = {
+		limit = { has_country_flag = ahw_phys_offered_32 NOT = { has_country_flag = ahw_phys_32 } }
+		every_system = {
+			limit = { has_star_flag = ahw_entry_32 }
+			prev = {
+			abort_special_project = { type = AHW_INSPECT_CENTRE_SCI location = prev }
+			abort_special_project = { type = AHW_INSPECT_CENTRE_CON location = prev }
+			abort_special_project = { type = AHW_INSPECT_CENTRE_MIL location = prev }
+			}
+		}
 	}
 }

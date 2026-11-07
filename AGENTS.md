@@ -63,7 +63,7 @@ Nothing player-local may decide what is built. The freeze is the slowest machine
 **Timings are from mkDell** (user, 2026-11-06: about as old as the base game; nobody is expected to
 play on such a machine): acceptable there is acceptable for players.
 
-**Next:** the rest of the spike order in item 7 — nomads and the contract next, then express (runs 36–37: techs, all grants and the 80 % cap work) (runs 32–35 finished debris, bare centres and the drain: toxoid −0.02 armour regen, pulsar no shield regen plus −10 % of max a month); then the rest of the open list (the ring's exact
+**Next:** run 38 (`0.0.40-SPIKE`: inspection as studies, offered on entry, withdrawn at the cap); then the rest of the spike order in item 7 — nomads and the contract, then express (runs 36–37: techs, all grants and the 80 % cap work) (runs 32–35 finished debris, bare centres and the drain: toxoid −0.02 armour regen, pulsar no shield regen plus −10 % of max a month); then the rest of the open list (the ring's exact
 speed is parked — user, 2026-11-04: "not too important to me now"). Everything is still the
 spike (`*spike*` files); nothing is shippable yet.
 
@@ -142,8 +142,8 @@ placement and the shortcut do not.
    pays about the repair's cost in trade. **Round 2026-11-06**: the ring is explored, not
    revealed (the study `set_visited`s only our exit node; ring stars a faint ~10 % map icon —
    per-empire hiding does not exist); portals get the centre mix too; after one's own study,
-   inspecting a gate someone else repaired (any fleet, ~10 days) gives engineering +5 % (+7 % on
-   first entry, `on_entering_system_first_time`), a foreign portal gives physics +7 % when its
+   inspecting a gate someone else repaired (a study offered on entry, 15 days — 2026-11-07) gives engineering +5 % (+7 % on
+   a study offered on the first entry), a foreign portal gives physics +7 % when its
    centre is a kind not seen before, else +5 % (once per portal; portals also come as neutron
    stars, 2026-11-06: four kinds);
    all grants together at most 80 %. Spike order after run 23:
@@ -263,6 +263,33 @@ hull 200, armour 100, shields 200 each; the science and construction ships 300 /
 error.log lines after the build (the build's own: the probe's `move_system` misses, the
 `ahw_*_tmp` targets, `ahw_exits`/`ahw_pair` in log texts — as before).
 
+**Inspection as studies (`0.0.40-SPIKE`, user 2026-11-07: "how would a player/AI empire know"
+about 10 days of waiting?)**: `ahw_spike.60` (`on_entering_system_fleet`, every regular
+country's fleets) offers a 15-day special project at the system entered — `AHW_INSPECT_GATE_*`
+(Gate Construction) for repaired gates there that we did not repair, `AHW_INSPECT_CENTRE_*`
+(Gate Theory) at a foreign portal — in the variant for the finder's class (`_SCI`/`_CON`/`_MIL`;
+`requirements` cannot say "any class"), once per gate / portal (`ahw_eng_offered_<n>`,
+`ahw_phys_offered_<n>`). Every entry is remembered (`ahw_entered_<n>`), so +7 % = offered on the
+first entry (`ahw_first_<n>`, now permanent). Done: `.64` / `.65` grant. **Cap**:
+`ahw_spike_cap_check` after every grant and on `on_tech_increased` (`.63`): a tech at 0.8 or
+researched → `ahw_closed_<tech>`, its open studies withdrawn (`abort_special_project` at both
+ends of each offered, undone pair), none offered any more. 0.0.39's waiting (`.61`, `.62`, the
+timed flags) is gone.
+
+**Test, run 38** (`0.0.40-SPIKE`, a new medium game, this mod and dev tools; Esc before each
+console line; save after each step).
+1. `event ahw_spike.6`, `event ahw_spike.41`, a day, `event ahw_spike.45`, `event ahw_spike.44`,
+   `event ahw_spike.7`: both at 65 %.
+2. Move **only the test science ship** out of our portal to the anchor and back in. Expected on
+   arrival: "Inspect the Repaired Gate" in the situation log (science); start it (15 days).
+   Gate Construction **72 %** (offered on our first entry: a spawn is none). Then move AHW Test
+   Fleet out and in: no second study.
+3. `event ahw_spike.46` (next to a foreign portal; game.log names it); move **AHW Test Fleet**
+   (military) one jump into it. Expected: "Observe the Portal's Heart" for military ships; do it
+   with the fleet. Gate Theory **72 %**.
+4. `event ahw_spike.46` again, a ship into that portal: a second centre study shows. Do **not**
+   start it; `event ahw_spike.47`: both at **80 %**, and that study **disappears** from the log.
+
 **Run 37 (2026-11-07, `0.0.39-SPIKE`, saves 2200.01.01–06.02, game.log): every grant works, the cap
 holds.** Study 15 → head start 65 (01.02); Gate Construction **+7 → 72** (03.08, our own portal
 Caedris 21, repaired by "someone else" via `.44` — +7: the test ships were spawned there on 01.01,
@@ -274,7 +301,7 @@ hole); `.47` asked 0.3 and got **+0.08** each → 0.8. Save 06.02: `stored_techp
 `_toxoid`. A country with **every** tech (584, id 16777226, no type) lists ours too — a
 game-internal one, not an empire.
 
-**Exploration and inspection grants, the cap (`0.0.39-SPIKE`, design 2026-11-06)**: every grant
+**Exploration and inspection grants, the cap (`0.0.39-SPIKE`, design 2026-11-06; the waiting replaced by studies in 0.0.40)**: every grant
 goes through `ahw_spike_grant_tech` — at most 0.8 of a tech over all grants, counted in the
 country variables `ahw_got_theory` / `ahw_got_construction`. **Inspection**: a fleet of a studied
 country (`ahw_highway_studied`, so the head start counts) entering a portal or ring node

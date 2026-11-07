@@ -169,16 +169,22 @@ The connections between the ring and the regular galaxy are special, not hyperla
   then seeing how somebody else repaired it, is worth more than never having seen it broken).
   **More by looking around (user, 2026-11-06)**, each once per empire, and only **after its own
   study** (one has to know what one is looking at):
-  - **Engineering: inspecting a gate somebody else repaired**, at either end (in its portal or at
-    its exit in the ring): any fleet — every ship type — stays about 10 days in the system (a
-    short event). **+5 %**, or **+7 %** when that was the empire's first entry into the system
-    (`on_entering_system_first_time`). Once per gate.
-  - **Physics: other centres.** A fleet staying at a foreign portal (any ship, about 10 days, as
-    above): **+7 %** when its centre is a kind the empire has never seen before, **+5 %** when it
-    has (user, 2026-11-06: the higher grant is for the first sight of a kind, not for a first entry
-    into the system). Once per portal. Four kinds exist (black hole, pulsar, toxoid, and the
-    neutron star in portals only); the own portal's kind counts as seen. Ring centres cannot feed
-    physics: no ship reaches the ring without it.
+  **As studies (user, 2026-11-07, replacing "a fleet stays ~10 days", which neither a player nor
+  the AI could know about):** when any ship of a country that has studied a gate (or got the
+  head start) enters a portal or ring node where one is due, a **study pops up there** (a special
+  project at that system, **15 days**), for the **class of the ship that found it** (science,
+  construction or military; a study names one class) — that ship is already there and can start
+  at once. Once a tech's grants reach the cap (or it is researched), its open studies are
+  withdrawn and no new ones offered.
+  - **Engineering: a gate somebody else repaired**, at either end (in its portal or at its exit
+    in the ring). **+7 %** when the study was offered on the country's first entry into that
+    system, else **+5 %**. Once per gate; never for a gate the country repaired itself.
+  - **Physics: other centres.** A foreign portal (its anchor not ours): **+7 %** when its centre
+    is a kind the empire has never seen before, **+5 %** when it has (user, 2026-11-06: the
+    higher grant is for the first sight of a kind, not for a first entry into the system). Once
+    per portal. Four kinds exist (black hole, pulsar, toxoid, and the neutron star in portals
+    only); the own portal's kind counts as seen. Ring centres cannot feed physics: no ship
+    reaches the ring without it.
   - **Cap: all grants together give at most 80 % of each tech** (user, 2026-11-06), so a
     study-only empire can still earn up to 65 % by exploring.
   They meet when an empire studies its own gate and a nomad then repairs it, or when it gives up

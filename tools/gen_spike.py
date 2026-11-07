@@ -823,22 +823,44 @@ ahw_spike_find_centre = {
     return ''.join(out)
 
 
+CLASSES = ['SCI', 'CON', 'MIL']  # study variants: the class of the ship that found it
+
+
 def inspection():
-    """0.0.39 (design 2026-11-06): the exploration and inspection grants keep per-pair memory in
-    country flags, so they need one block per pair. All run in a system, with
-    event_target:ahw_insp_country (or ahw_repairer) the country."""
-    first, gates, repairer, centre = [], [], [], []
+    """0.0.40 (user, 2026-11-07): the inspection grants are studies (special projects), offered
+    when a ship of a studied country enters a portal or ring node, for the class of that ship.
+    Per-pair memory in country flags (one block per pair); all run in a system, with
+    event_target:ahw_insp_country (or ahw_repairer) the country.
+    Flags per pair n: ahw_entered_n (a ship of ours has entered a system with an end of gate n),
+    ahw_eng_offered_n / ahw_insp_n (gate study offered / done), ahw_first_n (offered on the first
+    entry: +7 %), ahw_repaired_n (we repaired it: no study), ahw_phys_offered_n / ahw_phys_n
+    (centre study of portal n offered / done)."""
+    scan, entered, gates, repairer, scan_c, centre, abort_g, abort_c = ([] for _ in range(8))
     for n in range(1, PAIRS + 1):
         here = f'OR = {{ has_star_flag = ahw_entry_{n} has_star_flag = ahw_exit_{n} }}'
-        first.append(f'''	if = {{
-		limit = {{ {here} }}
-		event_target:ahw_insp_country = {{ set_timed_country_flag = {{ flag = ahw_first_{n} days = 30 }} }}
-	}}''')
-        gates.append(f'''	if = {{
+        scan.append(f"""	if = {{
 		limit = {{
 			{here}
 			any_system = {{ has_star_flag = ahw_entry_{n} NOT = {{ has_star_flag = ahw_broken }} }}
-			event_target:ahw_insp_country = {{ NOR = {{ has_country_flag = ahw_insp_{n} has_country_flag = ahw_repaired_{n} }} }}
+			event_target:ahw_insp_country = {{ NOR = {{ has_country_flag = ahw_eng_offered_{n} has_country_flag = ahw_repaired_{n} }} }}
+		}}
+		event_target:ahw_insp_country = {{
+			set_country_flag = ahw_eng_offered_{n}
+			set_country_flag = ahw_offer_gate
+			if = {{
+				limit = {{ NOT = {{ has_country_flag = ahw_entered_{n} }} }}
+				set_country_flag = ahw_first_{n}
+			}}
+		}}
+	}}""")
+        entered.append(f"""	if = {{
+		limit = {{ {here} }}
+		event_target:ahw_insp_country = {{ set_country_flag = ahw_entered_{n} }}
+	}}""")
+        gates.append(f"""	if = {{
+		limit = {{
+			{here}
+			event_target:ahw_insp_country = {{ has_country_flag = ahw_eng_offered_{n} NOT = {{ has_country_flag = ahw_insp_{n} }} }}
 		}}
 		event_target:ahw_insp_country = {{
 			set_country_flag = ahw_insp_{n}
@@ -851,44 +873,112 @@ def inspection():
 			}}
 		}}
 		log = "AHW SPIKE gate of pair {n} inspected in \\\\[This.GetName] by \\\\[ahw_insp_country.GetName]"
-	}}''')
-        repairer.append(f'''	if = {{
+	}}""")
+        repairer.append(f"""	if = {{
 		limit = {{ check_variable = {{ which = ahw_pair value = {n} }} }}
 		event_target:ahw_repairer = {{ set_country_flag = ahw_repaired_{n} }}
-	}}''')
-        centre.append(f'''	if = {{
+	}}""")
+        scan_c.append(f"""	if = {{
 		limit = {{
 			check_variable = {{ which = ahw_pair value = {n} }}
-			event_target:ahw_insp_country = {{ NOT = {{ has_country_flag = ahw_phys_{n} }} }}
+			event_target:ahw_insp_country = {{ NOT = {{ has_country_flag = ahw_phys_offered_{n} }} }}
+		}}
+		event_target:ahw_insp_country = {{
+			set_country_flag = ahw_phys_offered_{n}
+			set_country_flag = ahw_offer_centre
+		}}
+	}}""")
+        centre.append(f"""	if = {{
+		limit = {{
+			check_variable = {{ which = ahw_pair value = {n} }}
+			event_target:ahw_insp_country = {{ has_country_flag = ahw_phys_offered_{n} NOT = {{ has_country_flag = ahw_phys_{n} }} }}
 		}}
 		event_target:ahw_insp_country = {{ set_country_flag = ahw_phys_{n} }}
 		ahw_spike_centre_grant = yes
-	}}''')
-    return ('''
-# this = a system an empire's ship entered for the first time: remember it 30 days per pair whose
-# gate is here (either end), for the +7 % (on_entering_system_first_time, ahw_spike.62).
-ahw_spike_mark_first_entry = {
-''' + '\n'.join(first) + '''
-}
+	}}""")
+        ab_g = '\n'.join(f'\t\t\tabort_special_project = {{ type = AHW_INSPECT_GATE_{c} location = prev }}' for c in CLASSES)
+        abort_g.append(f"""	if = {{
+		limit = {{ has_country_flag = ahw_eng_offered_{n} NOT = {{ has_country_flag = ahw_insp_{n} }} }}
+		every_system = {{
+			limit = {{ {here} }}
+			prev = {{	# the country again; its prev = the system
+{ab_g}
+			}}
+		}}
+	}}""")
+        ab_c = '\n'.join(f'\t\t\tabort_special_project = {{ type = AHW_INSPECT_CENTRE_{c} location = prev }}' for c in CLASSES)
+        abort_c.append(f"""	if = {{
+		limit = {{ has_country_flag = ahw_phys_offered_{n} NOT = {{ has_country_flag = ahw_phys_{n} }} }}
+		every_system = {{
+			limit = {{ has_star_flag = ahw_entry_{n} }}
+			prev = {{
+{ab_c}
+			}}
+		}}
+	}}""")
+    offer = lambda what: '\n'.join(
+        [f"""	{'if' if k == 0 else 'else_if'} = {{
+		limit = {{ event_target:ahw_finder = {{ is_ship_class = {cls} }} }}
+		enable_special_project = {{ name = AHW_INSPECT_{what}_{c} location = this owner = event_target:ahw_insp_country }}
+	}}""" for k, (c, cls) in enumerate(zip(CLASSES, ['shipclass_science_ship', 'shipclass_constructor', 'shipclass_military']))]
+        + [f"""	else = {{
+		enable_special_project = {{ name = AHW_INSPECT_{what}_SCI location = this owner = event_target:ahw_insp_country }}
+	}}"""])
+    j = '\n'.join
+    return f"""
+# this = a portal or ring node a ship (fleet event_target:ahw_finder) of event_target:ahw_insp_country
+# entered: offer a gate study for the repaired gates here that we did not repair and were not
+# offered yet (country flag ahw_offer_gate for the caller); +7 % if this is our first entry.
+ahw_spike_scan_gates = {{
+{j(scan)}
+}}
 
-# this = a system where a fleet of event_target:ahw_insp_country stayed 10 days (ahw_spike.61):
-# Gate Construction +5 % (+7 % after a first entry) per repaired gate here that the country did
-# not repair itself, once per gate (either end).
-ahw_spike_inspect_gates = {
-''' + '\n'.join(gates) + '''
-}
+# this = as above: remember the entry (after the scans).
+ahw_spike_note_entered = {{
+{j(entered)}
+}}
 
-# this = a portal just repaired: its repairer remembers the pair (no inspection grant for it).
-ahw_spike_flag_repairer = {
-''' + '\n'.join(repairer) + '''
-}
+# this = a foreign portal entered (as above): offer its centre study unless offered before
+# (country flag ahw_offer_centre for the caller).
+ahw_spike_scan_centre = {{
+{j(scan_c)}
+}}
 
-# this = a foreign portal where a fleet of event_target:ahw_insp_country stayed 10 days: Gate
-# Theory by its centre's kind, once per portal (ahw_spike_centre_grant).
-ahw_spike_inspect_centre = {
-''' + '\n'.join(centre) + '''
-}
-''')
+# this = a system: the study for the class of event_target:ahw_finder (science if none fits).
+ahw_spike_offer_gate_study = {{
+{offer('GATE')}
+}}
+ahw_spike_offer_centre_study = {{
+{offer('CENTRE')}
+}}
+
+# this = the system of a finished gate study: Gate Construction +5 % (+7 % if offered on our
+# first entry) per gate here whose study was offered and not done, once per gate.
+ahw_spike_inspect_gates = {{
+{j(gates)}
+}}
+
+# this = a portal just repaired: its repairer remembers the pair (no inspection study for it).
+ahw_spike_flag_repairer = {{
+{j(repairer)}
+}}
+
+# this = the portal of a finished centre study: Gate Theory by its centre's kind
+# (ahw_spike_centre_grant), once per portal.
+ahw_spike_inspect_centre = {{
+{j(centre)}
+}}
+
+# this = a country whose Gate Construction is capped or researched: withdraw its open gate studies.
+ahw_spike_abort_gate_studies = {{
+{j(abort_g)}
+}}
+
+# this = a country whose Gate Theory is capped or researched: withdraw its open centre studies.
+ahw_spike_abort_centre_studies = {{
+{j(abort_c)}
+}}
+"""
 
 
 def main():

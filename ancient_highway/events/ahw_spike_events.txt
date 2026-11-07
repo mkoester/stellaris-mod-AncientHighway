@@ -477,66 +477,91 @@ country_event = {
 	}
 }
 
-# 0.0.39, the inspection grants (design 2026-11-06): a fleet of a country that has studied a gate
-# (or got the head start) arrives in a portal or a ring node; ten days later, if it is idle there
-# and has not arrived anywhere since (ahw_arrived lasts 9 days), it has inspected the system.
-# Scope: fleet, from = the system (on_entering_system_fleet).
+# 0.0.40, the inspection studies (user, 2026-11-07, replacing 0.0.39's 10 days of waiting, which
+# nobody could know about): a fleet enters a portal or ring node (scope fleet, from = the system;
+# on_entering_system_fleet). A country that has studied a gate (or got the head start) is offered
+# a study there - for the class of the ship that found it, 15 days: a gate somebody else repaired
+# (Gate Construction, +7 % if offered on our first entry into that system, else +5 %), a foreign
+# portal's centre (Gate Theory, +7 % for a kind not seen, else +5 %). Every country's entries are
+# remembered, so "first entry" holds for a study offered later.
 fleet_event = {
 	id = ahw_spike.60
 	hide_window = yes
 	is_triggered_only = yes
 	trigger = {
 		exists = owner
-		owner = { has_country_flag = ahw_highway_studied }
+		owner = { is_country_type = default }
 		from = { OR = { has_star_flag = ahw_portal has_star_flag = ahw_ring } }
 	}
 	immediate = {
-		set_timed_fleet_flag = { flag = ahw_arrived days = 9 }
-		fleet_event = { id = ahw_spike.61 days = 10 }
-	}
-}
-
-fleet_event = {
-	id = ahw_spike.61
-	hide_window = yes
-	is_triggered_only = yes
-	trigger = {
-		exists = owner
-		owner = { has_country_flag = ahw_highway_studied }
-		is_fleet_idle = yes
-		NOT = { has_fleet_flag = ahw_arrived }
-		exists = solar_system
-		solar_system = { OR = { has_star_flag = ahw_portal has_star_flag = ahw_ring } }
-	}
-	immediate = {
+		save_event_target_as = ahw_finder
 		owner = { save_event_target_as = ahw_insp_country }
-		solar_system = {
-			# Gate Construction: a repaired gate here (either end) that someone else repaired.
-			ahw_spike_inspect_gates = yes
-			# Gate Theory: a foreign portal's centre (ring centres cannot feed it).
+		from = {
+			if = {
+				limit = {
+					event_target:ahw_insp_country = {
+						has_country_flag = ahw_highway_studied
+						NOT = { has_country_flag = ahw_closed_construction }
+					}
+				}
+				ahw_spike_scan_gates = yes
+			}
+			ahw_spike_note_entered = yes
 			if = {
 				limit = {
 					has_star_flag = ahw_portal
+					event_target:ahw_insp_country = {
+						has_country_flag = ahw_highway_studied
+						NOT = { has_country_flag = ahw_closed_theory }
+					}
 					NOT = { any_neighbor_system = { exists = owner owner = { is_same_value = event_target:ahw_insp_country } } }
 				}
-				ahw_spike_inspect_centre = yes
+				ahw_spike_scan_centre = yes
+			}
+			if = {
+				limit = { event_target:ahw_insp_country = { has_country_flag = ahw_offer_gate } }
+				event_target:ahw_insp_country = { remove_country_flag = ahw_offer_gate }
+				ahw_spike_offer_gate_study = yes
+				log = "AHW SPIKE gate study in [This.GetName] offered to [ahw_insp_country.GetName]"
+			}
+			if = {
+				limit = { event_target:ahw_insp_country = { has_country_flag = ahw_offer_centre } }
+				event_target:ahw_insp_country = { remove_country_flag = ahw_offer_centre }
+				ahw_spike_offer_centre_study = yes
+				log = "AHW SPIKE centre study in [This.GetName] offered to [ahw_insp_country.GetName]"
 			}
 		}
 	}
 }
 
-# The +7 % for a first entry: a ship's first entry of its country into a system (scope ship,
-# from = the system, fromfrom = the country; on_entering_system_first_time).
-ship_event = {
-	id = ahw_spike.62
+# A tech researched: close its studies (ahw_spike_cap_check; on_tech_increased, this = country).
+country_event = {
+	id = ahw_spike.63
 	hide_window = yes
 	is_triggered_only = yes
-	trigger = {
-		from = { OR = { has_star_flag = ahw_portal has_star_flag = ahw_ring } }
-	}
+	trigger = { has_country_flag = ahw_highway_studied }
+	immediate = { ahw_spike_cap_check = yes }
+}
+
+# A gate study done (this = the ship; AHW_INSPECT_GATE_*).
+ship_event = {
+	id = ahw_spike.64
+	hide_window = yes
+	is_triggered_only = yes
 	immediate = {
-		fromfrom = { save_event_target_as = ahw_insp_country }
-		from = { ahw_spike_mark_first_entry = yes }
+		owner = { save_event_target_as = ahw_insp_country }
+		solar_system = { ahw_spike_inspect_gates = yes }
+	}
+}
+
+# A centre study done (this = the ship; AHW_INSPECT_CENTRE_*).
+ship_event = {
+	id = ahw_spike.65
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		owner = { save_event_target_as = ahw_insp_country }
+		solar_system = { ahw_spike_inspect_centre = yes }
 	}
 }
 

@@ -537,12 +537,44 @@ ahw_spike_grant_tech = {
 			add_tech_progress = { tech = $TECH$ progress = ahw_g }
 			change_variable = { which = $VAR$ value = ahw_g }
 		}
+		ahw_spike_cap_check = yes
 		# (a $PARAM$ inside a string is mangled, run 36: the tech's name stays readable, a [This.$VAR$] would not)
 		log = "AHW SPIKE \\[This.GetName]: +\\[This.ahw_g] of $TECH$ (asked $PROGRESS$); granted so far: theory \\[This.ahw_got_theory], construction \\[This.ahw_got_construction]"
 	}
 }
 
-# this = a portal, event_target:ahw_insp_country = the country (ahw_spike_inspect_centre): Gate
+# this = a country (after a grant, and on_tech_increased): once a tech is capped (0.8 granted) or
+# researched, its open inspection studies are withdrawn and no new ones offered (0.0.40, user
+# 2026-11-07).
+ahw_spike_cap_check = {
+	if = {
+		limit = {
+			NOT = { has_country_flag = ahw_closed_construction }
+			OR = {
+				has_technology = ahw_tech_gate_construction
+				check_variable = { which = ahw_got_construction value >= 0.8 }
+			}
+		}
+		set_country_flag = ahw_closed_construction
+		ahw_spike_abort_gate_studies = yes
+		log = "AHW SPIKE \\[This.GetName]: Gate Construction capped or researched - gate studies withdrawn"
+	}
+	if = {
+		limit = {
+			NOT = { has_country_flag = ahw_closed_theory }
+			OR = {
+				has_technology = ahw_tech_gate_theory
+				check_variable = { which = ahw_got_theory value >= 0.8 }
+			}
+		}
+		set_country_flag = ahw_closed_theory
+		ahw_spike_abort_centre_studies = yes
+		log = "AHW SPIKE \\[This.GetName]: Gate Theory capped or researched - centre studies withdrawn"
+	}
+}
+
+# this = a portal, event_target:ahw_insp_country = the country (ahw_spike_inspect_centre, after a
+# centre study): Gate
 # Theory +7 % for a centre of a kind the country has not seen, else +5 % (design 2026-11-06).
 ahw_spike_centre_grant = {
 	if = {

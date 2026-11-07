@@ -164,6 +164,14 @@ the portal's own empire while nobody owns the anchor, or find a lever for the AI
 choice. **The repaired gate loses its owner in 14 of 41 months** (the monthly check takes it
 back); cause open, its Seal switch is unusable meanwhile.
 
+**Run 43, years 2205–2211: the AI takes part.** By 2211 six of eight AI anchors have an outpost
+(save 2211.01.01); the study is offered from 2205.11 and done within 1–2 years (Lavan Order
+2207.03, Chimm Coalition 2207.12, Ztrakporan Corporate Union 2208.04, Ztrakporan Fire Tribes
+2209.08; Commonwealth of Man offered 2206.07, not done; Wacegian offered 2210.10). No AI has a
+gate tech or a repaired gate yet. **Every gate loses its owner** — the AI's broken gates are taken
+back almost every month (171 "now owns the gate" lines); open whether it hinders the AI's repair
+(the upgrade needs the gate's owner). Next look: ~2230.
+
 ## Test, run 43 (a new campaign: the contract again, then a long game)
 
 Run 42's plan, with the shuttling fix: a new medium game, this mod and dev tools, AI empires and

@@ -65,11 +65,15 @@ event = {
 			limit = { ahw_spike_gets_portal = yes }
 			ahw_spike_build_portal = yes
 		}
-		# 0.0.41: nomads get none - logged, so a run shows the filter fired
+		# 0.0.41: nomads get none - logged, so a run shows the filter fired; numbered (0.0.42), since
+		# unmet nomads all read "Unidentified Empire" and repeated lines are dropped (run 39: 1 of 3)
+		event_target:ahw_centre_system = { set_variable = { which = ahw_n_nomads value = 0 } }
 		every_country = {
 			limit = { is_country_type = default is_nomadic = yes }
-			log = "AHW SPIKE no portal for nomadic [This.GetName]"
+			event_target:ahw_centre_system = { change_variable = { which = ahw_n_nomads value = 1 } }
+			log = "AHW SPIKE no portal for nomad [ahw_centre_system.ahw_n_nomads]: [This.GetName]"
 		}
+		event_target:ahw_centre_system = { log = "AHW SPIKE nomads without a portal: [This.ahw_n_nomads]" }
 
 		set_spawn_system_batch = end
 		log = "AHW SPIKE timing: spawn batch ended"
@@ -616,7 +620,7 @@ country_event = {
 		}
 		event_target:ahw_foreign_portal = {
 			random_neighbor_system = { save_event_target_as = ahw_spawn_here }
-			log = "AHW SPIKE test ships next to the foreign portal \[This.GetName]"
+			log = "AHW SPIKE test ships next to the foreign portal [This.GetName]"
 		}
 		ahw_spike_spawn_test_ships = yes
 	}

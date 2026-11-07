@@ -556,7 +556,7 @@ ahw_spike_cap_check = {
 			}
 		}
 		set_country_flag = ahw_closed_construction
-		ahw_spike_abort_gate_studies = yes
+		country_event = { id = ahw_spike.66 }	# withdraws the studies (an event: see tools/gen_spike.py gen_events)
 		log = "AHW SPIKE \\[This.GetName]: Gate Construction capped or researched - gate studies withdrawn"
 	}
 	if = {
@@ -568,7 +568,7 @@ ahw_spike_cap_check = {
 			}
 		}
 		set_country_flag = ahw_closed_theory
-		ahw_spike_abort_centre_studies = yes
+		country_event = { id = ahw_spike.67 }
 		log = "AHW SPIKE \\[This.GetName]: Gate Theory capped or researched - centre studies withdrawn"
 	}
 }

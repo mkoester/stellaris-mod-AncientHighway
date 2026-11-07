@@ -63,7 +63,7 @@ Nothing player-local may decide what is built. The freeze is the slowest machine
 **Timings are from mkDell** (user, 2026-11-06: about as old as the base game; nobody is expected to
 play on such a machine): acceptable there is acceptable for players.
 
-**Next:** the rest of the spike order in item 7 — nomads and the contract (first: **nomads get no portal** — `0.0.41-SPIKE`, untested: `ahw_spike_gets_portal` = `is_country_type = default` and `is_nomadic = no`, at the start and in `ahw_spike.30`; `is_nomadic` is the engine's country code flag, already set at `on_game_start` (vanilla's `nomads.20` tests it from `on_game_start_country`); each skipped nomad logs "no portal for nomadic …"; an empire that embarks later keeps its portal, one that settles gets one; run 38's nomadic Murmies had one), then express (runs 36–38: techs, all grants, inspection studies and the 80 % cap work) (runs 32–35 finished debris, bare centres and the drain: toxoid −0.02 armour regen, pulsar no shield regen plus −10 % of max a month); then the rest of the open list (the ring's exact
+**Next:** the rest of the spike order in item 7 — nomads and the contract (first: **nomads get no portal** — `0.0.41-SPIKE`, run 39 passed: `ahw_spike_gets_portal` = `is_country_type = default` and `is_nomadic = no`, at the start and in `ahw_spike.30`; `is_nomadic` is the engine's country code flag, already set at `on_game_start` (vanilla's `nomads.20` tests it from `on_game_start_country`); each skipped nomad logs "no portal for nomadic …"; an empire that embarks later keeps its portal, one that settles gets one; run 38's nomadic Murmies had one), then express (runs 36–38: techs, all grants, inspection studies and the 80 % cap work) (runs 32–35 finished debris, bare centres and the drain: toxoid −0.02 armour regen, pulsar no shield regen plus −10 % of max a month); then the rest of the open list (the ring's exact
 speed is parked — user, 2026-11-04: "not too important to me now"). Everything is still the
 spike (`*spike*` files); nothing is shippable yet.
 
@@ -262,6 +262,25 @@ skips work again.** Our portal Furon 51 studied, the others broken; test ships i
 hull 200, armour 100, shields 200 each; the science and construction ships 300 / 100 / 200. No
 error.log lines after the build (the build's own: the probe's `move_system` misses, the
 `ahw_*_tmp` targets, `ahw_exits`/`ahw_pair` in log texts — as before).
+
+**Run 39 (2026-11-07, `0.0.41-SPIKE`, a new medium game, game.log 19:36): nomads get no
+portal.** Nine "portal for" lines and one "no portal for nomadic Unidentified Empire" — the game had
+**three** nomads (user): unmet, all three lines read the same and two were dropped as repeats;
+no "portal for" line names a nomad. `0.0.42-SPIKE` numbers the line and logs the total. The build
+took 3 s (19:36:47 → :50). **error.log: 13440 × "Could not find project of type"** (empty type)
+at 19:35:41, while loading, from `abort_special_project` in the scripted effects
+`ahw_spike_abort_*_studies` (since 0.0.40): checked before the special projects load (vanilla
+calls it only from inline scripts and missions); in play it works (run 38's withdrawal). Most
+of the 8.7 MB error.log. `0.0.42-SPIKE`: the two bodies are events `ahw_spike.66` / `.67`
+(`events/ahw_spike_generated_events.txt`, `tools/gen_spike.py` `gen_events`; events load last),
+fired by `ahw_spike_cap_check`. Also a single `\[` in an event's log string (lexer warning, line
+619): only scripted effects need the escape.
+
+**Test, run 40** (`0.0.42-SPIKE`, a new medium game, this mod and dev tools): run 38's steps 1,
+3 and 4 — `event ahw_spike.6`, `event ahw_spike.41`, a day, `event ahw_spike.45`, `event
+ahw_spike.44`, `event ahw_spike.7`; `event ahw_spike.46`, a ship into that portal, leave the
+offered study alone; `event ahw_spike.47`. Expected: both at 80 %, the study gone from the
+situation log, game.log "withdrawn" lines, and error.log free of "Could not find project". game.log: "nomads without a portal: N" with one numbered line per nomad.
 
 **Run 38 (2026-11-07, `0.0.40-SPIKE`, saves 2200.01.01–09.10, screenshots `2026_11_07_10`–`_14`):
 the studies work (user: "looks good").** 65 % after study + head start; the gate study in our

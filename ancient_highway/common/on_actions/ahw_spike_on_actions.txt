@@ -18,6 +18,7 @@ on_single_player_save_game_load = {
 on_monthly_pulse = {
 	events = {
 		ahw_spike.10
+		ahw_spike.50	# 0.0.37: the pulsar's shield drain
 	}
 }
 

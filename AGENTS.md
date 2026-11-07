@@ -63,7 +63,7 @@ Nothing player-local may decide what is built. The freeze is the slowest machine
 **Timings are from mkDell** (user, 2026-11-06: about as old as the base game; nobody is expected to
 play on such a machine): acceptable there is acceptable for players.
 
-**Next:** run 34 (`0.0.36-SPIKE`: the pulsar's shield drain — run 33 found it does nothing, everything else of 33 good), then the spike order in item 7 (techs and grants next); then the rest of the open list (the ring's exact
+**Next:** run 35 (`0.0.37-SPIKE`: the pulsar's monthly shield drain; runs 33–34 found the regen modifiers cannot do it), then the spike order in item 7 (techs and grants next); then the rest of the open list (the ring's exact
 speed is parked — user, 2026-11-04: "not too important to me now"). Everything is still the
 spike (`*spike*` files); nothing is shippable yet.
 
@@ -262,6 +262,22 @@ skips work again.** Our portal Furon 51 studied, the others broken; test ships i
 hull 200, armour 100, shields 200 each; the science and construction ships 300 / 100 / 200. No
 error.log lines after the build (the build's own: the probe's `move_system` misses, the
 `ahw_*_tmp` targets, `ahw_exits`/`ahw_pair` in log texts — as before).
+
+**Run 34 (2026-11-07, `0.0.36-SPIKE`, saves 2200.01.01–05.06; `ahw_spike.43` on 03.06): the
+pulsar stops shield regeneration, but nothing drains.** The 1st Fleet at home (Sol, shields 100):
+0 → 25 (03.16) → 62.5 (04.01) → 100 (05.01), **2.5/day = 0.5 × 5** as read from the files. AHW
+Test Fleet in pulsar node `ahw_node_68_26`: 200 → 100, then **100 for two months**: `ship_shield_
+regen_mult = -1` cancels the negative `_add_perc` too (armour 94 there, unchanged: no toxoid).
+`0.0.37-SPIKE`: the pulsar keeps `_mult = -1` (drops `_add_perc`); `ahw_spike.50`
+(`on_monthly_pulse`) takes **10 % of each ship's maximum shield** a month in pulsar ring nodes
+and portals, by `repair_shield_percentage = -0.10` — whether it takes a negative value is
+untested (the fallback: `reduce_shield` scaled by `ship_size_multiplier`, as the storms scale
+weapons). 10 % is a proposal (armour: ~3 %/month).
+
+**Test, run 35** (`0.0.37-SPIKE`; as run 34): `event ahw_spike.40`, `event ahw_spike.42`, a day,
+AHW Test Fleet into a pulsar node; save there, then on each of the next three 2nds of the month.
+Expected: 200 → 180 → 160 → 140 (10 % of 200 on each 1st). Still 200: a negative
+`repair_shield_percentage` does nothing → the fallback.
 
 **Run 33 (2026-11-07, `0.0.35-SPIKE`, saves 2200.01.02–2200.11.01): debris and bare centres
 look right (user); the toxoid drain works, the pulsar does nothing.** Test corvettes (armour 100,

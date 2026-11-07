@@ -411,3 +411,26 @@ country_event = {
 		log = "AHW SPIKE shields reduced by 100"
 	}
 }
+
+# 0.0.37: the pulsar's shield drain. Its star class stops shield regeneration, but a negative
+# regeneration modifier is cancelled with it (run 34), so the drain is monthly, as vanilla's
+# electric storm does it (cstorms.1100) - here a share of each ship's maximum.
+# Untested: whether repair_shield_percentage takes a negative value.
+event = {
+	id = ahw_spike.50
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = { has_global_flag = ahw_spike_done }
+	immediate = {
+		every_system = {
+			limit = {
+				OR = { has_star_flag = ahw_ring has_star_flag = ahw_portal }
+				is_star_class = ahw_sc_pulsar
+			}
+			every_ship_in_system = {
+				limit = { has_shield_hp > 0 }
+				repair_shield_percentage = -0.10
+			}
+		}
+	}
+}

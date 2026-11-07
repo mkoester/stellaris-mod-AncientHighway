@@ -38,9 +38,9 @@ ahw_sc_pulsar = {
 	arkship_picture = "arkship_pulsar"
 	modifier = {
 		# shield components regenerate (0.5/day a small one, x5 out of combat): stop that
-		# first, or the drain never shows (run 33)
+		# (run 33). The drain is ahw_spike.50, monthly: run 34 showed _mult = -1 also
+		# cancels a negative _add_perc.
 		ship_shield_regen_mult = -1
-		ship_shield_regen_add_perc = -0.02
 	}
 }
 

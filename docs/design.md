@@ -66,7 +66,8 @@ ordinary hyperlanes — or a bit longer, never shorter.
   goes up (or regeneration is cut as well) until shields actually fall. **Run 33**: armour
   −0.1 %/day as meant; shields untouched — shield components regenerate 0.5/day each (×5 out
   of combat), far above −0.02. So the pulsar also cuts regeneration (`ship_shield_regen_mult
-  = -1`, run 34).
+  = -1`, run 34). **Run 34**: that stops regeneration but cancels the negative one too; the
+  drain is now monthly, 10 % of the maximum shield (`ahw_spike.50`, as vanilla's electric storm).
 - **The centres carry no deposit** (user, 2026-11-06; vanilla gave all 80 one in run 32): the
   debris is the road's only resource.
 

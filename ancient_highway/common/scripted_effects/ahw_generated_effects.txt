@@ -20973,51 +20973,51 @@ ahw_make_pair = {
 	event_target:ahw_portal_tmp = {
 		if = {
 			limit = { check_variable = { which = ahw_best_a value = 0 } }
-			spawn_megastructure = { type = ahw_gate_$N$ orbit_distance = 230 orbit_angle = 0 }
+			spawn_megastructure = { type = ahw_gate_broken_$N$ orbit_distance = 230 orbit_angle = 0 }
 		}
 		else_if = {
 			limit = { check_variable = { which = ahw_best_a value = 30 } }
-			spawn_megastructure = { type = ahw_gate_$N$ orbit_distance = 230 orbit_angle = 30 }
+			spawn_megastructure = { type = ahw_gate_broken_$N$ orbit_distance = 230 orbit_angle = 30 }
 		}
 		else_if = {
 			limit = { check_variable = { which = ahw_best_a value = 60 } }
-			spawn_megastructure = { type = ahw_gate_$N$ orbit_distance = 230 orbit_angle = 60 }
+			spawn_megastructure = { type = ahw_gate_broken_$N$ orbit_distance = 230 orbit_angle = 60 }
 		}
 		else_if = {
 			limit = { check_variable = { which = ahw_best_a value = 90 } }
-			spawn_megastructure = { type = ahw_gate_$N$ orbit_distance = 230 orbit_angle = 90 }
+			spawn_megastructure = { type = ahw_gate_broken_$N$ orbit_distance = 230 orbit_angle = 90 }
 		}
 		else_if = {
 			limit = { check_variable = { which = ahw_best_a value = 120 } }
-			spawn_megastructure = { type = ahw_gate_$N$ orbit_distance = 230 orbit_angle = 120 }
+			spawn_megastructure = { type = ahw_gate_broken_$N$ orbit_distance = 230 orbit_angle = 120 }
 		}
 		else_if = {
 			limit = { check_variable = { which = ahw_best_a value = 150 } }
-			spawn_megastructure = { type = ahw_gate_$N$ orbit_distance = 230 orbit_angle = 150 }
+			spawn_megastructure = { type = ahw_gate_broken_$N$ orbit_distance = 230 orbit_angle = 150 }
 		}
 		else_if = {
 			limit = { check_variable = { which = ahw_best_a value = 180 } }
-			spawn_megastructure = { type = ahw_gate_$N$ orbit_distance = 230 orbit_angle = 180 }
+			spawn_megastructure = { type = ahw_gate_broken_$N$ orbit_distance = 230 orbit_angle = 180 }
 		}
 		else_if = {
 			limit = { check_variable = { which = ahw_best_a value = 210 } }
-			spawn_megastructure = { type = ahw_gate_$N$ orbit_distance = 230 orbit_angle = 210 }
+			spawn_megastructure = { type = ahw_gate_broken_$N$ orbit_distance = 230 orbit_angle = 210 }
 		}
 		else_if = {
 			limit = { check_variable = { which = ahw_best_a value = 240 } }
-			spawn_megastructure = { type = ahw_gate_$N$ orbit_distance = 230 orbit_angle = 240 }
+			spawn_megastructure = { type = ahw_gate_broken_$N$ orbit_distance = 230 orbit_angle = 240 }
 		}
 		else_if = {
 			limit = { check_variable = { which = ahw_best_a value = 270 } }
-			spawn_megastructure = { type = ahw_gate_$N$ orbit_distance = 230 orbit_angle = 270 }
+			spawn_megastructure = { type = ahw_gate_broken_$N$ orbit_distance = 230 orbit_angle = 270 }
 		}
 		else_if = {
 			limit = { check_variable = { which = ahw_best_a value = 300 } }
-			spawn_megastructure = { type = ahw_gate_$N$ orbit_distance = 230 orbit_angle = 300 }
+			spawn_megastructure = { type = ahw_gate_broken_$N$ orbit_distance = 230 orbit_angle = 300 }
 		}
 		else_if = {
 			limit = { check_variable = { which = ahw_best_a value = 330 } }
-			spawn_megastructure = { type = ahw_gate_$N$ orbit_distance = 230 orbit_angle = 330 }
+			spawn_megastructure = { type = ahw_gate_broken_$N$ orbit_distance = 230 orbit_angle = 330 }
 		}
 	}
 	event_target:ahw_node_tmp = {
@@ -22708,6 +22708,52 @@ ahw_seal_pair_for_nobody = {
 	else_if = {
 		limit = { check_variable = { which = ahw_pair value = 32 } }
 		set_global_flag = ahw_sealed_32 clear_global_event_target = ahw_sealer_32
+	}
+}
+
+# this = a portal, event_target:ahw_repairer set: the broken gate upgraded and finished by script
+# (console skips, the repair project, the contract) - vanilla's upgrade_megastructure_to +
+# finish_upgrade. Its on_build_complete marks the portal repaired; if the engine does not run it
+# for a scripted finish, the fallback below does (ahw_mark_repaired runs once either way).
+ahw_repair_gate = {
+	every_system_megastructure = {
+		if = { limit = { is_megastructure_type = ahw_gate_broken_1 } upgrade_megastructure_to = ahw_gate_1 finish_upgrade = yes }
+		if = { limit = { is_megastructure_type = ahw_gate_broken_2 } upgrade_megastructure_to = ahw_gate_2 finish_upgrade = yes }
+		if = { limit = { is_megastructure_type = ahw_gate_broken_3 } upgrade_megastructure_to = ahw_gate_3 finish_upgrade = yes }
+		if = { limit = { is_megastructure_type = ahw_gate_broken_4 } upgrade_megastructure_to = ahw_gate_4 finish_upgrade = yes }
+		if = { limit = { is_megastructure_type = ahw_gate_broken_5 } upgrade_megastructure_to = ahw_gate_5 finish_upgrade = yes }
+		if = { limit = { is_megastructure_type = ahw_gate_broken_6 } upgrade_megastructure_to = ahw_gate_6 finish_upgrade = yes }
+		if = { limit = { is_megastructure_type = ahw_gate_broken_7 } upgrade_megastructure_to = ahw_gate_7 finish_upgrade = yes }
+		if = { limit = { is_megastructure_type = ahw_gate_broken_8 } upgrade_megastructure_to = ahw_gate_8 finish_upgrade = yes }
+		if = { limit = { is_megastructure_type = ahw_gate_broken_9 } upgrade_megastructure_to = ahw_gate_9 finish_upgrade = yes }
+		if = { limit = { is_megastructure_type = ahw_gate_broken_10 } upgrade_megastructure_to = ahw_gate_10 finish_upgrade = yes }
+		if = { limit = { is_megastructure_type = ahw_gate_broken_11 } upgrade_megastructure_to = ahw_gate_11 finish_upgrade = yes }
+		if = { limit = { is_megastructure_type = ahw_gate_broken_12 } upgrade_megastructure_to = ahw_gate_12 finish_upgrade = yes }
+		if = { limit = { is_megastructure_type = ahw_gate_broken_13 } upgrade_megastructure_to = ahw_gate_13 finish_upgrade = yes }
+		if = { limit = { is_megastructure_type = ahw_gate_broken_14 } upgrade_megastructure_to = ahw_gate_14 finish_upgrade = yes }
+		if = { limit = { is_megastructure_type = ahw_gate_broken_15 } upgrade_megastructure_to = ahw_gate_15 finish_upgrade = yes }
+		if = { limit = { is_megastructure_type = ahw_gate_broken_16 } upgrade_megastructure_to = ahw_gate_16 finish_upgrade = yes }
+		if = { limit = { is_megastructure_type = ahw_gate_broken_17 } upgrade_megastructure_to = ahw_gate_17 finish_upgrade = yes }
+		if = { limit = { is_megastructure_type = ahw_gate_broken_18 } upgrade_megastructure_to = ahw_gate_18 finish_upgrade = yes }
+		if = { limit = { is_megastructure_type = ahw_gate_broken_19 } upgrade_megastructure_to = ahw_gate_19 finish_upgrade = yes }
+		if = { limit = { is_megastructure_type = ahw_gate_broken_20 } upgrade_megastructure_to = ahw_gate_20 finish_upgrade = yes }
+		if = { limit = { is_megastructure_type = ahw_gate_broken_21 } upgrade_megastructure_to = ahw_gate_21 finish_upgrade = yes }
+		if = { limit = { is_megastructure_type = ahw_gate_broken_22 } upgrade_megastructure_to = ahw_gate_22 finish_upgrade = yes }
+		if = { limit = { is_megastructure_type = ahw_gate_broken_23 } upgrade_megastructure_to = ahw_gate_23 finish_upgrade = yes }
+		if = { limit = { is_megastructure_type = ahw_gate_broken_24 } upgrade_megastructure_to = ahw_gate_24 finish_upgrade = yes }
+		if = { limit = { is_megastructure_type = ahw_gate_broken_25 } upgrade_megastructure_to = ahw_gate_25 finish_upgrade = yes }
+		if = { limit = { is_megastructure_type = ahw_gate_broken_26 } upgrade_megastructure_to = ahw_gate_26 finish_upgrade = yes }
+		if = { limit = { is_megastructure_type = ahw_gate_broken_27 } upgrade_megastructure_to = ahw_gate_27 finish_upgrade = yes }
+		if = { limit = { is_megastructure_type = ahw_gate_broken_28 } upgrade_megastructure_to = ahw_gate_28 finish_upgrade = yes }
+		if = { limit = { is_megastructure_type = ahw_gate_broken_29 } upgrade_megastructure_to = ahw_gate_29 finish_upgrade = yes }
+		if = { limit = { is_megastructure_type = ahw_gate_broken_30 } upgrade_megastructure_to = ahw_gate_30 finish_upgrade = yes }
+		if = { limit = { is_megastructure_type = ahw_gate_broken_31 } upgrade_megastructure_to = ahw_gate_31 finish_upgrade = yes }
+		if = { limit = { is_megastructure_type = ahw_gate_broken_32 } upgrade_megastructure_to = ahw_gate_32 finish_upgrade = yes }
+	}
+	if = {
+		limit = { has_star_flag = ahw_broken }
+		log = "AHW \\[This.GetName]: the scripted upgrade did not mark the gate repaired - marked now"
+		ahw_mark_repaired = yes
 	}
 }
 
@@ -24798,4 +24844,910 @@ ahw_inspect_centre = {
 		event_target:ahw_insp_country = { set_country_flag = ahw_phys_32 }
 		ahw_centre_grant = yes
 	}
+}
+
+# The express on a ring of 40 nodes: stations on nodes 3, 9, 14, 17, 22, 28, 34, 38. Flags first, then the
+# wormholes (vanilla sets a scripted connection's flags before spawning its bypass). No scope.
+ahw_build_express_40 = {
+	event_target:ahw_ring_3 = {
+		set_star_flag = ahw_station
+		set_variable = { which = ahw_station value = 1 }
+		set_star_flag = ahw_xst_a_1
+		set_star_flag = ahw_xst_b_8
+	}
+	event_target:ahw_ring_9 = {
+		set_star_flag = ahw_station
+		set_variable = { which = ahw_station value = 2 }
+		set_star_flag = ahw_xst_a_2
+		set_star_flag = ahw_xst_b_1
+	}
+	event_target:ahw_ring_14 = {
+		set_star_flag = ahw_station
+		set_variable = { which = ahw_station value = 3 }
+		set_star_flag = ahw_xst_a_3
+		set_star_flag = ahw_xst_b_2
+	}
+	event_target:ahw_ring_17 = {
+		set_star_flag = ahw_station
+		set_variable = { which = ahw_station value = 4 }
+		set_star_flag = ahw_xst_a_4
+		set_star_flag = ahw_xst_b_3
+	}
+	event_target:ahw_ring_22 = {
+		set_star_flag = ahw_station
+		set_variable = { which = ahw_station value = 5 }
+		set_star_flag = ahw_xst_a_5
+		set_star_flag = ahw_xst_b_4
+	}
+	event_target:ahw_ring_28 = {
+		set_star_flag = ahw_station
+		set_variable = { which = ahw_station value = 6 }
+		set_star_flag = ahw_xst_a_6
+		set_star_flag = ahw_xst_b_5
+	}
+	event_target:ahw_ring_34 = {
+		set_star_flag = ahw_station
+		set_variable = { which = ahw_station value = 7 }
+		set_star_flag = ahw_xst_a_7
+		set_star_flag = ahw_xst_b_6
+	}
+	event_target:ahw_ring_38 = {
+		set_star_flag = ahw_station
+		set_variable = { which = ahw_station value = 8 }
+		set_star_flag = ahw_xst_a_8
+		set_star_flag = ahw_xst_b_7
+	}
+	event_target:ahw_ring_3 = {
+		spawn_megastructure = { type = ahw_xhole_1 orbit_distance = 220 orbit_angle = 18 }
+		spawn_megastructure = { type = ahw_xhole_8 orbit_distance = 220 orbit_angle = 198 }
+		log = "AHW express station 1 in \\[This.GetName] (node 3)"
+	}
+	event_target:ahw_ring_9 = {
+		spawn_megastructure = { type = ahw_xhole_2 orbit_distance = 220 orbit_angle = 72 }
+		spawn_megastructure = { type = ahw_xhole_1 orbit_distance = 220 orbit_angle = 252 }
+		log = "AHW express station 2 in \\[This.GetName] (node 9)"
+	}
+	event_target:ahw_ring_14 = {
+		spawn_megastructure = { type = ahw_xhole_3 orbit_distance = 220 orbit_angle = 117 }
+		spawn_megastructure = { type = ahw_xhole_2 orbit_distance = 220 orbit_angle = 297 }
+		log = "AHW express station 3 in \\[This.GetName] (node 14)"
+	}
+	event_target:ahw_ring_17 = {
+		spawn_megastructure = { type = ahw_xhole_4 orbit_distance = 220 orbit_angle = 144 }
+		spawn_megastructure = { type = ahw_xhole_3 orbit_distance = 220 orbit_angle = 324 }
+		log = "AHW express station 4 in \\[This.GetName] (node 17)"
+	}
+	event_target:ahw_ring_22 = {
+		spawn_megastructure = { type = ahw_xhole_5 orbit_distance = 220 orbit_angle = 189 }
+		spawn_megastructure = { type = ahw_xhole_4 orbit_distance = 220 orbit_angle = 9 }
+		log = "AHW express station 5 in \\[This.GetName] (node 22)"
+	}
+	event_target:ahw_ring_28 = {
+		spawn_megastructure = { type = ahw_xhole_6 orbit_distance = 220 orbit_angle = 243 }
+		spawn_megastructure = { type = ahw_xhole_5 orbit_distance = 220 orbit_angle = 63 }
+		log = "AHW express station 6 in \\[This.GetName] (node 28)"
+	}
+	event_target:ahw_ring_34 = {
+		spawn_megastructure = { type = ahw_xhole_7 orbit_distance = 220 orbit_angle = 297 }
+		spawn_megastructure = { type = ahw_xhole_6 orbit_distance = 220 orbit_angle = 117 }
+		log = "AHW express station 7 in \\[This.GetName] (node 34)"
+	}
+	event_target:ahw_ring_38 = {
+		spawn_megastructure = { type = ahw_xhole_8 orbit_distance = 220 orbit_angle = 333 }
+		spawn_megastructure = { type = ahw_xhole_7 orbit_distance = 220 orbit_angle = 153 }
+		log = "AHW express station 8 in \\[This.GetName] (node 38)"
+	}
+}
+
+# The express on a ring of 56 nodes: stations on nodes 5, 10, 18, 26, 33, 39, 47, 52. Flags first, then the
+# wormholes (vanilla sets a scripted connection's flags before spawning its bypass). No scope.
+ahw_build_express_56 = {
+	event_target:ahw_ring_5 = {
+		set_star_flag = ahw_station
+		set_variable = { which = ahw_station value = 1 }
+		set_star_flag = ahw_xst_a_1
+		set_star_flag = ahw_xst_b_8
+	}
+	event_target:ahw_ring_10 = {
+		set_star_flag = ahw_station
+		set_variable = { which = ahw_station value = 2 }
+		set_star_flag = ahw_xst_a_2
+		set_star_flag = ahw_xst_b_1
+	}
+	event_target:ahw_ring_18 = {
+		set_star_flag = ahw_station
+		set_variable = { which = ahw_station value = 3 }
+		set_star_flag = ahw_xst_a_3
+		set_star_flag = ahw_xst_b_2
+	}
+	event_target:ahw_ring_26 = {
+		set_star_flag = ahw_station
+		set_variable = { which = ahw_station value = 4 }
+		set_star_flag = ahw_xst_a_4
+		set_star_flag = ahw_xst_b_3
+	}
+	event_target:ahw_ring_33 = {
+		set_star_flag = ahw_station
+		set_variable = { which = ahw_station value = 5 }
+		set_star_flag = ahw_xst_a_5
+		set_star_flag = ahw_xst_b_4
+	}
+	event_target:ahw_ring_39 = {
+		set_star_flag = ahw_station
+		set_variable = { which = ahw_station value = 6 }
+		set_star_flag = ahw_xst_a_6
+		set_star_flag = ahw_xst_b_5
+	}
+	event_target:ahw_ring_47 = {
+		set_star_flag = ahw_station
+		set_variable = { which = ahw_station value = 7 }
+		set_star_flag = ahw_xst_a_7
+		set_star_flag = ahw_xst_b_6
+	}
+	event_target:ahw_ring_52 = {
+		set_star_flag = ahw_station
+		set_variable = { which = ahw_station value = 8 }
+		set_star_flag = ahw_xst_a_8
+		set_star_flag = ahw_xst_b_7
+	}
+	event_target:ahw_ring_5 = {
+		spawn_megastructure = { type = ahw_xhole_1 orbit_distance = 220 orbit_angle = 26 }
+		spawn_megastructure = { type = ahw_xhole_8 orbit_distance = 220 orbit_angle = 206 }
+		log = "AHW express station 1 in \\[This.GetName] (node 5)"
+	}
+	event_target:ahw_ring_10 = {
+		spawn_megastructure = { type = ahw_xhole_2 orbit_distance = 220 orbit_angle = 58 }
+		spawn_megastructure = { type = ahw_xhole_1 orbit_distance = 220 orbit_angle = 238 }
+		log = "AHW express station 2 in \\[This.GetName] (node 10)"
+	}
+	event_target:ahw_ring_18 = {
+		spawn_megastructure = { type = ahw_xhole_3 orbit_distance = 220 orbit_angle = 109 }
+		spawn_megastructure = { type = ahw_xhole_2 orbit_distance = 220 orbit_angle = 289 }
+		log = "AHW express station 3 in \\[This.GetName] (node 18)"
+	}
+	event_target:ahw_ring_26 = {
+		spawn_megastructure = { type = ahw_xhole_4 orbit_distance = 220 orbit_angle = 161 }
+		spawn_megastructure = { type = ahw_xhole_3 orbit_distance = 220 orbit_angle = 341 }
+		log = "AHW express station 4 in \\[This.GetName] (node 26)"
+	}
+	event_target:ahw_ring_33 = {
+		spawn_megastructure = { type = ahw_xhole_5 orbit_distance = 220 orbit_angle = 206 }
+		spawn_megastructure = { type = ahw_xhole_4 orbit_distance = 220 orbit_angle = 26 }
+		log = "AHW express station 5 in \\[This.GetName] (node 33)"
+	}
+	event_target:ahw_ring_39 = {
+		spawn_megastructure = { type = ahw_xhole_6 orbit_distance = 220 orbit_angle = 244 }
+		spawn_megastructure = { type = ahw_xhole_5 orbit_distance = 220 orbit_angle = 64 }
+		log = "AHW express station 6 in \\[This.GetName] (node 39)"
+	}
+	event_target:ahw_ring_47 = {
+		spawn_megastructure = { type = ahw_xhole_7 orbit_distance = 220 orbit_angle = 296 }
+		spawn_megastructure = { type = ahw_xhole_6 orbit_distance = 220 orbit_angle = 116 }
+		log = "AHW express station 7 in \\[This.GetName] (node 47)"
+	}
+	event_target:ahw_ring_52 = {
+		spawn_megastructure = { type = ahw_xhole_8 orbit_distance = 220 orbit_angle = 328 }
+		spawn_megastructure = { type = ahw_xhole_7 orbit_distance = 220 orbit_angle = 148 }
+		log = "AHW express station 8 in \\[This.GetName] (node 52)"
+	}
+}
+
+# The express on a ring of 68 nodes: stations on nodes 6, 14, 23, 32, 40, 47, 57, 65. Flags first, then the
+# wormholes (vanilla sets a scripted connection's flags before spawning its bypass). No scope.
+ahw_build_express_68 = {
+	event_target:ahw_ring_6 = {
+		set_star_flag = ahw_station
+		set_variable = { which = ahw_station value = 1 }
+		set_star_flag = ahw_xst_a_1
+		set_star_flag = ahw_xst_b_8
+	}
+	event_target:ahw_ring_14 = {
+		set_star_flag = ahw_station
+		set_variable = { which = ahw_station value = 2 }
+		set_star_flag = ahw_xst_a_2
+		set_star_flag = ahw_xst_b_1
+	}
+	event_target:ahw_ring_23 = {
+		set_star_flag = ahw_station
+		set_variable = { which = ahw_station value = 3 }
+		set_star_flag = ahw_xst_a_3
+		set_star_flag = ahw_xst_b_2
+	}
+	event_target:ahw_ring_32 = {
+		set_star_flag = ahw_station
+		set_variable = { which = ahw_station value = 4 }
+		set_star_flag = ahw_xst_a_4
+		set_star_flag = ahw_xst_b_3
+	}
+	event_target:ahw_ring_40 = {
+		set_star_flag = ahw_station
+		set_variable = { which = ahw_station value = 5 }
+		set_star_flag = ahw_xst_a_5
+		set_star_flag = ahw_xst_b_4
+	}
+	event_target:ahw_ring_47 = {
+		set_star_flag = ahw_station
+		set_variable = { which = ahw_station value = 6 }
+		set_star_flag = ahw_xst_a_6
+		set_star_flag = ahw_xst_b_5
+	}
+	event_target:ahw_ring_57 = {
+		set_star_flag = ahw_station
+		set_variable = { which = ahw_station value = 7 }
+		set_star_flag = ahw_xst_a_7
+		set_star_flag = ahw_xst_b_6
+	}
+	event_target:ahw_ring_65 = {
+		set_star_flag = ahw_station
+		set_variable = { which = ahw_station value = 8 }
+		set_star_flag = ahw_xst_a_8
+		set_star_flag = ahw_xst_b_7
+	}
+	event_target:ahw_ring_6 = {
+		spawn_megastructure = { type = ahw_xhole_1 orbit_distance = 220 orbit_angle = 26 }
+		spawn_megastructure = { type = ahw_xhole_8 orbit_distance = 220 orbit_angle = 206 }
+		log = "AHW express station 1 in \\[This.GetName] (node 6)"
+	}
+	event_target:ahw_ring_14 = {
+		spawn_megastructure = { type = ahw_xhole_2 orbit_distance = 220 orbit_angle = 69 }
+		spawn_megastructure = { type = ahw_xhole_1 orbit_distance = 220 orbit_angle = 249 }
+		log = "AHW express station 2 in \\[This.GetName] (node 14)"
+	}
+	event_target:ahw_ring_23 = {
+		spawn_megastructure = { type = ahw_xhole_3 orbit_distance = 220 orbit_angle = 116 }
+		spawn_megastructure = { type = ahw_xhole_2 orbit_distance = 220 orbit_angle = 296 }
+		log = "AHW express station 3 in \\[This.GetName] (node 23)"
+	}
+	event_target:ahw_ring_32 = {
+		spawn_megastructure = { type = ahw_xhole_4 orbit_distance = 220 orbit_angle = 164 }
+		spawn_megastructure = { type = ahw_xhole_3 orbit_distance = 220 orbit_angle = 344 }
+		log = "AHW express station 4 in \\[This.GetName] (node 32)"
+	}
+	event_target:ahw_ring_40 = {
+		spawn_megastructure = { type = ahw_xhole_5 orbit_distance = 220 orbit_angle = 206 }
+		spawn_megastructure = { type = ahw_xhole_4 orbit_distance = 220 orbit_angle = 26 }
+		log = "AHW express station 5 in \\[This.GetName] (node 40)"
+	}
+	event_target:ahw_ring_47 = {
+		spawn_megastructure = { type = ahw_xhole_6 orbit_distance = 220 orbit_angle = 244 }
+		spawn_megastructure = { type = ahw_xhole_5 orbit_distance = 220 orbit_angle = 64 }
+		log = "AHW express station 6 in \\[This.GetName] (node 47)"
+	}
+	event_target:ahw_ring_57 = {
+		spawn_megastructure = { type = ahw_xhole_7 orbit_distance = 220 orbit_angle = 296 }
+		spawn_megastructure = { type = ahw_xhole_6 orbit_distance = 220 orbit_angle = 116 }
+		log = "AHW express station 7 in \\[This.GetName] (node 57)"
+	}
+	event_target:ahw_ring_65 = {
+		spawn_megastructure = { type = ahw_xhole_8 orbit_distance = 220 orbit_angle = 339 }
+		spawn_megastructure = { type = ahw_xhole_7 orbit_distance = 220 orbit_angle = 159 }
+		log = "AHW express station 8 in \\[This.GetName] (node 65)"
+	}
+}
+
+# The express on a ring of 80 nodes: stations on nodes 6, 16, 27, 37, 46, 56, 66, 76. Flags first, then the
+# wormholes (vanilla sets a scripted connection's flags before spawning its bypass). No scope.
+ahw_build_express_80 = {
+	event_target:ahw_ring_6 = {
+		set_star_flag = ahw_station
+		set_variable = { which = ahw_station value = 1 }
+		set_star_flag = ahw_xst_a_1
+		set_star_flag = ahw_xst_b_8
+	}
+	event_target:ahw_ring_16 = {
+		set_star_flag = ahw_station
+		set_variable = { which = ahw_station value = 2 }
+		set_star_flag = ahw_xst_a_2
+		set_star_flag = ahw_xst_b_1
+	}
+	event_target:ahw_ring_27 = {
+		set_star_flag = ahw_station
+		set_variable = { which = ahw_station value = 3 }
+		set_star_flag = ahw_xst_a_3
+		set_star_flag = ahw_xst_b_2
+	}
+	event_target:ahw_ring_37 = {
+		set_star_flag = ahw_station
+		set_variable = { which = ahw_station value = 4 }
+		set_star_flag = ahw_xst_a_4
+		set_star_flag = ahw_xst_b_3
+	}
+	event_target:ahw_ring_46 = {
+		set_star_flag = ahw_station
+		set_variable = { which = ahw_station value = 5 }
+		set_star_flag = ahw_xst_a_5
+		set_star_flag = ahw_xst_b_4
+	}
+	event_target:ahw_ring_56 = {
+		set_star_flag = ahw_station
+		set_variable = { which = ahw_station value = 6 }
+		set_star_flag = ahw_xst_a_6
+		set_star_flag = ahw_xst_b_5
+	}
+	event_target:ahw_ring_66 = {
+		set_star_flag = ahw_station
+		set_variable = { which = ahw_station value = 7 }
+		set_star_flag = ahw_xst_a_7
+		set_star_flag = ahw_xst_b_6
+	}
+	event_target:ahw_ring_76 = {
+		set_star_flag = ahw_station
+		set_variable = { which = ahw_station value = 8 }
+		set_star_flag = ahw_xst_a_8
+		set_star_flag = ahw_xst_b_7
+	}
+	event_target:ahw_ring_6 = {
+		spawn_megastructure = { type = ahw_xhole_1 orbit_distance = 220 orbit_angle = 22 }
+		spawn_megastructure = { type = ahw_xhole_8 orbit_distance = 220 orbit_angle = 202 }
+		log = "AHW express station 1 in \\[This.GetName] (node 6)"
+	}
+	event_target:ahw_ring_16 = {
+		spawn_megastructure = { type = ahw_xhole_2 orbit_distance = 220 orbit_angle = 68 }
+		spawn_megastructure = { type = ahw_xhole_1 orbit_distance = 220 orbit_angle = 248 }
+		log = "AHW express station 2 in \\[This.GetName] (node 16)"
+	}
+	event_target:ahw_ring_27 = {
+		spawn_megastructure = { type = ahw_xhole_3 orbit_distance = 220 orbit_angle = 117 }
+		spawn_megastructure = { type = ahw_xhole_2 orbit_distance = 220 orbit_angle = 297 }
+		log = "AHW express station 3 in \\[This.GetName] (node 27)"
+	}
+	event_target:ahw_ring_37 = {
+		spawn_megastructure = { type = ahw_xhole_4 orbit_distance = 220 orbit_angle = 162 }
+		spawn_megastructure = { type = ahw_xhole_3 orbit_distance = 220 orbit_angle = 342 }
+		log = "AHW express station 4 in \\[This.GetName] (node 37)"
+	}
+	event_target:ahw_ring_46 = {
+		spawn_megastructure = { type = ahw_xhole_5 orbit_distance = 220 orbit_angle = 202 }
+		spawn_megastructure = { type = ahw_xhole_4 orbit_distance = 220 orbit_angle = 22 }
+		log = "AHW express station 5 in \\[This.GetName] (node 46)"
+	}
+	event_target:ahw_ring_56 = {
+		spawn_megastructure = { type = ahw_xhole_6 orbit_distance = 220 orbit_angle = 248 }
+		spawn_megastructure = { type = ahw_xhole_5 orbit_distance = 220 orbit_angle = 68 }
+		log = "AHW express station 6 in \\[This.GetName] (node 56)"
+	}
+	event_target:ahw_ring_66 = {
+		spawn_megastructure = { type = ahw_xhole_7 orbit_distance = 220 orbit_angle = 292 }
+		spawn_megastructure = { type = ahw_xhole_6 orbit_distance = 220 orbit_angle = 112 }
+		log = "AHW express station 7 in \\[This.GetName] (node 66)"
+	}
+	event_target:ahw_ring_76 = {
+		spawn_megastructure = { type = ahw_xhole_8 orbit_distance = 220 orbit_angle = 338 }
+		spawn_megastructure = { type = ahw_xhole_7 orbit_distance = 220 orbit_angle = 158 }
+		log = "AHW express station 8 in \\[This.GetName] (node 76)"
+	}
+}
+
+# The express on a ring of 88 nodes: stations on nodes 6, 16, 28, 38, 51, 60, 73, 83. Flags first, then the
+# wormholes (vanilla sets a scripted connection's flags before spawning its bypass). No scope.
+ahw_build_express_88 = {
+	event_target:ahw_ring_6 = {
+		set_star_flag = ahw_station
+		set_variable = { which = ahw_station value = 1 }
+		set_star_flag = ahw_xst_a_1
+		set_star_flag = ahw_xst_b_8
+	}
+	event_target:ahw_ring_16 = {
+		set_star_flag = ahw_station
+		set_variable = { which = ahw_station value = 2 }
+		set_star_flag = ahw_xst_a_2
+		set_star_flag = ahw_xst_b_1
+	}
+	event_target:ahw_ring_28 = {
+		set_star_flag = ahw_station
+		set_variable = { which = ahw_station value = 3 }
+		set_star_flag = ahw_xst_a_3
+		set_star_flag = ahw_xst_b_2
+	}
+	event_target:ahw_ring_38 = {
+		set_star_flag = ahw_station
+		set_variable = { which = ahw_station value = 4 }
+		set_star_flag = ahw_xst_a_4
+		set_star_flag = ahw_xst_b_3
+	}
+	event_target:ahw_ring_51 = {
+		set_star_flag = ahw_station
+		set_variable = { which = ahw_station value = 5 }
+		set_star_flag = ahw_xst_a_5
+		set_star_flag = ahw_xst_b_4
+	}
+	event_target:ahw_ring_60 = {
+		set_star_flag = ahw_station
+		set_variable = { which = ahw_station value = 6 }
+		set_star_flag = ahw_xst_a_6
+		set_star_flag = ahw_xst_b_5
+	}
+	event_target:ahw_ring_73 = {
+		set_star_flag = ahw_station
+		set_variable = { which = ahw_station value = 7 }
+		set_star_flag = ahw_xst_a_7
+		set_star_flag = ahw_xst_b_6
+	}
+	event_target:ahw_ring_83 = {
+		set_star_flag = ahw_station
+		set_variable = { which = ahw_station value = 8 }
+		set_star_flag = ahw_xst_a_8
+		set_star_flag = ahw_xst_b_7
+	}
+	event_target:ahw_ring_6 = {
+		spawn_megastructure = { type = ahw_xhole_1 orbit_distance = 220 orbit_angle = 20 }
+		spawn_megastructure = { type = ahw_xhole_8 orbit_distance = 220 orbit_angle = 200 }
+		log = "AHW express station 1 in \\[This.GetName] (node 6)"
+	}
+	event_target:ahw_ring_16 = {
+		spawn_megastructure = { type = ahw_xhole_2 orbit_distance = 220 orbit_angle = 61 }
+		spawn_megastructure = { type = ahw_xhole_1 orbit_distance = 220 orbit_angle = 241 }
+		log = "AHW express station 2 in \\[This.GetName] (node 16)"
+	}
+	event_target:ahw_ring_28 = {
+		spawn_megastructure = { type = ahw_xhole_3 orbit_distance = 220 orbit_angle = 110 }
+		spawn_megastructure = { type = ahw_xhole_2 orbit_distance = 220 orbit_angle = 290 }
+		log = "AHW express station 3 in \\[This.GetName] (node 28)"
+	}
+	event_target:ahw_ring_38 = {
+		spawn_megastructure = { type = ahw_xhole_4 orbit_distance = 220 orbit_angle = 151 }
+		spawn_megastructure = { type = ahw_xhole_3 orbit_distance = 220 orbit_angle = 331 }
+		log = "AHW express station 4 in \\[This.GetName] (node 38)"
+	}
+	event_target:ahw_ring_51 = {
+		spawn_megastructure = { type = ahw_xhole_5 orbit_distance = 220 orbit_angle = 205 }
+		spawn_megastructure = { type = ahw_xhole_4 orbit_distance = 220 orbit_angle = 25 }
+		log = "AHW express station 5 in \\[This.GetName] (node 51)"
+	}
+	event_target:ahw_ring_60 = {
+		spawn_megastructure = { type = ahw_xhole_6 orbit_distance = 220 orbit_angle = 241 }
+		spawn_megastructure = { type = ahw_xhole_5 orbit_distance = 220 orbit_angle = 61 }
+		log = "AHW express station 6 in \\[This.GetName] (node 60)"
+	}
+	event_target:ahw_ring_73 = {
+		spawn_megastructure = { type = ahw_xhole_7 orbit_distance = 220 orbit_angle = 295 }
+		spawn_megastructure = { type = ahw_xhole_6 orbit_distance = 220 orbit_angle = 115 }
+		log = "AHW express station 7 in \\[This.GetName] (node 73)"
+	}
+	event_target:ahw_ring_83 = {
+		spawn_megastructure = { type = ahw_xhole_8 orbit_distance = 220 orbit_angle = 335 }
+		spawn_megastructure = { type = ahw_xhole_7 orbit_distance = 220 orbit_angle = 155 }
+		log = "AHW express station 8 in \\[This.GetName] (node 83)"
+	}
+}
+
+# The express for the ring built (flag ahw_ring_size_<n>). No scope.
+ahw_build_express = {
+	if = {
+		limit = { has_global_flag = ahw_ring_size_40 }
+		ahw_build_express_40 = yes
+	}
+	else_if = {
+		limit = { has_global_flag = ahw_ring_size_56 }
+		ahw_build_express_56 = yes
+	}
+	else_if = {
+		limit = { has_global_flag = ahw_ring_size_68 }
+		ahw_build_express_68 = yes
+	}
+	else_if = {
+		limit = { has_global_flag = ahw_ring_size_80 }
+		ahw_build_express_80 = yes
+	}
+	else_if = {
+		limit = { has_global_flag = ahw_ring_size_88 }
+		ahw_build_express_88 = yes
+	}
+}
+
+# Mid game: every link turns unstable (closed until its first flip). No scope.
+ahw_express_wake = {
+	set_global_flag = ahw_express_awake
+	log = "AHW express awake: 8 links unstable"
+}
+
+# Monthly while awake: each link not stable flips open/closed with 25 %. No scope.
+ahw_express_flicker = {
+	if = {
+		limit = { NOT = { has_global_flag = ahw_express_stable_1 } }
+		random = {
+			chance = 25
+			if = {
+				limit = { has_global_flag = ahw_express_open_1 }
+				remove_global_flag = ahw_express_open_1
+				log = "AHW express link 1 closed"
+			}
+			else = {
+				set_global_flag = ahw_express_open_1
+				log = "AHW express link 1 opened"
+			}
+		}
+	}
+	if = {
+		limit = { NOT = { has_global_flag = ahw_express_stable_2 } }
+		random = {
+			chance = 25
+			if = {
+				limit = { has_global_flag = ahw_express_open_2 }
+				remove_global_flag = ahw_express_open_2
+				log = "AHW express link 2 closed"
+			}
+			else = {
+				set_global_flag = ahw_express_open_2
+				log = "AHW express link 2 opened"
+			}
+		}
+	}
+	if = {
+		limit = { NOT = { has_global_flag = ahw_express_stable_3 } }
+		random = {
+			chance = 25
+			if = {
+				limit = { has_global_flag = ahw_express_open_3 }
+				remove_global_flag = ahw_express_open_3
+				log = "AHW express link 3 closed"
+			}
+			else = {
+				set_global_flag = ahw_express_open_3
+				log = "AHW express link 3 opened"
+			}
+		}
+	}
+	if = {
+		limit = { NOT = { has_global_flag = ahw_express_stable_4 } }
+		random = {
+			chance = 25
+			if = {
+				limit = { has_global_flag = ahw_express_open_4 }
+				remove_global_flag = ahw_express_open_4
+				log = "AHW express link 4 closed"
+			}
+			else = {
+				set_global_flag = ahw_express_open_4
+				log = "AHW express link 4 opened"
+			}
+		}
+	}
+	if = {
+		limit = { NOT = { has_global_flag = ahw_express_stable_5 } }
+		random = {
+			chance = 25
+			if = {
+				limit = { has_global_flag = ahw_express_open_5 }
+				remove_global_flag = ahw_express_open_5
+				log = "AHW express link 5 closed"
+			}
+			else = {
+				set_global_flag = ahw_express_open_5
+				log = "AHW express link 5 opened"
+			}
+		}
+	}
+	if = {
+		limit = { NOT = { has_global_flag = ahw_express_stable_6 } }
+		random = {
+			chance = 25
+			if = {
+				limit = { has_global_flag = ahw_express_open_6 }
+				remove_global_flag = ahw_express_open_6
+				log = "AHW express link 6 closed"
+			}
+			else = {
+				set_global_flag = ahw_express_open_6
+				log = "AHW express link 6 opened"
+			}
+		}
+	}
+	if = {
+		limit = { NOT = { has_global_flag = ahw_express_stable_7 } }
+		random = {
+			chance = 25
+			if = {
+				limit = { has_global_flag = ahw_express_open_7 }
+				remove_global_flag = ahw_express_open_7
+				log = "AHW express link 7 closed"
+			}
+			else = {
+				set_global_flag = ahw_express_open_7
+				log = "AHW express link 7 opened"
+			}
+		}
+	}
+	if = {
+		limit = { NOT = { has_global_flag = ahw_express_stable_8 } }
+		random = {
+			chance = 25
+			if = {
+				limit = { has_global_flag = ahw_express_open_8 }
+				remove_global_flag = ahw_express_open_8
+				log = "AHW express link 8 closed"
+			}
+			else = {
+				set_global_flag = ahw_express_open_8
+				log = "AHW express link 8 opened"
+			}
+		}
+	}
+}
+
+# this = a station: both its links stable, open for good.
+ahw_stabilise_station = {
+	if = {
+		limit = {
+			OR = { has_star_flag = ahw_xst_a_1 has_star_flag = ahw_xst_b_1 }
+			NOT = { has_global_flag = ahw_express_stable_1 }
+		}
+		set_global_flag = ahw_express_stable_1
+		set_global_flag = ahw_express_open_1
+		log = "AHW express link 1 stable (from \\[This.GetName])"
+	}
+	if = {
+		limit = {
+			OR = { has_star_flag = ahw_xst_a_2 has_star_flag = ahw_xst_b_2 }
+			NOT = { has_global_flag = ahw_express_stable_2 }
+		}
+		set_global_flag = ahw_express_stable_2
+		set_global_flag = ahw_express_open_2
+		log = "AHW express link 2 stable (from \\[This.GetName])"
+	}
+	if = {
+		limit = {
+			OR = { has_star_flag = ahw_xst_a_3 has_star_flag = ahw_xst_b_3 }
+			NOT = { has_global_flag = ahw_express_stable_3 }
+		}
+		set_global_flag = ahw_express_stable_3
+		set_global_flag = ahw_express_open_3
+		log = "AHW express link 3 stable (from \\[This.GetName])"
+	}
+	if = {
+		limit = {
+			OR = { has_star_flag = ahw_xst_a_4 has_star_flag = ahw_xst_b_4 }
+			NOT = { has_global_flag = ahw_express_stable_4 }
+		}
+		set_global_flag = ahw_express_stable_4
+		set_global_flag = ahw_express_open_4
+		log = "AHW express link 4 stable (from \\[This.GetName])"
+	}
+	if = {
+		limit = {
+			OR = { has_star_flag = ahw_xst_a_5 has_star_flag = ahw_xst_b_5 }
+			NOT = { has_global_flag = ahw_express_stable_5 }
+		}
+		set_global_flag = ahw_express_stable_5
+		set_global_flag = ahw_express_open_5
+		log = "AHW express link 5 stable (from \\[This.GetName])"
+	}
+	if = {
+		limit = {
+			OR = { has_star_flag = ahw_xst_a_6 has_star_flag = ahw_xst_b_6 }
+			NOT = { has_global_flag = ahw_express_stable_6 }
+		}
+		set_global_flag = ahw_express_stable_6
+		set_global_flag = ahw_express_open_6
+		log = "AHW express link 6 stable (from \\[This.GetName])"
+	}
+	if = {
+		limit = {
+			OR = { has_star_flag = ahw_xst_a_7 has_star_flag = ahw_xst_b_7 }
+			NOT = { has_global_flag = ahw_express_stable_7 }
+		}
+		set_global_flag = ahw_express_stable_7
+		set_global_flag = ahw_express_open_7
+		log = "AHW express link 7 stable (from \\[This.GetName])"
+	}
+	if = {
+		limit = {
+			OR = { has_star_flag = ahw_xst_a_8 has_star_flag = ahw_xst_b_8 }
+			NOT = { has_global_flag = ahw_express_stable_8 }
+		}
+		set_global_flag = ahw_express_stable_8
+		set_global_flag = ahw_express_open_8
+		log = "AHW express link 8 stable (from \\[This.GetName])"
+	}
+}
+
+# this = a station a fleet of event_target:ahw_insp_country entered: the country learns its two
+# link types (a known destination needs them, run 4) and, once the express is awake and with Gate
+# Theory, is offered the stabilising study there (once per station and country).
+ahw_express_entered = {
+	if = {
+		limit = { check_variable = { which = ahw_station value = 1 } }
+		event_target:ahw_insp_country = {
+			add_seen_bypass_type = ahw_express_1
+			add_seen_bypass_type = ahw_express_8
+		}
+		if = {
+			limit = {
+				has_global_flag = ahw_express_awake
+				OR = {
+					NOT = { has_global_flag = ahw_express_stable_1 }
+					NOT = { has_global_flag = ahw_express_stable_8 }
+				}
+				event_target:ahw_insp_country = {
+					has_technology = ahw_tech_gate_theory
+					NOT = { has_country_flag = ahw_xoffered_1 }
+				}
+			}
+			event_target:ahw_insp_country = { set_country_flag = ahw_xoffered_1 }
+			enable_special_project = { name = AHW_EXPRESS_STABILISE location = this owner = event_target:ahw_insp_country }
+			log = "AHW express: stabilising station 1 offered to \\[ahw_insp_country.GetName]"
+		}
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_station value = 2 } }
+		event_target:ahw_insp_country = {
+			add_seen_bypass_type = ahw_express_2
+			add_seen_bypass_type = ahw_express_1
+		}
+		if = {
+			limit = {
+				has_global_flag = ahw_express_awake
+				OR = {
+					NOT = { has_global_flag = ahw_express_stable_2 }
+					NOT = { has_global_flag = ahw_express_stable_1 }
+				}
+				event_target:ahw_insp_country = {
+					has_technology = ahw_tech_gate_theory
+					NOT = { has_country_flag = ahw_xoffered_2 }
+				}
+			}
+			event_target:ahw_insp_country = { set_country_flag = ahw_xoffered_2 }
+			enable_special_project = { name = AHW_EXPRESS_STABILISE location = this owner = event_target:ahw_insp_country }
+			log = "AHW express: stabilising station 2 offered to \\[ahw_insp_country.GetName]"
+		}
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_station value = 3 } }
+		event_target:ahw_insp_country = {
+			add_seen_bypass_type = ahw_express_3
+			add_seen_bypass_type = ahw_express_2
+		}
+		if = {
+			limit = {
+				has_global_flag = ahw_express_awake
+				OR = {
+					NOT = { has_global_flag = ahw_express_stable_3 }
+					NOT = { has_global_flag = ahw_express_stable_2 }
+				}
+				event_target:ahw_insp_country = {
+					has_technology = ahw_tech_gate_theory
+					NOT = { has_country_flag = ahw_xoffered_3 }
+				}
+			}
+			event_target:ahw_insp_country = { set_country_flag = ahw_xoffered_3 }
+			enable_special_project = { name = AHW_EXPRESS_STABILISE location = this owner = event_target:ahw_insp_country }
+			log = "AHW express: stabilising station 3 offered to \\[ahw_insp_country.GetName]"
+		}
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_station value = 4 } }
+		event_target:ahw_insp_country = {
+			add_seen_bypass_type = ahw_express_4
+			add_seen_bypass_type = ahw_express_3
+		}
+		if = {
+			limit = {
+				has_global_flag = ahw_express_awake
+				OR = {
+					NOT = { has_global_flag = ahw_express_stable_4 }
+					NOT = { has_global_flag = ahw_express_stable_3 }
+				}
+				event_target:ahw_insp_country = {
+					has_technology = ahw_tech_gate_theory
+					NOT = { has_country_flag = ahw_xoffered_4 }
+				}
+			}
+			event_target:ahw_insp_country = { set_country_flag = ahw_xoffered_4 }
+			enable_special_project = { name = AHW_EXPRESS_STABILISE location = this owner = event_target:ahw_insp_country }
+			log = "AHW express: stabilising station 4 offered to \\[ahw_insp_country.GetName]"
+		}
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_station value = 5 } }
+		event_target:ahw_insp_country = {
+			add_seen_bypass_type = ahw_express_5
+			add_seen_bypass_type = ahw_express_4
+		}
+		if = {
+			limit = {
+				has_global_flag = ahw_express_awake
+				OR = {
+					NOT = { has_global_flag = ahw_express_stable_5 }
+					NOT = { has_global_flag = ahw_express_stable_4 }
+				}
+				event_target:ahw_insp_country = {
+					has_technology = ahw_tech_gate_theory
+					NOT = { has_country_flag = ahw_xoffered_5 }
+				}
+			}
+			event_target:ahw_insp_country = { set_country_flag = ahw_xoffered_5 }
+			enable_special_project = { name = AHW_EXPRESS_STABILISE location = this owner = event_target:ahw_insp_country }
+			log = "AHW express: stabilising station 5 offered to \\[ahw_insp_country.GetName]"
+		}
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_station value = 6 } }
+		event_target:ahw_insp_country = {
+			add_seen_bypass_type = ahw_express_6
+			add_seen_bypass_type = ahw_express_5
+		}
+		if = {
+			limit = {
+				has_global_flag = ahw_express_awake
+				OR = {
+					NOT = { has_global_flag = ahw_express_stable_6 }
+					NOT = { has_global_flag = ahw_express_stable_5 }
+				}
+				event_target:ahw_insp_country = {
+					has_technology = ahw_tech_gate_theory
+					NOT = { has_country_flag = ahw_xoffered_6 }
+				}
+			}
+			event_target:ahw_insp_country = { set_country_flag = ahw_xoffered_6 }
+			enable_special_project = { name = AHW_EXPRESS_STABILISE location = this owner = event_target:ahw_insp_country }
+			log = "AHW express: stabilising station 6 offered to \\[ahw_insp_country.GetName]"
+		}
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_station value = 7 } }
+		event_target:ahw_insp_country = {
+			add_seen_bypass_type = ahw_express_7
+			add_seen_bypass_type = ahw_express_6
+		}
+		if = {
+			limit = {
+				has_global_flag = ahw_express_awake
+				OR = {
+					NOT = { has_global_flag = ahw_express_stable_7 }
+					NOT = { has_global_flag = ahw_express_stable_6 }
+				}
+				event_target:ahw_insp_country = {
+					has_technology = ahw_tech_gate_theory
+					NOT = { has_country_flag = ahw_xoffered_7 }
+				}
+			}
+			event_target:ahw_insp_country = { set_country_flag = ahw_xoffered_7 }
+			enable_special_project = { name = AHW_EXPRESS_STABILISE location = this owner = event_target:ahw_insp_country }
+			log = "AHW express: stabilising station 7 offered to \\[ahw_insp_country.GetName]"
+		}
+	}
+	else_if = {
+		limit = { check_variable = { which = ahw_station value = 8 } }
+		event_target:ahw_insp_country = {
+			add_seen_bypass_type = ahw_express_8
+			add_seen_bypass_type = ahw_express_7
+		}
+		if = {
+			limit = {
+				has_global_flag = ahw_express_awake
+				OR = {
+					NOT = { has_global_flag = ahw_express_stable_8 }
+					NOT = { has_global_flag = ahw_express_stable_7 }
+				}
+				event_target:ahw_insp_country = {
+					has_technology = ahw_tech_gate_theory
+					NOT = { has_country_flag = ahw_xoffered_8 }
+				}
+			}
+			event_target:ahw_insp_country = { set_country_flag = ahw_xoffered_8 }
+			enable_special_project = { name = AHW_EXPRESS_STABILISE location = this owner = event_target:ahw_insp_country }
+			log = "AHW express: stabilising station 8 offered to \\[ahw_insp_country.GetName]"
+		}
+	}
+}
+
+# Console: every link stable. No scope.
+ahw_express_stabilise_all = {
+	set_global_flag = ahw_express_stable_1
+	set_global_flag = ahw_express_open_1
+	set_global_flag = ahw_express_stable_2
+	set_global_flag = ahw_express_open_2
+	set_global_flag = ahw_express_stable_3
+	set_global_flag = ahw_express_open_3
+	set_global_flag = ahw_express_stable_4
+	set_global_flag = ahw_express_open_4
+	set_global_flag = ahw_express_stable_5
+	set_global_flag = ahw_express_open_5
+	set_global_flag = ahw_express_stable_6
+	set_global_flag = ahw_express_open_6
+	set_global_flag = ahw_express_stable_7
+	set_global_flag = ahw_express_open_7
+	set_global_flag = ahw_express_stable_8
+	set_global_flag = ahw_express_open_8
+	log = "AHW express: all links stable (console)"
 }

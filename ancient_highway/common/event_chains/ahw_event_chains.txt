@@ -1,0 +1,7 @@
+# The repair contract's chain (common/missions/missions/ahw_contracts.txt), as vanilla's
+# contract_clear_blockers_chain.
+ahw_contract_repair_gate_chain = {
+	picture = GFX_evt_ship_in_orbit_3
+	icon = "gfx/interface/icons/situation_log/situation_log_scanning_beam.dds"
+	situation_log_category = contracts
+}

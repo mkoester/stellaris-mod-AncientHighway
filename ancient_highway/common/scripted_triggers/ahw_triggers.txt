@@ -121,3 +121,43 @@ ahw_kind_seen = {
 		AND = { is_star_class = ahw_sc_neutron_star $WHO$ = { has_country_flag = ahw_kind_neutron } }
 	}
 }
+
+# 0.1.0, this = system: an anchor - next to a portal whose gate is still broken (the contract).
+ahw_anchor_of_broken_portal = {
+	any_neighbor_system = {
+		has_star_flag = ahw_portal
+		has_star_flag = ahw_broken
+	}
+}
+
+# 0.1.0, this = country: a close friend of $WHO$ - for the repair contract on a friend's gate
+# (design 2026-11-05): stricter than a seal's friend (ahw_friend_of_sealer) - federation,
+# overlord/subject either way, fellow subjects, defensive pact, guarantee either way, the same
+# side of a war; not a non-aggression pact, a migration treaty or open borders.
+ahw_close_friend = {
+	OR = {
+		is_in_federation_with = $WHO$
+		is_overlord_to = $WHO$
+		$WHO$ = { is_overlord_to = prev }
+		AND = {
+			is_subject = yes
+			$WHO$ = { is_subject = yes }
+			overlord = { is_overlord_to = $WHO$ }
+		}
+		has_defensive_pact = $WHO$
+		is_guaranteeing = $WHO$
+		$WHO$ = { is_guaranteeing = prev }
+		any_war = {
+			OR = {
+				AND = {
+					is_war_participant = { who = prev side = attackers }
+					is_war_participant = { who = $WHO$ side = attackers }
+				}
+				AND = {
+					is_war_participant = { who = prev side = defenders }
+					is_war_participant = { who = $WHO$ side = defenders }
+				}
+			}
+		}
+	}
+}

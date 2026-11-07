@@ -428,7 +428,12 @@ ahw_pick_anchor = {
 # this = a portal, event_target:ahw_studier = the country: the study's result (ahw.22, and
 # the console skip ahw_debug.40 - one code path, so the skip tests the real thing).
 ahw_mark_studied = {
-	set_star_flag = ahw_studied
+	# the portal's flag stands for its anchor owner's study (ahw.20 offers it until set); a
+	# nomad's study (ahw.60) teaches the nomad and leaves the owner's offer alone
+	if = {
+		limit = { event_target:ahw_studier = { is_nomadic = no } }
+		set_star_flag = ahw_studied
+	}
 	ahw_country_learns = yes
 	# 0.0.38 (design 2026-11-05): the study grants 15 % of each tech, once per empire.
 	event_target:ahw_studier = { ahw_grant = { FLAG = ahw_grant_study PROGRESS = 0.15 } }
@@ -557,15 +562,31 @@ ahw_see_kind = {
 	}
 }
 
-# this = a portal, event_target:ahw_repairer = the country: the repair's result (ahw.23,
-# and the console skip ahw_debug.40).
+# this = a portal, event_target:ahw_repairer = the country: the repair's result - from the
+# repaired gate's on_build_complete, or ahw_repair_gate (script). Runs once: a second call (the
+# scripted path's fallback) finds the portal no longer broken.
 ahw_mark_repaired = {
-	remove_star_flag = ahw_broken
-	# 0.0.20: the gate belongs to the repairer (the anchor's owner): its Open/Sealed switch
-	every_system_megastructure = { set_owner = event_target:ahw_repairer }
-	# 0.0.38: the head start is for a gate somebody else repaired, never for one's own.
-	event_target:ahw_repairer = { set_country_flag = ahw_grant_head_start }
-	# 0.0.39: nor the inspection grant for it.
-	ahw_flag_repairer = yes
-	log = "AHW entry point in \\[This.GetName] repaired by \\[ahw_repairer.GetName]"
+	if = {
+		limit = { has_star_flag = ahw_broken }
+		remove_star_flag = ahw_broken
+		# The gate belongs to the anchor's owner (its Open/Sealed switch); with the anchor
+		# unowned, to a settled repairer - a nomad never holds it (design: nomads never seal).
+		if = {
+			limit = { any_neighbor_system = { exists = owner } }
+			random_neighbor_system = {
+				limit = { exists = owner }
+				owner = { save_event_target_as = ahw_gate_owner }
+			}
+			every_system_megastructure = { set_owner = event_target:ahw_gate_owner }
+		}
+		else_if = {
+			limit = { event_target:ahw_repairer = { is_nomadic = no } }
+			every_system_megastructure = { set_owner = event_target:ahw_repairer }
+		}
+		# 0.0.38: the head start is for a gate somebody else repaired, never for one's own.
+		event_target:ahw_repairer = { set_country_flag = ahw_grant_head_start }
+		# 0.0.39: nor the inspection grant for it.
+		ahw_flag_repairer = yes
+		log = "AHW entry point in \\[This.GetName] repaired by \\[ahw_repairer.GetName]"
+	}
 }

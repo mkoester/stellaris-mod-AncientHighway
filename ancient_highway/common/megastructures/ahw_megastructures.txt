@@ -2,8 +2,8 @@
 # (0.0.8) Entities are vanilla's, referenced by name. Both ends of a pair
 # carry the same scripted-connection bypass, as lgate_base does.
 
-# Portal end of entry point 1.
-ahw_gate_1 = {
+# Portal end of entry point 1, broken (as spawned).
+ahw_gate_broken_1 = {
 	entity = "deactivated_gateway_entity"
 	portrait = "GFX_megastructure_construction_background"
 	place_entity_on_planet_plane = no
@@ -13,6 +13,53 @@ ahw_gate_1 = {
 	bypass_type = ahw_link_1
 
 	potential = { always = no }
+	dismantle_potential = { always = no }
+	nomad_reactivatable = yes
+}
+
+# Portal end of entry point 1, repaired: an upgrade of the broken gate.
+ahw_gate_1 = {
+	entity = "reactivated_gateway_entity"
+	portrait = "GFX_megastructure_construction_background"
+	place_entity_on_planet_plane = no
+	show_galactic_map_icon = no
+	show_in_outliner = yes
+	construction_blocks_and_blocked_by = none
+	bypass_type = ahw_link_1
+
+	upgrade_from = {
+		ahw_gate_broken_1
+	}
+	potential = {
+		OR = {
+			has_country_flag = ahw_highway_studied
+			is_nomadic = yes
+		}
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = AHW_REPAIR_NEEDS_TECHS
+			from = {
+				has_technology = ahw_tech_gate_theory
+				has_technology = ahw_tech_gate_construction
+			}
+		}
+	}
+	build_time = 90
+	resources = {
+		category = megastructures
+		cost = {
+			alloys = 300
+			influence = 50
+		}
+	}
+	on_build_complete = {
+		if = {
+			limit = { exists = from }
+			from = { save_event_target_as = ahw_repairer }
+		}
+		solar_system = { ahw_mark_repaired = yes }
+	}
 	dismantle_potential = { always = no }
 	overclock_loc_key = AHW_SEAL
 	overclock_cooldown = 30
@@ -36,8 +83,8 @@ ahw_exitgate_1 = {
 	dismantle_potential = { always = no }
 }
 
-# Portal end of entry point 2.
-ahw_gate_2 = {
+# Portal end of entry point 2, broken (as spawned).
+ahw_gate_broken_2 = {
 	entity = "deactivated_gateway_entity"
 	portrait = "GFX_megastructure_construction_background"
 	place_entity_on_planet_plane = no
@@ -47,6 +94,53 @@ ahw_gate_2 = {
 	bypass_type = ahw_link_2
 
 	potential = { always = no }
+	dismantle_potential = { always = no }
+	nomad_reactivatable = yes
+}
+
+# Portal end of entry point 2, repaired: an upgrade of the broken gate.
+ahw_gate_2 = {
+	entity = "reactivated_gateway_entity"
+	portrait = "GFX_megastructure_construction_background"
+	place_entity_on_planet_plane = no
+	show_galactic_map_icon = no
+	show_in_outliner = yes
+	construction_blocks_and_blocked_by = none
+	bypass_type = ahw_link_2
+
+	upgrade_from = {
+		ahw_gate_broken_2
+	}
+	potential = {
+		OR = {
+			has_country_flag = ahw_highway_studied
+			is_nomadic = yes
+		}
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = AHW_REPAIR_NEEDS_TECHS
+			from = {
+				has_technology = ahw_tech_gate_theory
+				has_technology = ahw_tech_gate_construction
+			}
+		}
+	}
+	build_time = 90
+	resources = {
+		category = megastructures
+		cost = {
+			alloys = 300
+			influence = 50
+		}
+	}
+	on_build_complete = {
+		if = {
+			limit = { exists = from }
+			from = { save_event_target_as = ahw_repairer }
+		}
+		solar_system = { ahw_mark_repaired = yes }
+	}
 	dismantle_potential = { always = no }
 	overclock_loc_key = AHW_SEAL
 	overclock_cooldown = 30
@@ -70,8 +164,8 @@ ahw_exitgate_2 = {
 	dismantle_potential = { always = no }
 }
 
-# Portal end of entry point 3.
-ahw_gate_3 = {
+# Portal end of entry point 3, broken (as spawned).
+ahw_gate_broken_3 = {
 	entity = "deactivated_gateway_entity"
 	portrait = "GFX_megastructure_construction_background"
 	place_entity_on_planet_plane = no
@@ -81,6 +175,53 @@ ahw_gate_3 = {
 	bypass_type = ahw_link_3
 
 	potential = { always = no }
+	dismantle_potential = { always = no }
+	nomad_reactivatable = yes
+}
+
+# Portal end of entry point 3, repaired: an upgrade of the broken gate.
+ahw_gate_3 = {
+	entity = "reactivated_gateway_entity"
+	portrait = "GFX_megastructure_construction_background"
+	place_entity_on_planet_plane = no
+	show_galactic_map_icon = no
+	show_in_outliner = yes
+	construction_blocks_and_blocked_by = none
+	bypass_type = ahw_link_3
+
+	upgrade_from = {
+		ahw_gate_broken_3
+	}
+	potential = {
+		OR = {
+			has_country_flag = ahw_highway_studied
+			is_nomadic = yes
+		}
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = AHW_REPAIR_NEEDS_TECHS
+			from = {
+				has_technology = ahw_tech_gate_theory
+				has_technology = ahw_tech_gate_construction
+			}
+		}
+	}
+	build_time = 90
+	resources = {
+		category = megastructures
+		cost = {
+			alloys = 300
+			influence = 50
+		}
+	}
+	on_build_complete = {
+		if = {
+			limit = { exists = from }
+			from = { save_event_target_as = ahw_repairer }
+		}
+		solar_system = { ahw_mark_repaired = yes }
+	}
 	dismantle_potential = { always = no }
 	overclock_loc_key = AHW_SEAL
 	overclock_cooldown = 30
@@ -104,8 +245,8 @@ ahw_exitgate_3 = {
 	dismantle_potential = { always = no }
 }
 
-# Portal end of entry point 4.
-ahw_gate_4 = {
+# Portal end of entry point 4, broken (as spawned).
+ahw_gate_broken_4 = {
 	entity = "deactivated_gateway_entity"
 	portrait = "GFX_megastructure_construction_background"
 	place_entity_on_planet_plane = no
@@ -115,6 +256,53 @@ ahw_gate_4 = {
 	bypass_type = ahw_link_4
 
 	potential = { always = no }
+	dismantle_potential = { always = no }
+	nomad_reactivatable = yes
+}
+
+# Portal end of entry point 4, repaired: an upgrade of the broken gate.
+ahw_gate_4 = {
+	entity = "reactivated_gateway_entity"
+	portrait = "GFX_megastructure_construction_background"
+	place_entity_on_planet_plane = no
+	show_galactic_map_icon = no
+	show_in_outliner = yes
+	construction_blocks_and_blocked_by = none
+	bypass_type = ahw_link_4
+
+	upgrade_from = {
+		ahw_gate_broken_4
+	}
+	potential = {
+		OR = {
+			has_country_flag = ahw_highway_studied
+			is_nomadic = yes
+		}
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = AHW_REPAIR_NEEDS_TECHS
+			from = {
+				has_technology = ahw_tech_gate_theory
+				has_technology = ahw_tech_gate_construction
+			}
+		}
+	}
+	build_time = 90
+	resources = {
+		category = megastructures
+		cost = {
+			alloys = 300
+			influence = 50
+		}
+	}
+	on_build_complete = {
+		if = {
+			limit = { exists = from }
+			from = { save_event_target_as = ahw_repairer }
+		}
+		solar_system = { ahw_mark_repaired = yes }
+	}
 	dismantle_potential = { always = no }
 	overclock_loc_key = AHW_SEAL
 	overclock_cooldown = 30
@@ -138,8 +326,8 @@ ahw_exitgate_4 = {
 	dismantle_potential = { always = no }
 }
 
-# Portal end of entry point 5.
-ahw_gate_5 = {
+# Portal end of entry point 5, broken (as spawned).
+ahw_gate_broken_5 = {
 	entity = "deactivated_gateway_entity"
 	portrait = "GFX_megastructure_construction_background"
 	place_entity_on_planet_plane = no
@@ -149,6 +337,53 @@ ahw_gate_5 = {
 	bypass_type = ahw_link_5
 
 	potential = { always = no }
+	dismantle_potential = { always = no }
+	nomad_reactivatable = yes
+}
+
+# Portal end of entry point 5, repaired: an upgrade of the broken gate.
+ahw_gate_5 = {
+	entity = "reactivated_gateway_entity"
+	portrait = "GFX_megastructure_construction_background"
+	place_entity_on_planet_plane = no
+	show_galactic_map_icon = no
+	show_in_outliner = yes
+	construction_blocks_and_blocked_by = none
+	bypass_type = ahw_link_5
+
+	upgrade_from = {
+		ahw_gate_broken_5
+	}
+	potential = {
+		OR = {
+			has_country_flag = ahw_highway_studied
+			is_nomadic = yes
+		}
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = AHW_REPAIR_NEEDS_TECHS
+			from = {
+				has_technology = ahw_tech_gate_theory
+				has_technology = ahw_tech_gate_construction
+			}
+		}
+	}
+	build_time = 90
+	resources = {
+		category = megastructures
+		cost = {
+			alloys = 300
+			influence = 50
+		}
+	}
+	on_build_complete = {
+		if = {
+			limit = { exists = from }
+			from = { save_event_target_as = ahw_repairer }
+		}
+		solar_system = { ahw_mark_repaired = yes }
+	}
 	dismantle_potential = { always = no }
 	overclock_loc_key = AHW_SEAL
 	overclock_cooldown = 30
@@ -172,8 +407,8 @@ ahw_exitgate_5 = {
 	dismantle_potential = { always = no }
 }
 
-# Portal end of entry point 6.
-ahw_gate_6 = {
+# Portal end of entry point 6, broken (as spawned).
+ahw_gate_broken_6 = {
 	entity = "deactivated_gateway_entity"
 	portrait = "GFX_megastructure_construction_background"
 	place_entity_on_planet_plane = no
@@ -183,6 +418,53 @@ ahw_gate_6 = {
 	bypass_type = ahw_link_6
 
 	potential = { always = no }
+	dismantle_potential = { always = no }
+	nomad_reactivatable = yes
+}
+
+# Portal end of entry point 6, repaired: an upgrade of the broken gate.
+ahw_gate_6 = {
+	entity = "reactivated_gateway_entity"
+	portrait = "GFX_megastructure_construction_background"
+	place_entity_on_planet_plane = no
+	show_galactic_map_icon = no
+	show_in_outliner = yes
+	construction_blocks_and_blocked_by = none
+	bypass_type = ahw_link_6
+
+	upgrade_from = {
+		ahw_gate_broken_6
+	}
+	potential = {
+		OR = {
+			has_country_flag = ahw_highway_studied
+			is_nomadic = yes
+		}
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = AHW_REPAIR_NEEDS_TECHS
+			from = {
+				has_technology = ahw_tech_gate_theory
+				has_technology = ahw_tech_gate_construction
+			}
+		}
+	}
+	build_time = 90
+	resources = {
+		category = megastructures
+		cost = {
+			alloys = 300
+			influence = 50
+		}
+	}
+	on_build_complete = {
+		if = {
+			limit = { exists = from }
+			from = { save_event_target_as = ahw_repairer }
+		}
+		solar_system = { ahw_mark_repaired = yes }
+	}
 	dismantle_potential = { always = no }
 	overclock_loc_key = AHW_SEAL
 	overclock_cooldown = 30
@@ -206,8 +488,8 @@ ahw_exitgate_6 = {
 	dismantle_potential = { always = no }
 }
 
-# Portal end of entry point 7.
-ahw_gate_7 = {
+# Portal end of entry point 7, broken (as spawned).
+ahw_gate_broken_7 = {
 	entity = "deactivated_gateway_entity"
 	portrait = "GFX_megastructure_construction_background"
 	place_entity_on_planet_plane = no
@@ -217,6 +499,53 @@ ahw_gate_7 = {
 	bypass_type = ahw_link_7
 
 	potential = { always = no }
+	dismantle_potential = { always = no }
+	nomad_reactivatable = yes
+}
+
+# Portal end of entry point 7, repaired: an upgrade of the broken gate.
+ahw_gate_7 = {
+	entity = "reactivated_gateway_entity"
+	portrait = "GFX_megastructure_construction_background"
+	place_entity_on_planet_plane = no
+	show_galactic_map_icon = no
+	show_in_outliner = yes
+	construction_blocks_and_blocked_by = none
+	bypass_type = ahw_link_7
+
+	upgrade_from = {
+		ahw_gate_broken_7
+	}
+	potential = {
+		OR = {
+			has_country_flag = ahw_highway_studied
+			is_nomadic = yes
+		}
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = AHW_REPAIR_NEEDS_TECHS
+			from = {
+				has_technology = ahw_tech_gate_theory
+				has_technology = ahw_tech_gate_construction
+			}
+		}
+	}
+	build_time = 90
+	resources = {
+		category = megastructures
+		cost = {
+			alloys = 300
+			influence = 50
+		}
+	}
+	on_build_complete = {
+		if = {
+			limit = { exists = from }
+			from = { save_event_target_as = ahw_repairer }
+		}
+		solar_system = { ahw_mark_repaired = yes }
+	}
 	dismantle_potential = { always = no }
 	overclock_loc_key = AHW_SEAL
 	overclock_cooldown = 30
@@ -240,8 +569,8 @@ ahw_exitgate_7 = {
 	dismantle_potential = { always = no }
 }
 
-# Portal end of entry point 8.
-ahw_gate_8 = {
+# Portal end of entry point 8, broken (as spawned).
+ahw_gate_broken_8 = {
 	entity = "deactivated_gateway_entity"
 	portrait = "GFX_megastructure_construction_background"
 	place_entity_on_planet_plane = no
@@ -251,6 +580,53 @@ ahw_gate_8 = {
 	bypass_type = ahw_link_8
 
 	potential = { always = no }
+	dismantle_potential = { always = no }
+	nomad_reactivatable = yes
+}
+
+# Portal end of entry point 8, repaired: an upgrade of the broken gate.
+ahw_gate_8 = {
+	entity = "reactivated_gateway_entity"
+	portrait = "GFX_megastructure_construction_background"
+	place_entity_on_planet_plane = no
+	show_galactic_map_icon = no
+	show_in_outliner = yes
+	construction_blocks_and_blocked_by = none
+	bypass_type = ahw_link_8
+
+	upgrade_from = {
+		ahw_gate_broken_8
+	}
+	potential = {
+		OR = {
+			has_country_flag = ahw_highway_studied
+			is_nomadic = yes
+		}
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = AHW_REPAIR_NEEDS_TECHS
+			from = {
+				has_technology = ahw_tech_gate_theory
+				has_technology = ahw_tech_gate_construction
+			}
+		}
+	}
+	build_time = 90
+	resources = {
+		category = megastructures
+		cost = {
+			alloys = 300
+			influence = 50
+		}
+	}
+	on_build_complete = {
+		if = {
+			limit = { exists = from }
+			from = { save_event_target_as = ahw_repairer }
+		}
+		solar_system = { ahw_mark_repaired = yes }
+	}
 	dismantle_potential = { always = no }
 	overclock_loc_key = AHW_SEAL
 	overclock_cooldown = 30
@@ -274,8 +650,8 @@ ahw_exitgate_8 = {
 	dismantle_potential = { always = no }
 }
 
-# Portal end of entry point 9.
-ahw_gate_9 = {
+# Portal end of entry point 9, broken (as spawned).
+ahw_gate_broken_9 = {
 	entity = "deactivated_gateway_entity"
 	portrait = "GFX_megastructure_construction_background"
 	place_entity_on_planet_plane = no
@@ -285,6 +661,53 @@ ahw_gate_9 = {
 	bypass_type = ahw_link_9
 
 	potential = { always = no }
+	dismantle_potential = { always = no }
+	nomad_reactivatable = yes
+}
+
+# Portal end of entry point 9, repaired: an upgrade of the broken gate.
+ahw_gate_9 = {
+	entity = "reactivated_gateway_entity"
+	portrait = "GFX_megastructure_construction_background"
+	place_entity_on_planet_plane = no
+	show_galactic_map_icon = no
+	show_in_outliner = yes
+	construction_blocks_and_blocked_by = none
+	bypass_type = ahw_link_9
+
+	upgrade_from = {
+		ahw_gate_broken_9
+	}
+	potential = {
+		OR = {
+			has_country_flag = ahw_highway_studied
+			is_nomadic = yes
+		}
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = AHW_REPAIR_NEEDS_TECHS
+			from = {
+				has_technology = ahw_tech_gate_theory
+				has_technology = ahw_tech_gate_construction
+			}
+		}
+	}
+	build_time = 90
+	resources = {
+		category = megastructures
+		cost = {
+			alloys = 300
+			influence = 50
+		}
+	}
+	on_build_complete = {
+		if = {
+			limit = { exists = from }
+			from = { save_event_target_as = ahw_repairer }
+		}
+		solar_system = { ahw_mark_repaired = yes }
+	}
 	dismantle_potential = { always = no }
 	overclock_loc_key = AHW_SEAL
 	overclock_cooldown = 30
@@ -308,8 +731,8 @@ ahw_exitgate_9 = {
 	dismantle_potential = { always = no }
 }
 
-# Portal end of entry point 10.
-ahw_gate_10 = {
+# Portal end of entry point 10, broken (as spawned).
+ahw_gate_broken_10 = {
 	entity = "deactivated_gateway_entity"
 	portrait = "GFX_megastructure_construction_background"
 	place_entity_on_planet_plane = no
@@ -319,6 +742,53 @@ ahw_gate_10 = {
 	bypass_type = ahw_link_10
 
 	potential = { always = no }
+	dismantle_potential = { always = no }
+	nomad_reactivatable = yes
+}
+
+# Portal end of entry point 10, repaired: an upgrade of the broken gate.
+ahw_gate_10 = {
+	entity = "reactivated_gateway_entity"
+	portrait = "GFX_megastructure_construction_background"
+	place_entity_on_planet_plane = no
+	show_galactic_map_icon = no
+	show_in_outliner = yes
+	construction_blocks_and_blocked_by = none
+	bypass_type = ahw_link_10
+
+	upgrade_from = {
+		ahw_gate_broken_10
+	}
+	potential = {
+		OR = {
+			has_country_flag = ahw_highway_studied
+			is_nomadic = yes
+		}
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = AHW_REPAIR_NEEDS_TECHS
+			from = {
+				has_technology = ahw_tech_gate_theory
+				has_technology = ahw_tech_gate_construction
+			}
+		}
+	}
+	build_time = 90
+	resources = {
+		category = megastructures
+		cost = {
+			alloys = 300
+			influence = 50
+		}
+	}
+	on_build_complete = {
+		if = {
+			limit = { exists = from }
+			from = { save_event_target_as = ahw_repairer }
+		}
+		solar_system = { ahw_mark_repaired = yes }
+	}
 	dismantle_potential = { always = no }
 	overclock_loc_key = AHW_SEAL
 	overclock_cooldown = 30
@@ -342,8 +812,8 @@ ahw_exitgate_10 = {
 	dismantle_potential = { always = no }
 }
 
-# Portal end of entry point 11.
-ahw_gate_11 = {
+# Portal end of entry point 11, broken (as spawned).
+ahw_gate_broken_11 = {
 	entity = "deactivated_gateway_entity"
 	portrait = "GFX_megastructure_construction_background"
 	place_entity_on_planet_plane = no
@@ -353,6 +823,53 @@ ahw_gate_11 = {
 	bypass_type = ahw_link_11
 
 	potential = { always = no }
+	dismantle_potential = { always = no }
+	nomad_reactivatable = yes
+}
+
+# Portal end of entry point 11, repaired: an upgrade of the broken gate.
+ahw_gate_11 = {
+	entity = "reactivated_gateway_entity"
+	portrait = "GFX_megastructure_construction_background"
+	place_entity_on_planet_plane = no
+	show_galactic_map_icon = no
+	show_in_outliner = yes
+	construction_blocks_and_blocked_by = none
+	bypass_type = ahw_link_11
+
+	upgrade_from = {
+		ahw_gate_broken_11
+	}
+	potential = {
+		OR = {
+			has_country_flag = ahw_highway_studied
+			is_nomadic = yes
+		}
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = AHW_REPAIR_NEEDS_TECHS
+			from = {
+				has_technology = ahw_tech_gate_theory
+				has_technology = ahw_tech_gate_construction
+			}
+		}
+	}
+	build_time = 90
+	resources = {
+		category = megastructures
+		cost = {
+			alloys = 300
+			influence = 50
+		}
+	}
+	on_build_complete = {
+		if = {
+			limit = { exists = from }
+			from = { save_event_target_as = ahw_repairer }
+		}
+		solar_system = { ahw_mark_repaired = yes }
+	}
 	dismantle_potential = { always = no }
 	overclock_loc_key = AHW_SEAL
 	overclock_cooldown = 30
@@ -376,8 +893,8 @@ ahw_exitgate_11 = {
 	dismantle_potential = { always = no }
 }
 
-# Portal end of entry point 12.
-ahw_gate_12 = {
+# Portal end of entry point 12, broken (as spawned).
+ahw_gate_broken_12 = {
 	entity = "deactivated_gateway_entity"
 	portrait = "GFX_megastructure_construction_background"
 	place_entity_on_planet_plane = no
@@ -387,6 +904,53 @@ ahw_gate_12 = {
 	bypass_type = ahw_link_12
 
 	potential = { always = no }
+	dismantle_potential = { always = no }
+	nomad_reactivatable = yes
+}
+
+# Portal end of entry point 12, repaired: an upgrade of the broken gate.
+ahw_gate_12 = {
+	entity = "reactivated_gateway_entity"
+	portrait = "GFX_megastructure_construction_background"
+	place_entity_on_planet_plane = no
+	show_galactic_map_icon = no
+	show_in_outliner = yes
+	construction_blocks_and_blocked_by = none
+	bypass_type = ahw_link_12
+
+	upgrade_from = {
+		ahw_gate_broken_12
+	}
+	potential = {
+		OR = {
+			has_country_flag = ahw_highway_studied
+			is_nomadic = yes
+		}
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = AHW_REPAIR_NEEDS_TECHS
+			from = {
+				has_technology = ahw_tech_gate_theory
+				has_technology = ahw_tech_gate_construction
+			}
+		}
+	}
+	build_time = 90
+	resources = {
+		category = megastructures
+		cost = {
+			alloys = 300
+			influence = 50
+		}
+	}
+	on_build_complete = {
+		if = {
+			limit = { exists = from }
+			from = { save_event_target_as = ahw_repairer }
+		}
+		solar_system = { ahw_mark_repaired = yes }
+	}
 	dismantle_potential = { always = no }
 	overclock_loc_key = AHW_SEAL
 	overclock_cooldown = 30
@@ -410,8 +974,8 @@ ahw_exitgate_12 = {
 	dismantle_potential = { always = no }
 }
 
-# Portal end of entry point 13.
-ahw_gate_13 = {
+# Portal end of entry point 13, broken (as spawned).
+ahw_gate_broken_13 = {
 	entity = "deactivated_gateway_entity"
 	portrait = "GFX_megastructure_construction_background"
 	place_entity_on_planet_plane = no
@@ -421,6 +985,53 @@ ahw_gate_13 = {
 	bypass_type = ahw_link_13
 
 	potential = { always = no }
+	dismantle_potential = { always = no }
+	nomad_reactivatable = yes
+}
+
+# Portal end of entry point 13, repaired: an upgrade of the broken gate.
+ahw_gate_13 = {
+	entity = "reactivated_gateway_entity"
+	portrait = "GFX_megastructure_construction_background"
+	place_entity_on_planet_plane = no
+	show_galactic_map_icon = no
+	show_in_outliner = yes
+	construction_blocks_and_blocked_by = none
+	bypass_type = ahw_link_13
+
+	upgrade_from = {
+		ahw_gate_broken_13
+	}
+	potential = {
+		OR = {
+			has_country_flag = ahw_highway_studied
+			is_nomadic = yes
+		}
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = AHW_REPAIR_NEEDS_TECHS
+			from = {
+				has_technology = ahw_tech_gate_theory
+				has_technology = ahw_tech_gate_construction
+			}
+		}
+	}
+	build_time = 90
+	resources = {
+		category = megastructures
+		cost = {
+			alloys = 300
+			influence = 50
+		}
+	}
+	on_build_complete = {
+		if = {
+			limit = { exists = from }
+			from = { save_event_target_as = ahw_repairer }
+		}
+		solar_system = { ahw_mark_repaired = yes }
+	}
 	dismantle_potential = { always = no }
 	overclock_loc_key = AHW_SEAL
 	overclock_cooldown = 30
@@ -444,8 +1055,8 @@ ahw_exitgate_13 = {
 	dismantle_potential = { always = no }
 }
 
-# Portal end of entry point 14.
-ahw_gate_14 = {
+# Portal end of entry point 14, broken (as spawned).
+ahw_gate_broken_14 = {
 	entity = "deactivated_gateway_entity"
 	portrait = "GFX_megastructure_construction_background"
 	place_entity_on_planet_plane = no
@@ -455,6 +1066,53 @@ ahw_gate_14 = {
 	bypass_type = ahw_link_14
 
 	potential = { always = no }
+	dismantle_potential = { always = no }
+	nomad_reactivatable = yes
+}
+
+# Portal end of entry point 14, repaired: an upgrade of the broken gate.
+ahw_gate_14 = {
+	entity = "reactivated_gateway_entity"
+	portrait = "GFX_megastructure_construction_background"
+	place_entity_on_planet_plane = no
+	show_galactic_map_icon = no
+	show_in_outliner = yes
+	construction_blocks_and_blocked_by = none
+	bypass_type = ahw_link_14
+
+	upgrade_from = {
+		ahw_gate_broken_14
+	}
+	potential = {
+		OR = {
+			has_country_flag = ahw_highway_studied
+			is_nomadic = yes
+		}
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = AHW_REPAIR_NEEDS_TECHS
+			from = {
+				has_technology = ahw_tech_gate_theory
+				has_technology = ahw_tech_gate_construction
+			}
+		}
+	}
+	build_time = 90
+	resources = {
+		category = megastructures
+		cost = {
+			alloys = 300
+			influence = 50
+		}
+	}
+	on_build_complete = {
+		if = {
+			limit = { exists = from }
+			from = { save_event_target_as = ahw_repairer }
+		}
+		solar_system = { ahw_mark_repaired = yes }
+	}
 	dismantle_potential = { always = no }
 	overclock_loc_key = AHW_SEAL
 	overclock_cooldown = 30
@@ -478,8 +1136,8 @@ ahw_exitgate_14 = {
 	dismantle_potential = { always = no }
 }
 
-# Portal end of entry point 15.
-ahw_gate_15 = {
+# Portal end of entry point 15, broken (as spawned).
+ahw_gate_broken_15 = {
 	entity = "deactivated_gateway_entity"
 	portrait = "GFX_megastructure_construction_background"
 	place_entity_on_planet_plane = no
@@ -489,6 +1147,53 @@ ahw_gate_15 = {
 	bypass_type = ahw_link_15
 
 	potential = { always = no }
+	dismantle_potential = { always = no }
+	nomad_reactivatable = yes
+}
+
+# Portal end of entry point 15, repaired: an upgrade of the broken gate.
+ahw_gate_15 = {
+	entity = "reactivated_gateway_entity"
+	portrait = "GFX_megastructure_construction_background"
+	place_entity_on_planet_plane = no
+	show_galactic_map_icon = no
+	show_in_outliner = yes
+	construction_blocks_and_blocked_by = none
+	bypass_type = ahw_link_15
+
+	upgrade_from = {
+		ahw_gate_broken_15
+	}
+	potential = {
+		OR = {
+			has_country_flag = ahw_highway_studied
+			is_nomadic = yes
+		}
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = AHW_REPAIR_NEEDS_TECHS
+			from = {
+				has_technology = ahw_tech_gate_theory
+				has_technology = ahw_tech_gate_construction
+			}
+		}
+	}
+	build_time = 90
+	resources = {
+		category = megastructures
+		cost = {
+			alloys = 300
+			influence = 50
+		}
+	}
+	on_build_complete = {
+		if = {
+			limit = { exists = from }
+			from = { save_event_target_as = ahw_repairer }
+		}
+		solar_system = { ahw_mark_repaired = yes }
+	}
 	dismantle_potential = { always = no }
 	overclock_loc_key = AHW_SEAL
 	overclock_cooldown = 30
@@ -512,8 +1217,8 @@ ahw_exitgate_15 = {
 	dismantle_potential = { always = no }
 }
 
-# Portal end of entry point 16.
-ahw_gate_16 = {
+# Portal end of entry point 16, broken (as spawned).
+ahw_gate_broken_16 = {
 	entity = "deactivated_gateway_entity"
 	portrait = "GFX_megastructure_construction_background"
 	place_entity_on_planet_plane = no
@@ -523,6 +1228,53 @@ ahw_gate_16 = {
 	bypass_type = ahw_link_16
 
 	potential = { always = no }
+	dismantle_potential = { always = no }
+	nomad_reactivatable = yes
+}
+
+# Portal end of entry point 16, repaired: an upgrade of the broken gate.
+ahw_gate_16 = {
+	entity = "reactivated_gateway_entity"
+	portrait = "GFX_megastructure_construction_background"
+	place_entity_on_planet_plane = no
+	show_galactic_map_icon = no
+	show_in_outliner = yes
+	construction_blocks_and_blocked_by = none
+	bypass_type = ahw_link_16
+
+	upgrade_from = {
+		ahw_gate_broken_16
+	}
+	potential = {
+		OR = {
+			has_country_flag = ahw_highway_studied
+			is_nomadic = yes
+		}
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = AHW_REPAIR_NEEDS_TECHS
+			from = {
+				has_technology = ahw_tech_gate_theory
+				has_technology = ahw_tech_gate_construction
+			}
+		}
+	}
+	build_time = 90
+	resources = {
+		category = megastructures
+		cost = {
+			alloys = 300
+			influence = 50
+		}
+	}
+	on_build_complete = {
+		if = {
+			limit = { exists = from }
+			from = { save_event_target_as = ahw_repairer }
+		}
+		solar_system = { ahw_mark_repaired = yes }
+	}
 	dismantle_potential = { always = no }
 	overclock_loc_key = AHW_SEAL
 	overclock_cooldown = 30
@@ -546,8 +1298,8 @@ ahw_exitgate_16 = {
 	dismantle_potential = { always = no }
 }
 
-# Portal end of entry point 17.
-ahw_gate_17 = {
+# Portal end of entry point 17, broken (as spawned).
+ahw_gate_broken_17 = {
 	entity = "deactivated_gateway_entity"
 	portrait = "GFX_megastructure_construction_background"
 	place_entity_on_planet_plane = no
@@ -557,6 +1309,53 @@ ahw_gate_17 = {
 	bypass_type = ahw_link_17
 
 	potential = { always = no }
+	dismantle_potential = { always = no }
+	nomad_reactivatable = yes
+}
+
+# Portal end of entry point 17, repaired: an upgrade of the broken gate.
+ahw_gate_17 = {
+	entity = "reactivated_gateway_entity"
+	portrait = "GFX_megastructure_construction_background"
+	place_entity_on_planet_plane = no
+	show_galactic_map_icon = no
+	show_in_outliner = yes
+	construction_blocks_and_blocked_by = none
+	bypass_type = ahw_link_17
+
+	upgrade_from = {
+		ahw_gate_broken_17
+	}
+	potential = {
+		OR = {
+			has_country_flag = ahw_highway_studied
+			is_nomadic = yes
+		}
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = AHW_REPAIR_NEEDS_TECHS
+			from = {
+				has_technology = ahw_tech_gate_theory
+				has_technology = ahw_tech_gate_construction
+			}
+		}
+	}
+	build_time = 90
+	resources = {
+		category = megastructures
+		cost = {
+			alloys = 300
+			influence = 50
+		}
+	}
+	on_build_complete = {
+		if = {
+			limit = { exists = from }
+			from = { save_event_target_as = ahw_repairer }
+		}
+		solar_system = { ahw_mark_repaired = yes }
+	}
 	dismantle_potential = { always = no }
 	overclock_loc_key = AHW_SEAL
 	overclock_cooldown = 30
@@ -580,8 +1379,8 @@ ahw_exitgate_17 = {
 	dismantle_potential = { always = no }
 }
 
-# Portal end of entry point 18.
-ahw_gate_18 = {
+# Portal end of entry point 18, broken (as spawned).
+ahw_gate_broken_18 = {
 	entity = "deactivated_gateway_entity"
 	portrait = "GFX_megastructure_construction_background"
 	place_entity_on_planet_plane = no
@@ -591,6 +1390,53 @@ ahw_gate_18 = {
 	bypass_type = ahw_link_18
 
 	potential = { always = no }
+	dismantle_potential = { always = no }
+	nomad_reactivatable = yes
+}
+
+# Portal end of entry point 18, repaired: an upgrade of the broken gate.
+ahw_gate_18 = {
+	entity = "reactivated_gateway_entity"
+	portrait = "GFX_megastructure_construction_background"
+	place_entity_on_planet_plane = no
+	show_galactic_map_icon = no
+	show_in_outliner = yes
+	construction_blocks_and_blocked_by = none
+	bypass_type = ahw_link_18
+
+	upgrade_from = {
+		ahw_gate_broken_18
+	}
+	potential = {
+		OR = {
+			has_country_flag = ahw_highway_studied
+			is_nomadic = yes
+		}
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = AHW_REPAIR_NEEDS_TECHS
+			from = {
+				has_technology = ahw_tech_gate_theory
+				has_technology = ahw_tech_gate_construction
+			}
+		}
+	}
+	build_time = 90
+	resources = {
+		category = megastructures
+		cost = {
+			alloys = 300
+			influence = 50
+		}
+	}
+	on_build_complete = {
+		if = {
+			limit = { exists = from }
+			from = { save_event_target_as = ahw_repairer }
+		}
+		solar_system = { ahw_mark_repaired = yes }
+	}
 	dismantle_potential = { always = no }
 	overclock_loc_key = AHW_SEAL
 	overclock_cooldown = 30
@@ -614,8 +1460,8 @@ ahw_exitgate_18 = {
 	dismantle_potential = { always = no }
 }
 
-# Portal end of entry point 19.
-ahw_gate_19 = {
+# Portal end of entry point 19, broken (as spawned).
+ahw_gate_broken_19 = {
 	entity = "deactivated_gateway_entity"
 	portrait = "GFX_megastructure_construction_background"
 	place_entity_on_planet_plane = no
@@ -625,6 +1471,53 @@ ahw_gate_19 = {
 	bypass_type = ahw_link_19
 
 	potential = { always = no }
+	dismantle_potential = { always = no }
+	nomad_reactivatable = yes
+}
+
+# Portal end of entry point 19, repaired: an upgrade of the broken gate.
+ahw_gate_19 = {
+	entity = "reactivated_gateway_entity"
+	portrait = "GFX_megastructure_construction_background"
+	place_entity_on_planet_plane = no
+	show_galactic_map_icon = no
+	show_in_outliner = yes
+	construction_blocks_and_blocked_by = none
+	bypass_type = ahw_link_19
+
+	upgrade_from = {
+		ahw_gate_broken_19
+	}
+	potential = {
+		OR = {
+			has_country_flag = ahw_highway_studied
+			is_nomadic = yes
+		}
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = AHW_REPAIR_NEEDS_TECHS
+			from = {
+				has_technology = ahw_tech_gate_theory
+				has_technology = ahw_tech_gate_construction
+			}
+		}
+	}
+	build_time = 90
+	resources = {
+		category = megastructures
+		cost = {
+			alloys = 300
+			influence = 50
+		}
+	}
+	on_build_complete = {
+		if = {
+			limit = { exists = from }
+			from = { save_event_target_as = ahw_repairer }
+		}
+		solar_system = { ahw_mark_repaired = yes }
+	}
 	dismantle_potential = { always = no }
 	overclock_loc_key = AHW_SEAL
 	overclock_cooldown = 30
@@ -648,8 +1541,8 @@ ahw_exitgate_19 = {
 	dismantle_potential = { always = no }
 }
 
-# Portal end of entry point 20.
-ahw_gate_20 = {
+# Portal end of entry point 20, broken (as spawned).
+ahw_gate_broken_20 = {
 	entity = "deactivated_gateway_entity"
 	portrait = "GFX_megastructure_construction_background"
 	place_entity_on_planet_plane = no
@@ -659,6 +1552,53 @@ ahw_gate_20 = {
 	bypass_type = ahw_link_20
 
 	potential = { always = no }
+	dismantle_potential = { always = no }
+	nomad_reactivatable = yes
+}
+
+# Portal end of entry point 20, repaired: an upgrade of the broken gate.
+ahw_gate_20 = {
+	entity = "reactivated_gateway_entity"
+	portrait = "GFX_megastructure_construction_background"
+	place_entity_on_planet_plane = no
+	show_galactic_map_icon = no
+	show_in_outliner = yes
+	construction_blocks_and_blocked_by = none
+	bypass_type = ahw_link_20
+
+	upgrade_from = {
+		ahw_gate_broken_20
+	}
+	potential = {
+		OR = {
+			has_country_flag = ahw_highway_studied
+			is_nomadic = yes
+		}
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = AHW_REPAIR_NEEDS_TECHS
+			from = {
+				has_technology = ahw_tech_gate_theory
+				has_technology = ahw_tech_gate_construction
+			}
+		}
+	}
+	build_time = 90
+	resources = {
+		category = megastructures
+		cost = {
+			alloys = 300
+			influence = 50
+		}
+	}
+	on_build_complete = {
+		if = {
+			limit = { exists = from }
+			from = { save_event_target_as = ahw_repairer }
+		}
+		solar_system = { ahw_mark_repaired = yes }
+	}
 	dismantle_potential = { always = no }
 	overclock_loc_key = AHW_SEAL
 	overclock_cooldown = 30
@@ -682,8 +1622,8 @@ ahw_exitgate_20 = {
 	dismantle_potential = { always = no }
 }
 
-# Portal end of entry point 21.
-ahw_gate_21 = {
+# Portal end of entry point 21, broken (as spawned).
+ahw_gate_broken_21 = {
 	entity = "deactivated_gateway_entity"
 	portrait = "GFX_megastructure_construction_background"
 	place_entity_on_planet_plane = no
@@ -693,6 +1633,53 @@ ahw_gate_21 = {
 	bypass_type = ahw_link_21
 
 	potential = { always = no }
+	dismantle_potential = { always = no }
+	nomad_reactivatable = yes
+}
+
+# Portal end of entry point 21, repaired: an upgrade of the broken gate.
+ahw_gate_21 = {
+	entity = "reactivated_gateway_entity"
+	portrait = "GFX_megastructure_construction_background"
+	place_entity_on_planet_plane = no
+	show_galactic_map_icon = no
+	show_in_outliner = yes
+	construction_blocks_and_blocked_by = none
+	bypass_type = ahw_link_21
+
+	upgrade_from = {
+		ahw_gate_broken_21
+	}
+	potential = {
+		OR = {
+			has_country_flag = ahw_highway_studied
+			is_nomadic = yes
+		}
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = AHW_REPAIR_NEEDS_TECHS
+			from = {
+				has_technology = ahw_tech_gate_theory
+				has_technology = ahw_tech_gate_construction
+			}
+		}
+	}
+	build_time = 90
+	resources = {
+		category = megastructures
+		cost = {
+			alloys = 300
+			influence = 50
+		}
+	}
+	on_build_complete = {
+		if = {
+			limit = { exists = from }
+			from = { save_event_target_as = ahw_repairer }
+		}
+		solar_system = { ahw_mark_repaired = yes }
+	}
 	dismantle_potential = { always = no }
 	overclock_loc_key = AHW_SEAL
 	overclock_cooldown = 30
@@ -716,8 +1703,8 @@ ahw_exitgate_21 = {
 	dismantle_potential = { always = no }
 }
 
-# Portal end of entry point 22.
-ahw_gate_22 = {
+# Portal end of entry point 22, broken (as spawned).
+ahw_gate_broken_22 = {
 	entity = "deactivated_gateway_entity"
 	portrait = "GFX_megastructure_construction_background"
 	place_entity_on_planet_plane = no
@@ -727,6 +1714,53 @@ ahw_gate_22 = {
 	bypass_type = ahw_link_22
 
 	potential = { always = no }
+	dismantle_potential = { always = no }
+	nomad_reactivatable = yes
+}
+
+# Portal end of entry point 22, repaired: an upgrade of the broken gate.
+ahw_gate_22 = {
+	entity = "reactivated_gateway_entity"
+	portrait = "GFX_megastructure_construction_background"
+	place_entity_on_planet_plane = no
+	show_galactic_map_icon = no
+	show_in_outliner = yes
+	construction_blocks_and_blocked_by = none
+	bypass_type = ahw_link_22
+
+	upgrade_from = {
+		ahw_gate_broken_22
+	}
+	potential = {
+		OR = {
+			has_country_flag = ahw_highway_studied
+			is_nomadic = yes
+		}
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = AHW_REPAIR_NEEDS_TECHS
+			from = {
+				has_technology = ahw_tech_gate_theory
+				has_technology = ahw_tech_gate_construction
+			}
+		}
+	}
+	build_time = 90
+	resources = {
+		category = megastructures
+		cost = {
+			alloys = 300
+			influence = 50
+		}
+	}
+	on_build_complete = {
+		if = {
+			limit = { exists = from }
+			from = { save_event_target_as = ahw_repairer }
+		}
+		solar_system = { ahw_mark_repaired = yes }
+	}
 	dismantle_potential = { always = no }
 	overclock_loc_key = AHW_SEAL
 	overclock_cooldown = 30
@@ -750,8 +1784,8 @@ ahw_exitgate_22 = {
 	dismantle_potential = { always = no }
 }
 
-# Portal end of entry point 23.
-ahw_gate_23 = {
+# Portal end of entry point 23, broken (as spawned).
+ahw_gate_broken_23 = {
 	entity = "deactivated_gateway_entity"
 	portrait = "GFX_megastructure_construction_background"
 	place_entity_on_planet_plane = no
@@ -761,6 +1795,53 @@ ahw_gate_23 = {
 	bypass_type = ahw_link_23
 
 	potential = { always = no }
+	dismantle_potential = { always = no }
+	nomad_reactivatable = yes
+}
+
+# Portal end of entry point 23, repaired: an upgrade of the broken gate.
+ahw_gate_23 = {
+	entity = "reactivated_gateway_entity"
+	portrait = "GFX_megastructure_construction_background"
+	place_entity_on_planet_plane = no
+	show_galactic_map_icon = no
+	show_in_outliner = yes
+	construction_blocks_and_blocked_by = none
+	bypass_type = ahw_link_23
+
+	upgrade_from = {
+		ahw_gate_broken_23
+	}
+	potential = {
+		OR = {
+			has_country_flag = ahw_highway_studied
+			is_nomadic = yes
+		}
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = AHW_REPAIR_NEEDS_TECHS
+			from = {
+				has_technology = ahw_tech_gate_theory
+				has_technology = ahw_tech_gate_construction
+			}
+		}
+	}
+	build_time = 90
+	resources = {
+		category = megastructures
+		cost = {
+			alloys = 300
+			influence = 50
+		}
+	}
+	on_build_complete = {
+		if = {
+			limit = { exists = from }
+			from = { save_event_target_as = ahw_repairer }
+		}
+		solar_system = { ahw_mark_repaired = yes }
+	}
 	dismantle_potential = { always = no }
 	overclock_loc_key = AHW_SEAL
 	overclock_cooldown = 30
@@ -784,8 +1865,8 @@ ahw_exitgate_23 = {
 	dismantle_potential = { always = no }
 }
 
-# Portal end of entry point 24.
-ahw_gate_24 = {
+# Portal end of entry point 24, broken (as spawned).
+ahw_gate_broken_24 = {
 	entity = "deactivated_gateway_entity"
 	portrait = "GFX_megastructure_construction_background"
 	place_entity_on_planet_plane = no
@@ -795,6 +1876,53 @@ ahw_gate_24 = {
 	bypass_type = ahw_link_24
 
 	potential = { always = no }
+	dismantle_potential = { always = no }
+	nomad_reactivatable = yes
+}
+
+# Portal end of entry point 24, repaired: an upgrade of the broken gate.
+ahw_gate_24 = {
+	entity = "reactivated_gateway_entity"
+	portrait = "GFX_megastructure_construction_background"
+	place_entity_on_planet_plane = no
+	show_galactic_map_icon = no
+	show_in_outliner = yes
+	construction_blocks_and_blocked_by = none
+	bypass_type = ahw_link_24
+
+	upgrade_from = {
+		ahw_gate_broken_24
+	}
+	potential = {
+		OR = {
+			has_country_flag = ahw_highway_studied
+			is_nomadic = yes
+		}
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = AHW_REPAIR_NEEDS_TECHS
+			from = {
+				has_technology = ahw_tech_gate_theory
+				has_technology = ahw_tech_gate_construction
+			}
+		}
+	}
+	build_time = 90
+	resources = {
+		category = megastructures
+		cost = {
+			alloys = 300
+			influence = 50
+		}
+	}
+	on_build_complete = {
+		if = {
+			limit = { exists = from }
+			from = { save_event_target_as = ahw_repairer }
+		}
+		solar_system = { ahw_mark_repaired = yes }
+	}
 	dismantle_potential = { always = no }
 	overclock_loc_key = AHW_SEAL
 	overclock_cooldown = 30
@@ -818,8 +1946,8 @@ ahw_exitgate_24 = {
 	dismantle_potential = { always = no }
 }
 
-# Portal end of entry point 25.
-ahw_gate_25 = {
+# Portal end of entry point 25, broken (as spawned).
+ahw_gate_broken_25 = {
 	entity = "deactivated_gateway_entity"
 	portrait = "GFX_megastructure_construction_background"
 	place_entity_on_planet_plane = no
@@ -829,6 +1957,53 @@ ahw_gate_25 = {
 	bypass_type = ahw_link_25
 
 	potential = { always = no }
+	dismantle_potential = { always = no }
+	nomad_reactivatable = yes
+}
+
+# Portal end of entry point 25, repaired: an upgrade of the broken gate.
+ahw_gate_25 = {
+	entity = "reactivated_gateway_entity"
+	portrait = "GFX_megastructure_construction_background"
+	place_entity_on_planet_plane = no
+	show_galactic_map_icon = no
+	show_in_outliner = yes
+	construction_blocks_and_blocked_by = none
+	bypass_type = ahw_link_25
+
+	upgrade_from = {
+		ahw_gate_broken_25
+	}
+	potential = {
+		OR = {
+			has_country_flag = ahw_highway_studied
+			is_nomadic = yes
+		}
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = AHW_REPAIR_NEEDS_TECHS
+			from = {
+				has_technology = ahw_tech_gate_theory
+				has_technology = ahw_tech_gate_construction
+			}
+		}
+	}
+	build_time = 90
+	resources = {
+		category = megastructures
+		cost = {
+			alloys = 300
+			influence = 50
+		}
+	}
+	on_build_complete = {
+		if = {
+			limit = { exists = from }
+			from = { save_event_target_as = ahw_repairer }
+		}
+		solar_system = { ahw_mark_repaired = yes }
+	}
 	dismantle_potential = { always = no }
 	overclock_loc_key = AHW_SEAL
 	overclock_cooldown = 30
@@ -852,8 +2027,8 @@ ahw_exitgate_25 = {
 	dismantle_potential = { always = no }
 }
 
-# Portal end of entry point 26.
-ahw_gate_26 = {
+# Portal end of entry point 26, broken (as spawned).
+ahw_gate_broken_26 = {
 	entity = "deactivated_gateway_entity"
 	portrait = "GFX_megastructure_construction_background"
 	place_entity_on_planet_plane = no
@@ -863,6 +2038,53 @@ ahw_gate_26 = {
 	bypass_type = ahw_link_26
 
 	potential = { always = no }
+	dismantle_potential = { always = no }
+	nomad_reactivatable = yes
+}
+
+# Portal end of entry point 26, repaired: an upgrade of the broken gate.
+ahw_gate_26 = {
+	entity = "reactivated_gateway_entity"
+	portrait = "GFX_megastructure_construction_background"
+	place_entity_on_planet_plane = no
+	show_galactic_map_icon = no
+	show_in_outliner = yes
+	construction_blocks_and_blocked_by = none
+	bypass_type = ahw_link_26
+
+	upgrade_from = {
+		ahw_gate_broken_26
+	}
+	potential = {
+		OR = {
+			has_country_flag = ahw_highway_studied
+			is_nomadic = yes
+		}
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = AHW_REPAIR_NEEDS_TECHS
+			from = {
+				has_technology = ahw_tech_gate_theory
+				has_technology = ahw_tech_gate_construction
+			}
+		}
+	}
+	build_time = 90
+	resources = {
+		category = megastructures
+		cost = {
+			alloys = 300
+			influence = 50
+		}
+	}
+	on_build_complete = {
+		if = {
+			limit = { exists = from }
+			from = { save_event_target_as = ahw_repairer }
+		}
+		solar_system = { ahw_mark_repaired = yes }
+	}
 	dismantle_potential = { always = no }
 	overclock_loc_key = AHW_SEAL
 	overclock_cooldown = 30
@@ -886,8 +2108,8 @@ ahw_exitgate_26 = {
 	dismantle_potential = { always = no }
 }
 
-# Portal end of entry point 27.
-ahw_gate_27 = {
+# Portal end of entry point 27, broken (as spawned).
+ahw_gate_broken_27 = {
 	entity = "deactivated_gateway_entity"
 	portrait = "GFX_megastructure_construction_background"
 	place_entity_on_planet_plane = no
@@ -897,6 +2119,53 @@ ahw_gate_27 = {
 	bypass_type = ahw_link_27
 
 	potential = { always = no }
+	dismantle_potential = { always = no }
+	nomad_reactivatable = yes
+}
+
+# Portal end of entry point 27, repaired: an upgrade of the broken gate.
+ahw_gate_27 = {
+	entity = "reactivated_gateway_entity"
+	portrait = "GFX_megastructure_construction_background"
+	place_entity_on_planet_plane = no
+	show_galactic_map_icon = no
+	show_in_outliner = yes
+	construction_blocks_and_blocked_by = none
+	bypass_type = ahw_link_27
+
+	upgrade_from = {
+		ahw_gate_broken_27
+	}
+	potential = {
+		OR = {
+			has_country_flag = ahw_highway_studied
+			is_nomadic = yes
+		}
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = AHW_REPAIR_NEEDS_TECHS
+			from = {
+				has_technology = ahw_tech_gate_theory
+				has_technology = ahw_tech_gate_construction
+			}
+		}
+	}
+	build_time = 90
+	resources = {
+		category = megastructures
+		cost = {
+			alloys = 300
+			influence = 50
+		}
+	}
+	on_build_complete = {
+		if = {
+			limit = { exists = from }
+			from = { save_event_target_as = ahw_repairer }
+		}
+		solar_system = { ahw_mark_repaired = yes }
+	}
 	dismantle_potential = { always = no }
 	overclock_loc_key = AHW_SEAL
 	overclock_cooldown = 30
@@ -920,8 +2189,8 @@ ahw_exitgate_27 = {
 	dismantle_potential = { always = no }
 }
 
-# Portal end of entry point 28.
-ahw_gate_28 = {
+# Portal end of entry point 28, broken (as spawned).
+ahw_gate_broken_28 = {
 	entity = "deactivated_gateway_entity"
 	portrait = "GFX_megastructure_construction_background"
 	place_entity_on_planet_plane = no
@@ -931,6 +2200,53 @@ ahw_gate_28 = {
 	bypass_type = ahw_link_28
 
 	potential = { always = no }
+	dismantle_potential = { always = no }
+	nomad_reactivatable = yes
+}
+
+# Portal end of entry point 28, repaired: an upgrade of the broken gate.
+ahw_gate_28 = {
+	entity = "reactivated_gateway_entity"
+	portrait = "GFX_megastructure_construction_background"
+	place_entity_on_planet_plane = no
+	show_galactic_map_icon = no
+	show_in_outliner = yes
+	construction_blocks_and_blocked_by = none
+	bypass_type = ahw_link_28
+
+	upgrade_from = {
+		ahw_gate_broken_28
+	}
+	potential = {
+		OR = {
+			has_country_flag = ahw_highway_studied
+			is_nomadic = yes
+		}
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = AHW_REPAIR_NEEDS_TECHS
+			from = {
+				has_technology = ahw_tech_gate_theory
+				has_technology = ahw_tech_gate_construction
+			}
+		}
+	}
+	build_time = 90
+	resources = {
+		category = megastructures
+		cost = {
+			alloys = 300
+			influence = 50
+		}
+	}
+	on_build_complete = {
+		if = {
+			limit = { exists = from }
+			from = { save_event_target_as = ahw_repairer }
+		}
+		solar_system = { ahw_mark_repaired = yes }
+	}
 	dismantle_potential = { always = no }
 	overclock_loc_key = AHW_SEAL
 	overclock_cooldown = 30
@@ -954,8 +2270,8 @@ ahw_exitgate_28 = {
 	dismantle_potential = { always = no }
 }
 
-# Portal end of entry point 29.
-ahw_gate_29 = {
+# Portal end of entry point 29, broken (as spawned).
+ahw_gate_broken_29 = {
 	entity = "deactivated_gateway_entity"
 	portrait = "GFX_megastructure_construction_background"
 	place_entity_on_planet_plane = no
@@ -965,6 +2281,53 @@ ahw_gate_29 = {
 	bypass_type = ahw_link_29
 
 	potential = { always = no }
+	dismantle_potential = { always = no }
+	nomad_reactivatable = yes
+}
+
+# Portal end of entry point 29, repaired: an upgrade of the broken gate.
+ahw_gate_29 = {
+	entity = "reactivated_gateway_entity"
+	portrait = "GFX_megastructure_construction_background"
+	place_entity_on_planet_plane = no
+	show_galactic_map_icon = no
+	show_in_outliner = yes
+	construction_blocks_and_blocked_by = none
+	bypass_type = ahw_link_29
+
+	upgrade_from = {
+		ahw_gate_broken_29
+	}
+	potential = {
+		OR = {
+			has_country_flag = ahw_highway_studied
+			is_nomadic = yes
+		}
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = AHW_REPAIR_NEEDS_TECHS
+			from = {
+				has_technology = ahw_tech_gate_theory
+				has_technology = ahw_tech_gate_construction
+			}
+		}
+	}
+	build_time = 90
+	resources = {
+		category = megastructures
+		cost = {
+			alloys = 300
+			influence = 50
+		}
+	}
+	on_build_complete = {
+		if = {
+			limit = { exists = from }
+			from = { save_event_target_as = ahw_repairer }
+		}
+		solar_system = { ahw_mark_repaired = yes }
+	}
 	dismantle_potential = { always = no }
 	overclock_loc_key = AHW_SEAL
 	overclock_cooldown = 30
@@ -988,8 +2351,8 @@ ahw_exitgate_29 = {
 	dismantle_potential = { always = no }
 }
 
-# Portal end of entry point 30.
-ahw_gate_30 = {
+# Portal end of entry point 30, broken (as spawned).
+ahw_gate_broken_30 = {
 	entity = "deactivated_gateway_entity"
 	portrait = "GFX_megastructure_construction_background"
 	place_entity_on_planet_plane = no
@@ -999,6 +2362,53 @@ ahw_gate_30 = {
 	bypass_type = ahw_link_30
 
 	potential = { always = no }
+	dismantle_potential = { always = no }
+	nomad_reactivatable = yes
+}
+
+# Portal end of entry point 30, repaired: an upgrade of the broken gate.
+ahw_gate_30 = {
+	entity = "reactivated_gateway_entity"
+	portrait = "GFX_megastructure_construction_background"
+	place_entity_on_planet_plane = no
+	show_galactic_map_icon = no
+	show_in_outliner = yes
+	construction_blocks_and_blocked_by = none
+	bypass_type = ahw_link_30
+
+	upgrade_from = {
+		ahw_gate_broken_30
+	}
+	potential = {
+		OR = {
+			has_country_flag = ahw_highway_studied
+			is_nomadic = yes
+		}
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = AHW_REPAIR_NEEDS_TECHS
+			from = {
+				has_technology = ahw_tech_gate_theory
+				has_technology = ahw_tech_gate_construction
+			}
+		}
+	}
+	build_time = 90
+	resources = {
+		category = megastructures
+		cost = {
+			alloys = 300
+			influence = 50
+		}
+	}
+	on_build_complete = {
+		if = {
+			limit = { exists = from }
+			from = { save_event_target_as = ahw_repairer }
+		}
+		solar_system = { ahw_mark_repaired = yes }
+	}
 	dismantle_potential = { always = no }
 	overclock_loc_key = AHW_SEAL
 	overclock_cooldown = 30
@@ -1022,8 +2432,8 @@ ahw_exitgate_30 = {
 	dismantle_potential = { always = no }
 }
 
-# Portal end of entry point 31.
-ahw_gate_31 = {
+# Portal end of entry point 31, broken (as spawned).
+ahw_gate_broken_31 = {
 	entity = "deactivated_gateway_entity"
 	portrait = "GFX_megastructure_construction_background"
 	place_entity_on_planet_plane = no
@@ -1033,6 +2443,53 @@ ahw_gate_31 = {
 	bypass_type = ahw_link_31
 
 	potential = { always = no }
+	dismantle_potential = { always = no }
+	nomad_reactivatable = yes
+}
+
+# Portal end of entry point 31, repaired: an upgrade of the broken gate.
+ahw_gate_31 = {
+	entity = "reactivated_gateway_entity"
+	portrait = "GFX_megastructure_construction_background"
+	place_entity_on_planet_plane = no
+	show_galactic_map_icon = no
+	show_in_outliner = yes
+	construction_blocks_and_blocked_by = none
+	bypass_type = ahw_link_31
+
+	upgrade_from = {
+		ahw_gate_broken_31
+	}
+	potential = {
+		OR = {
+			has_country_flag = ahw_highway_studied
+			is_nomadic = yes
+		}
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = AHW_REPAIR_NEEDS_TECHS
+			from = {
+				has_technology = ahw_tech_gate_theory
+				has_technology = ahw_tech_gate_construction
+			}
+		}
+	}
+	build_time = 90
+	resources = {
+		category = megastructures
+		cost = {
+			alloys = 300
+			influence = 50
+		}
+	}
+	on_build_complete = {
+		if = {
+			limit = { exists = from }
+			from = { save_event_target_as = ahw_repairer }
+		}
+		solar_system = { ahw_mark_repaired = yes }
+	}
 	dismantle_potential = { always = no }
 	overclock_loc_key = AHW_SEAL
 	overclock_cooldown = 30
@@ -1056,8 +2513,8 @@ ahw_exitgate_31 = {
 	dismantle_potential = { always = no }
 }
 
-# Portal end of entry point 32.
-ahw_gate_32 = {
+# Portal end of entry point 32, broken (as spawned).
+ahw_gate_broken_32 = {
 	entity = "deactivated_gateway_entity"
 	portrait = "GFX_megastructure_construction_background"
 	place_entity_on_planet_plane = no
@@ -1067,6 +2524,53 @@ ahw_gate_32 = {
 	bypass_type = ahw_link_32
 
 	potential = { always = no }
+	dismantle_potential = { always = no }
+	nomad_reactivatable = yes
+}
+
+# Portal end of entry point 32, repaired: an upgrade of the broken gate.
+ahw_gate_32 = {
+	entity = "reactivated_gateway_entity"
+	portrait = "GFX_megastructure_construction_background"
+	place_entity_on_planet_plane = no
+	show_galactic_map_icon = no
+	show_in_outliner = yes
+	construction_blocks_and_blocked_by = none
+	bypass_type = ahw_link_32
+
+	upgrade_from = {
+		ahw_gate_broken_32
+	}
+	potential = {
+		OR = {
+			has_country_flag = ahw_highway_studied
+			is_nomadic = yes
+		}
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = AHW_REPAIR_NEEDS_TECHS
+			from = {
+				has_technology = ahw_tech_gate_theory
+				has_technology = ahw_tech_gate_construction
+			}
+		}
+	}
+	build_time = 90
+	resources = {
+		category = megastructures
+		cost = {
+			alloys = 300
+			influence = 50
+		}
+	}
+	on_build_complete = {
+		if = {
+			limit = { exists = from }
+			from = { save_event_target_as = ahw_repairer }
+		}
+		solar_system = { ahw_mark_repaired = yes }
+	}
 	dismantle_potential = { always = no }
 	overclock_loc_key = AHW_SEAL
 	overclock_cooldown = 30
@@ -1085,6 +2589,118 @@ ahw_exitgate_32 = {
 	show_in_outliner = yes
 	construction_blocks_and_blocked_by = none
 	bypass_type = ahw_link_32
+
+	potential = { always = no }
+	dismantle_potential = { always = no }
+}
+
+# Express wormhole 1: one at each of two neighbouring stations.
+ahw_xhole_1 = {
+	entity = "natural_wormhole_entity"
+	portrait = "GFX_megastructure_construction_background"
+	place_entity_on_planet_plane = no
+	show_galactic_map_icon = no
+	show_in_outliner = yes
+	construction_blocks_and_blocked_by = none
+	bypass_type = ahw_express_1
+
+	potential = { always = no }
+	dismantle_potential = { always = no }
+}
+
+# Express wormhole 2: one at each of two neighbouring stations.
+ahw_xhole_2 = {
+	entity = "natural_wormhole_entity"
+	portrait = "GFX_megastructure_construction_background"
+	place_entity_on_planet_plane = no
+	show_galactic_map_icon = no
+	show_in_outliner = yes
+	construction_blocks_and_blocked_by = none
+	bypass_type = ahw_express_2
+
+	potential = { always = no }
+	dismantle_potential = { always = no }
+}
+
+# Express wormhole 3: one at each of two neighbouring stations.
+ahw_xhole_3 = {
+	entity = "natural_wormhole_entity"
+	portrait = "GFX_megastructure_construction_background"
+	place_entity_on_planet_plane = no
+	show_galactic_map_icon = no
+	show_in_outliner = yes
+	construction_blocks_and_blocked_by = none
+	bypass_type = ahw_express_3
+
+	potential = { always = no }
+	dismantle_potential = { always = no }
+}
+
+# Express wormhole 4: one at each of two neighbouring stations.
+ahw_xhole_4 = {
+	entity = "natural_wormhole_entity"
+	portrait = "GFX_megastructure_construction_background"
+	place_entity_on_planet_plane = no
+	show_galactic_map_icon = no
+	show_in_outliner = yes
+	construction_blocks_and_blocked_by = none
+	bypass_type = ahw_express_4
+
+	potential = { always = no }
+	dismantle_potential = { always = no }
+}
+
+# Express wormhole 5: one at each of two neighbouring stations.
+ahw_xhole_5 = {
+	entity = "natural_wormhole_entity"
+	portrait = "GFX_megastructure_construction_background"
+	place_entity_on_planet_plane = no
+	show_galactic_map_icon = no
+	show_in_outliner = yes
+	construction_blocks_and_blocked_by = none
+	bypass_type = ahw_express_5
+
+	potential = { always = no }
+	dismantle_potential = { always = no }
+}
+
+# Express wormhole 6: one at each of two neighbouring stations.
+ahw_xhole_6 = {
+	entity = "natural_wormhole_entity"
+	portrait = "GFX_megastructure_construction_background"
+	place_entity_on_planet_plane = no
+	show_galactic_map_icon = no
+	show_in_outliner = yes
+	construction_blocks_and_blocked_by = none
+	bypass_type = ahw_express_6
+
+	potential = { always = no }
+	dismantle_potential = { always = no }
+}
+
+# Express wormhole 7: one at each of two neighbouring stations.
+ahw_xhole_7 = {
+	entity = "natural_wormhole_entity"
+	portrait = "GFX_megastructure_construction_background"
+	place_entity_on_planet_plane = no
+	show_galactic_map_icon = no
+	show_in_outliner = yes
+	construction_blocks_and_blocked_by = none
+	bypass_type = ahw_express_7
+
+	potential = { always = no }
+	dismantle_potential = { always = no }
+}
+
+# Express wormhole 8: one at each of two neighbouring stations.
+ahw_xhole_8 = {
+	entity = "natural_wormhole_entity"
+	portrait = "GFX_megastructure_construction_background"
+	place_entity_on_planet_plane = no
+	show_galactic_map_icon = no
+	show_in_outliner = yes
+	construction_blocks_and_blocked_by = none
+	bypass_type = ahw_express_8
 
 	potential = { always = no }
 	dismantle_potential = { always = no }

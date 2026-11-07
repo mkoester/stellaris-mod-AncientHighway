@@ -1,7 +1,8 @@
 # Entry points start broken (star flag ahw_broken on the portal). The
 # anchor's owner (user, 2026-11-04) studies the gate with a science ship, researches
-# both gate techs, pays for the repair (event ahw.21) and repairs it with a construction
-# ship - once, for good. Offered by the monthly check ahw.20.
+# both gate techs and repairs it on the gate itself (the upgrade ahw_gate_broken_N -> ahw_gate_N,
+# 0.1.0) - once, for good. The study is offered by the monthly check ahw.20. The former AHW_REPAIR_PROJECT
+# was the pop-up's scripted repair; the contract's repair now ends in ahw_repair_gate directly.
 
 special_project = {
 	key = AHW_STUDY_PROJECT
@@ -19,19 +20,36 @@ special_project = {
 	}
 }
 
+# The repair contract's work (ahw_contract_repair_gate), done by the nomad's arkship as vanilla's
+# contract projects are. It only counts: the repair happens in the contract's on_success.
 special_project = {
-	key = AHW_REPAIR_PROJECT
-	cost = 0
+	key = "AHW_CONTRACT_REPAIR_PROJECT"
+	event_chain = ahw_contract_repair_gate_chain
 	days_to_research = 90
-	tech_department = engineering_technology
-	picture = GFX_evt_engineering_research
-	icon = "gfx/interface/icons/situation_log/situation_log_engineering.dds"
+	project_type = project_type_contract
+	picture = GFX_evt_ship_in_orbit_3
+	icon = "gfx/interface/icons/situation_log/situation_log_quest.dds"
+	location = yes
+	remove_when_completed = yes
 
 	event_scope = ship_event
-	requirements = { shipclass_constructor = 1 }
+
+	requirements = {
+		carries_colony = 1
+	}
 
 	on_success = {
-		ship_event = { id = ahw.23 }
+		owner = {
+			add_mission_counter = {
+				mission = ahw_contract_repair_gate
+				counter = ahw_contract_repair_gate_counter
+				amount = 1
+			}
+		}
+	}
+
+	on_fail = {
+		owner = { end_event_chain = ahw_contract_repair_gate_chain }
 	}
 }
 
@@ -134,5 +152,29 @@ special_project = {
 
 	on_success = {
 		ship_event = { id = ahw.65 }
+	}
+}
+
+# 0.1.0: stabilise an express station (both its links open for good, for everyone). Offered on
+# entering a station once the express is awake, to any country with Gate Theory (ahw.60,
+# ahw_express_entered). Cheaper the later in the game (design 2026-11-05).
+special_project = {
+	key = AHW_EXPRESS_STABILISE
+	cost = {
+		base = 4000
+		modifier = { factor = 0.75 years_passed > 125 }
+		modifier = { factor = 0.75 years_passed > 150 }
+		modifier = { factor = 0.75 years_passed > 175 }
+	}
+	days_to_research = 60
+	tech_department = physics_technology
+	picture = GFX_evt_wormhole
+	icon = "gfx/interface/icons/situation_log/situation_log_quest.dds"
+
+	event_scope = ship_event
+	requirements = { shipclass_science_ship = 1 }
+
+	on_success = {
+		ship_event = { id = ahw.72 }
 	}
 }

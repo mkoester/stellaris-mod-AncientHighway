@@ -3,259 +3,419 @@
 # copied). Without them: "Trying to change sprite to unknown sprite" (run 5).
 spriteTypes = {
 	spriteType = {
-		name = "GFX_ahw_gate_1_outliner_icon"
+		name = "GFX_ahw_gate_broken_1_outliner_icon"
 		textureFile = "gfx/interface/icons/megastructures/gateway_ruined.dds"
+	}
+	spriteType = {
+		name = "GFX_ahw_gate_1_outliner_icon"
+		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
 	}
 	spriteType = {
 		name = "GFX_ahw_exitgate_1_outliner_icon"
 		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
 	}
 	spriteType = {
-		name = "GFX_ahw_gate_2_outliner_icon"
+		name = "GFX_ahw_gate_broken_2_outliner_icon"
 		textureFile = "gfx/interface/icons/megastructures/gateway_ruined.dds"
+	}
+	spriteType = {
+		name = "GFX_ahw_gate_2_outliner_icon"
+		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
 	}
 	spriteType = {
 		name = "GFX_ahw_exitgate_2_outliner_icon"
 		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
 	}
 	spriteType = {
-		name = "GFX_ahw_gate_3_outliner_icon"
+		name = "GFX_ahw_gate_broken_3_outliner_icon"
 		textureFile = "gfx/interface/icons/megastructures/gateway_ruined.dds"
+	}
+	spriteType = {
+		name = "GFX_ahw_gate_3_outliner_icon"
+		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
 	}
 	spriteType = {
 		name = "GFX_ahw_exitgate_3_outliner_icon"
 		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
 	}
 	spriteType = {
-		name = "GFX_ahw_gate_4_outliner_icon"
+		name = "GFX_ahw_gate_broken_4_outliner_icon"
 		textureFile = "gfx/interface/icons/megastructures/gateway_ruined.dds"
+	}
+	spriteType = {
+		name = "GFX_ahw_gate_4_outliner_icon"
+		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
 	}
 	spriteType = {
 		name = "GFX_ahw_exitgate_4_outliner_icon"
 		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
 	}
 	spriteType = {
-		name = "GFX_ahw_gate_5_outliner_icon"
+		name = "GFX_ahw_gate_broken_5_outliner_icon"
 		textureFile = "gfx/interface/icons/megastructures/gateway_ruined.dds"
+	}
+	spriteType = {
+		name = "GFX_ahw_gate_5_outliner_icon"
+		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
 	}
 	spriteType = {
 		name = "GFX_ahw_exitgate_5_outliner_icon"
 		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
 	}
 	spriteType = {
-		name = "GFX_ahw_gate_6_outliner_icon"
+		name = "GFX_ahw_gate_broken_6_outliner_icon"
 		textureFile = "gfx/interface/icons/megastructures/gateway_ruined.dds"
+	}
+	spriteType = {
+		name = "GFX_ahw_gate_6_outliner_icon"
+		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
 	}
 	spriteType = {
 		name = "GFX_ahw_exitgate_6_outliner_icon"
 		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
 	}
 	spriteType = {
-		name = "GFX_ahw_gate_7_outliner_icon"
+		name = "GFX_ahw_gate_broken_7_outliner_icon"
 		textureFile = "gfx/interface/icons/megastructures/gateway_ruined.dds"
+	}
+	spriteType = {
+		name = "GFX_ahw_gate_7_outliner_icon"
+		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
 	}
 	spriteType = {
 		name = "GFX_ahw_exitgate_7_outliner_icon"
 		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
 	}
 	spriteType = {
-		name = "GFX_ahw_gate_8_outliner_icon"
+		name = "GFX_ahw_gate_broken_8_outliner_icon"
 		textureFile = "gfx/interface/icons/megastructures/gateway_ruined.dds"
+	}
+	spriteType = {
+		name = "GFX_ahw_gate_8_outliner_icon"
+		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
 	}
 	spriteType = {
 		name = "GFX_ahw_exitgate_8_outliner_icon"
 		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
 	}
 	spriteType = {
-		name = "GFX_ahw_gate_9_outliner_icon"
+		name = "GFX_ahw_gate_broken_9_outliner_icon"
 		textureFile = "gfx/interface/icons/megastructures/gateway_ruined.dds"
+	}
+	spriteType = {
+		name = "GFX_ahw_gate_9_outliner_icon"
+		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
 	}
 	spriteType = {
 		name = "GFX_ahw_exitgate_9_outliner_icon"
 		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
 	}
 	spriteType = {
-		name = "GFX_ahw_gate_10_outliner_icon"
+		name = "GFX_ahw_gate_broken_10_outliner_icon"
 		textureFile = "gfx/interface/icons/megastructures/gateway_ruined.dds"
+	}
+	spriteType = {
+		name = "GFX_ahw_gate_10_outliner_icon"
+		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
 	}
 	spriteType = {
 		name = "GFX_ahw_exitgate_10_outliner_icon"
 		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
 	}
 	spriteType = {
-		name = "GFX_ahw_gate_11_outliner_icon"
+		name = "GFX_ahw_gate_broken_11_outliner_icon"
 		textureFile = "gfx/interface/icons/megastructures/gateway_ruined.dds"
+	}
+	spriteType = {
+		name = "GFX_ahw_gate_11_outliner_icon"
+		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
 	}
 	spriteType = {
 		name = "GFX_ahw_exitgate_11_outliner_icon"
 		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
 	}
 	spriteType = {
-		name = "GFX_ahw_gate_12_outliner_icon"
+		name = "GFX_ahw_gate_broken_12_outliner_icon"
 		textureFile = "gfx/interface/icons/megastructures/gateway_ruined.dds"
+	}
+	spriteType = {
+		name = "GFX_ahw_gate_12_outliner_icon"
+		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
 	}
 	spriteType = {
 		name = "GFX_ahw_exitgate_12_outliner_icon"
 		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
 	}
 	spriteType = {
-		name = "GFX_ahw_gate_13_outliner_icon"
+		name = "GFX_ahw_gate_broken_13_outliner_icon"
 		textureFile = "gfx/interface/icons/megastructures/gateway_ruined.dds"
+	}
+	spriteType = {
+		name = "GFX_ahw_gate_13_outliner_icon"
+		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
 	}
 	spriteType = {
 		name = "GFX_ahw_exitgate_13_outliner_icon"
 		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
 	}
 	spriteType = {
-		name = "GFX_ahw_gate_14_outliner_icon"
+		name = "GFX_ahw_gate_broken_14_outliner_icon"
 		textureFile = "gfx/interface/icons/megastructures/gateway_ruined.dds"
+	}
+	spriteType = {
+		name = "GFX_ahw_gate_14_outliner_icon"
+		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
 	}
 	spriteType = {
 		name = "GFX_ahw_exitgate_14_outliner_icon"
 		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
 	}
 	spriteType = {
-		name = "GFX_ahw_gate_15_outliner_icon"
+		name = "GFX_ahw_gate_broken_15_outliner_icon"
 		textureFile = "gfx/interface/icons/megastructures/gateway_ruined.dds"
+	}
+	spriteType = {
+		name = "GFX_ahw_gate_15_outliner_icon"
+		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
 	}
 	spriteType = {
 		name = "GFX_ahw_exitgate_15_outliner_icon"
 		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
 	}
 	spriteType = {
-		name = "GFX_ahw_gate_16_outliner_icon"
+		name = "GFX_ahw_gate_broken_16_outliner_icon"
 		textureFile = "gfx/interface/icons/megastructures/gateway_ruined.dds"
+	}
+	spriteType = {
+		name = "GFX_ahw_gate_16_outliner_icon"
+		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
 	}
 	spriteType = {
 		name = "GFX_ahw_exitgate_16_outliner_icon"
 		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
 	}
 	spriteType = {
-		name = "GFX_ahw_gate_17_outliner_icon"
+		name = "GFX_ahw_gate_broken_17_outliner_icon"
 		textureFile = "gfx/interface/icons/megastructures/gateway_ruined.dds"
+	}
+	spriteType = {
+		name = "GFX_ahw_gate_17_outliner_icon"
+		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
 	}
 	spriteType = {
 		name = "GFX_ahw_exitgate_17_outliner_icon"
 		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
 	}
 	spriteType = {
-		name = "GFX_ahw_gate_18_outliner_icon"
+		name = "GFX_ahw_gate_broken_18_outliner_icon"
 		textureFile = "gfx/interface/icons/megastructures/gateway_ruined.dds"
+	}
+	spriteType = {
+		name = "GFX_ahw_gate_18_outliner_icon"
+		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
 	}
 	spriteType = {
 		name = "GFX_ahw_exitgate_18_outliner_icon"
 		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
 	}
 	spriteType = {
-		name = "GFX_ahw_gate_19_outliner_icon"
+		name = "GFX_ahw_gate_broken_19_outliner_icon"
 		textureFile = "gfx/interface/icons/megastructures/gateway_ruined.dds"
+	}
+	spriteType = {
+		name = "GFX_ahw_gate_19_outliner_icon"
+		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
 	}
 	spriteType = {
 		name = "GFX_ahw_exitgate_19_outliner_icon"
 		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
 	}
 	spriteType = {
-		name = "GFX_ahw_gate_20_outliner_icon"
+		name = "GFX_ahw_gate_broken_20_outliner_icon"
 		textureFile = "gfx/interface/icons/megastructures/gateway_ruined.dds"
+	}
+	spriteType = {
+		name = "GFX_ahw_gate_20_outliner_icon"
+		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
 	}
 	spriteType = {
 		name = "GFX_ahw_exitgate_20_outliner_icon"
 		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
 	}
 	spriteType = {
-		name = "GFX_ahw_gate_21_outliner_icon"
+		name = "GFX_ahw_gate_broken_21_outliner_icon"
 		textureFile = "gfx/interface/icons/megastructures/gateway_ruined.dds"
+	}
+	spriteType = {
+		name = "GFX_ahw_gate_21_outliner_icon"
+		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
 	}
 	spriteType = {
 		name = "GFX_ahw_exitgate_21_outliner_icon"
 		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
 	}
 	spriteType = {
-		name = "GFX_ahw_gate_22_outliner_icon"
+		name = "GFX_ahw_gate_broken_22_outliner_icon"
 		textureFile = "gfx/interface/icons/megastructures/gateway_ruined.dds"
+	}
+	spriteType = {
+		name = "GFX_ahw_gate_22_outliner_icon"
+		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
 	}
 	spriteType = {
 		name = "GFX_ahw_exitgate_22_outliner_icon"
 		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
 	}
 	spriteType = {
-		name = "GFX_ahw_gate_23_outliner_icon"
+		name = "GFX_ahw_gate_broken_23_outliner_icon"
 		textureFile = "gfx/interface/icons/megastructures/gateway_ruined.dds"
+	}
+	spriteType = {
+		name = "GFX_ahw_gate_23_outliner_icon"
+		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
 	}
 	spriteType = {
 		name = "GFX_ahw_exitgate_23_outliner_icon"
 		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
 	}
 	spriteType = {
-		name = "GFX_ahw_gate_24_outliner_icon"
+		name = "GFX_ahw_gate_broken_24_outliner_icon"
 		textureFile = "gfx/interface/icons/megastructures/gateway_ruined.dds"
+	}
+	spriteType = {
+		name = "GFX_ahw_gate_24_outliner_icon"
+		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
 	}
 	spriteType = {
 		name = "GFX_ahw_exitgate_24_outliner_icon"
 		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
 	}
 	spriteType = {
-		name = "GFX_ahw_gate_25_outliner_icon"
+		name = "GFX_ahw_gate_broken_25_outliner_icon"
 		textureFile = "gfx/interface/icons/megastructures/gateway_ruined.dds"
+	}
+	spriteType = {
+		name = "GFX_ahw_gate_25_outliner_icon"
+		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
 	}
 	spriteType = {
 		name = "GFX_ahw_exitgate_25_outliner_icon"
 		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
 	}
 	spriteType = {
-		name = "GFX_ahw_gate_26_outliner_icon"
+		name = "GFX_ahw_gate_broken_26_outliner_icon"
 		textureFile = "gfx/interface/icons/megastructures/gateway_ruined.dds"
+	}
+	spriteType = {
+		name = "GFX_ahw_gate_26_outliner_icon"
+		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
 	}
 	spriteType = {
 		name = "GFX_ahw_exitgate_26_outliner_icon"
 		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
 	}
 	spriteType = {
-		name = "GFX_ahw_gate_27_outliner_icon"
+		name = "GFX_ahw_gate_broken_27_outliner_icon"
 		textureFile = "gfx/interface/icons/megastructures/gateway_ruined.dds"
+	}
+	spriteType = {
+		name = "GFX_ahw_gate_27_outliner_icon"
+		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
 	}
 	spriteType = {
 		name = "GFX_ahw_exitgate_27_outliner_icon"
 		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
 	}
 	spriteType = {
-		name = "GFX_ahw_gate_28_outliner_icon"
+		name = "GFX_ahw_gate_broken_28_outliner_icon"
 		textureFile = "gfx/interface/icons/megastructures/gateway_ruined.dds"
+	}
+	spriteType = {
+		name = "GFX_ahw_gate_28_outliner_icon"
+		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
 	}
 	spriteType = {
 		name = "GFX_ahw_exitgate_28_outliner_icon"
 		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
 	}
 	spriteType = {
-		name = "GFX_ahw_gate_29_outliner_icon"
+		name = "GFX_ahw_gate_broken_29_outliner_icon"
 		textureFile = "gfx/interface/icons/megastructures/gateway_ruined.dds"
+	}
+	spriteType = {
+		name = "GFX_ahw_gate_29_outliner_icon"
+		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
 	}
 	spriteType = {
 		name = "GFX_ahw_exitgate_29_outliner_icon"
 		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
 	}
 	spriteType = {
-		name = "GFX_ahw_gate_30_outliner_icon"
+		name = "GFX_ahw_gate_broken_30_outliner_icon"
 		textureFile = "gfx/interface/icons/megastructures/gateway_ruined.dds"
+	}
+	spriteType = {
+		name = "GFX_ahw_gate_30_outliner_icon"
+		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
 	}
 	spriteType = {
 		name = "GFX_ahw_exitgate_30_outliner_icon"
 		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
 	}
 	spriteType = {
-		name = "GFX_ahw_gate_31_outliner_icon"
+		name = "GFX_ahw_gate_broken_31_outliner_icon"
 		textureFile = "gfx/interface/icons/megastructures/gateway_ruined.dds"
+	}
+	spriteType = {
+		name = "GFX_ahw_gate_31_outliner_icon"
+		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
 	}
 	spriteType = {
 		name = "GFX_ahw_exitgate_31_outliner_icon"
 		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
 	}
 	spriteType = {
-		name = "GFX_ahw_gate_32_outliner_icon"
+		name = "GFX_ahw_gate_broken_32_outliner_icon"
 		textureFile = "gfx/interface/icons/megastructures/gateway_ruined.dds"
 	}
 	spriteType = {
+		name = "GFX_ahw_gate_32_outliner_icon"
+		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
+	}
+	spriteType = {
 		name = "GFX_ahw_exitgate_32_outliner_icon"
+		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
+	}
+	spriteType = {
+		name = "GFX_ahw_xhole_1_outliner_icon"
+		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
+	}
+	spriteType = {
+		name = "GFX_ahw_xhole_2_outliner_icon"
+		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
+	}
+	spriteType = {
+		name = "GFX_ahw_xhole_3_outliner_icon"
+		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
+	}
+	spriteType = {
+		name = "GFX_ahw_xhole_4_outliner_icon"
+		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
+	}
+	spriteType = {
+		name = "GFX_ahw_xhole_5_outliner_icon"
+		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
+	}
+	spriteType = {
+		name = "GFX_ahw_xhole_6_outliner_icon"
+		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
+	}
+	spriteType = {
+		name = "GFX_ahw_xhole_7_outliner_icon"
+		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
+	}
+	spriteType = {
+		name = "GFX_ahw_xhole_8_outliner_icon"
 		textureFile = "gfx/interface/icons/megastructures/gateway.dds"
 	}
 }

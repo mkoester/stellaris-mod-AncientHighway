@@ -42,6 +42,8 @@ event = {
 		}
 		ahw_build_outer_ring = yes
 		log = "AHW timing: outer ring built"
+		# 0.1.0: the express stations and their wormholes (dormant until the mid game)
+		ahw_build_express = yes
 
 		# A portal for every regular empire (ahw_build_portal; 0.0.31: the same effect serves
 		# empires born later, ahw.30).
@@ -70,8 +72,9 @@ event = {
 	}
 }
 
-# Monthly (on_monthly_pulse_country): for each portal whose anchor this country owns, offer the
-# study (science ship special project), then - studied and with the tech - the repair (ahw.21).
+# Monthly (on_monthly_pulse_country): for each portal whose anchor this country owns, the gate
+# becomes ours, the head start is checked and the study offered (science ship special project).
+# The repair is started on the gate itself: the upgrade to ahw_gate_N (0.1.0).
 country_event = {
 	id = ahw.20
 	hide_window = yes
@@ -118,48 +121,7 @@ country_event = {
 				enable_special_project = { name = AHW_STUDY_PROJECT location = this owner = root }
 				log = "AHW study of the entry point in [This.GetName] offered to [Root.GetName]"
 			}
-			else_if = {
-				limit = {
-					has_star_flag = ahw_studied
-					has_star_flag = ahw_broken
-					NOT = { has_star_flag = ahw_repair_offered }
-					root = {
-						has_technology = ahw_tech_gate_theory
-						has_technology = ahw_tech_gate_construction
-					}
-				}
-				set_star_flag = ahw_repair_offered
-				save_event_target_as = ahw_repair_portal
-				root = { country_event = { id = ahw.21 } }
-				log = "AHW repair of the entry point in [This.GetName] offered to [Root.GetName]"
-			}
 		}
-	}
-}
-
-# The repair offer: pay alloys, then a construction ship repairs the gate. "Not now" offers it
-# again in a year. Special projects cannot charge resources themselves.
-country_event = {
-	id = ahw.21
-	title = ahw.21.name
-	desc = ahw.21.desc
-	is_triggered_only = yes
-	option = {
-		name = ahw.21.a
-		allow = { has_resource = { type = alloys amount >= 500 } }
-		add_resource = { alloys = -500 }
-		event_target:ahw_repair_portal = {
-			enable_special_project = { name = AHW_REPAIR_PROJECT location = this owner = root }
-		}
-		ai_chance = { factor = 10 }
-	}
-	option = {
-		name = ahw.21.b
-		event_target:ahw_repair_portal = {
-			remove_star_flag = ahw_repair_offered
-			set_timed_star_flag = { flag = ahw_repair_offered days = 360 }
-		}
-		ai_chance = { factor = 1 }
 	}
 }
 
@@ -171,17 +133,6 @@ ship_event = {
 	immediate = {
 		owner = { save_event_target_as = ahw_studier }
 		solar_system = { ahw_mark_studied = yes }
-	}
-}
-
-# Repair done (this = the construction ship, in the portal): the gate works, for good.
-ship_event = {
-	id = ahw.23
-	hide_window = yes
-	is_triggered_only = yes
-	immediate = {
-		owner = { save_event_target_as = ahw_repairer }
-		solar_system = { ahw_mark_repaired = yes }
 	}
 }
 
@@ -271,6 +222,22 @@ fleet_event = {
 		save_event_target_as = ahw_finder
 		owner = { save_event_target_as = ahw_insp_country }
 		from = {
+			# 0.1.0, nomads (design 2026-11-05): they study any broken gate - offered once, the first
+			# time a fleet of theirs enters a portal with a broken gate (a science ship does it)
+			if = {
+				limit = {
+					has_star_flag = ahw_portal
+					has_star_flag = ahw_broken
+					event_target:ahw_insp_country = {
+						is_nomadic = yes
+						NOT = { has_country_flag = ahw_highway_studied }
+						NOT = { has_country_flag = ahw_nomad_study_offered }
+					}
+				}
+				event_target:ahw_insp_country = { set_country_flag = ahw_nomad_study_offered }
+				enable_special_project = { name = AHW_STUDY_PROJECT location = this owner = event_target:ahw_insp_country }
+				log = "AHW study of the entry point in [This.GetName] offered to the nomads [ahw_insp_country.GetName]"
+			}
 			if = {
 				limit = {
 					event_target:ahw_insp_country = {
@@ -291,6 +258,11 @@ fleet_event = {
 					NOT = { any_neighbor_system = { exists = owner owner = { is_same_value = event_target:ahw_insp_country } } }
 				}
 				ahw_scan_centre = yes
+			}
+			# 0.1.0: an express station - learn its links, maybe the stabilising study
+			if = {
+				limit = { has_star_flag = ahw_station }
+				ahw_express_entered = yes
 			}
 			if = {
 				limit = { event_target:ahw_insp_country = { has_country_flag = ahw_offer_gate } }
@@ -336,5 +308,41 @@ ship_event = {
 	immediate = {
 		owner = { save_event_target_as = ahw_insp_country }
 		solar_system = { ahw_inspect_centre = yes }
+	}
+}
+
+# 0.1.0, the express (design 2026-11-05): dormant until the mid game (on_mid_game_pulse, so the
+# game's own mid-game setting decides), then unstable. No scope.
+event = {
+	id = ahw.70
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		has_global_flag = ahw_done
+		NOT = { has_global_flag = ahw_express_awake }
+	}
+	immediate = { ahw_express_wake = yes }
+}
+
+# Monthly while awake: unstable links open and close at random (ahw_express_flicker). No scope.
+event = {
+	id = ahw.71
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = { has_global_flag = ahw_express_awake }
+	immediate = { ahw_express_flicker = yes }
+}
+
+# The stabilising study done (this = the ship, at a station; AHW_EXPRESS_STABILISE): both of the
+# station's links stable, for everyone.
+ship_event = {
+	id = ahw.72
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		solar_system = {
+			ahw_stabilise_station = yes
+			log = "AHW express station [This.GetName] stabilised by [Root.Owner.GetName]"
+		}
 	}
 }

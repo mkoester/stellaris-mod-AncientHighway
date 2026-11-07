@@ -1,0 +1,153 @@
+# The repair contract (design 2026-11-05, "Repair contract"): a settled empire hires a nomad to
+# repair a broken gate - in a portal off its own anchor or a close friend's (ahw_close_friend; the
+# anchor's owner is not asked). Issued in the anchor system (nobody owns the portal). Modelled on
+# vanilla's contract_clear_blockers (common/missions/missions/02_contracts.txt): the work is a
+# special project that only counts; the repair itself happens in on_success, or the abort trigger
+# (gate no longer broken) would cancel the contract first. Scopes: 99_README_MISSIONS.txt;
+# vanilla's own triggers read the issue system from fromfrom in potential_issuer too.
+
+ahw_contract_repair_gate = {
+	category = resource_contract
+	desc = "ahw_contract_repair_gate_desc"
+	event_chain = ahw_contract_repair_gate_chain
+	icon = gfx/interface/icons/situation_log/situation_log_quest.dds
+	picture = GFX_evt_ship_in_orbit_3
+	small_picture = GFX_contract_clear_blockers_small
+	location = yes
+	time_to_accept = @contract_time_base
+	cost = 1000	# about the repair (300 alloys + 50 influence), paid instead of it (tunable)
+
+	lore_issued = ahw_contract_repair_gate_lore_issued
+	lore_completed = ahw_contract_repair_gate_lore_completed
+	lore_failed = ahw_contract_repair_gate_lore_failed
+
+	potential_issuer = {
+		can_issue_contracts_trigger = yes
+		fromfrom = { ahw_anchor_of_broken_portal = yes }
+		OR = {
+			contract_system_is_own = yes
+			fromfrom = {
+				exists = owner
+				owner = { ahw_close_friend = { WHO = root } }
+			}
+		}
+	}
+
+	possible_issuer = {
+		custom_tooltip = {
+			fail_text = AHW_CONTRACT_NEEDS_STUDY
+			has_country_flag = ahw_highway_studied	# one has to know what one commissions
+		}
+		custom_tooltip = {
+			fail_text = requires_operator_with_technology
+			contract_requires_operator_technology = { TECH = ahw_tech_gate_theory }
+			contract_requires_operator_technology = { TECH = ahw_tech_gate_construction }
+		}
+	}
+
+	potential_operator = {
+		is_nomadic = yes
+		NOT = { fromfrom = { is_at_war_with = root } }
+		has_technology = ahw_tech_gate_theory
+		has_technology = ahw_tech_gate_construction
+	}
+
+	possible_operator = {
+		custom_tooltip = {
+			fail_text = already_doing_same_contract
+			NOT = { has_event_chain = ahw_contract_repair_gate_chain }
+		}
+		contract_target_system_reachable = { SYSTEM = from }
+	}
+
+	issued_abort_trigger = {
+		OR = {
+			is_nomadic = yes
+			fromfrom = { ahw_anchor_of_broken_portal = no }
+			fromfrom = { NOT = { exists = owner } }
+			AND = {
+				NOT = { contract_system_is_own = yes }
+				fromfrom = { owner = { NOT = { ahw_close_friend = { WHO = root } } } }
+			}
+		}
+	}
+
+	abort_trigger = {
+		OR = {
+			NAND = {
+				has_event_chain = ahw_contract_repair_gate_chain
+				contract_target_system_reachable = { SYSTEM = fromfrom }
+			}
+			fromfrom = { ahw_anchor_of_broken_portal = no }
+		}
+	}
+
+	counter = {
+		ahw_contract_repair_gate_counter = {
+			max = 1
+		}
+	}
+
+	on_accept = {
+		begin_event_chain = {
+			event_chain = ahw_contract_repair_gate_chain
+			target = root
+		}
+		fromfrom = {
+			random_neighbor_system = {
+				limit = { has_star_flag = ahw_portal has_star_flag = ahw_broken }
+				save_event_target_as = ahw_contract_portal
+			}
+		}
+		enable_special_project = {
+			name = "AHW_CONTRACT_REPAIR_PROJECT"
+			location = event_target:ahw_contract_portal
+			owner = root
+		}
+		log = "AHW contract: [Root.GetName] accepted the repair of [ahw_contract_portal.GetName]"
+	}
+
+	on_success = {
+		if = {
+			limit = { exists = root }
+			contract_scaling_reward_effect = { TRADE = 1750 RESOURCE = alloys RESOURCE_AMOUNT = 150 }
+			add_resource = { influence = 50 }
+			custom_tooltip = trust5
+			custom_tooltip = opinion50
+			hidden_effect = {
+				prev = {	# the issuer
+					add_opinion_modifier = { modifier = opinion_completed_contract_small who = root }
+					add_trust = { amount = 5 who = root }
+				}
+			}
+			# the repair: the anchor's owner gets the head start from its next monthly check
+			# (ahw.20), as with any gate a nomad repairs
+			save_event_target_as = ahw_repairer
+			fromfrom = {
+				random_neighbor_system = {
+					limit = { has_star_flag = ahw_portal has_star_flag = ahw_broken }
+					ahw_repair_gate = yes
+					log = "AHW contract: [ahw_repairer.GetName] repaired [This.GetName]"
+				}
+			}
+		}
+	}
+
+	on_cancel = {
+		if = {
+			limit = { exists = root }
+			prev = { add_opinion_modifier = { modifier = opinion_failed_contract_small who = root } }
+		}
+	}
+
+	on_stop = {
+		if = {
+			limit = { exists = root }
+			end_event_chain = ahw_contract_repair_gate_chain
+		}
+	}
+
+	ai_weight = {
+		weight = 1
+	}
+}

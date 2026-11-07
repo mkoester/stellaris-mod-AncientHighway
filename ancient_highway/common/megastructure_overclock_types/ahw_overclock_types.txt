@@ -1,9 +1,8 @@
-# (0.0.20) the gate in a portal can be Open or Sealed - a mode switch on the gate
-# itself (user, 2026-11-04: our own action on the gate, independent of the astral action; only the
-# owner; a sealed gate blocks both ways). The gate megastructure belongs to the anchor's owner
-# (ahw.20, ahw.23). Sealing locks both ends of the pair for the owner (lock_bypass:
-# only the owner's ships may enter either end); opening re-locks them for 1 day, as there is no
-# unlock effect (run 18: a new lock replaces the old one).
+# The repaired gate in a portal can be Open or Sealed - a mode switch on the gate itself (user,
+# 2026-11-04: an action on the gate, independent of the astral action; only the owner, the
+# anchor's owner - ahw.20, ahw_mark_repaired; never a nomad). Sealed sets the pair's global flags
+# that its bypass type checks (country_can_use: the sealer and its friends pass, both ways);
+# Open clears them. Since 0.0.23 flags, not lock_bypass (run 21: a lock never expired).
 
 ahw_gate_open = {
 	icon = GFX_overclock_gc_default
@@ -17,7 +16,10 @@ ahw_gate_sealed = {
 	icon = GFX_overclock_gc_war
 	possible = {
 		exists = owner
-		owner = { has_technology = ahw_tech_gate_theory }	# 0.0.38: sealing needs the theory
+		owner = {
+			has_technology = ahw_tech_gate_theory	# 0.0.38: sealing needs the theory
+			is_nomadic = no	# design 2026-11-05: nomads never seal
+		}
 		solar_system = { NOT = { has_star_flag = ahw_broken } }
 	}
 	resources = {

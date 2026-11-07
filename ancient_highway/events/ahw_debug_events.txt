@@ -116,9 +116,8 @@ country_event = {
 		save_event_target_as = ahw_repairer
 		event_target:ahw_player_portal = {
 			set_star_flag = ahw_study_offered
-			set_star_flag = ahw_repair_offered
 			ahw_mark_studied = yes
-			ahw_mark_repaired = yes
+			ahw_repair_gate = yes
 		}
 		give_technology = { tech = ahw_tech_gate_theory message = no }
 		give_technology = { tech = ahw_tech_gate_construction message = no }
@@ -176,7 +175,7 @@ country_event = {
 		event_target:ahw_player_portal = {
 			if = {
 				limit = { has_star_flag = ahw_broken }
-				ahw_mark_repaired = yes
+				ahw_repair_gate = yes
 			}
 		}
 	}
@@ -242,5 +241,70 @@ country_event = {
 	immediate = {
 		ahw_grant_tech = { TECH = ahw_tech_gate_theory VAR = ahw_got_theory PROGRESS = 0.3 }
 		ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.3 }
+	}
+}
+
+# 0.1.0: the express awake now (as at the mid game).
+country_event = {
+	id = ahw_debug.70
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = { ahw_express_wake = yes }
+}
+
+# 0.1.0: every express link stable now (as if every station were stabilised).
+country_event = {
+	id = ahw_debug.71
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = { ahw_express_stabilise_all = yes }
+}
+
+# 0.1.0: our three test fleets at the express station nearest our exit node.
+country_event = {
+	id = ahw_debug.72
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		event_target:ahw_player_node = {
+			closest_system = {
+				limit = { has_star_flag = ahw_station }
+				save_event_target_as = ahw_spawn_here
+				log = "AHW test ships at the express station [This.GetName]"
+			}
+		}
+		ahw_spawn_test_ships = yes
+	}
+}
+
+# 0.1.0: a nomad ready to repair our gate - in contact with us, both gate techs, its arkship at
+# our anchor's star (one jump from our portal). For the nomad's own repair (the upgrade) and the
+# contract; game.log names it.
+country_event = {
+	id = ahw_debug.73
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		random_country = {
+			limit = { is_country_type = default is_nomadic = yes }
+			save_event_target_as = ahw_test_nomad
+		}
+		if = {
+			limit = { exists = event_target:ahw_test_nomad }
+			event_target:ahw_player_anchor = { star = { save_event_target_as = ahw_test_star } }
+			event_target:ahw_test_nomad = {
+				establish_communications_no_message = root
+				give_technology = { tech = ahw_tech_gate_theory message = no }
+				give_technology = { tech = ahw_tech_gate_construction message = no }
+				random_owned_fleet = {
+					limit = { is_arkship_fleet = yes }
+					set_location = { target = event_target:ahw_test_star distance = 0 angle = random }
+				}
+				log = "AHW test nomad [This.GetName]: in contact with [Root.GetName], both techs, arkship at [ahw_test_star.GetName]"
+			}
+		}
+		else = {
+			log = "AHW test nomad: there is no nomadic empire in this game"
+		}
 	}
 }

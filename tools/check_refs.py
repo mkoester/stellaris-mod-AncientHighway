@@ -19,7 +19,8 @@ def defs(sub):
 
 known = set().union(*(defs(d) for d in ('scripted_effects', 'scripted_triggers', 'megastructures', 'bypass',
                                         'technology', 'solar_system_initializers', 'megastructure_overclock_types',
-                                        'star_classes')))
+                                        'star_classes', 'missions', 'event_chains')))
+known |= set(re.findall(r'^\t\t(\w+) = \{', '\n'.join(t for p, t in code.items() if 'missions' in str(p)), re.M))  # contract counters
 megas, byps = defs('megastructures'), defs('bypass')
 problems = []
 problems += [f'undefined: {c}' for c in sorted(set(re.findall(r'(?<![:.\w])(ahw_\w+) = (?:yes|\{)', alltxt)) - known)]

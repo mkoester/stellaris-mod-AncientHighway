@@ -113,7 +113,7 @@ ordinary hyperlanes — or a bit longer, never shorter.
 **Dropped (2026-11-04)**: a pair across the ring would be exactly the shortcut the highway must not
 be. The spike's gate-pair shortcut goes with the move. **Exception: the late-game express below.**
 
-### Express wormholes (decided 2026-11-05)
+### Express wormholes (decided 2026-11-05; built 0.1.0: 8 stations, 25 % monthly flip, untested)
 
 The user's "fast-forward wormholes": the ring keeps up later in the game, when ships are faster.
 The base ring still meets the yardstick; the express is a late-game addition.
@@ -163,7 +163,7 @@ The connections between the ring and the regular galaxy are special, not hyperla
   3. **Repair** (construction ship, ~90 days): about 300 alloys + 50 influence. Both techs.
      **Started on the gate** (user, 2026-11-06, run 25: "the repair event should be rather on the
      gate"): an action on the broken gate megastructure, not a pop-up offer (the spike's
-     `ahw.21`).
+     `ahw.21`). **Built (0.1.0):** the broken gate upgrades to the repaired one, on the gate.
   **Head start**: an empire that owns an anchor whose gate is already repaired (by a nomad, or by
   a former owner) gets the study for free and **50 % of each tech**.
   **The grants add up: 15 % + 50 % = 65 %** (user, 2026-11-05: having studied the broken gate,
@@ -212,11 +212,12 @@ The connections between the ring and the regular galaxy are special, not hyperla
   (2026-11-05): federation, overlord/subject, pacts, guarantees, open borders both ways, the same
   side of a war. **Nomads count as friends** unless the sealer has banned them: at war with it,
   or expelled (vanilla's 10-year flag `expelled_from_<owner>` after an Expel Nomads war).
-- **Nomads (decided 2026-11-05)** own no systems, so they **can always study and repair** any
+- **Nomads (decided 2026-11-05; built 0.1.0)** own no systems, so they **can always study and repair** any
   broken gate, never seal one, and get no portal of their own. Like everyone else they need
   **both techs** to repair (2026-11-05). When a nomad has repaired a gate, the anchor's owner
   later gets the head start above (50 % of each tech), so they can seal sooner.
-- **Repair contract (user, 2026-11-05)**: a settled empire can hire a nomad to repair its gate,
+- **Repair contract (user, 2026-11-05; built 0.1.0 as one contract for an own or a close friend's
+  anchor)**: a settled empire can hire a nomad to repair its gate,
   as a contract (vanilla's contracts are `common/missions/missions/`; the model is
   `contract_clear_blockers` in `02_contracts.txt`). Proposed shape:
   - **Issuer**: may issue contracts (`can_issue_contracts_trigger`), owns the anchor

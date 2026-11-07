@@ -28,10 +28,10 @@ level. Prefix every key, id, flag and variable with `ahw_`. Tested in game on Li
 ## Status (2026-11-07): Phase 1 — building the real mod (`0.1.0`)
 
 The spike is over (runs 1–39, `docs/spike-runs.md`). Its files are now the mod's (`ahw_*`, the
-generator `tools/gen.py`). Being added, so that one game tests many things at once (user,
+generator `tools/gen.py`). **Built, untested** (so that one game tests many things at once — user,
 2026-11-07: restarting and generating a galaxy is most of each run): **repair on the gate**,
-**nomads study and repair**, **the repair contract**, **express wormholes** (plan:
-`docs/design.md`). Nothing is public; old spike saves do not load.
+**nomads study and repair**, **the repair contract**, **express wormholes**. Next: run 40, below.
+Nothing is public; old spike saves do not load.
 
 **Deferred**: run 31's parts 2–3 (the mod added to a running game; a late empire's portal — user,
 2026-11-06: tested once the mod is mostly done). **Parked**: the ring's exact speed (user,
@@ -61,12 +61,32 @@ the mod joins a running game, once — `ahw_done`) builds everything inside one
    neutron star; tiny map icons) and debris (0–6 asteroids, a third with a deposit).
 
 In play: `ahw.20` (monthly per country) gives the gate to the anchor's owner, offers the study
-(`AHW_STUDY_PROJECT` → `ahw.22`: knows the types, its own exit node visited, 15 % of each tech),
-the head start (a repaired gate on an anchor: 50 %) and the repair; `ahw.30` gives later empires
-a portal; `ahw.50` drains pulsar shields monthly; `ahw.60` offers inspection studies on entering
+(`AHW_STUDY_PROJECT` → `ahw.22`: knows the types, its own exit node visited, 15 % of each tech)
+and the head start (a repaired gate on an anchor: 50 %). **The repair is an upgrade on the gate**
+(0.1.0): `ahw_gate_broken_N` → `ahw_gate_N` (both techs, 300 alloys + 50 influence, 90 days,
+`nomad_reactivatable`); its `on_build_complete` → `ahw_mark_repaired` (once; the gate goes to the
+anchor's owner, never to a nomad). By script: `ahw_repair_gate` (upgrade + `finish_upgrade`, with
+a fallback if the engine skips `on_build_complete`) — the console skips and the contract.
+**Nomads** (0.1.0) get no portal; `ahw.60` offers a nomad the study once, on its first entry into
+a portal with a broken gate (it teaches the nomad, not the portal's owner); they repair by the
+upgrade (`nomad_reactivatable`); the Sealed mode refuses them. **The repair contract**
+(`common/missions/missions/ahw_contracts.txt`, after vanilla's `contract_clear_blockers`): issued
+in an anchor (own, or a close friend's — `ahw_close_friend`) by a country that has studied a
+gate; a nomad with both techs accepts; its arkship's `AHW_CONTRACT_REPAIR_PROJECT` (90 days) only
+counts, the repair runs in the contract's `on_success` (`ahw_repair_gate`). `ahw.30` gives later
+empires a portal; `ahw.50` drains pulsar shields monthly; `ahw.60` offers inspection studies on entering
 portals and ring nodes (`.64`, `.65` grant; cap 80 %, `ahw_cap_check` → `.66`/`.67` withdraw).
 Sealing: the gate's Open/Sealed mode, flags read by each pair's `country_can_use`; friends pass
 (`ahw_friend_of_sealer`).
+
+**Express** (0.1.0, generated `express()`): one station per reach (8 on every size, near each
+reach's middle, ±1 node, seeded), each with two wormhole megastructures `ahw_xhole_j` on its
+radial line (outward: the link to the next station, inward: to the previous) at orbit 220; link
+`ahw_express_j` joins stations j and j+1 (star flags `ahw_xst_a_j` / `_b_j`). Usable while
+`ahw_express_open_j`. Dormant until `on_mid_game_pulse` (`ahw.70`), then each month an unstable
+link flips with 25 % (`ahw.71`). Entering a station teaches its two link types and, once awake
+and with Gate Theory, offers `AHW_EXPRESS_STABILISE` (4000, ×0.75 after years 125/150/175;
+→ `ahw.72`: both links stable, for everyone).
 
 All findings go to `game.log`, lines starting `AHW`.
 
@@ -80,7 +100,7 @@ All findings go to `game.log`, lines starting `AHW`.
 | `event ahw_debug.6` | an outpost on our anchor, so we own it (owned from the next day) |
 | `event ahw_debug.7` | the monthly study/head-start check for us, now |
 | `event ahw_debug.8` | both gate techs |
-| `event ahw_debug.40` | **a working gate**: outpost, study, techs, repair — the real stages' effects |
+| `event ahw_debug.40` | **a working gate**: outpost, study, techs, repair (the scripted upgrade) — the real stages' effects |
 | `event ahw_debug.41` | a science ship, a construction ship and a 25-size fleet of ours **in our portal** |
 | `event ahw_debug.42` | the same **in our exit node** |
 | `event ahw_debug.43` | every warship of ours loses 100 shields |
@@ -91,6 +111,76 @@ All findings go to `game.log`, lines starting `AHW`.
 | `event ahw_debug.25` | seal our pair against everyone, us included; again: open |
 | `event ahw_debug.26` | seal our pair for another empire (we are strangers) |
 | `event ahw_debug.27` | make that empire our subject (now its friend) |
+| `event ahw_debug.70` | the express awake now (as at the mid game) |
+| `event ahw_debug.71` | every express link stable |
+| `event ahw_debug.72` | our three test fleets at the express station nearest our exit node |
+| `event ahw_debug.73` | a nomad in contact with us, with both techs, its arkship at our anchor |
+| `effect every_country = { limit = { is_ai = no } remove_country_flag = ahw_has_portal }` | we get a second portal on the next 1st (the console targets move to it) |
+
+## Test, run 40 (`0.1.0`)
+
+A new **medium** elliptical game, this mod and the dev-tools mod, AI empires on, **three nomadic
+empires** (as in run 39), console on. Press Esc before every console line. **Save after each
+part** (the numbers come from the saves); copy `logs/game.log` and `logs/error.log` before
+quitting.
+
+**A. The start** — nothing to do; the logs say whether the build, the nomads and the express
+stations came out, and error.log should hold no "Could not find project" any more.
+
+**B. Repairing on the gate.** Own the anchor, then skip the study and the techs:
+```
+event ahw_debug.6
+```
+Let a day pass.
+```
+event ahw_debug.45
+```
+```
+event ahw_debug.8
+```
+Open your portal's system view and click the broken gate. Is there an upgrade to "Highway Entry
+Point" (300 alloys, 50 influence)? Screenshot its tooltip. If short of alloys:
+```
+resource alloys 1000
+```
+Start it, let the 90 days pass. Does the gate change its look? Then: its Seal tab
+— can you switch it to Sealed? Screenshot.
+
+**C. A second portal, and the contract.** Ask for a second portal:
+```
+effect every_country = { limit = { is_ai = no } remove_country_flag = ahw_has_portal }
+```
+Run past the next 1st (a short freeze, then a new portal near your capital; screenshot the map).
+Then own its anchor and fetch a nomad:
+```
+event ahw_debug.6
+```
+Let a day pass.
+```
+event ahw_debug.73
+```
+In the new anchor system, issue the contract "Repair a Highway Gate" (system view, contracts).
+Screenshot the contract list. Let time run (fast) until a nomad accepts — or a few years pass —
+and note what happens: does its arkship fly into the portal and work there, does the gate get
+repaired, did you get the head start (both techs jump to 65 % or more)? If instead the nomad
+repairs the gate by itself (the upgrade), the contract should cancel — note that too.
+
+**D. The express.** Wake it and put ships at a station:
+```
+event ahw_debug.70
+```
+```
+event ahw_debug.72
+```
+Let a day pass. In that station's system view: two wormholes, one on each side of the centre,
+along the line from the galaxy's middle? Screenshot. A study "Stabilise the Express Station"
+should be offered (situation log); before starting it, order the science ship through a
+wormhole: refused while the link is closed (tooltip)? Then start the study with the science ship
+(60 days). Afterwards: order the ship to the next station — does the route go through the
+wormhole? Screenshot the route.
+
+**E. Nomads on their own** (no action): at the end, game.log's lines "study … offered to the
+nomads", "repaired by …" show whether nomads studied or repaired anything unasked.
 
 ## Working on it
 

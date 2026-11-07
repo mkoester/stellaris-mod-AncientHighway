@@ -1284,3 +1284,267 @@ ahw_link_32 = {
 		ahw_tech_gate_theory
 	}
 }
+
+ahw_express_1 = {
+	name = AHW_EXPRESS
+	is_pathfind = yes
+	uses_action = no
+	requires_exploration = no
+	always_active = yes
+	windup_time = 0
+	winddown_time = 0
+	ftl_multiplier = 0
+	extends_sensors = yes
+	icon_frame = 12
+	remember_instances = no
+	animation_time = 1
+	galactic_map_tooltip_header = AHW_EXPRESS
+	galactic_map_tooltip_desc = AHW_EXPRESS_DESC
+	connection_type = scripted_connection
+	ftl_ship_effect = "wormhole_ftl_ship_effect_entity"
+	ftl_bypass_effect = "wormhole_ftl_bypass_effect_entity"
+	can_bypass_be_locked = no
+
+	country_can_use = {
+		custom_tooltip = {
+			fail_text = AHW_EXPRESS_CLOSED
+			has_global_flag = ahw_express_open_1
+		}
+	}
+
+	scripted_connection = {
+		node = { has_star_flag = ahw_xst_a_1 }
+		nexus = { has_star_flag = ahw_xst_b_1 }
+	}
+}
+
+ahw_express_2 = {
+	name = AHW_EXPRESS
+	is_pathfind = yes
+	uses_action = no
+	requires_exploration = no
+	always_active = yes
+	windup_time = 0
+	winddown_time = 0
+	ftl_multiplier = 0
+	extends_sensors = yes
+	icon_frame = 12
+	remember_instances = no
+	animation_time = 1
+	galactic_map_tooltip_header = AHW_EXPRESS
+	galactic_map_tooltip_desc = AHW_EXPRESS_DESC
+	connection_type = scripted_connection
+	ftl_ship_effect = "wormhole_ftl_ship_effect_entity"
+	ftl_bypass_effect = "wormhole_ftl_bypass_effect_entity"
+	can_bypass_be_locked = no
+
+	country_can_use = {
+		custom_tooltip = {
+			fail_text = AHW_EXPRESS_CLOSED
+			has_global_flag = ahw_express_open_2
+		}
+	}
+
+	scripted_connection = {
+		node = { has_star_flag = ahw_xst_a_2 }
+		nexus = { has_star_flag = ahw_xst_b_2 }
+	}
+}
+
+ahw_express_3 = {
+	name = AHW_EXPRESS
+	is_pathfind = yes
+	uses_action = no
+	requires_exploration = no
+	always_active = yes
+	windup_time = 0
+	winddown_time = 0
+	ftl_multiplier = 0
+	extends_sensors = yes
+	icon_frame = 12
+	remember_instances = no
+	animation_time = 1
+	galactic_map_tooltip_header = AHW_EXPRESS
+	galactic_map_tooltip_desc = AHW_EXPRESS_DESC
+	connection_type = scripted_connection
+	ftl_ship_effect = "wormhole_ftl_ship_effect_entity"
+	ftl_bypass_effect = "wormhole_ftl_bypass_effect_entity"
+	can_bypass_be_locked = no
+
+	country_can_use = {
+		custom_tooltip = {
+			fail_text = AHW_EXPRESS_CLOSED
+			has_global_flag = ahw_express_open_3
+		}
+	}
+
+	scripted_connection = {
+		node = { has_star_flag = ahw_xst_a_3 }
+		nexus = { has_star_flag = ahw_xst_b_3 }
+	}
+}
+
+ahw_express_4 = {
+	name = AHW_EXPRESS
+	is_pathfind = yes
+	uses_action = no
+	requires_exploration = no
+	always_active = yes
+	windup_time = 0
+	winddown_time = 0
+	ftl_multiplier = 0
+	extends_sensors = yes
+	icon_frame = 12
+	remember_instances = no
+	animation_time = 1
+	galactic_map_tooltip_header = AHW_EXPRESS
+	galactic_map_tooltip_desc = AHW_EXPRESS_DESC
+	connection_type = scripted_connection
+	ftl_ship_effect = "wormhole_ftl_ship_effect_entity"
+	ftl_bypass_effect = "wormhole_ftl_bypass_effect_entity"
+	can_bypass_be_locked = no
+
+	country_can_use = {
+		custom_tooltip = {
+			fail_text = AHW_EXPRESS_CLOSED
+			has_global_flag = ahw_express_open_4
+		}
+	}
+
+	scripted_connection = {
+		node = { has_star_flag = ahw_xst_a_4 }
+		nexus = { has_star_flag = ahw_xst_b_4 }
+	}
+}
+
+ahw_express_5 = {
+	name = AHW_EXPRESS
+	is_pathfind = yes
+	uses_action = no
+	requires_exploration = no
+	always_active = yes
+	windup_time = 0
+	winddown_time = 0
+	ftl_multiplier = 0
+	extends_sensors = yes
+	icon_frame = 12
+	remember_instances = no
+	animation_time = 1
+	galactic_map_tooltip_header = AHW_EXPRESS
+	galactic_map_tooltip_desc = AHW_EXPRESS_DESC
+	connection_type = scripted_connection
+	ftl_ship_effect = "wormhole_ftl_ship_effect_entity"
+	ftl_bypass_effect = "wormhole_ftl_bypass_effect_entity"
+	can_bypass_be_locked = no
+
+	country_can_use = {
+		custom_tooltip = {
+			fail_text = AHW_EXPRESS_CLOSED
+			has_global_flag = ahw_express_open_5
+		}
+	}
+
+	scripted_connection = {
+		node = { has_star_flag = ahw_xst_a_5 }
+		nexus = { has_star_flag = ahw_xst_b_5 }
+	}
+}
+
+ahw_express_6 = {
+	name = AHW_EXPRESS
+	is_pathfind = yes
+	uses_action = no
+	requires_exploration = no
+	always_active = yes
+	windup_time = 0
+	winddown_time = 0
+	ftl_multiplier = 0
+	extends_sensors = yes
+	icon_frame = 12
+	remember_instances = no
+	animation_time = 1
+	galactic_map_tooltip_header = AHW_EXPRESS
+	galactic_map_tooltip_desc = AHW_EXPRESS_DESC
+	connection_type = scripted_connection
+	ftl_ship_effect = "wormhole_ftl_ship_effect_entity"
+	ftl_bypass_effect = "wormhole_ftl_bypass_effect_entity"
+	can_bypass_be_locked = no
+
+	country_can_use = {
+		custom_tooltip = {
+			fail_text = AHW_EXPRESS_CLOSED
+			has_global_flag = ahw_express_open_6
+		}
+	}
+
+	scripted_connection = {
+		node = { has_star_flag = ahw_xst_a_6 }
+		nexus = { has_star_flag = ahw_xst_b_6 }
+	}
+}
+
+ahw_express_7 = {
+	name = AHW_EXPRESS
+	is_pathfind = yes
+	uses_action = no
+	requires_exploration = no
+	always_active = yes
+	windup_time = 0
+	winddown_time = 0
+	ftl_multiplier = 0
+	extends_sensors = yes
+	icon_frame = 12
+	remember_instances = no
+	animation_time = 1
+	galactic_map_tooltip_header = AHW_EXPRESS
+	galactic_map_tooltip_desc = AHW_EXPRESS_DESC
+	connection_type = scripted_connection
+	ftl_ship_effect = "wormhole_ftl_ship_effect_entity"
+	ftl_bypass_effect = "wormhole_ftl_bypass_effect_entity"
+	can_bypass_be_locked = no
+
+	country_can_use = {
+		custom_tooltip = {
+			fail_text = AHW_EXPRESS_CLOSED
+			has_global_flag = ahw_express_open_7
+		}
+	}
+
+	scripted_connection = {
+		node = { has_star_flag = ahw_xst_a_7 }
+		nexus = { has_star_flag = ahw_xst_b_7 }
+	}
+}
+
+ahw_express_8 = {
+	name = AHW_EXPRESS
+	is_pathfind = yes
+	uses_action = no
+	requires_exploration = no
+	always_active = yes
+	windup_time = 0
+	winddown_time = 0
+	ftl_multiplier = 0
+	extends_sensors = yes
+	icon_frame = 12
+	remember_instances = no
+	animation_time = 1
+	galactic_map_tooltip_header = AHW_EXPRESS
+	galactic_map_tooltip_desc = AHW_EXPRESS_DESC
+	connection_type = scripted_connection
+	ftl_ship_effect = "wormhole_ftl_ship_effect_entity"
+	ftl_bypass_effect = "wormhole_ftl_bypass_effect_entity"
+	can_bypass_be_locked = no
+
+	country_can_use = {
+		custom_tooltip = {
+			fail_text = AHW_EXPRESS_CLOSED
+			has_global_flag = ahw_express_open_8
+		}
+	}
+
+	scripted_connection = {
+		node = { has_star_flag = ahw_xst_a_8 }
+		nexus = { has_star_flag = ahw_xst_b_8 }
+	}
+}

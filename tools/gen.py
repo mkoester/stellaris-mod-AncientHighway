@@ -378,6 +378,11 @@ def mega_block(key, entity, btype, kind, comment, n):
 			has_country_flag = ahw_highway_studied
 			is_nomadic = yes
 		}}
+		# run 42: a nomad on our repair contract shuttled between the anchor (the contract's work)
+		# and the portal - presumably to reactivate the gate whenever it had lost its owner
+		# (save 2200.07.23: unowned; the monthly check gives it back). Under contract, the contract
+		# is its only way to repair.
+		NOT = {{ has_event_chain = ahw_contract_repair_gate_chain }}
 	}}
 	possible = {{
 		custom_tooltip = {{

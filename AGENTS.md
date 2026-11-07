@@ -130,6 +130,17 @@ with our `ahw_grant_head_start` removed by console and `ahw_debug.7`, both techs
 no "cost and days exclusive" error at load any more; the stabilise study is not offered without
 Gate Theory researched (as designed).
 
+**Run 42, step 1 (2026-11-07, screenshots `_38`–`_72`): the contracted nomad's arkship shuttles
+between anchor and portal.** Study by the real offer (02.01 → 03.01) and the contract (accepted
+03.07) work; the work project is at the anchor's star (save), but the Scientific Arkship ("GSS
+Trok Petroisal", it carries the colony) keeps flying into the portal and back, months long. Not
+the test ships in the portal (moved away: no change), not alloys (1000 given: no change, no
+repair). **The broken gate loses its owner now and then** (save 2200.07.23: no owner; the 1st's
+check takes it back — the "now owns the gate" lines since run 21); presumably the nomad then
+heads off to reactivate it (`nomad_reactivatable`). Fixed after the run (untested): a nomad on
+our contract does not qualify for the upgrade (`potential`). Open: what clears the owner.
+The yearly summary `ahw.80` works.
+
 ## Test, run 42 (a long game)
 
 The real stages by hand, then decades of play to see what the AI and the nomads do. New: the

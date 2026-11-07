@@ -35,6 +35,11 @@ ahw_gate_1 = {
 			has_country_flag = ahw_highway_studied
 			is_nomadic = yes
 		}
+		# run 42: a nomad on our repair contract shuttled between the anchor (the contract's work)
+		# and the portal - presumably to reactivate the gate whenever it had lost its owner
+		# (save 2200.07.23: unowned; the monthly check gives it back). Under contract, the contract
+		# is its only way to repair.
+		NOT = { has_event_chain = ahw_contract_repair_gate_chain }
 	}
 	possible = {
 		custom_tooltip = {
@@ -122,6 +127,11 @@ ahw_gate_2 = {
 			has_country_flag = ahw_highway_studied
 			is_nomadic = yes
 		}
+		# run 42: a nomad on our repair contract shuttled between the anchor (the contract's work)
+		# and the portal - presumably to reactivate the gate whenever it had lost its owner
+		# (save 2200.07.23: unowned; the monthly check gives it back). Under contract, the contract
+		# is its only way to repair.
+		NOT = { has_event_chain = ahw_contract_repair_gate_chain }
 	}
 	possible = {
 		custom_tooltip = {
@@ -209,6 +219,11 @@ ahw_gate_3 = {
 			has_country_flag = ahw_highway_studied
 			is_nomadic = yes
 		}
+		# run 42: a nomad on our repair contract shuttled between the anchor (the contract's work)
+		# and the portal - presumably to reactivate the gate whenever it had lost its owner
+		# (save 2200.07.23: unowned; the monthly check gives it back). Under contract, the contract
+		# is its only way to repair.
+		NOT = { has_event_chain = ahw_contract_repair_gate_chain }
 	}
 	possible = {
 		custom_tooltip = {
@@ -296,6 +311,11 @@ ahw_gate_4 = {
 			has_country_flag = ahw_highway_studied
 			is_nomadic = yes
 		}
+		# run 42: a nomad on our repair contract shuttled between the anchor (the contract's work)
+		# and the portal - presumably to reactivate the gate whenever it had lost its owner
+		# (save 2200.07.23: unowned; the monthly check gives it back). Under contract, the contract
+		# is its only way to repair.
+		NOT = { has_event_chain = ahw_contract_repair_gate_chain }
 	}
 	possible = {
 		custom_tooltip = {
@@ -383,6 +403,11 @@ ahw_gate_5 = {
 			has_country_flag = ahw_highway_studied
 			is_nomadic = yes
 		}
+		# run 42: a nomad on our repair contract shuttled between the anchor (the contract's work)
+		# and the portal - presumably to reactivate the gate whenever it had lost its owner
+		# (save 2200.07.23: unowned; the monthly check gives it back). Under contract, the contract
+		# is its only way to repair.
+		NOT = { has_event_chain = ahw_contract_repair_gate_chain }
 	}
 	possible = {
 		custom_tooltip = {
@@ -470,6 +495,11 @@ ahw_gate_6 = {
 			has_country_flag = ahw_highway_studied
 			is_nomadic = yes
 		}
+		# run 42: a nomad on our repair contract shuttled between the anchor (the contract's work)
+		# and the portal - presumably to reactivate the gate whenever it had lost its owner
+		# (save 2200.07.23: unowned; the monthly check gives it back). Under contract, the contract
+		# is its only way to repair.
+		NOT = { has_event_chain = ahw_contract_repair_gate_chain }
 	}
 	possible = {
 		custom_tooltip = {
@@ -557,6 +587,11 @@ ahw_gate_7 = {
 			has_country_flag = ahw_highway_studied
 			is_nomadic = yes
 		}
+		# run 42: a nomad on our repair contract shuttled between the anchor (the contract's work)
+		# and the portal - presumably to reactivate the gate whenever it had lost its owner
+		# (save 2200.07.23: unowned; the monthly check gives it back). Under contract, the contract
+		# is its only way to repair.
+		NOT = { has_event_chain = ahw_contract_repair_gate_chain }
 	}
 	possible = {
 		custom_tooltip = {
@@ -644,6 +679,11 @@ ahw_gate_8 = {
 			has_country_flag = ahw_highway_studied
 			is_nomadic = yes
 		}
+		# run 42: a nomad on our repair contract shuttled between the anchor (the contract's work)
+		# and the portal - presumably to reactivate the gate whenever it had lost its owner
+		# (save 2200.07.23: unowned; the monthly check gives it back). Under contract, the contract
+		# is its only way to repair.
+		NOT = { has_event_chain = ahw_contract_repair_gate_chain }
 	}
 	possible = {
 		custom_tooltip = {
@@ -731,6 +771,11 @@ ahw_gate_9 = {
 			has_country_flag = ahw_highway_studied
 			is_nomadic = yes
 		}
+		# run 42: a nomad on our repair contract shuttled between the anchor (the contract's work)
+		# and the portal - presumably to reactivate the gate whenever it had lost its owner
+		# (save 2200.07.23: unowned; the monthly check gives it back). Under contract, the contract
+		# is its only way to repair.
+		NOT = { has_event_chain = ahw_contract_repair_gate_chain }
 	}
 	possible = {
 		custom_tooltip = {
@@ -818,6 +863,11 @@ ahw_gate_10 = {
 			has_country_flag = ahw_highway_studied
 			is_nomadic = yes
 		}
+		# run 42: a nomad on our repair contract shuttled between the anchor (the contract's work)
+		# and the portal - presumably to reactivate the gate whenever it had lost its owner
+		# (save 2200.07.23: unowned; the monthly check gives it back). Under contract, the contract
+		# is its only way to repair.
+		NOT = { has_event_chain = ahw_contract_repair_gate_chain }
 	}
 	possible = {
 		custom_tooltip = {
@@ -905,6 +955,11 @@ ahw_gate_11 = {
 			has_country_flag = ahw_highway_studied
 			is_nomadic = yes
 		}
+		# run 42: a nomad on our repair contract shuttled between the anchor (the contract's work)
+		# and the portal - presumably to reactivate the gate whenever it had lost its owner
+		# (save 2200.07.23: unowned; the monthly check gives it back). Under contract, the contract
+		# is its only way to repair.
+		NOT = { has_event_chain = ahw_contract_repair_gate_chain }
 	}
 	possible = {
 		custom_tooltip = {
@@ -992,6 +1047,11 @@ ahw_gate_12 = {
 			has_country_flag = ahw_highway_studied
 			is_nomadic = yes
 		}
+		# run 42: a nomad on our repair contract shuttled between the anchor (the contract's work)
+		# and the portal - presumably to reactivate the gate whenever it had lost its owner
+		# (save 2200.07.23: unowned; the monthly check gives it back). Under contract, the contract
+		# is its only way to repair.
+		NOT = { has_event_chain = ahw_contract_repair_gate_chain }
 	}
 	possible = {
 		custom_tooltip = {
@@ -1079,6 +1139,11 @@ ahw_gate_13 = {
 			has_country_flag = ahw_highway_studied
 			is_nomadic = yes
 		}
+		# run 42: a nomad on our repair contract shuttled between the anchor (the contract's work)
+		# and the portal - presumably to reactivate the gate whenever it had lost its owner
+		# (save 2200.07.23: unowned; the monthly check gives it back). Under contract, the contract
+		# is its only way to repair.
+		NOT = { has_event_chain = ahw_contract_repair_gate_chain }
 	}
 	possible = {
 		custom_tooltip = {
@@ -1166,6 +1231,11 @@ ahw_gate_14 = {
 			has_country_flag = ahw_highway_studied
 			is_nomadic = yes
 		}
+		# run 42: a nomad on our repair contract shuttled between the anchor (the contract's work)
+		# and the portal - presumably to reactivate the gate whenever it had lost its owner
+		# (save 2200.07.23: unowned; the monthly check gives it back). Under contract, the contract
+		# is its only way to repair.
+		NOT = { has_event_chain = ahw_contract_repair_gate_chain }
 	}
 	possible = {
 		custom_tooltip = {
@@ -1253,6 +1323,11 @@ ahw_gate_15 = {
 			has_country_flag = ahw_highway_studied
 			is_nomadic = yes
 		}
+		# run 42: a nomad on our repair contract shuttled between the anchor (the contract's work)
+		# and the portal - presumably to reactivate the gate whenever it had lost its owner
+		# (save 2200.07.23: unowned; the monthly check gives it back). Under contract, the contract
+		# is its only way to repair.
+		NOT = { has_event_chain = ahw_contract_repair_gate_chain }
 	}
 	possible = {
 		custom_tooltip = {
@@ -1340,6 +1415,11 @@ ahw_gate_16 = {
 			has_country_flag = ahw_highway_studied
 			is_nomadic = yes
 		}
+		# run 42: a nomad on our repair contract shuttled between the anchor (the contract's work)
+		# and the portal - presumably to reactivate the gate whenever it had lost its owner
+		# (save 2200.07.23: unowned; the monthly check gives it back). Under contract, the contract
+		# is its only way to repair.
+		NOT = { has_event_chain = ahw_contract_repair_gate_chain }
 	}
 	possible = {
 		custom_tooltip = {
@@ -1427,6 +1507,11 @@ ahw_gate_17 = {
 			has_country_flag = ahw_highway_studied
 			is_nomadic = yes
 		}
+		# run 42: a nomad on our repair contract shuttled between the anchor (the contract's work)
+		# and the portal - presumably to reactivate the gate whenever it had lost its owner
+		# (save 2200.07.23: unowned; the monthly check gives it back). Under contract, the contract
+		# is its only way to repair.
+		NOT = { has_event_chain = ahw_contract_repair_gate_chain }
 	}
 	possible = {
 		custom_tooltip = {
@@ -1514,6 +1599,11 @@ ahw_gate_18 = {
 			has_country_flag = ahw_highway_studied
 			is_nomadic = yes
 		}
+		# run 42: a nomad on our repair contract shuttled between the anchor (the contract's work)
+		# and the portal - presumably to reactivate the gate whenever it had lost its owner
+		# (save 2200.07.23: unowned; the monthly check gives it back). Under contract, the contract
+		# is its only way to repair.
+		NOT = { has_event_chain = ahw_contract_repair_gate_chain }
 	}
 	possible = {
 		custom_tooltip = {
@@ -1601,6 +1691,11 @@ ahw_gate_19 = {
 			has_country_flag = ahw_highway_studied
 			is_nomadic = yes
 		}
+		# run 42: a nomad on our repair contract shuttled between the anchor (the contract's work)
+		# and the portal - presumably to reactivate the gate whenever it had lost its owner
+		# (save 2200.07.23: unowned; the monthly check gives it back). Under contract, the contract
+		# is its only way to repair.
+		NOT = { has_event_chain = ahw_contract_repair_gate_chain }
 	}
 	possible = {
 		custom_tooltip = {
@@ -1688,6 +1783,11 @@ ahw_gate_20 = {
 			has_country_flag = ahw_highway_studied
 			is_nomadic = yes
 		}
+		# run 42: a nomad on our repair contract shuttled between the anchor (the contract's work)
+		# and the portal - presumably to reactivate the gate whenever it had lost its owner
+		# (save 2200.07.23: unowned; the monthly check gives it back). Under contract, the contract
+		# is its only way to repair.
+		NOT = { has_event_chain = ahw_contract_repair_gate_chain }
 	}
 	possible = {
 		custom_tooltip = {
@@ -1775,6 +1875,11 @@ ahw_gate_21 = {
 			has_country_flag = ahw_highway_studied
 			is_nomadic = yes
 		}
+		# run 42: a nomad on our repair contract shuttled between the anchor (the contract's work)
+		# and the portal - presumably to reactivate the gate whenever it had lost its owner
+		# (save 2200.07.23: unowned; the monthly check gives it back). Under contract, the contract
+		# is its only way to repair.
+		NOT = { has_event_chain = ahw_contract_repair_gate_chain }
 	}
 	possible = {
 		custom_tooltip = {
@@ -1862,6 +1967,11 @@ ahw_gate_22 = {
 			has_country_flag = ahw_highway_studied
 			is_nomadic = yes
 		}
+		# run 42: a nomad on our repair contract shuttled between the anchor (the contract's work)
+		# and the portal - presumably to reactivate the gate whenever it had lost its owner
+		# (save 2200.07.23: unowned; the monthly check gives it back). Under contract, the contract
+		# is its only way to repair.
+		NOT = { has_event_chain = ahw_contract_repair_gate_chain }
 	}
 	possible = {
 		custom_tooltip = {
@@ -1949,6 +2059,11 @@ ahw_gate_23 = {
 			has_country_flag = ahw_highway_studied
 			is_nomadic = yes
 		}
+		# run 42: a nomad on our repair contract shuttled between the anchor (the contract's work)
+		# and the portal - presumably to reactivate the gate whenever it had lost its owner
+		# (save 2200.07.23: unowned; the monthly check gives it back). Under contract, the contract
+		# is its only way to repair.
+		NOT = { has_event_chain = ahw_contract_repair_gate_chain }
 	}
 	possible = {
 		custom_tooltip = {
@@ -2036,6 +2151,11 @@ ahw_gate_24 = {
 			has_country_flag = ahw_highway_studied
 			is_nomadic = yes
 		}
+		# run 42: a nomad on our repair contract shuttled between the anchor (the contract's work)
+		# and the portal - presumably to reactivate the gate whenever it had lost its owner
+		# (save 2200.07.23: unowned; the monthly check gives it back). Under contract, the contract
+		# is its only way to repair.
+		NOT = { has_event_chain = ahw_contract_repair_gate_chain }
 	}
 	possible = {
 		custom_tooltip = {
@@ -2123,6 +2243,11 @@ ahw_gate_25 = {
 			has_country_flag = ahw_highway_studied
 			is_nomadic = yes
 		}
+		# run 42: a nomad on our repair contract shuttled between the anchor (the contract's work)
+		# and the portal - presumably to reactivate the gate whenever it had lost its owner
+		# (save 2200.07.23: unowned; the monthly check gives it back). Under contract, the contract
+		# is its only way to repair.
+		NOT = { has_event_chain = ahw_contract_repair_gate_chain }
 	}
 	possible = {
 		custom_tooltip = {
@@ -2210,6 +2335,11 @@ ahw_gate_26 = {
 			has_country_flag = ahw_highway_studied
 			is_nomadic = yes
 		}
+		# run 42: a nomad on our repair contract shuttled between the anchor (the contract's work)
+		# and the portal - presumably to reactivate the gate whenever it had lost its owner
+		# (save 2200.07.23: unowned; the monthly check gives it back). Under contract, the contract
+		# is its only way to repair.
+		NOT = { has_event_chain = ahw_contract_repair_gate_chain }
 	}
 	possible = {
 		custom_tooltip = {
@@ -2297,6 +2427,11 @@ ahw_gate_27 = {
 			has_country_flag = ahw_highway_studied
 			is_nomadic = yes
 		}
+		# run 42: a nomad on our repair contract shuttled between the anchor (the contract's work)
+		# and the portal - presumably to reactivate the gate whenever it had lost its owner
+		# (save 2200.07.23: unowned; the monthly check gives it back). Under contract, the contract
+		# is its only way to repair.
+		NOT = { has_event_chain = ahw_contract_repair_gate_chain }
 	}
 	possible = {
 		custom_tooltip = {
@@ -2384,6 +2519,11 @@ ahw_gate_28 = {
 			has_country_flag = ahw_highway_studied
 			is_nomadic = yes
 		}
+		# run 42: a nomad on our repair contract shuttled between the anchor (the contract's work)
+		# and the portal - presumably to reactivate the gate whenever it had lost its owner
+		# (save 2200.07.23: unowned; the monthly check gives it back). Under contract, the contract
+		# is its only way to repair.
+		NOT = { has_event_chain = ahw_contract_repair_gate_chain }
 	}
 	possible = {
 		custom_tooltip = {
@@ -2471,6 +2611,11 @@ ahw_gate_29 = {
 			has_country_flag = ahw_highway_studied
 			is_nomadic = yes
 		}
+		# run 42: a nomad on our repair contract shuttled between the anchor (the contract's work)
+		# and the portal - presumably to reactivate the gate whenever it had lost its owner
+		# (save 2200.07.23: unowned; the monthly check gives it back). Under contract, the contract
+		# is its only way to repair.
+		NOT = { has_event_chain = ahw_contract_repair_gate_chain }
 	}
 	possible = {
 		custom_tooltip = {
@@ -2558,6 +2703,11 @@ ahw_gate_30 = {
 			has_country_flag = ahw_highway_studied
 			is_nomadic = yes
 		}
+		# run 42: a nomad on our repair contract shuttled between the anchor (the contract's work)
+		# and the portal - presumably to reactivate the gate whenever it had lost its owner
+		# (save 2200.07.23: unowned; the monthly check gives it back). Under contract, the contract
+		# is its only way to repair.
+		NOT = { has_event_chain = ahw_contract_repair_gate_chain }
 	}
 	possible = {
 		custom_tooltip = {
@@ -2645,6 +2795,11 @@ ahw_gate_31 = {
 			has_country_flag = ahw_highway_studied
 			is_nomadic = yes
 		}
+		# run 42: a nomad on our repair contract shuttled between the anchor (the contract's work)
+		# and the portal - presumably to reactivate the gate whenever it had lost its owner
+		# (save 2200.07.23: unowned; the monthly check gives it back). Under contract, the contract
+		# is its only way to repair.
+		NOT = { has_event_chain = ahw_contract_repair_gate_chain }
 	}
 	possible = {
 		custom_tooltip = {
@@ -2732,6 +2887,11 @@ ahw_gate_32 = {
 			has_country_flag = ahw_highway_studied
 			is_nomadic = yes
 		}
+		# run 42: a nomad on our repair contract shuttled between the anchor (the contract's work)
+		# and the portal - presumably to reactivate the gate whenever it had lost its owner
+		# (save 2200.07.23: unowned; the monthly check gives it back). Under contract, the contract
+		# is its only way to repair.
+		NOT = { has_event_chain = ahw_contract_repair_gate_chain }
 	}
 	possible = {
 		custom_tooltip = {

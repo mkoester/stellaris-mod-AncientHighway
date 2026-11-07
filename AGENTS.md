@@ -270,7 +270,9 @@ flag counts at once) both at **1787/2750 = 65 %** — `add_tech_progress` works 
 the options by `add_research_option`, and the grants add up. The cost shows 2750, not 2500: the
 game's scaling (research-cost setting / empire size), as designed. Without Gate Theory the gate
 refuses the test fleet ("Travel through Highway Entry Point ✗ SPIKE: Highway Gate Theory").
-Tooltip: "Rare Technology … will remain as a valid option until it is researched". Both techs
+Tooltip: "Rare Technology … will remain as a valid option until it is researched". **Seal is
+refused** without the theory (`_7`): the Sealed mode's tooltip lists "Owner: ✗ Has SPIKE: Highway
+Gate Theory Technology" (the gate is ours after the monthly check; mode stays Open). Both techs
 show "Missing Icon" (an icon of our own is still to make). The log's `$PARAM$` inside a string
 loses the space before it and keeps a `$` (`grantahw_grant_study$ 0.15$`), as everywhere in the
 spike — readable, left.

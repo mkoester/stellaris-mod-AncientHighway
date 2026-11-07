@@ -249,6 +249,13 @@ each console `event`, so nothing — not even a ship — is selected.
 
 Copy `logs/game.log` and `logs/error.log` before restarting the game.
 
+**Run 33, the skips (2026-11-07, `0.0.34-SPIKE`, save 2200.01.01, screenshots `2026_11_07_1`,
+`_2`): they work.** `ahw_spike.40`: portal Furon 51 studied, not broken, both offer flags set,
+the gate ours, the tech and `ahw_highway_studied` granted, an outpost on the anchor Sirius; no new
+error.log lines. `ahw_spike.42`: the three test fleets in our exit node Furon Node 5 (system 438 =
+`ahw_player_node`) — on the map only from the next day. The fleet was one corvette: `size` of
+`create_random_fleet` counts naval capacity → 25 in `0.0.35-SPIKE`.
+
 **Test, run 33** (`0.0.34-SPIKE` — 0.0.33's content plus the skips; as run 32, a new medium
 game, with the dev-tools mod loaded too). Save now and then — the saves carry the numbers (armour
 and shields per ship, deposits per asteroid), the screenshots only show. Press Esc before each

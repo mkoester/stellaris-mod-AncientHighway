@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <!-- Ancient Highway: store thumbnail, our own art (render: rsvg-convert -w 512 -h 512 assets/thumbnail.svg -o ancient_highway/thumbnail.png).
+       A faint galaxy, a road of light sweeping into the distance, a small fleet racing along it.
+       On purpose it shows nothing of how the highway works. -->
+  <defs>
+    <radialGradient id="bg" cx="55%" cy="35%" r="80%">
+      <stop offset="0" stop-color="#16183a"/>
+      <stop offset="0.6" stop-color="#0a0c22"/>
+      <stop offset="1" stop-color="#04050f"/>
+    </radialGradient>
+    <radialGradient id="core" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#fff2d6" stop-opacity=".75"/>
+      <stop offset="0.25" stop-color="#c9a8ff" stop-opacity=".35"/>
+      <stop offset="1" stop-color="#5a4bb0" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="road" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#ffb347" stop-opacity=".55"/>
+      <stop offset="0.55" stop-color="#ffcf7a" stop-opacity=".22"/>
+      <stop offset="1" stop-color="#ffe2a8" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="edge" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#ffd27f" stop-opacity="1"/>
+      <stop offset="1" stop-color="#ffd27f" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="trail" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#7fd4ff" stop-opacity="0"/>
+      <stop offset="1" stop-color="#bfeaff" stop-opacity=".9"/>
+    </linearGradient>
+    <linearGradient id="hull" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e9eef8"/>
+      <stop offset="1" stop-color="#7d8aa6"/>
+    </linearGradient>
+    <filter id="blur6" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="6"/></filter>
+    <filter id="blur3" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3"/></filter>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2.5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <rect width="512" height="512" fill="url(#bg)"/>
+
+  <!-- stars -->
+  <g fill="#fff">
+    <circle cx="40" cy="60" r="1.3" opacity=".7"/><circle cx="118" cy="32" r="1" opacity=".5"/>
+    <circle cx="470" cy="48" r="1.5" opacity=".8"/><circle cx="492" cy="160" r="1" opacity=".5"/>
+    <circle cx="22" cy="190" r="1.1" opacity=".5"/><circle cx="85" cy="250" r="1" opacity=".4"/>
+    <circle cx="495" cy="300" r="1.2" opacity=".6"/><circle cx="440" cy="400" r="1" opacity=".4"/>
+    <circle cx="190" cy="70" r=".9" opacity=".5"/><circle cx="60" cy="380" r="1" opacity=".35"/>
+    <circle cx="300" cy="18" r="1.1" opacity=".6"/><circle cx="160" cy="300" r=".8" opacity=".4"/>
+    <circle cx="470" cy="470" r="1.2" opacity=".5"/><circle cx="250" cy="450" r=".8" opacity=".3"/>
+  </g>
+
+  <!-- the galaxy: faint, tilted, open spiral arms (no closed oval) -->
+  <g transform="translate(330 150) rotate(-18) scale(1 .5)" opacity=".55">
+    <circle r="130" fill="url(#core)"/>
+    <g fill="none" stroke="#a99bff" stroke-linecap="round" filter="url(#blur6)" opacity=".6">
+      <path d="M6 -2 C 50 -14 92 6 96 46 C 99 82 66 104 30 104" stroke-width="18"/>
+      <path d="M-6 2 C -50 14 -92 -6 -96 -46 C -99 -82 -66 -104 -30 -104" stroke-width="18"/>
+      <path d="M30 104 C 0 104 -30 96 -52 80" stroke-width="10" opacity=".6"/>
+      <path d="M-30 -104 C 0 -104 30 -96 52 -80" stroke-width="10" opacity=".6"/>
+    </g>
+    <g fill="none" stroke="#e2d9ff" stroke-linecap="round" filter="url(#blur3)" opacity=".35">
+      <path d="M8 -3 C 48 -14 86 6 90 42" stroke-width="5"/>
+      <path d="M-8 3 C -48 14 -86 -6 -90 -42" stroke-width="5"/>
+    </g>
+    <circle r="14" fill="#fff6e4" filter="url(#blur6)" opacity=".85"/>
+  </g>
+
+  <!-- the highway: a road of light sweeping from the foreground past the galaxy, fading out -->
+  <path d="M-30 512 C 120 420 250 340 340 270 C 390 232 425 205 448 190
+           L 452 194 C 432 212 400 240 362 280 C 290 360 220 440 150 512 Z"
+        fill="url(#road)"/>
+  <g fill="none" stroke="url(#edge)" stroke-linecap="round" filter="url(#glow)">
+    <path d="M-30 512 C 120 420 250 340 340 270 C 390 232 425 205 448 190" stroke-width="3"/>
+    <path d="M150 512 C 220 440 290 360 362 280 C 400 240 432 212 452 194" stroke-width="3"/>
+  </g>
+  <!-- old beacons along the edges -->
+  <g fill="#ffd27f" filter="url(#glow)">
+    <circle cx="22" cy="478" r="3.2"/><circle cx="96" cy="430" r="2.8"/><circle cx="170" cy="384" r="2.4" opacity=".9"/>
+    <circle cx="240" cy="340" r="2" opacity=".75"/><circle cx="300" cy="300" r="1.6" opacity=".6"/><circle cx="352" cy="262" r="1.3" opacity=".45"/>
+    <circle cx="196" cy="460" r="3"/><circle cx="246" cy="404" r="2.6" opacity=".9"/><circle cx="294" cy="352" r="2.2" opacity=".8"/>
+    <circle cx="336" cy="308" r="1.8" opacity=".65"/><circle cx="374" cy="270" r="1.4" opacity=".5"/><circle cx="406" cy="240" r="1.1" opacity=".35"/>
+  </g>
+  <!-- centre markers, smaller with distance -->
+  <g fill="#ffe7b0" filter="url(#glow)">
+    <rect x="-9.0" y="-2.6" width="18" height="5.1" rx="2.6" transform="translate(62 478) rotate(-38)" opacity="1"/>
+    <rect x="-8.0" y="-2.3" width="16" height="4.6" rx="2.3" transform="translate(122 432) rotate(-38)" opacity="1"/>
+    <rect x="-7.0" y="-2.0" width="14" height="4.0" rx="2.0" transform="translate(180 388) rotate(-40)" opacity="1"/>
+    <rect x="-6.0" y="-1.7" width="12" height="3.4" rx="1.7" transform="translate(234 348) rotate(-41)" opacity="0.85"/>
+    <rect x="-5.0" y="-1.4" width="10" height="2.9" rx="1.4" transform="translate(282 312) rotate(-42)" opacity="0.7"/>
+    <rect x="-4.0" y="-1.1" width="8" height="2.3" rx="1.1" transform="translate(324 280) rotate(-43)" opacity="0.55"/>
+    <rect x="-3.0" y="-0.9" width="6" height="1.7" rx="0.9" transform="translate(362 252) rotate(-44)" opacity="0.4"/>
+    <rect x="-2.0" y="-0.6" width="4" height="1.1" rx="0.6" transform="translate(394 228) rotate(-45)" opacity="0.3"/>
+  </g>
+
+  <!-- the fleet: three ships racing up the road, engine trails behind -->
+  <g>
+    <!-- lead ship -->
+    <g transform="translate(318 288) rotate(-40) scale(1.15)">
+      <rect x="-70" y="-3" width="62" height="6" rx="3" fill="url(#trail)" filter="url(#blur3)"/>
+      <path d="M-10 -9 L 22 -3 L 30 0 L 22 3 L -10 9 L -6 0 Z" fill="url(#hull)"/>
+      <circle cx="-9" cy="0" r="3.5" fill="#bfeaff" filter="url(#glow)"/>
+    </g>
+    <!-- wingman left -->
+    <g transform="translate(282 300) rotate(-39) scale(.95)">
+      <rect x="-70" y="-3" width="62" height="6" rx="3" fill="url(#trail)" filter="url(#blur3)"/>
+      <path d="M-10 -9 L 22 -3 L 30 0 L 22 3 L -10 9 L -6 0 Z" fill="url(#hull)"/>
+      <circle cx="-9" cy="0" r="3.5" fill="#bfeaff" filter="url(#glow)"/>
+    </g>
+    <!-- wingman right -->
+    <g transform="translate(306 326) rotate(-41) scale(.95)">
+      <rect x="-70" y="-3" width="62" height="6" rx="3" fill="url(#trail)" filter="url(#blur3)"/>
+      <path d="M-10 -9 L 22 -3 L 30 0 L 22 3 L -10 9 L -6 0 Z" fill="url(#hull)"/>
+      <circle cx="-9" cy="0" r="3.5" fill="#bfeaff" filter="url(#glow)"/>
+    </g>
+  </g>
+
+  <!-- title, on a dark band -->
+  <linearGradient id="band" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#04050f" stop-opacity="0"/>
+    <stop offset=".45" stop-color="#04050f" stop-opacity=".78"/>
+    <stop offset="1" stop-color="#04050f" stop-opacity=".9"/>
+  </linearGradient>
+  <rect y="400" width="512" height="112" fill="url(#band)"/>
+  <text x="256" y="452" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif"
+        font-weight="400" font-size="26" letter-spacing="12" fill="#c9b98f">ANCIENT</text>
+  <text x="256" y="496" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif"
+        font-weight="700" font-size="46" letter-spacing="4" fill="#f1e6c8">HIGHWAY</text>
+</svg>

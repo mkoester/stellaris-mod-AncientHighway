@@ -51,3 +51,10 @@ on_mid_game_pulse = {
 		ahw.70
 	}
 }
+
+# 0.1.0 (run 42): a yearly summary in game.log (ahw.80)
+on_yearly_pulse = {
+	events = {
+		ahw.80
+	}
+}

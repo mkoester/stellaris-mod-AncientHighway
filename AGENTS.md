@@ -130,6 +130,19 @@ with our `ahw_grant_head_start` removed by console and `ahw_debug.7`, both techs
 no "cost and days exclusive" error at load any more; the stabilise study is not offered without
 Gate Theory researched (as designed).
 
+## Test, run 42 (a long game)
+
+The real stages by hand, then decades of play to see what the AI and the nomads do. New: the
+yearly summary `ahw.80` in game.log (who studied, who has which tech, which portals are repaired
+or sealed, the express). A new medium game, this mod and dev tools, AI empires and nomads on.
+1. **Contract → head start, in one go**: claim your anchor by hand (an outpost), study the gate
+   when the monthly offer comes (science ship, 30 days), then `ahw_debug.73` and issue the
+   contract in the anchor. After the repair, on the next 1st: both techs +50 % (no console help).
+2. **The express study's cost on screen**: `ahw_debug.8`, `ahw_debug.70`, `ahw_debug.72`, a day:
+   the study shows 4000 physics.
+3. **Play on** at a high speed for a few decades, as you like. Autosaves yearly. Then quit and
+   copy both logs; game.log's "AHW yearly" lines and the saves tell what the AI did.
+
 ## Test, run 41 (`0.1.0` + run 40 fixes)
 
 Only what changed or failed in run 40; the rest works. A new medium game, this mod and dev tools,

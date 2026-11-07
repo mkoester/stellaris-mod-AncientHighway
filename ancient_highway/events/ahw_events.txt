@@ -346,3 +346,57 @@ ship_event = {
 		}
 	}
 }
+
+# 0.1.0 (run 42): a yearly summary in game.log, to see what the AI does over a long game: per
+# country (numbered - unmet ones all read "Unidentified Empire", and repeated lines are dropped)
+# whether it studied a gate and which gate techs it has; every portal repaired or sealed; the
+# stable express links. No scope.
+event = {
+	id = ahw.80
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = { has_global_flag = ahw_done }
+	immediate = {
+		event_target:ahw_centre_system = { set_variable = { which = ahw_n_c value = 0 } }
+		every_country = {
+			limit = { is_country_type = default has_country_flag = ahw_highway_studied }
+			event_target:ahw_centre_system = { change_variable = { which = ahw_n_c value = 1 } }
+			if = {
+				limit = { has_technology = ahw_tech_gate_theory has_technology = ahw_tech_gate_construction }
+				log = "AHW yearly [GetDate] country [ahw_centre_system.ahw_n_c] [This.GetName]: studied, both techs"
+			}
+			else_if = {
+				limit = { has_technology = ahw_tech_gate_theory }
+				log = "AHW yearly [GetDate] country [ahw_centre_system.ahw_n_c] [This.GetName]: studied, Gate Theory"
+			}
+			else_if = {
+				limit = { has_technology = ahw_tech_gate_construction }
+				log = "AHW yearly [GetDate] country [ahw_centre_system.ahw_n_c] [This.GetName]: studied, Gate Construction"
+			}
+			else = {
+				log = "AHW yearly [GetDate] country [ahw_centre_system.ahw_n_c] [This.GetName]: studied, no tech"
+			}
+		}
+		event_target:ahw_centre_system = { log = "AHW yearly [GetDate]: [This.ahw_n_c] countries have studied a gate" }
+		every_system = {
+			limit = { has_star_flag = ahw_portal NOT = { has_star_flag = ahw_broken } }
+			log = "AHW yearly [GetDate] portal [This.GetName]: repaired"
+			if = {
+				limit = { has_star_flag = ahw_sealed }
+				log = "AHW yearly [GetDate] portal [This.GetName]: SEALED"
+			}
+		}
+		if = {
+			limit = { has_global_flag = ahw_express_awake }
+			log = "AHW yearly [GetDate]: express awake"
+		}
+		if = { limit = { has_global_flag = ahw_express_stable_1 } log = "AHW yearly [GetDate]: express link 1 stable" }
+		if = { limit = { has_global_flag = ahw_express_stable_2 } log = "AHW yearly [GetDate]: express link 2 stable" }
+		if = { limit = { has_global_flag = ahw_express_stable_3 } log = "AHW yearly [GetDate]: express link 3 stable" }
+		if = { limit = { has_global_flag = ahw_express_stable_4 } log = "AHW yearly [GetDate]: express link 4 stable" }
+		if = { limit = { has_global_flag = ahw_express_stable_5 } log = "AHW yearly [GetDate]: express link 5 stable" }
+		if = { limit = { has_global_flag = ahw_express_stable_6 } log = "AHW yearly [GetDate]: express link 6 stable" }
+		if = { limit = { has_global_flag = ahw_express_stable_7 } log = "AHW yearly [GetDate]: express link 7 stable" }
+		if = { limit = { has_global_flag = ahw_express_stable_8 } log = "AHW yearly [GetDate]: express link 8 stable" }
+	}
+}

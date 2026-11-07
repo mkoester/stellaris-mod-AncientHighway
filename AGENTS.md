@@ -63,7 +63,7 @@ Nothing player-local may decide what is built. The freeze is the slowest machine
 **Timings are from mkDell** (user, 2026-11-06: about as old as the base game; nobody is expected to
 play on such a machine): acceptable there is acceptable for players.
 
-**Next:** run 36 (`0.0.38-SPIKE`: the two techs and the study/head-start grants), then the rest of the spike order in item 7 — exploration and inspection grants next (runs 32–35 finished debris, bare centres and the drain: toxoid −0.02 armour regen, pulsar no shield regen plus −10 % of max a month); then the rest of the open list (the ring's exact
+**Next:** the rest of the spike order in item 7 — exploration and inspection grants next, with the 80 % cap (run 36: the techs, study and head-start grants work) (runs 32–35 finished debris, bare centres and the drain: toxoid −0.02 armour regen, pulsar no shield regen plus −10 % of max a month); then the rest of the open list (the ring's exact
 speed is parked — user, 2026-11-04: "not too important to me now"). Everything is still the
 spike (`*spike*` files); nothing is shippable yet.
 
@@ -263,6 +263,18 @@ hull 200, armour 100, shields 200 each; the science and construction ships 300 /
 error.log lines after the build (the build's own: the probe's `move_system` misses, the
 `ahw_*_tmp` targets, `ahw_exits`/`ahw_pair` in log texts — as before).
 
+**Run 36 (2026-11-07, `0.0.38-SPIKE`, saves 2200.01.01–03.05, screenshots `2026_11_07_3`–`_6`):
+the techs and both grants work.** After the study (03.01) Gate Construction sat among the
+engineering options at **412/2750 = 15 %**; after `ahw_spike.44` + `.7` (the same day: the repair
+flag counts at once) both at **1787/2750 = 65 %** — `add_tech_progress` works on a tech put among
+the options by `add_research_option`, and the grants add up. The cost shows 2750, not 2500: the
+game's scaling (research-cost setting / empire size), as designed. Without Gate Theory the gate
+refuses the test fleet ("Travel through Highway Entry Point ✗ SPIKE: Highway Gate Theory").
+Tooltip: "Rare Technology … will remain as a valid option until it is researched". Both techs
+show "Missing Icon" (an icon of our own is still to make). The log's `$PARAM$` inside a string
+loses the space before it and keeps a `$` (`grantahw_grant_study$ 0.15$`), as everywhere in the
+spike — readable, left.
+
 **Techs and grants (`0.0.38-SPIKE`, design 2026-11-05)**: `ahw_tech_spike` is gone. Two techs,
 `ahw_tech_gate_theory` (physics, particles) and `ahw_tech_gate_construction` (engineering,
 voidcraft), `@tier2cost2` = 2500, rare, tier 1 (`previously_unlocked = 0`: no tier gate),
@@ -279,7 +291,9 @@ reach 65). `ahw_spike.44`: another empire repairs our portal's gate (console tes
 console line). Question: does `add_tech_progress` show on a tech put among the options by
 `add_research_option`, and do the grants add up?
 1. `event ahw_spike.6` (outpost on the anchor), `event ahw_spike.41` (test ships in our portal),
-   `event ahw_spike.7` (the study offer); the study project with the test science ship (30 days).
+   **let a day pass**, `event ahw_spike.7` (the study offer); the study project with the test
+   science ship (30 days). (Run 36: `.7` straight after `.6` offered nothing — the outpost owns
+   the anchor only from the next daily tick; the offer came with the monthly check on 02.01.)
    Expected: Gate Theory among the physics options and Gate Construction among the engineering
    ones, each at **15 %**. Screenshot both, save.
 2. `event ahw_spike.44`, `event ahw_spike.7`. Expected: both at **65 %**; game.log "head start".

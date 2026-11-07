@@ -63,7 +63,7 @@ Nothing player-local may decide what is built. The freeze is the slowest machine
 **Timings are from mkDell** (user, 2026-11-06: about as old as the base game; nobody is expected to
 play on such a machine): acceptable there is acceptable for players.
 
-**Next:** run 33 (`0.0.34-SPIKE`, with the console skips `ahw_spike.40`–`.42`: debris without vanilla deposits, bare centres, drain −0.02), then the spike order in item 7 (techs and grants next); then the rest of the open list (the ring's exact
+**Next:** finish run 33 (in progress since 2026-11-07 in a `0.0.34-SPIKE` game; the skips worked; `0.0.35-SPIKE` only resizes the test fleet: debris without vanilla deposits, bare centres, drain −0.02), then the spike order in item 7 (techs and grants next); then the rest of the open list (the ring's exact
 speed is parked — user, 2026-11-04: "not too important to me now"). Everything is still the
 spike (`*spike*` files); nothing is shippable yet.
 

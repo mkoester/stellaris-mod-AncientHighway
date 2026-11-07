@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Cross-reference check for the mod folder given as argument: every ahw_spike_* effect, trigger,
+"""Cross-reference check for the mod folder given as argument: every ahw_* effect, trigger,
 initializer, megastructure and bypass type used is defined, every text key exists once, every
 megastructure has its outliner sprite. Prints problems; exit 1 if any."""
 import re
@@ -18,10 +18,11 @@ def defs(sub):
 
 
 known = set().union(*(defs(d) for d in ('scripted_effects', 'scripted_triggers', 'megastructures', 'bypass',
-                                        'technology', 'solar_system_initializers', 'megastructure_overclock_types')))
+                                        'technology', 'solar_system_initializers', 'megastructure_overclock_types',
+                                        'star_classes')))
 megas, byps = defs('megastructures'), defs('bypass')
 problems = []
-problems += [f'undefined: {c}' for c in sorted(set(re.findall(r'\b(ahw_spike_\w+) = (?:yes|\{)', alltxt)) - known)]
+problems += [f'undefined: {c}' for c in sorted(set(re.findall(r'(?<![:.\w])(ahw_\w+) = (?:yes|\{)', alltxt)) - known)]
 used_megas = {u for u in re.findall(r'(?<!bypass_)type = (ahw_[\w$]+)', alltxt) if '$' not in u}
 problems += [f'undefined megastructure: {m}' for m in sorted(used_megas - megas)]
 templated = re.findall(r'type = (ahw_\w+)_\$N\$', alltxt)
@@ -35,9 +36,13 @@ keys = re.findall(r'^ (\S+):0', loc, re.M)
 problems += [f'duplicate text key: {k}' for k in sorted({k for k in keys if keys.count(k) > 1})]
 need = {m + s for m in megas for s in ('', '_DESC', '_MEGASTRUCTURE_DETAILS')}
 need |= {f'{p}_{b.upper()}' for b in byps for p in ('BYPASS', 'ENTRY_BYPASS', 'EXIT_BYPASS')}
-need |= set(re.findall(r'(?:title|desc|name) = (ahw_spike\.[\w.]+)', events_raw))
+need |= set(re.findall(r'(?:title|desc|name) = (ahw(?:_debug)?\.[\w.]+)', events_raw))
 need |= set(re.findall(r'^\s*name = (NAME_\w+)', alltxt, re.M))
 problems += [f'missing text: {k}' for k in sorted(need - set(keys))]
+defined_ev = set(re.findall(r'^\tid = (ahw\w*\.\d+)', events_raw, re.M))
+fired = set(re.findall(r'(?:event|country_event|ship_event|fleet_event) = \{ id = (ahw\w*\.\d+)', alltxt))
+fired |= set(re.findall(r'^\t\t(ahw\w*\.\d+)', '\n'.join(t for p, t in code.items() if 'on_actions' in str(p)), re.M))
+problems += [f'undefined event: {e}' for e in sorted(fired - defined_ev)]
 gfx = ''.join(p.read_text() for p in M.rglob('*.gfx'))
 problems += [f'missing sprite: GFX_{m}_outliner_icon' for m in sorted(megas) if f'GFX_{m}_outliner_icon' not in gfx]
 print('\n'.join(problems) or 'refs ok')

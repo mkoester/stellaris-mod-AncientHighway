@@ -1,6 +1,6 @@
-version="0.0.42-SPIKE"
+version="0.1.0"
 tags={
 	"Gameplay"
 }
-name="Ancient Highway (spike)"
+name="Ancient Highway"
 supported_version="v4.5.*"

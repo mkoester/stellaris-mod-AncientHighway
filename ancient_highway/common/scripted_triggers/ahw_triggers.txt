@@ -1,7 +1,7 @@
-# SPIKE (Phase 0, 0.0.8). this = system: may the portal hang off this system? Not the capital
+# this = system: may the portal hang off this system? Not the capital
 # (event_target:ahw_cap_tmp), not next to it, not artificial, not owned (game start: only home
-# systems are). Used with ahw_spike_within_3_jumps_of_capital: 2 or 3 jumps out.
-ahw_spike_portal_anchor_ok = {
+# systems are). Used with ahw_within_3_jumps_of_capital: 2 or 3 jumps out.
+ahw_portal_anchor_ok = {
 	NOT = { is_same_value = event_target:ahw_cap_tmp }
 	NOT = { has_hyperlane_to = event_target:ahw_cap_tmp }
 	NOT = { has_star_flag = ahw_unclaimable }
@@ -13,7 +13,7 @@ ahw_spike_portal_anchor_ok = {
 
 # 0.0.31 (user, 2026-11-06): in a running game most systems near a capital are owned; the anchor
 # may then be one the empire (event_target:ahw_country_tmp) owns itself, never another's.
-ahw_spike_portal_anchor_own_ok = {
+ahw_portal_anchor_own_ok = {
 	NOT = { is_same_value = event_target:ahw_cap_tmp }
 	NOT = { has_hyperlane_to = event_target:ahw_cap_tmp }
 	NOT = { has_star_flag = ahw_unclaimable }
@@ -26,21 +26,21 @@ ahw_spike_portal_anchor_own_ok = {
 # portal; run 38's nomadic Murmies had one). is_nomadic is the engine's country code flag, set
 # before on_game_start (vanilla's nomads.20 tests it from on_game_start_country); an empire that
 # settles counts from then on, one that embarks keeps the portal it has.
-ahw_spike_gets_portal = {
+ahw_gets_portal = {
 	is_country_type = default
 	is_nomadic = no
 }
 
 # 0.0.31: a generated pair is left for one more portal (ahw_pairs counts the used ones, ahw_pairs_max
-# is tools/gen_spike.py's PAIRS; both on ring node 1). No scope needed.
-ahw_spike_pair_left = {
+# is tools/gen.py's PAIRS; both on ring node 1). No scope needed.
+ahw_pair_left = {
 	event_target:ahw_ring_1 = { check_variable = { which = ahw_pairs value < ahw_pairs_max } }
 }
 
-# Run 11: the random walk saw one path only and missed 3-jump candidates; ahw_spike.10 now
+# Run 11: the random walk saw one path only and missed 3-jump candidates; ahw.10 now
 # searches every system. this = system: 1 to 3 jumps from the capital (with
-# ahw_spike_portal_anchor_ok, which rules out the capital and its neighbours: 2 to 3 jumps).
-ahw_spike_within_3_jumps_of_capital = {
+# ahw_portal_anchor_ok, which rules out the capital and its neighbours: 2 to 3 jumps).
+ahw_within_3_jumps_of_capital = {
 	OR = {
 		has_hyperlane_to = event_target:ahw_cap_tmp
 		any_neighbor_system = { has_hyperlane_to = event_target:ahw_cap_tmp }
@@ -49,15 +49,15 @@ ahw_spike_within_3_jumps_of_capital = {
 }
 
 # this = system: already holds a gateway, wormhole or other bypass (user: de-prioritise these).
-ahw_spike_has_bypass = {
+ahw_has_bypass = {
 	any_bypass_in_system = { always = yes }
 }
 
 # 0.0.24 (user, 2026-11-05: "the whole idea is that empires can still reach their allies - every
 # type of friend must still be allowed through (esp. empires fighting on the same side of a war)").
 # this = country: the sealer of pair $N$ (event_target:ahw_sealer_$N$) or a friend of it. A pair
-# sealed against everyone (ahw_spike.25) has no sealer, so nobody passes.
-ahw_spike_friend_of_sealer = {
+# sealed against everyone (ahw_debug.25) has no sealer, so nobody passes.
+ahw_friend_of_sealer = {
 	exists = event_target:ahw_sealer_$N$
 	OR = {
 		is_same_value = event_target:ahw_sealer_$N$
@@ -112,8 +112,8 @@ ahw_spike_friend_of_sealer = {
 	}
 }
 
-# this = a portal: WHO has seen a centre of its kind (ahw_spike_see_kind).
-ahw_spike_kind_seen = {
+# this = a portal: WHO has seen a centre of its kind (ahw_see_kind).
+ahw_kind_seen = {
 	OR = {
 		AND = { is_star_class = ahw_sc_black_hole $WHO$ = { has_country_flag = ahw_kind_black_hole } }
 		AND = { is_star_class = ahw_sc_pulsar $WHO$ = { has_country_flag = ahw_kind_pulsar } }

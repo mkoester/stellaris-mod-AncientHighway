@@ -1,0 +1,340 @@
+# The Ancient Highway's own events. ahw.10 builds everything once (game start, or the mod added to
+# a running game: common/on_actions/ahw_on_actions.txt). Console shortcuts: ahw_debug_events.txt.
+# Map changes reach route-finding on the next daily tick.
+namespace = ahw
+
+# Builds everything, once. No scope: from on_game_start, or - the mod added to a running game
+# (0.0.31) - from on_single_player_save_game_load or on_monthly_pulse.
+event = {
+	id = ahw.10
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = { has_global_flag = ahw_done }
+	}
+
+	immediate = {
+		set_global_flag = ahw_done
+		log = "AHW ===== ahw.10: building the highway at game start ====="
+
+		# 0.0.30 (run 27: a spawn costs ~N^2.7): vanilla batches its spawns so "caches are
+		# recalculated only once rather than for every system spawned" (distar.290, the L-Cluster;
+		# also for adding and removing hyperlanes). Everything up to the portals runs in one batch.
+		set_spawn_system_batch = begin
+
+		# Run 8: spawn_system without a scope spawns nothing. Find the centre instead: two probe
+		# systems leapfrog corewards from the innermost system (generated: ahw_find_centre).
+		# 0.0.14 (user, 2026-11-04): the ring goes round the outside of the galaxy, following its
+		# outline - measured from the centre, then built (generated).
+		ahw_find_centre = yes
+		log = "AHW timing: centre found"
+		ahw_measure_outline = yes
+		log = "AHW timing: outline measured"
+		# 0.0.29: the galaxy's size in systems, to fit the cost per spawn against it.
+		event_target:ahw_centre_system = {
+			set_variable = { which = ahw_n_sys value = 0 }
+			every_system = {
+				limit = { NOT = { has_star_flag = ahw_unclaimable } }
+				prev = { change_variable = { which = ahw_n_sys value = 1 } }
+			}
+			log = "AHW systems: [This.ahw_n_sys] regular systems"
+		}
+		ahw_build_outer_ring = yes
+		log = "AHW timing: outer ring built"
+
+		# A portal for every regular empire (ahw_build_portal; 0.0.31: the same effect serves
+		# empires born later, ahw.30).
+		every_country = {
+			limit = { ahw_gets_portal = yes }
+			ahw_build_portal = yes
+		}
+		# 0.0.41: nomads get none - logged, so a run shows the filter fired; numbered (0.0.42), since
+		# unmet nomads all read "Unidentified Empire" and repeated lines are dropped (run 39: 1 of 3)
+		event_target:ahw_centre_system = { set_variable = { which = ahw_n_nomads value = 0 } }
+		every_country = {
+			limit = { is_country_type = default is_nomadic = yes }
+			event_target:ahw_centre_system = { change_variable = { which = ahw_n_nomads value = 1 } }
+			log = "AHW no portal for nomad [ahw_centre_system.ahw_n_nomads]: [This.GetName]"
+		}
+		event_target:ahw_centre_system = { log = "AHW nomads without a portal: [This.ahw_n_nomads]" }
+
+		set_spawn_system_batch = end
+		log = "AHW timing: spawn batch ended"
+
+		# 0.0.26: a third of the centres stay black holes, the rest become pulsars or toxoid stars;
+		# 0.0.32: and debris in each
+		ahw_pick_centres = yes
+		log = "AHW timing: centres and debris done"
+
+	}
+}
+
+# Monthly (on_monthly_pulse_country): for each portal whose anchor this country owns, offer the
+# study (science ship special project), then - studied and with the tech - the repair (ahw.21).
+country_event = {
+	id = ahw.20
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = { is_country_type = default }
+	immediate = {
+		every_system = {
+			limit = {
+				has_star_flag = ahw_portal
+				any_neighbor_system = { exists = owner owner = { is_same_value = root } }
+			}
+			# 0.0.20: the gate belongs to the anchor's owner (its Open/Sealed switch shows for the
+			# owner only); a sealed gate stays locked for the current owner (renewed, so it also
+			# follows a change of hands).
+			every_system_megastructure = {
+				# 0.0.22: an unowned gate has no owner scope (run 20: "Invalid context switch [owner]").
+				limit = { OR = { NOT = { exists = owner } NOT = { owner = { is_same_value = root } } } }
+				set_owner = root
+				log = "AHW [Root.GetName] now owns the gate in [Prev.GetName]"
+			}
+			if = {
+				limit = { has_star_flag = ahw_sealed }
+				ahw_seal_pair_for = { COUNTRY = root }
+			}
+			# 0.0.38, the head start (design 2026-11-05): an anchor whose gate somebody else
+			# repaired gives the study for free and 50 % of each tech, once per empire (the
+			# repairer itself is flagged as served, ahw_mark_repaired).
+			if = {
+				limit = {
+					NOT = { has_star_flag = ahw_broken }
+					root = { NOT = { has_country_flag = ahw_grant_head_start } }
+				}
+				root = { save_event_target_as = ahw_studier }
+				ahw_country_learns = yes
+				root = { ahw_grant = { FLAG = ahw_grant_head_start PROGRESS = 0.5 } }
+				log = "AHW head start at the entry point in [This.GetName] for [Root.GetName]"
+			}
+			if = {
+				limit = {
+					NOT = { has_star_flag = ahw_studied }
+					NOT = { has_star_flag = ahw_study_offered }
+				}
+				set_star_flag = ahw_study_offered
+				enable_special_project = { name = AHW_STUDY_PROJECT location = this owner = root }
+				log = "AHW study of the entry point in [This.GetName] offered to [Root.GetName]"
+			}
+			else_if = {
+				limit = {
+					has_star_flag = ahw_studied
+					has_star_flag = ahw_broken
+					NOT = { has_star_flag = ahw_repair_offered }
+					root = {
+						has_technology = ahw_tech_gate_theory
+						has_technology = ahw_tech_gate_construction
+					}
+				}
+				set_star_flag = ahw_repair_offered
+				save_event_target_as = ahw_repair_portal
+				root = { country_event = { id = ahw.21 } }
+				log = "AHW repair of the entry point in [This.GetName] offered to [Root.GetName]"
+			}
+		}
+	}
+}
+
+# The repair offer: pay alloys, then a construction ship repairs the gate. "Not now" offers it
+# again in a year. Special projects cannot charge resources themselves.
+country_event = {
+	id = ahw.21
+	title = ahw.21.name
+	desc = ahw.21.desc
+	is_triggered_only = yes
+	option = {
+		name = ahw.21.a
+		allow = { has_resource = { type = alloys amount >= 500 } }
+		add_resource = { alloys = -500 }
+		event_target:ahw_repair_portal = {
+			enable_special_project = { name = AHW_REPAIR_PROJECT location = this owner = root }
+		}
+		ai_chance = { factor = 10 }
+	}
+	option = {
+		name = ahw.21.b
+		event_target:ahw_repair_portal = {
+			remove_star_flag = ahw_repair_offered
+			set_timed_star_flag = { flag = ahw_repair_offered days = 360 }
+		}
+		ai_chance = { factor = 1 }
+	}
+}
+
+# Study done (this = the science ship, in the portal): the country knows the network and its exit node.
+ship_event = {
+	id = ahw.22
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		owner = { save_event_target_as = ahw_studier }
+		solar_system = { ahw_mark_studied = yes }
+	}
+}
+
+# Repair done (this = the construction ship, in the portal): the gate works, for good.
+ship_event = {
+	id = ahw.23
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		owner = { save_event_target_as = ahw_repairer }
+		solar_system = { ahw_mark_repaired = yes }
+	}
+}
+
+# 0.0.31 (user, 2026-11-06): every regular empire without a portal gets one - empires born later
+# (rebels, secessions, released subjects) and those for which no anchor was found before. Monthly
+# (on_monthly_pulse_country). Run 30: a spawn in play freezes the game ~10 s on a huge galaxy
+# (~2.5 s medium), accepted; the spawn, the lane and the gates share one batch, opened only when an
+# anchor exists, so an empire still without one costs no freeze.
+country_event = {
+	id = ahw.30
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		ahw_gets_portal = yes
+		has_global_flag = ahw_done
+		NOT = { has_country_flag = ahw_has_portal }
+		exists = capital_star
+		ahw_pair_left = yes
+	}
+
+	immediate = {
+		capital_star = { solar_system = { save_global_event_target_as = ahw_cap_tmp } }
+		save_global_event_target_as = ahw_country_tmp
+		if = {
+			limit = {
+				any_system = {
+					OR = {
+						ahw_portal_anchor_ok = yes
+						ahw_portal_anchor_own_ok = yes
+					}
+					ahw_within_3_jumps_of_capital = yes
+				}
+			}
+			set_spawn_system_batch = begin
+			ahw_build_portal = yes
+			set_spawn_system_batch = end
+			if = {
+				limit = { has_country_flag = ahw_has_portal }
+				event_target:ahw_portal_tmp = { ahw_pick_centre = yes ahw_add_debris = yes }
+				log = "AHW late portal for [This.GetName] (capital [ahw_cap_tmp.GetName]) on [GetDate]: [ahw_portal_tmp.GetName], off [ahw_x_tmp.GetName], exit in [ahw_node_tmp.GetName]"
+			}
+		}
+	}
+}
+
+# 0.0.37: the pulsar's shield drain. Its star class stops shield regeneration, but a negative
+# regeneration modifier is cancelled with it (run 34), so the drain is monthly, as vanilla's
+# electric storm does it (cstorms.1100) - here a share of each ship's maximum.
+# Untested: whether repair_shield_percentage takes a negative value.
+event = {
+	id = ahw.50
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = { has_global_flag = ahw_done }
+	immediate = {
+		every_system = {
+			limit = {
+				OR = { has_star_flag = ahw_ring has_star_flag = ahw_portal }
+				is_star_class = ahw_sc_pulsar
+			}
+			every_ship_in_system = {
+				limit = { has_shield_hp > 0 }
+				repair_shield_percentage = -0.10
+			}
+		}
+	}
+}
+
+# 0.0.40, the inspection studies (user, 2026-11-07, replacing 0.0.39's 10 days of waiting, which
+# nobody could know about): a fleet enters a portal or ring node (scope fleet, from = the system;
+# on_entering_system_fleet). A country that has studied a gate (or got the head start) is offered
+# a study there - for the class of the ship that found it, 15 days: a gate somebody else repaired
+# (Gate Construction, +7 % if offered on our first entry into that system, else +5 %), a foreign
+# portal's centre (Gate Theory, +7 % for a kind not seen, else +5 %). Every country's entries are
+# remembered, so "first entry" holds for a study offered later.
+fleet_event = {
+	id = ahw.60
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		exists = owner
+		owner = { is_country_type = default }
+		from = { OR = { has_star_flag = ahw_portal has_star_flag = ahw_ring } }
+	}
+	immediate = {
+		save_event_target_as = ahw_finder
+		owner = { save_event_target_as = ahw_insp_country }
+		from = {
+			if = {
+				limit = {
+					event_target:ahw_insp_country = {
+						has_country_flag = ahw_highway_studied
+						NOT = { has_country_flag = ahw_closed_construction }
+					}
+				}
+				ahw_scan_gates = yes
+			}
+			ahw_note_entered = yes
+			if = {
+				limit = {
+					has_star_flag = ahw_portal
+					event_target:ahw_insp_country = {
+						has_country_flag = ahw_highway_studied
+						NOT = { has_country_flag = ahw_closed_theory }
+					}
+					NOT = { any_neighbor_system = { exists = owner owner = { is_same_value = event_target:ahw_insp_country } } }
+				}
+				ahw_scan_centre = yes
+			}
+			if = {
+				limit = { event_target:ahw_insp_country = { has_country_flag = ahw_offer_gate } }
+				event_target:ahw_insp_country = { remove_country_flag = ahw_offer_gate }
+				ahw_offer_gate_study = yes
+				log = "AHW gate study in [This.GetName] offered to [ahw_insp_country.GetName]"
+			}
+			if = {
+				limit = { event_target:ahw_insp_country = { has_country_flag = ahw_offer_centre } }
+				event_target:ahw_insp_country = { remove_country_flag = ahw_offer_centre }
+				ahw_offer_centre_study = yes
+				log = "AHW centre study in [This.GetName] offered to [ahw_insp_country.GetName]"
+			}
+		}
+	}
+}
+
+# A tech researched: close its studies (ahw_cap_check; on_tech_increased, this = country).
+country_event = {
+	id = ahw.63
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = { has_country_flag = ahw_highway_studied }
+	immediate = { ahw_cap_check = yes }
+}
+
+# A gate study done (this = the ship; AHW_INSPECT_GATE_*).
+ship_event = {
+	id = ahw.64
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		owner = { save_event_target_as = ahw_insp_country }
+		solar_system = { ahw_inspect_gates = yes }
+	}
+}
+
+# A centre study done (this = the ship; AHW_INSPECT_CENTRE_*).
+ship_event = {
+	id = ahw.65
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		owner = { save_event_target_as = ahw_insp_country }
+		solar_system = { ahw_inspect_centre = yes }
+	}
+}

@@ -1,0 +1,32 @@
+# Helpers for the console shortcuts (events/ahw_debug_events.txt).
+
+# Console helper (0.0.34): a science ship, a construction ship and a small battle fleet of the
+# country in scope, at the star of event_target:ahw_spawn_here (a system).
+ahw_spawn_test_ships = {
+	save_event_target_as = ahw_spawn_owner
+	create_fleet = {
+		name = "AHW Test Science"
+		effect = {
+			set_owner = event_target:ahw_spawn_owner
+			create_ship = { name = random random_existing_design = science }
+			set_location = event_target:ahw_spawn_here.star
+		}
+	}
+	create_fleet = {
+		name = "AHW Test Construction"
+		effect = {
+			set_owner = event_target:ahw_spawn_owner
+			create_ship = { name = random random_existing_design = constructor }
+			set_location = event_target:ahw_spawn_here.star
+		}
+	}
+	# The country's own designs (create_random_fleet without ship_designs), so bio and machine
+	# empires get theirs.
+	create_random_fleet = {
+		name = "AHW Test Fleet"
+		# size is not a ship count: 5 gave one corvette, 25 five (runs 33, 2026-11-07)
+		size = 25
+		effect = { set_location = event_target:ahw_spawn_here.star }
+	}
+	event_target:ahw_spawn_here = { log = "AHW test ships spawned in \\[This.GetName]" }
+}

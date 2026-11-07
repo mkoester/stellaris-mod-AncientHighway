@@ -1,12 +1,14 @@
-# SPIKE (0.0.38, design 2026-11-05): two techs, researched in parallel. Researchable once the
-# country has studied an entry point (special project AHW_SPIKE_STUDY_PROJECT -> country flag
+# Two techs (design 2026-11-05), researched in parallel. Researchable once the
+# country has studied an entry point (special project AHW_STUDY_PROJECT -> country flag
 # ahw_highway_studied; add_research_option puts them among the options at once, as vanilla's
-# gateway study does) or got the head start (ahw_spike.20). Tier 1: its previously_unlocked is 0,
+# gateway study does) or got the head start (ahw.20). Tier 1: its previously_unlocked is 0,
 # so no tier prerequisite (common/technology/tier/00_tier.txt). Run 3: research_technology refuses a
-# tech whose potential fails; `event ahw_spike.8` grants both anyway (give_technology).
+# tech whose potential fails; `event ahw_debug.8` grants both anyway (give_technology).
+# Icons: vanilla's gateway techs', referenced by name (no copy of game art).
 
 # Physics: the gates' theory - use a gate, seal one.
 ahw_tech_gate_theory = {
+	icon = "tech_gateway_activation"
 	cost = @tier2cost2
 	area = physics
 	tier = 1
@@ -21,6 +23,7 @@ ahw_tech_gate_theory = {
 
 # Engineering: the gates' construction - with the theory, repair one.
 ahw_tech_gate_construction = {
+	icon = "tech_gateway_construction"
 	cost = @tier2cost2
 	area = engineering
 	tier = 1

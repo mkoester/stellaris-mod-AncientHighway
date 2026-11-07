@@ -1,0 +1,246 @@
+# Console shortcuts for tests (AGENTS.md, "Console"). Type them with nothing selected (Esc): an
+# event typed with a ship or gate selected fires on that, not on our country. Each one runs the
+# same effects as the real stage it skips.
+namespace = ahw_debug
+
+# An outpost on our anchor, so we own it (the anchor's owner studies, repairs and locks).
+country_event = {
+	id = ahw_debug.6
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		event_target:ahw_player_anchor = {
+			if = {
+				limit = { NOT = { exists = owner } }
+				create_starbase = { size = starbase_outpost owner = root }
+			}
+			log = "AHW anchor [This.GetName]: outpost created for [Root.GetName]"
+		}
+	}
+}
+
+# The monthly check for us, now (instead of waiting for the 1st).
+country_event = {
+	id = ahw_debug.7
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = { country_event = { id = ahw.20 } }
+}
+
+# Grants both gate techs (fallback for the console's research_technology).
+country_event = {
+	id = ahw_debug.8
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		give_technology = { tech = ahw_tech_gate_theory message = no }
+		give_technology = { tech = ahw_tech_gate_construction message = no }
+	}
+}
+
+# 0.0.23 console test: seals our pair against everyone, us included (a control for the seal: our
+# ship must be refused, both ways); run again to open it.
+country_event = {
+	id = ahw_debug.25
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		event_target:ahw_player_portal = {
+			if = {
+				limit = { has_star_flag = ahw_sealed }
+				remove_star_flag = ahw_sealed
+				ahw_unseal_pair = yes
+				log = "AHW test: our pair in [This.GetName] opened again"
+			}
+			else = {
+				set_star_flag = ahw_sealed
+				ahw_seal_pair_for_nobody = yes
+				log = "AHW test: our pair in [This.GetName] sealed against everyone, us included"
+			}
+		}
+	}
+}
+
+# 0.0.24 console test of friends: seals our pair for another regular empire, as if it were the
+# sealer - we are strangers to it, so our ship must be refused.
+country_event = {
+	id = ahw_debug.26
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		random_country = {
+			limit = { is_country_type = default NOT = { is_same_value = root } }
+			save_global_event_target_as = ahw_test_sealer
+		}
+		event_target:ahw_player_portal = {
+			set_star_flag = ahw_sealed
+			ahw_seal_pair_for = { COUNTRY = event_target:ahw_test_sealer }
+			log = "AHW test: our pair in [This.GetName] sealed for [ahw_test_sealer.GetName]"
+		}
+	}
+}
+
+# ... then makes that empire our subject: now we are its friend (overlord), so our ship passes.
+country_event = {
+	id = ahw_debug.27
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		event_target:ahw_test_sealer = {
+			set_subject_of = { who = root preset = preset_vassal }
+			log = "AHW test: [This.GetName] is now a subject of [Root.GetName]"
+		}
+	}
+}
+
+# 0.0.34 console skips (user, 2026-11-07: don't re-test by hand what has worked for many runs).
+# Nothing selected. A working gate now: an outpost on our anchor (as ahw_debug.6), the study, the
+# tech and the repair, through the same effects as the real stages (ahw.22, .23); the offer
+# flags are set so the monthly check offers neither again.
+country_event = {
+	id = ahw_debug.40
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		event_target:ahw_player_anchor = {
+			if = {
+				limit = { NOT = { exists = owner } }
+				create_starbase = { size = starbase_outpost owner = root }
+			}
+			if = {
+				limit = { exists = owner NOT = { owner = { is_same_value = root } } }
+				log = "AHW skip: the anchor [This.GetName] belongs to someone else - the gate is ours anyway"
+			}
+		}
+		save_event_target_as = ahw_studier
+		save_event_target_as = ahw_repairer
+		event_target:ahw_player_portal = {
+			set_star_flag = ahw_study_offered
+			set_star_flag = ahw_repair_offered
+			ahw_mark_studied = yes
+			ahw_mark_repaired = yes
+		}
+		give_technology = { tech = ahw_tech_gate_theory message = no }
+		give_technology = { tech = ahw_tech_gate_construction message = no }
+	}
+}
+
+# Nothing selected: a science ship, a construction ship and a small fleet of ours in our portal.
+country_event = {
+	id = ahw_debug.41
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		event_target:ahw_player_portal = { save_event_target_as = ahw_spawn_here }
+		ahw_spawn_test_ships = yes
+	}
+}
+
+# Nothing selected: the same in our exit node (inside the ring).
+country_event = {
+	id = ahw_debug.42
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		event_target:ahw_player_node = { save_event_target_as = ahw_spawn_here }
+		ahw_spawn_test_ships = yes
+	}
+}
+
+# Test: every warship we own loses 100 shields, so refilling shows (run 34: the
+# pulsar should keep them down, home space refill them).
+country_event = {
+	id = ahw_debug.43
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		every_owned_ship = {
+			limit = { is_ship_class = shipclass_military }
+			reduce_shield = 100
+		}
+		log = "AHW shields reduced by 100"
+	}
+}
+
+# Test (0.0.38): another empire repairs our portal's gate, so the next monthly check (or
+# `event ahw_debug.7`) gives us the head start. Leaves the study flags alone.
+country_event = {
+	id = ahw_debug.44
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		random_country = {
+			limit = { is_country_type = default NOT = { is_same_value = root } }
+			save_event_target_as = ahw_repairer
+		}
+		event_target:ahw_player_portal = {
+			if = {
+				limit = { has_star_flag = ahw_broken }
+				ahw_mark_repaired = yes
+			}
+		}
+	}
+}
+
+# Test (0.0.39): our portal studied now - the study's real result (ahw_mark_studied).
+country_event = {
+	id = ahw_debug.45
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		save_event_target_as = ahw_studier
+		event_target:ahw_player_portal = {
+			set_star_flag = ahw_study_offered
+			ahw_mark_studied = yes
+		}
+	}
+}
+
+# Test (0.0.39): our three test fleets at the anchor of a foreign portal - one whose centre kind we
+# have not seen, if there is one - so that one jump takes them into it.
+country_event = {
+	id = ahw_debug.46
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		if = {
+			limit = {
+				any_system = {
+					has_star_flag = ahw_portal
+					NOT = { is_same_value = event_target:ahw_player_portal }
+					NOT = { ahw_kind_seen = { WHO = root } }
+				}
+			}
+			random_system = {
+				limit = {
+					has_star_flag = ahw_portal
+					NOT = { is_same_value = event_target:ahw_player_portal }
+					NOT = { ahw_kind_seen = { WHO = root } }
+				}
+				save_event_target_as = ahw_foreign_portal
+			}
+		}
+		else = {
+			random_system = {
+				limit = { has_star_flag = ahw_portal NOT = { is_same_value = event_target:ahw_player_portal } }
+				save_event_target_as = ahw_foreign_portal
+			}
+		}
+		event_target:ahw_foreign_portal = {
+			random_neighbor_system = { save_event_target_as = ahw_spawn_here }
+			log = "AHW test ships next to the foreign portal [This.GetName]"
+		}
+		ahw_spawn_test_ships = yes
+	}
+}
+
+# Test (0.0.39): ask for 30 % more of each tech; the cap should hold both at 80 %.
+country_event = {
+	id = ahw_debug.47
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		ahw_grant_tech = { TECH = ahw_tech_gate_theory VAR = ahw_got_theory PROGRESS = 0.3 }
+		ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.3 }
+	}
+}

@@ -1,4 +1,4 @@
-# SPIKE (0.0.26, design 2026-11-05/06): the highway's artificial centres - ring nodes and portals.
+# (0.0.26, design 2026-11-05/06) the highway's artificial centres - ring nodes and portals.
 # Look and ship effect are vanilla's (class = the GFX id, the modifiers copied from
 # common/star_classes/00_star_classes.txt); our own keys so vanilla's black-hole/pulsar events
 # never pick them, and so the map icon can be ours: far smaller than a star's (user, 2026-11-06:
@@ -38,7 +38,7 @@ ahw_sc_pulsar = {
 	arkship_picture = "arkship_pulsar"
 	modifier = {
 		# shield components regenerate (0.5/day a small one, x5 out of combat): stop that
-		# (run 33). The drain is ahw_spike.50, monthly: run 34 showed _mult = -1 also
+		# (run 33). The drain is ahw.50, monthly: run 34 showed _mult = -1 also
 		# cancels a negative _add_perc.
 		ship_shield_regen_mult = -1
 	}

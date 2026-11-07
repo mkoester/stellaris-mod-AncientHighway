@@ -1,4 +1,4 @@
-# SPIKE (Phase 0): vanilla's can_build_starbase_around (common/game_rules/00_rules.txt, 4.5.3)
+# vanilla's can_build_starbase_around (common/game_rules/00_rules.txt, 4.5.3)
 # plus the ahw_unclaimable check (ring and portals). (0.0.18-0.0.19 also overrode can_lock_bypass
 # for the astral action's lock; 0.0.20 seals gates by its own switch, and with vanilla's rule
 # nobody can astral-lock a portal or a ring node - nobody owns them.) Q: does a single-key override of a game rule win, and from

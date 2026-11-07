@@ -1,0 +1,45 @@
+# (0.0.8) build the highway at game start, without a scope (as vanilla's
+# game_start.31 creates the wormhole pairs from on_game_start). ahw.10 builds
+# everything once.
+on_game_start = {
+	events = {
+		ahw.10
+	}
+}
+
+# 0.0.31: the mod added to a running game builds the highway on the save's load (single player)
+# or the next month (multiplayer, where the load hook does not fire); ahw.10's trigger lets
+# it run once.
+on_single_player_save_game_load = {
+	events = {
+		ahw.10
+	}
+}
+on_monthly_pulse = {
+	events = {
+		ahw.10
+		ahw.50	# 0.0.37: the pulsar's shield drain
+	}
+}
+
+# 0.0.18: each month, offer the study and the repair of the portals a country's anchors hold.
+# 0.0.31: and give a portal to a regular empire without one (born later, or none found before).
+on_monthly_pulse_country = {
+	events = {
+		ahw.20
+		ahw.30
+	}
+}
+
+# 0.0.40: the inspection studies - offered when a fleet enters a portal or ring node
+# (ahw.60); a researched gate tech closes its studies (ahw.63).
+on_entering_system_fleet = {
+	events = {
+		ahw.60
+	}
+}
+on_tech_increased = {
+	events = {
+		ahw.63
+	}
+}

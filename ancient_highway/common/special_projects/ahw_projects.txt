@@ -1,10 +1,10 @@
-# SPIKE (Phase 0, 0.0.18). Entry points start broken (star flag ahw_broken on the portal). The
+# Entry points start broken (star flag ahw_broken on the portal). The
 # anchor's owner (user, 2026-11-04) studies the gate with a science ship, researches
-# both gate techs, pays for the repair (event ahw_spike.21) and repairs it with a construction
-# ship - once, for good. Offered by the monthly check ahw_spike.20.
+# both gate techs, pays for the repair (event ahw.21) and repairs it with a construction
+# ship - once, for good. Offered by the monthly check ahw.20.
 
 special_project = {
-	key = AHW_SPIKE_STUDY_PROJECT
+	key = AHW_STUDY_PROJECT
 	cost = 0
 	days_to_research = 30
 	tech_department = physics_technology
@@ -15,12 +15,12 @@ special_project = {
 	requirements = { shipclass_science_ship = 1 }
 
 	on_success = {
-		ship_event = { id = ahw_spike.22 }
+		ship_event = { id = ahw.22 }
 	}
 }
 
 special_project = {
-	key = AHW_SPIKE_REPAIR_PROJECT
+	key = AHW_REPAIR_PROJECT
 	cost = 0
 	days_to_research = 90
 	tech_department = engineering_technology
@@ -31,11 +31,11 @@ special_project = {
 	requirements = { shipclass_constructor = 1 }
 
 	on_success = {
-		ship_event = { id = ahw_spike.23 }
+		ship_event = { id = ahw.23 }
 	}
 }
 
-# 0.0.40: inspection study, for the class of the ship that found it (ahw_spike.60).
+# 0.0.40: inspection study, for the class of the ship that found it (ahw.60).
 special_project = {
 	key = AHW_INSPECT_GATE_SCI
 	cost = 0
@@ -48,11 +48,11 @@ special_project = {
 	requirements = { shipclass_science_ship = 1 }
 
 	on_success = {
-		ship_event = { id = ahw_spike.64 }
+		ship_event = { id = ahw.64 }
 	}
 }
 
-# 0.0.40: inspection study, for the class of the ship that found it (ahw_spike.60).
+# 0.0.40: inspection study, for the class of the ship that found it (ahw.60).
 special_project = {
 	key = AHW_INSPECT_GATE_CON
 	cost = 0
@@ -65,11 +65,11 @@ special_project = {
 	requirements = { shipclass_constructor = 1 }
 
 	on_success = {
-		ship_event = { id = ahw_spike.64 }
+		ship_event = { id = ahw.64 }
 	}
 }
 
-# 0.0.40: inspection study, for the class of the ship that found it (ahw_spike.60).
+# 0.0.40: inspection study, for the class of the ship that found it (ahw.60).
 special_project = {
 	key = AHW_INSPECT_GATE_MIL
 	cost = 0
@@ -82,11 +82,11 @@ special_project = {
 	requirements = { shipclass_military = 1 }
 
 	on_success = {
-		ship_event = { id = ahw_spike.64 }
+		ship_event = { id = ahw.64 }
 	}
 }
 
-# 0.0.40: inspection study, for the class of the ship that found it (ahw_spike.60).
+# 0.0.40: inspection study, for the class of the ship that found it (ahw.60).
 special_project = {
 	key = AHW_INSPECT_CENTRE_SCI
 	cost = 0
@@ -99,11 +99,11 @@ special_project = {
 	requirements = { shipclass_science_ship = 1 }
 
 	on_success = {
-		ship_event = { id = ahw_spike.65 }
+		ship_event = { id = ahw.65 }
 	}
 }
 
-# 0.0.40: inspection study, for the class of the ship that found it (ahw_spike.60).
+# 0.0.40: inspection study, for the class of the ship that found it (ahw.60).
 special_project = {
 	key = AHW_INSPECT_CENTRE_CON
 	cost = 0
@@ -116,11 +116,11 @@ special_project = {
 	requirements = { shipclass_constructor = 1 }
 
 	on_success = {
-		ship_event = { id = ahw_spike.65 }
+		ship_event = { id = ahw.65 }
 	}
 }
 
-# 0.0.40: inspection study, for the class of the ship that found it (ahw_spike.60).
+# 0.0.40: inspection study, for the class of the ship that found it (ahw.60).
 special_project = {
 	key = AHW_INSPECT_CENTRE_MIL
 	cost = 0
@@ -133,6 +133,6 @@ special_project = {
 	requirements = { shipclass_military = 1 }
 
 	on_success = {
-		ship_event = { id = ahw_spike.65 }
+		ship_event = { id = ahw.65 }
 	}
 }

@@ -1,7 +1,8 @@
 # Design
 
-Status 2026-11-05: in a feasibility spike (runs 1–22). The building blocks behind each mechanic, and how
-sure we are of them, are in `../AGENTS.md`, "Feasibility".
+Status 2026-11-07: Phase 1, the real mod (`0.1.0`), after a feasibility spike (runs 1–39,
+`spike-runs.md`). The building blocks behind each mechanic, and how sure we are of them, are in
+`../AGENTS.md`, "Feasibility".
 
 ## The problem
 
@@ -67,7 +68,7 @@ ordinary hyperlanes — or a bit longer, never shorter.
   −0.1 %/day as meant; shields untouched — shield components regenerate 0.5/day each (×5 out
   of combat), far above −0.02. So the pulsar also cuts regeneration (`ship_shield_regen_mult
   = -1`, run 34). **Run 34**: that stops regeneration but cancels the negative one too; the
-  drain is now monthly, 10 % of the maximum shield (`ahw_spike.50`, as vanilla's electric storm).
+  drain is now monthly, 10 % of the maximum shield (`ahw.50`, as vanilla's electric storm).
 - **The centres carry no deposit** (user, 2026-11-06; vanilla gave all 80 one in run 32): the
   debris is the road's only resource.
 
@@ -162,7 +163,7 @@ The connections between the ring and the regular galaxy are special, not hyperla
   3. **Repair** (construction ship, ~90 days): about 300 alloys + 50 influence. Both techs.
      **Started on the gate** (user, 2026-11-06, run 25: "the repair event should be rather on the
      gate"): an action on the broken gate megastructure, not a pop-up offer (the spike's
-     `ahw_spike.21`).
+     `ahw.21`).
   **Head start**: an empire that owns an anchor whose gate is already repaired (by a nomad, or by
   a former owner) gets the study for free and **50 % of each tech**.
   **The grants add up: 15 % + 50 % = 65 %** (user, 2026-11-05: having studied the broken gate,

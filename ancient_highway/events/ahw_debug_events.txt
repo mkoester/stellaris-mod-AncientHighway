@@ -436,13 +436,15 @@ country_event = {
 }
 
 # 0.1.1: a friend beyond our borders at war (ally under attack, ahw.95) - an AI empire that is no
-# neighbour of ours becomes our subject, and one of its neighbours declares war on it. The
-# message comes on the next 1st, if we have studied a gate.
+# neighbour of ours becomes our subject, and another AI empire declares war on it (its neighbour
+# if it has one; run 44: at the start nobody borders anybody, so any empire). The message comes on
+# the next 1st, if we have studied a gate. Every outcome is logged at once.
 country_event = {
 	id = ahw_debug.78
 	hide_window = yes
 	is_triggered_only = yes
 	immediate = {
+		clear_global_event_target = ahw_test_ally
 		random_country = {
 			limit = {
 				is_ai = yes
@@ -450,14 +452,60 @@ country_event = {
 				is_nomadic = no
 				is_subject = no
 				NOT = { is_neighbor_of = root }
-				any_neighbor_country = { is_country_type = default is_nomadic = no NOT = { is_same_value = root } is_subject = no }
 			}
 			save_global_event_target_as = ahw_test_ally
-			set_subject_of = { who = root preset = preset_vassal }
-			random_neighbor_country = {
-				limit = { is_country_type = default is_nomadic = no NOT = { is_same_value = root } is_subject = no }
-				declare_war = { target = event_target:ahw_test_ally attacker_war_goal = "wg_humiliation" }
-				log = "AHW test: [ahw_test_ally.GetName], now our subject, attacked by [This.GetName]"
+		}
+		if = {
+			limit = { NOT = { exists = event_target:ahw_test_ally } }
+			log = "AHW test: no AI empire beyond our borders that is free and not nomadic"
+		}
+		else = {
+			event_target:ahw_test_ally = {
+				set_subject_of = { who = root preset = preset_vassal }
+				if = {
+					limit = { is_subject = yes }
+					log = "AHW test: [This.GetName] is now our subject"
+				}
+				else = {
+					log = "AHW test: [This.GetName] did NOT become our subject"
+				}
+			}
+			clear_global_event_target = ahw_test_attacker
+			event_target:ahw_test_ally = {
+				random_neighbor_country = {
+					limit = { is_country_type = default is_nomadic = no NOT = { is_same_value = root } is_subject = no }
+					save_global_event_target_as = ahw_test_attacker
+				}
+			}
+			if = {
+				limit = { NOT = { exists = event_target:ahw_test_attacker } }
+				random_country = {
+					limit = {
+						is_ai = yes
+						is_country_type = default
+						is_nomadic = no
+						is_subject = no
+						NOT = { is_same_value = root }
+						NOT = { is_same_value = event_target:ahw_test_ally }
+					}
+					save_global_event_target_as = ahw_test_attacker
+				}
+			}
+			if = {
+				limit = { NOT = { exists = event_target:ahw_test_attacker } }
+				log = "AHW test: no AI empire left to attack [ahw_test_ally.GetName]"
+			}
+			else = {
+				event_target:ahw_test_attacker = {
+					declare_war = { target = event_target:ahw_test_ally attacker_war_goal = "wg_humiliation" }
+				}
+				if = {
+					limit = { event_target:ahw_test_ally = { is_at_war_with = event_target:ahw_test_attacker } }
+					log = "AHW test: [ahw_test_ally.GetName], our subject, is at war with [ahw_test_attacker.GetName]"
+				}
+				else = {
+					log = "AHW test: [ahw_test_attacker.GetName] declared war on [ahw_test_ally.GetName], but there is NO war"
+				}
 			}
 		}
 		if = {

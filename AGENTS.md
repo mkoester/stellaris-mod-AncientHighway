@@ -148,7 +148,7 @@ All findings go to `game.log`, lines starting `AHW`.
 | `event ahw_debug.75` | every AI empire's portal studied, both techs; **every other one repaired** |
 | `event ahw_debug.76` | one AI empire seals its repaired gate (a target for Force a Gate Open) |
 | `event ahw_debug.77` | a Galactic Community now: us and every empire we have met |
-| `event ahw_debug.78` | an AI empire beyond our borders becomes our subject, and a neighbour of it attacks it |
+| `event ahw_debug.78` | an AI empire beyond our borders becomes our subject, and another AI empire attacks it (game.log says whether the war started) |
 | `event ahw_debug.79` | the yearly chart exchange now (friends; the Community under Share Ring Charts) |
 | `effect every_country = { limit = { is_ai = no } remove_country_flag = ahw_has_portal }` | we get a second portal on the next 1st (the console targets move to it) |
 
@@ -282,6 +282,19 @@ yearly "ring" lines (entries per empire, nodes charted, before and after 2205); 
 for the broken half (the AI itself, a nomad?); the contract's end; error.log for `ahw_` lines
 beyond the known noise. Control for the watch: with it running, the monthly "now owns the gate"
 lines should all but stop.
+
+**Run 44, steps 1–4 (2026-11-08, to 2200.11, screenshots `2026_11_08_1`–`_5`):**
+- **Owner loss, by day**: all nine gates on the same day, 2200.02.03, 08.26 and 09.14 — not on a
+  1st, no fixed interval; the monthly "now owns the gate" line never appeared (the watch works).
+- **AI repair with both techs: 3–4 months** (Commonwealth of Man 05.15, Heejam 05.22, Theian
+  Preservers 05.27; Thimoan not yet). The bottleneck of run 43 was the techs, not the repair.
+- **Contract: no cancel** this time (accepted 05.29, repaired 09.03, head start 10.01).
+- **Object texts show** (broken gate, repaired gate, both techs, exit gate); the centre star's
+  not yet looked at. The exit gate's panel shows a "Dismantle" button (disabled?) — to check.
+- `ahw_debug.75`: one "Failed to create a starbase" (an anchor not free for an outpost); harmless.
+- **Step 4 failed in the console line, not the feature**: `ahw_debug.78` wanted an attacker
+  bordering the ally — nobody borders anybody in 2200, so nothing happened, silently. Fixed: any
+  AI attacks if no neighbour does, and every outcome is logged.
 
 ## Test, run 43 (a new campaign: the contract again, then a long game)
 

@@ -224,3 +224,23 @@ but for any empire to take the route through the ring, they must know it is a va
   - lore: Situation-log chain, Caretaker fragments, Lore in object texts, Fallen Empire voices
   - route known: Shared charts
   - incentives: Threat-based AI weights, Ally-under-attack nudge, AI seals when threatened
+
+### Galactic Community (2026-11-08)
+
+I have an idea: the GalCom
+
+a resolution where members share their ring charts
+- if accepted: all members share their explored ring nodes with each other regularly
+
+defensive / peacefull empires would vote for it (since it means they can get help from friends far away)
+aggressive empires would oppose it (since their targets could get help from their firends)
+more ideas for weights?
+
+we would still have our own category, right?
+1. entry: share
+2. every empire which did not yet repair their gate is in breach of galactic law (needs 1.)
+3. force a specific empire to unlock (needs 1.)
+
++ answers in the discussion:
+  - breach: repairs only
+  - 10 years sounds good, or maybe as long as a truce lasts

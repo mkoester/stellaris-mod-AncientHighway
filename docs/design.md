@@ -280,6 +280,37 @@ a black system view) or the save may not load.
 Possibly everyone may build hyper relays on the ring (vanilla relays need own territory, so this is
 an own megastructure type). Alternative: ruined relays come with the ring and can be restored.
 
+## Exploration and incentives (decided 2026-11-08, not built)
+
+**The problem**: the ring is explored node by node ("The ring"), and pathfinding uses only known
+systems, so nobody — player or AI — plans a route through the ring before it is mapped. The
+case to serve (user, 2026-11-08): an AI that feels threatened by a close empire, with friends
+somewhere in the galaxy who cannot reach it regularly.
+
+**Engine limits (game files 4.5.3)**: no trigger tells whether a country has visited a system
+(`set_visited` exists, its counterpart does not), and none tells whether one system is reachable
+from another. Available: `relative_power`, `is_rival`, `any_neighbor_country`, `is_neighbor_of`,
+`has_defensive_pact`, `is_in_federation_with`, `opinion`.
+
+- **Shared charts** (the only way a route becomes known besides flying it; user, 2026-11-08):
+  each country's entries into ring nodes are recorded by the mod (a flag per node and country,
+  written by `tools/gen.py`, since the engine keeps no readable record). Once a year, close
+  friends (`ahw_close_friend`) get each other's mapped nodes by `set_visited`. **No reveal by
+  the protocol** (a repaired gate announcing itself, a route query, reach charts were proposed
+  and not chosen): every known node was flown by somebody.
+- **Threat-based AI weights**: both techs' `ai_weight` and the repair upgrade's weight rise when
+  the empire has a rival or a stronger neighbour (`is_rival`, `relative_power`) **and** a close
+  friend that is not a neighbour. "Not a neighbour" stands in for "out of reach" — no
+  reachability trigger exists.
+- **Ally under attack**: when a close friend that is not a neighbour is at war, an event tells
+  the empire the highway could bring help, and runs the chart share for that pair at once.
+- **The AI seals when threatened**: an AI with a rival or stronger neighbour that holds Gate
+  Theory seals its gate (friends still pass, "Entry points").
+- **To measure first** (run 44): whether AI science ships explore the ring by themselves once
+  they hold Gate Theory (the debris asteroids are surveyable bodies) — `ahw.80` to count ring
+  nodes entered per empire, which the charts' bookkeeping provides anyway.
+- Rejected: decisions or edicts (user, 2026-11-04); ordering AI fleets by script.
+
 ## Consequences for play
 
 - The ring becomes the galaxy's ocean: fleets of empires at war meet there, on ground nobody owns —
@@ -302,7 +333,8 @@ an own megastructure type). Alternative: ruined relays come with the ring and ca
 6. Relays: built by anyone, or pre-placed ruins?
 7. Galaxy shapes: round ones first; outside the galaxy a ring fits any shape, if the map allows
    systems beyond the outer rim.
-8. AI: can it plan routes through custom bypasses; should it repair, lock, disable?
+8. AI: can it plan routes through custom bypasses (run 40: a player's route took the express
+   wormhole)? Repair and seal: "Exploration and incentives" (2026-11-08).
 9. Fallen and awakened empires, crises: special rules?
 10. ~~Disabling~~ — none; the gate's Seal switch (2026-11-04). ~~The repair's cost and time~~ —
     "Access" under Entry points (2026-11-05).

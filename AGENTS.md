@@ -455,4 +455,8 @@ points (any ring system → any repaired entry galaxy-wide), but a candidate for
 - **Phase 1 — the real mod** (now): the spike ported (`0.1.0`), then repair on the gate, nomads,
   the repair contract, express wormholes, console shortcuts for each; one in-game session tests
   them together.
-- **Phase 2** — relays, events and lore, AI tuning, galaxy shapes beyond elliptical.
+- **Phase 2** — relays, events and lore, AI tuning, galaxy shapes beyond elliptical. Chosen
+  2026-11-08: lore through object texts, a situation-log chain, one Caretaker fragment per reach
+  and Fallen Empire voices (`docs/lore.md`, "How players learn it"); shared charts between close
+  friends, threat-based AI weights, the ally-under-attack event and the AI sealing when
+  threatened (`docs/design.md`, "Exploration and incentives").

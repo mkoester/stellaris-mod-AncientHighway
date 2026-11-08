@@ -1,6 +1,7 @@
 # Lore (to be worked out)
 
-Status 2026-11-05: who built and sealed the road is decided (below); the details are open.
+Status 2026-11-08: who built and sealed the road is decided (below), and how players learn it;
+the texts are open.
 
 ## Starting point
 
@@ -48,10 +49,34 @@ for them: "ancient precursor civilizations", fallen into "a dark age long ago", 
     the others used against it.
   - **War in Heaven / awakening**: an awakened empire may take "its" stretch of the ring back,
     sealing the gates there.
-- **Study events** reveal this step by step: the octal numbering, a reach's name, the Caretakers'
-  protocol, the Isolationists' seal, the compact.
+- **The story is revealed step by step** ("How players learn it", below): the octal numbering, a
+  reach's name, the Caretakers' protocol, the Isolationists' seal, the compact.
 - Still open: whether the Caretakers left guardians on the ring; how far the phase-2 reactions
   go (opinion modifiers only, or events and tasks).
+
+## How players learn it (decided 2026-11-08)
+
+The user chose all four channels (2026-11-08); none is built yet.
+
+1. **Object texts**, always there: the gates (broken and repaired), the centre star classes, the
+   ring nodes, both techs and the express carry the story passively — a description each, in the
+   voice of whoever would know (our scientists for the techs, the Caretaker protocol for the
+   nodes).
+2. **A situation-log chain, "The Ancient Highway"** (`common/event_chains/`, as the contract's
+   chain): one chapter per milestone, a short pop-up once, readable later in the log. Proposed
+   chapters and what each reveals:
+   - the study: the gate is artificial, older than anyone, and was sealed from the inside;
+   - the first ring node entered: a road round the galaxy, kept by something still running;
+   - the first repair (own, contracted or seen): the Caretakers' protocol answers the gate;
+   - the first foreign portal: every empire has one — the road was meant for everyone;
+   - the first express station: the reach hubs, and the road outlasting its builders.
+3. **Caretaker fragments**: the first node an empire enters in each of the eight reaches plays
+   that reach's piece. Eight fragments, in any order, each readable on its own: the counting in
+   eights (no 8 or 9 in any address), the reach names, the caretaker protocol, the rivals' compact
+   to build round the outside, the first War in Heaven, the Isolationists' seal, the Caretakers
+   gone erratic, the younger races who never knew. The story itself rewards exploring the ring.
+4. **Fallen Empire voices** (phase 2): the per-type reactions above, when that type is in the
+   game.
 
 ## Open questions
 
@@ -61,6 +86,6 @@ for them: "ancient precursor civilizations", fallen into "a dark age long ago", 
 - Which Fallen Empire reactions make it into phase 2: opinion modifiers only, or events and tasks?
 - How does the lore fit the game's existing precursors and the L-Cluster's gates — related, or
   deliberately separate?
-- What do the study events reveal, step by step (outline above)?
+- The chapters' and fragments' actual texts (outline under "How players learn it").
 - Implications for gameplay: anything the lore promises (e.g. a guardian, an awakening) must exist
   in the mod.

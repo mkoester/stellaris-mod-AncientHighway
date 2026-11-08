@@ -209,3 +209,18 @@ Answers in the discussion:
   maybe we keep the general effect of each star and apply it's effect slowly, like 0.1% damage per day in that system
 
 - shield needs to drain more
+
+### Lore and incentives (2026-11-08)
+
+let's discuss
+- how we tell the lore to players
+- and how to give ai empires as well as players incentives to explore the ring
+
+the main incentive would be for ai empires: they feel threatened by a close empire, but they have friends somewhere in the galaxy who can't reach them regularly
+
+but for any empire to take the route through the ring, they must know it is a valid path (we disabled the all-at-once exploration of the ring)
+
++ answers in the discussion:
+  - lore: Situation-log chain, Caretaker fragments, Lore in object texts, Fallen Empire voices
+  - route known: Shared charts
+  - incentives: Threat-based AI weights, Ally-under-attack nudge, AI seals when threatened

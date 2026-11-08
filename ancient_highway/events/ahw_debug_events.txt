@@ -530,3 +530,26 @@ country_event = {
 		log = "AHW test: charts shared [GetDate]"
 	}
 }
+
+# 0.1.1: Force a Gate Open passed now, without the vote, against an empire that keeps a sealed gate
+# (ahw_debug.76 makes one) - pass_targeted_resolution, which runs the resolution's effect if the
+# engine passes it as a vote would (the log line "passed against" tells).
+country_event = {
+	id = ahw_debug.80
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		random_country = {
+			limit = { is_country_type = default ahw_owns_sealed_gate = yes }
+			save_event_target_as = ahw_test_target
+		}
+		if = {
+			limit = { exists = event_target:ahw_test_target }
+			pass_targeted_resolution = { resolution = resolution_ahw_force_open target = event_target:ahw_test_target }
+			log = "AHW test: Force a Gate Open passed by console against [ahw_test_target.GetName]"
+		}
+		else = {
+			log = "AHW test: no empire keeps a sealed gate (ahw_debug.76 seals one)"
+		}
+	}
+}

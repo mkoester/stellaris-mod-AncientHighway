@@ -150,6 +150,8 @@ All findings go to `game.log`, lines starting `AHW`.
 | `event ahw_debug.77` | a Galactic Community now: us and every empire we have met |
 | `event ahw_debug.78` | an AI empire beyond our borders becomes our subject, and another AI empire attacks it (game.log says whether the war started) |
 | `event ahw_debug.79` | the yearly chart exchange now (friends; the Community under Share Ring Charts) |
+| `event ahw_debug.80` | Force a Gate Open passed now (no vote) against an empire with a sealed gate |
+| `effect pass_resolution_no_cooldown = resolution_ahw_share_charts` | Share Ring Charts passed now, no vote, no category cooldown (vanilla effect; likewise `resolution_ahw_gate_breach`) |
 | `effect every_country = { limit = { is_ai = no } remove_country_flag = ahw_has_portal }` | we get a second portal on the next 1st (the console targets move to it) |
 
 **Run 41, steps 1–2 (2026-11-07): the contract works end to end; the head start did not come.**
@@ -283,6 +285,11 @@ for the broken half (the AI itself, a nomad?); the contract's end; error.log for
 beyond the known noise. Control for the watch: with it running, the monthly "now owns the gate"
 lines should all but stop.
 
+**Galactic Community timing** (vanilla defines): a vote runs 1440 days, a recess 720, and a
+category takes no new proposal for 2520 days after a vote — all three of ours share one category.
+For tests: pass by console (`pass_resolution_no_cooldown`, `ahw_debug.80`), and DevTools'
+`devtools.7`/`.8`/`.9` set our diplomatic weight ×10 / ×0.1 / normal for a real vote.
+
 **Run 44, steps 1–4 (2026-11-08, to 2200.11, screenshots `2026_11_08_1`–`_5`):**
 - **Owner loss, by day**: all nine gates on the same day, 2200.02.03, 08.26 and 09.14 — not on a
   1st, no fixed interval; the monthly "now owns the gate" line never appeared (the watch works).
@@ -295,6 +302,14 @@ lines should all but stop.
 - **Step 4 failed in the console line, not the feature**: `ahw_debug.78` wanted an attacker
   bordering the ally — nobody borders anybody in 2200, so nothing happened, silently. Fixed: any
   AI attacks if no neighbour does, and every outcome is logged.
+- **Step 4 again (after a restart, from the 2200.11.01 autosave): ally under attack works.**
+  `ahw_debug.78`: Silicron Sacred Nation our subject, at war with the Theian Preservers. On 12.01
+  the message (`2026_11_08_6`) and the charts swapped: our one charted node (Caedris Node 3,
+  system 618) is in Silicron's `visited_objects` in the 12.01 save — `set_visited` from a chart
+  works. Silicron got the message about us too (as overlord we joined its war): harmless, kept.
+  In the save the chart flag reads `ahw_mapped<country id>` (`ahw_mapped0`, `ahw_mapped1`).
+- Owner lost again on 11.02, the day after that load — whether loads explain the other days is
+  unknown (run 43 lost owners in ~60 % of months over long unbroken play, so not loads alone).
 
 ## Test, run 43 (a new campaign: the contract again, then a long game)
 

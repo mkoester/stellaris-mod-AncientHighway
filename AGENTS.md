@@ -194,6 +194,19 @@ are 1.25–2) — needs a new game to show.
 save): Shapan Entity researched Gate Theory 2221.06.02 — the first AI gate tech; by 2222 still
 the only one (seven AI empires have both options). Slow; raise the weight if it stays so.
 
+**Run 43, years 2222–2245 (saves read 2026-11-08): the AI repairs, and one empire explores
+the ring on its own.** Gates repaired (save of 1 January): Chimm 2229, Wacegian and Shapan 2237,
+Ztrakporan Fire Tribes 2241, Lavan 2244; Andarian and the Corporate Union not yet. **Shapan
+Entity** sent two science ships through Furon 53 by 2238 and mapped nodes 40–52 (4 by 2239, 8,
+10, 13 by 2242) — no AI empire else ever left its exit node (the one the study reveals). **Then
+it stalled**: no new node 2242–2245, though nothing blocks either end (no fleets, lanes go on to
+39 and 53; both ships have scientists, so `LIMITED_EXPLORATION` is not it). One ship idles in
+node 42 beside three unsurveyed asteroids; the other shuttles 51 → 44 → 51 inside the known
+stretch, ~80 days per node (runs 15–16's 104, parked). Their armour wears down (toxoid drain:
+78/250 and 186/250, never repaired). Cause open; a lead: Shapan's gate loses its owner almost
+monthly (the open issue) — whether the way home then looks blocked is unchecked. So natural
+exploration exists but does not reach far: the shared charts stay needed.
+
 ## Test, run 44 (does the AI research, repair, use and seal?)
 
 A new medium game, this mod and dev tools, AI empires and nomads on. Let a month pass, then
@@ -355,7 +368,11 @@ nomads", "repaired by …" show whether nomads studied or repaired anything unas
   run 17). Console commands one per line in a code block. **Skip what already works** with the
   console shortcuts above, unless the test is about that stage. Mod files load at game start.
 - **Numbers come from saves**, not screenshots (ships' `armor_hitpoints`/`shield_hitpoints`,
-  `stored_techpoints_for_tech`, flags). Copy `logs/game.log` and `logs/error.log` before
+  `stored_techpoints_for_tech`, flags). Where things are in the `gamestate` (2026-11-08): who
+  has entered a system is the country's `visited_objects` (every non-`default` country lists
+  every system — ignore them); a fleet names no owner, the country's `owned_fleets` does; a
+  fleet's position is the `origin` in its `movement_manager`'s `coordinate` (the first `origin`
+  in the block is its combat's); a body's surveyor is `surveyed_by` in `planets`. Copy `logs/game.log` and `logs/error.log` before
   restarting the game. Expected error.log noise: the centre probes' `move_system` misses, unset
   `ahw_*_tmp` targets and `ahw_exits`/`ahw_pair` in log texts, missing modifier icons, events
   without pictures. Anything else naming `ahw_` is a finding.

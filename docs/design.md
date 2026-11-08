@@ -332,9 +332,10 @@ from another. Available: `relative_power`, `is_rival`, `any_neighbor_country`, `
     be in breach (vanilla's `in_breach_of` pattern).
   - **3**: for — the target's rivals, anyone at war with it, militarists, empires whose close
     friends are behind that gate; against — the target's friends, empires that seal their own.
-- **To measure first** (run 44): whether AI science ships explore the ring by themselves once
-  they hold Gate Theory (the debris asteroids are surveyable bodies) — `ahw.80` to count ring
-  nodes entered per empire, which the charts' bookkeeping provides anyway.
+- **Do AI science ships explore the ring by themselves?** Run 43 (2238–2245): one AI empire
+  in five with a repaired gate did, mapped 13 nodes round its exit, then stalled (`../AGENTS.md`,
+  run 43). Not enough on its own: the charts stay. `ahw.80` should count ring nodes entered per
+  empire, which the charts' bookkeeping provides anyway.
 - Rejected: decisions or edicts (user, 2026-11-04); ordering AI fleets by script.
 
 ## Consequences for play

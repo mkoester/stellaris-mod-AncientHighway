@@ -306,6 +306,32 @@ from another. Available: `relative_power`, `is_rival`, `any_neighbor_country`, `
   the empire the highway could bring help, and runs the chart share for that pair at once.
 - **The AI seals when threatened**: an AI with a rival or stronger neighbour that holds Gate
   Theory seals its gate (friends still pass, "Entry points").
+- **Galactic Community resolutions** (user, 2026-11-08), in a category of our own
+  (`resolution_category_ahw_…`, in an existing UI group such as `environment_technology`). New
+  files in `common/resolutions/` and `common/resolution_categories/` with `ahw_` keys are purely
+  additive — the DLCs add their categories the same way (`04_resolution_categories_cosmic_storms_dlc.txt`);
+  only adding to a vanilla category would override vanilla. Vanilla's icons by name, no art copied.
+  1. **Share ring charts**: while active, all members share their explored ring nodes with each
+     other regularly (the yearly pass of the friends' charts, and once on passing). Has a
+     repeal; 2 and 3 end with it (`active = {}`, to verify).
+  2. **Unrepaired gates are a breach** (needs 1): a member that owns an anchor whose gate is
+     broken **and has both techs** (it could repair) is in breach; vanilla's
+     `constitutional_immunity` exempts. Repairs only, not seals (user, 2026-11-08). Vanilla's
+     sanctions and Denounce then reach it (`is_in_breach_of_any`).
+  3. **Force a gate open** (needs 1): targeted, like Denounce (`target = yes`, `valid_target`: a
+     member with a sealed gate). The gate opens and cannot be sealed for **10 years**, as long as
+     a truce (`TRUCE_YEARS = 10`) — a timed flag that the Seal mode checks.
+
+  AI weights (all multiplied by vanilla's opinion factor towards proposer and target):
+  - **1**: for — a close friend that is not a neighbour (strongest), a rival or stronger
+    neighbour, pacifist, xenophile, a repaired gate with few mapped nodes, megacorps, nomads;
+    against — militarist, xenophobe, Inward Perfection, stronger than its neighbours, many mapped
+    nodes (gives its lead away), its own gate sealed.
+  - **2**: the sides flip — aggressors for (each repaired gate is a door into a target),
+    threatened empires hesitant; for — a repaired gate of its own; factor 0 for anyone who would
+    be in breach (vanilla's `in_breach_of` pattern).
+  - **3**: for — the target's rivals, anyone at war with it, militarists, empires whose close
+    friends are behind that gate; against — the target's friends, empires that seal their own.
 - **To measure first** (run 44): whether AI science ships explore the ring by themselves once
   they hold Gate Theory (the debris asteroids are surveyable bodies) — `ahw.80` to count ring
   nodes entered per empire, which the charts' bookkeeping provides anyway.

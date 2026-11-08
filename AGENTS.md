@@ -459,4 +459,5 @@ points (any ring system → any repaired entry galaxy-wide), but a candidate for
   2026-11-08: lore through object texts, a situation-log chain, one Caretaker fragment per reach
   and Fallen Empire voices (`docs/lore.md`, "How players learn it"); shared charts between close
   friends, threat-based AI weights, the ally-under-attack event and the AI sealing when
-  threatened (`docs/design.md`, "Exploration and incentives").
+  threatened, and three Galactic Community resolutions (share charts; unrepaired gates a
+  breach; force a gate open for 10 years) (`docs/design.md`, "Exploration and incentives").

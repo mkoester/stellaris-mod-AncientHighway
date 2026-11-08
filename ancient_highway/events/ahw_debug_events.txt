@@ -340,3 +340,145 @@ country_event = {
 		}
 	}
 }
+
+# 0.1.1 (run 44: test what the AI does with a gate without waiting decades): every AI empire's
+# portal studied, both techs, and every other one repaired - an outpost on its anchor first if
+# nobody owns it. The broken half shows whether the AI (or a nomad) repairs by itself, the
+# repaired half whether it travels. The real stages' effects, as ahw_debug.40.
+country_event = {
+	id = ahw_debug.75
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		set_variable = { which = ahw_n_alt value = 0 }
+		every_country = {
+			limit = { is_ai = yes is_country_type = default has_country_flag = ahw_has_portal }
+			save_event_target_as = ahw_studier
+			save_event_target_as = ahw_repairer
+			root = { change_variable = { which = ahw_n_alt value = 1 } }
+			random_system = {
+				limit = { has_star_flag = ahw_portal_for@prev }
+				random_neighbor_system = {
+					limit = { NOT = { exists = owner } }
+					create_starbase = { size = starbase_outpost owner = event_target:ahw_studier }
+				}
+				if = {
+					limit = { NOT = { has_star_flag = ahw_studied } }
+					set_star_flag = ahw_study_offered
+					ahw_mark_studied = yes
+				}
+				if = {
+					limit = { root = { check_variable = { which = ahw_n_alt value = 2 } } }
+					ahw_repair_gate = yes
+					log = "AHW test: [ahw_studier.GetName] studied its portal [This.GetName], both techs, REPAIRED"
+				}
+				else = {
+					log = "AHW test: [ahw_studier.GetName] studied its portal [This.GetName], both techs, left broken"
+				}
+			}
+			give_technology = { tech = ahw_tech_gate_theory message = no }
+			give_technology = { tech = ahw_tech_gate_construction message = no }
+			root = {
+				if = {
+					limit = { check_variable = { which = ahw_n_alt value = 2 } }
+					set_variable = { which = ahw_n_alt value = 0 }
+				}
+			}
+		}
+	}
+}
+
+# 0.1.1: one AI empire seals its repaired gate (the target resolution Force a Gate Open needs one;
+# the AI does not seal by itself yet) - as its Sealed mode would.
+country_event = {
+	id = ahw_debug.76
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		random_country = {
+			limit = {
+				is_ai = yes
+				is_country_type = default
+				any_system_within_border = {
+					any_neighbor_system = { has_star_flag = ahw_portal NOT = { has_star_flag = ahw_broken } NOT = { has_star_flag = ahw_sealed } }
+				}
+			}
+			save_event_target_as = ahw_sealer
+			random_system_within_border = {
+				limit = { any_neighbor_system = { has_star_flag = ahw_portal NOT = { has_star_flag = ahw_broken } NOT = { has_star_flag = ahw_sealed } } }
+				random_neighbor_system = {
+					limit = { has_star_flag = ahw_portal NOT = { has_star_flag = ahw_broken } NOT = { has_star_flag = ahw_sealed } }
+					set_star_flag = ahw_sealed
+					ahw_seal_pair_for = { COUNTRY = event_target:ahw_sealer }
+					log = "AHW test: [ahw_sealer.GetName] sealed its gate in [This.GetName]"
+				}
+			}
+		}
+	}
+}
+
+# 0.1.1: a Galactic Community now - us and every regular empire we have met (vanilla's founding
+# vote, galcom.1-3, skipped). Untested whether sessions start without the vote's other effects.
+country_event = {
+	id = ahw_debug.77
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		add_to_galactic_community_no_message = yes
+		every_country = {
+			limit = { is_country_type = default has_communications = root is_galactic_community_member = no }
+			add_to_galactic_community_no_message = yes
+			log = "AHW test: [This.GetName] joins the Galactic Community"
+		}
+		set_global_flag = galactic_community_founded
+		log = "AHW test: Galactic Community formed by [Root.GetName]"
+	}
+}
+
+# 0.1.1: a friend beyond our borders at war (ally under attack, ahw.95) - an AI empire that is no
+# neighbour of ours becomes our subject, and one of its neighbours declares war on it. The
+# message comes on the next 1st, if we have studied a gate.
+country_event = {
+	id = ahw_debug.78
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		random_country = {
+			limit = {
+				is_ai = yes
+				is_country_type = default
+				is_nomadic = no
+				is_subject = no
+				NOT = { is_neighbor_of = root }
+				any_neighbor_country = { is_country_type = default is_nomadic = no NOT = { is_same_value = root } is_subject = no }
+			}
+			save_global_event_target_as = ahw_test_ally
+			set_subject_of = { who = root preset = preset_vassal }
+			random_neighbor_country = {
+				limit = { is_country_type = default is_nomadic = no NOT = { is_same_value = root } is_subject = no }
+				declare_war = { target = event_target:ahw_test_ally attacker_war_goal = "wg_humiliation" }
+				log = "AHW test: [ahw_test_ally.GetName], now our subject, attacked by [This.GetName]"
+			}
+		}
+		if = {
+			limit = { NOT = { has_country_flag = ahw_highway_studied } }
+			log = "AHW test: we have studied no gate - ahw.95 stays silent until we do (ahw_debug.45)"
+		}
+	}
+}
+
+# 0.1.1: the yearly chart exchange now - close friends, and the Galactic Community while Share
+# Ring Charts is in force.
+country_event = {
+	id = ahw_debug.79
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		ahw_share_charts_friends = yes
+		if = {
+			limit = { is_active_resolution = "resolution_ahw_share_charts" }
+			ahw_share_charts_gc = yes
+		}
+		log = "AHW test: charts shared [GetDate]"
+	}
+}

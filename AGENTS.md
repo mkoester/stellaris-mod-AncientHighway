@@ -36,15 +36,17 @@ not load. As of runs 40–43:
   to the head start (run 43), the yearly summary `ahw.80`.
 - **The AI** claims its anchor after 5–10 years and then studies within 1–2 (run 43); it
   researched no gate tech until the techs got `ai_weight` 3 — then one empire in 18 months.
-  **Next**: run 43's save on to ~2230 (does the AI get both techs, repair, use, seal?), then run 44.
-- **Open**: what clears a portal gate's owner (almost monthly for every gate; the monthly check
-  takes it back, the Seal switch is unusable meanwhile); one unexplained contract cancel 12 days
+  **Next**: run 44 (below) — the AI with working gates from the start, plus the first Phase 2
+  features (0.1.1: object texts, shared charts, ally under attack, three Galactic Community
+  resolutions).
+- **Open**: what clears a portal gate's owner (run 43: in ~60 % of months, **all gates at once** —
+  one game-wide cause; 0.1.1's daily watch `ahw.90` logs the day and gives it back); one unexplained contract cancel 12 days
   after acceptance (run 43, first try — `on_cancel` now logs the cause); the issue-contract menu
   appeared only months after console `communications` (run 40); nomads studying or repairing on
   their own — not seen yet; the express's stabilise cost (4000) is untested at the mid game.
 
-**Deferred**: run 31's parts 2–3 (the mod added to a running game; a late empire's portal — user,
-2026-11-06: tested once the mod is mostly done). **Parked**: the ring's exact speed (user,
+**Deferred**: run 31's part 2, the mod added to a running game (user, 2026-11-06: tested once
+the mod is mostly done); part 3, a late empire's portal, came unasked in run 43. **Parked**: the ring's exact speed (user,
 2026-11-04). **Option**: fewer ring nodes on large and huge (user, 2026-11-06).
 
 ## How it works
@@ -98,6 +100,23 @@ link flips with 25 % (`ahw.71`). Entering a station teaches its two link types a
 and with Gate Theory, offers `AHW_EXPRESS_STABILISE` (4000, ×0.75 after years 125/150/175;
 → `ahw.72`: both links stable, for everyone).
 
+**0.1.1 (run 44)**: `ahw.90` (daily, on the global event country; started once by `ahw.91`)
+gives a gate whose anchor has an owner back to it and logs "owner lost by <date>". Entering a ring
+node sets the star flag `ahw_mapped@<country>` (its chart) and counts the entry (country
+variables `ahw_n_ring_mil` / `_civ`, printed and reset by `ahw.80`). **Shared charts**
+(`ahw_copy_charts`: `set_visited` + the flag): close friends yearly (`ahw_share_charts_friends`),
+the Galactic Community's members at passing and yearly (`ahw_share_charts_gc`). **Ally under
+attack** (`ahw.95`, monthly per country that has studied a gate): a close friend, not a
+neighbour, at war and not with us → charts swapped both ways, message `ahw.96`; once per friend
+in five years (`ahw_ally_warned@`). **Resolutions** (`common/resolutions/ahw_resolutions.txt`,
+category `resolution_category_ahw_highway`): Share Ring Charts (repeal ends Unrepaired Gates
+too), Unrepaired Gates (breach: `ahw_gate_breach`), Force a Gate Open (targeted, as Denounce:
+`ahw_force_open`, star flag `ahw_forced_open` for 10 years, which the Sealed mode refuses; the
+gate's mode reads Sealed until switched — no effect sets a mode). AI weights: `ahw_far_friend`,
+`ahw_threatened` and the gate triggers in `ahw_triggers.txt`. **Object texts**: the gates', exit
+gates', express wormholes' and centre star classes' descriptions (`AHW_LORE_*`, `ahw_sc_*_desc`)
+and both techs' carry a line of lore each.
+
 All findings go to `game.log`, lines starting `AHW`.
 
 ## Console (`events/ahw_debug_events.txt`)
@@ -126,6 +145,11 @@ All findings go to `game.log`, lines starting `AHW`.
 | `event ahw_debug.72` | our three test fleets at the express station nearest our exit node |
 | `event ahw_debug.74` | every AI empire's portal studied now (an outpost on a free anchor first) — to watch the AI research |
 | `event ahw_debug.73` | a nomad in contact with us, with both techs, its arkship at our anchor |
+| `event ahw_debug.75` | every AI empire's portal studied, both techs; **every other one repaired** |
+| `event ahw_debug.76` | one AI empire seals its repaired gate (a target for Force a Gate Open) |
+| `event ahw_debug.77` | a Galactic Community now: us and every empire we have met |
+| `event ahw_debug.78` | an AI empire beyond our borders becomes our subject, and a neighbour of it attacks it |
+| `event ahw_debug.79` | the yearly chart exchange now (friends; the Community under Share Ring Charts) |
 | `effect every_country = { limit = { is_ai = no } remove_country_flag = ahw_has_portal }` | we get a second portal on the next 1st (the console targets move to it) |
 
 **Run 41, steps 1–2 (2026-11-07): the contract works end to end; the head start did not come.**
@@ -207,12 +231,57 @@ stretch, ~80 days per node (runs 15–16's 104, parked). Their armour wears down
 monthly (the open issue) — whether the way home then looks blocked is unchecked. So natural
 exploration exists but does not reach far: the shared charts stay needed.
 
-## Test, run 44 (does the AI research, repair, use and seal?)
+**Run 43, the log (read 2026-11-08):** owner losses come **for all nine gates in the same
+months** (1197 "now owns the gate" lines, nine per month, ~60 % of months) — one game-wide cause;
+**no AI sealed in 45 years** (zero "SEALED"; the Sealed mode's `ai_weight` 50 is not enough —
+Phase 2's sealing when threatened); **a late empire's portal works unattended** (Yl'Khahan
+Entity, 2241.09.01, `ahw.30`) — the deferred late-portal test is covered.
 
-A new medium game, this mod and dev tools, AI empires and nomads on. Let a month pass, then
-`ahw_debug.74` (every AI empire's portal studied). Play on at speed (or `observe`) for ~15
-years, checking in after 5. game.log: the yearly lines (who has which tech, repaired and sealed
-portals), "repaired by", "SEALED".
+## Test, run 44 (0.1.1: the AI with working gates, and the first Phase 2 features)
+
+One game of ~10 years answers several things that do not get in each other's way: what the AI
+does with a working gate (`ahw_debug.75` skips the decades of run 43), the owner loss's day
+(`ahw.90`, automatic), and the new features — each tested by its own console line. Threat-based
+AI weights and AI sealing are left out: they change what this run measures.
+
+A new **medium** game, this mod and dev tools, AI empires on, 2–3 nomadic empires, console on.
+Esc before each console line. Copy `logs/game.log` and `logs/error.log` before restarting.
+1. **After the first 1st** (2200.02.01): every AI portal studied and teched, half repaired:
+   ```
+   event ahw_debug.75
+   ```
+2. **The contract again** (catches run 43's unexplained cancel; ~5 months): `ahw_debug.6`, a
+   day, `ahw_debug.41`, the study on the next 1st with the test science ship, `ahw_debug.73`,
+   issue the contract in the anchor. (This also makes us "studied", which step 4 needs.)
+3. **Object texts** (a minute, any time): hover — and screenshot — our broken gate, the repaired
+   one later, a ring exit gate (`ahw_debug.42` puts ships in our exit node), the portal's centre
+   star, both techs (research screen). Each should end in a grey lore line.
+4. **Ally under attack** (any time after step 2):
+   ```
+   event ahw_debug.78
+   ```
+   On the next 1st: the message "A Friend Under Attack", game.log "ally under attack … charts
+   swapped".
+5. **Play fast to ~2205** — the baseline: five years of what the AI does by itself.
+6. **The Galactic Community** (~2205):
+   ```
+   event ahw_debug.77
+   ```
+   ```
+   event ahw_debug.76
+   ```
+   Propose "Share Ring Charts" (category "The Ancient Highway"), let the vote run; then
+   "Unrepaired Gates" and "Force a Gate Open" against the empire that sealed (game.log names
+   it). Screenshot each proposal's tooltip. Expected: charts pooled at passing (game.log
+   "charts: … from the Galactic Community"), members with a broken gate and both techs in breach
+   (yearly line), the forced gate open and its Sealed mode refused (tooltip).
+7. **Play fast to ~2210**, quit, copy both logs.
+
+Read afterwards (agent): the "owner lost by" days (regular? what else happened that day?); the
+yearly "ring" lines (entries per empire, nodes charted, before and after 2205); "repaired by"
+for the broken half (the AI itself, a nomad?); the contract's end; error.log for `ahw_` lines
+beyond the known noise. Control for the watch: with it running, the monthly "now owns the gate"
+lines should all but stop.
 
 ## Test, run 43 (a new campaign: the contract again, then a long game)
 

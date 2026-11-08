@@ -20,6 +20,7 @@ on_monthly_pulse = {
 		ahw.10
 		ahw.50	# 0.0.37: the pulsar's shield drain
 		ahw.71	# 0.1.0: the express's unstable links flicker
+		ahw.91	# 0.1.1: starts the daily gate-owner watch, once
 	}
 }
 
@@ -29,6 +30,7 @@ on_monthly_pulse_country = {
 	events = {
 		ahw.20
 		ahw.30
+		ahw.95	# 0.1.1: a far friend at war - charts swapped, a message
 	}
 }
 

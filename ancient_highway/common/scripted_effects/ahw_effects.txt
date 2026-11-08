@@ -605,3 +605,90 @@ ahw_mark_repaired = {
 		log = "AHW entry point in \\[This.GetName] repaired by \\[ahw_repairer.GetName]"
 	}
 }
+
+# 0.1.1, shared charts (design "Exploration and incentives"): every ring node charted by
+# event_target:ahw_chart_from (star flag ahw_mapped@, set on entry in ahw.60) becomes known to
+# event_target:ahw_chart_to - visited (set_visited, as the study reveals the exit node) and charted.
+ahw_copy_charts = {
+	event_target:ahw_chart_to = { set_variable = { which = ahw_n_copied value = 0 } }
+	every_system = {
+		limit = {
+			has_star_flag = ahw_ring
+			has_star_flag = ahw_mapped@event_target:ahw_chart_from
+			NOT = { has_star_flag = ahw_mapped@event_target:ahw_chart_to }
+		}
+		set_star_flag = ahw_mapped@event_target:ahw_chart_to
+		event_target:ahw_chart_to = {
+			set_visited = prev
+			change_variable = { which = ahw_n_copied value = 1 }
+		}
+	}
+	if = {
+		limit = { event_target:ahw_chart_to = { check_variable = { which = ahw_n_copied value > 0 } } }
+		event_target:ahw_chart_to = {
+			log = "AHW charts: \\[This.ahw_n_copied] ring nodes from \\[ahw_chart_from.GetName] to \\[This.GetName]"
+		}
+	}
+}
+
+# No scope (yearly, ahw.80): close friends (ahw_close_friend) give each other their charts. A
+# friend's friend may get them in the same pass, via the friend - as it would a year later.
+ahw_share_charts_friends = {
+	every_country = {
+		limit = { is_country_type = default }
+		save_event_target_as = ahw_chart_from
+		every_country = {
+			limit = {
+				is_country_type = default
+				NOT = { is_same_value = event_target:ahw_chart_from }
+				ahw_close_friend = { WHO = event_target:ahw_chart_from }
+			}
+			save_event_target_as = ahw_chart_to
+			ahw_copy_charts = yes
+		}
+	}
+}
+
+# No scope: every Galactic Community member gets every member's charts (resolution Share Ring
+# Charts: on passing, then yearly in ahw.80). Pools them on a temporary star flag first.
+ahw_share_charts_gc = {
+	every_country = {
+		limit = { is_galactic_community_member = yes }
+		save_event_target_as = ahw_chart_from
+		every_system = {
+			limit = { has_star_flag = ahw_ring has_star_flag = ahw_mapped@event_target:ahw_chart_from }
+			set_star_flag = ahw_gc_pool
+		}
+	}
+	every_country = {
+		limit = { is_galactic_community_member = yes }
+		save_event_target_as = ahw_chart_to
+		set_variable = { which = ahw_n_copied value = 0 }
+		every_system = {
+			limit = {
+				has_star_flag = ahw_gc_pool
+				NOT = { has_star_flag = ahw_mapped@event_target:ahw_chart_to }
+			}
+			set_star_flag = ahw_mapped@event_target:ahw_chart_to
+			event_target:ahw_chart_to = {
+				set_visited = prev
+				change_variable = { which = ahw_n_copied value = 1 }
+			}
+		}
+		log = "AHW charts: \\[This.ahw_n_copied] ring nodes from the Galactic Community to \\[This.GetName]"
+	}
+	every_system = {
+		limit = { has_star_flag = ahw_gc_pool }
+		remove_star_flag = ahw_gc_pool
+	}
+}
+
+# 0.1.1, this = a sealed portal (resolution Force a Gate Open): open to all again, and its Seal
+# switch refused for 10 years - as long as a truce (TRUCE_YEARS). The gate's mode still reads
+# Sealed until its owner switches it (no effect sets a mode); the flags decide passage.
+ahw_force_open = {
+	remove_star_flag = ahw_sealed
+	ahw_unseal_pair = yes
+	set_timed_star_flag = { flag = ahw_forced_open days = 3650 }
+	log = "AHW gate in \\[This.GetName] forced open by the Galactic Community"
+}

@@ -1,0 +1,200 @@
+# 0.1.1, the highway's Galactic Community resolutions (design "Exploration and incentives", user
+# 2026-11-08), after vanilla's (00_resolutions.txt, 04_resolutions_cosmic_storms_dlc.txt; the
+# README there lists the fields). Category: ../resolution_categories/ahw_resolution_categories.txt.
+# AI weights are multiplicative, and the engine multiplies them by the opinion towards proposer
+# and target.
+# 1. Share Ring Charts: every member gets every member's charts, at once and yearly (ahw.80).
+#    Its repeal ends 2 as well.
+# 2. Unrepaired Gates (needs 1): a member able to repair its own broken gate is in breach.
+# 3. Force a Gate Open (needs 1): targeted, like Denounce - the target's sealed gates open, and
+#    cannot be sealed for 10 years.
+
+@ahw_weight_unpopular = 5
+@ahw_weight_normal = 6
+@ahw_cost_t1 = 100
+@ahw_cost_t2 = 150
+@ahw_cost_target = 50
+@ahw_flag_timer = 360
+
+resolution_ahw_share_charts = {
+	icon = "GFX_resolution_galactic_studies"
+	resources = {
+		category = resolutions
+		cost = { influence = @ahw_cost_t1 }
+	}
+	target = no
+	level = 1
+
+	potential = { has_global_flag = ahw_done }
+	allow = {
+		custom_tooltip = {
+			fail_text = "resolution_already_active"
+			NOT = { is_active_resolution = "resolution_ahw_share_charts" }
+		}
+	}
+
+	effect = {
+		custom_tooltip = resolution_ahw_share_charts_tooltip
+		hidden_effect = {
+			set_global_flag = galactic_community_resolution_passed
+			set_timed_country_flag = { flag = galactic_community_resolution_passed_ahw days = @ahw_flag_timer }
+			add_modifier = { modifier = resolution_passed_diplomatic_weight days = 2200 }
+			ahw_share_charts_gc = yes
+			log = "AHW resolution Share Ring Charts passed"
+		}
+	}
+	fail_effects = {
+		hidden_effect = {
+			set_timed_country_flag = { flag = galactic_community_resolution_failed_ahw days = @ahw_flag_timer }
+			add_modifier = { modifier = resolution_failed_diplomatic_weight days = 2200 }
+			log = "AHW resolution Share Ring Charts failed"
+		}
+	}
+
+	ai_weight = {
+		base = @ahw_weight_normal
+		modifier = { factor = 3 ahw_far_friend = yes desc = AHW_AI_FAR_FRIEND }
+		modifier = { factor = 1.5 ahw_threatened = yes desc = AHW_AI_THREATENED }
+		modifier = { factor = 1.5 is_pacifist = yes desc = ethic_pacifist }
+		modifier = { factor = 1.5 is_xenophile = yes desc = ethic_xenophile }
+		modifier = { factor = 1.5 is_megacorp = yes desc = AHW_AI_MEGACORP }
+		modifier = { factor = 1.5 is_nomadic = yes desc = AHW_AI_NOMADIC }
+		modifier = { factor = 1.5 ahw_owns_repaired_gate = yes desc = AHW_AI_REPAIRED_GATE }
+		modifier = { factor = 0.5 is_militarist = yes desc = ethic_militarist }
+		modifier = { factor = 0.5 is_xenophobe = yes desc = ethic_xenophobe }
+		modifier = { factor = 0.5 ahw_owns_sealed_gate = yes desc = AHW_AI_SEALED_GATE }
+		modifier = { factor = 0 has_valid_civic = civic_inwards_perfection desc = civic_inwards_perfection }
+	}
+}
+
+resolution_ahw_share_charts_repeal = {
+	icon = "GFX_resolution_repeal_red"
+	resources = {
+		category = resolutions
+		cost = { influence = @ahw_cost_t1 }
+	}
+	target = no
+	fire_and_forget = yes
+
+	potential = { is_active_resolution = "resolution_ahw_share_charts" }
+
+	effect = {
+		custom_tooltip = resolution_ahw_share_charts_repeal_tooltip
+		hidden_effect = {
+			cancel_resolution = "resolution_ahw_share_charts"
+			cancel_resolution = "resolution_ahw_gate_breach"
+			set_timed_country_flag = { flag = galactic_community_resolution_passed_ahw_repeal days = @ahw_flag_timer }
+			add_modifier = { modifier = resolution_passed_diplomatic_weight days = 2200 }
+			log = "AHW resolution Share Ring Charts repealed"
+		}
+	}
+	fail_effects = {
+		hidden_effect = {
+			set_timed_country_flag = { flag = galactic_community_resolution_failed_ahw_repeal days = @ahw_flag_timer }
+			add_modifier = { modifier = resolution_failed_diplomatic_weight days = 2200 }
+		}
+	}
+
+	ai_weight = {
+		base = @ahw_weight_unpopular
+		modifier = { factor = 2 is_militarist = yes desc = ethic_militarist }
+		modifier = { factor = 2 is_xenophobe = yes desc = ethic_xenophobe }
+		modifier = { factor = 0.3 ahw_far_friend = yes desc = AHW_AI_FAR_FRIEND }
+		modifier = { factor = 0.5 is_pacifist = yes desc = ethic_pacifist }
+	}
+}
+
+resolution_ahw_gate_breach = {
+	icon = "GFX_resolution_galactic_studies"
+	resources = {
+		category = resolutions
+		cost = { influence = @ahw_cost_t2 }
+	}
+	target = no
+	level = 2
+
+	potential = { has_global_flag = ahw_done }
+	allow = {
+		is_active_resolution = "resolution_ahw_share_charts"
+		custom_tooltip = {
+			fail_text = "resolution_already_active"
+			NOT = { is_active_resolution = "resolution_ahw_gate_breach" }
+		}
+	}
+
+	effect = {
+		custom_tooltip = resolution_ahw_gate_breach_tooltip
+		hidden_effect = {
+			set_timed_country_flag = { flag = galactic_community_resolution_passed_ahw days = @ahw_flag_timer }
+			add_modifier = { modifier = resolution_passed_diplomatic_weight days = 2200 }
+			log = "AHW resolution Unrepaired Gates passed"
+		}
+	}
+	fail_effects = {
+		hidden_effect = {
+			set_timed_country_flag = { flag = galactic_community_resolution_failed_ahw days = @ahw_flag_timer }
+			add_modifier = { modifier = resolution_failed_diplomatic_weight days = 2200 }
+			log = "AHW resolution Unrepaired Gates failed"
+		}
+	}
+
+	breach = { ahw_gate_breach = yes }
+
+	# the sides flip: each repaired gate is a door into a target
+	ai_weight = {
+		base = @ahw_weight_unpopular
+		modifier = { factor = 2 is_militarist = yes desc = ethic_militarist }
+		modifier = { factor = 1.5 ahw_owns_repaired_gate = yes desc = AHW_AI_REPAIRED_GATE }
+		modifier = { factor = 0.5 ahw_threatened = yes desc = AHW_AI_THREATENED }
+		modifier = { factor = 0.5 is_pacifist = yes desc = ethic_pacifist }
+		# vanilla's pattern: nobody votes itself into breach
+		modifier = { factor = 0 ahw_gate_breach = yes desc = AHW_AI_WOULD_BREACH }
+	}
+}
+
+resolution_ahw_force_open = {
+	icon = "GFX_resolution_purges"
+	resources = {
+		category = resolutions
+		cost = { influence = @ahw_cost_target }
+	}
+	target = yes
+	harmful = yes
+
+	potential = { is_active_resolution = "resolution_ahw_share_charts" }
+	valid_target = {
+		is_country_type = default
+		NOT = { is_same_value = from }
+		is_galactic_community_member = yes
+		ahw_owns_sealed_gate = yes
+	}
+
+	# scope: the target, the proposer in from
+	effect = {
+		custom_tooltip = resolution_ahw_force_open_tooltip
+		hidden_effect = {
+			every_system_within_border = {
+				every_neighbor_system = {
+					limit = { has_star_flag = ahw_portal has_star_flag = ahw_sealed }
+					ahw_force_open = yes
+				}
+			}
+			log = "AHW resolution Force a Gate Open passed against [This.GetName]"
+		}
+	}
+	fail_effects = {
+		hidden_effect = {
+			log = "AHW resolution Force a Gate Open failed against [This.GetName]"
+		}
+	}
+
+	# from = the target
+	ai_weight = {
+		base = @ahw_weight_normal
+		modifier = { factor = 2 is_rival = from desc = AHW_AI_TARGET_RIVAL }
+		modifier = { factor = 2 is_at_war_with = from desc = AHW_AI_TARGET_AT_WAR }
+		modifier = { factor = 1.5 is_militarist = yes desc = ethic_militarist }
+		modifier = { factor = 0.5 ahw_owns_sealed_gate = yes desc = AHW_AI_SEALED_GATE }
+		modifier = { factor = 0 ahw_close_friend = { WHO = from } desc = AHW_AI_TARGET_FRIEND }
+	}
+}

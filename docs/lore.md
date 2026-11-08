@@ -56,7 +56,9 @@ for them: "ancient precursor civilizations", fallen into "a dark age long ago", 
 
 ## How players learn it (decided 2026-11-08)
 
-The user chose all four channels (2026-11-08); none is built yet.
+The user chose all four channels (2026-11-08). 0.1.1 builds the first: one lore line each on
+the gates, exit gates, express wormholes, centre stars and techs (`AHW_LORE_*` in
+`ancient_highway/localisation/english/ahw_l_english.yml`).
 
 1. **Object texts**, always there: the gates (broken and repaired), the centre star classes, the
    ring nodes, both techs and the express carry the story passively — a description each, in the

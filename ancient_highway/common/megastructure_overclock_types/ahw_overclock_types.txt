@@ -21,6 +21,11 @@ ahw_gate_sealed = {
 			is_nomadic = no	# design 2026-11-05: nomads never seal
 		}
 		solar_system = { NOT = { has_star_flag = ahw_broken } }
+		# 0.1.1: the Galactic Community forced it open (resolution_ahw_force_open, 10 years)
+		custom_tooltip = {
+			fail_text = AHW_FORCED_OPEN
+			solar_system = { NOT = { has_star_flag = ahw_forced_open } }
+		}
 	}
 	resources = {
 		category = megastructures

@@ -280,7 +280,7 @@ a black system view) or the save may not load.
 Possibly everyone may build hyper relays on the ring (vanilla relays need own territory, so this is
 an own megastructure type). Alternative: ruined relays come with the ring and can be restored.
 
-## Exploration and incentives (decided 2026-11-08, not built)
+## Exploration and incentives (decided 2026-11-08; 0.1.1 builds the charts, the ally event and the resolutions — threat-based weights and AI sealing not yet)
 
 **The problem**: the ring is explored node by node ("The ring"), and pathfinding uses only known
 systems, so nobody — player or AI — plans a route through the ring before it is mapped. The

@@ -161,3 +161,56 @@ ahw_close_friend = {
 		}
 	}
 }
+
+# 0.1.1, this = country: owns an anchor whose portal's gate is still broken.
+ahw_owns_broken_anchor = {
+	any_system_within_border = { ahw_anchor_of_broken_portal = yes }
+}
+
+# 0.1.1, this = country: in breach of "Unrepaired Gates" - it could repair (both techs) a gate on
+# its own anchor and has not; vanilla's Constitutional Immunity exempts.
+ahw_gate_breach = {
+	NOT = { has_country_flag = constitutional_immunity }
+	has_technology = ahw_tech_gate_theory
+	has_technology = ahw_tech_gate_construction
+	ahw_owns_broken_anchor = yes
+}
+
+# 0.1.1, this = country: owns an anchor whose gate is sealed.
+ahw_owns_sealed_gate = {
+	any_system_within_border = {
+		any_neighbor_system = { has_star_flag = ahw_portal has_star_flag = ahw_sealed }
+	}
+}
+
+# 0.1.1, this = country: owns an anchor whose gate is repaired.
+ahw_owns_repaired_gate = {
+	any_system_within_border = {
+		any_neighbor_system = { has_star_flag = ahw_portal NOT = { has_star_flag = ahw_broken } }
+	}
+}
+
+# 0.1.1, this = country (AI weights): a friend out of reach - federation, defensive pact, our
+# overlord or our guarantor, and not a neighbour ("not a neighbour" stands in for "out of reach":
+# no reachability trigger exists). A subset of ahw_close_friend, the symmetric relations only.
+ahw_far_friend = {
+	any_country = {
+		is_country_type = default
+		NOT = { is_neighbor_of = prev }
+		OR = {
+			is_in_federation_with = prev
+			has_defensive_pact = prev
+			is_overlord_to = prev
+			is_guaranteeing = prev
+		}
+	}
+}
+
+# 0.1.1, this = country (AI weights): threatened - a neighbour with a superior fleet, or an empire
+# that counts us its rival.
+ahw_threatened = {
+	OR = {
+		any_neighbor_country = { relative_power = { who = prev category = fleet value = superior } }
+		any_country = { is_rival = prev }
+	}
+}

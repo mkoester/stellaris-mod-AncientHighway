@@ -434,22 +434,23 @@ def mega_block(key, entity, btype, kind, comment, n):
 
 
 def megastructures():
-    """key -> (entity, bypass type, kind, comment, n, name, desc, outliner texture)"""
+    """key -> (entity, bypass type, kind, comment, n, name, desc, outliner texture). The descs
+    point at the object texts in ahw_l_english.yml (lore, 0.1.1), shared by every pair."""
     m = {}
     for n in range(1, PAIRS + 1):
         m[f'ahw_gate_broken_{n}'] = ('deactivated_gateway_entity', f'ahw_link_{n}', 'broken',
                                      f'Portal end of entry point {n}, broken (as spawned).', n,
-                                     'Broken Highway Gate', 'a broken gate of the Ancient Highway. Once studied, it can be repaired here.', 'gateway_ruined')
+                                     'Broken Highway Gate', '$AHW_LORE_GATE_BROKEN$', 'gateway_ruined')
         m[f'ahw_gate_{n}'] = ('reactivated_gateway_entity', f'ahw_link_{n}', 'gate',
                               f'Portal end of entry point {n}, repaired: an upgrade of the broken gate.', n,
-                              'Highway Entry Point', 'the portal end of an entry point.', 'gateway')
+                              'Highway Entry Point', '$AHW_LORE_GATE$', 'gateway')
         m[f'ahw_exitgate_{n}'] = ('reactivated_gateway_entity', f'ahw_link_{n}', 'exit',
                                   f'Ring end of entry point {n}: never dismantled.', n,
-                                  'Highway Exit', 'the ring end of an entry point. Cannot be dismantled.', 'gateway')
+                                  'Highway Exit', '$AHW_LORE_EXITGATE$', 'gateway')
     for j in range(1, STATIONS + 1):
         m[f'ahw_xhole_{j}'] = ('natural_wormhole_entity', f'ahw_express_{j}', 'exit',
                                f'Express wormhole {j}: one at each of two neighbouring stations.', j,
-                               'Express Wormhole', 'a wormhole of the Ancient Highway\'s express, to the next station.', 'gateway')
+                               'Express Wormhole', '$AHW_LORE_XHOLE$', 'gateway')
     return m
 
 

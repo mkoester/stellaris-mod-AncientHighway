@@ -248,6 +248,27 @@ fleet_event = {
 				ahw_scan_gates = yes
 			}
 			ahw_note_entered = yes
+			# 0.1.1 (run 44): a ring node entered - the country's chart of it (star flag ahw_mapped@,
+			# shared between close friends and by the Galactic Community: ahw_share_charts_*), and its
+			# traffic this year, military or not (ahw.80 prints and resets both)
+			if = {
+				limit = { has_star_flag = ahw_ring }
+				set_star_flag = ahw_mapped@event_target:ahw_insp_country
+				event_target:ahw_insp_country = {
+					if = {
+						limit = { NOT = { is_variable_set = ahw_n_ring_mil } }
+						set_variable = { which = ahw_n_ring_mil value = 0 }
+						set_variable = { which = ahw_n_ring_civ value = 0 }
+					}
+					if = {
+						limit = { event_target:ahw_finder = { is_civilian = no } }
+						change_variable = { which = ahw_n_ring_mil value = 1 }
+					}
+					else = {
+						change_variable = { which = ahw_n_ring_civ value = 1 }
+					}
+				}
+			}
 			if = {
 				limit = {
 					has_star_flag = ahw_portal
@@ -378,6 +399,56 @@ event = {
 			}
 		}
 		event_target:ahw_centre_system = { log = "AHW yearly [GetDate]: [This.ahw_n_c] countries have studied a gate" }
+		# 0.1.1 (run 44): per country with a chart or traffic - ring entries this year (military,
+		# civilian), ring nodes charted; then the counts start again
+		every_country = {
+			limit = { is_country_type = default }
+			set_variable = { which = ahw_n_mapped value = 0 }
+			every_system = {
+				limit = { has_star_flag = ahw_ring has_star_flag = ahw_mapped@prev }
+				prev = { change_variable = { which = ahw_n_mapped value = 1 } }
+			}
+			if = {
+				limit = { NOT = { is_variable_set = ahw_n_ring_mil } }
+				set_variable = { which = ahw_n_ring_mil value = 0 }
+				set_variable = { which = ahw_n_ring_civ value = 0 }
+			}
+			if = {
+				limit = {
+					OR = {
+						check_variable = { which = ahw_n_mapped value > 0 }
+						check_variable = { which = ahw_n_ring_mil value > 0 }
+						check_variable = { which = ahw_n_ring_civ value > 0 }
+					}
+				}
+				log = "AHW yearly [GetDate] ring [This.GetName]: [This.ahw_n_mapped] nodes charted, entries this year [This.ahw_n_ring_mil] military, [This.ahw_n_ring_civ] civilian"
+			}
+			set_variable = { which = ahw_n_ring_mil value = 0 }
+			set_variable = { which = ahw_n_ring_civ value = 0 }
+		}
+		# 0.1.1: close friends swap their charts once a year; the Galactic Community's members too
+		# while "Share Ring Charts" is in force
+		ahw_share_charts_friends = yes
+		random_country = {
+			limit = { is_country_type = default }
+			if = {
+				limit = { is_active_resolution = "resolution_ahw_share_charts" }
+				ahw_share_charts_gc = yes
+				log = "AHW yearly [GetDate]: resolution Share Ring Charts in force"
+			}
+			if = {
+				limit = { is_active_resolution = "resolution_ahw_gate_breach" }
+				log = "AHW yearly [GetDate]: resolution Unrepaired Gates in force"
+				every_country = {
+					limit = { is_galactic_community_member = yes ahw_gate_breach = yes }
+					log = "AHW yearly [GetDate]: [This.GetName] in breach (broken gate, both techs)"
+				}
+			}
+		}
+		every_system = {
+			limit = { has_star_flag = ahw_forced_open }
+			log = "AHW yearly [GetDate] portal [This.GetName]: forced open"
+		}
 		every_system = {
 			limit = { has_star_flag = ahw_portal NOT = { has_star_flag = ahw_broken } }
 			log = "AHW yearly [GetDate] portal [This.GetName]: repaired"
@@ -398,5 +469,102 @@ event = {
 		if = { limit = { has_global_flag = ahw_express_stable_6 } log = "AHW yearly [GetDate]: express link 6 stable" }
 		if = { limit = { has_global_flag = ahw_express_stable_7 } log = "AHW yearly [GetDate]: express link 7 stable" }
 		if = { limit = { has_global_flag = ahw_express_stable_8 } log = "AHW yearly [GetDate]: express link 8 stable" }
+	}
+}
+
+# 0.1.1 (run 43: every gate lost its owner in the same months, all nine at once): a daily watch.
+# A gate whose anchor has an owner but which itself has none, or another, is logged with the day
+# and given back at once (as ahw.20 does monthly) - the day to compare with game.log and the
+# saves, and the Seal switch usable meanwhile. Runs on the global event country, every day.
+country_event = {
+	id = ahw.90
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		every_system = {
+			limit = {
+				has_star_flag = ahw_portal
+				any_neighbor_system = { exists = owner }
+			}
+			random_neighbor_system = {
+				limit = { exists = owner }
+				owner = { save_event_target_as = ahw_watch_owner }
+			}
+			every_system_megastructure = {
+				limit = { OR = { NOT = { exists = owner } NOT = { owner = { is_same_value = event_target:ahw_watch_owner } } } }
+				set_owner = event_target:ahw_watch_owner
+				log = "AHW owner lost by [GetDate]: the gate in [Prev.GetName], back to [ahw_watch_owner.GetName]"
+			}
+		}
+		country_event = { id = ahw.90 days = 1 }
+	}
+}
+
+# 0.1.1: starts the daily watch once - at the build, or in a save from before it (monthly pulse,
+# no scope).
+event = {
+	id = ahw.91
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		has_global_flag = ahw_done
+		NOT = { has_global_flag = ahw_owner_watch }
+	}
+	immediate = {
+		set_global_flag = ahw_owner_watch
+		random_country = {
+			limit = { is_country_type = global_event }
+			country_event = { id = ahw.90 days = 1 }
+		}
+		log = "AHW owner watch started [GetDate]"
+	}
+}
+
+# 0.1.1, ally under attack (design "Exploration and incentives"; monthly per country): a close
+# friend that is not our neighbour is at war, and not with us - the highway could bring help. We
+# swap charts with it at once and are told (ahw.96); once per friend in five years.
+country_event = {
+	id = ahw.95
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		is_country_type = default
+		has_country_flag = ahw_highway_studied
+	}
+	immediate = {
+		save_event_target_as = ahw_chart_to
+		every_country = {
+			limit = {
+				is_country_type = default
+				NOT = { is_same_value = root }
+				is_at_war = yes
+				NOT = { is_at_war_with = root }
+				NOT = { is_neighbor_of = root }
+				ahw_close_friend = { WHO = root }
+				NOT = { root = { has_country_flag = ahw_ally_warned@prev } }
+			}
+			root = { set_timed_country_flag = { flag = ahw_ally_warned@prev days = 1800 } }
+			save_event_target_as = ahw_ally
+			save_event_target_as = ahw_chart_from
+			ahw_copy_charts = yes
+			event_target:ahw_chart_to = { save_event_target_as = ahw_chart_from }
+			event_target:ahw_ally = { save_event_target_as = ahw_chart_to }
+			ahw_copy_charts = yes
+			root = { save_event_target_as = ahw_chart_to }
+			log = "AHW ally under attack: [ahw_ally.GetName], a friend of [Root.GetName] beyond its borders, is at war - charts swapped [GetDate]"
+			root = { country_event = { id = ahw.96 } }
+		}
+	}
+}
+
+# The message (from ahw.95; event_target:ahw_ally = the friend at war).
+country_event = {
+	id = ahw.96
+	title = ahw.96.name
+	desc = ahw.96.desc
+	picture = GFX_evt_federation_fleet
+	is_triggered_only = yes
+	option = {
+		name = ahw.96.a
 	}
 }

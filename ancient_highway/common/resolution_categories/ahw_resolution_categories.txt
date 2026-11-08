@@ -1,0 +1,14 @@
+# 0.1.1 (design "Exploration and incentives", user 2026-11-08): the highway's own Galactic Community
+# category, in an existing group - purely additive, as the DLCs add theirs
+# (04_resolution_categories_cosmic_storms_dlc.txt). Vanilla's icon by name.
+resolution_category_ahw_highway = {
+	group = environment_technology
+	icon = "GFX_resolution_galactic_studies"
+
+	resolution_types = {
+		"resolution_ahw_share_charts"
+		"resolution_ahw_share_charts_repeal"
+		"resolution_ahw_gate_breach"
+		"resolution_ahw_force_open"
+	}
+}

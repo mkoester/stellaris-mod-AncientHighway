@@ -43,7 +43,9 @@ not load. As of runs 40–43:
   one game-wide cause; 0.1.1's daily watch `ahw.90` logs the day and gives it back); one unexplained contract cancel 12 days
   after acceptance (run 43, first try — `on_cancel` now logs the cause); the issue-contract menu
   appeared only months after console `communications` (run 40); nomads studying or repairing on
-  their own — not seen yet; the express's stabilise cost (4000) is untested at the mid game.
+  their own — not seen yet; the express's stabilise cost (4000) is untested at the mid game;
+  centres open as colony-like planet views, and a portal can sit behind a marauder empire (run 44,
+  user).
 
 **Deferred**: run 31's part 2, the mod added to a running game (user, 2026-11-06: tested once
 the mod is mostly done); part 3, a late empire's portal, came unasked in run 43. **Parked**: the ring's exact speed (user,
@@ -310,6 +312,41 @@ For tests: pass by console (`pass_resolution_no_cooldown`, `ahw_debug.80`), and 
   In the save the chart flag reads `ahw_mapped<country id>` (`ahw_mapped0`, `ahw_mapped1`).
 - Owner lost again on 11.02, the day after that load — whether loads explain the other days is
   unknown (run 43 lost owners in ~60 % of months over long unbroken play, so not loads alone).
+
+**Run 44, steps 5–6 (to 2207.03; the 2026-11-08 session played to 2207.01, proposed Share Ring
+Charts by hand (2206.04, screenshots `2026_11_08_7`, `_8`) and ran `ahw_debug.76`; the votes were
+passed by console on 2026-11-09 from the 2207.01.01 save, screenshots `2026_11_09_3`–`_9`):**
+- **Share Ring Charts works**: on passing, every member ends at the pool's 12 nodes (we 9 + 3,
+  Silicron 9 + 3 after the friend swap, the Theians 3 + 9, the rest 0 + 12); game.log "charts: n
+  ring nodes from the Galactic Community to …". **No error at passing.** The one error.log line
+  `Could not get dynamic flag 'ahw_mapped' with target 'event_target:ahw_chart_from'`
+  (`ahw_share_charts_gc`, line 659) comes before it: at proposing (2026-11-08 21:45) and 14 s
+  before the pass (14:23:17 / 14:23:31) — the game evaluating the effect for a tooltip, before
+  any target is saved. Harmless; an `exists = event_target:ahw_chart_from` guard might silence it
+  (whether a `limit` stops at the first false trigger is unchecked).
+- **Unrepaired Gates passed** (2207.02.01); the breach is checked yearly, so unseen until 2208.
+- **Force a Gate Open** (`ahw_debug.80`, against the Commonwealth of Man): "gate in Eshmet 41
+  forced open", listed active under The Ancient Highway with its tooltip (`_3`). The 2207.03.01
+  autosave is 2 s older than the console line, so it still shows `ahw_sealed`. **The Sealed
+  mode's refusal is untested**: only the gate's owner sees the switch (`_4`, "You are not the
+  owner of this Megastructure") — needs our own gate forced open (a debug line to write).
+- Owner lost again the day after this load (2207.01.02), then 01.16 and 02.05 — the second load in
+  a row followed by a loss the next day.
+- Exit gate: "Dismantle" greyed out, "You are not the owner of the Megastructure"; its text says
+  "Cannot be dismantled" (`_9`). Entry point and exit show their lore lines (`_4`, `_9`).
+- **User: the centres should not look like colonies.** Clicking a centre opens vanilla's planet
+  view: Colony Summary with Habitability "?", a Terraform button, "Frontier Planet", Colony
+  Ascension (Eshmet 41's neutron star `_5`/`_6`, Caedris Node 3's black hole `_7`/`_8`). They are
+  vanilla planet classes (`pc_neutron_star`, `pc_black_hole`, `common/star_classes/
+  ahw_star_classes.txt`), and both systems are unsurveyed. Compare a vanilla star in an
+  unsurveyed system first: how much of this is the planet class, how much the missing survey.
+  The centre's lore line (step 3) is not in this view — its text is vanilla's.
+- **User: the Commonwealth of Man can hardly reach its anchor and portal (Eshmet 41) early** —
+  the way runs through a marauder empire. Portal placement does not look at what lies between an
+  empire and its portal; a rule is to design (e.g. no marauder or fallen empire on the path, or
+  within N jumps of its space).
+- The dashboard ran next to this game (develop, 2026-11-09): its data extracted with this
+  playset's two mods, and the data DB holds the mod's resolution category and its four resolutions.
 
 ## Test, run 43 (a new campaign: the contract again, then a long game)
 

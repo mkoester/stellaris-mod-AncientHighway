@@ -358,6 +358,14 @@ passed by console on 2026-11-09 from the 2207.01.01 save, screenshots `2026_11_0
   does nothing — the console says "Executing effect script", no effect runs, no error (2208.02.01
   save: `passed` still 0 6 7, no flag; screenshot `_13`). Set the flags by console instead
   (`effect set_global_flag = ahw_gc_charts`, `… ahw_gc_breach`).
+- **Fix, first check** (reloaded 2207.01.01 → 2207.02.01, screenshots `_15`–`_18`, save
+  `2207.02.01.sav`): Unrepaired Gates passed by console, **`ahw_gc_breach` set**, the category shows
+  it Active; its tooltip asks for the `ahw_gc_charts` flag. **Share Ring Charts did not pass**: by
+  then it was out of `proposed` with supporters and opponents (apparently on the senate floor);
+  at 2207.01.01 (proposed only) the same line passed it. So the console pass does nothing, silently,
+  for a type passed or (apparently) under a vote. **Console `effect` runs in the selected
+  object's scope**: with a fleet selected, `pass_resolution_no_cooldown` fails ("Wrong scope …
+  Current Scope: fleet", error.log only) — click empty space first.
 - **The colony-like view is vanilla's for every star** (`_10`, `_11`: Mewash A, a G star in an
   unsurveyed vanilla system — the same Colony Summary, Terraform, Frontier Planet, Colony
   Ascension). Not the mod's doing; changing it would mean the centre is no star.

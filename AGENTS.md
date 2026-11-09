@@ -353,8 +353,11 @@ passed by console on 2026-11-09 from the 2207.01.01 save, screenshots `2026_11_0
   vanilla's Galactic Reforms (`galactic_council_veto`), global flags `ahw_gc_charts` and
   `ahw_gc_breach` set on passing, cleared by the repeal, checked instead of
   `is_active_resolution` everywhere; Force a Gate Open is `fire_and_forget` (README: never on the
-  list of active/passed resolutions). A save from before has neither flag: pass both again by
-  console.
+  list of active/passed resolutions). A save from before has neither flag, and **passing again
+  does not set it**: `pass_resolution_no_cooldown` on a type already in `galactic_community.passed`
+  does nothing — the console says "Executing effect script", no effect runs, no error (2208.02.01
+  save: `passed` still 0 6 7, no flag; screenshot `_13`). Set the flags by console instead
+  (`effect set_global_flag = ahw_gc_charts`, `… ahw_gc_breach`).
 - **The colony-like view is vanilla's for every star** (`_10`, `_11`: Mewash A, a G star in an
   unsurveyed vanilla system — the same Colony Summary, Terraform, Frontier Planet, Colony
   Ascension). Not the mod's doing; changing it would mean the centre is no star.

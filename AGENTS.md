@@ -44,8 +44,7 @@ not load. As of runs 40–43:
   after acceptance (run 43, first try — `on_cancel` now logs the cause); the issue-contract menu
   appeared only months after console `communications` (run 40); nomads studying or repairing on
   their own — not seen yet; the express's stabilise cost (4000) is untested at the mid game;
-  centres open as colony-like planet views, and a portal can sit behind a marauder empire (run 44,
-  user).
+  a portal can sit behind a marauder empire (run 44, user); the resolutions' flag fix (run 44).
 
 **Deferred**: run 31's part 2, the mod added to a running game (user, 2026-11-06: tested once
 the mod is mostly done); part 3, a late empire's portal, came unasked in run 43. **Parked**: the ring's exact speed (user,
@@ -338,13 +337,27 @@ passed by console on 2026-11-09 from the 2207.01.01 save, screenshots `2026_11_0
   view: Colony Summary with Habitability "?", a Terraform button, "Frontier Planet", Colony
   Ascension (Eshmet 41's neutron star `_5`/`_6`, Caedris Node 3's black hole `_7`/`_8`). They are
   vanilla planet classes (`pc_neutron_star`, `pc_black_hole`, `common/star_classes/
-  ahw_star_classes.txt`), and both systems are unsurveyed. Compare a vanilla star in an
-  unsurveyed system first: how much of this is the planet class, how much the missing survey.
-  The centre's lore line (step 3) is not in this view — its text is vanilla's.
+  ahw_star_classes.txt`), and both systems are unsurveyed. Compared below: every vanilla star
+  shows the same. The centre's lore line (step 3) is not in this view — its text is vanilla's.
 - **User: the Commonwealth of Man can hardly reach its anchor and portal (Eshmet 41) early** —
   the way runs through a marauder empire. Portal placement does not look at what lies between an
   empire and its portal; a rule is to design (e.g. no marauder or fallen empire on the path, or
   within N jumps of its space).
+- **To 2208.01.01 (same day, screenshots `_10`–`_12`): the yearly pooling and the breach never
+  ran.** No "in force" lines; we had 19 nodes, the Theians 13, everyone else stayed at 12; Thimoan
+  (Dovhar 31 broken, both techs) not named in breach. Cause: **a resolution category has one
+  current resolution, the last passed** — the save's `galactic_community.passed` holds all three,
+  but the window shows Force a Gate Open as the category's resolution, Share Ring Charts back to
+  "Proposed" (an AI proposed it again, which its `allow` refuses while it is active) and Unrepaired
+  Gates "Passed" (`_12`), and `is_active_resolution` was false for both. **Fixed (untested):** as
+  vanilla's Galactic Reforms (`galactic_council_veto`), global flags `ahw_gc_charts` and
+  `ahw_gc_breach` set on passing, cleared by the repeal, checked instead of
+  `is_active_resolution` everywhere; Force a Gate Open is `fire_and_forget` (README: never on the
+  list of active/passed resolutions). A save from before has neither flag: pass both again by
+  console.
+- **The colony-like view is vanilla's for every star** (`_10`, `_11`: Mewash A, a G star in an
+  unsurveyed vanilla system — the same Colony Summary, Terraform, Frontier Planet, Colony
+  Ascension). Not the mod's doing; changing it would mean the centre is no star.
 - The dashboard ran next to this game (develop, 2026-11-09): its data extracted with this
   playset's two mods, and the data DB holds the mod's resolution category and its four resolutions.
 

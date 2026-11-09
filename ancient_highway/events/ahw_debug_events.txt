@@ -524,7 +524,7 @@ country_event = {
 	immediate = {
 		ahw_share_charts_friends = yes
 		if = {
-			limit = { is_active_resolution = "resolution_ahw_share_charts" }
+			limit = { has_global_flag = ahw_gc_charts }
 			ahw_share_charts_gc = yes
 		}
 		log = "AHW test: charts shared [GetDate]"

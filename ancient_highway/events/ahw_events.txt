@@ -432,12 +432,12 @@ event = {
 		random_country = {
 			limit = { is_country_type = default }
 			if = {
-				limit = { is_active_resolution = "resolution_ahw_share_charts" }
+				limit = { has_global_flag = ahw_gc_charts }
 				ahw_share_charts_gc = yes
 				log = "AHW yearly [GetDate]: resolution Share Ring Charts in force"
 			}
 			if = {
-				limit = { is_active_resolution = "resolution_ahw_gate_breach" }
+				limit = { has_global_flag = ahw_gc_breach }
 				log = "AHW yearly [GetDate]: resolution Unrepaired Gates in force"
 				every_country = {
 					limit = { is_galactic_community_member = yes ahw_gate_breach = yes }

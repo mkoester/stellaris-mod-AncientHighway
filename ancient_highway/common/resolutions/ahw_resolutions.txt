@@ -7,7 +7,11 @@
 #    Its repeal ends 2 as well.
 # 2. Unrepaired Gates (needs 1): a member able to repair its own broken gate is in breach.
 # 3. Force a Gate Open (needs 1): targeted, like Denounce - the target's sealed gates open, and
-#    cannot be sealed for 10 years.
+#    cannot be sealed for 10 years. fire_and_forget: a one-off, it never holds the category.
+# A category has one current resolution, the last passed, and is_active_resolution answers for
+# it alone (run 44: Force a Gate Open displaced 1 and 2, whose yearly effects stopped). So 1 and
+# 2 keep their state in global flags, as vanilla's Galactic Reforms do (galactic_council_veto):
+# ahw_gc_charts, ahw_gc_breach.
 
 @ahw_weight_unpopular = 5
 @ahw_weight_normal = 6
@@ -29,7 +33,7 @@ resolution_ahw_share_charts = {
 	allow = {
 		custom_tooltip = {
 			fail_text = "resolution_already_active"
-			NOT = { is_active_resolution = "resolution_ahw_share_charts" }
+			NOT = { has_global_flag = ahw_gc_charts }
 		}
 	}
 
@@ -37,6 +41,7 @@ resolution_ahw_share_charts = {
 		custom_tooltip = resolution_ahw_share_charts_tooltip
 		hidden_effect = {
 			set_global_flag = galactic_community_resolution_passed
+			set_global_flag = ahw_gc_charts
 			set_timed_country_flag = { flag = galactic_community_resolution_passed_ahw days = @ahw_flag_timer }
 			add_modifier = { modifier = resolution_passed_diplomatic_weight days = 2200 }
 			ahw_share_charts_gc = yes
@@ -76,11 +81,13 @@ resolution_ahw_share_charts_repeal = {
 	target = no
 	fire_and_forget = yes
 
-	potential = { is_active_resolution = "resolution_ahw_share_charts" }
+	potential = { has_global_flag = ahw_gc_charts }
 
 	effect = {
 		custom_tooltip = resolution_ahw_share_charts_repeal_tooltip
 		hidden_effect = {
+			remove_global_flag = ahw_gc_charts
+			remove_global_flag = ahw_gc_breach
 			cancel_resolution = "resolution_ahw_share_charts"
 			cancel_resolution = "resolution_ahw_gate_breach"
 			set_timed_country_flag = { flag = galactic_community_resolution_passed_ahw_repeal days = @ahw_flag_timer }
@@ -115,10 +122,10 @@ resolution_ahw_gate_breach = {
 
 	potential = { has_global_flag = ahw_done }
 	allow = {
-		is_active_resolution = "resolution_ahw_share_charts"
+		has_global_flag = ahw_gc_charts
 		custom_tooltip = {
 			fail_text = "resolution_already_active"
-			NOT = { is_active_resolution = "resolution_ahw_gate_breach" }
+			NOT = { has_global_flag = ahw_gc_breach }
 		}
 	}
 
@@ -127,6 +134,7 @@ resolution_ahw_gate_breach = {
 		hidden_effect = {
 			set_timed_country_flag = { flag = galactic_community_resolution_passed_ahw days = @ahw_flag_timer }
 			add_modifier = { modifier = resolution_passed_diplomatic_weight days = 2200 }
+			set_global_flag = ahw_gc_breach
 			log = "AHW resolution Unrepaired Gates passed"
 		}
 	}
@@ -160,8 +168,9 @@ resolution_ahw_force_open = {
 	}
 	target = yes
 	harmful = yes
+	fire_and_forget = yes
 
-	potential = { is_active_resolution = "resolution_ahw_share_charts" }
+	potential = { has_global_flag = ahw_gc_charts }
 	valid_target = {
 		is_country_type = default
 		NOT = { is_same_value = from }

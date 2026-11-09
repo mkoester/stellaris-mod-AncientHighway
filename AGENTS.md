@@ -366,6 +366,13 @@ passed by console on 2026-11-09 from the 2207.01.01 save, screenshots `2026_11_0
   for a type passed or (apparently) under a vote. **Console `effect` runs in the selected
   object's scope**: with a fleet selected, `pass_resolution_no_cooldown` fails ("Wrong scope …
   Current Scope: fleet", error.log only) — click empty space first.
+- **Fix confirmed on passing** (reloaded 2207.01.01 again, all three by console, screenshots
+  `_19`–`_21`, save `2207.02.02.sav`): Share Ring Charts passed with the pooling (all to 12),
+  Unrepaired Gates, Force a Gate Open ("Eshmet 41 forced open", star flag `ahw_forced_open`). The
+  save has `ahw_gc_charts` and `ahw_gc_breach`; `passed` holds 0 and 6 only — **`fire_and_forget`
+  keeps Force a Gate Open off it**, and the category still shows Unrepaired Gates afterwards (`_21`).
+  The repeal is offered (its potential reads the flag). Still open: the yearly "in force" lines,
+  pooling and breach at 2208.01.01; the Sealed mode refused on a forced-open gate (needs ours).
 - **The colony-like view is vanilla's for every star** (`_10`, `_11`: Mewash A, a G star in an
   unsurveyed vanilla system — the same Colony Summary, Terraform, Frontier Planet, Colony
   Ascension). Not the mod's doing; changing it would mean the centre is no star.

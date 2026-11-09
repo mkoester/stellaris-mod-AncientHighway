@@ -553,3 +553,17 @@ country_event = {
 		}
 	}
 }
+
+# 0.1.1 console test of Force a Gate Open on our own gate (run 44: only the owner sees the Seal
+# switch, so the refusal can only be checked on ours): the same effect the resolution runs.
+country_event = {
+	id = ahw_debug.81
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		event_target:ahw_player_portal = {
+			ahw_force_open = yes
+			log = "AHW test: our gate in [This.GetName] forced open by console"
+		}
+	}
+}

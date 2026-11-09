@@ -675,7 +675,10 @@ ahw_share_charts_gc = {
 				change_variable = { which = ahw_n_copied value = 1 }
 			}
 		}
-		log = "AHW charts: \\[This.ahw_n_copied] ring nodes from the Galactic Community to \\[This.GetName]"
+		if = {
+			limit = { check_variable = { which = ahw_n_copied value > 0 } }
+			log = "AHW charts: \\[This.ahw_n_copied] ring nodes from the Galactic Community to \\[This.GetName]"
+		}
 	}
 	every_system = {
 		limit = { has_star_flag = ahw_gc_pool }

@@ -152,6 +152,7 @@ All findings go to `game.log`, lines starting `AHW`.
 | `event ahw_debug.78` | an AI empire beyond our borders becomes our subject, and another AI empire attacks it (game.log says whether the war started) |
 | `event ahw_debug.79` | the yearly chart exchange now (friends; the Community under Share Ring Charts) |
 | `event ahw_debug.80` | Force a Gate Open passed now (no vote) against an empire with a sealed gate |
+| `event ahw_debug.81` | our own gate forced open (Force a Gate Open's effect) — to see the Seal mode refused (needs `ahw_debug.8`'s techs) |
 | `effect pass_resolution_no_cooldown = resolution_ahw_share_charts` | Share Ring Charts passed now, no vote, no category cooldown (vanilla effect; likewise `resolution_ahw_gate_breach`) |
 | `effect every_country = { limit = { is_ai = no } remove_country_flag = ahw_has_portal }` | we get a second portal on the next 1st (the console targets move to it) |
 
@@ -371,8 +372,12 @@ passed by console on 2026-11-09 from the 2207.01.01 save, screenshots `2026_11_0
   Unrepaired Gates, Force a Gate Open ("Eshmet 41 forced open", star flag `ahw_forced_open`). The
   save has `ahw_gc_charts` and `ahw_gc_breach`; `passed` holds 0 and 6 only — **`fire_and_forget`
   keeps Force a Gate Open off it**, and the category still shows Unrepaired Gates afterwards (`_21`).
-  The repeal is offered (its potential reads the flag). Still open: the yearly "in force" lines,
-  pooling and breach at 2208.01.01; the Sealed mode refused on a forced-open gate (needs ours).
+  The repeal is offered (its potential reads the flag).
+- **And yearly** (played on to 2208.01.01): both "in force" lines, the pool lifting every member
+  to our 19 nodes (+7 each), **"Thimoan Trade Association in breach (broken gate, both techs)"**
+  (Dovhar 31), Eshmet 41 "forced open"; no new error. The pooling logged "0 ring nodes" for
+  members that already had them — now logged only above 0, like the friends' swap. Still open: the
+  Sealed mode refused on a forced-open gate — `ahw_debug.81` forces ours.
 - **The colony-like view is vanilla's for every star** (`_10`, `_11`: Mewash A, a G star in an
   unsurveyed vanilla system — the same Colony Summary, Terraform, Frontier Planet, Colony
   Ascension). Not the mod's doing; changing it would mean the centre is no star.

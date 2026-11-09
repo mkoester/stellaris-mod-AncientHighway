@@ -36,15 +36,16 @@ not load. As of runs 40–43:
   to the head start (run 43), the yearly summary `ahw.80`.
 - **The AI** claims its anchor after 5–10 years and then studies within 1–2 (run 43); it
   researched no gate tech until the techs got `ai_weight` 3 — then one empire in 18 months.
-  **Next**: run 44 (below) — the AI with working gates from the start, plus the first Phase 2
-  features (0.1.1: object texts, shared charts, ally under attack, three Galactic Community
-  resolutions).
+  With working gates (run 44, below) the AI repairs within 3–4 months of having both techs. **Run
+  44 passed** the 0.1.1 features: object texts, shared charts, ally under attack, the three
+  Galactic Community resolutions (after the flag fix, 2026-11-09). **Next**: the Seal mode
+  refused on a forced-open gate (`ahw_debug.8`, `ahw_debug.81`, screenshots before and after).
 - **Open**: what clears a portal gate's owner (run 43: in ~60 % of months, **all gates at once** —
   one game-wide cause; 0.1.1's daily watch `ahw.90` logs the day and gives it back); one unexplained contract cancel 12 days
   after acceptance (run 43, first try — `on_cancel` now logs the cause); the issue-contract menu
   appeared only months after console `communications` (run 40); nomads studying or repairing on
   their own — not seen yet; the express's stabilise cost (4000) is untested at the mid game;
-  a portal can sit behind a marauder empire (run 44, user); the resolutions' flag fix (run 44).
+  a portal can sit behind a marauder empire (run 44, user).
 
 **Deferred**: run 31's part 2, the mod added to a running game (user, 2026-11-06: tested once
 the mod is mostly done); part 3, a late empire's portal, came unasked in run 43. **Parked**: the ring's exact speed (user,
@@ -361,10 +362,11 @@ passed by console on 2026-11-09 from the 2207.01.01 save, screenshots `2026_11_0
   (`effect set_global_flag = ahw_gc_charts`, `… ahw_gc_breach`).
 - **Fix, first check** (reloaded 2207.01.01 → 2207.02.01, screenshots `_15`–`_18`, save
   `2207.02.01.sav`): Unrepaired Gates passed by console, **`ahw_gc_breach` set**, the category shows
-  it Active; its tooltip asks for the `ahw_gc_charts` flag. **Share Ring Charts did not pass**: by
-  then it was out of `proposed` with supporters and opponents (apparently on the senate floor);
-  at 2207.01.01 (proposed only) the same line passed it. So the console pass does nothing, silently,
-  for a type passed or (apparently) under a vote. **Console `effect` runs in the selected
+  it Active; its tooltip asks for the `ahw_gc_charts` flag. **Share Ring Charts did not pass**: it
+  had left `proposed` without passing — not on the floor (no `voting` field), and the recess
+  `cooldown` (359 at 2207.01.01) was gone too; what removed it is unknown (a lead: the two
+  wrong-scope attempts just before). At 2207.01.01, proposed only, the same line passed it. So the
+  console pass does nothing, silently, for a type already passed or no longer proposed. **Console `effect` runs in the selected
   object's scope**: with a fleet selected, `pass_resolution_no_cooldown` fails ("Wrong scope …
   Current Scope: fleet", error.log only) — click empty space first.
 - **Fix confirmed on passing** (reloaded 2207.01.01 again, all three by console, screenshots

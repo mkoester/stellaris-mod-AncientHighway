@@ -41,7 +41,8 @@ not load. As of runs 40–43:
   Galactic Community resolutions (after the flag fix, 2026-11-09). **Next**: the Seal mode
   refused on a forced-open gate (`ahw_debug.8`, `ahw_debug.81`, screenshots before and after).
 - **Open**: what clears a portal gate's owner (run 43: in ~60 % of months, **all gates at once** —
-  one game-wide cause; 0.1.1's daily watch `ahw.90` logs the day and gives it back); one unexplained contract cancel 12 days
+  one game-wide cause; 0.1.1's daily watch `ahw.90` logs the day and gives it back; **one cause
+  found 2026-11-12: loading a save** — below, "Quick checks"); one unexplained contract cancel 12 days
   after acceptance (run 43, first try — `on_cancel` now logs the cause); the issue-contract menu
   appeared only months after console `communications` (run 40); nomads studying or repairing on
   their own — not seen yet; the express's stabilise cost (4000) is untested at the mid game;
@@ -385,6 +386,26 @@ passed by console on 2026-11-09 from the 2207.01.01 save, screenshots `2026_11_0
   Ascension). Not the mod's doing; changing it would mean the centre is no star.
 - The dashboard ran next to this game (develop, 2026-11-09): its data extracted with this
   playset's two mods, and the data DB holds the mod's resolution category and its four resolutions.
+
+## Quick checks, 2026-11-12 (run 44's 2208.01.01 save on 4.5.4, screenshots `2026_11_12_1`–`_5`)
+
+- **A load clears every gate's owner.** Right after loading, still paused at 2208.01.01, our
+  repaired gate said "You are not the owner of this Megastructure" (`_1`, `_2`), though the save
+  holds `owner=0` (us) on `ahw_gate_1` and an owner on all nine. On 01.02 `ahw.90` logged "owner
+  lost by 2208.01.02" for all nine and gave them back; the Seal tab worked again (`_3`). So the
+  engine drops megastructure owners when it loads a save, before any script runs. Run 43 also lost
+  owners in long unbroken play, so a load is one cause, not the only one. The daily watch covers
+  both.
+- **The centre star shows no lore line in the system view** (`_4`, Caedris 21's black hole): the
+  hover is the star *body*, which keeps vanilla's planet class `pc_black_hole` and its
+  `pc_black_hole_desc`; our line is in the star class's `ahw_sc_black_hole_desc`, which this
+  tooltip does not show. To show it: our own star planet classes (copies of vanilla's with our
+  desc) — not done.
+- `ahw_debug.8` and `ahw_debug.81` ran ("Executed", game.log "gate in Caedris 21 forced open by
+  the Galactic Community"); the mode still reads Open (`_5`), as expected — **the refusal itself
+  is still unseen**: it needs a click on the Sealed mode.
+- error.log: `Trying to remove undefined event target: ahw_sealer_1` at `ahw_debug.81` (the
+  forced opening clears a sealer that never existed); harmless.
 
 ## Test, run 43 (a new campaign: the contract again, then a long game)
 

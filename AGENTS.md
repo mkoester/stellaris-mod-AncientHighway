@@ -38,8 +38,8 @@ not load. As of runs 40–43:
   researched no gate tech until the techs got `ai_weight` 3 — then one empire in 18 months.
   With working gates (run 44, below) the AI repairs within 3–4 months of having both techs. **Run
   44 passed** the 0.1.1 features: object texts, shared charts, ally under attack, the three
-  Galactic Community resolutions (after the flag fix, 2026-11-09). **Next**: the Seal mode
-  refused on a forced-open gate (`ahw_debug.8`, `ahw_debug.81`, screenshots before and after).
+  Galactic Community resolutions (after the flag fix, 2026-11-09); the Seal mode refused on a
+  forced-open gate (2026-11-12).
 - **Open**: what clears a portal gate's owner (run 43: in ~60 % of months, **all gates at once** —
   one game-wide cause; 0.1.1's daily watch `ahw.90` logs the day and gives it back; **one cause
   found 2026-11-12: loading a save** — below, "Quick checks"); one unexplained contract cancel 12 days
@@ -401,9 +401,10 @@ passed by console on 2026-11-09 from the 2207.01.01 save, screenshots `2026_11_0
   `pc_black_hole_desc`; our line is in the star class's `ahw_sc_black_hole_desc`, which this
   tooltip does not show. To show it: our own star planet classes (copies of vanilla's with our
   desc) — not done.
-- `ahw_debug.8` and `ahw_debug.81` ran ("Executed", game.log "gate in Caedris 21 forced open by
-  the Galactic Community"); the mode still reads Open (`_5`), as expected — **the refusal itself
-  is still unseen**: it needs a click on the Sealed mode.
+- **The Sealed mode is refused on a forced-open gate.** `ahw_debug.8` and `ahw_debug.81` ran
+  (game.log "gate in Caedris 21 forced open by the Galactic Community"); the mode stays Open
+  (`_5`), and the Sealed button's tooltip lists "The Galactic Community has forced this gate open;
+  it cannot be sealed for now" as the one unmet condition (`_16`).
 - error.log: `Trying to remove undefined event target: ahw_sealer_1` at `ahw_debug.81` (the
   forced opening clears a sealer that never existed); harmless.
 

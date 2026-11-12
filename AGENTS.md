@@ -92,7 +92,10 @@ counts, the repair runs in the contract's `on_success` (`ahw_repair_gate`). `ahw
 empires a portal; `ahw.50` drains pulsar shields monthly; `ahw.60` offers inspection studies on entering
 portals and ring nodes (`.64`, `.65` grant; cap 80 %, `ahw_cap_check` → `.66`/`.67` withdraw).
 Sealing: the gate's Open/Sealed mode, flags read by each pair's `country_can_use`; friends pass
-(`ahw_friend_of_sealer`).
+(`ahw_friend_of_sealer`). **Wanted by Vassal Orders** (2026-11-12, not built yet): an overlord
+ordering its subject to seal that subject's entry point. No effect sets a mode, so this mod needs
+a hook that `country_can_use` honours (a flag or scripted effect), plus a flag that tells other
+mods AncientHighway is loaded. Design it with `../stellaris-mod-VassalOrders/AGENTS.md`.
 
 **Express** (0.1.0, generated `express()`): one station per reach (8 on every size, near each
 reach's middle, ±1 node, seeded), each with two wormhole megastructures `ahw_xhole_j` on its

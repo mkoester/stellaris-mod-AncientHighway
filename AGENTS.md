@@ -159,7 +159,9 @@ All findings go to `game.log`, lines starting `AHW`.
   has entered a system is the country's `visited_objects` (every non-`default` country lists
   every system — ignore them); a fleet names no owner, the country's `owned_fleets` does; a
   fleet's position is the `origin` in its `movement_manager`'s `coordinate` (the first `origin`
-  in the block is its combat's); a body's surveyor is `surveyed_by` in `planets`. Copy `logs/game.log` and `logs/error.log` before
+  in the block is its combat's); a body's surveyor is `surveyed_by` in `planets`. With the
+  dashboard's feed mod in the playset, game.log marks each load as `SDASH|…|<date>|…|load|` —
+  the way to tell a load-caused owner loss from another (2026-11-18). Copy `logs/game.log` and `logs/error.log` before
   restarting the game. Expected error.log noise: the centre probes' `move_system` misses, unset
   `ahw_*_tmp` targets and `ahw_exits`/`ahw_pair` in log texts, missing modifier icons, events
   without pictures. Anything else naming `ahw_` is a finding.

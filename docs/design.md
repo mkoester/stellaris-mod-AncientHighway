@@ -280,7 +280,7 @@ a black system view) or the save may not load.
 Possibly everyone may build hyper relays on the ring (vanilla relays need own territory, so this is
 an own megastructure type). Alternative: ruined relays come with the ring and can be restored.
 
-## Exploration and incentives (decided 2026-11-08; 0.1.1 builds the charts, the ally event and the resolutions — threat-based weights and AI sealing not yet)
+## Exploration and incentives (decided 2026-11-08; 0.1.1 builds the charts, the ally event and the resolutions; the techs' threat-based weights came 2026-11-18 — AI sealing not yet)
 
 **The problem**: the ring is explored node by node ("The ring"), and pathfinding uses only known
 systems, so nobody — player or AI — plans a route through the ring before it is mapped. The
@@ -301,7 +301,12 @@ from another. Available: `relative_power`, `is_rival`, `any_neighbor_country`, `
 - **Threat-based AI weights**: both techs' `ai_weight` and the repair upgrade's weight rise when
   the empire has a rival or a stronger neighbour (`is_rival`, `relative_power`) **and** a close
   friend that is not a neighbour. "Not a neighbour" stands in for "out of reach" — no
-  reachability trigger exists.
+  reachability trigger exists. **Built for the techs (2026-11-18)**: base `factor = 3` kept low
+  (user: no empire needs the highway at year ~13, more likely around year 30–40), ×3 with a
+  friend out of reach (`ahw_far_friend`), ×5 more when also threatened (`ahw_threatened`); with
+  the engine's ×1.5 for rare techs: 4.5 / 13.5 / 67.5. Not "owns a broken anchor": only an
+  anchor's owner studies, so that would raise the base for nearly everyone. The repair upgrade needs no weight: the AI repairs within 3–4 months of the
+  techs (run 44).
 - **Ally under attack**: when a close friend that is not a neighbour is at war, an event tells
   the empire the highway could bring help, and runs the chart share for that pair at once.
 - **The AI seals when threatened**: an AI with a rival or stronger neighbour that holds Gate

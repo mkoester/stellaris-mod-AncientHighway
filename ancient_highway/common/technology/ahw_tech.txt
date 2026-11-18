@@ -21,9 +21,17 @@ ahw_tech_gate_theory = {
 	weight = 100
 	# run 43: without an ai_weight no AI empire researched a gate tech in 13 years after its
 	# study (seven had the option). Vanilla's priorities are 1.25-2, must-haves 100; 3 is a
-	# clear preference, not a rush (tunable).
+	# clear preference, not a rush (tunable). The base stays low on purpose (user, 2026-11-18:
+	# no empire needs the highway at year ~13, more likely around year 30-40); need raises it
+	# (design.md, "Threat-based AI weights"). The engine adds x1.5 for a rare tech
+	# (AI_TECHNOLOGY_RARE_WEIGHT_MULT): 4.5 studied only, 13.5 with a friend out of reach, 67.5
+	# also threatened. Not "owns a broken anchor": only an anchor's owner studies, so that would
+	# be true for nearly every empire with the option - a raised base. The user's campaign
+	# (2026-11-18): 3 alone picked by one of 13 empires in up to 12 years.
 	ai_weight = {
 		factor = 3
+		modifier = { factor = 3 ahw_far_friend = yes }
+		modifier = { factor = 5 ahw_threatened = yes ahw_far_friend = yes }
 	}
 }
 
@@ -42,8 +50,16 @@ ahw_tech_gate_construction = {
 	weight = 100
 	# run 43: without an ai_weight no AI empire researched a gate tech in 13 years after its
 	# study (seven had the option). Vanilla's priorities are 1.25-2, must-haves 100; 3 is a
-	# clear preference, not a rush (tunable).
+	# clear preference, not a rush (tunable). The base stays low on purpose (user, 2026-11-18:
+	# no empire needs the highway at year ~13, more likely around year 30-40); need raises it
+	# (design.md, "Threat-based AI weights"). The engine adds x1.5 for a rare tech
+	# (AI_TECHNOLOGY_RARE_WEIGHT_MULT): 4.5 studied only, 13.5 with a friend out of reach, 67.5
+	# also threatened. Not "owns a broken anchor": only an anchor's owner studies, so that would
+	# be true for nearly every empire with the option - a raised base. The user's campaign
+	# (2026-11-18): 3 alone picked by one of 13 empires in up to 12 years.
 	ai_weight = {
 		factor = 3
+		modifier = { factor = 3 ahw_far_friend = yes }
+		modifier = { factor = 5 ahw_threatened = yes ahw_far_friend = yes }
 	}
 }

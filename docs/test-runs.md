@@ -2,6 +2,27 @@
 
 Moved out of `AGENTS.md` on 2026-11-14. Newest first; the spike's runs 1–39 are in `spike-runs.md`. Add each new run at the top of this file, not to `AGENTS.md`.
 
+## Observation: the user's campaign, no console (0.1.1, 2200–2217.01, read 2026-11-18)
+
+Not a test run: a real game, played as a nomadic empire (Roaming Cybergang), **huge** galaxy
+(88 ring nodes, 28 portals), game 4.5.4, 33 mods (the highway as the local dev copy). Read from
+the saves `2200.12.01`–`2217.01.13` and the last session's logs (2216.12.01–2217.01.13).
+- **Build**: all 28 portals and the ring as designed; error.log has only the known modifier-icon
+  noise for `ahw_`.
+- **Studies, unforced**: the first between 2203.09 and 2205.05; then 3 (2208.11), 6 (2213.01),
+  10 (2215.03), 13 (2216.12) countries — 12 of the 19 anchor owners, and the player as a nomad
+  (`ahw.60`, on entering a portal: works).
+- **Techs: none in 17 years.** All 13 have both gate techs among their options, with the study's
+  15 % stored, some for ~12 years; one AI empire was researching Gate Theory at 2217.01.13.
+  So every gate is still `ahw_gate_broken_*` and no ring node is charted (`ahw_mapped@` absent).
+  `ai_weight` 3 (×1.5 rare, `AI_TECHNOLOGY_RARE_WEIGHT_MULT`) loses to vanilla's priority factors
+  (5 for labs, alloys, ship types, starbases). Run 44's quick AI repairs came after
+  `ahw_debug.75` had given the techs: the tech choice is the bottleneck, left alone.
+- **Owner loss**: all 19 gates with an owned anchor at once on 2216.12.02 (the day after the
+  load: the known cause), 12.29 and 2217.01.13 (no load; 27 and 15 days apart). A manual save
+  (2216.12.11) and pauses of 9–99 s did not line up with either. `ahw.90` gave each back.
+- **Express**: dormant (the mid-game pulse has not come).
+
 ## Test, run 44 (0.1.1: the AI with working gates, and the first Phase 2 features)
 
 One game of ~10 years answers several things that do not get in each other's way: what the AI

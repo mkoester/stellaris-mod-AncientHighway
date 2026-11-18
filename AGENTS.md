@@ -35,7 +35,8 @@ not load. As of runs 40–43:
   express (closed tooltip, flips, routes through an open link), the repair contract with a nomad
   to the head start (run 43), the yearly summary `ahw.80`.
 - **The AI** claims its anchor after 5–10 years and then studies within 1–2 (run 43); it
-  researched no gate tech until the techs got `ai_weight` 3 — then one empire in 18 months.
+  researched no gate tech until the techs got `ai_weight` 3 — then one empire in 18 months;
+  in the user's unforced campaign (2026-11-18, `docs/test-runs.md`) none of 13 in up to 12 years.
   With working gates (run 44, `docs/test-runs.md`) the AI repairs within 3–4 months of having both techs. **Run
   44 passed** the 0.1.1 features: object texts, shared charts, ally under attack, the three
   Galactic Community resolutions (after the flag fix, 2026-11-09); the Seal mode refused on a

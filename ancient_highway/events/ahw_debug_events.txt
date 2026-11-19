@@ -567,3 +567,43 @@ country_event = {
 		}
 	}
 }
+
+# 2026-11-19, the story: the three core chapters again (their flags cleared) and one fragment.
+# Chapter 2 shows only with a gate tech (ahw_debug.8 first).
+country_event = {
+	id = ahw_debug.82
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		remove_country_flag = ahw_story_door
+		remove_country_flag = ahw_story_eights
+		remove_country_flag = ahw_story_road
+		country_event = { id = ahw_story.1 }
+		country_event = { id = ahw_story.2 }
+		country_event = { id = ahw_story.3 }
+		country_event = { id = ahw_story.10 }
+		log = "AHW test: story chapters and a fragment fired [GetDate]"
+	}
+}
+
+# 2026-11-19: all twelve fragments at once, to read the texts (does not touch the pool).
+country_event = {
+	id = ahw_debug.83
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		country_event = { id = ahw_story.11 }
+		country_event = { id = ahw_story.12 }
+		country_event = { id = ahw_story.13 }
+		country_event = { id = ahw_story.14 }
+		country_event = { id = ahw_story.15 }
+		country_event = { id = ahw_story.16 }
+		country_event = { id = ahw_story.17 }
+		country_event = { id = ahw_story.18 }
+		country_event = { id = ahw_story.19 }
+		country_event = { id = ahw_story.20 }
+		country_event = { id = ahw_story.21 }
+		country_event = { id = ahw_story.22 }
+		log = "AHW test: all story fragments fired [GetDate]"
+	}
+}

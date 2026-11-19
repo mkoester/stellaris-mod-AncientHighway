@@ -37,12 +37,12 @@ keys = re.findall(r'^ (\S+):0', loc, re.M)
 problems += [f'duplicate text key: {k}' for k in sorted({k for k in keys if keys.count(k) > 1})]
 need = {m + s for m in megas for s in ('', '_DESC', '_MEGASTRUCTURE_DETAILS')}
 need |= {f'{p}_{b.upper()}' for b in byps for p in ('BYPASS', 'ENTRY_BYPASS', 'EXIT_BYPASS')}
-need |= set(re.findall(r'(?:title|desc|name) = (ahw(?:_debug)?\.[\w.]+)', events_raw))
+need |= set(re.findall(r'(?:title|desc|name) = (ahw(?:_debug|_story)?\.[\w.]+)', events_raw))
 need |= set(re.findall(r'^\s*name = (NAME_\w+)', alltxt, re.M))
 # 0.1.1: tooltips and AI-weight descs naming our keys, resolutions and their categories (name +
 # desc), and $KEY$ references from one of our texts to another
 OURS = r'(?:AHW_\w+|ahw_\w+|resolution(?:_category)?_ahw_\w+)'
-need |= set(re.findall(rf'(?:fail_text|custom_tooltip|desc) = "?({OURS})"?', alltxt))
+need |= set(re.findall(rf'(?:fail_text|custom_tooltip|desc) = "?({OURS})"?(?![.\w])', alltxt))
 need |= {k + s for k in re.findall(r'^(resolution(?:_category)?_ahw_\w+) = \{', alltxt, re.M) for s in ('', '_desc')}
 need |= set(re.findall(rf'\$({OURS})\$', loc))
 problems += [f'missing text: {k}' for k in sorted(need - set(keys))]

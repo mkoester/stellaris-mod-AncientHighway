@@ -157,6 +157,60 @@ special_project = {
 	}
 }
 
+# 2026-11-19: inspection study of a foreign portal's broken gate, for Gate Construction - offered
+# instead of the centre study when Construction was granted less so far (ahw.60).
+special_project = {
+	key = AHW_INSPECT_BROKEN_SCI
+	cost = 0
+	days_to_research = 15
+	tech_department = engineering_technology
+	picture = GFX_evt_engineering_research
+	icon = "gfx/interface/icons/situation_log/situation_log_quest.dds"
+
+	event_scope = ship_event
+	requirements = { shipclass_science_ship = 1 }
+
+	on_success = {
+		ship_event = { id = ahw.62 }
+	}
+}
+
+# 2026-11-19: inspection study of a foreign portal's broken gate, for Gate Construction - offered
+# instead of the centre study when Construction was granted less so far (ahw.60).
+special_project = {
+	key = AHW_INSPECT_BROKEN_CON
+	cost = 0
+	days_to_research = 15
+	tech_department = engineering_technology
+	picture = GFX_evt_engineering_research
+	icon = "gfx/interface/icons/situation_log/situation_log_quest.dds"
+
+	event_scope = ship_event
+	requirements = { shipclass_constructor = 1 }
+
+	on_success = {
+		ship_event = { id = ahw.62 }
+	}
+}
+
+# 2026-11-19: inspection study of a foreign portal's broken gate, for Gate Construction - offered
+# instead of the centre study when Construction was granted less so far (ahw.60).
+special_project = {
+	key = AHW_INSPECT_BROKEN_MIL
+	cost = 0
+	days_to_research = 15
+	tech_department = engineering_technology
+	picture = GFX_evt_engineering_research
+	icon = "gfx/interface/icons/situation_log/situation_log_quest.dds"
+
+	event_scope = ship_event
+	requirements = { shipclass_military = 1 }
+
+	on_success = {
+		ship_event = { id = ahw.62 }
+	}
+}
+
 # 0.1.0: stabilise an express station (both its links open for good, for everyone). Offered on
 # entering a station once the express is awake, to any country with Gate Theory (ahw.60,
 # ahw_express_entered). Cheaper the later in the game (design 2026-11-05).

@@ -466,6 +466,8 @@ ahw_country_learns = {
 	# 0.0.26 (design 2026-11-06): only this gate's exit node, not the whole ring - the rest is
 	# explored by flying it.
 	ahw_reveal_exit = yes
+	# 2026-11-19: the story's first chapter (once, humans only: its trigger)
+	event_target:ahw_studier = { country_event = { id = ahw_story.1 } }
 }
 
 # this = a country. A share of both techs, once per empire (FLAG) - the study and the head start
@@ -694,4 +696,129 @@ ahw_force_open = {
 	ahw_unseal_pair = yes
 	set_timed_star_flag = { flag = ahw_forced_open days = 3650 }
 	log = "AHW gate in \\[This.GetName] forced open by the Galactic Community"
+}
+
+# 2026-11-19, the story (events/ahw_story_events.txt). this = a portal or ring node a ship of
+# event_target:ahw_insp_country entered (ahw.60), a human country that has studied a gate. A ring
+# node: the first one plays chapter 3, the first in each further reach a fragment (the variable
+# ahw_reach, 0-7, set at the build). A foreign portal (its anchor not ours): a fragment on our
+# first entry (star flag ahw_toured@<country>).
+ahw_story_entered = {
+	if = {
+		limit = { has_star_flag = ahw_ring }
+		if = {
+			limit = {
+				check_variable = { which = ahw_reach value = 0 }
+				event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_reach_seen_0 } }
+			}
+			event_target:ahw_insp_country = {
+				set_country_flag = ahw_reach_seen_0
+				if = {
+					limit = { has_country_flag = ahw_story_road }
+					country_event = { id = ahw_story.10 }
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = { which = ahw_reach value = 1 }
+				event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_reach_seen_1 } }
+			}
+			event_target:ahw_insp_country = {
+				set_country_flag = ahw_reach_seen_1
+				if = {
+					limit = { has_country_flag = ahw_story_road }
+					country_event = { id = ahw_story.10 }
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = { which = ahw_reach value = 2 }
+				event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_reach_seen_2 } }
+			}
+			event_target:ahw_insp_country = {
+				set_country_flag = ahw_reach_seen_2
+				if = {
+					limit = { has_country_flag = ahw_story_road }
+					country_event = { id = ahw_story.10 }
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = { which = ahw_reach value = 3 }
+				event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_reach_seen_3 } }
+			}
+			event_target:ahw_insp_country = {
+				set_country_flag = ahw_reach_seen_3
+				if = {
+					limit = { has_country_flag = ahw_story_road }
+					country_event = { id = ahw_story.10 }
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = { which = ahw_reach value = 4 }
+				event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_reach_seen_4 } }
+			}
+			event_target:ahw_insp_country = {
+				set_country_flag = ahw_reach_seen_4
+				if = {
+					limit = { has_country_flag = ahw_story_road }
+					country_event = { id = ahw_story.10 }
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = { which = ahw_reach value = 5 }
+				event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_reach_seen_5 } }
+			}
+			event_target:ahw_insp_country = {
+				set_country_flag = ahw_reach_seen_5
+				if = {
+					limit = { has_country_flag = ahw_story_road }
+					country_event = { id = ahw_story.10 }
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = { which = ahw_reach value = 6 }
+				event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_reach_seen_6 } }
+			}
+			event_target:ahw_insp_country = {
+				set_country_flag = ahw_reach_seen_6
+				if = {
+					limit = { has_country_flag = ahw_story_road }
+					country_event = { id = ahw_story.10 }
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = { which = ahw_reach value = 7 }
+				event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_reach_seen_7 } }
+			}
+			event_target:ahw_insp_country = {
+				set_country_flag = ahw_reach_seen_7
+				if = {
+					limit = { has_country_flag = ahw_story_road }
+					country_event = { id = ahw_story.10 }
+				}
+			}
+		}
+		event_target:ahw_insp_country = { country_event = { id = ahw_story.3 } }
+	}
+	else_if = {
+		limit = {
+			has_star_flag = ahw_portal
+			NOT = { has_star_flag = ahw_toured@event_target:ahw_insp_country }
+			NOT = { any_neighbor_system = { exists = owner owner = { is_same_value = event_target:ahw_insp_country } } }
+		}
+		set_star_flag = ahw_toured@event_target:ahw_insp_country
+		event_target:ahw_insp_country = { country_event = { id = ahw_story.10 } }
+	}
 }

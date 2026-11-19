@@ -214,3 +214,22 @@ ahw_threatened = {
 		any_country = { is_rival = prev }
 	}
 }
+
+# 2026-11-19, this = a country: a foreign portal's broken gate should feed Gate Construction now -
+# Construction is open and was granted less than Theory so far (Theory wins a tie), or Theory is
+# closed (capped or researched; ahw_cap_check). ahw.60 offers the centre study otherwise.
+ahw_construction_behind = {
+	NOT = { has_country_flag = ahw_closed_construction }
+	OR = {
+		has_country_flag = ahw_closed_theory
+		AND = {
+			is_variable_set = ahw_got_theory
+			NOT = { is_variable_set = ahw_got_construction }
+		}
+		AND = {
+			is_variable_set = ahw_got_theory
+			is_variable_set = ahw_got_construction
+			check_variable = { which = ahw_got_construction value < ahw_got_theory }
+		}
+	}
+}

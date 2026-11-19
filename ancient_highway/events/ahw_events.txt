@@ -248,6 +248,11 @@ fleet_event = {
 				ahw_scan_gates = yes
 			}
 			ahw_note_entered = yes
+			# 2026-11-19: the story's chapter 3 and fragments, for human players
+			if = {
+				limit = { event_target:ahw_insp_country = { is_ai = no has_country_flag = ahw_highway_studied } }
+				ahw_story_entered = yes
+			}
 			# 0.1.1 (run 44): a ring node entered - the country's chart of it (star flag ahw_mapped@,
 			# shared between close friends and by the Galactic Community: ahw_share_charts_*), and its
 			# traffic this year, military or not (ahw.80 prints and resets both)
@@ -269,16 +274,27 @@ fleet_event = {
 					}
 				}
 			}
+			# 2026-11-19 (the user's campaign: no gate repaired in 17 years, so every foreign portal fed
+			# Gate Theory only): a foreign portal with a broken gate gives one study, for the tech granted
+			# less so far - its broken gate's (Construction) or its centre's (Theory). A repaired gate keeps
+			# its own, bigger study (ahw_scan_gates above) and the centre study as before.
 			if = {
 				limit = {
 					has_star_flag = ahw_portal
-					event_target:ahw_insp_country = {
-						has_country_flag = ahw_highway_studied
-						NOT = { has_country_flag = ahw_closed_theory }
-					}
+					event_target:ahw_insp_country = { has_country_flag = ahw_highway_studied }
 					NOT = { any_neighbor_system = { exists = owner owner = { is_same_value = event_target:ahw_insp_country } } }
 				}
-				ahw_scan_centre = yes
+				if = {
+					limit = {
+						has_star_flag = ahw_broken
+						event_target:ahw_insp_country = { ahw_construction_behind = yes }
+					}
+					ahw_scan_broken = yes
+				}
+				else_if = {
+					limit = { event_target:ahw_insp_country = { NOT = { has_country_flag = ahw_closed_theory } } }
+					ahw_scan_centre = yes
+				}
 			}
 			# 0.1.0: an express station - learn its links, maybe the stabilising study
 			if = {
@@ -297,6 +313,12 @@ fleet_event = {
 				ahw_offer_centre_study = yes
 				log = "AHW centre study in [This.GetName] offered to [ahw_insp_country.GetName]"
 			}
+			if = {
+				limit = { event_target:ahw_insp_country = { has_country_flag = ahw_offer_broken } }
+				event_target:ahw_insp_country = { remove_country_flag = ahw_offer_broken }
+				ahw_offer_broken_study = yes
+				log = "AHW broken-gate study in [This.GetName] offered to [ahw_insp_country.GetName]"
+			}
 		}
 	}
 }
@@ -307,7 +329,10 @@ country_event = {
 	hide_window = yes
 	is_triggered_only = yes
 	trigger = { has_country_flag = ahw_highway_studied }
-	immediate = { ahw_cap_check = yes }
+	immediate = {
+		ahw_cap_check = yes
+		country_event = { id = ahw_story.2 }	# 2026-11-19: the story, on the first gate tech
+	}
 }
 
 # A gate study done (this = the ship; AHW_INSPECT_GATE_*).
@@ -318,6 +343,17 @@ ship_event = {
 	immediate = {
 		owner = { save_event_target_as = ahw_insp_country }
 		solar_system = { ahw_inspect_gates = yes }
+	}
+}
+
+# A broken-gate study done (this = the ship; AHW_INSPECT_BROKEN_*, 2026-11-19).
+ship_event = {
+	id = ahw.62
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		owner = { save_event_target_as = ahw_insp_country }
+		solar_system = { ahw_inspect_broken = yes }
 	}
 }
 

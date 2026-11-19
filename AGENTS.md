@@ -9,7 +9,7 @@ block for good (not a shortcut), so help for a distant ally becomes possible. Fu
 The user's original idea and requirements are kept verbatim in `IDEA.md` on the branch `idea`
 (orphan, pushed, **never merged**; later requirements are appended there, also verbatim). Append
 in its **permanent** worktree `../worktrees/stellaris-mod-AncientHighway@idea` (user, 2026-11-05:
-keep it; recreate with `git worktree add ../worktrees/stellaris-mod-AncientHighway@idea idea`),
+keep it; `../bootstrap.sh` recreates it),
 never by switching the main checkout; hand over the commit, never a `worktree remove`. Append
 with the **absolute path** of the worktree's `IDEA.md`: a relative one written from the main
 checkout creates a stray `IDEA.md` there (2026-11-05). This

@@ -132,6 +132,7 @@ ship_event = {
 	is_triggered_only = yes
 	immediate = {
 		owner = { save_event_target_as = ahw_studier }
+		log = "AHW ahw.22 fired: ship [This.GetName] of [ahw_studier.GetName] in [This.solar_system.GetName]"
 		solar_system = { ahw_mark_studied = yes }
 	}
 }

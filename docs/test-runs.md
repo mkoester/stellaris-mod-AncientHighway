@@ -37,6 +37,40 @@ each console line. Copy `logs/game.log` and `logs/error.log` before restarting.
    in that first reach. Fly on until the next reach: a fragment.
 5. error.log: nothing new naming `ahw_` beyond the known noise.
 
+## Observation: the user's campaign continued (2217.01–2226.08, read 2026-11-19)
+
+The same campaign (Roaming Cybergang, huge, 22 portals with an owned anchor), resumed with the
+tech weights of 2026-11-18 (`8b563e9`) and, in the last session (2225.03.12–2226.08.01), the
+story events and the inspection balance (`c0a6ab5`). Read from the saves `2217.07.01`–
+`autosave_2226.08.01` and that session's logs.
+- **AI gate techs, at last**: the first between 2221.10 and 2223.04 (4–6 years after the weight
+  change); at 2226.08 seven empires hold one each — Gate Theory: Havariggan Purifiers, Mandate of
+  Evari, Interstellar Yibrak, Vran; Gate Construction: Haddam, Fellnoll, Thembolon. **None holds
+  both**, so still no repair, no charted ring node, 26 years in. 20 countries have studied.
+- **Works in the campaign**: a story fragment (3 of 12) on the player's first entry into Furon
+  52; the broken-gate study offered there and finished (+0.05 Construction; the player's grants:
+  theory 0.59, construction 0.3); "ally under attack" (four swaps, 2225.10.01); the cap
+  withdrawals (`ahw_cap_check`, three lines). error.log: only the modifier-icon noise.
+- **AI nomads study, but it does not take**: Roaming Mirovandian (country 1) was offered the
+  study at Ashkara 01 on 2226.06.11 (`ahw.60`). Autosave 2226.07.01: `AHW_STUDY_PROJECT`
+  `in_progress`, its science ship (fleet 16778092, ship 3507) on a `survey_planet_order` of the
+  portal's black hole (planet 10227, the project's carrier — as for every AI empire's study).
+  Autosave 2226.08.01: `last_completed_special_project="AHW_STUDY_PROJECT"`, the ship surveying
+  another body in the same portal — but no `ahw_highway_studied` flag, no "studied by" line, no
+  error. The player's own nomad study (same `ahw.60` path) worked earlier, and the AI empires'
+  (`ahw.20`) do. Cause open: whether `on_success` runs, and in which scope. Instrumented
+  2026-11-19 (a log line in the project's `on_success` and at the top of `ahw.22`); replay from
+  `autosave_2226.07.01` to 08.01 and read game.log.
+- **AI exploration of foreign portals is rare**: `ahw_entered_N` (any portal or exit node, own
+  included) is 1 for most AI empires, presumably their own portal; three entered 2–4; one was
+  offered two centre studies and did neither. The inspection studies are effectively
+  player-only so far.
+- **Owner loss**: all 22 gates at once, 27 times in 17 months (every 1–7 weeks); two right
+  after a load (2225.03.13, a day after; 2226.04.01, two days after the 2226.03.30 load), the
+  rest with no load near. On 2225.04.01 `ahw.20` handed out all 22 before the watch did. `ahw.90` gave each
+  back.
+- **Express**: dormant.
+
 ## Observation: the user's campaign, no console (0.1.1, 2200–2217.01, read 2026-11-18)
 
 Not a test run: a real game, played as a nomadic empire (Roaming Cybergang), **huge** galaxy

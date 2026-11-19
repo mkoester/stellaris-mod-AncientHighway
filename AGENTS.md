@@ -46,8 +46,9 @@ not load. As of runs 40–43:
   one game-wide cause; 0.1.1's daily watch `ahw.90` logs the day and gives it back; **one cause
   found 2026-11-12: loading a save** — `docs/test-runs.md`, "Quick checks"); one unexplained contract cancel 12 days
   after acceptance (run 43, first try — `on_cancel` now logs the cause); the issue-contract menu
-  appeared only months after console `communications` (run 40); nomads studying or repairing on
-  their own — not seen yet; the express's stabilise cost (4000) is untested at the mid game;
+  appeared only months after console `communications` (run 40); an AI nomad's study completes
+  without effect (2026-11-19, `docs/test-runs.md`; instrumented), repairing on their own not seen
+  yet; the express's stabilise cost (4000) is untested at the mid game;
   a portal can sit behind a marauder empire (run 44, user).
 
 **Deferred**: run 31's part 2, the mod added to a running game (user, 2026-11-06: tested once

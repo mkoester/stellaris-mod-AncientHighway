@@ -16,6 +16,9 @@ special_project = {
 	requirements = { shipclass_science_ship = 1 }
 
 	on_success = {
+		# 2026-11-19: an AI nomad completed this (autosave 2226.08.01) but ahw.22 left no trace -
+		# this line shows whether on_success runs and in which scope
+		log = "AHW study project done: this [This.GetName], owner [This.Owner.GetName], date [GetDate]"
 		ship_event = { id = ahw.22 }
 	}
 }

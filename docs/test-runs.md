@@ -2,6 +2,41 @@
 
 Moved out of `AGENTS.md` on 2026-11-14. Newest first; the spike's runs 1–39 are in `spike-runs.md`. Add each new run at the top of this file, not to `AGENTS.md`.
 
+## Test, run 45 (planned 2026-11-19: the story events and the inspection balance)
+
+A new **medium** game, this mod and dev tools, console on, at least 4 AI empires. Esc before
+each console line. Copy `logs/game.log` and `logs/error.log` before restarting.
+1. **Read the texts** (a few minutes, any time): all twelve fragments, then the core three. Each
+   is a pop-up with one button. Screenshot any that read wrong or overflow.
+   ```
+   event ahw_debug.83
+   ```
+   ```
+   event ahw_debug.8
+   ```
+   ```
+   event ahw_debug.82
+   ```
+2. **A new game for the real triggers.** Own the anchor and study the gate the normal way:
+   `ahw_debug.6`, then on the next 1st start the study with a science ship. When it ends, *A Door
+   Shut From Inside* pops up.
+3. **The alternating studies**: `ahw_debug.46` puts test ships next to a foreign portal. Fly a
+   **military** ship into it, then into two more foreign portals (broken gates: nobody has
+   repaired yet). The offered study should go Theory ("Observe the Portal's Heart"), then
+   Construction ("Examine the Broken Gate"), then Theory again — game.log `AHW centre study` /
+   `AHW broken-gate study … offered`. Finish them: `+0.07 of ahw_tech_gate_theory`,
+   `+0.05 of ahw_tech_gate_construction`. Each portal's first entry also pops up a fragment, a
+   different one each time (`AHW story fragment 1 of 12`, `2 of 12`, …).
+4. **The other two chapters**: finish a gate tech by the vanilla command, which should fire
+   `on_tech_increased` (whether `ahw_debug.8`'s `give_technology` does is unknown):
+   ```
+   research_technology ahw_tech_gate_theory
+   ```
+   *Written in Eights* pops up. Repair
+   the gate (`ahw_debug.40`) and fly into the ring: *The Road Round the Outside*, and no fragment
+   in that first reach. Fly on until the next reach: a fragment.
+5. error.log: nothing new naming `ahw_` beyond the known noise.
+
 ## Observation: the user's campaign, no console (0.1.1, 2200–2217.01, read 2026-11-18)
 
 Not a test run: a real game, played as a nomadic empire (Roaming Cybergang), **huge** galaxy

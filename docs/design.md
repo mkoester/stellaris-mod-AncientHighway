@@ -186,6 +186,14 @@ The connections between the ring and the regular galaxy are special, not hyperla
     per portal. Four kinds exist (black hole, pulsar, toxoid, and the neutron star in portals
     only); the own portal's kind counts as seen. Ring centres cannot feed physics: no ship
     reaches the ring without it.
+  - **A foreign portal with a broken gate feeds the tech that lags (user, 2026-11-19).** Before,
+    only a gate somebody else repaired fed Construction, and the user's campaign had no repair
+    in 17 years: every study went to Theory, and Construction stayed at the study's 15 %. Now such
+    a portal offers one study, for the tech granted less so far (Theory wins a tie; a closed tech
+    gives way to the other). Theory gets the centre study above, Construction a **broken-gate
+    study** (`AHW_INSPECT_BROKEN_*`, 15 days, **+5 %**). A repaired gate keeps its own, bigger
+    study (+7 %/+5 %), so seeing a working gate still pays more (user: "keep the bigger boost when
+    it is already repaired").
   - **Cap: all grants together give at most 80 % of each tech** (user, 2026-11-06), so a
     study-only empire can still earn up to 65 % by exploring.
   They meet when an empire studies its own gate and a nomad then repairs it, or when it gives up

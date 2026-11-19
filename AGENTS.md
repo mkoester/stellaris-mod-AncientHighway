@@ -125,6 +125,17 @@ gate's mode reads Sealed until switched — no effect sets a mode). AI weights: 
 gates', express wormholes' and centre star classes' descriptions (`AHW_LORE_*`, `ahw_sc_*_desc`)
 and both techs' carry a line of lore each.
 
+**Story** (2026-11-19, `events/ahw_story_events.txt`, texts in `ahw_story_l_english.yml`; human
+players only): three core pop-ups everyone sees — `ahw_story.1` on the study or the head start
+(`ahw_country_learns`), `.2` on the first gate tech (`ahw.63`), `.3` on the first ring node
+(`ahw_story_entered`, from `ahw.60`) — and twelve fragments `.11`–`.22`, one unseen one at random
+(`ahw_story.10`, flags `ahw_frag_N`, counter `ahw_n_frags`) on the first entry into each foreign
+portal (star flag `ahw_toured@<country>`) and each further reach (`ahw_reach_seen_<r>`). Lore
+and its checks against vanilla: `docs/lore.md`. **Inspection balance** (same day): a foreign
+portal with a broken gate offers one study, for the tech granted less so far
+(`ahw_construction_behind`): the centre's (Theory) or the broken gate's (`AHW_INSPECT_BROKEN_*`
+→ `ahw.62`, Construction +5 %).
+
 All findings go to `game.log`, lines starting `AHW`.
 
 ## Console and test runs

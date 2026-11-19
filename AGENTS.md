@@ -192,6 +192,9 @@ All findings go to `game.log`, lines starting `AHW`.
     `on_entering_system_first_time`;
   - a tech put among the options by `add_research_option` takes `add_tech_progress`.
 - **Gotchas of Phase 1** (runs 40–43):
+  - `check_variable` compares against another variable: `value < ahw_got_theory` (vanilla does
+    it, e.g. `value < thought_police_purchased`; used by `ahw_construction_behind`, 2026-11-19,
+    not yet seen in game);
   - `give_technology` refuses a tech whose `potential` fails ("invalid technology"): set the
     potential's flag first (`ahw_debug.73`);
   - a special project's `cost` and `days_to_research` are exclusive (error.log at load); `cost`

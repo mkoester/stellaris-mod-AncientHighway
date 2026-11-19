@@ -244,3 +244,25 @@ we would still have our own category, right?
 + answers in the discussion:
   - breach: repairs only
   - 10 years sounds good, or maybe as long as a truce lasts
+
+### Story events and tech balance (2026-11-19)
+
+let's work on it. it functions, but we don't tell a story yet. just the flavor texts on some celestial objects doesn't do it for me as a player.
+
+let's
+- check the stellaris lore, especially regarding the fallen empires - does our story fit?
+- make the flavor texts into some lightweight events. no decisions, just let the player acknowledge them
+  + some of them should always show up (why was it built, by whom? what can one do with it now?)
+  + the rest should be random and vary. the story should not suffer if a player goes straight for the research themselves. but players who explore other portal systems should get more of our backstory - but not always in the same order. they should get bits and pieces
+- discuss the tech boni again. in my current playthrough I basically do the short projects with military ships only. do both techs still get some bonus? or is it one sided?
+
+lore questions:
+- did the fallen empires exist in parallel? or at different times?
+- would some have worked together to create the ring?
+
+and check what stellaris lore exists outside the game
+
++ answers in the discussion:
+  - tech boni: alternate, but keep the bigger boost when it is already repaired
+  - fragments: foreign portals + new reaches
+  - reread: pop-ups only

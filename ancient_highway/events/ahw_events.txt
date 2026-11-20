@@ -331,8 +331,22 @@ country_event = {
 	is_triggered_only = yes
 	trigger = { has_country_flag = ahw_highway_studied }
 	immediate = {
+		ahw_travel_grants = yes	# 2026-11-20: a travel tech researched feeds the gate techs
 		ahw_cap_check = yes
 		country_event = { id = ahw_story.2 }	# 2026-11-19: the story, on the first gate tech
+	}
+}
+
+# 2026-11-20: after the study's or the head start's grant (ahw_grant), the travel techs the
+# country already holds feed the gate techs. An event, not a call: ahw_grant sits 2-3 effects
+# deep, and ahw_travel_grants -> ahw_grant_tech -> ahw_cap_check would pass the limit of 5.
+country_event = {
+	id = ahw.68
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = { has_country_flag = ahw_highway_studied }
+	immediate = {
+		ahw_travel_grants = yes
 	}
 }
 
@@ -436,6 +450,7 @@ event = {
 			}
 		}
 		event_target:ahw_centre_system = { log = "AHW yearly [GetDate]: [This.ahw_n_c] countries have studied a gate" }
+		ahw_diffuse_all = yes	# 2026-11-20: learning the gate techs from close friends and contacts
 		# 0.1.1 (run 44): per country with a chart or traffic - ring entries this year (military,
 		# civilian), ring nodes charted; then the counts start again
 		every_country = {

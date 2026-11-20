@@ -37,7 +37,10 @@ not load. As of runs 40–43:
 - **The AI** claims its anchor after 5–10 years and then studies within 1–2 (run 43); it
   researched no gate tech until the techs got `ai_weight` 3 — then one empire in 18 months;
   in the user's unforced campaign (2026-11-18, `docs/test-runs.md`) none of 13 in up to 12 years.
-  Since then ×3 with a friend out of reach, ×5 more if also threatened (`ahw_tech.txt`).
+  Since then ×3 with a friend out of reach, ×5 more if also threatened; since 2026-11-20 the
+  weight steps with the grants received (×1 / ×3 / ×6 / ×12 at 30/50/70 %, ×4 with the other
+  tech), fed also by travel techs and close friends' knowledge (`ahw_tech.txt`, `docs/design.md`
+  "Without exploring"); in game untested.
   With working gates (run 44, `docs/test-runs.md`) the AI repairs within 3–4 months of having both techs. **Run
   44 passed** the 0.1.1 features: object texts, shared charts, ally under attack, the three
   Galactic Community resolutions (after the flag fix, 2026-11-09); the Seal mode refused on a
@@ -135,7 +138,10 @@ portal (star flag `ahw_toured@<country>`) and each further reach (`ahw_reach_see
 and its checks against vanilla: `docs/lore.md`. **Inspection balance** (same day): a foreign
 portal with a broken gate offers one study, for the tech granted less so far
 (`ahw_construction_behind`): the centre's (Theory) or the broken gate's (`AHW_INSPECT_BROKEN_*`
-→ `ahw.62`, Construction +5 %).
+→ `ahw.62`, Construction +7 %; the inspections raised to 10/7 % on 2026-11-20). **Without
+exploring** (2026-11-20, `ahw_travel_grants` via `ahw.63`/`ahw.68`, `ahw_diffuse_all` in `ahw.80`;
+country flags `ahw_travel_<tech>`): +10 % of both techs per vanilla travel tech, and yearly up to
++3 % from close friends (2 % each) and contacts (0.5 %) who hold a gate tech.
 
 All findings go to `game.log`, lines starting `AHW`.
 

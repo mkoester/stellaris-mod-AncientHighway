@@ -24,8 +24,8 @@ each console line. Copy `logs/game.log` and `logs/error.log` before restarting.
    **military** ship into it, then into two more foreign portals (broken gates: nobody has
    repaired yet). The offered study should go Theory ("Observe the Portal's Heart"), then
    Construction ("Examine the Broken Gate"), then Theory again — game.log `AHW centre study` /
-   `AHW broken-gate study … offered`. Finish them: `+0.07 of ahw_tech_gate_theory`,
-   `+0.05 of ahw_tech_gate_construction`. Each portal's first entry also pops up a fragment, a
+   `AHW broken-gate study … offered`. Finish them: `+0.1 of ahw_tech_gate_theory` (a new kind of
+   centre, else `+0.07`), `+0.07 of ahw_tech_gate_construction`. Each portal's first entry also pops up a fragment, a
    different one each time (`AHW story fragment 1 of 12`, `2 of 12`, …).
 4. **The other two chapters**: finish a gate tech by the vanilla command, which should fire
    `on_tech_increased` (whether `ahw_debug.8`'s `give_technology` does is unknown):
@@ -35,7 +35,15 @@ each console line. Copy `logs/game.log` and `logs/error.log` before restarting.
    *Written in Eights* pops up. Repair
    the gate (`ahw_debug.40`) and fly into the ring: *The Road Round the Outside*, and no fragment
    in that first reach. Fly on until the next reach: a fragment.
-5. error.log: nothing new naming `ahw_` beyond the known noise.
+5. **The grants without exploring** (2026-11-20). Before step 2's study, research a travel tech:
+   ```
+   research_technology tech_hyper_drive_2
+   ```
+   At the study game.log shows `AHW travel tech tech_hyper_drive_2 feeds …` and `+0.1` of each
+   gate tech. On the next 1 January: `AHW yearly …` and, for any country in contact with one that
+   holds a gate tech, `learns from others`. The AI weights read a variable: an error.log line
+   naming `ahw_got_` or `ai_weight` is a finding.
+6. error.log: nothing new naming `ahw_` beyond the known noise.
 
 ## Observation: the user's campaign continued (2217.01–2226.08, read 2026-11-19)
 

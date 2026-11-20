@@ -22929,7 +22929,7 @@ ahw_learn_types = {
 
 # this = a portal or ring node a ship (fleet event_target:ahw_finder) of event_target:ahw_insp_country
 # entered: offer a gate study for the repaired gates here that we did not repair and were not
-# offered yet (country flag ahw_offer_gate for the caller); +7 % if this is our first entry.
+# offered yet (country flag ahw_offer_gate for the caller); +10 % if this is our first entry.
 ahw_scan_gates = {
 	if = {
 		limit = {
@@ -24249,7 +24249,7 @@ ahw_scan_broken = {
 	}
 }
 
-# this = the portal of a finished broken-gate study: Gate Construction +5 %, once per portal.
+# this = the portal of a finished broken-gate study: Gate Construction +7 %, once per portal.
 ahw_inspect_broken = {
 	if = {
 		limit = {
@@ -24258,7 +24258,7 @@ ahw_inspect_broken = {
 		}
 		event_target:ahw_insp_country = {
 			set_country_flag = ahw_bg_1
-			ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+			ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
 		}
 		log = "AHW broken gate of pair 1 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
 	}
@@ -24269,7 +24269,7 @@ ahw_inspect_broken = {
 		}
 		event_target:ahw_insp_country = {
 			set_country_flag = ahw_bg_2
-			ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+			ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
 		}
 		log = "AHW broken gate of pair 2 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
 	}
@@ -24280,7 +24280,7 @@ ahw_inspect_broken = {
 		}
 		event_target:ahw_insp_country = {
 			set_country_flag = ahw_bg_3
-			ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+			ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
 		}
 		log = "AHW broken gate of pair 3 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
 	}
@@ -24291,7 +24291,7 @@ ahw_inspect_broken = {
 		}
 		event_target:ahw_insp_country = {
 			set_country_flag = ahw_bg_4
-			ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+			ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
 		}
 		log = "AHW broken gate of pair 4 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
 	}
@@ -24302,7 +24302,7 @@ ahw_inspect_broken = {
 		}
 		event_target:ahw_insp_country = {
 			set_country_flag = ahw_bg_5
-			ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+			ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
 		}
 		log = "AHW broken gate of pair 5 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
 	}
@@ -24313,7 +24313,7 @@ ahw_inspect_broken = {
 		}
 		event_target:ahw_insp_country = {
 			set_country_flag = ahw_bg_6
-			ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+			ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
 		}
 		log = "AHW broken gate of pair 6 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
 	}
@@ -24324,7 +24324,7 @@ ahw_inspect_broken = {
 		}
 		event_target:ahw_insp_country = {
 			set_country_flag = ahw_bg_7
-			ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+			ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
 		}
 		log = "AHW broken gate of pair 7 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
 	}
@@ -24335,7 +24335,7 @@ ahw_inspect_broken = {
 		}
 		event_target:ahw_insp_country = {
 			set_country_flag = ahw_bg_8
-			ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+			ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
 		}
 		log = "AHW broken gate of pair 8 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
 	}
@@ -24346,7 +24346,7 @@ ahw_inspect_broken = {
 		}
 		event_target:ahw_insp_country = {
 			set_country_flag = ahw_bg_9
-			ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+			ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
 		}
 		log = "AHW broken gate of pair 9 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
 	}
@@ -24357,7 +24357,7 @@ ahw_inspect_broken = {
 		}
 		event_target:ahw_insp_country = {
 			set_country_flag = ahw_bg_10
-			ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+			ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
 		}
 		log = "AHW broken gate of pair 10 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
 	}
@@ -24368,7 +24368,7 @@ ahw_inspect_broken = {
 		}
 		event_target:ahw_insp_country = {
 			set_country_flag = ahw_bg_11
-			ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+			ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
 		}
 		log = "AHW broken gate of pair 11 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
 	}
@@ -24379,7 +24379,7 @@ ahw_inspect_broken = {
 		}
 		event_target:ahw_insp_country = {
 			set_country_flag = ahw_bg_12
-			ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+			ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
 		}
 		log = "AHW broken gate of pair 12 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
 	}
@@ -24390,7 +24390,7 @@ ahw_inspect_broken = {
 		}
 		event_target:ahw_insp_country = {
 			set_country_flag = ahw_bg_13
-			ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+			ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
 		}
 		log = "AHW broken gate of pair 13 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
 	}
@@ -24401,7 +24401,7 @@ ahw_inspect_broken = {
 		}
 		event_target:ahw_insp_country = {
 			set_country_flag = ahw_bg_14
-			ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+			ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
 		}
 		log = "AHW broken gate of pair 14 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
 	}
@@ -24412,7 +24412,7 @@ ahw_inspect_broken = {
 		}
 		event_target:ahw_insp_country = {
 			set_country_flag = ahw_bg_15
-			ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+			ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
 		}
 		log = "AHW broken gate of pair 15 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
 	}
@@ -24423,7 +24423,7 @@ ahw_inspect_broken = {
 		}
 		event_target:ahw_insp_country = {
 			set_country_flag = ahw_bg_16
-			ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+			ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
 		}
 		log = "AHW broken gate of pair 16 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
 	}
@@ -24434,7 +24434,7 @@ ahw_inspect_broken = {
 		}
 		event_target:ahw_insp_country = {
 			set_country_flag = ahw_bg_17
-			ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+			ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
 		}
 		log = "AHW broken gate of pair 17 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
 	}
@@ -24445,7 +24445,7 @@ ahw_inspect_broken = {
 		}
 		event_target:ahw_insp_country = {
 			set_country_flag = ahw_bg_18
-			ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+			ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
 		}
 		log = "AHW broken gate of pair 18 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
 	}
@@ -24456,7 +24456,7 @@ ahw_inspect_broken = {
 		}
 		event_target:ahw_insp_country = {
 			set_country_flag = ahw_bg_19
-			ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+			ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
 		}
 		log = "AHW broken gate of pair 19 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
 	}
@@ -24467,7 +24467,7 @@ ahw_inspect_broken = {
 		}
 		event_target:ahw_insp_country = {
 			set_country_flag = ahw_bg_20
-			ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+			ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
 		}
 		log = "AHW broken gate of pair 20 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
 	}
@@ -24478,7 +24478,7 @@ ahw_inspect_broken = {
 		}
 		event_target:ahw_insp_country = {
 			set_country_flag = ahw_bg_21
-			ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+			ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
 		}
 		log = "AHW broken gate of pair 21 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
 	}
@@ -24489,7 +24489,7 @@ ahw_inspect_broken = {
 		}
 		event_target:ahw_insp_country = {
 			set_country_flag = ahw_bg_22
-			ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+			ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
 		}
 		log = "AHW broken gate of pair 22 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
 	}
@@ -24500,7 +24500,7 @@ ahw_inspect_broken = {
 		}
 		event_target:ahw_insp_country = {
 			set_country_flag = ahw_bg_23
-			ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+			ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
 		}
 		log = "AHW broken gate of pair 23 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
 	}
@@ -24511,7 +24511,7 @@ ahw_inspect_broken = {
 		}
 		event_target:ahw_insp_country = {
 			set_country_flag = ahw_bg_24
-			ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+			ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
 		}
 		log = "AHW broken gate of pair 24 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
 	}
@@ -24522,7 +24522,7 @@ ahw_inspect_broken = {
 		}
 		event_target:ahw_insp_country = {
 			set_country_flag = ahw_bg_25
-			ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+			ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
 		}
 		log = "AHW broken gate of pair 25 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
 	}
@@ -24533,7 +24533,7 @@ ahw_inspect_broken = {
 		}
 		event_target:ahw_insp_country = {
 			set_country_flag = ahw_bg_26
-			ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+			ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
 		}
 		log = "AHW broken gate of pair 26 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
 	}
@@ -24544,7 +24544,7 @@ ahw_inspect_broken = {
 		}
 		event_target:ahw_insp_country = {
 			set_country_flag = ahw_bg_27
-			ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+			ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
 		}
 		log = "AHW broken gate of pair 27 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
 	}
@@ -24555,7 +24555,7 @@ ahw_inspect_broken = {
 		}
 		event_target:ahw_insp_country = {
 			set_country_flag = ahw_bg_28
-			ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+			ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
 		}
 		log = "AHW broken gate of pair 28 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
 	}
@@ -24566,7 +24566,7 @@ ahw_inspect_broken = {
 		}
 		event_target:ahw_insp_country = {
 			set_country_flag = ahw_bg_29
-			ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+			ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
 		}
 		log = "AHW broken gate of pair 29 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
 	}
@@ -24577,7 +24577,7 @@ ahw_inspect_broken = {
 		}
 		event_target:ahw_insp_country = {
 			set_country_flag = ahw_bg_30
-			ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+			ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
 		}
 		log = "AHW broken gate of pair 30 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
 	}
@@ -24588,7 +24588,7 @@ ahw_inspect_broken = {
 		}
 		event_target:ahw_insp_country = {
 			set_country_flag = ahw_bg_31
-			ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+			ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
 		}
 		log = "AHW broken gate of pair 31 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
 	}
@@ -24599,13 +24599,13 @@ ahw_inspect_broken = {
 		}
 		event_target:ahw_insp_country = {
 			set_country_flag = ahw_bg_32
-			ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+			ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
 		}
 		log = "AHW broken gate of pair 32 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
 	}
 }
 
-# this = the system of a finished gate study: Gate Construction +5 % (+7 % if offered on our
+# this = the system of a finished gate study: Gate Construction +7 % (+10 % if offered on our
 # first entry) per gate here whose study was offered and not done, once per gate.
 ahw_inspect_gates = {
 	if = {
@@ -24617,10 +24617,10 @@ ahw_inspect_gates = {
 			set_country_flag = ahw_insp_1
 			if = {
 				limit = { has_country_flag = ahw_first_1 }
-				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
+				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.10 }
 			}
 			else = {
-				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
 			}
 		}
 		log = "AHW gate of pair 1 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
@@ -24634,10 +24634,10 @@ ahw_inspect_gates = {
 			set_country_flag = ahw_insp_2
 			if = {
 				limit = { has_country_flag = ahw_first_2 }
-				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
+				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.10 }
 			}
 			else = {
-				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
 			}
 		}
 		log = "AHW gate of pair 2 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
@@ -24651,10 +24651,10 @@ ahw_inspect_gates = {
 			set_country_flag = ahw_insp_3
 			if = {
 				limit = { has_country_flag = ahw_first_3 }
-				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
+				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.10 }
 			}
 			else = {
-				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
 			}
 		}
 		log = "AHW gate of pair 3 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
@@ -24668,10 +24668,10 @@ ahw_inspect_gates = {
 			set_country_flag = ahw_insp_4
 			if = {
 				limit = { has_country_flag = ahw_first_4 }
-				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
+				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.10 }
 			}
 			else = {
-				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
 			}
 		}
 		log = "AHW gate of pair 4 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
@@ -24685,10 +24685,10 @@ ahw_inspect_gates = {
 			set_country_flag = ahw_insp_5
 			if = {
 				limit = { has_country_flag = ahw_first_5 }
-				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
+				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.10 }
 			}
 			else = {
-				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
 			}
 		}
 		log = "AHW gate of pair 5 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
@@ -24702,10 +24702,10 @@ ahw_inspect_gates = {
 			set_country_flag = ahw_insp_6
 			if = {
 				limit = { has_country_flag = ahw_first_6 }
-				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
+				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.10 }
 			}
 			else = {
-				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
 			}
 		}
 		log = "AHW gate of pair 6 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
@@ -24719,10 +24719,10 @@ ahw_inspect_gates = {
 			set_country_flag = ahw_insp_7
 			if = {
 				limit = { has_country_flag = ahw_first_7 }
-				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
+				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.10 }
 			}
 			else = {
-				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
 			}
 		}
 		log = "AHW gate of pair 7 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
@@ -24736,10 +24736,10 @@ ahw_inspect_gates = {
 			set_country_flag = ahw_insp_8
 			if = {
 				limit = { has_country_flag = ahw_first_8 }
-				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
+				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.10 }
 			}
 			else = {
-				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
 			}
 		}
 		log = "AHW gate of pair 8 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
@@ -24753,10 +24753,10 @@ ahw_inspect_gates = {
 			set_country_flag = ahw_insp_9
 			if = {
 				limit = { has_country_flag = ahw_first_9 }
-				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
+				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.10 }
 			}
 			else = {
-				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
 			}
 		}
 		log = "AHW gate of pair 9 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
@@ -24770,10 +24770,10 @@ ahw_inspect_gates = {
 			set_country_flag = ahw_insp_10
 			if = {
 				limit = { has_country_flag = ahw_first_10 }
-				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
+				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.10 }
 			}
 			else = {
-				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
 			}
 		}
 		log = "AHW gate of pair 10 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
@@ -24787,10 +24787,10 @@ ahw_inspect_gates = {
 			set_country_flag = ahw_insp_11
 			if = {
 				limit = { has_country_flag = ahw_first_11 }
-				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
+				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.10 }
 			}
 			else = {
-				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
 			}
 		}
 		log = "AHW gate of pair 11 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
@@ -24804,10 +24804,10 @@ ahw_inspect_gates = {
 			set_country_flag = ahw_insp_12
 			if = {
 				limit = { has_country_flag = ahw_first_12 }
-				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
+				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.10 }
 			}
 			else = {
-				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
 			}
 		}
 		log = "AHW gate of pair 12 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
@@ -24821,10 +24821,10 @@ ahw_inspect_gates = {
 			set_country_flag = ahw_insp_13
 			if = {
 				limit = { has_country_flag = ahw_first_13 }
-				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
+				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.10 }
 			}
 			else = {
-				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
 			}
 		}
 		log = "AHW gate of pair 13 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
@@ -24838,10 +24838,10 @@ ahw_inspect_gates = {
 			set_country_flag = ahw_insp_14
 			if = {
 				limit = { has_country_flag = ahw_first_14 }
-				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
+				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.10 }
 			}
 			else = {
-				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
 			}
 		}
 		log = "AHW gate of pair 14 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
@@ -24855,10 +24855,10 @@ ahw_inspect_gates = {
 			set_country_flag = ahw_insp_15
 			if = {
 				limit = { has_country_flag = ahw_first_15 }
-				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
+				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.10 }
 			}
 			else = {
-				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
 			}
 		}
 		log = "AHW gate of pair 15 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
@@ -24872,10 +24872,10 @@ ahw_inspect_gates = {
 			set_country_flag = ahw_insp_16
 			if = {
 				limit = { has_country_flag = ahw_first_16 }
-				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
+				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.10 }
 			}
 			else = {
-				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
 			}
 		}
 		log = "AHW gate of pair 16 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
@@ -24889,10 +24889,10 @@ ahw_inspect_gates = {
 			set_country_flag = ahw_insp_17
 			if = {
 				limit = { has_country_flag = ahw_first_17 }
-				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
+				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.10 }
 			}
 			else = {
-				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
 			}
 		}
 		log = "AHW gate of pair 17 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
@@ -24906,10 +24906,10 @@ ahw_inspect_gates = {
 			set_country_flag = ahw_insp_18
 			if = {
 				limit = { has_country_flag = ahw_first_18 }
-				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
+				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.10 }
 			}
 			else = {
-				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
 			}
 		}
 		log = "AHW gate of pair 18 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
@@ -24923,10 +24923,10 @@ ahw_inspect_gates = {
 			set_country_flag = ahw_insp_19
 			if = {
 				limit = { has_country_flag = ahw_first_19 }
-				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
+				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.10 }
 			}
 			else = {
-				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
 			}
 		}
 		log = "AHW gate of pair 19 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
@@ -24940,10 +24940,10 @@ ahw_inspect_gates = {
 			set_country_flag = ahw_insp_20
 			if = {
 				limit = { has_country_flag = ahw_first_20 }
-				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
+				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.10 }
 			}
 			else = {
-				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
 			}
 		}
 		log = "AHW gate of pair 20 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
@@ -24957,10 +24957,10 @@ ahw_inspect_gates = {
 			set_country_flag = ahw_insp_21
 			if = {
 				limit = { has_country_flag = ahw_first_21 }
-				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
+				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.10 }
 			}
 			else = {
-				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
 			}
 		}
 		log = "AHW gate of pair 21 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
@@ -24974,10 +24974,10 @@ ahw_inspect_gates = {
 			set_country_flag = ahw_insp_22
 			if = {
 				limit = { has_country_flag = ahw_first_22 }
-				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
+				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.10 }
 			}
 			else = {
-				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
 			}
 		}
 		log = "AHW gate of pair 22 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
@@ -24991,10 +24991,10 @@ ahw_inspect_gates = {
 			set_country_flag = ahw_insp_23
 			if = {
 				limit = { has_country_flag = ahw_first_23 }
-				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
+				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.10 }
 			}
 			else = {
-				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
 			}
 		}
 		log = "AHW gate of pair 23 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
@@ -25008,10 +25008,10 @@ ahw_inspect_gates = {
 			set_country_flag = ahw_insp_24
 			if = {
 				limit = { has_country_flag = ahw_first_24 }
-				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
+				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.10 }
 			}
 			else = {
-				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
 			}
 		}
 		log = "AHW gate of pair 24 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
@@ -25025,10 +25025,10 @@ ahw_inspect_gates = {
 			set_country_flag = ahw_insp_25
 			if = {
 				limit = { has_country_flag = ahw_first_25 }
-				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
+				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.10 }
 			}
 			else = {
-				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
 			}
 		}
 		log = "AHW gate of pair 25 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
@@ -25042,10 +25042,10 @@ ahw_inspect_gates = {
 			set_country_flag = ahw_insp_26
 			if = {
 				limit = { has_country_flag = ahw_first_26 }
-				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
+				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.10 }
 			}
 			else = {
-				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
 			}
 		}
 		log = "AHW gate of pair 26 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
@@ -25059,10 +25059,10 @@ ahw_inspect_gates = {
 			set_country_flag = ahw_insp_27
 			if = {
 				limit = { has_country_flag = ahw_first_27 }
-				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
+				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.10 }
 			}
 			else = {
-				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
 			}
 		}
 		log = "AHW gate of pair 27 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
@@ -25076,10 +25076,10 @@ ahw_inspect_gates = {
 			set_country_flag = ahw_insp_28
 			if = {
 				limit = { has_country_flag = ahw_first_28 }
-				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
+				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.10 }
 			}
 			else = {
-				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
 			}
 		}
 		log = "AHW gate of pair 28 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
@@ -25093,10 +25093,10 @@ ahw_inspect_gates = {
 			set_country_flag = ahw_insp_29
 			if = {
 				limit = { has_country_flag = ahw_first_29 }
-				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
+				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.10 }
 			}
 			else = {
-				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
 			}
 		}
 		log = "AHW gate of pair 29 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
@@ -25110,10 +25110,10 @@ ahw_inspect_gates = {
 			set_country_flag = ahw_insp_30
 			if = {
 				limit = { has_country_flag = ahw_first_30 }
-				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
+				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.10 }
 			}
 			else = {
-				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
 			}
 		}
 		log = "AHW gate of pair 30 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
@@ -25127,10 +25127,10 @@ ahw_inspect_gates = {
 			set_country_flag = ahw_insp_31
 			if = {
 				limit = { has_country_flag = ahw_first_31 }
-				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
+				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.10 }
 			}
 			else = {
-				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
 			}
 		}
 		log = "AHW gate of pair 31 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"
@@ -25144,10 +25144,10 @@ ahw_inspect_gates = {
 			set_country_flag = ahw_insp_32
 			if = {
 				limit = { has_country_flag = ahw_first_32 }
-				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
+				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.10 }
 			}
 			else = {
-				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }
+				ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }
 			}
 		}
 		log = "AHW gate of pair 32 inspected in \\[This.GetName] by \\[ahw_insp_country.GetName]"

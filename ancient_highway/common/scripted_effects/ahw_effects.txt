@@ -479,6 +479,8 @@ ahw_grant = {
 		ahw_grant_tech = { TECH = ahw_tech_gate_theory VAR = ahw_got_theory PROGRESS = $PROGRESS$ }
 		ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = $PROGRESS$ }
 		log = "AHW grant $FLAG$ ($PROGRESS$ of each tech) to \\[This.GetName]"
+		# 2026-11-20: travel techs researched before the study count now (an event: depth)
+		country_event = { id = ahw.68 }
 	}
 }
 
@@ -542,17 +544,18 @@ ahw_cap_check = {
 
 # this = a portal, event_target:ahw_insp_country = the country (ahw_inspect_centre, after a
 # centre study): Gate
-# Theory +7 % for a centre of a kind the country has not seen, else +5 % (design 2026-11-06).
+# Theory +10 % for a centre of a kind the country has not seen, else +7 % (design 2026-11-06;
+# raised from 7/5 on 2026-11-20).
 ahw_centre_grant = {
 	if = {
 		limit = { ahw_kind_seen = { WHO = event_target:ahw_insp_country } }
 		event_target:ahw_insp_country = {
-			ahw_grant_tech = { TECH = ahw_tech_gate_theory VAR = ahw_got_theory PROGRESS = 0.05 }
+			ahw_grant_tech = { TECH = ahw_tech_gate_theory VAR = ahw_got_theory PROGRESS = 0.07 }
 		}
 	}
 	else = {
 		event_target:ahw_insp_country = {
-			ahw_grant_tech = { TECH = ahw_tech_gate_theory VAR = ahw_got_theory PROGRESS = 0.07 }
+			ahw_grant_tech = { TECH = ahw_tech_gate_theory VAR = ahw_got_theory PROGRESS = 0.10 }
 		}
 	}
 	ahw_see_kind = { WHO = event_target:ahw_insp_country }
@@ -820,5 +823,95 @@ ahw_story_entered = {
 		}
 		set_star_flag = ahw_toured@event_target:ahw_insp_country
 		event_target:ahw_insp_country = { country_event = { id = ahw_story.10 } }
+	}
+}
+
+# this = a country that has studied a gate (ahw.68). +10 % of both gate techs for each vanilla
+# travel tech it holds, once per tech (flag ahw_travel_<tech>; user, 2026-11-20: a bonus the AI
+# gets without exploring). Mid-game techs on purpose: the ring matters little early, and the
+# grants raise the AI weight (ahw_tech.txt). Within the 80 % cap of all grants.
+ahw_travel_grants = {
+	if = {
+		limit = { has_technology = tech_hyper_drive_2 NOT = { has_country_flag = ahw_travel_tech_hyper_drive_2 } }
+		set_country_flag = ahw_travel_tech_hyper_drive_2
+		ahw_grant_tech = { TECH = ahw_tech_gate_theory VAR = ahw_got_theory PROGRESS = 0.10 }
+		ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.10 }
+		log = "AHW travel tech tech_hyper_drive_2 feeds the gate techs of \\[This.GetName]"
+	}
+	if = {
+		limit = { has_technology = tech_hyper_relays NOT = { has_country_flag = ahw_travel_tech_hyper_relays } }
+		set_country_flag = ahw_travel_tech_hyper_relays
+		ahw_grant_tech = { TECH = ahw_tech_gate_theory VAR = ahw_got_theory PROGRESS = 0.10 }
+		ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.10 }
+		log = "AHW travel tech tech_hyper_relays feeds the gate techs of \\[This.GetName]"
+	}
+	if = {
+		limit = { has_technology = tech_hyper_drive_3 NOT = { has_country_flag = ahw_travel_tech_hyper_drive_3 } }
+		set_country_flag = ahw_travel_tech_hyper_drive_3
+		ahw_grant_tech = { TECH = ahw_tech_gate_theory VAR = ahw_got_theory PROGRESS = 0.10 }
+		ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.10 }
+		log = "AHW travel tech tech_hyper_drive_3 feeds the gate techs of \\[This.GetName]"
+	}
+	if = {
+		limit = { has_technology = tech_wormhole_stabilization NOT = { has_country_flag = ahw_travel_tech_wormhole_stabilization } }
+		set_country_flag = ahw_travel_tech_wormhole_stabilization
+		ahw_grant_tech = { TECH = ahw_tech_gate_theory VAR = ahw_got_theory PROGRESS = 0.10 }
+		ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.10 }
+		log = "AHW travel tech tech_wormhole_stabilization feeds the gate techs of \\[This.GetName]"
+	}
+	if = {
+		limit = { has_technology = tech_gateway_activation NOT = { has_country_flag = ahw_travel_tech_gateway_activation } }
+		set_country_flag = ahw_travel_tech_gateway_activation
+		ahw_grant_tech = { TECH = ahw_tech_gate_theory VAR = ahw_got_theory PROGRESS = 0.10 }
+		ahw_grant_tech = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.10 }
+		log = "AHW travel tech tech_gateway_activation feeds the gate techs of \\[This.GetName]"
+	}
+}
+
+# No scope (yearly, ahw.80). Learning from others (user, 2026-11-20): each country that has
+# studied a gate gets, per gate tech it lacks, +2 % for each close friend (ahw_close_friend)
+# holding it and +0.5 % for each other country it has communications with that does - at most
+# +3 % a year, so it cannot snowball.
+ahw_diffuse_all = {
+	every_country = {
+		limit = { is_country_type = default has_country_flag = ahw_highway_studied }
+		save_event_target_as = ahw_learner
+		ahw_diffuse = { TECH = ahw_tech_gate_theory VAR = ahw_got_theory }
+		ahw_diffuse = { TECH = ahw_tech_gate_construction VAR = ahw_got_construction }
+	}
+}
+
+# this = event_target:ahw_learner (ahw_diffuse_all): one gate tech.
+ahw_diffuse = {
+	if = {
+		limit = { NOT = { has_technology = $TECH$ } }
+		set_variable = { which = ahw_d value = 0 }
+		every_country = {
+			limit = {
+				is_country_type = default
+				has_technology = $TECH$
+				NOT = { is_same_value = event_target:ahw_learner }
+				event_target:ahw_learner = { has_communications = prev }
+			}
+			save_event_target_as = ahw_teacher
+			event_target:ahw_learner = {
+				if = {
+					limit = { ahw_close_friend = { WHO = event_target:ahw_teacher } }
+					change_variable = { which = ahw_d value = 0.02 }
+				}
+				else = {
+					change_variable = { which = ahw_d value = 0.005 }
+				}
+			}
+		}
+		if = {
+			limit = { check_variable = { which = ahw_d value > 0.03 } }
+			set_variable = { which = ahw_d value = 0.03 }
+		}
+		if = {
+			limit = { check_variable = { which = ahw_d value > 0 } }
+			ahw_grant_tech = { TECH = $TECH$ VAR = $VAR$ PROGRESS = ahw_d }
+			log = "AHW \\[This.GetName] learns from others: +\\[This.ahw_d] of $TECH$"
+		}
 	}
 }

@@ -178,10 +178,10 @@ The connections between the ring and the regular galaxy are special, not hyperla
   at once. Once a tech's grants reach the cap (or it is researched), its open studies are
   withdrawn and no new ones offered.
   - **Engineering: a gate somebody else repaired**, at either end (in its portal or at its exit
-    in the ring). **+7 %** when the study was offered on the country's first entry into that
-    system, else **+5 %**. Once per gate; never for a gate the country repaired itself.
-  - **Physics: other centres.** A foreign portal (its anchor not ours): **+7 %** when its centre
-    is a kind the empire has never seen before, **+5 %** when it has (user, 2026-11-06: the
+    in the ring). **+10 %** when the study was offered on the country's first entry into that
+    system, else **+7 %** (raised from 7/5, user 2026-11-20: players explore, the AI hardly). Once per gate; never for a gate the country repaired itself.
+  - **Physics: other centres.** A foreign portal (its anchor not ours): **+10 %** when its centre
+    is a kind the empire has never seen before, **+7 %** when it has (user, 2026-11-06: the
     higher grant is for the first sight of a kind, not for a first entry into the system). Once
     per portal. Four kinds exist (black hole, pulsar, toxoid, and the neutron star in portals
     only); the own portal's kind counts as seen. Ring centres cannot feed physics: no ship
@@ -191,9 +191,22 @@ The connections between the ring and the regular galaxy are special, not hyperla
     in 17 years: every study went to Theory, and Construction stayed at the study's 15 %. Now such
     a portal offers one study, for the tech granted less so far (Theory wins a tie; a closed tech
     gives way to the other). Theory gets the centre study above, Construction a **broken-gate
-    study** (`AHW_INSPECT_BROKEN_*`, 15 days, **+5 %**). A repaired gate keeps its own, bigger
-    study (+7 %/+5 %), so seeing a working gate still pays more (user: "keep the bigger boost when
+    study** (`AHW_INSPECT_BROKEN_*`, 15 days, **+7 %**). A repaired gate keeps its own, bigger
+    study (+10 %/+7 %), so seeing a working gate still pays more (user: "keep the bigger boost when
     it is already repaired").
+  **Without exploring (user, 2026-11-20)** — the AI rarely enters foreign portals, so two
+  sources every empire gets, the player too:
+  - **Travel techs**: +10 % of both gate techs for each of `tech_hyper_drive_2`,
+    `tech_hyper_relays` (Overlord), `tech_hyper_drive_3`, `tech_wormhole_stabilization`,
+    `tech_gateway_activation` — at the study for those already held (`ahw.68`), else when
+    researched (`ahw.63`). Mid-game techs on purpose: the ring matters little early (user: no AI
+    on the ring by 2226 is fine).
+  - **Learning from others** (yearly, `ahw.80`): per gate tech lacking, +2 % per close friend
+    holding it, +0.5 % per other country in communications that does, **at most +3 % a year**
+    (user: close friends more, but no snowball).
+  - **The AI weight follows the grants** (user, 2026-11-20): ×1 below 30 %, ×3 from 30 %, ×6
+    from 50 %, ×12 from 70 %; ×4 with the other gate tech; the need factors on top
+    (`ahw_tech.txt`). The AI buys the tech once it is cheap, not early at full price.
   - **Cap: all grants together give at most 80 % of each tech** (user, 2026-11-06), so a
     study-only empire can still earn up to 65 % by exploring.
   They meet when an empire studies its own gate and a nomad then repairs it, or when it gives up
@@ -312,7 +325,8 @@ from another. Available: `relative_power`, `is_rival`, `any_neighbor_country`, `
   reachability trigger exists. **Built for the techs (2026-11-18)**: base `factor = 3` kept low
   (user: no empire needs the highway at year ~13, more likely around year 30–40), ×3 with a
   friend out of reach (`ahw_far_friend`), ×5 more when also threatened (`ahw_threatened`); with
-  the engine's ×1.5 for rare techs: 4.5 / 13.5 / 67.5. Not "owns a broken anchor": only an
+  the engine's ×1.5 for rare techs: 4.5 / 13.5 / 67.5. **Replaced 2026-11-20**: base ×1, steps by
+  the grants received ("Access", "Without exploring"); the need factors kept. Not "owns a broken anchor": only an
   anchor's owner studies, so that would raise the base for nearly everyone. The repair upgrade needs no weight: the AI repairs within 3–4 months of the
   techs (run 44).
 - **Ally under attack**: when a close friend that is not a neighbour is at war, an event tells

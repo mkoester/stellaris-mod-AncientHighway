@@ -1066,7 +1066,7 @@ def inspection():
     event_target:ahw_insp_country (or ahw_repairer) the country.
     Flags per pair n: ahw_entered_n (a ship of ours has entered a system with an end of gate n),
     ahw_eng_offered_n / ahw_insp_n (gate study offered / done), ahw_first_n (offered on the first
-    entry: +7 %), ahw_repaired_n (we repaired it: no study), ahw_phys_offered_n / ahw_phys_n
+    entry: +10 %), ahw_repaired_n (we repaired it: no study), ahw_phys_offered_n / ahw_phys_n
     (centre study of portal n offered / done), ahw_bg_offered_n / ahw_bg_n (broken-gate study of
     portal n offered / done; 2026-11-19: a foreign portal with a broken gate gives one study, the
     centre's or the broken gate's, for the tech granted less so far - ahw.60)."""
@@ -1101,10 +1101,10 @@ def inspection():
 			set_country_flag = ahw_insp_{n}
 			if = {{
 				limit = {{ has_country_flag = ahw_first_{n} }}
-				ahw_grant_tech = {{ TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }}
+				ahw_grant_tech = {{ TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.10 }}
 			}}
 			else = {{
-				ahw_grant_tech = {{ TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }}
+				ahw_grant_tech = {{ TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }}
 			}}
 		}}
 		log = "AHW gate of pair {n} inspected in \\\\[This.GetName] by \\\\[ahw_insp_country.GetName]"
@@ -1148,7 +1148,7 @@ def inspection():
 		}}
 		event_target:ahw_insp_country = {{
 			set_country_flag = ahw_bg_{n}
-			ahw_grant_tech = {{ TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.05 }}
+			ahw_grant_tech = {{ TECH = ahw_tech_gate_construction VAR = ahw_got_construction PROGRESS = 0.07 }}
 		}}
 		log = "AHW broken gate of pair {n} inspected in \\\\[This.GetName] by \\\\[ahw_insp_country.GetName]"
 	}}""")
@@ -1164,7 +1164,7 @@ def inspection():
     return f"""
 # this = a portal or ring node a ship (fleet event_target:ahw_finder) of event_target:ahw_insp_country
 # entered: offer a gate study for the repaired gates here that we did not repair and were not
-# offered yet (country flag ahw_offer_gate for the caller); +7 % if this is our first entry.
+# offered yet (country flag ahw_offer_gate for the caller); +10 % if this is our first entry.
 ahw_scan_gates = {{
 {j(scan)}
 }}
@@ -1198,12 +1198,12 @@ ahw_scan_broken = {{
 {j(scan_b)}
 }}
 
-# this = the portal of a finished broken-gate study: Gate Construction +5 %, once per portal.
+# this = the portal of a finished broken-gate study: Gate Construction +7 %, once per portal.
 ahw_inspect_broken = {{
 {j(broken)}
 }}
 
-# this = the system of a finished gate study: Gate Construction +5 % (+7 % if offered on our
+# this = the system of a finished gate study: Gate Construction +7 % (+10 % if offered on our
 # first entry) per gate here whose study was offered and not done, once per gate.
 ahw_inspect_gates = {{
 {j(gates)}

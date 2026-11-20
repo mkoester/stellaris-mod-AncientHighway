@@ -19,17 +19,20 @@ ahw_tech_gate_theory = {
 		has_country_flag = ahw_highway_studied
 	}
 	weight = 100
-	# run 43: without an ai_weight no AI empire researched a gate tech in 13 years after its
-	# study (seven had the option). Vanilla's priorities are 1.25-2, must-haves 100; 3 is a
-	# clear preference, not a rush (tunable). The base stays low on purpose (user, 2026-11-18:
-	# no empire needs the highway at year ~13, more likely around year 30-40); need raises it
-	# (design.md, "Threat-based AI weights"). The engine adds x1.5 for a rare tech
-	# (AI_TECHNOLOGY_RARE_WEIGHT_MULT): 4.5 studied only, 13.5 with a friend out of reach, 67.5
-	# also threatened. Not "owns a broken anchor": only an anchor's owner studies, so that would
-	# be true for nearly every empire with the option - a raised base. The user's campaign
-	# (2026-11-18): 3 alone picked by one of 13 empires in up to 12 years.
+	# run 43: without an ai_weight no AI empire researched a gate tech (vanilla's priorities are
+	# 1.25-2, must-haves 100). A flat 3 (2026-11-18) gave the first tech 4-6 years later and no
+	# empire both in 26 (the user's campaign). Since 2026-11-20 (user) the weight grows with what
+	# the grants have paid off (the country variable of this tech's grants: study, inspections,
+	# travel techs, others' knowledge), so the AI does not buy it early at full price: x1 below
+	# 30 %, x3 from 30 %, x6 from 50 %, x12 from 70 % (cap 80 %). x4 with the other gate tech: one
+	# alone is useless (2226: seven empires with one each). Need stays on top: x3 with a friend
+	# out of reach, x5 more if also threatened. The engine adds x1.5 for rare techs.
 	ai_weight = {
-		factor = 3
+		factor = 1
+		modifier = { factor = 3 check_variable = { which = ahw_got_theory value >= 0.3 } }
+		modifier = { factor = 2 check_variable = { which = ahw_got_theory value >= 0.5 } }
+		modifier = { factor = 2 check_variable = { which = ahw_got_theory value >= 0.7 } }
+		modifier = { factor = 4 has_technology = ahw_tech_gate_construction }
 		modifier = { factor = 3 ahw_far_friend = yes }
 		modifier = { factor = 5 ahw_threatened = yes ahw_far_friend = yes }
 	}
@@ -48,17 +51,20 @@ ahw_tech_gate_construction = {
 		has_country_flag = ahw_highway_studied
 	}
 	weight = 100
-	# run 43: without an ai_weight no AI empire researched a gate tech in 13 years after its
-	# study (seven had the option). Vanilla's priorities are 1.25-2, must-haves 100; 3 is a
-	# clear preference, not a rush (tunable). The base stays low on purpose (user, 2026-11-18:
-	# no empire needs the highway at year ~13, more likely around year 30-40); need raises it
-	# (design.md, "Threat-based AI weights"). The engine adds x1.5 for a rare tech
-	# (AI_TECHNOLOGY_RARE_WEIGHT_MULT): 4.5 studied only, 13.5 with a friend out of reach, 67.5
-	# also threatened. Not "owns a broken anchor": only an anchor's owner studies, so that would
-	# be true for nearly every empire with the option - a raised base. The user's campaign
-	# (2026-11-18): 3 alone picked by one of 13 empires in up to 12 years.
+	# run 43: without an ai_weight no AI empire researched a gate tech (vanilla's priorities are
+	# 1.25-2, must-haves 100). A flat 3 (2026-11-18) gave the first tech 4-6 years later and no
+	# empire both in 26 (the user's campaign). Since 2026-11-20 (user) the weight grows with what
+	# the grants have paid off (the country variable of this tech's grants: study, inspections,
+	# travel techs, others' knowledge), so the AI does not buy it early at full price: x1 below
+	# 30 %, x3 from 30 %, x6 from 50 %, x12 from 70 % (cap 80 %). x4 with the other gate tech: one
+	# alone is useless (2226: seven empires with one each). Need stays on top: x3 with a friend
+	# out of reach, x5 more if also threatened. The engine adds x1.5 for rare techs.
 	ai_weight = {
-		factor = 3
+		factor = 1
+		modifier = { factor = 3 check_variable = { which = ahw_got_construction value >= 0.3 } }
+		modifier = { factor = 2 check_variable = { which = ahw_got_construction value >= 0.5 } }
+		modifier = { factor = 2 check_variable = { which = ahw_got_construction value >= 0.7 } }
+		modifier = { factor = 4 has_technology = ahw_tech_gate_theory }
 		modifier = { factor = 3 ahw_far_friend = yes }
 		modifier = { factor = 5 ahw_threatened = yes ahw_far_friend = yes }
 	}

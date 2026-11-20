@@ -55,8 +55,12 @@ The user's campaign replayed for a month with the instrumented study project (`9
   error. The documentation (`common/special_projects/documentation.txt`) names THIS = the ship,
   FROM = the location, PREV = the country. Why the ship is missing for an AI nomad is unknown.
   **Fix (same day)**: `on_success` keeps the ship path when THIS exists, else marks FROM's system
-  with PREV as the studier (`AHW study without a ship: …`), and logs all three scopes. Untested
-  in game: replay from `autosave_2226.07.01` again and look for that line.
+  with PREV as the studier (`AHW study without a ship: …`), and logs all three scopes.
+  **Fix confirmed** (second replay, same day): `this , from Ashkara 01, prev Roaming
+  Mirovandian`, then the study's grant (+0.15 of each tech) and `AHW study without a ship:
+  Ashkara 01 studied by Roaming Mirovandian on 2226.07.27`. Its only error.log line, `Unknown
+  property ahw_got_construction`, came from the first grant's log printing a total not yet set;
+  `ahw_grant_tech` now sets both totals up front.
 - **Travel grants**: no line, as expected — of the 20 countries that had studied, only the player
   and one AI empire (16777241) hold a travel tech (Hyper Drive II), and neither finished a tech in
   the month, so `on_tech_increased` (`ahw.63`) never ran for them. Every studied country still

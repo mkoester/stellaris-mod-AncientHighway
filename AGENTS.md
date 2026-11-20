@@ -50,9 +50,9 @@ not load. As of runs 40–43:
   found 2026-11-12: loading a save** — `docs/test-runs.md`, "Quick checks"); one unexplained contract cancel 12 days
   after acceptance (run 43, first try — `on_cancel` now logs the cause); the issue-contract menu
   appeared only months after console `communications` (run 40); an AI nomad's study completed
-  without effect (2026-11-19): its `on_success` ran with THIS (the ship) empty (replay
-  2026-11-20, `docs/test-runs.md`); now falls back to FROM's system and PREV, the fix untested in
-  game; AI nomads repairing on their own not seen yet; the express's stabilise cost (4000) is untested at the mid game;
+  without effect (2026-11-19): its `on_success` ran with THIS (the ship) empty; fixed
+  2026-11-20 by falling back to FROM's system and PREV, confirmed in a replay
+  (`docs/test-runs.md`); AI nomads repairing on their own not seen yet; the express's stabilise cost (4000) is untested at the mid game;
   a portal can sit behind a marauder empire (run 44, user).
 
 **Deferred**: run 31's part 2, the mod added to a running game (user, 2026-11-06: tested once
@@ -205,6 +205,9 @@ All findings go to `game.log`, lines starting `AHW`.
     not yet seen in game);
   - `give_technology` refuses a tech whose `potential` fails ("invalid technology"): set the
     potential's flag first (`ahw_debug.73`);
+  - a ship-scoped special project's `on_success` can run with THIS (the ship) empty — seen for an
+    AI nomad (2026-11-20); FROM (the location) and PREV (the country) were set: never rely on THIS
+    alone;
   - a special project's `cost` and `days_to_research` are exclusive (error.log at load); `cost`
     modifiers want a `desc`;
   - a megastructure upgrade finished by script (`upgrade_megastructure_to` + `finish_upgrade`)

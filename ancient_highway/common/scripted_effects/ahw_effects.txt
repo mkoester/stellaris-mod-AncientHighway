@@ -491,9 +491,15 @@ ahw_grant_tech = {
 	if = {
 		limit = { NOT = { has_technology = $TECH$ } }
 		# run 40: unset on the first grant ("Variable ... is not set" in error.log)
+		# 2026-11-20: both, since the log line below prints both ("Unknown property
+		# ahw_got_construction" at a country's first grant)
 		if = {
-			limit = { NOT = { is_variable_set = $VAR$ } }
-			set_variable = { which = $VAR$ value = 0 }
+			limit = { NOT = { is_variable_set = ahw_got_theory } }
+			set_variable = { which = ahw_got_theory value = 0 }
+		}
+		if = {
+			limit = { NOT = { is_variable_set = ahw_got_construction } }
+			set_variable = { which = ahw_got_construction value = 0 }
 		}
 		set_variable = { which = ahw_g value = 0.8 }
 		subtract_variable = { which = ahw_g value = $VAR$ }

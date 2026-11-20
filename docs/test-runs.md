@@ -45,6 +45,27 @@ each console line. Copy `logs/game.log` and `logs/error.log` before restarting.
    naming `ahw_got_` or `ai_weight` is a finding.
 6. error.log: nothing new naming `ahw_` beyond the known noise.
 
+## Replay: the AI nomad's study (2026-11-20, `autosave_2226.07.01` → `2226.08.02_replay`)
+
+The user's campaign replayed for a month with the instrumented study project (`9ffc058`) and
+`4835f95`. The autosave `2226.08.01` was overwritten by the replay.
+- **Cause found**: Roaming Mirovandian's `AHW_STUDY_PROJECT` completed on 2226.07.27, and its
+  `on_success` ran, but with THIS empty — `AHW study project done: this , owner , date
+  2226.07.27`. So `ship_event = { id = ahw.22 }` fired nothing: no `ahw.22 fired` line, no flag, no
+  error. The documentation (`common/special_projects/documentation.txt`) names THIS = the ship,
+  FROM = the location, PREV = the country. Why the ship is missing for an AI nomad is unknown.
+  **Fix (same day)**: `on_success` keeps the ship path when THIS exists, else marks FROM's system
+  with PREV as the studier (`AHW study without a ship: …`), and logs all three scopes. Untested
+  in game: replay from `autosave_2226.07.01` again and look for that line.
+- **Travel grants**: no line, as expected — of the 20 countries that had studied, only the player
+  and one AI empire (16777241) hold a travel tech (Hyper Drive II), and neither finished a tech in
+  the month, so `on_tech_increased` (`ahw.63`) never ran for them. Every studied country still
+  holds just the study's 15 % (the player 0.59 / 0.3). The yearly "learns from others" is due on
+  1 January.
+- **Owner loss**: all 22 gates at once on 2226.07.02 (the day after the load) and 07.15 (no load
+  near), each given back by `ahw.90`.
+- error.log: only the modifier-icon noise for `ahw_`.
+
 ## Observation: the user's campaign continued (2217.01–2226.08, read 2026-11-19)
 
 The same campaign (Roaming Cybergang, huge, 22 portals with an owned anchor), resumed with the

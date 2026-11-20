@@ -16,10 +16,28 @@ special_project = {
 	requirements = { shipclass_science_ship = 1 }
 
 	on_success = {
-		# 2026-11-19: an AI nomad completed this (autosave 2226.08.01) but ahw.22 left no trace -
-		# this line shows whether on_success runs and in which scope
-		log = "AHW study project done: this [This.GetName], owner [This.Owner.GetName], date [GetDate]"
-		ship_event = { id = ahw.22 }
+		# 2026-11-20 (replay of the user's campaign, 2226.07.27): for an AI nomad on_success runs
+		# with THIS empty, so ship_event = { id = ahw.22 } fired nothing. The documentation
+		# (common/special_projects/documentation.txt): THIS = the ship, FROM = the location (here
+		# the portal's star body), PREV = the country. Without a ship: FROM's system and PREV.
+		log = "AHW study project done on [GetDate]: this [This.GetName], from [From.GetName], prev [Prev.GetName]"
+		if = {
+			limit = { exists = this }
+			ship_event = { id = ahw.22 }
+		}
+		else_if = {
+			limit = { exists = from exists = prev }
+			prev = { save_event_target_as = ahw_studier }
+			from = {
+				solar_system = {
+					ahw_mark_studied = yes
+					log = "AHW study without a ship: [This.GetName] studied by [ahw_studier.GetName] on [GetDate]"
+				}
+			}
+		}
+		else = {
+			log = "AHW study project done on [GetDate] with neither a ship nor a location and country - not marked"
+		}
 	}
 }
 

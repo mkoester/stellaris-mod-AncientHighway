@@ -266,3 +266,16 @@ and check what stellaris lore exists outside the game
   - tech boni: alternate, but keep the bigger boost when it is already repaired
   - fragments: foreign portals + new reaches
   - reread: pop-ups only
+
+### Gate tech bonuses and the AI (2026-11-20)
+
+let's discuss 1
+
+- the player usually explores more than AI, we can expect them to do some projects to get the boost
+  + let's go from +5/+7% to +7/+10% for players
+- let's find another way to give some bonuses to the AI as well - expecting them to explore is not the way to go
+- I don't mind that by 2226 the AI is not yet on the ring - by that time the ring offers almost no benefit to empires anyway
+- can we increase the AI weight for the 2 techs proportional to the received bonus? I don't want the AI to research it early for a high tech cost when it is not even utilizing it
+
++ answers in the discussion:
+  - yes to all, both sources, close friends get a higher bonus (but the bonus should also not be too high, otherwise it would snowball too much)

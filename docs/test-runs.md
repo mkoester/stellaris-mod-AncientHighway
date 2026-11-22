@@ -36,6 +36,21 @@ The user's campaign with the count (`ahw.90` → `ahw_repair_watch`) and `ahw.26
   The game ran the pre-guard code (mod files load at start), so the guard is still unconfirmed.
 - Owner losses: 14 days with losses in 15 months.
 
+## Observation: two more years observed (2236.02–2238.01, read 2026-11-22)
+
+Same session, observer mode, after Share Ring Charts passed.
+- **No AI uses the ring**: three years after the first repair (Caedris 23, 2235.01) no fleet is in
+  a ring node or a repaired portal (`autosave_2238.01.01`), no `ahw_mapped@` flag exists, and the
+  yearly summaries list no ring entries. The ring is no shortcut by design, so shortest-path routing
+  should not pick it while the lanes are open — whether the AI takes it when borders are closed
+  (the point of the mod) is still untested: it needs a set-up game.
+- **Second late portal**: League of Vartivar IV, 2236.10.01 (Eshmet 45 off Icheon, worst lane
+  margin −5.4: beside a lane, the fallback placement).
+- Studies go on: Bloomwrought Wildscape of Tellon (2237.05.05) and Havariggan Purifiers (05.12),
+  both with their ship this time. Free Beldroan Battle Clans holds both techs since 2236, not yet
+  repaired (`ahw.26` waits 12 months).
+- error.log: nothing new naming `ahw_`.
+
 ## Test, run 46 (planned 2026-11-22: the repair counted by script, the AI's repair)
 
 In the campaign, from `2234.10.01_repair-stopped` (Thembolon's dropped repair is lost: the count

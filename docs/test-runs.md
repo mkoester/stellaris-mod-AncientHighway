@@ -24,8 +24,10 @@ Roaming Cybergang again, with `4835f95` and `5edaa00`. Read from the saves `2227
   `upgrade = { upgrade_to="ahw_gate_18" progress=29 halted=0 indefinitely_halted=no }`. Loading that
   autosave cleared the owner; afterwards the repair did not go on and the 300 alloys + 50 influence
   were not refunded (the user's report). With a loss every few weeks, a 90-day repair rarely
-  survives — for players too. Not yet seen: whether the `upgrade` block is dropped or left halted
-  once `ahw.90` has given the owner back.
+  survives — for players too. **Dropped, not halted**: a manual save right after the load
+  (`2234.10.01_repair-stopped`, no day passed) has the gate with neither `owner` nor `upgrade`, and
+  Thembolon's alloys and influence as before the load (102.6 / 504.7). The progress is gone; a
+  script must count the repair itself.
 - **The shipless study fix works unforced**: Nomadic Techaran Wayfarers' study on 2230.06.20 ran
   with THIS empty (`AHW study without a ship: Galvaas 61 …`) and got its grant; Priman Matrix's
   (2230.01.28) ran with its ship.

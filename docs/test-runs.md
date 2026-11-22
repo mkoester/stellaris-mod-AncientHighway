@@ -74,6 +74,9 @@ Same session, observer mode, after Share Ring Charts passed.
   close friends (`2 ring nodes from Free Beldroan Battle Clans to Great Model-16 Pact`, `… to
   Havariggan Allied Stars`) and Share Ring Charts — 4 nodes from the Galactic Community to every
   member (1 or 2 to those that had some). Both chart paths now seen in a real game.
+- **2241**: still civilian only — Haddam Harmony 4 entries (5 nodes), Free Beldroan Battle Clans 2
+  (5 nodes); the yearly sharing passed the new nodes on (2 to each member). On 2241.07.01 `ahw.20`
+  handed all 26 gates back before the daily watch did (as on 2225.04.01). error.log: nothing new.
 
 ## Test, run 46 (planned 2026-11-22: the repair counted by script, the AI's repair)
 

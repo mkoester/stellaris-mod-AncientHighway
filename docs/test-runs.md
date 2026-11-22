@@ -96,6 +96,16 @@ Same session, observer mode, after Share Ring Charts passed.
   Wildscape of Tellon (Ashkara 04, Hethra 73), Havariggan Purifiers (Dovhar 31); twelve gates
   repaired. Ring entries still civilian only (Haddam Harmony 5, Free Beldroan Battle Clans 4; 10
   and 9 nodes charted of 88).
+- **2244**: Havariggan Purifiers' repair started by `ahw.26` (Caedris 21, paid 2244.09.01, dropped
+  09.29, counted to 12.01) — the script path's second use; Alliance of Tarassian Systems started its
+  own (Galvaas 63, 12.06). Thirteen gates repaired. A third empire enters the ring (Slerpanoran
+  Hegemony, 1 civilian); still no military entry. Every one of the 30 countries holds the same 15
+  chart flags (the Community's sharing evens them out). **The console grant meant for Free
+  Beldroan Battle Clans landed on Roaming Cybergang**: `autosave_2245.01.01` has all 88 ring nodes in
+  Roaming Cybergang's `visited_objects`, Free Beldroan 16 — the `effect` ran with the player's
+  empire as root (the `play` had not taken). League of Vartivar IV (74) also lists all 88, as every
+  non-default country does — presumably kept from before it became a regular empire.
+  error.log: nothing new.
 
 ## Test, run 46 (planned 2026-11-22: the repair counted by script, the AI's repair)
 

@@ -243,6 +243,11 @@ All findings go to `game.log`, lines starting `AHW`.
   - an upgrade's button reads a disabled "Complete" while the megastructure has no owner.
   - an owner loss drops an upgrade in progress — the `upgrade` block and its progress —, without a
     refund (2026-11-22, `docs/test-runs.md`).
+  - a megastructure's `ai_weight` defaults to 100 (`common/megastructures/99_README_MEGASTRUCTURES.txt`;
+    vanilla's gateway: 5) — a missing one does not stop the AI;
+  - starting an upgrade fires no `on_megastructure_build_start` (the dashboard's feed mod logged
+    nothing when the user started a gate repair as Thembolon, 2026-11-22); watch `is_upgrading`
+    (megastructure scope) instead, as `ahw_repair_watch` does.
 - **Timings are from mkDell** (as old as the base game; acceptable there is acceptable for
   players). **Multiplayer**: every machine runs the same script in lockstep, so the build comes
   out identical as long as nothing player-local decides it (untested in MP).

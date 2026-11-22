@@ -66,6 +66,14 @@ Same session, observer mode, after Share Ring Charts passed.
   started repairs before too and lost them to owner losses unseen between monthly saves. The user
   keeps the 600 reserve for `ahw.26` (2026-11-22): the AI pays the cost on its own when it can.
   Still no ring node charted; error.log nothing naming `ahw_`.
+- **2240 — the first ring use**: Slerpanoran Hegemony repaired Dovhar 35 the same way (seen
+  2240.01.12, dropped 02.30, counted to 04.12; nine gates). The yearly summary of 2241.01.01:
+  `ring Haddam Harmony: 3 nodes charted, entries this year 0 military, 5 civilian`, `ring Free
+  Beldroan Battle Clans: 2 nodes charted, … 0 military, 3 civilian` — **AI civilian ships (science
+  ships exploring, presumably) enter the ring; no military fleet yet.** Then the sharing ran:
+  close friends (`2 ring nodes from Free Beldroan Battle Clans to Great Model-16 Pact`, `… to
+  Havariggan Allied Stars`) and Share Ring Charts — 4 nodes from the Galactic Community to every
+  member (1 or 2 to those that had some). Both chart paths now seen in a real game.
 
 ## Test, run 46 (planned 2026-11-22: the repair counted by script, the AI's repair)
 

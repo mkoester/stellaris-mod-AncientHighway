@@ -143,6 +143,23 @@ Same session, observer mode, after Share Ring Charts passed.
   open: whether the AI sends help this way in a war. Civilian entries: Roaming Cybergang 32, Haddam
   Harmony and Slerpanoran Hegemony 7, six more empires 1–4. Mandate of Evari started a repair
   (Furon 51, 2248.12.20). error.log: nothing new.
+- **2249 — war fleets routed through the highway** (`autosave_2249.12.01`, `2250.01.01`; six wars):
+  - **An attack through the enemy's own gate**: Slerpanoran Hegemony (at war with you and Pact of
+    Fellnoll against Havariggan Purifiers) sends fleet 3638 (military power 923) from its anchor
+    Etsceron through its portal Dovhar 35 to Node 88-34 and straight into **Havariggan Purifiers'
+    gate (pair 1)**, Dovhar 31, to Minokh — the Purifiers' anchor (arriving 2251.05.24). Pairs 1
+    and 26 share Node 88-34 as exit, so the two portals are one ring jump apart; the Purifiers had
+    not sealed theirs. This is what the seal is for — and a shortcut the design did not intend
+    (shared exit nodes; `docs/design.md`: "not a shortcut").
+  - NEX Core (at war with Pelx-Cradonian Unity and Sakyt Consumer Products; its yearly line `3
+    military`) moves fleet 25 (722) along Nodes 88-78 to 88-75 and through pair 8's gate
+    (`ahw_portal_6_1`) on to Pennek (arrival 2252.05.13; whose system Pennek is, not read).
+  - **Non-empire fleets use it too**: the Voidworms (space fauna, 1865) from Node 88-74 through
+    pair 20's portal; a Caravaneer fleet (6881) between portals 3_3 and 3_4 via Nodes 88-36/37; the
+    Champions Forge enclave (15704) in portal 3_3. `country_can_use` lets them pass — open whether
+    they should.
+  Two more gates repaired (Mandate of Evari, Furon 51; Qvagh State, Caedris 22): twenty-one.
+  League of Vartivar IV studied its late portal. error.log: nothing new.
 
 ## Test, run 46 (planned 2026-11-22: the repair counted by script, the AI's repair)
 

@@ -117,6 +117,15 @@ Same session, observer mode, after Share Ring Charts passed.
   repaired it. A story fragment (5 of 12) for Roaming Cybergang on 2245.06.29, while the user
   played it. Free Beldroan still knows 22 of 88 nodes: the redone console grant did not reach it.
   error.log: nothing new.
+- **2246 — the whole ring known to the Community**: Roaming Cybergang held all 88 chart flags by
+  1 January (`ring Roaming Cybergang: 88 nodes charted`; the console line with `ahw_mapped@root`,
+  run on the player's empire). Its close friends got 64–67 nodes, then Share Ring Charts gave every
+  member 65–67: at `autosave_2247.01.01` all 30 Community members hold 88 chart flags and 88 visited
+  ring nodes; Havariggan Purifiers (not a member) 1. From 2247 every member can plot a route along
+  the whole ring — the condition for watching military use. 2246 itself: civilian only (Roaming
+  Cybergang 23, Haddam Harmony 9, Slerpanoran Hegemony 8, Free Beldroan Battle Clans 4); Giroan Star
+  Regime repaired Galvaas 64 and 61 (counted): seventeen gates. A broken-gate inspection by a nomad
+  (Nomadic Techaran Wayfarers, pair 4). error.log: nothing new.
 
 ## Test, run 46 (planned 2026-11-22: the repair counted by script, the AI's repair)
 

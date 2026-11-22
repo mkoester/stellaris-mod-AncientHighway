@@ -29,13 +29,22 @@ ahw_link_1 = {
 	country_can_use = {
 		OR = {
 			is_country_type = default
-			is_country_type = fallen_empire
-			is_country_type = awakened_fallen_empire
 			is_country_type = caravaneer_home
 			is_country_type = caravaneer_fleet
 			is_country_type = enclave
 			is_country_type = mindwarden_enclave
 			is_country_type = enclave_mercenary
+			AND = {
+				mid_game_years_passed >= 0
+				OR = {
+					is_country_type = fallen_empire
+					is_country_type = awakened_fallen_empire
+					is_country_type = dormant_marauders
+					is_country_type = awakened_marauders
+					is_country_type = ruined_marauders
+					is_country_type = marauder_raiders
+				}
+			}
 		}
 		custom_tooltip = {
 			fail_text = AHW_GATE_SEALED
@@ -79,13 +88,22 @@ ahw_link_2 = {
 	country_can_use = {
 		OR = {
 			is_country_type = default
-			is_country_type = fallen_empire
-			is_country_type = awakened_fallen_empire
 			is_country_type = caravaneer_home
 			is_country_type = caravaneer_fleet
 			is_country_type = enclave
 			is_country_type = mindwarden_enclave
 			is_country_type = enclave_mercenary
+			AND = {
+				mid_game_years_passed >= 0
+				OR = {
+					is_country_type = fallen_empire
+					is_country_type = awakened_fallen_empire
+					is_country_type = dormant_marauders
+					is_country_type = awakened_marauders
+					is_country_type = ruined_marauders
+					is_country_type = marauder_raiders
+				}
+			}
 		}
 		custom_tooltip = {
 			fail_text = AHW_GATE_SEALED
@@ -129,13 +147,22 @@ ahw_link_3 = {
 	country_can_use = {
 		OR = {
 			is_country_type = default
-			is_country_type = fallen_empire
-			is_country_type = awakened_fallen_empire
 			is_country_type = caravaneer_home
 			is_country_type = caravaneer_fleet
 			is_country_type = enclave
 			is_country_type = mindwarden_enclave
 			is_country_type = enclave_mercenary
+			AND = {
+				mid_game_years_passed >= 0
+				OR = {
+					is_country_type = fallen_empire
+					is_country_type = awakened_fallen_empire
+					is_country_type = dormant_marauders
+					is_country_type = awakened_marauders
+					is_country_type = ruined_marauders
+					is_country_type = marauder_raiders
+				}
+			}
 		}
 		custom_tooltip = {
 			fail_text = AHW_GATE_SEALED
@@ -179,13 +206,22 @@ ahw_link_4 = {
 	country_can_use = {
 		OR = {
 			is_country_type = default
-			is_country_type = fallen_empire
-			is_country_type = awakened_fallen_empire
 			is_country_type = caravaneer_home
 			is_country_type = caravaneer_fleet
 			is_country_type = enclave
 			is_country_type = mindwarden_enclave
 			is_country_type = enclave_mercenary
+			AND = {
+				mid_game_years_passed >= 0
+				OR = {
+					is_country_type = fallen_empire
+					is_country_type = awakened_fallen_empire
+					is_country_type = dormant_marauders
+					is_country_type = awakened_marauders
+					is_country_type = ruined_marauders
+					is_country_type = marauder_raiders
+				}
+			}
 		}
 		custom_tooltip = {
 			fail_text = AHW_GATE_SEALED
@@ -229,13 +265,22 @@ ahw_link_5 = {
 	country_can_use = {
 		OR = {
 			is_country_type = default
-			is_country_type = fallen_empire
-			is_country_type = awakened_fallen_empire
 			is_country_type = caravaneer_home
 			is_country_type = caravaneer_fleet
 			is_country_type = enclave
 			is_country_type = mindwarden_enclave
 			is_country_type = enclave_mercenary
+			AND = {
+				mid_game_years_passed >= 0
+				OR = {
+					is_country_type = fallen_empire
+					is_country_type = awakened_fallen_empire
+					is_country_type = dormant_marauders
+					is_country_type = awakened_marauders
+					is_country_type = ruined_marauders
+					is_country_type = marauder_raiders
+				}
+			}
 		}
 		custom_tooltip = {
 			fail_text = AHW_GATE_SEALED
@@ -279,13 +324,22 @@ ahw_link_6 = {
 	country_can_use = {
 		OR = {
 			is_country_type = default
-			is_country_type = fallen_empire
-			is_country_type = awakened_fallen_empire
 			is_country_type = caravaneer_home
 			is_country_type = caravaneer_fleet
 			is_country_type = enclave
 			is_country_type = mindwarden_enclave
 			is_country_type = enclave_mercenary
+			AND = {
+				mid_game_years_passed >= 0
+				OR = {
+					is_country_type = fallen_empire
+					is_country_type = awakened_fallen_empire
+					is_country_type = dormant_marauders
+					is_country_type = awakened_marauders
+					is_country_type = ruined_marauders
+					is_country_type = marauder_raiders
+				}
+			}
 		}
 		custom_tooltip = {
 			fail_text = AHW_GATE_SEALED
@@ -329,13 +383,22 @@ ahw_link_7 = {
 	country_can_use = {
 		OR = {
 			is_country_type = default
-			is_country_type = fallen_empire
-			is_country_type = awakened_fallen_empire
 			is_country_type = caravaneer_home
 			is_country_type = caravaneer_fleet
 			is_country_type = enclave
 			is_country_type = mindwarden_enclave
 			is_country_type = enclave_mercenary
+			AND = {
+				mid_game_years_passed >= 0
+				OR = {
+					is_country_type = fallen_empire
+					is_country_type = awakened_fallen_empire
+					is_country_type = dormant_marauders
+					is_country_type = awakened_marauders
+					is_country_type = ruined_marauders
+					is_country_type = marauder_raiders
+				}
+			}
 		}
 		custom_tooltip = {
 			fail_text = AHW_GATE_SEALED
@@ -379,13 +442,22 @@ ahw_link_8 = {
 	country_can_use = {
 		OR = {
 			is_country_type = default
-			is_country_type = fallen_empire
-			is_country_type = awakened_fallen_empire
 			is_country_type = caravaneer_home
 			is_country_type = caravaneer_fleet
 			is_country_type = enclave
 			is_country_type = mindwarden_enclave
 			is_country_type = enclave_mercenary
+			AND = {
+				mid_game_years_passed >= 0
+				OR = {
+					is_country_type = fallen_empire
+					is_country_type = awakened_fallen_empire
+					is_country_type = dormant_marauders
+					is_country_type = awakened_marauders
+					is_country_type = ruined_marauders
+					is_country_type = marauder_raiders
+				}
+			}
 		}
 		custom_tooltip = {
 			fail_text = AHW_GATE_SEALED
@@ -429,13 +501,22 @@ ahw_link_9 = {
 	country_can_use = {
 		OR = {
 			is_country_type = default
-			is_country_type = fallen_empire
-			is_country_type = awakened_fallen_empire
 			is_country_type = caravaneer_home
 			is_country_type = caravaneer_fleet
 			is_country_type = enclave
 			is_country_type = mindwarden_enclave
 			is_country_type = enclave_mercenary
+			AND = {
+				mid_game_years_passed >= 0
+				OR = {
+					is_country_type = fallen_empire
+					is_country_type = awakened_fallen_empire
+					is_country_type = dormant_marauders
+					is_country_type = awakened_marauders
+					is_country_type = ruined_marauders
+					is_country_type = marauder_raiders
+				}
+			}
 		}
 		custom_tooltip = {
 			fail_text = AHW_GATE_SEALED
@@ -479,13 +560,22 @@ ahw_link_10 = {
 	country_can_use = {
 		OR = {
 			is_country_type = default
-			is_country_type = fallen_empire
-			is_country_type = awakened_fallen_empire
 			is_country_type = caravaneer_home
 			is_country_type = caravaneer_fleet
 			is_country_type = enclave
 			is_country_type = mindwarden_enclave
 			is_country_type = enclave_mercenary
+			AND = {
+				mid_game_years_passed >= 0
+				OR = {
+					is_country_type = fallen_empire
+					is_country_type = awakened_fallen_empire
+					is_country_type = dormant_marauders
+					is_country_type = awakened_marauders
+					is_country_type = ruined_marauders
+					is_country_type = marauder_raiders
+				}
+			}
 		}
 		custom_tooltip = {
 			fail_text = AHW_GATE_SEALED
@@ -529,13 +619,22 @@ ahw_link_11 = {
 	country_can_use = {
 		OR = {
 			is_country_type = default
-			is_country_type = fallen_empire
-			is_country_type = awakened_fallen_empire
 			is_country_type = caravaneer_home
 			is_country_type = caravaneer_fleet
 			is_country_type = enclave
 			is_country_type = mindwarden_enclave
 			is_country_type = enclave_mercenary
+			AND = {
+				mid_game_years_passed >= 0
+				OR = {
+					is_country_type = fallen_empire
+					is_country_type = awakened_fallen_empire
+					is_country_type = dormant_marauders
+					is_country_type = awakened_marauders
+					is_country_type = ruined_marauders
+					is_country_type = marauder_raiders
+				}
+			}
 		}
 		custom_tooltip = {
 			fail_text = AHW_GATE_SEALED
@@ -579,13 +678,22 @@ ahw_link_12 = {
 	country_can_use = {
 		OR = {
 			is_country_type = default
-			is_country_type = fallen_empire
-			is_country_type = awakened_fallen_empire
 			is_country_type = caravaneer_home
 			is_country_type = caravaneer_fleet
 			is_country_type = enclave
 			is_country_type = mindwarden_enclave
 			is_country_type = enclave_mercenary
+			AND = {
+				mid_game_years_passed >= 0
+				OR = {
+					is_country_type = fallen_empire
+					is_country_type = awakened_fallen_empire
+					is_country_type = dormant_marauders
+					is_country_type = awakened_marauders
+					is_country_type = ruined_marauders
+					is_country_type = marauder_raiders
+				}
+			}
 		}
 		custom_tooltip = {
 			fail_text = AHW_GATE_SEALED
@@ -629,13 +737,22 @@ ahw_link_13 = {
 	country_can_use = {
 		OR = {
 			is_country_type = default
-			is_country_type = fallen_empire
-			is_country_type = awakened_fallen_empire
 			is_country_type = caravaneer_home
 			is_country_type = caravaneer_fleet
 			is_country_type = enclave
 			is_country_type = mindwarden_enclave
 			is_country_type = enclave_mercenary
+			AND = {
+				mid_game_years_passed >= 0
+				OR = {
+					is_country_type = fallen_empire
+					is_country_type = awakened_fallen_empire
+					is_country_type = dormant_marauders
+					is_country_type = awakened_marauders
+					is_country_type = ruined_marauders
+					is_country_type = marauder_raiders
+				}
+			}
 		}
 		custom_tooltip = {
 			fail_text = AHW_GATE_SEALED
@@ -679,13 +796,22 @@ ahw_link_14 = {
 	country_can_use = {
 		OR = {
 			is_country_type = default
-			is_country_type = fallen_empire
-			is_country_type = awakened_fallen_empire
 			is_country_type = caravaneer_home
 			is_country_type = caravaneer_fleet
 			is_country_type = enclave
 			is_country_type = mindwarden_enclave
 			is_country_type = enclave_mercenary
+			AND = {
+				mid_game_years_passed >= 0
+				OR = {
+					is_country_type = fallen_empire
+					is_country_type = awakened_fallen_empire
+					is_country_type = dormant_marauders
+					is_country_type = awakened_marauders
+					is_country_type = ruined_marauders
+					is_country_type = marauder_raiders
+				}
+			}
 		}
 		custom_tooltip = {
 			fail_text = AHW_GATE_SEALED
@@ -729,13 +855,22 @@ ahw_link_15 = {
 	country_can_use = {
 		OR = {
 			is_country_type = default
-			is_country_type = fallen_empire
-			is_country_type = awakened_fallen_empire
 			is_country_type = caravaneer_home
 			is_country_type = caravaneer_fleet
 			is_country_type = enclave
 			is_country_type = mindwarden_enclave
 			is_country_type = enclave_mercenary
+			AND = {
+				mid_game_years_passed >= 0
+				OR = {
+					is_country_type = fallen_empire
+					is_country_type = awakened_fallen_empire
+					is_country_type = dormant_marauders
+					is_country_type = awakened_marauders
+					is_country_type = ruined_marauders
+					is_country_type = marauder_raiders
+				}
+			}
 		}
 		custom_tooltip = {
 			fail_text = AHW_GATE_SEALED
@@ -779,13 +914,22 @@ ahw_link_16 = {
 	country_can_use = {
 		OR = {
 			is_country_type = default
-			is_country_type = fallen_empire
-			is_country_type = awakened_fallen_empire
 			is_country_type = caravaneer_home
 			is_country_type = caravaneer_fleet
 			is_country_type = enclave
 			is_country_type = mindwarden_enclave
 			is_country_type = enclave_mercenary
+			AND = {
+				mid_game_years_passed >= 0
+				OR = {
+					is_country_type = fallen_empire
+					is_country_type = awakened_fallen_empire
+					is_country_type = dormant_marauders
+					is_country_type = awakened_marauders
+					is_country_type = ruined_marauders
+					is_country_type = marauder_raiders
+				}
+			}
 		}
 		custom_tooltip = {
 			fail_text = AHW_GATE_SEALED
@@ -829,13 +973,22 @@ ahw_link_17 = {
 	country_can_use = {
 		OR = {
 			is_country_type = default
-			is_country_type = fallen_empire
-			is_country_type = awakened_fallen_empire
 			is_country_type = caravaneer_home
 			is_country_type = caravaneer_fleet
 			is_country_type = enclave
 			is_country_type = mindwarden_enclave
 			is_country_type = enclave_mercenary
+			AND = {
+				mid_game_years_passed >= 0
+				OR = {
+					is_country_type = fallen_empire
+					is_country_type = awakened_fallen_empire
+					is_country_type = dormant_marauders
+					is_country_type = awakened_marauders
+					is_country_type = ruined_marauders
+					is_country_type = marauder_raiders
+				}
+			}
 		}
 		custom_tooltip = {
 			fail_text = AHW_GATE_SEALED
@@ -879,13 +1032,22 @@ ahw_link_18 = {
 	country_can_use = {
 		OR = {
 			is_country_type = default
-			is_country_type = fallen_empire
-			is_country_type = awakened_fallen_empire
 			is_country_type = caravaneer_home
 			is_country_type = caravaneer_fleet
 			is_country_type = enclave
 			is_country_type = mindwarden_enclave
 			is_country_type = enclave_mercenary
+			AND = {
+				mid_game_years_passed >= 0
+				OR = {
+					is_country_type = fallen_empire
+					is_country_type = awakened_fallen_empire
+					is_country_type = dormant_marauders
+					is_country_type = awakened_marauders
+					is_country_type = ruined_marauders
+					is_country_type = marauder_raiders
+				}
+			}
 		}
 		custom_tooltip = {
 			fail_text = AHW_GATE_SEALED
@@ -929,13 +1091,22 @@ ahw_link_19 = {
 	country_can_use = {
 		OR = {
 			is_country_type = default
-			is_country_type = fallen_empire
-			is_country_type = awakened_fallen_empire
 			is_country_type = caravaneer_home
 			is_country_type = caravaneer_fleet
 			is_country_type = enclave
 			is_country_type = mindwarden_enclave
 			is_country_type = enclave_mercenary
+			AND = {
+				mid_game_years_passed >= 0
+				OR = {
+					is_country_type = fallen_empire
+					is_country_type = awakened_fallen_empire
+					is_country_type = dormant_marauders
+					is_country_type = awakened_marauders
+					is_country_type = ruined_marauders
+					is_country_type = marauder_raiders
+				}
+			}
 		}
 		custom_tooltip = {
 			fail_text = AHW_GATE_SEALED
@@ -979,13 +1150,22 @@ ahw_link_20 = {
 	country_can_use = {
 		OR = {
 			is_country_type = default
-			is_country_type = fallen_empire
-			is_country_type = awakened_fallen_empire
 			is_country_type = caravaneer_home
 			is_country_type = caravaneer_fleet
 			is_country_type = enclave
 			is_country_type = mindwarden_enclave
 			is_country_type = enclave_mercenary
+			AND = {
+				mid_game_years_passed >= 0
+				OR = {
+					is_country_type = fallen_empire
+					is_country_type = awakened_fallen_empire
+					is_country_type = dormant_marauders
+					is_country_type = awakened_marauders
+					is_country_type = ruined_marauders
+					is_country_type = marauder_raiders
+				}
+			}
 		}
 		custom_tooltip = {
 			fail_text = AHW_GATE_SEALED
@@ -1029,13 +1209,22 @@ ahw_link_21 = {
 	country_can_use = {
 		OR = {
 			is_country_type = default
-			is_country_type = fallen_empire
-			is_country_type = awakened_fallen_empire
 			is_country_type = caravaneer_home
 			is_country_type = caravaneer_fleet
 			is_country_type = enclave
 			is_country_type = mindwarden_enclave
 			is_country_type = enclave_mercenary
+			AND = {
+				mid_game_years_passed >= 0
+				OR = {
+					is_country_type = fallen_empire
+					is_country_type = awakened_fallen_empire
+					is_country_type = dormant_marauders
+					is_country_type = awakened_marauders
+					is_country_type = ruined_marauders
+					is_country_type = marauder_raiders
+				}
+			}
 		}
 		custom_tooltip = {
 			fail_text = AHW_GATE_SEALED
@@ -1079,13 +1268,22 @@ ahw_link_22 = {
 	country_can_use = {
 		OR = {
 			is_country_type = default
-			is_country_type = fallen_empire
-			is_country_type = awakened_fallen_empire
 			is_country_type = caravaneer_home
 			is_country_type = caravaneer_fleet
 			is_country_type = enclave
 			is_country_type = mindwarden_enclave
 			is_country_type = enclave_mercenary
+			AND = {
+				mid_game_years_passed >= 0
+				OR = {
+					is_country_type = fallen_empire
+					is_country_type = awakened_fallen_empire
+					is_country_type = dormant_marauders
+					is_country_type = awakened_marauders
+					is_country_type = ruined_marauders
+					is_country_type = marauder_raiders
+				}
+			}
 		}
 		custom_tooltip = {
 			fail_text = AHW_GATE_SEALED
@@ -1129,13 +1327,22 @@ ahw_link_23 = {
 	country_can_use = {
 		OR = {
 			is_country_type = default
-			is_country_type = fallen_empire
-			is_country_type = awakened_fallen_empire
 			is_country_type = caravaneer_home
 			is_country_type = caravaneer_fleet
 			is_country_type = enclave
 			is_country_type = mindwarden_enclave
 			is_country_type = enclave_mercenary
+			AND = {
+				mid_game_years_passed >= 0
+				OR = {
+					is_country_type = fallen_empire
+					is_country_type = awakened_fallen_empire
+					is_country_type = dormant_marauders
+					is_country_type = awakened_marauders
+					is_country_type = ruined_marauders
+					is_country_type = marauder_raiders
+				}
+			}
 		}
 		custom_tooltip = {
 			fail_text = AHW_GATE_SEALED
@@ -1179,13 +1386,22 @@ ahw_link_24 = {
 	country_can_use = {
 		OR = {
 			is_country_type = default
-			is_country_type = fallen_empire
-			is_country_type = awakened_fallen_empire
 			is_country_type = caravaneer_home
 			is_country_type = caravaneer_fleet
 			is_country_type = enclave
 			is_country_type = mindwarden_enclave
 			is_country_type = enclave_mercenary
+			AND = {
+				mid_game_years_passed >= 0
+				OR = {
+					is_country_type = fallen_empire
+					is_country_type = awakened_fallen_empire
+					is_country_type = dormant_marauders
+					is_country_type = awakened_marauders
+					is_country_type = ruined_marauders
+					is_country_type = marauder_raiders
+				}
+			}
 		}
 		custom_tooltip = {
 			fail_text = AHW_GATE_SEALED
@@ -1229,13 +1445,22 @@ ahw_link_25 = {
 	country_can_use = {
 		OR = {
 			is_country_type = default
-			is_country_type = fallen_empire
-			is_country_type = awakened_fallen_empire
 			is_country_type = caravaneer_home
 			is_country_type = caravaneer_fleet
 			is_country_type = enclave
 			is_country_type = mindwarden_enclave
 			is_country_type = enclave_mercenary
+			AND = {
+				mid_game_years_passed >= 0
+				OR = {
+					is_country_type = fallen_empire
+					is_country_type = awakened_fallen_empire
+					is_country_type = dormant_marauders
+					is_country_type = awakened_marauders
+					is_country_type = ruined_marauders
+					is_country_type = marauder_raiders
+				}
+			}
 		}
 		custom_tooltip = {
 			fail_text = AHW_GATE_SEALED
@@ -1279,13 +1504,22 @@ ahw_link_26 = {
 	country_can_use = {
 		OR = {
 			is_country_type = default
-			is_country_type = fallen_empire
-			is_country_type = awakened_fallen_empire
 			is_country_type = caravaneer_home
 			is_country_type = caravaneer_fleet
 			is_country_type = enclave
 			is_country_type = mindwarden_enclave
 			is_country_type = enclave_mercenary
+			AND = {
+				mid_game_years_passed >= 0
+				OR = {
+					is_country_type = fallen_empire
+					is_country_type = awakened_fallen_empire
+					is_country_type = dormant_marauders
+					is_country_type = awakened_marauders
+					is_country_type = ruined_marauders
+					is_country_type = marauder_raiders
+				}
+			}
 		}
 		custom_tooltip = {
 			fail_text = AHW_GATE_SEALED
@@ -1329,13 +1563,22 @@ ahw_link_27 = {
 	country_can_use = {
 		OR = {
 			is_country_type = default
-			is_country_type = fallen_empire
-			is_country_type = awakened_fallen_empire
 			is_country_type = caravaneer_home
 			is_country_type = caravaneer_fleet
 			is_country_type = enclave
 			is_country_type = mindwarden_enclave
 			is_country_type = enclave_mercenary
+			AND = {
+				mid_game_years_passed >= 0
+				OR = {
+					is_country_type = fallen_empire
+					is_country_type = awakened_fallen_empire
+					is_country_type = dormant_marauders
+					is_country_type = awakened_marauders
+					is_country_type = ruined_marauders
+					is_country_type = marauder_raiders
+				}
+			}
 		}
 		custom_tooltip = {
 			fail_text = AHW_GATE_SEALED
@@ -1379,13 +1622,22 @@ ahw_link_28 = {
 	country_can_use = {
 		OR = {
 			is_country_type = default
-			is_country_type = fallen_empire
-			is_country_type = awakened_fallen_empire
 			is_country_type = caravaneer_home
 			is_country_type = caravaneer_fleet
 			is_country_type = enclave
 			is_country_type = mindwarden_enclave
 			is_country_type = enclave_mercenary
+			AND = {
+				mid_game_years_passed >= 0
+				OR = {
+					is_country_type = fallen_empire
+					is_country_type = awakened_fallen_empire
+					is_country_type = dormant_marauders
+					is_country_type = awakened_marauders
+					is_country_type = ruined_marauders
+					is_country_type = marauder_raiders
+				}
+			}
 		}
 		custom_tooltip = {
 			fail_text = AHW_GATE_SEALED
@@ -1429,13 +1681,22 @@ ahw_link_29 = {
 	country_can_use = {
 		OR = {
 			is_country_type = default
-			is_country_type = fallen_empire
-			is_country_type = awakened_fallen_empire
 			is_country_type = caravaneer_home
 			is_country_type = caravaneer_fleet
 			is_country_type = enclave
 			is_country_type = mindwarden_enclave
 			is_country_type = enclave_mercenary
+			AND = {
+				mid_game_years_passed >= 0
+				OR = {
+					is_country_type = fallen_empire
+					is_country_type = awakened_fallen_empire
+					is_country_type = dormant_marauders
+					is_country_type = awakened_marauders
+					is_country_type = ruined_marauders
+					is_country_type = marauder_raiders
+				}
+			}
 		}
 		custom_tooltip = {
 			fail_text = AHW_GATE_SEALED
@@ -1479,13 +1740,22 @@ ahw_link_30 = {
 	country_can_use = {
 		OR = {
 			is_country_type = default
-			is_country_type = fallen_empire
-			is_country_type = awakened_fallen_empire
 			is_country_type = caravaneer_home
 			is_country_type = caravaneer_fleet
 			is_country_type = enclave
 			is_country_type = mindwarden_enclave
 			is_country_type = enclave_mercenary
+			AND = {
+				mid_game_years_passed >= 0
+				OR = {
+					is_country_type = fallen_empire
+					is_country_type = awakened_fallen_empire
+					is_country_type = dormant_marauders
+					is_country_type = awakened_marauders
+					is_country_type = ruined_marauders
+					is_country_type = marauder_raiders
+				}
+			}
 		}
 		custom_tooltip = {
 			fail_text = AHW_GATE_SEALED
@@ -1529,13 +1799,22 @@ ahw_link_31 = {
 	country_can_use = {
 		OR = {
 			is_country_type = default
-			is_country_type = fallen_empire
-			is_country_type = awakened_fallen_empire
 			is_country_type = caravaneer_home
 			is_country_type = caravaneer_fleet
 			is_country_type = enclave
 			is_country_type = mindwarden_enclave
 			is_country_type = enclave_mercenary
+			AND = {
+				mid_game_years_passed >= 0
+				OR = {
+					is_country_type = fallen_empire
+					is_country_type = awakened_fallen_empire
+					is_country_type = dormant_marauders
+					is_country_type = awakened_marauders
+					is_country_type = ruined_marauders
+					is_country_type = marauder_raiders
+				}
+			}
 		}
 		custom_tooltip = {
 			fail_text = AHW_GATE_SEALED
@@ -1579,13 +1858,22 @@ ahw_link_32 = {
 	country_can_use = {
 		OR = {
 			is_country_type = default
-			is_country_type = fallen_empire
-			is_country_type = awakened_fallen_empire
 			is_country_type = caravaneer_home
 			is_country_type = caravaneer_fleet
 			is_country_type = enclave
 			is_country_type = mindwarden_enclave
 			is_country_type = enclave_mercenary
+			AND = {
+				mid_game_years_passed >= 0
+				OR = {
+					is_country_type = fallen_empire
+					is_country_type = awakened_fallen_empire
+					is_country_type = dormant_marauders
+					is_country_type = awakened_marauders
+					is_country_type = ruined_marauders
+					is_country_type = marauder_raiders
+				}
+			}
 		}
 		custom_tooltip = {
 			fail_text = AHW_GATE_SEALED
@@ -1629,13 +1917,22 @@ ahw_express_1 = {
 	country_can_use = {
 		OR = {
 			is_country_type = default
-			is_country_type = fallen_empire
-			is_country_type = awakened_fallen_empire
 			is_country_type = caravaneer_home
 			is_country_type = caravaneer_fleet
 			is_country_type = enclave
 			is_country_type = mindwarden_enclave
 			is_country_type = enclave_mercenary
+			AND = {
+				mid_game_years_passed >= 0
+				OR = {
+					is_country_type = fallen_empire
+					is_country_type = awakened_fallen_empire
+					is_country_type = dormant_marauders
+					is_country_type = awakened_marauders
+					is_country_type = ruined_marauders
+					is_country_type = marauder_raiders
+				}
+			}
 		}
 		custom_tooltip = {
 			fail_text = AHW_EXPRESS_CLOSED
@@ -1672,13 +1969,22 @@ ahw_express_2 = {
 	country_can_use = {
 		OR = {
 			is_country_type = default
-			is_country_type = fallen_empire
-			is_country_type = awakened_fallen_empire
 			is_country_type = caravaneer_home
 			is_country_type = caravaneer_fleet
 			is_country_type = enclave
 			is_country_type = mindwarden_enclave
 			is_country_type = enclave_mercenary
+			AND = {
+				mid_game_years_passed >= 0
+				OR = {
+					is_country_type = fallen_empire
+					is_country_type = awakened_fallen_empire
+					is_country_type = dormant_marauders
+					is_country_type = awakened_marauders
+					is_country_type = ruined_marauders
+					is_country_type = marauder_raiders
+				}
+			}
 		}
 		custom_tooltip = {
 			fail_text = AHW_EXPRESS_CLOSED
@@ -1715,13 +2021,22 @@ ahw_express_3 = {
 	country_can_use = {
 		OR = {
 			is_country_type = default
-			is_country_type = fallen_empire
-			is_country_type = awakened_fallen_empire
 			is_country_type = caravaneer_home
 			is_country_type = caravaneer_fleet
 			is_country_type = enclave
 			is_country_type = mindwarden_enclave
 			is_country_type = enclave_mercenary
+			AND = {
+				mid_game_years_passed >= 0
+				OR = {
+					is_country_type = fallen_empire
+					is_country_type = awakened_fallen_empire
+					is_country_type = dormant_marauders
+					is_country_type = awakened_marauders
+					is_country_type = ruined_marauders
+					is_country_type = marauder_raiders
+				}
+			}
 		}
 		custom_tooltip = {
 			fail_text = AHW_EXPRESS_CLOSED
@@ -1758,13 +2073,22 @@ ahw_express_4 = {
 	country_can_use = {
 		OR = {
 			is_country_type = default
-			is_country_type = fallen_empire
-			is_country_type = awakened_fallen_empire
 			is_country_type = caravaneer_home
 			is_country_type = caravaneer_fleet
 			is_country_type = enclave
 			is_country_type = mindwarden_enclave
 			is_country_type = enclave_mercenary
+			AND = {
+				mid_game_years_passed >= 0
+				OR = {
+					is_country_type = fallen_empire
+					is_country_type = awakened_fallen_empire
+					is_country_type = dormant_marauders
+					is_country_type = awakened_marauders
+					is_country_type = ruined_marauders
+					is_country_type = marauder_raiders
+				}
+			}
 		}
 		custom_tooltip = {
 			fail_text = AHW_EXPRESS_CLOSED
@@ -1801,13 +2125,22 @@ ahw_express_5 = {
 	country_can_use = {
 		OR = {
 			is_country_type = default
-			is_country_type = fallen_empire
-			is_country_type = awakened_fallen_empire
 			is_country_type = caravaneer_home
 			is_country_type = caravaneer_fleet
 			is_country_type = enclave
 			is_country_type = mindwarden_enclave
 			is_country_type = enclave_mercenary
+			AND = {
+				mid_game_years_passed >= 0
+				OR = {
+					is_country_type = fallen_empire
+					is_country_type = awakened_fallen_empire
+					is_country_type = dormant_marauders
+					is_country_type = awakened_marauders
+					is_country_type = ruined_marauders
+					is_country_type = marauder_raiders
+				}
+			}
 		}
 		custom_tooltip = {
 			fail_text = AHW_EXPRESS_CLOSED
@@ -1844,13 +2177,22 @@ ahw_express_6 = {
 	country_can_use = {
 		OR = {
 			is_country_type = default
-			is_country_type = fallen_empire
-			is_country_type = awakened_fallen_empire
 			is_country_type = caravaneer_home
 			is_country_type = caravaneer_fleet
 			is_country_type = enclave
 			is_country_type = mindwarden_enclave
 			is_country_type = enclave_mercenary
+			AND = {
+				mid_game_years_passed >= 0
+				OR = {
+					is_country_type = fallen_empire
+					is_country_type = awakened_fallen_empire
+					is_country_type = dormant_marauders
+					is_country_type = awakened_marauders
+					is_country_type = ruined_marauders
+					is_country_type = marauder_raiders
+				}
+			}
 		}
 		custom_tooltip = {
 			fail_text = AHW_EXPRESS_CLOSED
@@ -1887,13 +2229,22 @@ ahw_express_7 = {
 	country_can_use = {
 		OR = {
 			is_country_type = default
-			is_country_type = fallen_empire
-			is_country_type = awakened_fallen_empire
 			is_country_type = caravaneer_home
 			is_country_type = caravaneer_fleet
 			is_country_type = enclave
 			is_country_type = mindwarden_enclave
 			is_country_type = enclave_mercenary
+			AND = {
+				mid_game_years_passed >= 0
+				OR = {
+					is_country_type = fallen_empire
+					is_country_type = awakened_fallen_empire
+					is_country_type = dormant_marauders
+					is_country_type = awakened_marauders
+					is_country_type = ruined_marauders
+					is_country_type = marauder_raiders
+				}
+			}
 		}
 		custom_tooltip = {
 			fail_text = AHW_EXPRESS_CLOSED
@@ -1930,13 +2281,22 @@ ahw_express_8 = {
 	country_can_use = {
 		OR = {
 			is_country_type = default
-			is_country_type = fallen_empire
-			is_country_type = awakened_fallen_empire
 			is_country_type = caravaneer_home
 			is_country_type = caravaneer_fleet
 			is_country_type = enclave
 			is_country_type = mindwarden_enclave
 			is_country_type = enclave_mercenary
+			AND = {
+				mid_game_years_passed >= 0
+				OR = {
+					is_country_type = fallen_empire
+					is_country_type = awakened_fallen_empire
+					is_country_type = dormant_marauders
+					is_country_type = awakened_marauders
+					is_country_type = ruined_marauders
+					is_country_type = marauder_raiders
+				}
+			}
 		}
 		custom_tooltip = {
 			fail_text = AHW_EXPRESS_CLOSED

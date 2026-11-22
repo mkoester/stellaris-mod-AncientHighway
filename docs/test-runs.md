@@ -170,7 +170,8 @@ Same session, observer mode, after Share Ring Charts passed.
 - **Decided after 2250** (user, 2026-11-22): crossing a gate is slow — `GATE_WINDUP` 60 days (was
   10); shared exit nodes stay. Seven of 22 exit nodes are shared; their anchors are 4–15 lane jumps
   apart (Aazrof–Halax 15, Krant–Redinge 13, Minokh–Etsceron 10), 4 jumps through the highway. And
-  only empires, fallen empires, caravaneers and enclaves pass (`GATE_USERS`). To check on the next
+  only empires, caravaneers and enclaves pass (`GATE_USERS`), fallen empires and marauders from the
+  mid game on (`GATE_USERS_MID_GAME`, the user's follow-up the same day). To check on the next
   start: the Voidworms and mining drones leave the portals, caravaneers keep passing, and the AI
   still routes long trips through the ring; the war fleets of 2249–2250 re-plan their routes.
 

@@ -32,12 +32,15 @@ MID, DETOUR = 0.6, 1.3
 # trip uses two gates, so a long windup prices out such neighbour shortcuts and costs a long trip
 # little. 60 days = four lane jumps' windup (15 days each, above) per gate, eight per trip.
 GATE_WINDUP = 60
-# 2026-11-22 (user): who may pass the gates and the express - empires (nomadic ones too), fallen
-# empires, caravaneers and enclaves; not space fauna, guardians, marauders, crises, pirates or
+# 2026-11-22 (user): who may pass the gates and the express - empires (nomadic ones too),
+# caravaneers and enclaves at once; fallen empires and marauders once the mid game has started
+# (vanilla's own test: mid_game_years_passed >= 0); never space fauna, guardians, crises, pirates or
 # rebels (common/country_types/). Such countries skip the tech prerequisite and know every system,
 # so the type is the only filter (the campaign, 2249: Voidworms, mining drones through portals).
-GATE_USERS = ['default', 'fallen_empire', 'awakened_fallen_empire', 'caravaneer_home',
-              'caravaneer_fleet', 'enclave', 'mindwarden_enclave', 'enclave_mercenary']
+GATE_USERS = ['default', 'caravaneer_home', 'caravaneer_fleet', 'enclave', 'mindwarden_enclave',
+              'enclave_mercenary']
+GATE_USERS_MID_GAME = ['fallen_empire', 'awakened_fallen_empire', 'dormant_marauders',
+                       'awakened_marauders', 'ruined_marauders', 'marauder_raiders']
 
 
 def lap_nodes(radius, stars):
@@ -281,8 +284,11 @@ def bypass_block(key, name, node, nexus, *, tech, windup, lockable, sensors, fra
 
 
 def users_check():
-    """this = country: one of GATE_USERS."""
-    return '\t\tOR = {\n' + ''.join(f'\t\t\tis_country_type = {t}\n' for t in GATE_USERS) + '\t\t}\n'
+    """this = country: one of GATE_USERS, or of GATE_USERS_MID_GAME once the mid game started."""
+    types = lambda ts, ind: ''.join(f'{ind}is_country_type = {t}\n' for t in ts)
+    return ('\t\tOR = {\n' + types(GATE_USERS, '\t\t\t')
+            + '\t\t\tAND = {\n\t\t\t\tmid_game_years_passed >= 0\n\t\t\t\tOR = {\n'
+            + types(GATE_USERS_MID_GAME, '\t\t\t\t\t') + '\t\t\t\t}\n\t\t\t}\n\t\t}\n')
 
 
 def sealed_check(n):

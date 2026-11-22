@@ -92,6 +92,10 @@ Same session, observer mode, after Share Ring Charts passed.
   question). Side note: the chart flags (`ahw_mapped@`) cover only 88-6 to 88-13 for every
   country, while Free Beldroan visited 88-14 and Great Model-16 88-15 — an entry that set no chart
   (its own exit node from the study's `set_visited`, presumably; 88-14 unexplained).
+- **2243**: three more self-started repairs, each dropped and counted to the end — Bloomwrought
+  Wildscape of Tellon (Ashkara 04, Hethra 73), Havariggan Purifiers (Dovhar 31); twelve gates
+  repaired. Ring entries still civilian only (Haddam Harmony 5, Free Beldroan Battle Clans 4; 10
+  and 9 nodes charted of 88).
 
 ## Test, run 46 (planned 2026-11-22: the repair counted by script, the AI's repair)
 

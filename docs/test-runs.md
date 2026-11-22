@@ -50,6 +50,12 @@ Same session, observer mode, after Share Ring Charts passed.
   both with their ship this time. Free Beldroan Battle Clans holds both techs since 2236, not yet
   repaired (`ahw.26` waits 12 months).
 - error.log: nothing new naming `ahw_`.
+- **To 2239.01.01** (same session): still no ring node charted, no fleet in the ring. Free Beldroan
+  Battle Clans (16777245, `ahw_gate_broken_10`) has `ahw_both_months` 28 but never reached the
+  600-alloy reserve: 242 → 307 alloys from 2238.09 to 2239.01 (+16 a month), influence at its
+  1000 cap — the AI keeps few alloys, so the reserve, not the will, decides. Roaming Cybergang
+  (AI-run while observed) now holds both techs. `ahw_yearly`: "resolution Share Ring Charts in
+  force". error.log: nothing new.
 
 ## Test, run 46 (planned 2026-11-22: the repair counted by script, the AI's repair)
 

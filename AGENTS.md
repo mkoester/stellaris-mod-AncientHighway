@@ -41,7 +41,9 @@ not load. As of runs 40–43:
   weight steps with the grants received (×1 / ×3 / ×6 / ×12 at 30/50/70 %, ×4 with the other
   tech), fed also by travel techs and close friends' knowledge (`ahw_tech.txt`, `docs/design.md`
   "Without exploring"); in game untested.
-  With working gates (run 44, `docs/test-runs.md`) the AI repairs within 3–4 months of having both techs. **Run
+  With working gates (run 44, `docs/test-runs.md`) the AI repairs within 3–4 months of having both techs —
+  but in the user's campaign Thembolon Accord, with both techs and the resources, has not repaired in
+  7.5 years (2227–2234, cause open; `docs/test-runs.md`, 2026-11-22). **Run
   44 passed** the 0.1.1 features: object texts, shared charts, ally under attack, the three
   Galactic Community resolutions (after the flag fix, 2026-11-09); the Seal mode refused on a
   forced-open gate (2026-11-12).
@@ -202,7 +204,7 @@ All findings go to `game.log`, lines starting `AHW`.
 - **Gotchas of Phase 1** (runs 40–43):
   - `check_variable` compares against another variable: `value < ahw_got_theory` (vanilla does
     it, e.g. `value < thought_police_purchased`; used by `ahw_construction_behind`, 2026-11-19,
-    not yet seen in game);
+    works in game: the user's campaign, 2228–2234);
   - `give_technology` refuses a tech whose `potential` fails ("invalid technology"): set the
     potential's flag first (`ahw_debug.73`);
   - a ship-scoped special project's `on_success` can run with THIS (the ship) empty — seen for an

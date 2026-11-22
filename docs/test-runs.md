@@ -2,6 +2,32 @@
 
 Moved out of `AGENTS.md` on 2026-11-14. Newest first; the spike's runs 1–39 are in `spike-runs.md`. Add each new run at the top of this file, not to `AGENTS.md`.
 
+## Observation: the user's campaign continued (2226.08–2234.09, read 2026-11-22)
+
+Roaming Cybergang again, with `4835f95` and `5edaa00`. Read from the saves `2227.01.30`–
+`autosave_2234.09.01` and the session's logs (2228.04.09–2234.09.01, loaded twice).
+- **An AI with both techs never repairs**: Thembolon Accord (16777233) has held both gate techs
+  since 2227.01.30 at the latest (2226.08: Construction only), and at 2228.04.09 had 2376 alloys
+  and 911 influence (cost 300 + 50). Its gate (`ahw_gate_broken_18`, Eshmet 42) is its own
+  (`owner=16777233`) and never had a build queued (`build_queue` empty in every save), 7.5 years
+  on. Run 44's AIs repaired within 3–4 months. **Not** a missing `ai_weight`: the game's
+  `99_README_MEGASTRUCTURES.txt` gives a default of 100 (vanilla's gateway: 5). Cause open —
+  candidates: the owner losses (~every 26 days here), the AI's megastructure budget, war.
+- **The shipless study fix works unforced**: Nomadic Techaran Wayfarers' study on 2230.06.20 ran
+  with THIS empty (`AHW study without a ship: Galvaas 61 …`) and got its grant; Priman Matrix's
+  (2230.01.28) ran with its ship.
+- **Work in the campaign**: a late portal (`ahw.30`) for Commonwealth of Deteenal II on
+  2230.11.01 (Galvaas 65 off Giedi; Giedi still unowned at 2234.09, so the gate has no owner);
+  the travel grants (`AHW travel tech tech_hyper_drive_2 feeds …`, two countries); the yearly
+  "learns from others"; the broken-gate study (`ahw_construction_behind`, so `check_variable`
+  against a variable works); ally under attack (9 swaps); the cap withdrawals.
+- **Log texts**: the grant lines print `+0.02 ofahw_tech_gate_theory$ (askedahw_d$)` and
+  `grantahw_grant_study$ 0.15$` — a `$PARAM$` in a log string eats the space before it and
+  leaves a `$`; `asked` prints the variable's name, not its value. Cosmetic.
+- **Owner loss**: all gates at once, 89 times in ~77 months, two loads in that time. `ahw.90`
+  gave each back.
+- Still no ring node charted, express dormant. error.log: only the modifier-icon noise.
+
 ## Test, run 45 (planned 2026-11-19: the story events and the inspection balance)
 
 A new **medium** game, this mod and dev tools, console on, at least 4 AI empires. Esc before

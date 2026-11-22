@@ -56,6 +56,16 @@ Same session, observer mode, after Share Ring Charts passed.
   1000 cap — the AI keeps few alloys, so the reserve, not the will, decides. Roaming Cybergang
   (AI-run while observed) now holds both techs. `ahw_yearly`: "resolution Share Ring Charts in
   force". error.log: nothing new.
+- **2239.01.01–2240.01.01** (a new session, loaded at 2239.01.01, with the guard in
+  `ahw_share_charts_gc`): three more AI repairs started by the AI itself — Misharan Pact (Dovhar 32,
+  seen 01.06), Pact of Fellnoll (Dovhar 34, 01.10), Free Beldroan Battle Clans (Ashkara 02, 01.16,
+  with ~307 alloys: the cost, not the 600 reserve) — all dropped by the owner loss of 02.16, all
+  finished by the count (04.06–04.16). Eight gates repaired. **Both batches of self-started repairs
+  came within three weeks of a load** (2234.10.01 → 10.05/09/25; 2239.01.01 → 01.06/10/16), the one
+  exception Great Model-16 Pact (2235.08.17): perhaps the AI plans the upgrade after a load, or it
+  started repairs before too and lost them to owner losses unseen between monthly saves. The user
+  keeps the 600 reserve for `ahw.26` (2026-11-22): the AI pays the cost on its own when it can.
+  Still no ring node charted; error.log nothing naming `ahw_`.
 
 ## Test, run 46 (planned 2026-11-22: the repair counted by script, the AI's repair)
 

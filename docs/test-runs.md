@@ -126,6 +126,13 @@ Same session, observer mode, after Share Ring Charts passed.
   Cybergang 23, Haddam Harmony 9, Slerpanoran Hegemony 8, Free Beldroan Battle Clans 4); Giroan Star
   Regime repaired Galvaas 64 and 61 (counted): seventeen gates. A broken-gate inspection by a nomad
   (Nomadic Techaran Wayfarers, pair 4). error.log: nothing new.
+- **2247, the first year with the whole ring known**: still no military use by a Community member.
+  Civilian entries grow (Roaming Cybergang 28, Haddam Harmony 12, Slerpanoran Hegemony 9, Free
+  Beldroan Battle Clans 5, NEX Core 2, Great Model-16 Pact 1); Havariggan Purifiers (no charts,
+  not a member) again 1 military entry — its own exit node, presumably. Backattan Empire (Dovhar 33)
+  and Havariggan Allied Stars (Ashkara 03) repaired (counted): nineteen gates — Free Beldroan's two
+  friends can now both be reached through the ring. Only one "ally under attack" in the year.
+  error.log: nothing new.
 
 ## Test, run 46 (planned 2026-11-22: the repair counted by script, the AI's repair)
 

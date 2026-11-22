@@ -106,6 +106,17 @@ Same session, observer mode, after Share Ring Charts passed.
   empire as root (the `play` had not taken). League of Vartivar IV (74) also lists all 88, as every
   non-default country does — presumably kept from before it became a regular empire.
   error.log: nothing new.
+- **2245 — the first military entry**: Havariggan Purifiers (40, fanatic purifiers, the player's
+  rival): `1 nodes charted, entries this year 1 military, 1 civilian` — presumably its own exit
+  node, after its two repairs (Dovhar 31, Caedris 21). Civilian traffic grows: Slerpanoran Hegemony
+  6, Roaming Cybergang (AI-run while observed) 6, Haddam Harmony 5, Free Beldroan Battle Clans 4;
+  nine civilian fleets sit in ring nodes at 2246.01.01, none military. Fifteen gates repaired
+  (Alliance of Tarassian Systems' Galvaas 63, NEX Core's Hethra 71, both counted to the end).
+  **The first head start in the campaign**: `head start at the entry point in Caedris 21 for Qvefoz
+  Covenant` (+50 % of each tech) — Caedris 21's anchor changed hands after Havariggan Purifiers
+  repaired it. A story fragment (5 of 12) for Roaming Cybergang on 2245.06.29, while the user
+  played it. Free Beldroan still knows 22 of 88 nodes: the redone console grant did not reach it.
+  error.log: nothing new.
 
 ## Test, run 46 (planned 2026-11-22: the repair counted by script, the AI's repair)
 

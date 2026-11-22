@@ -19,6 +19,13 @@ Roaming Cybergang again, with `4835f95` and `5edaa00`. Read from the saves `2227
   open to the AI, and today only the cost blocks it — but it had 2376 alloys at 2228.04 and spent
   them elsewhere (military power 1681 → 1925 by 2230): the AI does not pick the repair while it
   can afford it.
+- **An owner loss stops a repair for good** (2026-11-22, the user as Thembolon, from
+  `autosave_2234.09.01`): the upgrade started ~09.02; `autosave_2234.10.01` holds it on the gate,
+  `upgrade = { upgrade_to="ahw_gate_18" progress=29 halted=0 indefinitely_halted=no }`. Loading that
+  autosave cleared the owner; afterwards the repair did not go on and the 300 alloys + 50 influence
+  were not refunded (the user's report). With a loss every few weeks, a 90-day repair rarely
+  survives — for players too. Not yet seen: whether the `upgrade` block is dropped or left halted
+  once `ahw.90` has given the owner back.
 - **The shipless study fix works unforced**: Nomadic Techaran Wayfarers' study on 2230.06.20 ran
   with THIS empty (`AHW study without a ship: Galvaas 61 …`) and got its grant; Priman Matrix's
   (2230.01.28) ran with its ship.

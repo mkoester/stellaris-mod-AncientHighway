@@ -224,6 +224,7 @@ All findings go to `game.log`, lines starting `AHW`.
     resumed save picks up a changed weight; flags set at the build do not reach old saves;
   - a megastructure in a system nobody owns loses its owner from time to time (cause unknown);
   - an upgrade's button reads a disabled "Complete" while the megastructure has no owner.
+  - an owner loss ends an upgrade in progress, without a refund (2026-11-22, `docs/test-runs.md`).
 - **Timings are from mkDell** (as old as the base game; acceptable there is acceptable for
   players). **Multiplayer**: every machine runs the same script in lockstep, so the build comes
   out identical as long as nothing player-local decides it (untested in MP).

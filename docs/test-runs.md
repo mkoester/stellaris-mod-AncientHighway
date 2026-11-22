@@ -13,6 +13,12 @@ Roaming Cybergang again, with `4835f95` and `5edaa00`. Read from the saves `2227
   on. Run 44's AIs repaired within 3–4 months. **Not** a missing `ai_weight`: the game's
   `99_README_MEGASTRUCTURES.txt` gives a default of 100 (vanilla's gateway: 5). Cause open —
   candidates: the owner losses (~every 26 days here), the AI's megastructure budget, war.
+  **In game as Thembolon** (`play`, 2026-11-22, screenshots `2026_11_22_2`, `_3`): right after the
+  load the button read a disabled "Complete" (the load clears the owner); a day later (`ahw.90`)
+  "Upgrade", its tooltip "Cost: 50 influence, 300 alloys — Lacking 222 alloys". So the upgrade is
+  open to the AI, and today only the cost blocks it — but it had 2376 alloys at 2228.04 and spent
+  them elsewhere (military power 1681 → 1925 by 2230): the AI does not pick the repair while it
+  can afford it.
 - **The shipless study fix works unforced**: Nomadic Techaran Wayfarers' study on 2230.06.20 ran
   with THIS empty (`AHW study without a ship: Galvaas 61 …`) and got its grant; Priman Matrix's
   (2230.01.28) ran with its ship.

@@ -711,28 +711,37 @@ ahw_share_charts_friends = {
 
 # No scope: every Galactic Community member gets every member's charts (resolution Share Ring
 # Charts: on passing, then yearly in ahw.80). Pools them on a temporary star flag first.
+# 2026-11-22: the event targets are checked before a flag names them - the game evaluates a
+# proposed resolution's effect without running it (tooltip, AI), so save_event_target_as has not
+# run, and `ahw_mapped@event_target:…` logged "Could not get dynamic flag" (campaign, 2235.01.09).
 ahw_share_charts_gc = {
 	every_country = {
 		limit = { is_galactic_community_member = yes }
 		save_event_target_as = ahw_chart_from
-		every_system = {
-			limit = { has_star_flag = ahw_ring has_star_flag = ahw_mapped@event_target:ahw_chart_from }
-			set_star_flag = ahw_gc_pool
+		if = {
+			limit = { exists = event_target:ahw_chart_from }
+			every_system = {
+				limit = { has_star_flag = ahw_ring has_star_flag = ahw_mapped@event_target:ahw_chart_from }
+				set_star_flag = ahw_gc_pool
+			}
 		}
 	}
 	every_country = {
 		limit = { is_galactic_community_member = yes }
 		save_event_target_as = ahw_chart_to
 		set_variable = { which = ahw_n_copied value = 0 }
-		every_system = {
-			limit = {
-				has_star_flag = ahw_gc_pool
-				NOT = { has_star_flag = ahw_mapped@event_target:ahw_chart_to }
-			}
-			set_star_flag = ahw_mapped@event_target:ahw_chart_to
-			event_target:ahw_chart_to = {
-				set_visited = prev
-				change_variable = { which = ahw_n_copied value = 1 }
+		if = {
+			limit = { exists = event_target:ahw_chart_to }
+			every_system = {
+				limit = {
+					has_star_flag = ahw_gc_pool
+					NOT = { has_star_flag = ahw_mapped@event_target:ahw_chart_to }
+				}
+				set_star_flag = ahw_mapped@event_target:ahw_chart_to
+				event_target:ahw_chart_to = {
+					set_visited = prev
+					change_variable = { which = ahw_n_copied value = 1 }
+				}
 			}
 		}
 		if = {

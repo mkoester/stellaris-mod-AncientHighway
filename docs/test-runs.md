@@ -26,7 +26,10 @@ The user's campaign with the count (`ahw.90` → `ahw_repair_watch`) and `ahw.26
   flag 'ahw_mapped' with target 'event_target:ahw_chart_from'` in `ahw_share_charts_gc`, called
   from the Share Ring Charts resolution's effect — no resolution passed (no `AHW resolution` line),
   so presumably the engine evaluating the effect (tooltip or AI) with the target unset. Harmless
-  so far.
+  so far. The user: the resolution was proposed among the first, with high support (the Galactic
+  Community formed after 2234.09). Guarded the same day (`exists = event_target:…` before each
+  flag lookup in `ahw_share_charts_gc`); to confirm: the line gone from error.log, and at passing
+  `AHW resolution Share Ring Charts passed` (no node charted yet, so no `AHW charts:` line).
 - Owner losses: 14 days with losses in 15 months.
 
 ## Test, run 46 (planned 2026-11-22: the repair counted by script, the AI's repair)

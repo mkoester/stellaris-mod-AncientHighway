@@ -160,6 +160,13 @@ Same session, observer mode, after Share Ring Charts passed.
     they should.
   Two more gates repaired (Mandate of Evari, Furon 51; Qvagh State, Caedris 22): twenty-one.
   League of Vartivar IV studied its late portal. error.log: nothing new.
+- **2250**: Slerpanoran Hegemony's fleet 3638 stopped in Node 88-34 (`move_idle`, no target, at
+  `autosave_2251.01.01`; no gate sealed, the war goes on) — and **Havariggan Purifiers answer the
+  same way**: fleet 3827 routed from Minokh through its own portal, Node 88-34 and Slerpanoran's
+  gate (Dovhar 35) to Etsceron, Slerpanoran's anchor. Both sides use the shared exit node as a
+  front; the two fleets meet in the neutral ring node. NEX Core's fleet 25 left the ring and goes
+  on to Pennek. Yearly: Slerpanoran Hegemony 1 military, NEX Core 3. Mining drones (country 60)
+  sit in portal 4_5. error.log: nothing new.
 
 ## Test, run 46 (planned 2026-11-22: the repair counted by script, the AI's repair)
 

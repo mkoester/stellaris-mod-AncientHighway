@@ -167,6 +167,12 @@ Same session, observer mode, after Share Ring Charts passed.
   front; the two fleets meet in the neutral ring node. NEX Core's fleet 25 left the ring and goes
   on to Pennek. Yearly: Slerpanoran Hegemony 1 military, NEX Core 3. Mining drones (country 60)
   sit in portal 4_5. error.log: nothing new.
+- **Decided after 2250** (user, 2026-11-22): crossing a gate is slow — `GATE_WINDUP` 60 days (was
+  10); shared exit nodes stay. Seven of 22 exit nodes are shared; their anchors are 4–15 lane jumps
+  apart (Aazrof–Halax 15, Krant–Redinge 13, Minokh–Etsceron 10), 4 jumps through the highway. And
+  only empires, fallen empires, caravaneers and enclaves pass (`GATE_USERS`). To check on the next
+  start: the Voidworms and mining drones leave the portals, caravaneers keep passing, and the AI
+  still routes long trips through the ring; the war fleets of 2249–2250 re-plan their routes.
 
 ## Test, run 46 (planned 2026-11-22: the repair counted by script, the AI's repair)
 

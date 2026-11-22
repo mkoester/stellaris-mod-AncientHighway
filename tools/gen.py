@@ -27,6 +27,17 @@ PAIRS = 32  # entry-point pairs available: one per regular empire (huge galaxies
 # map/setup_scenarios/*.txt ("radius should be less than 500").
 SETUP = {'tiny': (200, 200), 'small': (300, 400), 'medium': (400, 600), 'large': (450, 800), 'huge': (450, 1000)}
 MID, DETOUR = 0.6, 1.3
+# 2026-11-22 (user): crossing a gate is slow. Gates sharing an exit node joined anchors 6-15 lane
+# jumps apart in 4 jumps (the user's campaign, 2249: a war fleet through the enemy's gate); every
+# trip uses two gates, so a long windup prices out such neighbour shortcuts and costs a long trip
+# little. 60 days = four lane jumps' windup (15 days each, above) per gate, eight per trip.
+GATE_WINDUP = 60
+# 2026-11-22 (user): who may pass the gates and the express - empires (nomadic ones too), fallen
+# empires, caravaneers and enclaves; not space fauna, guardians, marauders, crises, pirates or
+# rebels (common/country_types/). Such countries skip the tech prerequisite and know every system,
+# so the type is the only filter (the campaign, 2249: Voidworms, mining drones through portals).
+GATE_USERS = ['default', 'fallen_empire', 'awakened_fallen_empire', 'caravaneer_home',
+              'caravaneer_fleet', 'enclave', 'mindwarden_enclave', 'enclave_mercenary']
 
 
 def lap_nodes(radius, stars):
@@ -269,13 +280,18 @@ def bypass_block(key, name, node, nexus, *, tech, windup, lockable, sensors, fra
 '''
 
 
+def users_check():
+    """this = country: one of GATE_USERS."""
+    return '\t\tOR = {\n' + ''.join(f'\t\t\tis_country_type = {t}\n' for t in GATE_USERS) + '\t\t}\n'
+
+
 def sealed_check(n):
     """0.0.23 (run 21: a lock_bypass lock never expired): a sealed pair is closed - both ends, as
     the type covers both - to all but the sealer and its friends (0.0.24, user: allies must still
     get through). this = country."""
     return f'''
 	country_can_use = {{
-		custom_tooltip = {{
+{users_check()}		custom_tooltip = {{
 			fail_text = AHW_GATE_SEALED
 			OR = {{
 				NOT = {{ has_global_flag = ahw_sealed_{n} }}
@@ -350,7 +366,8 @@ def gen_bypasses():
     out = [GENERATED, '''# (0.0.8) Field meanings: the header of vanilla's common/bypass/00_bypasses.txt.
 # Entry points are 1:1: one scripted-connection type per pair (run 6). node = the empire's portal
 # system (flag ahw_entry_N, and not ahw_broken: until repaired, 0.0.18), nexus = the ring system with
-# that pair's exit (flag ahw_exit_N). windup_time = 10 stops detours through the ring (run 6);
+# that pair's exit (flag ahw_exit_N). windup_time = 10 stopped detours through the ring (run 6);
+# GATE_WINDUP since 2026-11-22;
 # extends_sensors = yes shows the exit through a usable entry point (run 7).
 ''']
     for n in range(1, PAIRS + 1):
@@ -358,7 +375,7 @@ def gen_bypasses():
             f'ahw_link_{n}', 'AHW_LINK',
             f'has_star_flag = ahw_entry_{n} NOT = {{ has_star_flag = ahw_broken }}',
             f'has_star_flag = ahw_exit_{n}',
-            tech=True, windup=10, lockable='no', sensors='yes', frame=25, effect='gateway',
+            tech=True, windup=GATE_WINDUP, lockable='no', sensors='yes', frame=25, effect='gateway',
             can_use=sealed_check(n)))
     for j in range(1, STATIONS + 1):
         out.append(bypass_block(
@@ -367,7 +384,7 @@ def gen_bypasses():
             tech=False, windup=0, lockable='no', sensors='yes', frame=12, effect='wormhole',
             can_use=f'''
 	country_can_use = {{
-		custom_tooltip = {{
+{users_check()}		custom_tooltip = {{
 			fail_text = AHW_EXPRESS_CLOSED
 			has_global_flag = ahw_express_open_{j}
 		}}

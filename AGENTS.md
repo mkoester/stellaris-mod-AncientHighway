@@ -155,6 +155,13 @@ exploring** (2026-11-20, `ahw_travel_grants` via `ahw.63`/`ahw.68`, `ahw_diffuse
 country flags `ahw_travel_<tech>`): +10 % of both techs per vanilla travel tech, and yearly up to
 +3 % from close friends (2 % each) and contacts (0.5 %) who hold a gate tech.
 
+**Who passes, and how slowly** (2026-11-22, user, after the campaign's 2249 war routes): every
+gate and express type's `country_can_use` allows only `GATE_USERS` (`tools/gen.py`: empires,
+nomadic ones too, fallen empires, caravaneers, enclaves — no space fauna, guardians, marauders,
+crises, pirates, rebels); such countries skip the tech prerequisite and know every system, so the
+country type is the only filter. A gate jump winds up `GATE_WINDUP` = 60 days (was 10): gates
+sharing an exit node had joined anchors 6–15 lane jumps apart in 4 jumps.
+
 All findings go to `game.log`, lines starting `AHW`.
 
 ## Console and test runs

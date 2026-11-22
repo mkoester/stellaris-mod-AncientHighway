@@ -77,6 +77,21 @@ Same session, observer mode, after Share Ring Charts passed.
 - **2241**: still civilian only — Haddam Harmony 4 entries (5 nodes), Free Beldroan Battle Clans 2
   (5 nodes); the yearly sharing passed the new nodes on (2 to each member). On 2241.07.01 `ahw.20`
   handed all 26 gates back before the daily watch did (as on 2225.04.01). error.log: nothing new.
+- **2242**: civilian only again (Haddam Harmony 2 entries, Free Beldroan Battle Clans 3; 7 nodes
+  each) — though 8 "ally under attack" swaps came in the year (Great Model-16 Pact and Havariggan
+  Allied Stars, friends of Free Beldroan, at war): far friends at war did not send a fleet round.
+  No new repair; error.log nothing new.
+  **Could they have gone round?** (`autosave_2243.01.01`, asked by the user): no gate is sealed (no
+  `ahw_sealed_*` flag). Havariggan Allied Stars could not be reached by the ring: its gate
+  (`ahw_gate_broken_15`) is broken and it holds Gate Construction only. Free Beldroan (pair 10, exit
+  Node 88-11) and Great Model-16 Pact (pair 2, exit Node 88-15): both gates repaired, both hold both
+  techs, four ring nodes apart. Free Beldroan's `visited_objects` hold Nodes 88-6 to 88-14 — all
+  but the friend's exit node, which it sees as a neighbour; Great Model-16's 88-6 to 88-13 and 88-15.
+  So the route was open and nearly known. No fleet went: "ally under attack" is not a war
+  participation, so the AI had no reason to send one (whether it would, as a war ally, is run 47's
+  question). Side note: the chart flags (`ahw_mapped@`) cover only 88-6 to 88-13 for every
+  country, while Free Beldroan visited 88-14 and Great Model-16 88-15 — an entry that set no chart
+  (its own exit node from the study's `set_visited`, presumably; 88-14 unexplained).
 
 ## Test, run 46 (planned 2026-11-22: the repair counted by script, the AI's repair)
 

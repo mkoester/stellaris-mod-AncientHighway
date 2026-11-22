@@ -133,6 +133,16 @@ Same session, observer mode, after Share Ring Charts passed.
   and Havariggan Allied Stars (Ashkara 03) repaired (counted): nineteen gates — Free Beldroan's two
   friends can now both be reached through the ring. Only one "ally under attack" in the year.
   error.log: nothing new.
+- **2248 — the AI routes a military fleet through the ring**: Havariggan Allied Stars, `3 military`.
+  At `autosave_2249.01.01` its fleet 16780963 (military power 108, `return_fleet_order`, not at war)
+  sits in Node 88-9, having come along the ring from Node 88-10; its planned path: the bypass of
+  pair 9 (Haddam Harmony's repaired gate) into that portal (`ahw_portal_0_1`), then hyperlanes via
+  Sol and Qeb Daraan to Faltus, arriving 2249.11.18. Its own gate is pair 15 (exit Node 88-4). So
+  the engine's pathfinding takes our bypasses, along the ring and **through another empire's
+  gate**, for an ordinary order (returning home) — the feasibility table's open row answered. Still
+  open: whether the AI sends help this way in a war. Civilian entries: Roaming Cybergang 32, Haddam
+  Harmony and Slerpanoran Hegemony 7, six more empires 1–4. Mandate of Evari started a repair
+  (Furon 51, 2248.12.20). error.log: nothing new.
 
 ## Test, run 46 (planned 2026-11-22: the repair counted by script, the AI's repair)
 

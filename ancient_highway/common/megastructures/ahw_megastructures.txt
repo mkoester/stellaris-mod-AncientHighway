@@ -49,6 +49,12 @@ ahw_gate_1 = {
 				has_technology = ahw_tech_gate_construction
 			}
 		}
+		# 2026-11-22: a repair the script is counting (ahw_repair_watch) - its engine upgrade was
+		# dropped by an owner loss; a second click would pay twice
+		custom_tooltip = {
+			fail_text = AHW_REPAIR_UNDER_WAY
+			NOT = { has_star_flag = ahw_repairing }
+		}
 	}
 	build_time = 90
 	resources = {
@@ -140,6 +146,12 @@ ahw_gate_2 = {
 				has_technology = ahw_tech_gate_theory
 				has_technology = ahw_tech_gate_construction
 			}
+		}
+		# 2026-11-22: a repair the script is counting (ahw_repair_watch) - its engine upgrade was
+		# dropped by an owner loss; a second click would pay twice
+		custom_tooltip = {
+			fail_text = AHW_REPAIR_UNDER_WAY
+			NOT = { has_star_flag = ahw_repairing }
 		}
 	}
 	build_time = 90
@@ -233,6 +245,12 @@ ahw_gate_3 = {
 				has_technology = ahw_tech_gate_construction
 			}
 		}
+		# 2026-11-22: a repair the script is counting (ahw_repair_watch) - its engine upgrade was
+		# dropped by an owner loss; a second click would pay twice
+		custom_tooltip = {
+			fail_text = AHW_REPAIR_UNDER_WAY
+			NOT = { has_star_flag = ahw_repairing }
+		}
 	}
 	build_time = 90
 	resources = {
@@ -324,6 +342,12 @@ ahw_gate_4 = {
 				has_technology = ahw_tech_gate_theory
 				has_technology = ahw_tech_gate_construction
 			}
+		}
+		# 2026-11-22: a repair the script is counting (ahw_repair_watch) - its engine upgrade was
+		# dropped by an owner loss; a second click would pay twice
+		custom_tooltip = {
+			fail_text = AHW_REPAIR_UNDER_WAY
+			NOT = { has_star_flag = ahw_repairing }
 		}
 	}
 	build_time = 90
@@ -417,6 +441,12 @@ ahw_gate_5 = {
 				has_technology = ahw_tech_gate_construction
 			}
 		}
+		# 2026-11-22: a repair the script is counting (ahw_repair_watch) - its engine upgrade was
+		# dropped by an owner loss; a second click would pay twice
+		custom_tooltip = {
+			fail_text = AHW_REPAIR_UNDER_WAY
+			NOT = { has_star_flag = ahw_repairing }
+		}
 	}
 	build_time = 90
 	resources = {
@@ -508,6 +538,12 @@ ahw_gate_6 = {
 				has_technology = ahw_tech_gate_theory
 				has_technology = ahw_tech_gate_construction
 			}
+		}
+		# 2026-11-22: a repair the script is counting (ahw_repair_watch) - its engine upgrade was
+		# dropped by an owner loss; a second click would pay twice
+		custom_tooltip = {
+			fail_text = AHW_REPAIR_UNDER_WAY
+			NOT = { has_star_flag = ahw_repairing }
 		}
 	}
 	build_time = 90
@@ -601,6 +637,12 @@ ahw_gate_7 = {
 				has_technology = ahw_tech_gate_construction
 			}
 		}
+		# 2026-11-22: a repair the script is counting (ahw_repair_watch) - its engine upgrade was
+		# dropped by an owner loss; a second click would pay twice
+		custom_tooltip = {
+			fail_text = AHW_REPAIR_UNDER_WAY
+			NOT = { has_star_flag = ahw_repairing }
+		}
 	}
 	build_time = 90
 	resources = {
@@ -692,6 +734,12 @@ ahw_gate_8 = {
 				has_technology = ahw_tech_gate_theory
 				has_technology = ahw_tech_gate_construction
 			}
+		}
+		# 2026-11-22: a repair the script is counting (ahw_repair_watch) - its engine upgrade was
+		# dropped by an owner loss; a second click would pay twice
+		custom_tooltip = {
+			fail_text = AHW_REPAIR_UNDER_WAY
+			NOT = { has_star_flag = ahw_repairing }
 		}
 	}
 	build_time = 90
@@ -785,6 +833,12 @@ ahw_gate_9 = {
 				has_technology = ahw_tech_gate_construction
 			}
 		}
+		# 2026-11-22: a repair the script is counting (ahw_repair_watch) - its engine upgrade was
+		# dropped by an owner loss; a second click would pay twice
+		custom_tooltip = {
+			fail_text = AHW_REPAIR_UNDER_WAY
+			NOT = { has_star_flag = ahw_repairing }
+		}
 	}
 	build_time = 90
 	resources = {
@@ -876,6 +930,12 @@ ahw_gate_10 = {
 				has_technology = ahw_tech_gate_theory
 				has_technology = ahw_tech_gate_construction
 			}
+		}
+		# 2026-11-22: a repair the script is counting (ahw_repair_watch) - its engine upgrade was
+		# dropped by an owner loss; a second click would pay twice
+		custom_tooltip = {
+			fail_text = AHW_REPAIR_UNDER_WAY
+			NOT = { has_star_flag = ahw_repairing }
 		}
 	}
 	build_time = 90
@@ -969,6 +1029,12 @@ ahw_gate_11 = {
 				has_technology = ahw_tech_gate_construction
 			}
 		}
+		# 2026-11-22: a repair the script is counting (ahw_repair_watch) - its engine upgrade was
+		# dropped by an owner loss; a second click would pay twice
+		custom_tooltip = {
+			fail_text = AHW_REPAIR_UNDER_WAY
+			NOT = { has_star_flag = ahw_repairing }
+		}
 	}
 	build_time = 90
 	resources = {
@@ -1060,6 +1126,12 @@ ahw_gate_12 = {
 				has_technology = ahw_tech_gate_theory
 				has_technology = ahw_tech_gate_construction
 			}
+		}
+		# 2026-11-22: a repair the script is counting (ahw_repair_watch) - its engine upgrade was
+		# dropped by an owner loss; a second click would pay twice
+		custom_tooltip = {
+			fail_text = AHW_REPAIR_UNDER_WAY
+			NOT = { has_star_flag = ahw_repairing }
 		}
 	}
 	build_time = 90
@@ -1153,6 +1225,12 @@ ahw_gate_13 = {
 				has_technology = ahw_tech_gate_construction
 			}
 		}
+		# 2026-11-22: a repair the script is counting (ahw_repair_watch) - its engine upgrade was
+		# dropped by an owner loss; a second click would pay twice
+		custom_tooltip = {
+			fail_text = AHW_REPAIR_UNDER_WAY
+			NOT = { has_star_flag = ahw_repairing }
+		}
 	}
 	build_time = 90
 	resources = {
@@ -1244,6 +1322,12 @@ ahw_gate_14 = {
 				has_technology = ahw_tech_gate_theory
 				has_technology = ahw_tech_gate_construction
 			}
+		}
+		# 2026-11-22: a repair the script is counting (ahw_repair_watch) - its engine upgrade was
+		# dropped by an owner loss; a second click would pay twice
+		custom_tooltip = {
+			fail_text = AHW_REPAIR_UNDER_WAY
+			NOT = { has_star_flag = ahw_repairing }
 		}
 	}
 	build_time = 90
@@ -1337,6 +1421,12 @@ ahw_gate_15 = {
 				has_technology = ahw_tech_gate_construction
 			}
 		}
+		# 2026-11-22: a repair the script is counting (ahw_repair_watch) - its engine upgrade was
+		# dropped by an owner loss; a second click would pay twice
+		custom_tooltip = {
+			fail_text = AHW_REPAIR_UNDER_WAY
+			NOT = { has_star_flag = ahw_repairing }
+		}
 	}
 	build_time = 90
 	resources = {
@@ -1428,6 +1518,12 @@ ahw_gate_16 = {
 				has_technology = ahw_tech_gate_theory
 				has_technology = ahw_tech_gate_construction
 			}
+		}
+		# 2026-11-22: a repair the script is counting (ahw_repair_watch) - its engine upgrade was
+		# dropped by an owner loss; a second click would pay twice
+		custom_tooltip = {
+			fail_text = AHW_REPAIR_UNDER_WAY
+			NOT = { has_star_flag = ahw_repairing }
 		}
 	}
 	build_time = 90
@@ -1521,6 +1617,12 @@ ahw_gate_17 = {
 				has_technology = ahw_tech_gate_construction
 			}
 		}
+		# 2026-11-22: a repair the script is counting (ahw_repair_watch) - its engine upgrade was
+		# dropped by an owner loss; a second click would pay twice
+		custom_tooltip = {
+			fail_text = AHW_REPAIR_UNDER_WAY
+			NOT = { has_star_flag = ahw_repairing }
+		}
 	}
 	build_time = 90
 	resources = {
@@ -1612,6 +1714,12 @@ ahw_gate_18 = {
 				has_technology = ahw_tech_gate_theory
 				has_technology = ahw_tech_gate_construction
 			}
+		}
+		# 2026-11-22: a repair the script is counting (ahw_repair_watch) - its engine upgrade was
+		# dropped by an owner loss; a second click would pay twice
+		custom_tooltip = {
+			fail_text = AHW_REPAIR_UNDER_WAY
+			NOT = { has_star_flag = ahw_repairing }
 		}
 	}
 	build_time = 90
@@ -1705,6 +1813,12 @@ ahw_gate_19 = {
 				has_technology = ahw_tech_gate_construction
 			}
 		}
+		# 2026-11-22: a repair the script is counting (ahw_repair_watch) - its engine upgrade was
+		# dropped by an owner loss; a second click would pay twice
+		custom_tooltip = {
+			fail_text = AHW_REPAIR_UNDER_WAY
+			NOT = { has_star_flag = ahw_repairing }
+		}
 	}
 	build_time = 90
 	resources = {
@@ -1796,6 +1910,12 @@ ahw_gate_20 = {
 				has_technology = ahw_tech_gate_theory
 				has_technology = ahw_tech_gate_construction
 			}
+		}
+		# 2026-11-22: a repair the script is counting (ahw_repair_watch) - its engine upgrade was
+		# dropped by an owner loss; a second click would pay twice
+		custom_tooltip = {
+			fail_text = AHW_REPAIR_UNDER_WAY
+			NOT = { has_star_flag = ahw_repairing }
 		}
 	}
 	build_time = 90
@@ -1889,6 +2009,12 @@ ahw_gate_21 = {
 				has_technology = ahw_tech_gate_construction
 			}
 		}
+		# 2026-11-22: a repair the script is counting (ahw_repair_watch) - its engine upgrade was
+		# dropped by an owner loss; a second click would pay twice
+		custom_tooltip = {
+			fail_text = AHW_REPAIR_UNDER_WAY
+			NOT = { has_star_flag = ahw_repairing }
+		}
 	}
 	build_time = 90
 	resources = {
@@ -1980,6 +2106,12 @@ ahw_gate_22 = {
 				has_technology = ahw_tech_gate_theory
 				has_technology = ahw_tech_gate_construction
 			}
+		}
+		# 2026-11-22: a repair the script is counting (ahw_repair_watch) - its engine upgrade was
+		# dropped by an owner loss; a second click would pay twice
+		custom_tooltip = {
+			fail_text = AHW_REPAIR_UNDER_WAY
+			NOT = { has_star_flag = ahw_repairing }
 		}
 	}
 	build_time = 90
@@ -2073,6 +2205,12 @@ ahw_gate_23 = {
 				has_technology = ahw_tech_gate_construction
 			}
 		}
+		# 2026-11-22: a repair the script is counting (ahw_repair_watch) - its engine upgrade was
+		# dropped by an owner loss; a second click would pay twice
+		custom_tooltip = {
+			fail_text = AHW_REPAIR_UNDER_WAY
+			NOT = { has_star_flag = ahw_repairing }
+		}
 	}
 	build_time = 90
 	resources = {
@@ -2164,6 +2302,12 @@ ahw_gate_24 = {
 				has_technology = ahw_tech_gate_theory
 				has_technology = ahw_tech_gate_construction
 			}
+		}
+		# 2026-11-22: a repair the script is counting (ahw_repair_watch) - its engine upgrade was
+		# dropped by an owner loss; a second click would pay twice
+		custom_tooltip = {
+			fail_text = AHW_REPAIR_UNDER_WAY
+			NOT = { has_star_flag = ahw_repairing }
 		}
 	}
 	build_time = 90
@@ -2257,6 +2401,12 @@ ahw_gate_25 = {
 				has_technology = ahw_tech_gate_construction
 			}
 		}
+		# 2026-11-22: a repair the script is counting (ahw_repair_watch) - its engine upgrade was
+		# dropped by an owner loss; a second click would pay twice
+		custom_tooltip = {
+			fail_text = AHW_REPAIR_UNDER_WAY
+			NOT = { has_star_flag = ahw_repairing }
+		}
 	}
 	build_time = 90
 	resources = {
@@ -2348,6 +2498,12 @@ ahw_gate_26 = {
 				has_technology = ahw_tech_gate_theory
 				has_technology = ahw_tech_gate_construction
 			}
+		}
+		# 2026-11-22: a repair the script is counting (ahw_repair_watch) - its engine upgrade was
+		# dropped by an owner loss; a second click would pay twice
+		custom_tooltip = {
+			fail_text = AHW_REPAIR_UNDER_WAY
+			NOT = { has_star_flag = ahw_repairing }
 		}
 	}
 	build_time = 90
@@ -2441,6 +2597,12 @@ ahw_gate_27 = {
 				has_technology = ahw_tech_gate_construction
 			}
 		}
+		# 2026-11-22: a repair the script is counting (ahw_repair_watch) - its engine upgrade was
+		# dropped by an owner loss; a second click would pay twice
+		custom_tooltip = {
+			fail_text = AHW_REPAIR_UNDER_WAY
+			NOT = { has_star_flag = ahw_repairing }
+		}
 	}
 	build_time = 90
 	resources = {
@@ -2532,6 +2694,12 @@ ahw_gate_28 = {
 				has_technology = ahw_tech_gate_theory
 				has_technology = ahw_tech_gate_construction
 			}
+		}
+		# 2026-11-22: a repair the script is counting (ahw_repair_watch) - its engine upgrade was
+		# dropped by an owner loss; a second click would pay twice
+		custom_tooltip = {
+			fail_text = AHW_REPAIR_UNDER_WAY
+			NOT = { has_star_flag = ahw_repairing }
 		}
 	}
 	build_time = 90
@@ -2625,6 +2793,12 @@ ahw_gate_29 = {
 				has_technology = ahw_tech_gate_construction
 			}
 		}
+		# 2026-11-22: a repair the script is counting (ahw_repair_watch) - its engine upgrade was
+		# dropped by an owner loss; a second click would pay twice
+		custom_tooltip = {
+			fail_text = AHW_REPAIR_UNDER_WAY
+			NOT = { has_star_flag = ahw_repairing }
+		}
 	}
 	build_time = 90
 	resources = {
@@ -2716,6 +2890,12 @@ ahw_gate_30 = {
 				has_technology = ahw_tech_gate_theory
 				has_technology = ahw_tech_gate_construction
 			}
+		}
+		# 2026-11-22: a repair the script is counting (ahw_repair_watch) - its engine upgrade was
+		# dropped by an owner loss; a second click would pay twice
+		custom_tooltip = {
+			fail_text = AHW_REPAIR_UNDER_WAY
+			NOT = { has_star_flag = ahw_repairing }
 		}
 	}
 	build_time = 90
@@ -2809,6 +2989,12 @@ ahw_gate_31 = {
 				has_technology = ahw_tech_gate_construction
 			}
 		}
+		# 2026-11-22: a repair the script is counting (ahw_repair_watch) - its engine upgrade was
+		# dropped by an owner loss; a second click would pay twice
+		custom_tooltip = {
+			fail_text = AHW_REPAIR_UNDER_WAY
+			NOT = { has_star_flag = ahw_repairing }
+		}
 	}
 	build_time = 90
 	resources = {
@@ -2900,6 +3086,12 @@ ahw_gate_32 = {
 				has_technology = ahw_tech_gate_theory
 				has_technology = ahw_tech_gate_construction
 			}
+		}
+		# 2026-11-22: a repair the script is counting (ahw_repair_watch) - its engine upgrade was
+		# dropped by an owner loss; a second click would pay twice
+		custom_tooltip = {
+			fail_text = AHW_REPAIR_UNDER_WAY
+			NOT = { has_star_flag = ahw_repairing }
 		}
 	}
 	build_time = 90

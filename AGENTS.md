@@ -91,6 +91,14 @@ and the head start (a repaired gate on an anchor: 50 %). **The repair is an upgr
 `nomad_reactivatable`); its `on_build_complete` → `ahw_mark_repaired` (once; the gate goes to the
 anchor's owner, never to a nomad). By script: `ahw_repair_gate` (upgrade + `finish_upgrade`, with
 a fallback if the engine skips `on_build_complete`) — the console skips and the contract.
+**The count** (2026-11-22): an owner loss drops the engine's upgrade, progress and payment, so
+`ahw.90` (daily) runs `ahw_repair_watch` per portal: a gate seen upgrading gets star flag
+`ahw_repairing` and variable `ahw_repair_left` (90, `ahw_repair_count_start`), counted down daily;
+at 0 `ahw_repair_gate` finishes it (repairer: the gate's owner). If the upgrade is dropped, a human
+owner gets `ahw.93` ("the repair goes on"), and the upgrade's `possible` refuses a second click
+(`AHW_REPAIR_UNDER_WAY`). **The AI repairs by script**: `ahw.26` (monthly) — both techs for 12
+months (`ahw_both_months`), 600 alloys and 100 influence in hand → `ahw_ai_start_repair` pays
+300 + 50, starts the upgrade for the look and the count.
 **Nomads** (0.1.0) get no portal; `ahw.60` offers a nomad the study once, on its first entry into
 a portal with a broken gate (it teaches the nomad, not the portal's owner); they repair by the
 upgrade (`nomad_reactivatable`); the Sealed mode refuses them. **The repair contract**

@@ -22759,6 +22759,55 @@ ahw_repair_gate = {
 	clear_global_event_target = ahw_script_repairer
 }
 
+# this = a portal (2026-11-22): the repair counted by script. An owner loss drops the engine's
+# upgrade, progress and payment (docs/test-runs.md), so ahw_repair_watch (daily, ahw.90) counts the
+# 90 days itself and finishes with ahw_repair_gate.
+ahw_repair_count_start = {
+	set_star_flag = ahw_repairing
+	set_variable = { which = ahw_repair_left value = 90 }
+}
+
+# this = a portal, root = the AI country (ahw.26): it pays the repair's cost, the engine's upgrade
+# starts for the look (finished by the count, whether or not it survives), and the count starts.
+ahw_ai_start_repair = {
+	root = { add_resource = { alloys = -300 influence = -50 } }
+	every_system_megastructure = {
+		if = { limit = { is_megastructure_type = ahw_gate_broken_1 } upgrade_megastructure_to = ahw_gate_1 }
+		if = { limit = { is_megastructure_type = ahw_gate_broken_2 } upgrade_megastructure_to = ahw_gate_2 }
+		if = { limit = { is_megastructure_type = ahw_gate_broken_3 } upgrade_megastructure_to = ahw_gate_3 }
+		if = { limit = { is_megastructure_type = ahw_gate_broken_4 } upgrade_megastructure_to = ahw_gate_4 }
+		if = { limit = { is_megastructure_type = ahw_gate_broken_5 } upgrade_megastructure_to = ahw_gate_5 }
+		if = { limit = { is_megastructure_type = ahw_gate_broken_6 } upgrade_megastructure_to = ahw_gate_6 }
+		if = { limit = { is_megastructure_type = ahw_gate_broken_7 } upgrade_megastructure_to = ahw_gate_7 }
+		if = { limit = { is_megastructure_type = ahw_gate_broken_8 } upgrade_megastructure_to = ahw_gate_8 }
+		if = { limit = { is_megastructure_type = ahw_gate_broken_9 } upgrade_megastructure_to = ahw_gate_9 }
+		if = { limit = { is_megastructure_type = ahw_gate_broken_10 } upgrade_megastructure_to = ahw_gate_10 }
+		if = { limit = { is_megastructure_type = ahw_gate_broken_11 } upgrade_megastructure_to = ahw_gate_11 }
+		if = { limit = { is_megastructure_type = ahw_gate_broken_12 } upgrade_megastructure_to = ahw_gate_12 }
+		if = { limit = { is_megastructure_type = ahw_gate_broken_13 } upgrade_megastructure_to = ahw_gate_13 }
+		if = { limit = { is_megastructure_type = ahw_gate_broken_14 } upgrade_megastructure_to = ahw_gate_14 }
+		if = { limit = { is_megastructure_type = ahw_gate_broken_15 } upgrade_megastructure_to = ahw_gate_15 }
+		if = { limit = { is_megastructure_type = ahw_gate_broken_16 } upgrade_megastructure_to = ahw_gate_16 }
+		if = { limit = { is_megastructure_type = ahw_gate_broken_17 } upgrade_megastructure_to = ahw_gate_17 }
+		if = { limit = { is_megastructure_type = ahw_gate_broken_18 } upgrade_megastructure_to = ahw_gate_18 }
+		if = { limit = { is_megastructure_type = ahw_gate_broken_19 } upgrade_megastructure_to = ahw_gate_19 }
+		if = { limit = { is_megastructure_type = ahw_gate_broken_20 } upgrade_megastructure_to = ahw_gate_20 }
+		if = { limit = { is_megastructure_type = ahw_gate_broken_21 } upgrade_megastructure_to = ahw_gate_21 }
+		if = { limit = { is_megastructure_type = ahw_gate_broken_22 } upgrade_megastructure_to = ahw_gate_22 }
+		if = { limit = { is_megastructure_type = ahw_gate_broken_23 } upgrade_megastructure_to = ahw_gate_23 }
+		if = { limit = { is_megastructure_type = ahw_gate_broken_24 } upgrade_megastructure_to = ahw_gate_24 }
+		if = { limit = { is_megastructure_type = ahw_gate_broken_25 } upgrade_megastructure_to = ahw_gate_25 }
+		if = { limit = { is_megastructure_type = ahw_gate_broken_26 } upgrade_megastructure_to = ahw_gate_26 }
+		if = { limit = { is_megastructure_type = ahw_gate_broken_27 } upgrade_megastructure_to = ahw_gate_27 }
+		if = { limit = { is_megastructure_type = ahw_gate_broken_28 } upgrade_megastructure_to = ahw_gate_28 }
+		if = { limit = { is_megastructure_type = ahw_gate_broken_29 } upgrade_megastructure_to = ahw_gate_29 }
+		if = { limit = { is_megastructure_type = ahw_gate_broken_30 } upgrade_megastructure_to = ahw_gate_30 }
+		if = { limit = { is_megastructure_type = ahw_gate_broken_31 } upgrade_megastructure_to = ahw_gate_31 }
+		if = { limit = { is_megastructure_type = ahw_gate_broken_32 } upgrade_megastructure_to = ahw_gate_32 }
+	}
+	ahw_repair_count_start = yes
+}
+
 # this = a portal: its pair is open again.
 ahw_unseal_pair = {
 	if = {

@@ -617,6 +617,55 @@ ahw_mark_repaired = {
 	}
 }
 
+# this = a portal, event_target:ahw_watch_owner = its anchor's owner, which ahw.90 has just made the
+# gate's owner again (2026-11-22). An owner loss drops the engine's repair upgrade, progress and
+# payment (docs/test-runs.md), so the repair is counted here: seen upgrading -> the count starts
+# (ahw_repair_count_start); each day -1; at 0 ahw_repair_gate finishes it. If the engine's upgrade
+# finishes first, its on_build_complete clears ahw_broken and the count ends. The repairer is the
+# gate's owner (the engine does not say who clicked).
+ahw_repair_watch = {
+	if = {
+		limit = {
+			has_star_flag = ahw_broken
+			NOT = { has_star_flag = ahw_repairing }
+			any_system_megastructure = { is_upgrading = yes }
+		}
+		ahw_repair_count_start = yes
+		log = "AHW repair of the gate in \\[This.GetName] seen \\[GetDate], counted by script for \\[ahw_watch_owner.GetName]"
+	}
+	else_if = {
+		limit = {
+			has_star_flag = ahw_repairing
+			NOT = { has_star_flag = ahw_broken }
+		}
+		remove_star_flag = ahw_repairing
+		remove_star_flag = ahw_repair_dropped
+		clear_variable = ahw_repair_left
+	}
+	else_if = {
+		limit = { has_star_flag = ahw_repairing }
+		change_variable = { which = ahw_repair_left value = -1 }
+		if = {
+			limit = {
+				NOT = { has_star_flag = ahw_repair_dropped }
+				NOT = { any_system_megastructure = { is_upgrading = yes } }
+			}
+			set_star_flag = ahw_repair_dropped
+			log = "AHW repair of the gate in \\[This.GetName]: the engine dropped its upgrade by \\[GetDate], \\[This.ahw_repair_left] days left by script"
+			save_event_target_as = ahw_repair_portal
+			event_target:ahw_watch_owner = {
+				if = { limit = { is_ai = no } country_event = { id = ahw.93 } }
+			}
+		}
+		if = {
+			limit = { check_variable = { which = ahw_repair_left value <= 0 } }
+			event_target:ahw_watch_owner = { save_event_target_as = ahw_repairer }
+			log = "AHW repair of the gate in \\[This.GetName] finished by the count \\[GetDate]"
+			ahw_repair_gate = yes
+		}
+	}
+}
+
 # 0.1.1, shared charts (design "Exploration and incentives"): every ring node charted by
 # event_target:ahw_chart_from (star flag ahw_mapped@, set on entry in ahw.60) becomes known to
 # event_target:ahw_chart_to - visited (set_visited, as the study reveals the exit node) and charted.

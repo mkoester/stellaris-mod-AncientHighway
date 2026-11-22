@@ -137,6 +137,57 @@ ship_event = {
 	}
 }
 
+# 2026-11-22: the AI repairs by script. It never picked the repair upgrade while it could pay
+# (Thembolon Accord: both techs from 2227, 2376 alloys at 2228, no repair by 2234 -
+# docs/test-runs.md). Monthly: an AI empire that has held both gate techs for 12 months and keeps a
+# reserve of 600 alloys and 100 influence pays the repair of one broken gate on its anchor
+# (ahw_ai_start_repair); ahw_repair_watch counts it down.
+country_event = {
+	id = ahw.26
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		is_ai = yes
+		is_country_type = default
+		has_technology = ahw_tech_gate_theory
+		has_technology = ahw_tech_gate_construction
+	}
+	immediate = {
+		change_variable = { which = ahw_both_months value = 1 }
+		if = {
+			limit = {
+				check_variable = { which = ahw_both_months value >= 12 }
+				has_resource = { type = alloys amount >= 600 }
+				has_resource = { type = influence amount >= 100 }
+			}
+			random_system = {
+				limit = {
+					has_star_flag = ahw_portal
+					has_star_flag = ahw_broken
+					NOT = { has_star_flag = ahw_repairing }
+					any_neighbor_system = { exists = owner owner = { is_same_value = root } }
+					NOT = { any_system_megastructure = { is_upgrading = yes } }
+				}
+				ahw_ai_start_repair = yes
+				log = "AHW AI repair: [Root.GetName] pays and starts the gate in [This.GetName] on [GetDate]"
+			}
+		}
+	}
+}
+
+# The message (from ahw_repair_watch; event_target:ahw_repair_portal = the portal): the engine
+# dropped the repair, the count goes on - so the player does not pay again.
+country_event = {
+	id = ahw.93
+	title = ahw.93.name
+	desc = ahw.93.desc
+	picture = GFX_evt_megastructure_construction
+	is_triggered_only = yes
+	option = {
+		name = ahw.93.a
+	}
+}
+
 # 0.0.31 (user, 2026-11-06): every regular empire without a portal gets one - empires born later
 # (rebels, secessions, released subjects) and those for which no anchor was found before. Monthly
 # (on_monthly_pulse_country). Run 30: a spawn in play freezes the game ~10 s on a huge galaxy
@@ -547,6 +598,7 @@ country_event = {
 				set_owner = event_target:ahw_watch_owner
 				log = "AHW owner lost by [GetDate]: the gate in [Prev.GetName], back to [ahw_watch_owner.GetName]"
 			}
+			ahw_repair_watch = yes	# 2026-11-22: the repair survives an owner loss
 		}
 		country_event = { id = ahw.90 days = 1 }
 	}

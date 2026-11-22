@@ -321,6 +321,24 @@ ahw_repair_gate = {{
 	clear_global_event_target = ahw_script_repairer
 }}
 
+# this = a portal (2026-11-22): the repair counted by script. An owner loss drops the engine's
+# upgrade, progress and payment (docs/test-runs.md), so ahw_repair_watch (daily, ahw.90) counts the
+# {REPAIR_DAYS} days itself and finishes with ahw_repair_gate.
+ahw_repair_count_start = {{
+	set_star_flag = ahw_repairing
+	set_variable = {{ which = ahw_repair_left value = {REPAIR_DAYS} }}
+}}
+
+# this = a portal, root = the AI country (ahw.26): it pays the repair's cost, the engine's upgrade
+# starts for the look (finished by the count, whether or not it survives), and the count starts.
+ahw_ai_start_repair = {{
+	root = {{ add_resource = {{ alloys = -{REPAIR_ALLOYS} influence = -{REPAIR_INFLUENCE} }} }}
+	every_system_megastructure = {{
+{chr(10).join(f"""		if = {{ limit = {{ is_megastructure_type = ahw_gate_broken_{n} }} upgrade_megastructure_to = ahw_gate_{n} }}""" for n in range(1, PAIRS + 1))}
+	}}
+	ahw_repair_count_start = yes
+}}
+
 # this = a portal: its pair is open again.
 ahw_unseal_pair = {{
 {sw(lambda n: f'remove_global_flag = ahw_sealed_{n} clear_global_event_target = ahw_sealer_{n}')}
@@ -391,6 +409,12 @@ def mega_block(key, entity, btype, kind, comment, n):
 				has_technology = ahw_tech_gate_theory
 				has_technology = ahw_tech_gate_construction
 			}}
+		}}
+		# 2026-11-22: a repair the script is counting (ahw_repair_watch) - its engine upgrade was
+		# dropped by an owner loss; a second click would pay twice
+		custom_tooltip = {{
+			fail_text = AHW_REPAIR_UNDER_WAY
+			NOT = {{ has_star_flag = ahw_repairing }}
 		}}
 	}}
 	build_time = {REPAIR_DAYS}

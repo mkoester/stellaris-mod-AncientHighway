@@ -2,6 +2,24 @@
 
 Moved out of `AGENTS.md` on 2026-11-14. Newest first; the spike's runs 1–39 are in `spike-runs.md`. Add each new run at the top of this file, not to `AGENTS.md`.
 
+## Test, run 46 (planned 2026-11-22: the repair counted by script, the AI's repair)
+
+In the campaign, from `2234.10.01_repair-stopped` (Thembolon's dropped repair is lost: the count
+starts only with an upgrade seen after the fix). Copy `logs/game.log` before restarting.
+1. **A repair survives a load**: `play 16777233`, `resource alloys 300`, click Upgrade on the gate
+   in Eshmet 42, run 2 days — game.log `AHW repair of the gate in Eshmet 42 seen …`. Save, load,
+   run 2 days: `… the engine dropped its upgrade …, N days left`, the pop-up *The Gate Repair Goes
+   On* (does the day count show, or a raw `[…]`?), and the Upgrade button disabled with "already
+   under way". Alloys and influence not charged again. Run on until `… finished by the count`
+   (~88 days, `fast_forward`?): the gate repaired, `AHW entry point in Eshmet 42 repaired by
+   Thembolon Accord`.
+2. **Unanswered by step 1**: whether `upgrade_megastructure_to` from script charges the cost (the AI
+   path pays by hand — Thembolon's stockpile before and after an `ahw.26` start shows it).
+3. **The AI**: `play 0`, observe ~13 months. Any AI with both techs, 600 alloys and 100 influence:
+   `AHW AI repair: … pays and starts the gate …`, then `… finished by the count` 90 days later.
+   Thembolon's counter starts with the fix, so its first chance is 12 months on.
+4. error.log: nothing new naming `ahw_`.
+
 ## Observation: the user's campaign continued (2226.08–2234.09, read 2026-11-22)
 
 Roaming Cybergang again, with `4835f95` and `5edaa00`. Read from the saves `2227.01.30`–

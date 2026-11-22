@@ -30,6 +30,10 @@ The user's campaign with the count (`ahw.90` → `ahw_repair_watch`) and `ahw.26
   Community formed after 2234.09). Guarded the same day (`exists = event_target:…` before each
   flag lookup in `ahw_share_charts_gc`); to confirm: the line gone from error.log, and at passing
   `AHW resolution Share Ring Charts passed` (no node charted yet, so no `AHW charts:` line).
+  **Passed by console** 2236.02 (`effect pass_resolution_no_cooldown = resolution_ahw_share_charts`
+  — in observer mode the console's `effect` does nothing: `play 0` first): the line logged, no
+  `AHW charts:`, no new error. The community formed 2235.01.01, days before the error line.
+  The game ran the pre-guard code (mod files load at start), so the guard is still unconfirmed.
 - Owner losses: 14 days with losses in 15 months.
 
 ## Test, run 46 (planned 2026-11-22: the repair counted by script, the AI's repair)

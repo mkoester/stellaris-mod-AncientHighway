@@ -42,8 +42,9 @@ not load. As of runs 40–43:
   tech), fed also by travel techs and close friends' knowledge (`ahw_tech.txt`, `docs/design.md`
   "Without exploring"); in game untested.
   With working gates (run 44, `docs/test-runs.md`) the AI repairs within 3–4 months of having both techs —
-  but in the user's campaign Thembolon Accord, with both techs and the resources, has not repaired in
-  7.5 years (2227–2234, cause open; `docs/test-runs.md`, 2026-11-22). **Run
+  but in the user's campaign Thembolon Accord, with both techs and the resources, did not repair in
+  7.5 years (2227–2234), and an owner loss drops a repair in progress. Since the count and `ahw.26`
+  (2026-11-22) five AI gates were repaired in 15 months, Thembolon's by script (`docs/test-runs.md`). **Run
   44 passed** the 0.1.1 features: object texts, shared charts, ally under attack, the three
   Galactic Community resolutions (after the flag fix, 2026-11-09); the Seal mode refused on a
   forced-open gate (2026-11-12).

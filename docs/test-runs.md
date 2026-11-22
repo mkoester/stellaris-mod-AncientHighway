@@ -2,6 +2,33 @@
 
 Moved out of `AGENTS.md` on 2026-11-14. Newest first; the spike's runs 1–39 are in `spike-runs.md`. Add each new run at the top of this file, not to `AGENTS.md`.
 
+## Observation: the count in the campaign (2234.10.01–2236.01.01, read 2026-11-22)
+
+The user's campaign with the count (`ahw.90` → `ahw_repair_watch`) and `ahw.26`, loaded from
+`autosave_2234.10.01`, observed with `play 0`; run 46's step 1 (a player's repair) was not played.
+- **Five gates repaired, all by the count**: Interstellar Yibrak Hierarchy (Caedris 23, upgrade
+  seen 2234.10.05), Vran Free Traders (Eshmet 43, 10.09), Haddam Harmony (Ashkara 01, 10.25) and
+  Great Model-16 Pact (Belun 11, 2235.08.17) started the **engine upgrade themselves** — each
+  dropped by the next owner loss (2234.10.29, 2235.08.21), each finished by the count 90 days after
+  it was seen (`… finished by the count`, `AHW entry point … repaired by …`). None of the 71 saves
+  before the fix holds an upgrade in progress, so whether the AI had started and lost repairs
+  before stays open; these four got their second tech recently, and acted within weeks (as in
+  run 44).
+- **Thembolon by script**: `AHW AI repair: Thembolon Accord pays and starts the gate in Eshmet 42 on
+  2235.10.01` — the 12th month of `ahw_both_months`; repaired 2236.01.01. Charged once:
+  2235.09.01 → 10.01 alloys −275.6, influence −43.85, against a monthly net of +24.4 / +6.15 the next
+  month — exactly 300 + 50, so `upgrade_megastructure_to` from script charges nothing (run 46,
+  step 2). The engine's upgrade ran alongside (`progress=30` at 11.01) until an owner loss dropped
+  it on 2236.01.01, the count's last day.
+- **Not yet**: no AI entry into the ring by 2236.01 (no ring lines in the yearly summary); the
+  pop-up `ahw.93` and the disabled second click (a human repair).
+- **error.log**: one new line, on 2235.01.09 (days after the first repair): `Could not get dynamic
+  flag 'ahw_mapped' with target 'event_target:ahw_chart_from'` in `ahw_share_charts_gc`, called
+  from the Share Ring Charts resolution's effect — no resolution passed (no `AHW resolution` line),
+  so presumably the engine evaluating the effect (tooltip or AI) with the target unset. Harmless
+  so far.
+- Owner losses: 14 days with losses in 15 months.
+
 ## Test, run 46 (planned 2026-11-22: the repair counted by script, the AI's repair)
 
 In the campaign, from `2234.10.01_repair-stopped` (Thembolon's dropped repair is lost: the count

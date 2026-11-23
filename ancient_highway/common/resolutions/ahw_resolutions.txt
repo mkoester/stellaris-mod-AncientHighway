@@ -126,7 +126,10 @@ resolution_ahw_gate_breach = {
 
 	potential = { has_global_flag = ahw_done }
 	allow = {
-		has_global_flag = ahw_gc_charts
+		custom_tooltip = {	# 2026-11-23: the bare flag read "Has the ahw_gc_charts flag"
+			fail_text = AHW_RESOLUTION_NEEDS_SHARE_CHARTS
+			has_global_flag = ahw_gc_charts
+		}
 		custom_tooltip = {	# user, 2026-11-23: only an empire with a repaired gate proposes
 			fail_text = AHW_RESOLUTION_NEEDS_REPAIRED_GATE
 			ahw_owns_repaired_gate = yes

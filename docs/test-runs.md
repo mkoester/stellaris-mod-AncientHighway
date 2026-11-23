@@ -2,6 +2,24 @@
 
 Moved out of `AGENTS.md` on 2026-11-14. Newest first; the spike's runs 1–39 are in `spike-runs.md`. Add each new run at the top of this file, not to `AGENTS.md`.
 
+## Run 47: the pop-ups' source line, the resolutions' repaired gate (2026-11-23)
+
+New small elliptical game (4.5.4, 12 empires), console steps `communications`, `ahw_debug.77`,
+`.45`, `.8`, `.42`, `.40` (screenshots 13:06–13:11).
+- **Passed**: the event window shows "Event Chain: The Shut Doors" on *A Door Shut From Inside*
+  and *Written in Eights* (`.102`, before the first ring node), and "Event Chain: The Ancient
+  Highway" on *The Road Round the Outside*. Afterwards the situation log (Developments) lists only
+  The Ancient Highway, so the end and begin effects work. All three pop-ups show the camera button.
+- **Passed**: the resolutions' `allow` is checked against the proposer. Before the repair, Unrepaired
+  Gates showed "Only an empire that holds a repaired gate…"; after `ahw_debug.40`, Share Ring Charts
+  could be proposed.
+- **Seen**: Unrepaired Gates' other condition read the bare "Has the ahw_gc_charts flag". It now
+  has a text (`AHW_RESOLUTION_NEEDS_SHARE_CHARTS`).
+- **Not tested**: where the camera button jumps (gate, node, capital); the fragments' twins; `ahw.93`/`.94`,
+  `.96`/`.97`.
+- **Logs**: error.log gained nothing naming `ahw_`, `event_chain` or a target. game.log: two owner
+  losses of the repaired gate (2200.08.09, 08.29), each given back (the open owner-loss question).
+
 ## Observation: the count in the campaign (2234.10.01–2236.01.01, read 2026-11-22)
 
 The user's campaign with the count (`ahw.90` → `ahw_repair_watch`) and `ahw.26`, loaded from

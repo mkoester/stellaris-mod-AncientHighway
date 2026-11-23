@@ -16,15 +16,15 @@ update both texts and re-upload the description.
       our own art).
 - [x] Discord: forum `ancient-highway` under MODS, invite `Vf8pqFXV6` (2026-11-23), in
       `../docs/discord.md`'s table, `README.md` and both store texts below.
-- [ ] Store screenshots (F12 in game, no UI clutter): the ring on the galaxy map, a portal with its
-      gate, a story pop-up. Crop into `assets/`.
+- [ ] Store screenshots — not for 1.0.0 (user, 2026-11-23); later: the ring on the galaxy map, a
+      portal with its gate, a story pop-up.
 - [ ] `../scripts/clean-mods.sh -n`, then without `-n`: it removes the empty `.claude/` that Claude
       Code leaves in `ancient_highway/` (the launcher would upload it).
 - [ ] Launcher closed → `../scripts/link-mod.sh stellaris-mod-AncientHighway/ancient_highway`
       (already linked for testing) → launcher open. If the upload dialog does not see the symlinked
       mod (Linux), copy the folder into `<user dir>/mod/` and upload the copy.
 - [ ] Upload to **Steam Workshop**. Description: the BBCode below, then the "More from me" block
-      from `../docs/store-more-from-me.md`. Add the screenshots on the item's page. A first upload
+      from `../docs/store-more-from-me.md`. A first upload
       starts **Hidden**: set it Public. The launcher writes `remote_file_id` into
       `descriptor.mod`: commit it.
 - [ ] Upload to **Paradox Mods** (plain text below; make headings, lists and links with the

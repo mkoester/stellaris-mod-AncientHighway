@@ -15,7 +15,9 @@ with the **absolute path** of the worktree's `IDEA.md`: a relative one written f
 checkout creates a stray `IDEA.md` there (2026-11-05). This
 file and `docs/` are the living design.
 
-Private for now. Workshop search 2026-11-03 found nothing alike: the nearest is *Wild Space*
+**1.0.0, the first public release** (user, 2026-11-23): store texts and checklist in
+`PUBLISHING.md`; they name what is still being tuned and watched, and are updated when a point
+settles. Workshop search 2026-11-03 found nothing alike: the nearest is *Wild Space*
 (uncolonisable systems in the core and rim, no travel mechanics); *Interstellar Highways* and
 *Evolving HyperLanes* are about starbases and manipulating existing lanes, and look unmaintained.
 

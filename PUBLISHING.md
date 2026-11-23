@@ -33,7 +33,7 @@ update both texts and re-upload the description.
       `<user dir>/launcher-v2.sqlite`, table `mods`), and into `../docs/store-more-from-me.md`: a line in both blocks,
       a row in "Where it goes", and remove it from "Not public yet". Then re-paste the blocks into
       every listed mod's descriptions, both stores.
-- [ ] GitHub repo public:
+- [x] GitHub repo public (2026-11-23):
       `gh repo edit mkoester/stellaris-mod-AncientHighway --visibility public --accept-visibility-change-consequences`.
       This publishes the `idea` branch too: your own notes, verbatim. The docs name the test machine
       (`mkDell`, in `AGENTS.md` and `docs/spike-runs.md`, and in the history).

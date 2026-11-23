@@ -31,8 +31,8 @@ level. Prefix every key, id, flag and variable with `ahw_`. Tested in game on Li
 
 The spike is over (runs 1–39, `docs/spike-runs.md`). Its files are now the mod's (`ahw_*`, the
 generator `tools/gen.py`). Tests now cover many features per game (user, 2026-11-07:
-restarting and generating a galaxy is most of each run). Nothing is public; old spike saves do
-not load. As of runs 40–43:
+restarting and generating a galaxy is most of each run). Public since 1.0.0 (2026-11-23,
+`PUBLISHING.md`); old spike saves do not load. As of runs 40–43:
 - **Work in game**: repair as an upgrade on the gate, the seal, a second (late) portal, the
   express (closed tooltip, flips, routes through an open link), the repair contract with a nomad
   to the head start (run 43), the yearly summary `ahw.80`.
@@ -259,6 +259,11 @@ All findings go to `game.log`, lines starting `AHW`.
   - starting an upgrade fires no `on_megastructure_build_start` (the dashboard's feed mod logged
     nothing when the user started a gate repair as Thembolon, 2026-11-22); watch `is_upgrading`
     (megastructure scope) instead, as `ahw_repair_watch` does.
+  - an event's `event_chain = <chain>` shows "Event Chain: <chain>_title" above its text, and a
+    begun chain sits in the situation log; `location =` a megastructure or a system gives the
+    camera button (run 47, 2026-11-23);
+  - a resolution's `allow` is checked against the proposing country, so it can require something
+    of the proposer (`ahw_owns_repaired_gate`; run 47).
 - **Timings are from mkDell** (as old as the base game; acceptable there is acceptable for
   players). **Multiplayer**: every machine runs the same script in lockstep, so the build comes
   out identical as long as nothing player-local decides it (untested in MP).
@@ -289,7 +294,7 @@ points (any ring system → any repaired entry galaxy-wide), but a candidate for
 
 ## Decided (2026-11-03)
 
-- Name *Ancient Highway*, prefix `ahw_`, repo `stellaris-mod-AncientHighway` (private).
+- Name *Ancient Highway*, prefix `ahw_`, repo `stellaris-mod-AncientHighway` (public since 2026-11-23).
 - Round galaxies (elliptical, ring) first; spirals and others later or never.
 - The ring is never claimable. Ring-side ends of entry points can't be damaged or disabled.
 - Entry points start broken; **the anchor's owner** studies (science ship project) and repairs them

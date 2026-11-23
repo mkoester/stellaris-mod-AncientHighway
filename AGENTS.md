@@ -1,6 +1,6 @@
 # Ancient Highway
 
-A Stellaris gameplay mod (game **4.5.x**, working title): a ring of artificial, unclaimable systems
+A Stellaris gameplay mod (game **4.6.x**, also 4.5.x): a ring of artificial, unclaimable systems
 **around the outside of the galaxy**, joined by hyperlanes, reachable from the regular galaxy through entry points that must be studied, repaired and researched before use. The
 point: empires stop being landlocked — a second way to get everywhere that closed borders cannot
 block for good (not a shortcut), so help for a distant ally becomes possible. Full mechanics:

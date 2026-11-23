@@ -8,6 +8,19 @@ The store texts are deliberately open about what is unfinished (user, 2026-11-23
 very transparent"). When a point under "Still being tuned" or "What we are watching" is settled,
 update both texts and re-upload the description.
 
+## Update 1.0.1 (game 4.6.0, 2026-11-23)
+
+- [x] `version="1.0.1"`, `supported_version="v4.6.*"`; store copy says 4.6.x, the Willpower line
+      under "What I am watching" is gone.
+- [x] A 4.6.0 throwaway game built the highway; `error.log` without the 120 modifier-icon lines,
+      only the expected noise (`AGENTS.md`).
+- [ ] Not seen in game: the resolutions refused to an empire with a repaired gate but no Gate
+      Theory (the tooltip's new text).
+- [ ] Upload to both stores. Change note: "Supports Stellaris 4.6 (Willpower). Galactic Community
+      resolutions: proposing one now also needs Highway Gate Theory, so an empire whose gate a nomad
+      repaired can no longer propose them without being able to use the gate. Own icons for the
+      gates' windup modifiers (120 fewer error.log lines at every start)."
+
 ## Checklist (first release, 1.0.0)
 
 - [x] Run 47 (2026-11-23, `docs/test-runs.md`): the story pop-ups' source line and camera, and the
@@ -91,12 +104,11 @@ Open questions, not known bugs. If you notice one of them in your game, I'd love
 [list]
 [*][b]Influence costs that grow with distance:[/b] outposts, and branch offices (+5 influence per jump). Does the game measure that distance through the highway, so that far-off outposts or offices get cheaper once your gate is open? Not tested yet.
 [*][b]Psionic auras:[/b] do they reach through the ring, and should they?
-[*][b]The Willpower expansion and its update[/b] (due 23 November 2026): this version was built and tested on 4.5.x, before it came out. I'll test against the update as soon as I can.
 [/list]
 
 [h2]Compatibility[/h2]
 [list]
-[*]Built for Stellaris 4.5.x. No DLC required.
+[*]Built for Stellaris 4.6.x (tested on 4.6.0 with Willpower), also runs on 4.5.x. No DLC required.
 [*][b]Start a new game.[/b] Adding the mod to a running save is built in, but not tested yet.
 [*][b]Removing it from a save is not supported:[/b] the save keeps the highway's systems, and without the mod they break.
 [*]Overrides one vanilla game rule, [i]can_build_starbase_around[/i], to keep the ring unclaimable. A mod that overrides the same rule will conflict.
@@ -147,10 +159,9 @@ What I am watching
 Open questions, not known bugs. If you notice one of them in your game, I'd love to hear about it.
 • Influence costs that grow with distance: outposts, and branch offices (+5 influence per jump). Does the game measure that distance through the highway, so that far-off outposts or offices get cheaper once your gate is open? Not tested yet.
 • Psionic auras: do they reach through the ring, and should they?
-• The Willpower expansion and its update (due 23 November 2026): this version was built and tested on 4.5.x, before it came out. I'll test against the update as soon as I can.
 
 Compatibility
-• Built for Stellaris 4.5.x. No DLC required.
+• Built for Stellaris 4.6.x (tested on 4.6.0 with Willpower), also runs on 4.5.x. No DLC required.
 • Start a new game. Adding the mod to a running save is built in, but not tested yet.
 • Removing it from a save is not supported: the save keeps the highway's systems, and without the mod they break.
 • Overrides one vanilla game rule, can_build_starbase_around, to keep the ring unclaimable. A mod that overrides the same rule will conflict.

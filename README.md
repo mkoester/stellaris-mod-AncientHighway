@@ -1,6 +1,6 @@
 # Ancient Highway
 
-A Stellaris mod (4.5.x, version 1.0.0): a ring of artificial, unclaimable systems around the
+A Stellaris mod (4.6.x, also runs on 4.5.x; version 1.0.1): a ring of artificial, unclaimable systems around the
 outside of the galaxy — built long ago for today's Fallen Empires — that every empire can reach
 once it has studied and repaired the broken gate near its home. Inspired by the super highways
 of X4.

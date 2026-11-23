@@ -139,7 +139,7 @@ category `resolution_category_ahw_highway`): Share Ring Charts (repeal ends Unre
 too), Unrepaired Gates (breach: `ahw_gate_breach`), Force a Gate Open (targeted, as Denounce:
 `ahw_force_open`, star flag `ahw_forced_open` for 10 years, which the Sealed mode refuses; the
 gate's mode reads Sealed until switched — no effect sets a mode). Only an empire with a repaired
-gate (`ahw_owns_repaired_gate`) proposes any of the three (user, 2026-11-23); the repeal is open. AI weights: `ahw_far_friend`,
+gate it can use (`ahw_can_use_own_gate`: repaired, and Gate Theory, the bypasses' prerequisite — a gate a nomad repaired is not enough) proposes any of the three (user, 2026-11-23); the repeal is open. AI weights: `ahw_far_friend`,
 `ahw_threatened` and the gate triggers in `ahw_triggers.txt`. **Object texts**: the gates', exit
 gates', express wormholes' and centre star classes' descriptions (`AHW_LORE_*`, `ahw_sc_*_desc`)
 and both techs' carry a line of lore each.

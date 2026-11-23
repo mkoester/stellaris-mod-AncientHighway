@@ -190,6 +190,14 @@ ahw_owns_repaired_gate = {
 	}
 }
 
+# 1.0.1, this = country: owns a repaired gate and can travel through it - Gate Theory, the
+# bypasses' prerequisite (common/bypass/ahw_bypasses.txt). A gate a nomad repaired for an empire
+# without it is not enough (user, 2026-11-23). Who may propose a highway resolution.
+ahw_can_use_own_gate = {
+	ahw_owns_repaired_gate = yes
+	has_technology = ahw_tech_gate_theory
+}
+
 # 0.1.1, this = country (AI weights): a friend out of reach - federation, defensive pact, our
 # overlord or our guarantor, and not a neighbour ("not a neighbour" stands in for "out of reach":
 # no reachability trigger exists). A subset of ahw_close_friend, the symmetric relations only.

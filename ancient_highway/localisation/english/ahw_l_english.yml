@@ -105,5 +105,5 @@
  ahw.93.desc:0 "The work on the gate in [ahw_repair_portal.GetName] has slipped out of our records, but not out of our crews' hands. The repair goes on and will be finished in [ahw_repair_portal.ahw_repair_left] days.\n\nThere is nothing to pay again."
  ahw.93.a:0 "Carry on."
  # 2026-11-23 (user): only an empire with a repaired gate proposes a highway resolution.
- AHW_RESOLUTION_NEEDS_REPAIRED_GATE:0 "Only an empire that holds a repaired gate of the Ancient Highway can propose this."
+ AHW_RESOLUTION_NEEDS_REPAIRED_GATE:0 "Only an empire that holds a repaired gate of the Ancient Highway and can travel through it (§HHighway Gate Theory§!) can propose this."
  AHW_RESOLUTION_NEEDS_SHARE_CHARTS:0 "Needs §Y$resolution_ahw_share_charts$§! in force."

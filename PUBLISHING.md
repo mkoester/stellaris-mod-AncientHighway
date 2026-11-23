@@ -29,7 +29,8 @@ update both texts and re-upload the description.
       `descriptor.mod`: commit it.
 - [x] Upload to **Paradox Mods** (plain text below; make headings, lists and links with the
       website editor, then check the saved page).
-- [ ] IDs into the table below (Workshop done 2026-11-23; Paradox Mods ID still to come), and into `../docs/store-more-from-me.md`: a line in both blocks,
+- [x] IDs into the table below (Paradox Mods: `remotePdxId` in the launcher's
+      `<user dir>/launcher-v2.sqlite`, table `mods`), and into `../docs/store-more-from-me.md`: a line in both blocks,
       a row in "Where it goes", and remove it from "Not public yet". Then re-paste the blocks into
       every listed mod's descriptions, both stores.
 - [ ] GitHub repo public:
@@ -44,7 +45,7 @@ update both texts and re-upload the description.
 | Store | Item ID | URL |
 |---|---|---|
 | Steam Workshop | `3844723172` | https://steamcommunity.com/sharedfiles/filedetails/?id=3844723172 |
-| Paradox Mods | — | — |
+| Paradox Mods | `168844` | https://mods.paradoxplaza.com/mods/168844/Any |
 
 `descriptor.mod` carries only the Workshop ID (`remote_file_id`); the launcher keeps the Paradox
 one in its own database.

@@ -18,32 +18,32 @@ update both texts and re-upload the description.
       `../docs/discord.md`'s table, `README.md` and both store texts below.
 - [ ] Store screenshots — not for 1.0.0 (user, 2026-11-23); later: the ring on the galaxy map, a
       portal with its gate, a story pop-up.
-- [ ] `../scripts/clean-mods.sh -n`, then without `-n`: it removes the empty `.claude/` that Claude
+- [x] `../scripts/clean-mods.sh -n`, then without `-n`: it removes the empty `.claude/` that Claude
       Code leaves in `ancient_highway/` (the launcher would upload it).
-- [ ] Launcher closed → `../scripts/link-mod.sh stellaris-mod-AncientHighway/ancient_highway`
+- [x] Launcher closed → `../scripts/link-mod.sh stellaris-mod-AncientHighway/ancient_highway`
       (already linked for testing) → launcher open. If the upload dialog does not see the symlinked
       mod (Linux), copy the folder into `<user dir>/mod/` and upload the copy.
-- [ ] Upload to **Steam Workshop**. Description: the BBCode below, then the "More from me" block
+- [x] Upload to **Steam Workshop**. Description: the BBCode below, then the "More from me" block
       from `../docs/store-more-from-me.md`. A first upload
       starts **Hidden**: set it Public. The launcher writes `remote_file_id` into
       `descriptor.mod`: commit it.
-- [ ] Upload to **Paradox Mods** (plain text below; make headings, lists and links with the
+- [x] Upload to **Paradox Mods** (plain text below; make headings, lists and links with the
       website editor, then check the saved page).
-- [ ] IDs into the table below, and into `../docs/store-more-from-me.md`: a line in both blocks,
+- [ ] IDs into the table below (Workshop done 2026-11-23; Paradox Mods ID still to come), and into `../docs/store-more-from-me.md`: a line in both blocks,
       a row in "Where it goes", and remove it from "Not public yet". Then re-paste the blocks into
       every listed mod's descriptions, both stores.
 - [ ] GitHub repo public:
       `gh repo edit mkoester/stellaris-mod-AncientHighway --visibility public --accept-visibility-change-consequences`.
       This publishes the `idea` branch too: your own notes, verbatim. The docs name the test machine
       (`mkDell`, in `AGENTS.md` and `docs/spike-runs.md`, and in the history).
-- [ ] Workspace `AGENTS.md`: AncientHighway moves from Private to Public under "Member repos".
+- [x] Workspace `AGENTS.md`: AncientHighway moves from Private to Public under "Member repos".
 - [ ] Announcement in `../docs/announcement.md`, and on our Discord's `#announcements`.
 
 ## Published IDs
 
 | Store | Item ID | URL |
 |---|---|---|
-| Steam Workshop | — | — |
+| Steam Workshop | `3844723172` | https://steamcommunity.com/sharedfiles/filedetails/?id=3844723172 |
 | Paradox Mods | — | — |
 
 `descriptor.mod` carries only the Workshop ID (`remote_file_id`); the launcher keeps the Paradox

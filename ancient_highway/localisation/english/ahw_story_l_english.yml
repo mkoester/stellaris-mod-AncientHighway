@@ -46,3 +46,9 @@
  ahw_story.22.name:0 "The Road Against the Mind"
  ahw_story.22.desc:0 "Not every great power of that age signed. The compact names one that did not, in words the protocol uses for nothing else: one mind, spread over a thousand worlds.\n\nThe signatories moved their fleets round it, never through it. When that mind finally broke apart, the road had its part in the breaking. The pieces still exist, and still remember."
  ahw_story.22.a:0 "Some roads are not neutral."
+ # 2026-11-23 (user): the pop-ups' source, shown as the event window's chain line and in the
+ # situation log - mysterious until the first ring node, then the highway's name.
+ ahw_shut_doors_chain_title:0 "The Shut Doors"
+ ahw_shut_doors_chain_desc:0 "Dead gates sit in empty systems near every young empire, locked from the far side long ago. Something lies beyond them that somebody wanted kept closed - or kept safe."
+ ahw_highway_chain_title:0 "The Ancient Highway"
+ ahw_highway_chain_desc:0 "A road round the outside of the galaxy, built by the old powers so that none of them could close it alone, and kept by a machine that is still waiting for keepers. Every portal and every reach may hold more of its story."

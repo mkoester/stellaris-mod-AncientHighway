@@ -4,7 +4,7 @@ import sys, re, pathlib
 # key directly inside an event block must be a known event field (catches a stray "}" that
 # closes immediate early, as in 0.0.5-SPIKE's first build).
 EVENT_KEYS = {'id','title','desc','is_triggered_only','hide_window','trigger','immediate','option',
-              'after','picture','show_sound','location','fire_only_once','mean_time_to_happen','is_advisor'}
+              'after','picture','show_sound','location','fire_only_once','mean_time_to_happen','is_advisor','event_chain'}
 for p in sys.argv[1:]:
     t = re.sub(r'#[^\n]*', '', pathlib.Path(p).read_text())
     t = re.sub(r'"[^"]*"', '""', t)

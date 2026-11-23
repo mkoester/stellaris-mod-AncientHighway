@@ -110,6 +110,9 @@ So the road adds lore without contradicting any canon we could find.
      War in Heaven, the seal clause, the Caretakers gone erratic, faint stars at the edge,
      the pilgrims' way, the toll ledger, parties not yet risen, the road against the hive mind.
      The fragments name no Fallen Empire present in the game, so they read the same in any galaxy.
+   - **Their source** (user, 2026-11-23): the event window's chain line names it, mysterious until
+     the purpose is clear — *The Shut Doors* from the study, *The Ancient Highway* from the first
+     ring node (`.3`) on. Each pop-up's camera button jumps to its gate, node or capital.
 3. **Fallen Empire voices** (phase 2): the reactions above, when that type is in the game.
 
 ## Open questions

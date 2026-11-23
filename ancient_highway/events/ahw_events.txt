@@ -175,14 +175,34 @@ country_event = {
 	}
 }
 
-# The message (from ahw_repair_watch; event_target:ahw_repair_portal = the portal): the engine
+# The message (from ahw_repair_watch; event_target:ahw_repair_portal = the portal, ahw_story_at its
+# gate): the engine
 # dropped the repair, the count goes on - so the player does not pay again.
 country_event = {
 	id = ahw.93
 	title = ahw.93.name
 	desc = ahw.93.desc
 	picture = GFX_evt_megastructure_construction
+	location = event_target:ahw_story_at
+	event_chain = ahw_highway_chain
 	is_triggered_only = yes
+	trigger = { has_country_flag = ahw_story_road }
+	option = {
+		name = ahw.93.a
+	}
+}
+
+# ahw.94: its twin before the first ring node - the same texts, the chain line "The Shut Doors"
+# (2026-11-23).
+country_event = {
+	id = ahw.94
+	title = ahw.93.name
+	desc = ahw.93.desc
+	picture = GFX_evt_megastructure_construction
+	location = event_target:ahw_story_at
+	event_chain = ahw_shut_doors_chain
+	is_triggered_only = yes
+	trigger = { NOT = { has_country_flag = ahw_story_road } }
 	option = {
 		name = ahw.93.a
 	}
@@ -384,7 +404,10 @@ country_event = {
 	immediate = {
 		ahw_travel_grants = yes	# 2026-11-20: a travel tech researched feeds the gate techs
 		ahw_cap_check = yes
-		country_event = { id = ahw_story.2 }	# 2026-11-19: the story, on the first gate tech
+		# 2026-11-19: the story, on the first gate tech - one of the twins (the chain line, 2026-11-23)
+		ahw_story_at_own_gate = yes
+		country_event = { id = ahw_story.2 }
+		country_event = { id = ahw_story.102 }
 	}
 }
 
@@ -656,18 +679,41 @@ country_event = {
 			ahw_copy_charts = yes
 			root = { save_event_target_as = ahw_chart_to }
 			log = "AHW ally under attack: [ahw_ally.GetName], a friend of [Root.GetName] beyond its borders, is at war - charts swapped [GetDate]"
-			root = { country_event = { id = ahw.96 } }
+			event_target:ahw_ally = { capital_scope = { save_event_target_as = ahw_story_at } }	# the camera
+			root = {
+				country_event = { id = ahw.96 }	# one of the twins (the chain line, 2026-11-23)
+				country_event = { id = ahw.97 }
+			}
 		}
 	}
 }
 
-# The message (from ahw.95; event_target:ahw_ally = the friend at war).
+# The message (from ahw.95; event_target:ahw_ally = the friend at war, ahw_story_at its capital).
 country_event = {
 	id = ahw.96
 	title = ahw.96.name
 	desc = ahw.96.desc
 	picture = GFX_evt_federation_fleet
+	location = event_target:ahw_story_at
+	event_chain = ahw_highway_chain
 	is_triggered_only = yes
+	trigger = { has_country_flag = ahw_story_road }
+	option = {
+		name = ahw.96.a
+	}
+}
+
+# ahw.97: its twin before the first ring node - the same texts, the chain line "The Shut Doors"
+# (2026-11-23).
+country_event = {
+	id = ahw.97
+	title = ahw.96.name
+	desc = ahw.96.desc
+	picture = GFX_evt_federation_fleet
+	location = event_target:ahw_story_at
+	event_chain = ahw_shut_doors_chain
+	is_triggered_only = yes
+	trigger = { NOT = { has_country_flag = ahw_story_road } }
 	option = {
 		name = ahw.96.a
 	}

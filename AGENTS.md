@@ -136,7 +136,8 @@ in five years (`ahw_ally_warned@`). **Resolutions** (`common/resolutions/ahw_res
 category `resolution_category_ahw_highway`): Share Ring Charts (repeal ends Unrepaired Gates
 too), Unrepaired Gates (breach: `ahw_gate_breach`), Force a Gate Open (targeted, as Denounce:
 `ahw_force_open`, star flag `ahw_forced_open` for 10 years, which the Sealed mode refuses; the
-gate's mode reads Sealed until switched — no effect sets a mode). AI weights: `ahw_far_friend`,
+gate's mode reads Sealed until switched — no effect sets a mode). Only an empire with a repaired
+gate (`ahw_owns_repaired_gate`) proposes any of the three (user, 2026-11-23); the repeal is open. AI weights: `ahw_far_friend`,
 `ahw_threatened` and the gate triggers in `ahw_triggers.txt`. **Object texts**: the gates', exit
 gates', express wormholes' and centre star classes' descriptions (`AHW_LORE_*`, `ahw_sc_*_desc`)
 and both techs' carry a line of lore each.
@@ -147,7 +148,15 @@ players only): three core pop-ups everyone sees — `ahw_story.1` on the study o
 (`ahw_story_entered`, from `ahw.60`) — and twelve fragments `.11`–`.22`, one unseen one at random
 (`ahw_story.10`, flags `ahw_frag_N`, counter `ahw_n_frags`) on the first entry into each foreign
 portal (star flag `ahw_toured@<country>`) and each further reach (`ahw_reach_seen_<r>`). Lore
-and its checks against vanilla: `docs/lore.md`. **Inspection balance** (same day): a foreign
+and its checks against vanilla: `docs/lore.md`. **Source and camera** (2026-11-23, user): every
+pop-up names its source in the event window's chain line (`event_chain`, situation log too):
+`ahw_shut_doors_chain` "The Shut Doors" from `.1` until the first ring node (`ahw_story_road`),
+then `ahw_highway_chain` "The Ancient Highway" (`ahw_story_chain_shut` / `_highway`). An event's
+chain is fixed, so a pop-up that can come on either side has a twin (same texts; the caller
+fires both, the trigger picks): `.2`/`.102`, fragments `.N`/`.N+100` (generated with `.10` into
+`events/ahw_story_generated_events.txt`), `ahw.93`/`.94`, `ahw.96`/`.97`. The camera button:
+`location = event_target:ahw_story_at`, set by the caller (`ahw_story_at_here`: a portal's gate,
+else the system; `ahw_story_at_own_gate`; the friend's capital for `ahw.96`). **Inspection balance** (same day): a foreign
 portal with a broken gate offers one study, for the tech granted less so far
 (`ahw_construction_behind`): the centre's (Theory) or the broken gate's (`AHW_INSPECT_BROKEN_*`
 → `ahw.62`, Construction +7 %; the inspections raised to 10/7 % on 2026-11-20). **Without

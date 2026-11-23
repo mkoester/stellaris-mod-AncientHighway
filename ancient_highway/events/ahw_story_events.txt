@@ -3,251 +3,105 @@
 # - Three core chapters every player sees, whether they explore or research straight away:
 #   ahw_story.1 the study (what it is, what now), .2 the first gate tech (by whom), .3 the first
 #   ring node entered (why). Each once (country flag ahw_story_<key>).
-# - Fragments: ahw_story.10 picks one not yet seen, at random, from a pool of 12 (.11-.22) -
-#   on the first entry into each foreign portal and each reach after the first (ahw.60,
-#   ahw_story_entered). Each readable on its own, so the order does not matter.
+# - Fragments (.10 picks one, .11-.22 and their twins): events/ahw_story_generated_events.txt,
+#   written by tools/gen.py.
+# - 2026-11-23 (user): each pop-up names its source in the event window's chain line - "The Shut
+#   Doors" until the first ring node (flag ahw_story_road), "The Ancient Highway" from then on
+#   (common/event_chains/ahw_event_chains.txt). An event's chain is fixed, so a pop-up that can
+#   come on either side has a twin in the other chain (same texts; the caller fires both, the
+#   trigger lets one through). Its camera button: event_target:ahw_story_at, set by the caller
+#   (ahw_story_at_here / ahw_story_at_own_gate).
 # Pictures are vanilla's, referenced by name.
 namespace = ahw_story
 
 # The study done, or the head start (ahw_country_learns): what the gate is, and what to do now.
+# Always before the first ring node: the study comes first (ahw_highway_studied).
 country_event = {
 	id = ahw_story.1
 	title = ahw_story.1.name
 	desc = ahw_story.1.desc
 	picture = GFX_evt_alien_ruins
+	location = event_target:ahw_story_at
+	event_chain = ahw_shut_doors_chain
 	is_triggered_only = yes
 	trigger = {
 		is_ai = no
 		NOT = { has_country_flag = ahw_story_door }
 	}
-	immediate = { set_country_flag = ahw_story_door }
+	immediate = {
+		set_country_flag = ahw_story_door
+		ahw_story_chain_shut = yes
+	}
 	option = { name = ahw_story.1.a }
 }
 
-# The first gate tech researched (ahw.63, on_tech_increased): by whom.
+# The first gate tech researched (ahw.63, on_tech_increased): by whom. .2 after the first ring
+# node, its twin .102 before.
 country_event = {
 	id = ahw_story.2
 	title = ahw_story.2.name
 	desc = ahw_story.2.desc
 	picture = GFX_evt_ancient_databank
+	location = event_target:ahw_story_at
+	event_chain = ahw_highway_chain
 	is_triggered_only = yes
 	trigger = {
 		is_ai = no
+		has_country_flag = ahw_story_road
 		NOT = { has_country_flag = ahw_story_eights }
 		OR = {
 			has_technology = ahw_tech_gate_theory
 			has_technology = ahw_tech_gate_construction
 		}
 	}
-	immediate = { set_country_flag = ahw_story_eights }
+	immediate = {
+		set_country_flag = ahw_story_eights
+		ahw_story_chain_highway = yes
+	}
 	option = { name = ahw_story.2.a }
 }
 
-# The first ring node entered (ahw_story_entered): why a road round the outside.
+country_event = {
+	id = ahw_story.102
+	title = ahw_story.2.name
+	desc = ahw_story.2.desc
+	picture = GFX_evt_ancient_databank
+	location = event_target:ahw_story_at
+	event_chain = ahw_shut_doors_chain
+	is_triggered_only = yes
+	trigger = {
+		is_ai = no
+		NOT = { has_country_flag = ahw_story_road }
+		NOT = { has_country_flag = ahw_story_eights }
+		OR = {
+			has_technology = ahw_tech_gate_theory
+			has_technology = ahw_tech_gate_construction
+		}
+	}
+	immediate = {
+		set_country_flag = ahw_story_eights
+		ahw_story_chain_shut = yes
+	}
+	option = { name = ahw_story.2.a }
+}
+
+# The first ring node entered (ahw_story_entered): why a road round the outside - the reveal, so
+# the first pop-up of "The Ancient Highway".
 country_event = {
 	id = ahw_story.3
 	title = ahw_story.3.name
 	desc = ahw_story.3.desc
 	picture = GFX_evt_wormhole
+	location = event_target:ahw_story_at
+	event_chain = ahw_highway_chain
 	is_triggered_only = yes
 	trigger = {
 		is_ai = no
 		NOT = { has_country_flag = ahw_story_road }
 	}
-	immediate = { set_country_flag = ahw_story_road }
-	option = { name = ahw_story.3.a }
-}
-
-# A fragment not yet seen, at random; nothing once all 12 are (a seen one weighs 0, and the
-# counter stops the call before random_list would find no entry).
-country_event = {
-	id = ahw_story.10
-	hide_window = yes
-	is_triggered_only = yes
-	trigger = {
-		is_ai = no
-		OR = {
-			NOT = { is_variable_set = ahw_n_frags }
-			check_variable = { which = ahw_n_frags value < 12 }
-		}
-	}
 	immediate = {
-		if = {
-			limit = { NOT = { is_variable_set = ahw_n_frags } }
-			set_variable = { which = ahw_n_frags value = 0 }
-		}
-		change_variable = { which = ahw_n_frags value = 1 }
-		random_list = {
-		10 = {
-			modifier = { factor = 0 has_country_flag = ahw_frag_11 }
-			set_country_flag = ahw_frag_11
-			country_event = { id = ahw_story.11 }
-		}
-		10 = {
-			modifier = { factor = 0 has_country_flag = ahw_frag_12 }
-			set_country_flag = ahw_frag_12
-			country_event = { id = ahw_story.12 }
-		}
-		10 = {
-			modifier = { factor = 0 has_country_flag = ahw_frag_13 }
-			set_country_flag = ahw_frag_13
-			country_event = { id = ahw_story.13 }
-		}
-		10 = {
-			modifier = { factor = 0 has_country_flag = ahw_frag_14 }
-			set_country_flag = ahw_frag_14
-			country_event = { id = ahw_story.14 }
-		}
-		10 = {
-			modifier = { factor = 0 has_country_flag = ahw_frag_15 }
-			set_country_flag = ahw_frag_15
-			country_event = { id = ahw_story.15 }
-		}
-		10 = {
-			modifier = { factor = 0 has_country_flag = ahw_frag_16 }
-			set_country_flag = ahw_frag_16
-			country_event = { id = ahw_story.16 }
-		}
-		10 = {
-			modifier = { factor = 0 has_country_flag = ahw_frag_17 }
-			set_country_flag = ahw_frag_17
-			country_event = { id = ahw_story.17 }
-		}
-		10 = {
-			modifier = { factor = 0 has_country_flag = ahw_frag_18 }
-			set_country_flag = ahw_frag_18
-			country_event = { id = ahw_story.18 }
-		}
-		10 = {
-			modifier = { factor = 0 has_country_flag = ahw_frag_19 }
-			set_country_flag = ahw_frag_19
-			country_event = { id = ahw_story.19 }
-		}
-		10 = {
-			modifier = { factor = 0 has_country_flag = ahw_frag_20 }
-			set_country_flag = ahw_frag_20
-			country_event = { id = ahw_story.20 }
-		}
-		10 = {
-			modifier = { factor = 0 has_country_flag = ahw_frag_21 }
-			set_country_flag = ahw_frag_21
-			country_event = { id = ahw_story.21 }
-		}
-		10 = {
-			modifier = { factor = 0 has_country_flag = ahw_frag_22 }
-			set_country_flag = ahw_frag_22
-			country_event = { id = ahw_story.22 }
-		}
-		}
-		log = "AHW story fragment [This.ahw_n_frags] of 12 for [This.GetName] on [GetDate]"
+		set_country_flag = ahw_story_road
+		ahw_story_chain_highway = yes
 	}
-}
-
-# The fragments (docs/lore.md, "The fragments").
-country_event = {
-	id = ahw_story.11
-	title = ahw_story.11.name
-	desc = ahw_story.11.desc
-	picture = GFX_evt_ancient_databank
-	is_triggered_only = yes
-	option = { name = ahw_story.11.a }
-}
-
-country_event = {
-	id = ahw_story.12
-	title = ahw_story.12.name
-	desc = ahw_story.12.desc
-	picture = GFX_evt_star_chart
-	is_triggered_only = yes
-	option = { name = ahw_story.12.a }
-}
-
-country_event = {
-	id = ahw_story.13
-	title = ahw_story.13.name
-	desc = ahw_story.13.desc
-	picture = GFX_evt_mysterious_signal
-	is_triggered_only = yes
-	option = { name = ahw_story.13.a }
-}
-
-country_event = {
-	id = ahw_story.14
-	title = ahw_story.14.name
-	desc = ahw_story.14.desc
-	picture = GFX_evt_ancient_records
-	is_triggered_only = yes
-	option = { name = ahw_story.14.a }
-}
-
-country_event = {
-	id = ahw_story.15
-	title = ahw_story.15.name
-	desc = ahw_story.15.desc
-	picture = GFX_evt_machine_space_battle
-	is_triggered_only = yes
-	option = { name = ahw_story.15.a }
-}
-
-country_event = {
-	id = ahw_story.16
-	title = ahw_story.16.name
-	desc = ahw_story.16.desc
-	picture = GFX_evt_fallen_empire
-	is_triggered_only = yes
-	option = { name = ahw_story.16.a }
-}
-
-country_event = {
-	id = ahw_story.17
-	title = ahw_story.17.name
-	desc = ahw_story.17.desc
-	picture = GFX_evt_robot_encounter
-	is_triggered_only = yes
-	option = { name = ahw_story.17.a }
-}
-
-country_event = {
-	id = ahw_story.18
-	title = ahw_story.18.name
-	desc = ahw_story.18.desc
-	picture = GFX_evt_star_white
-	is_triggered_only = yes
-	option = { name = ahw_story.18.a }
-}
-
-country_event = {
-	id = ahw_story.19
-	title = ahw_story.19.name
-	desc = ahw_story.19.desc
-	picture = GFX_evt_ancient_alien_temple
-	is_triggered_only = yes
-	option = { name = ahw_story.19.a }
-}
-
-country_event = {
-	id = ahw_story.20
-	title = ahw_story.20.name
-	desc = ahw_story.20.desc
-	picture = GFX_evt_ancient_artifact
-	is_triggered_only = yes
-	option = { name = ahw_story.20.a }
-}
-
-country_event = {
-	id = ahw_story.21
-	title = ahw_story.21.name
-	desc = ahw_story.21.desc
-	picture = GFX_evt_drifting_gateway
-	is_triggered_only = yes
-	option = { name = ahw_story.21.a }
-}
-
-country_event = {
-	id = ahw_story.22
-	title = ahw_story.22.name
-	desc = ahw_story.22.desc
-	picture = GFX_evt_hive_mind_fallen_empire
-	is_triggered_only = yes
-	option = { name = ahw_story.22.a }
+	option = { name = ahw_story.3.a }
 }

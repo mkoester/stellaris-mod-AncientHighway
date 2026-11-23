@@ -578,32 +578,47 @@ country_event = {
 		remove_country_flag = ahw_story_door
 		remove_country_flag = ahw_story_eights
 		remove_country_flag = ahw_story_road
+		ahw_story_at_own_gate = yes	# 2026-11-23: the camera - the own gate, else the capital
 		country_event = { id = ahw_story.1 }
-		country_event = { id = ahw_story.2 }
+		country_event = { id = ahw_story.102 }	# "The Shut Doors": the road flag is still unset
 		country_event = { id = ahw_story.3 }
 		country_event = { id = ahw_story.10 }
 		log = "AHW test: story chapters and a fragment fired [GetDate]"
 	}
 }
 
-# 2026-11-19: all twelve fragments at once, to read the texts (does not touch the pool).
+# 2026-11-19: all twelve fragments at once, to read the texts (does not touch the pool); each in
+# the chain the country is in (2026-11-23: its twin fires before the first ring node).
 country_event = {
 	id = ahw_debug.83
 	hide_window = yes
 	is_triggered_only = yes
 	immediate = {
-		country_event = { id = ahw_story.11 }
+		ahw_story_at_own_gate = yes	# 2026-11-23: the camera
+		country_event = { id = ahw_story.11 }	# or its twin, by the chain
+		country_event = { id = ahw_story.111 }
 		country_event = { id = ahw_story.12 }
+		country_event = { id = ahw_story.112 }
 		country_event = { id = ahw_story.13 }
+		country_event = { id = ahw_story.113 }
 		country_event = { id = ahw_story.14 }
+		country_event = { id = ahw_story.114 }
 		country_event = { id = ahw_story.15 }
+		country_event = { id = ahw_story.115 }
 		country_event = { id = ahw_story.16 }
+		country_event = { id = ahw_story.116 }
 		country_event = { id = ahw_story.17 }
+		country_event = { id = ahw_story.117 }
 		country_event = { id = ahw_story.18 }
+		country_event = { id = ahw_story.118 }
 		country_event = { id = ahw_story.19 }
+		country_event = { id = ahw_story.119 }
 		country_event = { id = ahw_story.20 }
+		country_event = { id = ahw_story.120 }
 		country_event = { id = ahw_story.21 }
+		country_event = { id = ahw_story.121 }
 		country_event = { id = ahw_story.22 }
+		country_event = { id = ahw_story.122 }
 		log = "AHW test: all story fragments fired [GetDate]"
 	}
 }

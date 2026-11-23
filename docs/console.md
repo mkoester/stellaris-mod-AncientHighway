@@ -35,8 +35,8 @@ Moved out of `AGENTS.md` on 2026-11-14 to keep that file under the size at which
 | `event ahw_debug.79` | the yearly chart exchange now (friends; the Community under Share Ring Charts) |
 | `event ahw_debug.80` | Force a Gate Open passed now (no vote) against an empire with a sealed gate |
 | `event ahw_debug.81` | our own gate forced open (Force a Gate Open's effect) — to see the Seal mode refused (needs `ahw_debug.8`'s techs) |
-| `event ahw_debug.82` | the story's three core chapters again, and one random fragment (chapter 2 needs a gate tech: `ahw_debug.8` first) |
-| `event ahw_debug.83` | all twelve story fragments at once, to read them (the random pool stays as it is) |
+| `event ahw_debug.82` | the story's three core chapters again, and one random fragment (chapter 2 needs a gate tech: `ahw_debug.8` first); 1 and 2 under "The Shut Doors", 3 and the fragment under "The Ancient Highway", the camera on the own gate |
+| `event ahw_debug.83` | all twelve story fragments at once, to read them (the random pool stays as it is), in the chain the empire is in |
 | `effect pass_resolution_no_cooldown = resolution_ahw_share_charts` | Share Ring Charts passed now, no vote, no category cooldown (vanilla effect; likewise `resolution_ahw_gate_breach`) |
 | `effect every_country = { limit = { is_ai = no } remove_country_flag = ahw_has_portal }` | we get a second portal on the next 1st (the console targets move to it) |
 

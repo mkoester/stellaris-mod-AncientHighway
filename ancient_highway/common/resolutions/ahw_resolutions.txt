@@ -31,6 +31,10 @@ resolution_ahw_share_charts = {
 
 	potential = { has_global_flag = ahw_done }
 	allow = {
+		custom_tooltip = {	# user, 2026-11-23: only an empire with a repaired gate proposes
+			fail_text = AHW_RESOLUTION_NEEDS_REPAIRED_GATE
+			ahw_owns_repaired_gate = yes
+		}
 		custom_tooltip = {
 			fail_text = "resolution_already_active"
 			NOT = { has_global_flag = ahw_gc_charts }
@@ -123,6 +127,10 @@ resolution_ahw_gate_breach = {
 	potential = { has_global_flag = ahw_done }
 	allow = {
 		has_global_flag = ahw_gc_charts
+		custom_tooltip = {	# user, 2026-11-23: only an empire with a repaired gate proposes
+			fail_text = AHW_RESOLUTION_NEEDS_REPAIRED_GATE
+			ahw_owns_repaired_gate = yes
+		}
 		custom_tooltip = {
 			fail_text = "resolution_already_active"
 			NOT = { has_global_flag = ahw_gc_breach }
@@ -171,6 +179,12 @@ resolution_ahw_force_open = {
 	fire_and_forget = yes
 
 	potential = { has_global_flag = ahw_gc_charts }
+	allow = {
+		custom_tooltip = {	# user, 2026-11-23: only an empire with a repaired gate proposes
+			fail_text = AHW_RESOLUTION_NEEDS_REPAIRED_GATE
+			ahw_owns_repaired_gate = yes
+		}
+	}
 	valid_target = {
 		is_country_type = default
 		NOT = { is_same_value = from }

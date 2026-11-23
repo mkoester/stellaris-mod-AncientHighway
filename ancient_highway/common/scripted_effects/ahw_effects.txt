@@ -466,7 +466,8 @@ ahw_country_learns = {
 	# 0.0.26 (design 2026-11-06): only this gate's exit node, not the whole ring - the rest is
 	# explored by flying it.
 	ahw_reveal_exit = yes
-	# 2026-11-19: the story's first chapter (once, humans only: its trigger)
+	# 2026-11-19: the story's first chapter (once, humans only: its trigger); its camera: this gate
+	ahw_story_at_here = yes
 	event_target:ahw_studier = { country_event = { id = ahw_story.1 } }
 }
 
@@ -653,8 +654,13 @@ ahw_repair_watch = {
 			set_star_flag = ahw_repair_dropped
 			log = "AHW repair of the gate in \\[This.GetName]: the engine dropped its upgrade by \\[GetDate], \\[This.ahw_repair_left] days left by script"
 			save_event_target_as = ahw_repair_portal
+			ahw_story_at_here = yes
 			event_target:ahw_watch_owner = {
-				if = { limit = { is_ai = no } country_event = { id = ahw.93 } }
+				if = {
+					limit = { is_ai = no }
+					country_event = { id = ahw.93 }	# one of the twins (the chain line, 2026-11-23)
+					country_event = { id = ahw.94 }
+				}
 			}
 		}
 		if = {
@@ -771,6 +777,7 @@ ahw_force_open = {
 # ahw_reach, 0-7, set at the build). A foreign portal (its anchor not ours): a fragment on our
 # first entry (star flag ahw_toured@<country>).
 ahw_story_entered = {
+	ahw_story_at_here = yes	# 2026-11-23: the pop-ups' camera
 	if = {
 		limit = { has_star_flag = ahw_ring }
 		if = {
@@ -977,5 +984,54 @@ ahw_diffuse = {
 			ahw_grant_tech = { TECH = $TECH$ VAR = $VAR$ PROGRESS = ahw_d }
 			log = "AHW \\[This.GetName] learns from others: +\\[This.ahw_d] of $TECH$"
 		}
+	}
+}
+
+# 2026-11-23 (user), this = a country: the story's source, the chain line its pop-ups show
+# (common/event_chains/ahw_event_chains.txt). "The Shut Doors" from the study (ahw_story.1)...
+ahw_story_chain_shut = {
+	if = {
+		limit = {
+			NOT = { has_event_chain = ahw_shut_doors_chain }
+			NOT = { has_completed_event_chain = ahw_shut_doors_chain }
+			NOT = { has_event_chain = ahw_highway_chain }
+		}
+		begin_event_chain = { event_chain = ahw_shut_doors_chain target = this }
+	}
+}
+
+# ...and "The Ancient Highway" from the first ring node (ahw_story.3) - also for a save whose
+# story began before the chains existed (2026-11-23).
+ahw_story_chain_highway = {
+	if = {
+		limit = { has_event_chain = ahw_shut_doors_chain }
+		end_event_chain = ahw_shut_doors_chain
+	}
+	if = {
+		limit = { NOT = { has_event_chain = ahw_highway_chain } }
+		begin_event_chain = { event_chain = ahw_highway_chain target = this }
+	}
+}
+
+# 2026-11-23 (user), this = a system: where a pop-up's camera button jumps (location =
+# event_target:ahw_story_at) - a portal's gate, any other system itself (a ring node).
+ahw_story_at_here = {
+	if = {
+		limit = { has_star_flag = ahw_portal }
+		random_system_megastructure = { save_event_target_as = ahw_story_at }
+	}
+	else = { save_event_target_as = ahw_story_at }
+}
+
+# this = a country: its own portal's gate (the portal next to an anchor it owns), else its capital.
+ahw_story_at_own_gate = {
+	save_event_target_as = ahw_story_who
+	capital_scope = { save_event_target_as = ahw_story_at }
+	random_system = {
+		limit = {
+			has_star_flag = ahw_portal
+			any_neighbor_system = { exists = owner owner = { is_same_value = event_target:ahw_story_who } }
+		}
+		ahw_story_at_here = yes
 	}
 }

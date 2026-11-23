@@ -45,6 +45,11 @@ OURS = r'(?:AHW_\w+|ahw_\w+|resolution(?:_category)?_ahw_\w+)'
 need |= set(re.findall(rf'(?:fail_text|custom_tooltip|desc) = "?({OURS})"?(?![.\w])', alltxt))
 need |= {k + s for k in re.findall(r'^(resolution(?:_category)?_ahw_\w+) = \{', alltxt, re.M) for s in ('', '_desc')}
 need |= set(re.findall(rf'\$({OURS})\$', loc))
+# 2026-11-23: every event's chain line (event_chain = ...) is a defined chain, with its title and desc
+chains = defs('event_chains')
+used_chains = set(re.findall(r'event_chain = "?(\w+)"?', alltxt))
+problems += [f'undefined event chain: {c}' for c in sorted(used_chains - chains)]
+need |= {c + s for c in chains for s in ('_title', '_desc')}
 problems += [f'missing text: {k}' for k in sorted(need - set(keys))]
 defined_ev = set(re.findall(r'^\tid = (ahw\w*\.\d+)', events_raw, re.M))
 fired = set(re.findall(r'(?:event|country_event|ship_event|fleet_event) = \{ id = (ahw\w*\.\d+)', alltxt))

@@ -5,3 +5,20 @@ ahw_contract_repair_gate_chain = {
 	icon = "gfx/interface/icons/situation_log/situation_log_scanning_beam.dds"
 	situation_log_category = contracts
 }
+
+# 2026-11-23 (user): the story pop-ups name their source - the event window's chain line, as
+# vanilla's rubricator_chain / rubricator_chain_2. "The Shut Doors" from the study (ahw_story.1)
+# until the first ring node (ahw_story.3, flag ahw_story_road), then "The Ancient Highway"
+# (ahw_story_chain_shut / ahw_story_chain_highway in ahw_effects.txt). An event's chain is fixed,
+# so a pop-up that can fire on either side has a twin in the other chain.
+ahw_shut_doors_chain = {
+	icon = "gfx/interface/icons/situation_log/situation_log_main_quest.dds"
+	picture = GFX_evt_alien_ruins
+	situation_log_category = developments
+}
+
+ahw_highway_chain = {
+	icon = "gfx/interface/icons/situation_log/situation_log_main_quest.dds"
+	picture = GFX_evt_wormhole
+	situation_log_category = developments
+}

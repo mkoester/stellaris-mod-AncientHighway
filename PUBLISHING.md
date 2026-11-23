@@ -14,9 +14,8 @@ update both texts and re-upload the description.
       resolutions' repaired-gate requirement.
 - [x] `version="1.0.0"`, `supported_version="v4.5.*"`, tags, `picture="thumbnail.png"` (512×512,
       our own art).
-- [ ] Discord: forum `ancient-highway` under MODS, set up as `../docs/discord.md` "A new forum"
-      says, plus an invite. Put the code in `../docs/discord.md`'s table, in `README.md` and in both
-      store texts below (replace `INVITE`).
+- [x] Discord: forum `ancient-highway` under MODS, invite `Vf8pqFXV6` (2026-11-23), in
+      `../docs/discord.md`'s table, `README.md` and both store texts below.
 - [ ] Store screenshots (F12 in game, no UI clutter): the ring on the galaxy map, a portal with its
       gate, a story pop-up. Crop into `assets/`.
 - [ ] `../scripts/clean-mods.sh -n`, then without `-n`: it removes the empty `.claude/` that Claude
@@ -106,7 +105,7 @@ Open questions, not known bugs. If you notice one of them in your game, I'd love
 [/list]
 
 [h2]Bugs & feedback[/h2]
-Post them in the [url=https://discord.gg/INVITE]ancient-highway forum on Discord[/url]. Your game version, a screenshot and [i]logs/game.log[/i] help: the mod logs what it does there, in lines starting with "AHW".
+Post them in the [url=https://discord.gg/Vf8pqFXV6]ancient-highway forum on Discord[/url]. Your game version, a screenshot and [i]logs/game.log[/i] help: the mod logs what it does there, in lines starting with "AHW".
 
 [i]Unofficial fan project, not affiliated with Paradox Interactive.[/i]
 ```
@@ -159,7 +158,7 @@ Compatibility
 • Changes the checksum: no achievements or Ironman while it is active.
 
 Bugs & feedback
-Post them in the ancient-highway forum on Discord: https://discord.gg/INVITE
+Post them in the ancient-highway forum on Discord: https://discord.gg/Vf8pqFXV6
 Your game version, a screenshot and logs/game.log help: the mod logs what it does there, in lines starting with "AHW".
 
 Unofficial fan project, not affiliated with Paradox Interactive.

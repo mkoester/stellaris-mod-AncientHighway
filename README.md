@@ -23,6 +23,6 @@ watching. It is in `PUBLISHING.md`, together with the store links once they exis
 - `AGENTS.md` — status, how it works, and the engine's surprises, for whoever works on it.
 - `PUBLISHING.md` — store texts and release checklist; `assets/` — the thumbnail's source.
 
-Bugs and feedback: the ancient-highway forum on [our Discord](https://discord.gg/INVITE).
+Bugs and feedback: the ancient-highway forum on [our Discord](https://discord.gg/Vf8pqFXV6).
 
 Unofficial fan project, not affiliated with Paradox Interactive.

@@ -67,7 +67,7 @@ the mod is mostly done); part 3, a late empire's portal, came unasked in run 43.
 ## How it works
 
 **Generated parts: `tools/gen.py`** writes the bypass types (32 entry pairs `ahw_link_N`), their
-megastructures (`ahw_gate_N` in the portal, `ahw_exitgate_N` in the ring), outliner icons, texts,
+megastructures (`ahw_gate_N` in the portal, `ahw_exitgate_N` in the ring), outliner icons, the bypasses' modifier icons (one own-drawn DDS, `gfx/interface/icons/modifiers/`), texts,
 the outline measurement, the ring builders, portal placement, the inspection studies and their
 withdrawal (`events/ahw_generated_events.txt`). Change the generator, rerun it, commit both.
 
@@ -212,8 +212,8 @@ All findings go to `game.log`, lines starting `AHW`.
   dashboard's feed mod in the playset, game.log marks each load as `SDASH|…|<date>|…|load|` —
   the way to tell a load-caused owner loss from another (2026-11-18). Copy `logs/game.log` and `logs/error.log` before
   restarting the game. Expected error.log noise: the centre probes' `move_system` misses, unset
-  `ahw_*_tmp` targets and `ahw_exits`/`ahw_pair` in log texts, missing modifier icons, events
-  without pictures. Anything else naming `ahw_` is a finding.
+  `ahw_*_tmp` targets and `ahw_exits`/`ahw_pair` in log texts, events without pictures. (The
+  missing bypass modifier icons are gone: `tools/gen.py` draws one, 2026-11-23.) Anything else naming `ahw_` is a finding.
 - **Gotchas the spike found** (details: `docs/spike-runs.md`):
   - the game **drops a `log` line whose text it has logged before** — make each line unique
     (names, numbers);

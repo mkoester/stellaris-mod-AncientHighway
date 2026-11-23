@@ -516,6 +516,49 @@ def gen_gfx():
     return ''.join(out)
 
 
+# The engine makes three modifiers per bypass type (`<type>_ship_windup_mult`, `_empire_…`,
+# `_megastructure_bypass_…`) and wants an icon for each at a fixed path: without one, error.log
+# gets "Missing modifier icon" per modifier at every start (120 lines). Vanilla ships one 25x25
+# uncompressed BGRA DDS per bypass, the same image for all three. Ours is drawn here (a gate ring
+# with a dot through it; no game art copied): one image, written under every name.
+ICON_SIZE = 25
+WINDUP_KINDS = ('ship', 'empire', 'megastructure_bypass')
+
+
+def bypass_keys():
+    return [f'ahw_link_{n}' for n in range(1, PAIRS + 1)] + \
+        [f'ahw_express_{j}' for j in range(1, STATIONS + 1)]
+
+
+def coverage(dist, r_in, r_out):
+    """How much of a pixel at `dist` from the centre lies in the ring r_in..r_out (1 px soft edge)."""
+    return max(0.0, min(1.0, r_out - dist + 0.5, dist - r_in + 0.5))
+
+
+def gate_icon() -> bytes:
+    """The modifier icon as a DDS file: uncompressed 32-bit BGRA, top row first. Pure."""
+    import struct
+    n, c = ICON_SIZE, (ICON_SIZE - 1) / 2
+    ring, dot = (232, 205, 120), (255, 245, 215)  # RGB: pale gold ring, light core
+    px = bytearray()
+    for y in range(n):
+        for x in range(n):
+            d = ((x - c) ** 2 + (y - c) ** 2) ** 0.5
+            a_ring, a_dot = coverage(d, 7.5, 10.5), coverage(d, -1, 2.5)
+            r, g, b = dot if a_dot >= a_ring else ring
+            px += bytes((b, g, r, round(255 * max(a_ring, a_dot))))
+    header = struct.pack('<4s7I44x8I2I12x', b'DDS ', 124, 0x81007, n, n, n * n * 4, 0, 0,
+                         32, 0x41, 0, 32, 0x00FF0000, 0x0000FF00, 0x000000FF, 0xFF000000,
+                         0x1000, 0)
+    return header + bytes(px)
+
+
+def gen_icons() -> dict[str, bytes]:
+    icon = gate_icon()
+    return {f'gfx/interface/icons/modifiers/mod_{key}_{kind}_windup_mult.dds': icon
+            for key in bypass_keys() for kind in WINDUP_KINDS}
+
+
 def gen_loc():
     lines = ['l_english:']
     for key, what in [(f'AHW_LINK_{n}', 'Highway Entry Point') for n in range(1, PAIRS + 1)] + \
@@ -1407,7 +1450,12 @@ def main():
     for rel, text in files.items():
         (MOD / rel).write_text(text)
     (MOD / 'localisation/english/ahw_generated_l_english.yml').write_text(gen_loc(), encoding='utf-8-sig')
-    print('wrote', len(files) + 1, 'files;', PAIRS, 'pairs; outer ring nodes', NODES)
+    icons = gen_icons()
+    for rel, data in icons.items():
+        (MOD / rel).parent.mkdir(parents=True, exist_ok=True)
+        (MOD / rel).write_bytes(data)
+    print('wrote', len(files) + 1, 'files and', len(icons), 'modifier icons;', PAIRS,
+          'pairs; outer ring nodes', NODES)
 
 
 if __name__ == '__main__':

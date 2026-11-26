@@ -186,8 +186,8 @@ All findings go to `game.log`, lines starting `AHW`.
 
 ## Working on it
 
-- **The dashboard reads this mod** (`stellaris-empire-dashboard`, branch `feature/highway`,
-  `src/lib/highway.ts`; 2026-11-07): the star flags, global and country flags, variables and
+- **The dashboard reads this mod** (`stellaris-empire-dashboard`, on `develop` since 2026-11-26,
+  `src/lib/highway.ts`): the star flags, global and country flags, variables and
   megastructure types named in "How it works", and the texts in `localisation/english/`. Renaming
   one of them needs the dashboard changed in the same session, or its highway tab goes wrong
   silently.

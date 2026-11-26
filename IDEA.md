@@ -279,3 +279,20 @@ let's discuss 1
 
 + answers in the discussion:
   - yes to all, both sources, close friends get a higher bonus (but the bonus should also not be too high, otherwise it would snowball too much)
+
+### Pop-ups and resolutions (2026-11-23)
+
+let's work a bit more on the ancient highway
+
+- I want the event popups to
+  + have this little camera icon so one can jump right to the gate, etc
+  + show where this is coming from:
+    - once the purpose is clear we should name it ancient highway
+    - before that I want it to be something more "mysterious", but hinting at the highway
+
+and regarding the GalCom resolution: only an empire with a repaired gate should be able to propose it
+
++ answers in the discussion:
+  - name ancient highway from the first ring node on, before that "The Shut Doors"
+  - a situation-log entry for the chain is fine
+  - repaired gate needed for all three resolutions

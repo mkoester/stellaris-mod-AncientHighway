@@ -20,6 +20,7 @@ Moved out of `AGENTS.md` on 2026-11-14 to keep that file under the size at which
 | `event ahw_debug.45` | our portal studied now |
 | `event ahw_debug.46` | test ships next to a foreign portal of an unseen centre kind |
 | `event ahw_debug.47` | ask 30 % more of each tech (the cap) |
+| `effect set_variable = { which = ahw_got_theory value = 0.70 }` | a save from before 1.0.2: set the share held to the research screen's percentage (÷ 100; likewise `ahw_got_construction`). Its cost index starts at the first load, so the cost growth before it is not counted otherwise |
 | `event ahw_debug.25` | seal our pair against everyone, us included; again: open |
 | `event ahw_debug.26` | seal our pair for another empire (we are strangers) |
 | `event ahw_debug.27` | make that empire our subject (now its friend) |

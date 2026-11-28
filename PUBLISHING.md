@@ -26,7 +26,8 @@ update both texts and re-upload the description.
       only the expected noise (`AGENTS.md`).
 - [ ] Not seen in game: the resolutions refused to an empire with a repaired gate but no Gate
       Theory (the tooltip's new text).
-- [ ] Upload to both stores. Change note: "Supports Stellaris 4.6 (Willpower). Galactic Community
+- [x] Upload to both stores (code 2026-11-23 evening, store APIs checked 2026-11-28; the 4.6 store
+      texts came later and go up with 1.0.2). Change note: "Supports Stellaris 4.6 (Willpower). Galactic Community
       resolutions: proposing one now also needs Highway Gate Theory, so an empire whose gate a nomad
       repaired can no longer propose them without being able to use the gate. Own icons for the
       gates' windup modifiers (120 fewer error.log lines at every start)."

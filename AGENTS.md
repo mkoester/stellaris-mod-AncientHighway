@@ -195,7 +195,8 @@ All findings go to `game.log`, lines starting `AHW`.
   `src/lib/highway.ts`): the star flags, global and country flags, variables and
   megastructure types named in "How it works", and the texts in `localisation/english/`. Renaming
   one of them needs the dashboard changed in the same session, or its highway tab goes wrong
-  silently.
+  silently. Since 1.0.2 `ahw_got_*` is the share of the tech's *current* cost (it can fall); the
+  dashboard labels it "granted".
 
 - **Thumbnail** (2026-11-07): `assets/thumbnail.svg`, our own art — a faint galaxy, a road of
   light, a fleet racing along it; on purpose nothing of how the highway works (user: no ring, no
@@ -208,7 +209,7 @@ All findings go to `game.log`, lines starting `AHW`.
 - **Test steps for the user are in plain words** — what to set up, type, click, screenshot (user,
   run 17). Console commands one per line in a code block. **Skip what already works** with the
   console shortcuts in `docs/console.md`, unless the test is about that stage. Mod files load at game start.
-- **Numbers come from saves**, not screenshots (ships' `armor_hitpoints`/`shield_hitpoints`,
+- **Numbers come from saves**, not screenshots (most country names in the `gamestate` are templates, `%ADJECTIVE%`: match a country to `game.log`'s `AHW` lines, which print the real name, by its variables; ships' `armor_hitpoints`/`shield_hitpoints`,
   `stored_techpoints_for_tech`, flags). Where things are in the `gamestate` (2026-11-08): who
   has entered a system is the country's `visited_objects` (every non-`default` country lists
   every system — ignore them); a fleet names no owner, the country's `owned_fleets` does; a
@@ -269,6 +270,12 @@ All findings go to `game.log`, lines starting `AHW`.
     camera button (run 47, 2026-11-23);
   - a resolution's `allow` is checked against the proposing country, so it can require something
     of the proposer (`ahw_owns_repaired_gate`; run 47).
+  - no trigger or script value reads a tech's cost or its progress (4.6.1 `triggers.log`, 2026-11-28);
+    `add_tech_progress` adds a share of the cost of its day, and the cost grows with empire size
+    (+0.2 % per point above 100, defines `EMPIRE_SIZE_BASE`, `EMPIRE_SIZE_TECH_COST_PENALTY`) and
+    the `<field>_tech_cost_mult` modifiers. `ahw_rescale_got` estimates from those
+    (`export_trigger_value_to_variable` on `empire_size`, `export_modifier_to_variable`; in game
+    untested until the 1.0.2 run). The real progress is `stored_techpoints_for_tech` in the save.
 - **Timings are from mkDell** (as old as the base game; acceptable there is acceptable for
   players). **Multiplayer**: every machine runs the same script in lockstep, so the build comes
   out identical as long as nothing player-local decides it (untested in MP).

@@ -107,3 +107,10 @@
  # 2026-11-23 (user): only an empire with a repaired gate proposes a highway resolution.
  AHW_RESOLUTION_NEEDS_REPAIRED_GATE:0 "Only an empire that holds a repaired gate of the Ancient Highway and can travel through it (§HHighway Gate Theory§!) can propose this."
  AHW_RESOLUTION_NEEDS_SHARE_CHARTS:0 "Needs §Y$resolution_ahw_share_charts$§! in force."
+ # 2026-11-28 (user): a finished inspection study shows what it gave (ahw.74 / .75).
+ ahw.74.name:0 "Gate Study Complete"
+ ahw.74.desc.theory:0 "Our study in [ahw_study_at.GetName] is complete. It gave §H$ahw_tech_gate_theory$§! §G+[This.ahw_sg_pct]%§! of its cost, about §G[This.ahw_sg_pts]§! research points.\n\nWe now hold about §Y[This.ahw_sg_held]%§! of what it costs today. Studies help until we hold 80%; as our empire grows and the tech grows dearer, they open again."
+ ahw.74.desc.construction:0 "Our study in [ahw_study_at.GetName] is complete. It gave §H$ahw_tech_gate_construction$§! §G+[This.ahw_sg_pct]%§! of its cost, about §G[This.ahw_sg_pts]§! research points.\n\nWe now hold about §Y[This.ahw_sg_held]%§! of what it costs today. Studies help until we hold 80%; as our empire grows and the tech grows dearer, they open again."
+ ahw.74.desc.theory_none:0 "Our study in [ahw_study_at.GetName] is complete, but it taught us nothing new about §H$ahw_tech_gate_theory$§!: studies alone have already brought us as far as they can."
+ ahw.74.desc.construction_none:0 "Our study in [ahw_study_at.GetName] is complete, but it taught us nothing new about §H$ahw_tech_gate_construction$§!: studies alone have already brought us as far as they can."
+ ahw.74.a:0 "Every piece counts."

@@ -176,7 +176,9 @@ The connections between the ring and the regular galaxy are special, not hyperla
   project at that system, **15 days**), for the **class of the ship that found it** (science,
   construction or military; a study names one class) — that ship is already there and can start
   at once. Once a tech's grants reach the cap (or it is researched), its open studies are
-  withdrawn and no new ones offered.
+  withdrawn and no new ones offered. **When it is done, a pop-up says what it gave** (user,
+  2026-11-28; human players, `ahw.74`/`.75`): the share of the tech, about how many research
+  points, and the share of today's cost now held.
   - **Engineering: a gate somebody else repaired**, at either end (in its portal or at its exit
     in the ring). **+10 %** when the study was offered on the country's first entry into that
     system, else **+7 %** (raised from 7/5, user 2026-11-20: players explore, the AI hardly). Once per gate; never for a gate the country repaired itself.
@@ -208,7 +210,13 @@ The connections between the ring and the regular galaxy are special, not hyperla
     from 50 %, ×12 from 70 %; ×4 with the other gate tech; the need factors on top
     (`ahw_tech.txt`). The AI buys the tech once it is cheap, not early at full price.
   - **Cap: all grants together give at most 80 % of each tech** (user, 2026-11-06), so a
-    study-only empire can still earn up to 65 % by exploring.
+    study-only empire can still earn up to 65 % by exploring. **80 % of its current cost**
+    (user, 2026-11-28): a grant adds a share of the cost of its day, and the cost grows with the
+    empire, so the share held shrinks; below 75 % the tech's studies open again, withdrawn ones
+    included. Not farming (user: "no farming beyond 80 %, tech costs rising and starting to do
+    the projects again is not considered farming"). Script reads neither a tech's cost nor its
+    progress, so `ahw_rescale_got` estimates the cost's growth from empire size and the field's
+    cost modifiers; `ahw_got_*` holds the estimated share.
   They meet when an empire studies its own gate and a nomad then repairs it, or when it gives up
   a studied anchor and later owns it again (or another anchor) with a repaired gate. **Each grant
   at most once per empire**, so 65 % is the ceiling of these two: no farming by giving anchors up and taking

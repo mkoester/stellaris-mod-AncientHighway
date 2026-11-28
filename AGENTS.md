@@ -110,7 +110,12 @@ in an anchor (own, or a close friend's — `ahw_close_friend`) by a country that
 gate; a nomad with both techs accepts; its arkship's `AHW_CONTRACT_REPAIR_PROJECT` (90 days) only
 counts, the repair runs in the contract's `on_success` (`ahw_repair_gate`). `ahw.30` gives later
 empires a portal; `ahw.50` drains pulsar shields monthly; `ahw.60` offers inspection studies on entering
-portals and ring nodes (`.64`, `.65` grant; cap 80 %, `ahw_cap_check` → `.66`/`.67` withdraw).
+portals and ring nodes (`.62`, `.64`, `.65` grant; cap 80 % of the tech's **current** cost,
+`ahw_cap_check` → `.66`/`.67` withdraw, `.69`/`.73` reopen below 75 %; 2026-11-28). The share
+held, `ahw_got_*`, is scaled by `ahw_rescale_got` (a cost index from empire size and the field's
+cost modifiers, `ahw_ix_*`) before each grant, on each entry (`ahw.60`) and yearly (`ahw.80`):
+script reads no tech cost or progress, so it is an estimate. A finished study tells a human
+player what it gave (`ahw_study_begin` / `ahw_study_report` → `ahw.74`/`.75`, twins by chain line).
 Sealing: the gate's Open/Sealed mode, flags read by each pair's `country_can_use`; friends pass
 (`ahw_friend_of_sealer`). **Wanted by Vassal Orders** (2026-11-12, not built yet): an overlord
 ordering its subject to seal that subject's entry point. No effect sets a mode, so this mod needs

@@ -293,6 +293,14 @@ fleet_event = {
 	immediate = {
 		save_event_target_as = ahw_finder
 		owner = { save_event_target_as = ahw_insp_country }
+		# 2026-11-28: the grants' shares at today's cost first, so a capped tech whose cost has grown
+		# offers its studies again on this entry (ahw_tech_refresh)
+		owner = {
+			if = {
+				limit = { has_country_flag = ahw_highway_studied }
+				ahw_tech_refresh = yes
+			}
+		}
 		from = {
 			# 0.1.0, nomads (design 2026-11-05): they study any broken gate - offered once, the first
 			# time a fleet of theirs enters a portal with a broken gate (a science ship does it)
@@ -430,8 +438,9 @@ ship_event = {
 	hide_window = yes
 	is_triggered_only = yes
 	immediate = {
-		owner = { save_event_target_as = ahw_insp_country }
+		ahw_study_begin = yes
 		solar_system = { ahw_inspect_gates = yes }
+		ahw_study_report = { FLAG = ahw_sg_construction IX = ahw_ix_construction GOT = ahw_got_construction }
 	}
 }
 
@@ -441,8 +450,9 @@ ship_event = {
 	hide_window = yes
 	is_triggered_only = yes
 	immediate = {
-		owner = { save_event_target_as = ahw_insp_country }
+		ahw_study_begin = yes
 		solar_system = { ahw_inspect_broken = yes }
+		ahw_study_report = { FLAG = ahw_sg_construction IX = ahw_ix_construction GOT = ahw_got_construction }
 	}
 }
 
@@ -452,9 +462,68 @@ ship_event = {
 	hide_window = yes
 	is_triggered_only = yes
 	immediate = {
-		owner = { save_event_target_as = ahw_insp_country }
+		ahw_study_begin = yes
 		solar_system = { ahw_inspect_centre = yes }
+		ahw_study_report = { FLAG = ahw_sg_theory IX = ahw_ix_theory GOT = ahw_got_theory }
 	}
+}
+
+# 2026-11-28 (user): what a finished inspection study gave, for a human owner (ahw_study_report,
+# which fires both twins; the trigger picks by the chain line, ahw_story_road).
+# Shares in per cent of the tech's current cost; the points are an estimate (ahw_rescale_got).
+country_event = {
+	id = ahw.74
+	title = ahw.74.name
+	desc = {
+		trigger = { has_country_flag = ahw_sg_theory check_variable = { which = ahw_sg value > 0 } }
+		text = ahw.74.desc.theory
+	}
+	desc = {
+		trigger = { has_country_flag = ahw_sg_construction check_variable = { which = ahw_sg value > 0 } }
+		text = ahw.74.desc.construction
+	}
+	desc = {
+		trigger = { has_country_flag = ahw_sg_theory check_variable = { which = ahw_sg value <= 0 } }
+		text = ahw.74.desc.theory_none
+	}
+	desc = {
+		trigger = { has_country_flag = ahw_sg_construction check_variable = { which = ahw_sg value <= 0 } }
+		text = ahw.74.desc.construction_none
+	}
+	picture = GFX_evt_engineering_research
+	location = event_target:ahw_study_at
+	event_chain = ahw_highway_chain
+	is_triggered_only = yes
+	trigger = { is_ai = no has_country_flag = ahw_story_road }
+	option = { name = ahw.74.a }
+}
+
+# Its twin before the first ring node (the chain line, as ahw_story.2/.102).
+country_event = {
+	id = ahw.75
+	title = ahw.74.name
+	desc = {
+		trigger = { has_country_flag = ahw_sg_theory check_variable = { which = ahw_sg value > 0 } }
+		text = ahw.74.desc.theory
+	}
+	desc = {
+		trigger = { has_country_flag = ahw_sg_construction check_variable = { which = ahw_sg value > 0 } }
+		text = ahw.74.desc.construction
+	}
+	desc = {
+		trigger = { has_country_flag = ahw_sg_theory check_variable = { which = ahw_sg value <= 0 } }
+		text = ahw.74.desc.theory_none
+	}
+	desc = {
+		trigger = { has_country_flag = ahw_sg_construction check_variable = { which = ahw_sg value <= 0 } }
+		text = ahw.74.desc.construction_none
+	}
+	picture = GFX_evt_engineering_research
+	location = event_target:ahw_study_at
+	event_chain = ahw_shut_doors_chain
+	is_triggered_only = yes
+	trigger = { is_ai = no NOT = { has_country_flag = ahw_story_road } }
+	option = { name = ahw.74.a }
 }
 
 # 0.1.0, the express (design 2026-11-05): dormant until the mid game (on_mid_game_pulse, so the
@@ -506,6 +575,7 @@ event = {
 		event_target:ahw_centre_system = { set_variable = { which = ahw_n_c value = 0 } }
 		every_country = {
 			limit = { is_country_type = default has_country_flag = ahw_highway_studied }
+			ahw_tech_refresh = yes	# 2026-11-28: shares at today's cost, studies reopened
 			event_target:ahw_centre_system = { change_variable = { which = ahw_n_c value = 1 } }
 			if = {
 				limit = { has_technology = ahw_tech_gate_theory has_technology = ahw_tech_gate_construction }

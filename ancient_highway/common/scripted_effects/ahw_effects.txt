@@ -485,9 +485,66 @@ ahw_grant = {
 	}
 }
 
+# 2026-11-28 (user: "80 % of the actual current costs"), this = a country: VAR (ahw_got_theory,
+# ahw_got_construction) is the share of the tech's *current* cost the grants hold. A grant adds a
+# share of the cost of its day (add_tech_progress), and the cost grows with the empire, so the
+# held share shrinks. Script cannot read a tech's cost or progress; this estimates its growth with
+# a cost index: 1 + 0.002 per empire size above 100 (defines EMPIRE_SIZE_BASE,
+# EMPIRE_SIZE_TECH_COST_PENALTY) x (1 + tech_cost_empire_size_mult), + the field's
+# <field>_tech_cost_mult. Each VAR is scaled by old index / new index (ahw_ix_theory,
+# ahw_ix_construction remember the old). A save from before 1.0.2 starts its index on the first
+# call: the growth until then is not counted. Constant factors (difficulty, the galaxy's tech
+# cost) cancel in the ratio.
+ahw_rescale_got = {
+	export_trigger_value_to_variable = { trigger = empire_size variable = ahw_ix }
+	subtract_variable = { which = ahw_ix value = 100 }
+	if = {
+		limit = { check_variable = { which = ahw_ix value < 0 } }
+		set_variable = { which = ahw_ix value = 0 }
+	}
+	multiply_variable = { which = ahw_ix value = 0.002 }
+	export_modifier_to_variable = { modifier = tech_cost_empire_size_mult variable = ahw_ixm }
+	change_variable = { which = ahw_ixm value = 1 }
+	multiply_variable = { which = ahw_ix value = ahw_ixm }
+	change_variable = { which = ahw_ix value = 1 }
+	export_modifier_to_variable = { modifier = physics_tech_cost_mult variable = ahw_ixm }
+	set_variable = { which = ahw_ix_p value = ahw_ix }
+	change_variable = { which = ahw_ix_p value = ahw_ixm }
+	export_modifier_to_variable = { modifier = engineering_tech_cost_mult variable = ahw_ixm }
+	set_variable = { which = ahw_ix_e value = ahw_ix }
+	change_variable = { which = ahw_ix_e value = ahw_ixm }
+	if = {
+		limit = { is_variable_set = ahw_got_theory NOT = { has_technology = ahw_tech_gate_theory } }
+		if = {
+			limit = { is_variable_set = ahw_ix_theory }
+			multiply_variable = { which = ahw_got_theory value = ahw_ix_theory }
+			divide_variable = { which = ahw_got_theory value = ahw_ix_p }
+		}
+		set_variable = { which = ahw_ix_theory value = ahw_ix_p }
+	}
+	if = {
+		limit = { is_variable_set = ahw_got_construction NOT = { has_technology = ahw_tech_gate_construction } }
+		if = {
+			limit = { is_variable_set = ahw_ix_construction }
+			multiply_variable = { which = ahw_got_construction value = ahw_ix_construction }
+			divide_variable = { which = ahw_got_construction value = ahw_ix_e }
+		}
+		set_variable = { which = ahw_ix_construction value = ahw_ix_e }
+	}
+}
+
+# this = a country (ahw.60 on entering, ahw.80 yearly): the held shares at today's cost, and the
+# studies closed or reopened by them.
+ahw_tech_refresh = {
+	ahw_rescale_got = yes
+	ahw_cap_check = yes
+}
+
 # this = a country. PROGRESS of TECH (a fraction of its cost, add_tech_progress), but all grants
-# of a tech together at most 0.8 (0.0.39, design 2026-11-06), counted in the country variable VAR;
-# nothing for a tech already researched.
+# of a tech together hold at most 0.8 of its current cost (0.0.39, design 2026-11-06; current
+# cost since 2026-11-28, ahw_rescale_got), counted in the country variable VAR; nothing for a tech
+# already researched. While a study's result is being counted (flag ahw_sg_on, ahw_study_report),
+# its grants add up in ahw_sg.
 ahw_grant_tech = {
 	if = {
 		limit = { NOT = { has_technology = $TECH$ } }
@@ -502,6 +559,7 @@ ahw_grant_tech = {
 			limit = { NOT = { is_variable_set = ahw_got_construction } }
 			set_variable = { which = ahw_got_construction value = 0 }
 		}
+		ahw_rescale_got = yes
 		set_variable = { which = ahw_g value = 0.8 }
 		subtract_variable = { which = ahw_g value = $VAR$ }
 		if = {
@@ -512,6 +570,10 @@ ahw_grant_tech = {
 			limit = { check_variable = { which = ahw_g value > 0 } }
 			add_tech_progress = { tech = $TECH$ progress = ahw_g }
 			change_variable = { which = $VAR$ value = ahw_g }
+			if = {
+				limit = { has_country_flag = ahw_sg_on }
+				change_variable = { which = ahw_sg value = ahw_g }
+			}
 		}
 		ahw_cap_check = yes
 		# (a $PARAM$ inside a string is mangled, run 36: the tech's name stays readable, a [This.$VAR$] would not)
@@ -546,6 +608,72 @@ ahw_cap_check = {
 		set_country_flag = ahw_closed_theory
 		country_event = { id = ahw.67 }
 		log = "AHW \\[This.GetName]: Gate Theory capped or researched - centre studies withdrawn"
+	}
+	# 2026-11-28: a capped tech whose cost has grown (ahw_rescale_got) below 0.75 of it opens again,
+	# and its withdrawn studies can be offered again on the next entry. 0.75, not 0.8: a study for
+	# the last 1 % would not be worth a ship's 15 days.
+	if = {
+		limit = {
+			has_country_flag = ahw_closed_construction
+			NOT = { has_technology = ahw_tech_gate_construction }
+			check_variable = { which = ahw_got_construction value < 0.75 }
+		}
+		remove_country_flag = ahw_closed_construction
+		country_event = { id = ahw.69 }
+		log = "AHW \\[This.GetName]: Gate Construction below the cap again (\\[This.ahw_got_construction] of its cost) - gate studies open"
+	}
+	if = {
+		limit = {
+			has_country_flag = ahw_closed_theory
+			NOT = { has_technology = ahw_tech_gate_theory }
+			check_variable = { which = ahw_got_theory value < 0.75 }
+		}
+		remove_country_flag = ahw_closed_theory
+		country_event = { id = ahw.73 }
+		log = "AHW \\[This.GetName]: Gate Theory below the cap again (\\[This.ahw_got_theory] of its cost) - centre studies open"
+	}
+}
+
+# 2026-11-28 (user: show a finished study's impact, not only that it is done), this = the ship of
+# a finished inspection study (ahw.62, .64, .65), which calls begin, its ahw_inspect_* and report
+# in turn (not nested: the grant path is 4 deep already): count the study's grants in ahw_sg,
+# then tell a human owner what they gave (FLAG ahw_sg_theory / ahw_sg_construction picks the
+# tech's text): its share, about how many research points (the share x the tech's base cost
+# 2500 x the galaxy's tech cost x the cost index IX of ahw_rescale_got), and the share of its
+# current cost now held (GOT). ahw.74 / .75 show it (twins by chain line), camera on the system (ahw_study_at).
+ahw_study_begin = {
+	owner = {
+		save_event_target_as = ahw_insp_country
+		set_country_flag = ahw_sg_on
+		set_variable = { which = ahw_sg value = 0 }
+	}
+	solar_system = { save_event_target_as = ahw_study_at }
+}
+ahw_study_report = {
+	owner = {
+		remove_country_flag = ahw_sg_on
+		if = {
+			limit = { is_ai = no }
+			remove_country_flag = ahw_sg_theory
+			remove_country_flag = ahw_sg_construction
+			set_country_flag = $FLAG$
+			set_variable = { which = ahw_sg_pct value = ahw_sg }
+			multiply_variable = { which = ahw_sg_pct value = 100 }
+			round_variable_to_closest = { which = ahw_sg_pct value = 0.5 }
+			get_galaxy_setup_value = { which = ahw_sg_pts setting = tech_costs_scale }
+			multiply_variable = { which = ahw_sg_pts value = 2500 }
+			if = {
+				limit = { is_variable_set = $IX$ }
+				multiply_variable = { which = ahw_sg_pts value = $IX$ }
+			}
+			multiply_variable = { which = ahw_sg_pts value = ahw_sg }
+			round_variable_to_closest = { which = ahw_sg_pts value = 10 }
+			set_variable = { which = ahw_sg_held value = $GOT$ }
+			multiply_variable = { which = ahw_sg_held value = 100 }
+			round_variable = ahw_sg_held
+			country_event = { id = ahw.74 }
+			country_event = { id = ahw.75 }
+		}
 	}
 }
 

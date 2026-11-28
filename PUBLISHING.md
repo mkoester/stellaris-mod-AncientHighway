@@ -8,6 +8,16 @@ The store texts are deliberately open about what is unfinished (user, 2026-11-23
 very transparent"). When a point under "Still being tuned" or "What we are watching" is settled,
 update both texts and re-upload the description.
 
+## Update 1.0.2 (game 4.6.x, 2026-11-28)
+
+- [x] `version="1.0.2"`.
+- [ ] In game: a capped tech below 75 % reopens its studies ("below the cap again" in `game.log`);
+      a finished study's pop-up (share, points, share held); `error.log` without new `ahw_` lines.
+- [ ] Upload to both stores. Change note: "The 80% cap on what studies give now counts against a
+      gate tech's current cost: as your empire grows and the tech gets dearer, studies open again.
+      A finished study now tells you what it gave: its share of the tech, about how many research
+      points, and how much of the tech you now hold."
+
 ## Update 1.0.1 (game 4.6.0, 2026-11-23)
 
 - [x] `version="1.0.1"`, `supported_version="v4.6.*"`; store copy says 4.6.x, the Willpower line

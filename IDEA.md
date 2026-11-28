@@ -296,3 +296,11 @@ and regarding the GalCom resolution: only an empire with a repaired gate should 
   - name ancient highway from the first ring node on, before that "The Shut Doors"
   - a situation-log entry for the chain is fine
   - repaired gate needed for all three resolutions
+
+### The cap against today's cost, and study results (2026-11-28)
+
+so when I am below 80% of the actual current costs again, the study should work again
+
+and when these projects finish, we should not only announce they are done, but rather show the impact (e.g. x points granted to tech Y)
+
+to clarify - I just want no farming beyond 80%, tech costs rising and starting to do the projects again is not considered farming
